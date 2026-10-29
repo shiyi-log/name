@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#182a34" />
+    <title>名字研究所 · 公司名评分数据库</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand-mark" href="#top" aria-label="名字研究所首页">
+          <span class="brand-seal">名</span>
+          <span>
+            <strong>名字研究所</strong>
+            <small>四字公司名数据库</small>
+          </span>
+        </a>
+        <div class="topbar-actions">
+          <span class="data-status"><span class="status-dot"></span>本地数据库 · 待核验</span>
+          <button class="button button-quiet" id="exportButton" type="button">导出候选</button>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero-section">
+          <div class="hero-copy">
+            <p class="eyebrow">Name atlas · 01</p>
+            <h1>把诗意变成<br /><em>可以判断的名字。</em></h1>
+            <p class="hero-description">
+              先从古诗意象和现代品牌语气里筛出候选，再用读写、诗意、独特性与注册风险做一轮公开评分。
+              分数是启发式判断，真正注册前仍需做工商与商标核验。
+            </p>
+          </div>
+          <div class="hero-note">
+            <span class="note-kicker">当前规则</span>
+            <strong>五项评分，满分 100</strong>
+            <p>品牌感 28% · 读写 20% · 诗意 20% · 独特性 18% · 注册启发分 14%</p>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="数据库概览">
+          <article class="stat-block">
+            <span class="stat-label">规则候选</span>
+            <strong id="candidateCount">—</strong>
+            <span class="stat-foot">已预组合并评分</span>
+          </article>
+          <article class="stat-block stat-accent">
+            <span class="stat-label">完整字库</span>
+            <strong id="characterCount">—</strong>
+            <span class="stat-foot">通用规范汉字</span>
+          </article>
+          <article class="stat-block">
+            <span class="stat-label">高分候选</span>
+            <strong id="highScoreCount">—</strong>
+            <span class="stat-foot" id="highScoreFoot">分档动态计算</span>
+          </article>
+          <article class="stat-block">
+            <span class="stat-label">可用组合空间</span>
+            <strong id="combinationSpace">—</strong>
+            <span class="stat-foot">6500^4 · 已排除三级生僻字</span>
+          </article>
+        </section>
+
+        <section class="workspace" id="workspace" aria-label="公司名筛选与结果">
+          <aside class="control-panel">
+            <div class="panel-heading">
+              <span class="eyebrow">Filter · 02</span>
+              <h2>筛选名字</h2>
+            </div>
+
+            <label class="field-label" for="searchInput">搜索</label>
+            <div class="search-field">
+              <span aria-hidden="true">⌕</span>
+              <input id="searchInput" type="search" placeholder="输入名字、标签或方向" autocomplete="off" />
+            </div>
+
+            <label class="field-label" for="directionSelect">品牌方向</label>
+            <select id="directionSelect" class="select-field">
+              <option value="all">全部方向</option>
+            </select>
+
+            <label class="field-label" for="scoreRange">最低分数 <output id="scoreValue">0</output></label>
+            <input id="scoreRange" class="range-field" type="range" min="0" max="90" step="0.5" value="0" />
+            <div class="range-scale"><span>0</span><span>90</span></div>
+
+            <label class="field-label" for="sortSelect">排序方式</label>
+            <select id="sortSelect" class="select-field">
+              <option value="score">综合评分最高</option>
+              <option value="registration">注册启发分最高</option>
+              <option value="distinctiveness">独特性最高</option>
+              <option value="readability">最容易读写</option>
+              <option value="poetry">诗意最高</option>
+              <option value="name">按名称</option>
+            </select>
+
+            <button class="button button-outline reset-button" id="resetButton" type="button">重置筛选</button>
+
+            <div class="score-key">
+              <div class="score-key-heading">评分怎么读</div>
+              <div class="score-key-row"><span class="score-dot score-dot-high"></span><span id="keyHigh">优先研究</span></div>
+              <div class="score-key-row"><span class="score-dot score-dot-mid"></span><span id="keyMid">值得保留</span></div>
+              <div class="score-key-row"><span class="score-dot score-dot-low"></span><span id="keyLow">需要调整</span></div>
+              <p class="score-key-note">分档按当前候选池的实际分布取分位，不是固定分数。</p>
+            </div>
+          </aside>
+
+          <div class="results-panel">
+            <div class="results-heading">
+              <div>
+                <span class="eyebrow">Shortlist · 03</span>
+                <h2>按分数查看候选</h2>
+              </div>
+              <div class="results-heading-side">
+                <div class="view-switch" role="tablist" aria-label="数据库视图">
+                  <button class="view-tab is-active" type="button" data-view="candidates">候选组合</button>
+                  <button class="view-tab" type="button" data-view="characters">8105 字库</button>
+                </div>
+                <span class="results-count" id="resultsCount">—</span>
+              </div>
+            </div>
+
+            <div id="candidateView">
+              <div class="featured-strip" id="featuredStrip" aria-label="当前最高分候选"></div>
+              <div class="names-list" id="namesList" aria-live="polite"></div>
+              <div class="pagination" id="candidatePagination" aria-label="候选分页">
+                <button class="pagination-button" id="candidatePrev" type="button">上一页</button>
+                <span id="candidatePageLabel">—</span>
+                <button class="pagination-button" id="candidateNext" type="button">下一页</button>
+              </div>
+            </div>
+
+            <div class="characters-view" id="charactersView" hidden>
+              <div class="character-toolbar">
+                <div>
+                  <strong>完整字库</strong>
+                  <span>8105 个汉字已入库；分级只是检索标签，不改变原始数据。</span>
+                </div>
+                <div class="character-controls">
+                  <input id="characterSearch" type="search" placeholder="搜索汉字" aria-label="搜索汉字" />
+                  <select id="characterTierSelect" aria-label="筛选汉字级别">
+                    <option value="all">全部级别</option>
+                    <option value="1">一级常用字</option>
+                    <option value="2">二级规范字</option>
+                    <option value="3">三级规范字</option>
+                  </select>
+                </div>
+              </div>
+              <div class="character-grid" id="characterGrid" aria-live="polite"></div>
+              <div class="pagination" id="characterPagination" aria-label="字库分页">
+                <button class="pagination-button" id="characterPrev" type="button">上一页</button>
+                <span id="characterPageLabel">—</span>
+                <button class="pagination-button" id="characterNext" type="button">下一页</button>
+              </div>
+            </div>
+
+            <div class="empty-state" id="emptyState" hidden>
+              <strong>没有符合条件的名字</strong>
+              <p>把最低分数调低，或清空搜索词继续查看。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <span>名字研究所 · 本地启发式数据库</span>
+        <span>注册启发分不等于工商或商标检索结果</span>
+      </footer>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
