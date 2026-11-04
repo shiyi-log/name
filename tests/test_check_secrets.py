@@ -46,6 +46,14 @@ class SecretCheckTests(unittest.TestCase):
         self.assertTrue(any("列 note" in item.location for item in findings))
         self.assertNotIn(secret, repr(findings))
 
+    def test_staged_secret_cannot_be_hidden_by_safe_worktree_changes(self):
+        secret = "sk-" + "c" * 28
+        path = self.track("settings.py", secret)
+        path.write_text("safe workspace\n")
+        _, findings = check_secrets.check_repository(self.root)
+        self.assertTrue(any(item.location == "暂存内容" for item in findings))
+        self.assertNotIn(secret, repr(findings))
+
     def test_sensitive_paths_are_blocked_and_example_is_allowed(self):
         self.track(".env", "OPENAI_API_KEY=\n")
         self.track(".env.example", "OPENAI_API_KEY=\n")

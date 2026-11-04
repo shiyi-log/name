@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 import sqlite3
 import subprocess
+import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,6 +76,9 @@ def scan_database(path: Path, relative: str) -> list[Finding]:
 def check_repository(root: Path) -> tuple[int, list[Finding]]:
     output = subprocess.check_output(["git", "-C", str(root), "ls-files", "-z"])
     files = sorted(set(name for name in output.decode("utf-8").split("\0") if name))
+    changed = set(subprocess.check_output([
+        "git", "-C", str(root), "diff", "--name-only", "-z",
+    ]).decode("utf-8").split("\0"))
     findings = []
     for relative in files:
         path = root / relative
@@ -84,14 +88,22 @@ def check_repository(root: Path) -> tuple[int, list[Finding]]:
         if path.is_symlink():
             findings.append(Finding(relative, "文件路径", "需要检查的符号链接"))
             continue
-        if not path.exists():
-            continue
         try:
-            # 同时扫描数据库原始字节，避免已删除记录的残留密钥随文件上传。
-            findings.extend(scan_bytes(relative, "文件内容", path.read_bytes()))
-            if path.suffix.lower() in {".db", ".sqlite", ".sqlite3"}:
-                findings.extend(scan_database(path, relative))
-        except (OSError, sqlite3.Error):
+            if path.exists():
+                # 同时扫描数据库原始字节，避免已删除记录的残留密钥随文件上传。
+                findings.extend(scan_bytes(relative, "文件内容", path.read_bytes()))
+                if path.suffix.lower() in {".db", ".sqlite", ".sqlite3"}:
+                    findings.extend(scan_database(path, relative))
+            if relative in changed:
+                # 部分暂存时，索引才是将被提交的版本，不能仅检查工作区。
+                staged = subprocess.check_output(["git", "-C", str(root), "show", ":" + relative])
+                findings.extend(scan_bytes(relative, "暂存内容", staged))
+                if path.suffix.lower() in {".db", ".sqlite", ".sqlite3"}:
+                    with tempfile.TemporaryDirectory(prefix="name-secret-index-") as directory:
+                        snapshot = Path(directory) / "staged.db"
+                        snapshot.write_bytes(staged)
+                        findings.extend(scan_database(snapshot, relative))
+        except (OSError, sqlite3.Error, subprocess.CalledProcessError):
             findings.append(Finding(relative, "文件读取", "无法完成密钥检查"))
     return len(files), findings
 
