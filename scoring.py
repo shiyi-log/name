@@ -157,30 +157,23 @@ def pinyin_profile(name: str) -> dict:
 
 
 def tone_curve_score(tones: list[int]) -> tuple[float, list[str]]:
-    """声调走势：四声有起伏最顺口，全同调最拗口。
-
-    普通话里一二声为平、三四声为仄。理想节奏是平仄交替，
-    四字全平或全仄读起来像口号，缺少顿挫。
-    """
+    """为短名称的声调变化与平仄起伏评分。"""
     notes: list[str] = []
     score = 7.0
-    if not tones or len(tones) != 4:
+    if not tones:
         return score, notes
 
     unique = len(set(tones))
-    if unique == 4:
-        score += 1.6
-        notes.append("四声调各不相同，读起来有起伏。")
-    elif unique == 3:
-        score += 1.0
-    elif unique == 2:
-        score -= 0.4
-    else:
+    if unique == len(tones):
+        score += 1.2
+        notes.append("字间声调有变化，读起来有起伏。")
+    elif unique == 1:
         score -= 2.2
-        notes.append("四个字同调，读起来平直，缺少顿挫。")
+        notes.append("各字声调相同，读起来较平直。")
+    elif unique == 2:
+        score -= 0.2
 
-    # 三连相同声调
-    for start in range(2):
+    for start in range(max(0, len(tones) - 2)):
         if tones[start] == tones[start + 1] == tones[start + 2]:
             score -= 0.9
             notes.append("连续三个字同调，节奏偏平。")
@@ -188,15 +181,13 @@ def tone_curve_score(tones: list[int]) -> tuple[float, list[str]]:
 
     # 平仄交替
     level = [1 if tone in (1, 2) else 0 for tone in tones]
-    alternations = sum(1 for i in range(3) if level[i] != level[i + 1])
-    if alternations == 3:
-        score += 1.2
-        notes.append("平仄交替完整，四字节奏最自然。")
-    elif alternations == 2:
-        score += 0.5
-    elif alternations == 0:
-        score -= 1.0
-        notes.append("全平或全仄，朗读时缺少对比。")
+    pair_count = max(1, len(level) - 1)
+    alternations = sum(1 for i in range(len(level) - 1) if level[i] != level[i + 1])
+    movement = alternations / pair_count
+    score += movement * 1.0
+    if len(tones) > 1 and movement == 0:
+        score -= 0.8
+        notes.append("平仄没有变化，朗读时缺少对比。")
 
     return score, notes
 
@@ -284,7 +275,7 @@ class CorpusStats:
         self.total = max(1, len(names))
         for name in names:
             self.char.update(name)
-            for i in range(3):
+            for i in range(max(0, len(name) - 1)):
                 self.bigram[name[i : i + 2]] += 1
         for left, right in zip(tokens_left, tokens_right):
             self.token[left] += 1
@@ -321,7 +312,7 @@ def score_brand(name: str, left: str, right: str, left_category: str, right_cate
         score += 0.6
         notes.append("收尾留有余地，便于延展到产品和口号。")
 
-    if name.startswith("有") and len(name) == 4 and name[1] in "序信度方光为道恒":
+    if name.startswith("有") and len(name) >= 2 and name[1] in "序信度方光为道恒":
         score -= 0.5
 
     # 词元组合越少见，越像一个新造的品牌词
@@ -340,7 +331,12 @@ def score_readability(name: str, profile: dict, common_chars: set[str]) -> tuple
     notes: list[str] = []
 
     common_count = sum(1 for char in name if char in common_chars)
-    score += {4: 1.5, 3: 1.0, 2: 0.3}.get(common_count, -0.6)
+    common_bonus = {
+        2: {0: -0.6, 1: 0.2, 2: 1.0},
+        3: {0: -0.6, 1: -0.1, 2: 0.6, 3: 1.2},
+        4: {0: -0.6, 1: -0.3, 2: 0.3, 3: 1.0, 4: 1.5},
+    }
+    score += common_bonus[len(name)].get(common_count, -0.6)
 
     tone_score, tone_notes = tone_curve_score(profile["tones"])
     score += tone_score - 7.0
@@ -350,9 +346,9 @@ def score_readability(name: str, profile: dict, common_chars: set[str]) -> tuple
     score += phonetic_score
     notes.extend(phonetic_notes)
 
-    if len(set(name)) < 4:
-        score -= 1.2
-        notes.append("四字内有重复字，读起来像叠词拼凑。")
+    if len(set(name)) < len(name):
+        score -= 0.4 if len(name) == 2 else 1.0
+        notes.append(f"{len(name)}字名称中有重复字，辨识度略受影响。")
 
     return score, notes
 
@@ -376,7 +372,7 @@ def score_poetry(name: str, left_category: str, right_category: str, stats: Corp
     # 全部是抽象字时，画面感最弱
     if left_category == "abstracts" and right_category == "abstracts":
         score -= 0.8
-        notes.append("四字都由抽象词构成，缺少具体画面。")
+        notes.append(f"{len(name)}字名称以抽象表达为主，缺少具体画面。")
 
     if idiom_hit(name):
         score -= 2.4
@@ -385,7 +381,7 @@ def score_poetry(name: str, left_category: str, right_category: str, stats: Corp
     if name in INCOHERENT_BIGRAMS:
         score -= 1.0
 
-    char_rarity = sum(stats.rarity(stats.char, char, 2) for char in name) / 4
+    char_rarity = sum(stats.rarity(stats.char, char, 2) for char in name) / len(name)
     score += (char_rarity - 0.5) * 1.0
 
     return score, notes
@@ -395,9 +391,10 @@ def score_distinctiveness(name: str, left: str, right: str, stats: CorpusStats) 
     notes: list[str] = []
     score = 5.4
 
+    bigram_count = max(1, len(name) - 1)
     bigram_rarity = sum(
-        stats.rarity(stats.bigram, name[i : i + 2], 3) for i in range(3)
-    ) / 3
+        stats.rarity(stats.bigram, name[i : i + 2], 3) for i in range(len(name) - 1)
+    ) / bigram_count if len(name) > 1 else 1.0
     score += bigram_rarity * 3.4
 
     if bigram_rarity > 0.88:
@@ -405,17 +402,17 @@ def score_distinctiveness(name: str, left: str, right: str, stats: CorpusStats) 
     elif bigram_rarity < 0.35:
         notes.append("字组搭配较常见，记忆点偏弱。")
 
-    char_rarity = sum(stats.rarity(stats.char, char, 2) for char in name) / 4
+    char_rarity = sum(stats.rarity(stats.char, char, 2) for char in name) / len(name)
     score += char_rarity * 1.2
 
     # 注意：不能用"词元在候选池里出现几次"来扣分。
     # 生成方式是每个词元配全部对家，所有词元都会固定产出约 155 条，
     # 那个频次对所有人几乎相同，扣分等于给全体统一减分，笔记也会人人命中。
     # 这里改用字表里的真实字频：越是由最高频汉字拼成，越容易被听成"常见词"。
-    common_ratio = sum(1 for char in name if stats.char_rank.get(char, 9999) <= 800) / 4
+    common_ratio = sum(1 for char in name if stats.char_rank.get(char, 9999) <= 800) / len(name)
     score -= common_ratio * 0.9
     if common_ratio == 1.0:
-        notes.append("四字都是最高频汉字，容易被当成通用词而非字号。")
+        notes.append(f"{len(name)}字都由最高频汉字构成，容易被当成通用词而非字号。")
 
     return score, notes
 
@@ -439,11 +436,11 @@ def score_registration(name: str, left: str, right: str, stats: CorpusStats) -> 
     score += (normalized - 0.62) * 4.6
 
     if average_rank <= 300:
-        notes.append("四字均由最高频汉字构成，同名主体大概率已经很多。")
+        notes.append(f"{len(name)}字均由最高频汉字构成，同名主体大概率已经很多。")
     elif average_rank >= 2200:
         notes.append("用字避开最高频区间，字号撞车的概率明显更低。")
 
-    if sum(1 for rank in ranks if rank <= 500) == 4:
+    if sum(1 for rank in ranks if rank <= 500) == len(name):
         score -= 0.6
 
     if idiom_hit(name):
@@ -472,7 +469,7 @@ REASON_TEMPLATES = {
         "品牌叙事偏弱，更像词组而非字号。",
     ),
     "readability": (
-        "四字节奏自然，常用字占比高，口头传播负担低。",
+        "名称节奏自然、容易读写，口头传播负担低。",
         "整体顺口，个别字需要在真实传播中观察。",
         "读音有拗口或含混处，口头传播会打折。",
     ),

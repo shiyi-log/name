@@ -14,12 +14,12 @@
           <span class="brand-seal">名</span>
           <span>
             <strong>名字研究所</strong>
-            <small>四字公司名数据库</small>
+            <small>多字公司名数据库</small>
           </span>
         </a>
         <div class="topbar-actions">
           <span class="data-status"><span class="status-dot"></span>本地数据库 · 待核验</span>
-          <button class="button button-quiet" id="exportButton" type="button">导出候选</button>
+          <button class="button button-quiet" id="exportButton" type="button" title="导出当前页">导出当前页</button>
         </div>
       </header>
 
@@ -42,9 +42,9 @@
 
         <section class="stats-grid" aria-label="数据库概览">
           <article class="stat-block">
-            <span class="stat-label">规则候选</span>
+            <span class="stat-label">数据库候选</span>
             <strong id="candidateCount">—</strong>
-            <span class="stat-foot">已预组合并评分</span>
+            <span class="stat-foot">已筛选并评分</span>
           </article>
           <article class="stat-block stat-accent">
             <span class="stat-label">完整字库</span>
@@ -76,12 +76,20 @@
               <input id="searchInput" type="search" placeholder="输入名字、标签或方向" autocomplete="off" />
             </div>
 
+            <label class="field-label" for="lengthSelect">名字长度</label>
+            <select id="lengthSelect" class="select-field">
+              <option value="all">全部长度</option>
+              <option value="2">二字</option>
+              <option value="3">三字</option>
+              <option value="4">四字</option>
+            </select>
+
             <label class="field-label" for="directionSelect">品牌方向</label>
             <select id="directionSelect" class="select-field">
               <option value="all">全部方向</option>
             </select>
 
-            <label class="field-label" for="scoreRange">最低分数 <output id="scoreValue">0</output></label>
+            <label class="field-label" for="scoreRange">最低综合分 <output id="scoreValue">0</output></label>
             <input id="scoreRange" class="range-field" type="range" min="0" max="90" step="0.5" value="0" />
             <div class="range-scale"><span>0</span><span>90</span></div>
 
@@ -110,7 +118,7 @@
             <div class="results-heading">
               <div>
                 <span class="eyebrow">Shortlist · 03</span>
-                <h2>按分数查看候选</h2>
+                <h2 id="resultsTitle">按综合评分查看候选</h2>
               </div>
               <div class="results-heading-side">
                 <div class="view-switch" role="tablist" aria-label="数据库视图">
@@ -122,6 +130,11 @@
             </div>
 
             <div id="candidateView">
+              <p class="sort-status" id="sortStatus" role="status" aria-atomic="true"></p>
+              <div class="initial-filter-notice" id="initialFilterNotice" role="status" hidden>
+                <span id="initialFilterText"></span>
+                <button class="button button-outline" id="clearInitialFilter" type="button">清除筛选</button>
+              </div>
               <div class="featured-strip" id="featuredStrip" aria-label="当前最高分候选"></div>
               <div class="names-list" id="namesList" aria-live="polite"></div>
               <div class="pagination" id="candidatePagination" aria-label="候选分页">
@@ -135,7 +148,7 @@
               <div class="character-toolbar">
                 <div>
                   <strong>完整字库</strong>
-                  <span>8105 个汉字已入库；分级只是检索标签，不改变原始数据。</span>
+                  <span>选一个字，生成包含该字的二字、三字或四字候选。</span>
                 </div>
                 <div class="character-controls">
                   <input id="characterSearch" type="search" placeholder="搜索汉字" aria-label="搜索汉字" />
@@ -147,6 +160,35 @@
                   </select>
                 </div>
               </div>
+              <section class="character-generator" id="characterGenerator" aria-label="按字生成候选" hidden>
+                <div class="generator-selection">
+                  <span class="eyebrow">Character · AI</span>
+                  <strong>围绕 <span id="selectedCharacter">—</span> 生成候选</strong>
+                </div>
+                <div class="generator-options">
+                  <label class="generation-provider" for="generationProvider">AI 服务商
+                    <select id="generationProvider" aria-label="选择 AI 服务商" disabled>
+                      <option value="">正在读取 CC Switch 配置…</option>
+                    </select>
+                  </label>
+                  <fieldset class="length-options">
+                    <legend>候选长度</legend>
+                    <label><input type="checkbox" name="generationLength" value="2" checked />二字</label>
+                    <label><input type="checkbox" name="generationLength" value="3" checked />三字</label>
+                    <label><input type="checkbox" name="generationLength" value="4" checked />四字</label>
+                  </fieldset>
+                  <label class="generation-count" for="generationCount">每种长度
+                    <select id="generationCount">
+                      <option value="5">5 个</option>
+                      <option value="10" selected>10 个</option>
+                      <option value="20">20 个</option>
+                    </select>
+                  </label>
+                  <button class="button button-primary" id="generateNamesButton" type="button" disabled>生成并保存</button>
+                  <button class="button button-outline" id="viewCharacterCandidates" type="button" disabled>查看已有候选</button>
+                </div>
+                <p class="generator-status" id="generatorStatus" role="status" aria-live="polite"></p>
+              </section>
               <div class="character-grid" id="characterGrid" aria-live="polite"></div>
               <div class="pagination" id="characterPagination" aria-label="字库分页">
                 <button class="pagination-button" id="characterPrev" type="button">上一页</button>
@@ -169,6 +211,6 @@
       </footer>
     </div>
 
-    <script src="app.js" defer></script>
+    <script src="app.js?v=3" defer></script>
   </body>
 </html>
