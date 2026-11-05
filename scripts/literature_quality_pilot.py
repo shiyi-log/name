@@ -21,6 +21,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 
+from pypinyin.phrases_dict import phrases_dict
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scoring import BRAND_CLICHES, IDIOMS
 
@@ -108,41 +110,62 @@ def is_metadata(line: str) -> bool:
     )) or "目录.md" in line or "来源清单.json" in line
 
 
-def line_records(path: Path, file_hash: str, line_number: int, line: str) -> Iterable[dict]:
-    """Yield direct contiguous windows from one selected line."""
+def name_windows(line: str, lexicon: set[str] | None = None) -> Iterable[tuple[str, int, int]]:
     for run in CHINESE_RUN.finditer(line):
         text = run.group(0)
         for length in (2, 3, 4):
             for offset in range(0, len(text) - length + 1):
                 name = text[offset : offset + length]
-                start = run.start() + offset
-                end = start + length
-                context_start = max(0, start - 48)
-                context_end = min(len(line), end + 96)
-                yield {
-                    "name": name,
-                    "length": length,
-                    "sourceReference": {
-                        "book": path.stem,
-                        "path": display_path(path),
-                        "line": line_number,
-                        "lineType": "metadata" if is_metadata(line) else "body",
-                        "sha256": file_hash,
-                        "quote": name,
-                        "context": line[context_start:context_end],
-                    },
-                    "extractionType": "direct-contiguous-window",
-                }
+                if lexicon is None or name in lexicon:
+                    yield name, run.start() + offset, length
 
 
-def stratified_sample(paths: list[Path], limit: int, seed: int) -> tuple[list[dict], int]:
-    """Sample eligible lines per book, then sample windows from those lines.
+def line_records(
+    path: Path, file_hash: str, line_number: int, line: str, lexicon: set[str] | None = None
+) -> Iterable[dict]:
+    """Yield direct contiguous windows from one selected line."""
+    for name, start, length in name_windows(line, lexicon):
+        end = start + length
+        context_start = max(0, start - 48)
+        context_end = min(len(line), end + 96)
+        yield {
+            "name": name,
+            "length": length,
+            "sourceReference": {
+                "book": path.stem,
+                "path": display_path(path),
+                "line": line_number,
+                "lineType": "metadata" if is_metadata(line) else "body",
+                "sha256": file_hash,
+                "quote": name,
+                "context": line[context_start:context_end],
+            },
+            "extractionType": "dictionary-word-match" if lexicon is not None else "direct-contiguous-window",
+            "candidateBasis": "pypinyin.phrases_dict exact word match" if lexicon is not None else "all contiguous Chinese windows",
+        }
+
+
+def load_lexicon() -> set[str]:
+    characters = json.loads((ROOT / "data" / "characters-8105.json").read_text(encoding="utf-8"))
+    allowed = set(characters[:6500])
+    return {
+        word for word in phrases_dict
+        if 2 <= len(word) <= 4 and all(char in allowed for char in word)
+    }
+
+
+def stratified_sample(
+    paths: list[Path], limit: int, seed: int, lexicon: set[str] | None = None
+) -> tuple[list[dict], int, int]:
+    """Sample book-balanced windows, or dispatch to unique-lexicon sampling.
 
     Sampling lines before materializing windows avoids allocating tens of
     millions of temporary Python records for a small review pilot.
     """
     if not paths or limit < 1:
         return [], 0
+    if lexicon is not None:
+        return unique_lexicon_sample(paths, limit, seed, lexicon)
     quotas = [limit // len(paths)] * len(paths)
     for index in range(limit % len(paths)):
         quotas[index] += 1
@@ -156,7 +179,11 @@ def stratified_sample(paths: list[Path], limit: int, seed: int) -> tuple[list[di
         with path.open(encoding="utf-8") as handle:
             for line_number, raw_line in enumerate(handle, 1):
                 line = raw_line.rstrip("\r\n")
-                line_windows = sum(max(0, len(match.group(0)) - 1) + max(0, len(match.group(0)) - 2) + max(0, len(match.group(0)) - 3) for match in CHINESE_RUN.finditer(line))
+                line_windows = sum(
+                    max(0, len(match.group(0)) - length + 1)
+                    for match in CHINESE_RUN.finditer(line)
+                    for length in (2, 3, 4)
+                )
                 total += line_windows
                 if not line_windows or quota == 0:
                     continue
@@ -182,7 +209,36 @@ def stratified_sample(paths: list[Path], limit: int, seed: int) -> tuple[list[di
     # Sorting makes the artifact stable and easy to review regardless of the
     # order in which files were traversed.
     selected.sort(key=lambda item: (item["sourceReference"]["path"], item["sourceReference"]["line"], item["name"]))
-    return selected, total
+    return selected, total, 0
+
+
+def unique_lexicon_sample(
+    paths: list[Path], limit: int, seed: int, lexicon: set[str]
+) -> tuple[list[dict], int, int]:
+    """Sample unique dictionary terms, retaining the first auditable occurrence."""
+    pool: dict[str, dict] = {}
+    occurrences = 0
+    for path in paths:
+        file_hash = sha256_file(path)
+        with path.open(encoding="utf-8") as handle:
+            for line_number, raw_line in enumerate(handle, 1):
+                line = raw_line.rstrip("\r\n")
+                for record in line_records(path, file_hash, line_number, line, lexicon):
+                    occurrences += 1
+                    pool.setdefault(record["name"], record)
+
+    rng = random.Random(seed)
+    selected: list[dict] = []
+    for index, name in enumerate(sorted(pool), 1):
+        record = pool[name]
+        if index <= limit:
+            selected.append(record)
+        else:
+            replacement = rng.randrange(index)
+            if replacement < limit:
+                selected[replacement] = record
+    selected.sort(key=lambda item: (item["sourceReference"]["path"], item["sourceReference"]["line"], item["name"]))
+    return selected, occurrences, len(pool)
 
 
 def screen(record: dict, known_names: set[str]) -> tuple[dict, str | None]:
@@ -237,10 +293,10 @@ def build_markdown(report: dict) -> str:
         "",
         f"- 来源目录：`{report['sourceDirectory']}`",
         f"- 固定种子：`{report['seed']}`；全库分层抽样总上限：`{report['sampleLimit']}`",
-        f"- 文件数：{stats['sourceFileCount']}；扫描原始窗口：{stats['rawWindowCount']:,}；抽样记录：{stats['sampleRecordCount']:,}",
+        f"- 文件数：{stats['sourceFileCount']}；扫描来源出现次数：{stats['rawWindowCount']:,}；抽样记录：{stats['sampleRecordCount']:,}",
         f"- 去重后的抽样名称：{stats['uniqueNameCount']:,}",
         f"- 形状通过：{stats['shapePassed']:,}；去重通过：{stats['dedupePassed']:,}；词法通过：{stats['lexicalPassed']:,}；语义规则通过（待复核）：{stats['semanticPassed']:,}",
-        f"- 试跑 review-pool 比例（相对抽样记录）：{stats['semanticPassRateOfSample']:.2%}",
+        f"- 规则筛选池比例（相对抽样记录）：{stats['rulePoolRateOfSample']:.2%}",
         f"- 本轮正式认定合格并入库：{stats['acceptedCompanyNameCount']}；仅凭这些确定性规则无法证明名称语义完整和适合作为公司名。",
         "",
         "## 不合格原因（按首次拦截）",
@@ -248,6 +304,11 @@ def build_markdown(report: dict) -> str:
         "| 原因 | 数量 |",
         "| --- | ---: |",
     ]
+    if report["candidateMode"] == "lexicon":
+        lines.insert(
+            5,
+            f"- 词典词条：{report['lexiconEntryCount']:,}；不同文献匹配词：{report['distinctLexiconCandidateCount']:,}；匹配出现次数：{stats['rawWindowCount']:,}",
+        )
     for reason, count in report["rejectionReasons"].items():
         lines.append(f"| {reason} | {count:,} |")
     lines.extend(["", "## 待复核样例", "", "| 名称 | 书名 | 行号 | 原文上下文 |", "| --- | --- | ---: | --- |"])
@@ -267,6 +328,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--sample-limit", type=int, default=1200)
+    parser.add_argument("--candidate-mode", choices=("windows", "lexicon"), default="windows")
     parser.add_argument("--seed", type=int, default=20261105)
     parser.add_argument("--pilot-id", default="literature-quality-2026-11-05-01")
     return parser.parse_args()
@@ -280,7 +342,10 @@ def main() -> None:
     paths = sorted(source.rglob("*.txt"))
     if not paths:
         raise SystemExit(f"未找到文本来源：{source}")
-    records, raw_count = stratified_sample(paths, args.sample_limit, args.seed)
+    lexicon = load_lexicon() if args.candidate_mode == "lexicon" else None
+    records, raw_count, unique_lexicon_candidates = stratified_sample(
+        paths, args.sample_limit, args.seed, lexicon
+    )
     known_names = read_known_names()
     screened: list[dict] = []
     reason_counts: Counter[str] = Counter()
@@ -311,7 +376,7 @@ def main() -> None:
         "semanticPassed": sum(item["screening"]["stages"]["semantic"] for item in screened),
         "acceptedCompanyNameCount": 0,
     }
-    stats["semanticPassRateOfSample"] = stats["semanticPassed"] / len(screened) if screened else 0.0
+    stats["rulePoolRateOfSample"] = stats["semanticPassed"] / len(screened) if screened else 0.0
     generated_at = datetime.now().astimezone().isoformat(timespec="seconds")
     report = {
         "schemaVersion": 1,
@@ -320,14 +385,21 @@ def main() -> None:
         "seed": args.seed,
         "sampleLimit": args.sample_limit,
         "sourceDirectory": display_path(source),
-        "method": "每本简体文献按固定种子抽样直接连续二至四字窗口；先做形状、项目内去重、成语/行业套话、负面/叙事/功能词和通用度规则。review-pool 仅供后续人工或模型复核。",
+        "candidateMode": args.candidate_mode,
+        "method": (
+            "在简体文献中精确检索 pypinyin.phrases_dict 的二至四字词条，从不同匹配词条中按固定种子等概率抽样；"
+            if lexicon is not None else
+            "每本简体文献按固定种子抽样所有连续二至四字窗口；"
+        ) + "随后做形状、项目内去重、成语/行业套话、负面/叙事/功能词和通用度规则。规则通过记录仅供语义复核。",
         "limitations": [
-            "rawWindowCount 是含重复的二至四字出现次数，不是不同名称数。",
-            "按书等额、先抽行再抽窗口，样本不代表全库均匀随机分布，不能外推千万合格名或全库通过率。",
+            "rawWindowCount 是含重复的来源匹配出现次数，不是不同名称数。",
+            "窗口模式按书等额、先抽行再抽窗口，不能外推全库通过率；词典模式按全库不同词条抽样，每个名称只保留首个来源。",
             "规则拦截存在误放与误杀，必须逐条语义复核；本批校准结果还需独立样本验证。",
         ],
         "knownNameCount": len(known_names),
         "knownNamesInSample": sorted({record["name"] for record in screened if record["screening"]["knownNameMatch"]}),
+        "lexiconEntryCount": len(lexicon) if lexicon is not None else None,
+        "distinctLexiconCandidateCount": unique_lexicon_candidates if lexicon is not None else None,
         "statistics": stats,
         "rejectionReasons": dict(reason_counts.most_common()),
         "records": screened,

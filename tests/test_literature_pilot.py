@@ -4,7 +4,9 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from scripts.literature_quality_pilot import line_records, screen, sha256_file, stratified_sample
+from scripts.literature_quality_pilot import (
+    line_records, load_lexicon, screen, sha256_file, stratified_sample, unique_lexicon_sample,
+)
 from scripts.review_literature_pilot import apply_review, fingerprint, verify_sources
 
 
@@ -22,7 +24,9 @@ class LiteraturePilotTests(unittest.TestCase):
         record["length"] = 2
         record["recordId"] = "p0001"
         record, _ = screen(record, set())
-        self.report = {"pilotId": "test", "records": [record], "knownNamesInSample": [],
+        self.report = {"pilotId": "test", "candidateMode": "windows", "method": "test mode",
+                       "lexiconEntryCount": None, "distinctLexiconCandidateCount": None,
+                       "records": [record], "knownNamesInSample": [],
                        "statistics": {"semanticPassed": 1, "sampleRecordCount": 1, "uniqueNameCount": 1,
                                       "shapePassed": 1, "dedupePassed": 1, "lexicalPassed": 1,
                                       "acceptedCompanyNameCount": 0}}
@@ -97,10 +101,48 @@ class LiteraturePilotTests(unittest.TestCase):
         record = next(line_records(self.source, sha256_file(self.source), 1, "来源：详见目录.md"))
         record, _ = screen(record, set())
         self.assertFalse(record["screening"]["stages"]["lexical"])
-        first, count = stratified_sample([self.source], 10, 23)
-        second, other_count = stratified_sample([self.source], 10, 23)
+        first, count, unique_count = stratified_sample([self.source], 10, 23)
+        second, other_count, other_unique_count = stratified_sample([self.source], 10, 23)
         self.assertEqual(first, second)
         self.assertEqual(count, other_count)
+        self.assertEqual(unique_count, other_unique_count)
+
+    def test_lexicon_mode_only_yields_exact_dictionary_terms(self):
+        lexicon = {"月照", "星桥"}
+        records = list(line_records(self.source, sha256_file(self.source), 2, "月照星桥。", lexicon))
+        self.assertEqual([record["name"] for record in records], ["月照", "星桥"])
+        self.assertTrue(all(record["extractionType"] == "dictionary-word-match" for record in records))
+        sample, occurrences, unique_count = unique_lexicon_sample([self.source], 10, 23, lexicon)
+        self.assertEqual(occurrences, 2)
+        self.assertEqual(unique_count, 2)
+        self.assertEqual({record["name"] for record in sample}, {"月照", "星桥"})
+
+    def test_lexicon_report_requires_a_real_dictionary_match(self):
+        lexicon = load_lexicon()
+        name = "有闲"
+        self.assertIn(name, lexicon)
+        line = f"{name}。"
+        self.source.write_text(line + "\n", encoding="utf-8")
+        record = next(line_records(self.source, sha256_file(self.source), 1, line, lexicon))
+        record["sourceReference"]["path"] = self.source.name
+        record["recordId"] = "p0001"
+        record, _ = screen(record, set())
+        report = {"pilotId": "lexicon-test", "candidateMode": "lexicon", "method": "dictionary test",
+                  "lexiconEntryCount": len(lexicon), "distinctLexiconCandidateCount": 1,
+                  "records": [record], "knownNamesInSample": [],
+                  "statistics": {"semanticPassed": 1, "sampleRecordCount": 1, "uniqueNameCount": 1,
+                                 "shapePassed": 1, "dedupePassed": 1, "lexicalPassed": 1,
+                                 "acceptedCompanyNameCount": 0}}
+        review = {"pilotId": report["pilotId"], "sampleFingerprint": fingerprint(report),
+                  "reviewMethod": "AI editor test", "records": [
+                      {"recordId": "p0001", "name": name, "decision": "accept", "reason": "test",
+                       "brandMeaning": "test", "direction": "test", "risk": "未查询"}]}
+        accepted = apply_review(report, review, self.root)
+        self.assertEqual(accepted["statistics"]["acceptedCompanyNameCount"], 1)
+        report["records"][0]["name"] = "明月"
+        review["sampleFingerprint"] = fingerprint(report)
+        with self.assertRaises(ValueError):
+            apply_review(report, review, self.root)
 
 
 if __name__ == "__main__":

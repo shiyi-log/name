@@ -23,6 +23,10 @@ def fingerprint(report: dict) -> str:
     """Bind decisions to the sampled names and their exact source evidence."""
     body = {
         "pilotId": report["pilotId"],
+        "candidateMode": report.get("candidateMode"),
+        "method": report.get("method"),
+        "lexiconEntryCount": report.get("lexiconEntryCount"),
+        "distinctLexiconCandidateCount": report.get("distinctLexiconCandidateCount"),
         "records": report["records"],
         "statistics": report["statistics"],
         "knownNamesInSample": report.get("knownNamesInSample"),
@@ -31,6 +35,8 @@ def fingerprint(report: dict) -> str:
 
 
 def validate_screening(report: dict) -> None:
+    if report.get("candidateMode") not in {"windows", "lexicon"}:
+        raise ValueError("候选抽取模式缺失或不支持")
     records = report.get("records")
     if not isinstance(records, list) or not records:
         raise ValueError("抽样记录缺失")
@@ -53,6 +59,9 @@ def validate_screening(report: dict) -> None:
         if not isinstance(source, dict) or not isinstance(original_screening, dict):
             raise ValueError(f"抽样证据或筛选字段缺失：{record.get('recordId')}")
         name = record.get("name")
+        expected_basis = "pypinyin.phrases_dict exact word match" if report["candidateMode"] == "lexicon" else "all contiguous Chinese windows"
+        if record.get("candidateBasis") != expected_basis:
+            raise ValueError(f"候选来源依据与抽取模式不一致：{record['recordId']}")
         expected, _ = screen(copy.deepcopy(record), known_set)
         if name in first_seen and expected["screening"]["stages"]["shape"]:
             reason = "dedupe:本次抽样中重复名称"
@@ -110,6 +119,14 @@ def verify_sources(report: dict, root: Path = ROOT) -> None:
 def apply_review(report: dict, review: dict, root: Path = ROOT) -> dict:
     validate_screening(report)
     verify_sources(report, root)
+    if report["candidateMode"] == "lexicon":
+        try:
+            from .literature_quality_pilot import load_lexicon
+        except ImportError:
+            from literature_quality_pilot import load_lexicon
+        lexicon = load_lexicon()
+        if any(record["name"] not in lexicon for record in report["records"]):
+            raise ValueError("候选并非项目词典中的精确词条")
     if review.get("pilotId") != report["pilotId"] or review.get("sampleFingerprint") != fingerprint(report):
         raise ValueError("审核文件与本次抽样不匹配")
     decisions = review.get("records", [])
