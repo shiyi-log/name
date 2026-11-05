@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SQLite-backed local API and static-file server for the naming workspace."""
+"""为取名工作区提供基于 SQLite 的本地接口和静态文件服务。"""
 
 from __future__ import annotations
 
@@ -56,7 +56,7 @@ _selected_provider_id: str | None = os.environ.get("CC_SWITCH_PROVIDER_ID") or N
 
 
 def _toml_value(config: str, key: str) -> str:
-    """Read the small scalar subset used by CC Switch provider configs."""
+    """读取 CC Switch 服务商配置所用的简单标量字段。"""
     match = re.search(rf"(?m)^\s*{re.escape(key)}\s*=\s*(['\"])(.*?)\1\s*$", config or "")
     return match.group(2).strip() if match else ""
 
@@ -76,8 +76,9 @@ def _provider_from_row(row: sqlite3.Row) -> dict | None:
             api_key = value.strip()
             break
     config = settings.get("config", "") if isinstance(settings.get("config"), str) else ""
-    base_url = _toml_value(config, "base_url") or str(row["website_url"] or "").strip()
-    if not base_url or not api_key:
+    base_url = _toml_value(config, "base_url")
+    parsed_url = urlparse(base_url)
+    if parsed_url.scheme not in {"http", "https"} or not parsed_url.netloc or not api_key:
         return None
     wire_api = (_toml_value(config, "wire_api") or "chat_completions").lower()
     if wire_api not in {"responses", "chat_completions", "chat-completions"}:
@@ -106,14 +107,14 @@ def _provider_from_row(row: sqlite3.Row) -> dict | None:
 
 
 def load_cc_switch_providers() -> list[dict]:
-    """Import API providers from CC Switch without persisting their secrets.
+    """从 CC Switch 导入接口服务商，但不持久化保存密钥。
 
-    The official Codex account entry is OAuth-backed and is intentionally skipped;
-    only providers carrying an OpenAI-compatible API key are exposed to the app.
+    官方 Codex 账号使用 OAuth 授权，此处跳过；
+    应用仅显示带有 OpenAI 兼容接口密钥的服务商。
     """
     if not CC_SWITCH_DB.exists():
         return []
-    uri = f"file:{CC_SWITCH_DB}?mode=ro"
+    uri = CC_SWITCH_DB.resolve().as_uri() + "?mode=ro"
     try:
         with closing(sqlite3.connect(uri, uri=True)) as connection:
             connection.row_factory = sqlite3.Row
@@ -128,7 +129,10 @@ def load_cc_switch_providers() -> list[dict]:
     providers = []
     seen = set()
     for row in rows:
-        provider = _provider_from_row(row)
+        try:
+            provider = _provider_from_row(row)
+        except (TypeError, ValueError):
+            continue
         if provider is None or provider["id"] in seen:
             continue
         seen.add(provider["id"])
@@ -168,20 +172,19 @@ def available_ai_providers() -> list[dict]:
 
 def selected_ai_provider(provider_id: str | None = None) -> dict | None:
     providers = available_ai_providers()
-    if provider_id is not None:
-        return next((provider for provider in providers if provider["id"] == provider_id), None)
-    requested = _selected_provider_id
+    requested = provider_id or _selected_provider_id
     if requested:
         for provider in providers:
             if provider["id"] == requested:
                 return provider
+        if provider_id:
+            raise ValueError("所选 AI 服务商不可用，请刷新配置后重试")
+        return None
     return providers[0] if providers else None
 
 
 def public_ai_provider(provider: dict) -> dict:
-    result = {key: value for key, value in provider.items() if not key.startswith("_")}
-    result["protocol"] = "Responses" if provider["wireApi"] == "responses" else "Chat Completions"
-    return result
+    return {key: provider[key] for key in ("id", "name", "model", "models", "wireApi", "current")}
 
 
 def row_to_candidate(row: sqlite3.Row) -> dict:
@@ -343,11 +346,8 @@ def ai_status() -> dict:
 def ai_providers() -> dict:
     providers = available_ai_providers()
     selected = selected_ai_provider()
-    public = [public_ai_provider(provider) for provider in providers]
     return {
-        "providers": public,
-        "items": public,
-        "selectedProviderId": selected["id"] if selected else "",
+        "items": [public_ai_provider(provider) for provider in providers],
         "selectedId": selected["id"] if selected else "",
     }
 
@@ -358,6 +358,8 @@ def _response_endpoint(base_url: str, wire_api: str) -> str:
 
 
 def _response_text(result: dict, wire_api: str) -> str:
+    if not isinstance(result, dict):
+        raise RuntimeError("AI 服务返回内容不是 JSON 对象")
     if wire_api == "responses":
         output_text = result.get("output_text")
         if isinstance(output_text, str) and output_text.strip():
@@ -370,7 +372,10 @@ def _response_text(result: dict, wire_api: str) -> str:
                     if isinstance(text, str):
                         chunks.append(text)
         return "".join(chunks)
-    message = result.get("choices", [{}])[0].get("message", {})
+    choices = result.get("choices")
+    if not isinstance(choices, list) or not choices or not isinstance(choices[0], dict):
+        raise RuntimeError("AI 服务返回内容缺少有效 choices")
+    message = choices[0].get("message", {})
     content = message.get("content", "") if isinstance(message, dict) else ""
     if isinstance(content, str):
         return content
@@ -400,8 +405,11 @@ def _json_from_ai_text(content: str) -> dict:
     return payload
 
 
-def request_ai_names(character: str, count: int, lengths: list[int], provider_id: str | None = None) -> list[dict]:
-    provider = selected_ai_provider(provider_id)
+def request_ai_names(
+    character: str, count: int, lengths: list[int], provider_id: str | None = None,
+    *, provider: dict | None = None,
+) -> list[dict]:
+    provider = provider if provider is not None else selected_ai_provider(provider_id)
     if provider is None:
         raise RuntimeError("尚未从 CC Switch 导入可用 AI 服务商，也未配置 OPENAI_API_KEY")
     api_key = provider["_api_key"]
@@ -423,11 +431,10 @@ def request_ai_names(character: str, count: int, lengths: list[int], provider_id
             "每个名称给出一句简短含义",
         ],
     }
-    model = os.environ.get("OPENAI_MODEL") or provider["model"] or PROVIDER_MODEL
+    model = provider["model"] or os.environ.get("OPENAI_MODEL", PROVIDER_MODEL)
     if wire_api == "responses":
         request_payload = {
             "model": model,
-            "temperature": 0.9,
             "input": [
                 {"role": "system", "content": [{"type": "input_text", "text": system}]},
                 {"role": "user", "content": [{"type": "input_text", "text": json.dumps(prompt, ensure_ascii=False)}]},
@@ -437,7 +444,6 @@ def request_ai_names(character: str, count: int, lengths: list[int], provider_id
     else:
         request_payload = {
             "model": model,
-            "temperature": 0.9,
             "response_format": {"type": "json_object"},
             "messages": [
                 {"role": "system", "content": system},
@@ -458,8 +464,7 @@ def request_ai_names(character: str, count: int, lengths: list[int], provider_id
         with urllib.request.urlopen(request, timeout=90) as response:
             result = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as error:
-        detail = error.read(1000).decode("utf-8", errors="replace")
-        raise RuntimeError(f"AI 服务返回 HTTP {error.code}: {detail}") from error
+        raise RuntimeError(f"AI 服务返回 HTTP {error.code}") from error
     except (urllib.error.URLError, TimeoutError) as error:
         raise RuntimeError(f"AI 服务连接失败：{error}") from error
 
@@ -485,20 +490,17 @@ def generate_for_character(payload: dict) -> dict:
     ):
         raise ValueError("候选长度只能选择 2、3、4 字")
     lengths = sorted(set(lengths))
-    provider_id = payload.get("providerId")
-    if provider_id is not None and not isinstance(provider_id, str):
-        raise ValueError("providerId 必须是字符串")
-    if provider_id and selected_ai_provider(provider_id) is None:
-        raise ValueError("所选 AI 服务商不可用，请刷新页面后重试")
     characters = load_json(CHARACTERS_PATH)
     if not isinstance(character, str) or len(character) != 1 or character not in characters:
         raise ValueError("请选择字库中的一个汉字")
 
-    raw_names = (
-        request_ai_names(character, count, lengths, provider_id)
-        if provider_id
-        else request_ai_names(character, count, lengths)
-    )
+    provider_id = payload.get("providerId")
+    if provider_id is not None and (not isinstance(provider_id, str) or not provider_id.strip()):
+        raise ValueError("AI 服务商 ID 必须是非空字符串")
+    provider = selected_ai_provider(provider_id)
+    if provider is None:
+        raise RuntimeError("尚未从 CC Switch 导入可用 AI 服务商，也未配置 OPENAI_API_KEY")
+    raw_names = request_ai_names(character, count, lengths, provider=provider)
     characters_set = set(characters)
     tier_map = {char: tier_for(index) for index, char in enumerate(characters)}
     excluded = excluded_names()
@@ -528,8 +530,7 @@ def generate_for_character(payload: dict) -> dict:
         [item[2] for item in combinations],
     )
     common_chars = set(characters[:3500])
-    provider = selected_ai_provider(provider_id)
-    model = os.environ.get("OPENAI_MODEL") or (provider["model"] if provider else PROVIDER_MODEL)
+    model = provider["model"] or os.environ.get("OPENAI_MODEL", PROVIDER_MODEL)
     new_items = []
     for name, meaning in accepted.items():
         result = score_name(name, name[:2], name[2:], "ai", "ai", common_chars, stats, pinyin_profile(name))
@@ -541,7 +542,7 @@ def generate_for_character(payload: dict) -> dict:
             "template": "ai-generated",
             "direction": "东方与质感",
             "pitch": meaning,
-            "source": f"AI 生成 · {model}",
+            "source": f"AI 生成 · {provider['name']} · {model}",
             "sourceType": "ai",
             "aiModel": model,
             "tags": ["AI 生成", f"{len(name)}字"],
@@ -555,23 +556,13 @@ def generate_for_character(payload: dict) -> dict:
 
     if new_items:
         token_map = load_json(TOKENS_PATH)
-        try:
-            build_database(
-                characters,
-                token_map,
-                new_items,
-                db_path=DB_PATH,
-            )
-        except TypeError as error:
-            # Keep compatibility with a caller that injects the pre-DB-path
-            # three-argument writer; the real builder always accepts db_path.
-            if "unexpected keyword argument 'db_path'" not in str(error):
-                raise
-            build_database(characters, token_map, new_items)
+        build_database(characters, token_map, new_items, db_path=DB_PATH)
     return {
         "items": new_items,
         "added": len(new_items),
         "model": model,
+        "providerId": provider["id"],
+        "providerName": provider["name"],
         "rejected": len(raw_names) - len(new_items),
     }
 

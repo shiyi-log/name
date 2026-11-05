@@ -4,7 +4,7 @@ import sqlite3
 import tempfile
 import threading
 import unittest
-from contextlib import closing
+from contextlib import ExitStack, closing
 from http.server import ThreadingHTTPServer
 from pathlib import Path
 from unittest.mock import patch
@@ -18,6 +18,14 @@ class QuietHandler(api_server.NamingRequestHandler):
 
 
 class GenerationRequestTests(unittest.TestCase):
+    def setUp(self):
+        self.contexts = ExitStack()
+        self.addCleanup(self.contexts.close)
+        directory = self.contexts.enter_context(tempfile.TemporaryDirectory())
+        self.contexts.enter_context(patch.object(api_server, "CC_SWITCH_DB", Path(directory) / "missing.db"))
+        self.contexts.enter_context(patch.object(api_server, "_selected_provider_id", None))
+        self.contexts.enter_context(patch.dict(api_server.os.environ, {}, clear=True))
+
     @classmethod
     def setUpClass(cls):
         cls.server = ThreadingHTTPServer(("127.0.0.1", 0), QuietHandler)
@@ -102,8 +110,9 @@ class GenerationRequestTests(unittest.TestCase):
             real_build_database = api_server.build_database
             real_build_database(characters, tokens, [], database_path)
 
-            def save_candidates(character_list, token_map, candidates):
-                real_build_database(character_list, token_map, candidates, database_path)
+            def save_candidates(character_list, token_map, candidates, *, db_path):
+                self.assertEqual(db_path, database_path)
+                real_build_database(character_list, token_map, candidates, db_path)
 
             raw_names = [
                 {"name": "云山", "meaning": "云与山"},
@@ -118,8 +127,9 @@ class GenerationRequestTests(unittest.TestCase):
                 api_server, "request_ai_names", return_value=raw_names
             ), patch.object(api_server, "excluded_names", return_value={"云川"}), patch.object(
                 api_server, "load_existing_candidates", return_value=[]
+            ), patch.object(api_server, "DB_PATH", database_path
             ), patch.object(api_server, "build_database", side_effect=save_candidates), patch.dict(
-                api_server.os.environ, {"OPENAI_MODEL": "mock-model"}
+                api_server.os.environ, {"OPENAI_MODEL": "mock-model", "OPENAI_API_KEY": "test-token"}
             ):
                 result = api_server.generate_for_character({"character": "云", "lengths": [2], "count": 5})
 

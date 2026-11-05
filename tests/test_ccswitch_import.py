@@ -73,9 +73,9 @@ class CCSwitchImportTests(unittest.TestCase):
             self.assertEqual([provider["name"] for provider in providers], ["测试 Responses"])
             self.assertEqual(providers[0]["wireApi"], "responses")
             self.assertEqual(providers[0]["baseUrl"], "http://127.0.0.1:9000/v1")
-            self.assertNotIn("_api_key", payload["providers"][0])
+            self.assertNotIn("_api_key", payload["items"][0])
             self.assertNotIn("test-secret", json.dumps(payload, ensure_ascii=False))
-            self.assertEqual(payload["selectedProviderId"], "api-provider")
+            self.assertEqual(payload["selectedId"], "api-provider")
 
     def test_responses_provider_uses_responses_endpoint_and_auth_header(self):
         provider = {

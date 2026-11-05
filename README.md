@@ -21,11 +21,18 @@ python api_server.py
 
 ### 可选 AI 生成
 
-普通检索、筛选、排序和导出无需配置 AI。要启用「字库 → 选择汉字 → 生成并保存」，服务启动时会只读导入本机 CC Switch 数据库（默认路径 `~/.cc-switch/cc-switch.db`）中带有 `OPENAI_API_KEY` 的 Codex/OpenAI-compatible provider，并在页面中提供服务商选择。官方 Codex OAuth 登录不会被当作 API key 使用。也可以用环境变量提供一个兼容服务：`OPENAI_API_KEY`、可选的 `OPENAI_BASE_URL`（默认为 `https://api.openai.com/v1`）、`OPENAI_MODEL`（默认为 `gpt-4o-mini`）和 `OPENAI_WIRE_API`（`chat_completions` 或 `responses`）。
+普通检索、筛选、排序和导出无需配置 AI。要启用「字库 → 选择汉字 → 生成并保存」，可以选择本机 CC Switch 中已保存的 Codex/OpenAI API 服务商，或在启动服务的终端中设置 `OPENAI_API_KEY`。仅使用 API Key 的服务商可导入，OAuth 账号不会出现在列表中。服务支持兼容 Chat Completions 和 Responses 的 JSON 响应，所选模型需支持对应协议的 JSON 对象输出。
 
-密钥只在本地 Python 服务进程内读取，provider 列表和浏览器页面不会返回密钥，也不会写入项目数据库。CC Switch 的 `wire_api = "responses"` 会调用对应的 `/responses` 端点；Chat Completions provider 则调用 `/chat/completions`。生成会调用所选模型服务，并按服务商规则计费。没有可用 provider 时，页面会禁用生成按钮；其他功能仍可使用。模型返回的候选会经过长度、字库级别、排除名单和重名过滤，再评分保存，实际新增数可能少于请求数。
+| 环境变量 | 用途与默认值 |
+| --- | --- |
+| `OPENAI_API_KEY` | 可选的环境变量服务商密钥 |
+| `OPENAI_BASE_URL` | 环境变量服务商地址；默认 `https://api.openai.com/v1` |
+| `OPENAI_MODEL` | 环境变量服务商模型；默认 `gpt-4o-mini` |
+| `OPENAI_WIRE_API` | 环境变量服务商协议；`chat_completions`（默认）或 `responses` |
+| `CC_SWITCH_DB_PATH` | CC Switch 配置库路径；默认 `~/.cc-switch/cc-switch.db` |
+| `CC_SWITCH_PROVIDER_ID` | 可选的默认服务商 ID；也可在页面下拉框选择 |
 
-如果 CC Switch 使用非默认数据目录，可设置 `CC_SWITCH_DB_PATH=/path/to/cc-switch.db`；也可用 `CC_SWITCH_PROVIDER_ID` 指定启动时默认的 provider。服务只读 CC Switch SQLite，不会改写其配置；请不要把 CC Switch 数据库、导出配置或 API key 提交到 Git。
+CC Switch 配置库以只读方式打开，服务商密钥仅在服务端用于请求，不返回浏览器。请勿将配置库或密钥写入仓库。生成会调用所选模型服务，并按服务商规则计费。没有可用服务商时，页面会禁用生成按钮；其他功能仍可使用。模型返回的候选会经过长度、字库级别、排除名单和重名过滤，再评分保存，实际新增数可能少于请求数。
 
 ## 数据与评分
 
@@ -42,7 +49,7 @@ python api_server.py
 
 四字规则组合会做镜像去重：同一对词元的正反两种排列只保留分高的那个（去掉「云开入云 / 入云云开」这类重复）；完全同名的候选只保留一条。二字候选来自基础词元，三字候选来自共享一字的词元连接。历史候选与诗词原句片段保留来源并单独标记。诗词候选按二至四字连续片段提取，需结合原句语境人工确认。已有候选保留，镜像去重只约束新入库的规则组合。
 
-诗词源使用 [chinese-poetry/chinese-poetry](https://github.com/chinese-poetry/chinese-poetry) 的《全唐诗》和《全宋诗》数据，上游仓库采用 MIT 许可。SQLite 的 `poetry_sources` 表按文件路径和内容 SHA 保存处理进度，首次迁移会读取旧版 `data/generation_state.json`；分片总数不写死，`--poetry-shards` 只控制每次处理的批量大小。在已激活的虚拟环境中，运行 `python build_database.py --poetry-shards 5` 可加快导入；运行 `python build_database.py --watch` 会每 300 秒检查上游新增文件并自动处理，`--interval-seconds` 可调整检查间隔。`--no-grow` 可在不读取新来源时生成本地规则候选、重评分并更新数据库。SQLite 以名称为唯一键追加新候选、更新分数，不删除已有记录；候选 ID 和核验状态在更新时保留。
+诗词源使用 [chinese-poetry/chinese-poetry](https://github.com/chinese-poetry/chinese-poetry) 的《全唐诗》和《全宋诗》数据，上游仓库采用 MIT 许可，许可文本见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。SQLite 的 `poetry_sources` 表按文件路径和内容 SHA 保存处理进度，首次迁移会读取旧版 `data/generation_state.json`；分片总数不写死，`--poetry-shards` 只控制每次处理的批量大小。在已激活的虚拟环境中，运行 `python build_database.py --poetry-shards 5` 可加快导入；运行 `python build_database.py --watch` 会每 300 秒检查上游新增文件并自动处理，`--interval-seconds` 可调整检查间隔。`--no-grow` 可在不读取新来源时生成本地规则候选、重评分并更新数据库。SQLite 以名称为唯一键追加新候选、更新分数，不删除已有记录；候选 ID 和核验状态在更新时保留。
 
 诗词档案本身是有限语料，因此无法在没有新来源时凭空持续增加独特且有出处的候选。当前机制不设候选数量上限；已有文件会分批导入，上游日后新增或更新文件时，单次运行或 `--watch` 会继续发现并加入新候选。
 
@@ -87,9 +94,9 @@ python build_database.py
 | `GET /api/stats` | 候选数、字库数、长度分布和动态评分分档 |
 | `GET /api/candidates` | 候选分页；支持 `length`、`query`、`direction`、`minimum_score`、`sort`、`initial`、`character`、`limit`、`offset` |
 | `GET /api/characters` | 字库分页；支持 `query`、`tier`、`limit`、`offset` |
-| `GET /api/ai/status` | 当前 AI provider 是否可用、模型和协议 |
-| `GET /api/ai/providers` | 返回从 CC Switch 导入的 provider 名称、地址、模型和协议（不含密钥） |
-| `POST /api/generate/by-character` | 生成并保存候选；JSON 请求体如 `{"character":"云","count":5,"lengths":[2,3,4],"providerId":"..."}` |
+| `GET /api/ai/status` | AI 是否配置及模型名称 |
+| `GET /api/ai/providers` | 可选服务商列表，不含密钥 |
+| `POST /api/generate/by-character` | 生成并保存候选；JSON 请求体如 `{"character":"云","count":5,"lengths":[2,3,4],"providerId":"environment"}`，`providerId` 可省略以使用默认项 |
 
 列表的「导出当前页」保存当前查询页的 JSON，最多 60 条。
 
@@ -103,3 +110,11 @@ node --check app.js
 ```
 
 Python 测试使用临时数据库和模拟的 AI 响应，不调用真实模型服务。JavaScript 语法检查需要 Node.js 22；日常运行无需 Node.js。
+
+## CI/CD 与发布
+
+推送代码或创建 Pull Request 时，GitHub Actions 会在 Python 3.10、3.12 和 Node.js 22 环境运行测试、语法检查、候选数据一致性检查、本地 API 冒烟检查和密钥检查。检查使用临时数据库与模拟响应，不会读取开发者的 CC Switch 配置或调用真实模型。
+
+版本号保存在 `VERSION`。更新版本号与 `CHANGELOG.md`、使用中文提交消息推送代码后，再推送同名的 `v` 前缀标签，例如 `v0.1.0`。发布工作流会重新运行 CI，核对标签和版本号，构建带数据库的完整发布包与 SHA256 校验文件，最后自动创建中文 GitHub Release。源码归档由版本提交生成，包含发布时的 `data/names.db` 与候选 JSON 快照。
+
+环境变量文件、API 密钥、证书私钥和 CC Switch 实际配置库不会进入版本包。生成式 AI 的密钥应保留在本机配置中；升级已有安装时，先备份自己的数据库，避免用发布包内的初始数据库覆盖个人候选。

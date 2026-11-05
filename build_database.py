@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Incrementally grow the scored company-name database from curated sources."""
+"""从整理后的来源增量扩充带评分的公司名称数据库。"""
 
 from __future__ import annotations
 
@@ -153,7 +153,7 @@ def iter_combinations(clean_tokens: dict[str, list[str]], excluded: set[str]):
 
 
 def iter_short_combinations(clean_tokens: dict[str, list[str]], excluded: set[str]):
-    """Yield source words and three-character compounds joined by one shared character."""
+    """生成原始词元，以及通过共享一字连接而成的三字组合。"""
     seen: set[str] = set()
     categorized_tokens = [
         (token, category)
@@ -181,7 +181,7 @@ def iter_short_combinations(clean_tokens: dict[str, list[str]], excluded: set[st
 def load_historical_candidates(
     characters: list[str], excluded: set[str], existing_names: set[str]
 ) -> dict[str, str]:
-    """Load restored historical names as a separately identified seed source."""
+    """加载恢复的历史名称，并作为单独标记的种子来源。"""
     if not HISTORICAL_CANDIDATES_PATH.exists():
         return {}
 
@@ -205,7 +205,7 @@ def load_historical_candidates(
 
 
 def discover_poetry_files() -> list[dict[str, str]]:
-    """Discover the current upstream archive so future files need no code change."""
+    """发现上游现有档案，使后续新增文件无需修改代码即可处理。"""
     found: list[dict[str, str]] = []
     page = 1
     while True:
@@ -253,7 +253,7 @@ def fetch_poetry_batch(
     existing_names: set[str],
     manifest: list[dict[str, str]] | None = None,
 ) -> tuple[dict[str, dict[str, str]], dict]:
-    """Fetch the next unseen upstream files and extract two-to-four-character excerpts."""
+    """获取下一批未处理的上游文件，并提取二至四字连续片段。"""
     seeds: dict[str, dict[str, str]] = {}
     next_state = dict(state)
     next_state["processed_poetry_files"] = dict(state.get("processed_poetry_files", {}))
@@ -434,8 +434,8 @@ def generate_candidates(
             "registryNote": registry_note,
         }))
 
-    # Rank within each initial so large prefixes do not push every smaller group
-    # below one corpus-wide cutoff. The score floor still removes weak candidates.
+    # 按首字分组排名，避免候选多的组把候选少的组挤到全库阈值以下。
+    # 分数下限仍会排除明显较弱的候选。
     totals_by_initial: dict[str, list[float]] = {}
     for total, item in scored:
         totals_by_initial.setdefault(item["name"][0], []).append(total)
@@ -451,7 +451,7 @@ def generate_candidates(
         if item["name"] in existing_names or total >= thresholds[item["name"][0]]
     ]
 
-    # Keep prior entries and source excerpts independent; mirror dedupe applies to rule pairs.
+    # 保留已有记录和独立来源片段；镜像去重只应用于规则词元对。
     by_name: dict[str, dict] = {}
     for item in kept:
         current = by_name.get(item["name"])

@@ -101,8 +101,8 @@ const elements = {
   generatorStatus: document.querySelector("#generatorStatus"),
 };
 
-// Keep DOM order in score order, then place each card in the shortest column.
-// Unlike CSS columns, later ranks cannot move to the top when details expand.
+// 保持页面元素按分数排序，再把每张卡片放入当前最短的一列。
+// 这样展开详情时，后面的名次不会像多栏布局那样移到顶部。
 let candidateLayoutFrame = 0;
 const candidateCardObserver = new ResizeObserver(scheduleCandidateLayout);
 let candidateListWidth = 0;
@@ -448,19 +448,19 @@ function setView(view) {
   else renderCandidateView();
 }
 
-function selectCharacter(character, tier = state.filteredCharacters.find((item) => item.character === character)?.tier || 0) {
+function selectCharacter(character, tier = state.selectedCharacterTier) {
   state.selectedCharacter = character;
   state.selectedCharacterTier = Number(tier);
   elements.selectedCharacter.textContent = character;
   elements.characterGenerator.hidden = false;
-  const supportedTier = state.selectedCharacterTier === 0 || state.selectedCharacterTier <= 2;
+  const supportedTier = state.selectedCharacterTier <= 2;
   elements.generateNamesButton.disabled = !state.aiConfigured || state.generating || !supportedTier;
   elements.viewCharacterCandidates.disabled = false;
   elements.generatorStatus.textContent = !supportedTier
     ? "三级规范字保留在完整字库中，当前 AI 生成只使用一、二级规范字。"
     : state.aiConfigured
-      ? `AI 服务已导入${state.aiModel ? ` · ${state.aiModel}` : ""}`
-      : "AI 服务尚未配置。请启动本地服务并导入 CC Switch 配置。";
+    ? `AI 服务已配置${state.aiModel ? ` · ${state.aiModel}` : ""}`
+    : "AI 服务尚未配置。请导入 CC Switch 配置，或设置 OPENAI_API_KEY 后启动本地服务。";
   renderCharacterView();
   elements.characterGenerator.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
@@ -570,15 +570,15 @@ async function loadAiStatus() {
     ]);
     state.aiConfigured = Boolean(status.configured);
     state.aiModel = status.model || "";
-    state.aiProviders = Array.isArray(providersPayload.providers) ? providersPayload.providers : [];
-    state.aiProviderId = providersPayload.selectedProviderId || status.providerId || "";
+    state.aiProviders = Array.isArray(providersPayload.items) ? providersPayload.items : [];
+    state.aiProviderId = providersPayload.selectedId || status.providerId || "";
     elements.generationProvider.innerHTML = state.aiProviders.length
       ? state.aiProviders.map((provider) => {
         const model = provider.model ? ` · ${provider.model}` : "";
-        const protocol = provider.protocol ? ` · ${provider.protocol}` : "";
+        const protocol = provider.wireApi ? ` · ${provider.wireApi}` : "";
         return `<option value="${escapeHtml(provider.id)}">${escapeHtml(provider.name)}${escapeHtml(model)}${escapeHtml(protocol)}</option>`;
       }).join("")
-      : '<option value="">没有可用的 CC Switch API 配置</option>';
+      : '<option value="">没有可用的 AI 服务配置</option>';
     elements.generationProvider.disabled = state.aiProviders.length === 0;
     if (state.aiProviderId && state.aiProviders.some((provider) => provider.id === state.aiProviderId)) {
       elements.generationProvider.value = state.aiProviderId;
@@ -586,18 +586,21 @@ async function loadAiStatus() {
       state.aiProviderId = state.aiProviders[0].id;
       elements.generationProvider.value = state.aiProviderId;
     }
+    const selected = state.aiProviders.find((provider) => provider.id === state.aiProviderId);
+    state.aiConfigured = Boolean(selected);
+    state.aiModel = selected?.model || "";
   } catch {
     state.aiConfigured = false;
     state.aiModel = "";
     state.aiProviders = [];
     state.aiProviderId = "";
-    elements.generationProvider.innerHTML = '<option value="">CC Switch 配置不可用</option>';
+    elements.generationProvider.innerHTML = '<option value="">AI 配置不可用</option>';
     elements.generationProvider.disabled = true;
   }
 }
 
 async function generateForSelectedCharacter() {
-  if (!state.selectedCharacter || !state.aiConfigured || state.selectedCharacterTier > 2 || state.generating) return;
+  if (!state.selectedCharacter || !state.aiConfigured || state.generating || state.selectedCharacterTier > 2) return;
   const character = state.selectedCharacter;
   const lengths = [...document.querySelectorAll("input[name='generationLength']:checked")]
     .map((input) => Number(input.value));
@@ -608,6 +611,7 @@ async function generateForSelectedCharacter() {
 
   state.generating = true;
   elements.generateNamesButton.disabled = true;
+  elements.generationProvider.disabled = true;
   elements.generatorStatus.textContent = `正在围绕“${character}”生成并评分…`;
   try {
     const result = await apiRequest("/api/generate/by-character", {
@@ -640,13 +644,14 @@ async function generateForSelectedCharacter() {
   } finally {
     state.generating = false;
     elements.generateNamesButton.disabled = !state.aiConfigured || state.selectedCharacterTier > 2;
+    elements.generationProvider.disabled = state.aiProviders.length === 0;
   }
 }
 
 async function init() {
   try {
     await Promise.all([loadStats(), loadAiStatus()]);
-    // Browsers may restore the select value after a reload without firing change.
+    // 浏览器重新加载后可能恢复下拉框的值，但不会触发变更事件。
     state.sort = SORT_MODES[elements.sortSelect.value] ? elements.sortSelect.value : "score";
     applyCandidateFilters();
     applyCharacterFilters();

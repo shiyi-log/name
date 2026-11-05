@@ -157,7 +157,7 @@ def pinyin_profile(name: str) -> dict:
 
 
 def tone_curve_score(tones: list[int]) -> tuple[float, list[str]]:
-    """Score tonal variety and level-oblique movement for a short name."""
+    """为短名称的声调变化与平仄起伏评分。"""
     notes: list[str] = []
     score = 7.0
     if not tones:

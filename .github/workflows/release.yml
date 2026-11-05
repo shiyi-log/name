@@ -1,0 +1,53 @@
+name: 发布版本
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+
+  release:
+    name: 打包并发布
+    needs: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: 检出标签
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 校验版本并生成发布包
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python scripts/package_release.py --tag "$RELEASE_TAG" --output-dir dist
+      - name: 保存发布产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: name-${{ github.ref_name }}
+          path: dist/*
+          if-no-files-found: error
+      - name: 创建 GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --verify-tag \
+            --title "名字研究所 $RELEASE_TAG" \
+            --notes-file dist/RELEASE_NOTES.md \
+            "dist/name-$RELEASE_TAG.tar.gz" \
+            dist/SHA256SUMS \
+            dist/release-manifest.json
