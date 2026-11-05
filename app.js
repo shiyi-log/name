@@ -338,7 +338,7 @@ function renderDimensionDetails(item) {
   ).join("");
   // 扣分项单独列出：低分同样需要解释，否则用户只看到"为什么高"。
   const notes = item.notes.length
-    ? `<p class="source-note"><strong>评分依据：</strong></p><ul class="note-list">${item.notes
+    ? `<p class="source-note"><strong>${item.sourceType === "literature" ? "文献取意说明" : "评分依据"}：</strong></p><ul class="note-list">${item.notes
         .map((note) => `<li>${escapeHtml(note)}</li>`)
         .join("")}</ul>`
     : "";

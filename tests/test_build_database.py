@@ -129,6 +129,45 @@ class IncrementalGenerationTests(unittest.TestCase):
             self.assertEqual(loaded[0]["aiModel"], "")
             self.assertEqual(loaded[0]["status"], "已核验")
 
+    def test_literature_provenance_survives_generation_rebuild_and_migration(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "names.db"
+            characters = list("甲乙丙丁")
+            tokens = {"actions": ["甲乙"], "images": ["丙丁"], "abstracts": []}
+            original = candidate(
+                "甲乙丙丁", "literature-stable-id", 82,
+                status="出处已核对", template="literature-curated",
+            )
+            original.update({
+                "source": "《梦溪笔谈》卷十八·技艺；正文第649行",
+                "tags": ["文献取意", "协作软件"],
+                "notes": ["原文：常作二鐵板，一板印刷，一板已自布字。", "名称为现代改写。"],
+                "registryNote": "出处已核对；工商、商标与域名待核验。",
+            })
+            build_database(characters, tokens, [original], db_path)
+            loaded = load_existing_candidates(db_path)
+            self.assertEqual(loaded[0]["sourceType"], "literature")
+            generated, _, source_counts, _ = generate_candidates(characters, tokens, set(), loaded, {})
+            literature_item = next(item for item in generated if item["name"] == original["name"])
+            preserved = ("id", "template", "source", "tags", "notes", "status", "registryNote")
+            self.assertEqual(
+                {key: literature_item[key] for key in preserved},
+                {key: original[key] for key in preserved},
+            )
+            self.assertEqual(literature_item["sourceType"], "literature")
+            self.assertEqual(source_counts["literature"], 1)
+            self.assertEqual(source_counts["rule"], len(generated) - 1)
+
+            build_database(characters, tokens, generated, db_path)
+            # Empty rebuilds still run the source-type migration on existing rows.
+            build_database(characters, tokens, [], db_path)
+            rebuilt = next(item for item in load_existing_candidates(db_path) if item["name"] == original["name"])
+            self.assertEqual(rebuilt["sourceType"], "literature")
+            self.assertEqual(
+                {key: rebuilt[key] for key in preserved},
+                {key: original[key] for key in preserved},
+            )
+
     def test_manifest_selection_has_no_fixed_shard_ceiling(self) -> None:
         manifest = [
             {"path": f"poet.tang.{index}.json", "sha": f"sha-{index}"}

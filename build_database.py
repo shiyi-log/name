@@ -102,6 +102,8 @@ def stable_candidate_id(name: str) -> str:
 
 def source_type_for(item: dict) -> str:
     template = item.get("template", "")
+    if template == "literature-curated":
+        return "literature"
     if item.get("aiModel") or template.startswith("ai-"):
         return "ai"
     if template == "poetry-seed":
@@ -429,7 +431,10 @@ def generate_candidates(
             "scores": result.scores,
             "score": result.total,
             "reasons": result.reasons,
-            "notes": result.notes,
+            "notes": (
+                previous.get("notes", result.notes)
+                if previous and template == "literature-curated" else result.notes
+            ),
             "status": previous.get("status", "待核验") if previous else "待核验",
             "registryNote": registry_note,
         }))
@@ -495,6 +500,7 @@ def generate_candidates(
         "rule": sum(item["template"] in TEMPLATES or item["template"] in {"lexicon-2", "overlap-3"} for item in result),
         "historical": sum(item["template"] == "historical-seed" for item in result),
         "poetry": sum(item["template"] == "poetry-seed" for item in result),
+        "literature": sum(item["template"] == "literature-curated" for item in result),
     }
     added_count = sum(item["name"] not in existing_names for item in result)
     return result, {char: round(value, 1) for char, value in thresholds.items()}, source_counts, added_count
@@ -629,6 +635,7 @@ def build_database(
         conn.execute("UPDATE name_candidates SET name_length=length(name)")
         conn.execute(
             """UPDATE name_candidates SET source_type=CASE
+               WHEN template='literature-curated' THEN 'literature'
                WHEN template='poetry-seed' THEN 'poetry'
                WHEN template='historical-seed' THEN 'historical'
                WHEN template LIKE 'ai-%' THEN 'ai'
@@ -759,6 +766,7 @@ def run_once(poetry_shards: int, no_grow: bool) -> None:
     print(f"Rule candidates: {source_counts['rule']}")
     print(f"Historical candidates: {source_counts['historical']}")
     print(f"Poetry candidates: {source_counts['poetry']}")
+    print(f"Literature candidates: {source_counts['literature']}")
     print(f"New candidates this run: {added_count}")
     print(f"Poetry files processed: {len(processed_files)}")
     if processed_files:
