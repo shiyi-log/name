@@ -1,4 +1,6 @@
-# nameshiyi 中文说明
+# name 中文说明
+
+完整的启动、筛选、生成、评分和 API 说明见 [README.md](README.md)。项目已更名为 [shiyi-log/name](https://github.com/shiyi-log/name)。
 
 ## 项目定位
 中文公司名称候选、检索提示和筛选结果的数据仓库，用于候选生成、人工复核、状态追踪和历史恢复。
