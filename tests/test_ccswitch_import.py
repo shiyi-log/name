@@ -64,7 +64,9 @@ class CCSwitchImportTests(unittest.TestCase):
                 )
                 connection.commit()
 
-            with patch.object(api_server, "CC_SWITCH_DB", path), patch.dict(
+            with patch.object(api_server, "CC_SWITCH_DB", path), patch.object(
+                api_server, "AI_CONFIG_PATH", Path(directory) / "ai-providers.json"
+            ), patch.dict(
                 api_server.os.environ, {"OPENAI_API_KEY": ""}, clear=False
             ):
                 providers = api_server.available_ai_providers()

@@ -21,6 +21,7 @@ class ProviderTests(unittest.TestCase):
         directory = self.contexts.enter_context(tempfile.TemporaryDirectory())
         self.provider_db = Path(directory) / "cc switch?#.db"
         self.contexts.enter_context(patch.object(api_server, "CC_SWITCH_DB", self.provider_db))
+        self.contexts.enter_context(patch.object(api_server, "AI_CONFIG_PATH", Path(directory) / "ai-providers.json"))
         self.contexts.enter_context(patch.object(api_server, "_selected_provider_id", None))
         self.contexts.enter_context(patch.dict(api_server.os.environ, {}, clear=True))
 
@@ -76,6 +77,78 @@ class ProviderTests(unittest.TestCase):
                 api_server.request_ai_names("云", 1, [2])
             request.assert_not_called()
 
+    def test_saved_local_provider_is_selected_without_exposing_its_api_key(self):
+        config_path = self.provider_db.parent / "ai-config.json"
+        with patch.object(api_server, "AI_CONFIG_PATH", config_path):
+            result = api_server.save_ai_provider({
+                "name": "Local Gateway",
+                "baseUrl": "https://gateway.example/v1",
+                "apiKey": "private-test-secret",
+                "wireApi": "chat_completions",
+                "model": "model-a",
+            })
+            provider_id = result["selectedId"]
+            self.assertEqual(len(result["items"]), 1)
+            self.assertEqual(result["items"][0]["model"], "model-a")
+            self.assertNotIn("private-test-secret", json.dumps(result))
+            self.assertEqual(api_server.selected_ai_provider()["_api_key"], "private-test-secret")
+            self.assertEqual(api_server.selected_ai_provider()["id"], provider_id)
+            self.assertEqual(config_path.stat().st_mode & 0o777, 0o600)
+
+    def test_saving_multiple_providers_preserves_existing_keys_and_model_catalog(self):
+        config_path = self.provider_db.parent / "ai-config.json"
+        with patch.object(api_server, "AI_CONFIG_PATH", config_path):
+            first = api_server.save_ai_provider({
+                "id": "first", "name": "First", "baseUrl": "https://one.example/v1",
+                "apiKey": "first-secret", "wireApi": "chat_completions",
+                "model": "one", "models": ["one", "two"],
+            })
+            second = api_server.save_ai_provider({
+                "id": "second", "name": "Second", "baseUrl": "https://two.example/v1",
+                "apiKey": "second-secret", "wireApi": "responses", "model": "two",
+            })
+            edited = api_server.save_ai_provider({
+                "id": "first", "name": "First edited", "baseUrl": "https://one.example/v1",
+                "apiKey": "", "wireApi": "chat_completions", "model": "two",
+            })
+            self.assertEqual(len(first["items"]), 1)
+            self.assertEqual(second["selectedId"], "second")
+            self.assertEqual(len(edited["items"]), 2)
+            self.assertEqual(api_server.selected_ai_provider("first")["_api_key"], "first-secret")
+            self.assertEqual(api_server.selected_ai_provider("first")["models"], ["one", "two"])
+            api_server.select_ai_provider("first")
+            self.assertEqual(api_server.selected_ai_provider()["id"], "first")
+
+    def test_model_refresh_and_connectivity_check_use_saved_provider_without_returning_key(self):
+        config_path = self.provider_db.parent / "ai-config.json"
+        with patch.object(api_server, "AI_CONFIG_PATH", config_path):
+            api_server.save_ai_provider({
+                "id": "provider", "name": "Gateway", "baseUrl": "https://gateway.example/v1",
+                "apiKey": "never-return-this", "wireApi": "chat_completions", "model": "old",
+            })
+            response = {"data": [{"id": "new-model"}, {"id": "other-model"}]}
+            with patch.object(api_server.urllib.request, "urlopen", return_value=io.BytesIO(json.dumps(response).encode())) as request:
+                models = api_server.refresh_ai_models({"providerId": "provider"})
+            self.assertEqual(models["models"], ["new-model", "other-model"])
+            self.assertEqual(request.call_args.args[0].full_url, "https://gateway.example/v1/models")
+            with patch.object(api_server.urllib.request, "urlopen", return_value=io.BytesIO(json.dumps(response).encode())):
+                checked = api_server.test_ai_provider({"providerId": "provider"})
+            self.assertTrue(checked["ok"])
+            self.assertNotIn("never-return-this", json.dumps(checked))
+            self.assertEqual(api_server.selected_ai_provider("provider")["models"], ["new-model", "other-model"])
+
+    def test_saving_provider_rejects_credentials_embedded_in_base_url(self):
+        config_path = self.provider_db.parent / "ai-config.json"
+        with patch.object(api_server, "AI_CONFIG_PATH", config_path):
+            with self.assertRaisesRegex(ValueError, "有效的 HTTP 或 HTTPS 基础地址"):
+                api_server.save_ai_provider({
+                    "name": "Gateway",
+                    "baseUrl": "https://user:password@gateway.example/v1",
+                    "apiKey": "test-token",
+                    "model": "model-a",
+                })
+        self.assertFalse(config_path.exists())
+
     def test_chat_and_responses_requests_use_selected_endpoint_model_and_output(self):
         self.create_providers()
         names = [{"name": "云山", "meaning": "云与山"}]
@@ -95,6 +168,31 @@ class ProviderTests(unittest.TestCase):
                 self.assertEqual(outgoing.get_header("Authorization"), "Bearer test-secret-" + provider_id)
                 self.assertIn("input" if provider_id == "response" else "messages", body)
 
+    def test_character_prompt_sets_per_length_counts_quality_and_deduplication(self):
+        self.create_providers()
+        result = {"choices": [{"message": {"content": json.dumps({"names": []})}}]}
+        with patch.object(
+            api_server.urllib.request, "urlopen", return_value=io.BytesIO(json.dumps(result).encode())
+        ) as request:
+            api_server.request_ai_names(
+                "云", 2, [2, 3], "chat", requested_counts={2: 1, 3: 1}, avoid_names=["云山"]
+            )
+
+        body = json.loads(request.call_args.args[0].data)
+        prompt = json.loads(body["messages"][1]["content"])
+        self.assertEqual(prompt["requested_counts_per_length"], {"2": 1, "3": 1})
+        self.assertEqual(prompt["avoid_existing_names"], ["云山"])
+        self.assertEqual(prompt["dictionary_definition_context"]["definition"], "say, speak; clouds")
+        self.assertEqual(prompt["dictionary_definition_context"]["version"], "17.0.0")
+        rules = " ".join(prompt["rules"])
+        self.assertIn("公司品牌", rules)
+        self.assertIn("严格", rules)
+        self.assertIn("重复", rules)
+        self.assertIn("不假设特定行业", prompt["brand_brief"])
+        self.assertIn("语义", prompt["diversity_guidance"])
+        self.assertTrue(any("硬塞" in rule for rule in prompt["rules"]))
+        self.assertIn("模板", prompt["diversity_guidance"])
+
     def test_selected_provider_model_is_saved_with_generated_candidates(self):
         self.create_providers()
         database_path = self.provider_db.parent / "names.db"
@@ -104,7 +202,14 @@ class ProviderTests(unittest.TestCase):
         with patch.object(api_server, "DB_PATH", database_path), patch.object(
             api_server, "load_json", side_effect=[characters, tokens]
         ), patch.object(api_server, "excluded_names", return_value=set()), patch.object(
-            api_server, "request_ai_names", return_value=[{"name": "云山", "meaning": "云与山"}]
+            api_server, "request_ai_names", return_value=[{
+                "name": "云山", "meaning": "云与山",
+                "character_roles": {
+                    "云": "云气构成自然意象的一部分",
+                    "山": "山岳构成自然意象的一部分",
+                },
+                "naturalness": 5,
+            }]
         ) as request:
             result = api_server.generate_for_character({"character": "云", "lengths": [2], "providerId": "chat"})
         self.assertEqual(request.call_args.kwargs["provider"]["id"], "chat")

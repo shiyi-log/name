@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#182a34" />
+    <link rel="icon" href="data:," />
     <title>名字研究所 · 公司名评分数据库</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=7" />
   </head>
   <body>
     <div class="app-shell">
@@ -20,6 +21,7 @@
         <div class="topbar-actions">
           <span class="data-status"><span class="status-dot"></span>本地数据库 · 待核验</span>
           <button class="button button-quiet" id="exportButton" type="button" title="导出当前页">导出当前页</button>
+          <button class="button button-outline" id="openAiSettings" type="button">AI 配置</button>
         </div>
       </header>
 
@@ -133,10 +135,16 @@
               <p class="sort-status" id="sortStatus" role="status" aria-atomic="true"></p>
               <div class="initial-filter-notice" id="initialFilterNotice" role="status" hidden>
                 <span id="initialFilterText"></span>
-                <button class="button button-outline" id="clearInitialFilter" type="button">清除筛选</button>
+                <p id="automaticGenerationStatus" class="automatic-generation-status" role="status" aria-live="polite" hidden></p>
+                <div class="filter-actions">
+                  <button class="button button-outline" id="generateForCharacterFromNotice" type="button" hidden>按此字生成</button>
+                  <button class="button button-outline" id="clearInitialFilter" type="button">清除筛选</button>
+                </div>
               </div>
               <div class="featured-strip" id="featuredStrip" aria-label="当前最高分候选"></div>
               <div class="names-list" id="namesList" aria-live="polite"></div>
+              <div class="candidate-load-sentinel" id="candidateLoadSentinel" aria-hidden="true" hidden></div>
+              <p class="candidate-load-status" id="candidateLoadStatus" role="status" aria-live="polite" hidden></p>
               <div class="pagination" id="candidatePagination" aria-label="候选分页">
                 <button class="pagination-button" id="candidatePrev" type="button">上一页</button>
                 <span id="candidatePageLabel">—</span>
@@ -168,7 +176,7 @@
                 <div class="generator-options">
                   <label class="generation-provider" for="generationProvider">AI 服务商
                     <select id="generationProvider" aria-label="选择 AI 服务商" disabled>
-                      <option value="">正在读取 CC Switch 配置…</option>
+                      <option value="">请先在 AI 配置页保存服务商</option>
                     </select>
                   </label>
                   <fieldset class="length-options">
@@ -190,11 +198,8 @@
                 <p class="generator-status" id="generatorStatus" role="status" aria-live="polite"></p>
               </section>
               <div class="character-grid" id="characterGrid" aria-live="polite"></div>
-              <div class="pagination" id="characterPagination" aria-label="字库分页">
-                <button class="pagination-button" id="characterPrev" type="button">上一页</button>
-                <span id="characterPageLabel">—</span>
-                <button class="pagination-button" id="characterNext" type="button">下一页</button>
-              </div>
+              <div id="characterLoadSentinel" class="character-load-sentinel" aria-hidden="true"></div>
+              <p id="characterLoadStatus" class="character-load-status" role="status" aria-live="polite"></p>
             </div>
 
             <div class="empty-state" id="emptyState" hidden>
@@ -205,12 +210,38 @@
         </section>
       </main>
 
+      <section class="ai-settings-page" id="aiSettingsPage" aria-labelledby="aiSettingsTitle" hidden>
+        <div class="ai-settings-heading">
+          <button class="button button-quiet" id="closeAiSettings" type="button">返回名字库</button>
+          <div><h1 id="aiSettingsTitle">AI 服务配置</h1><p>配置多家 OpenAI 兼容服务商，选择模型并检查连接。</p></div>
+        </div>
+        <div class="ai-settings-layout">
+          <aside class="ai-provider-list" aria-label="已保存服务商">
+            <div class="ai-provider-list-heading"><h2>服务商</h2><button class="button button-outline" id="addAiProvider" type="button">新增</button></div>
+            <label class="field-label" for="savedProviderSelect">已保存配置</label>
+            <select id="savedProviderSelect" class="select-field" size="8" aria-label="选择已保存服务商"></select>
+            <p class="ai-config-note">API Key 只保存在本机配置文件中，不会显示在页面或写入项目数据库。</p>
+          </aside>
+          <form class="ai-provider-form" id="aiProviderForm">
+            <div class="ai-provider-form-heading"><h2 id="providerFormTitle">新增服务商</h2><span id="providerSavedState" class="ai-saved-state"></span></div>
+            <div class="ai-form-grid">
+              <label class="field-label" for="providerName">显示名称<input id="providerName" class="select-field" type="text" maxlength="100" required placeholder="例如：公司网关" /></label>
+              <label class="field-label" for="providerBaseUrl">API 基础地址<input id="providerBaseUrl" class="select-field" type="url" required placeholder="https://api.example.com/v1" /></label>
+              <label class="field-label ai-api-key-field" for="providerApiKey">API Key<input id="providerApiKey" class="select-field" type="password" autocomplete="new-password" placeholder="仅新增或更换时填写" /><span id="apiKeyHint" class="field-hint"></span></label>
+              <label class="field-label" for="providerWireApi">接口协议<select id="providerWireApi" class="select-field"><option value="chat_completions">Chat Completions</option><option value="responses">Responses</option></select></label>
+              <div class="field-label ai-model-field">模型<div class="ai-model-controls"><select id="providerModel" class="select-field" aria-label="选择模型" disabled><option value="">先保存服务商，再刷新模型</option></select><button class="button button-outline" id="refreshAiModels" type="button">刷新模型</button></div><input id="providerModelManual" class="select-field" type="text" placeholder="也可手动输入模型 ID" /></div>
+            </div>
+            <div class="ai-provider-actions"><button class="button button-outline" id="testAiConnection" type="button">检查联通</button><button class="button button-primary" id="saveAiProvider" type="submit">保存并设为默认</button><p id="aiProviderStatus" class="ai-provider-status" role="status" aria-live="polite"></p></div>
+          </form>
+        </div>
+      </section>
+
       <footer class="footer-note">
         <span>名字研究所 · 本地启发式数据库</span>
         <span>注册启发分不等于工商或商标检索结果</span>
       </footer>
     </div>
 
-    <script src="app.js?v=3" defer></script>
+    <script src="app.js?v=13" defer></script>
   </body>
 </html>

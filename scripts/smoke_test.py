@@ -60,6 +60,7 @@ def main() -> None:
             if not key.startswith("OPENAI_") and key != "CC_SWITCH_PROVIDER_ID"
         }
         environment["CC_SWITCH_DB_PATH"] = str(workspace / "missing-cc-switch.db")
+        environment["NAME_AI_CONFIG_PATH"] = str(workspace / "missing-ai-providers.json")
         environment["PYTHONUNBUFFERED"] = "1"
         opener = build_opener(ProxyHandler({}))
 

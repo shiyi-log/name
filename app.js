@@ -33,7 +33,13 @@ const state = {
   aiModel: "",
   aiProviders: [],
   aiProviderId: "",
+  savedAiProviders: [],
+  aiDraftId: "",
+  aiDraftHasKey: false,
+  aiDraftManaged: false,
   generating: false,
+  autoGeneratingCharacter: "",
+  autoGenerationMessage: "",
   view: "candidates",
   query: "",
   direction: "all",
@@ -41,9 +47,16 @@ const state = {
   minimumScore: 0,
   sort: "score",
   candidatePage: 1,
+  candidatesLoading: false,
+  candidateHasMore: false,
+  candidateCursor: null,
+  waterfallScrollArmed: false,
+  waterfallAutoBlocked: false,
   totalCandidates: 0,
-  characterPage: 1,
   totalCharacters: 0,
+  charactersLoading: false,
+  renderedCharacterCount: 0,
+  characterColumns: [],
   characterQuery: "",
   characterTier: "all",
   initialCharacter: "",
@@ -51,8 +64,9 @@ const state = {
   selectedCharacter: "",
   selectedCharacterTier: 0,
   candidatePageSize: 60,
-  characterPageSize: 120,
+  characterBatchSize: 240,
   candidateRequest: 0,
+  rebuildingCandidates: false,
   characterRequest: 0,
 };
 
@@ -75,23 +89,25 @@ const elements = {
   initialFilterNotice: document.querySelector("#initialFilterNotice"),
   initialFilterText: document.querySelector("#initialFilterText"),
   clearInitialFilter: document.querySelector("#clearInitialFilter"),
+  generateForCharacterFromNotice: document.querySelector("#generateForCharacterFromNotice"),
   featuredStrip: document.querySelector("#featuredStrip"),
   namesList: document.querySelector("#namesList"),
   emptyState: document.querySelector("#emptyState"),
+  automaticGenerationStatus: document.querySelector("#automaticGenerationStatus"),
   workspace: document.querySelector("#workspace"),
   candidateView: document.querySelector("#candidateView"),
   charactersView: document.querySelector("#charactersView"),
   candidatePagination: document.querySelector("#candidatePagination"),
+  candidateLoadSentinel: document.querySelector("#candidateLoadSentinel"),
+  candidateLoadStatus: document.querySelector("#candidateLoadStatus"),
   candidatePrev: document.querySelector("#candidatePrev"),
   candidateNext: document.querySelector("#candidateNext"),
   candidatePageLabel: document.querySelector("#candidatePageLabel"),
   characterGrid: document.querySelector("#characterGrid"),
   characterSearch: document.querySelector("#characterSearch"),
   characterTierSelect: document.querySelector("#characterTierSelect"),
-  characterPagination: document.querySelector("#characterPagination"),
-  characterPrev: document.querySelector("#characterPrev"),
-  characterNext: document.querySelector("#characterNext"),
-  characterPageLabel: document.querySelector("#characterPageLabel"),
+  characterLoadSentinel: document.querySelector("#characterLoadSentinel"),
+  characterLoadStatus: document.querySelector("#characterLoadStatus"),
   characterGenerator: document.querySelector("#characterGenerator"),
   selectedCharacter: document.querySelector("#selectedCharacter"),
   generationCount: document.querySelector("#generationCount"),
@@ -99,6 +115,25 @@ const elements = {
   generateNamesButton: document.querySelector("#generateNamesButton"),
   viewCharacterCandidates: document.querySelector("#viewCharacterCandidates"),
   generatorStatus: document.querySelector("#generatorStatus"),
+  appMain: document.querySelector("#top"),
+  aiSettingsPage: document.querySelector("#aiSettingsPage"),
+  openAiSettings: document.querySelector("#openAiSettings"),
+  closeAiSettings: document.querySelector("#closeAiSettings"),
+  savedProviderSelect: document.querySelector("#savedProviderSelect"),
+  addAiProvider: document.querySelector("#addAiProvider"),
+  aiProviderForm: document.querySelector("#aiProviderForm"),
+  providerFormTitle: document.querySelector("#providerFormTitle"),
+  providerSavedState: document.querySelector("#providerSavedState"),
+  providerName: document.querySelector("#providerName"),
+  providerBaseUrl: document.querySelector("#providerBaseUrl"),
+  providerApiKey: document.querySelector("#providerApiKey"),
+  apiKeyHint: document.querySelector("#apiKeyHint"),
+  providerWireApi: document.querySelector("#providerWireApi"),
+  providerModel: document.querySelector("#providerModel"),
+  providerModelManual: document.querySelector("#providerModelManual"),
+  refreshAiModels: document.querySelector("#refreshAiModels"),
+  testAiConnection: document.querySelector("#testAiConnection"),
+  aiProviderFormStatus: document.querySelector("#aiProviderStatus"),
 };
 
 // 保持页面元素按分数排序，再把每张卡片放入当前最短的一列。
@@ -144,6 +179,48 @@ function layoutCandidateCards() {
 }
 
 document.fonts.ready.then(scheduleCandidateLayout);
+
+let characterLayoutFrame = 0;
+let characterLayoutStart = 0;
+function scheduleCharacterLayout(startIndex = 0) {
+  characterLayoutStart = characterLayoutFrame ? Math.min(characterLayoutStart, startIndex) : startIndex;
+  if (characterLayoutFrame) return;
+  characterLayoutFrame = window.requestAnimationFrame(() => {
+    characterLayoutFrame = 0;
+    const start = characterLayoutStart;
+    characterLayoutStart = 0;
+    layoutCharacterCards(start);
+  });
+}
+
+function layoutCharacterCards(startIndex = 0) {
+  const grid = elements.characterGrid;
+  if (state.view !== "characters" || grid.clientWidth === 0) return;
+  const cards = [...grid.children];
+  const style = window.getComputedStyle(grid);
+  const columns = style.gridTemplateColumns.split(" ").length;
+  const columnGap = parseFloat(style.columnGap) || 0;
+  const rowGap = parseFloat(style.rowGap) || 0;
+  const cardWidth = (grid.clientWidth - columnGap * (columns - 1)) / columns;
+  if (state.characterLayoutWidth !== grid.clientWidth || state.characterColumns.length !== columns) {
+    startIndex = 0;
+    state.characterLayoutWidth = grid.clientWidth;
+    state.characterColumns = Array(columns).fill(0);
+  }
+  const columnHeights = state.characterColumns;
+
+  for (let index = startIndex; index < cards.length; index += 1) {
+    const card = cards[index];
+    card.style.width = `${cardWidth}px`;
+    const column = columnHeights.indexOf(Math.min(...columnHeights));
+    card.style.transform = `translate(${column * (cardWidth + columnGap)}px, ${columnHeights[column]}px)`;
+    columnHeights[column] += card.getBoundingClientRect().height + rowGap;
+  }
+  grid.style.height = `${Math.max(0, ...columnHeights) - (cards.length ? rowGap : 0) + 18}px`;
+}
+
+window.addEventListener("resize", scheduleCharacterLayout);
+document.fonts.ready.then(scheduleCharacterLayout);
 
 function escapeHtml(value) {
   return String(value)
@@ -215,7 +292,7 @@ async function apiRequest(path, options = {}) {
   return payload;
 }
 
-function candidateQuery(offset = (state.candidatePage - 1) * state.candidatePageSize) {
+function candidateQuery(offset = state.characterFilter ? 0 : (state.candidatePage - 1) * state.candidatePageSize, after = null) {
   const params = new URLSearchParams({
     length: state.length,
     query: state.query,
@@ -227,42 +304,143 @@ function candidateQuery(offset = (state.candidatePage - 1) * state.candidatePage
     limit: String(state.candidatePageSize),
     offset: String(offset),
   });
+  if (after) params.set("after", JSON.stringify(after));
   return `/api/candidates?${params}`;
 }
 
-async function refreshCandidates() {
+async function refreshCandidates({ autoGenerateIfEmpty = false, append = false } = {}) {
+  if (append && (state.candidatesLoading || !state.candidateHasMore)) return;
   const requestId = ++state.candidateRequest;
+  const offset = append
+    ? state.filteredCandidates.length
+    : state.characterFilter ? 0 : (state.candidatePage - 1) * state.candidatePageSize;
+  const previousCount = append ? state.filteredCandidates.length : 0;
+  const cursor = append ? state.candidateCursor : null;
+  state.candidatesLoading = true;
+  if (!append) {
+    state.filteredCandidates = [];
+    state.totalCandidates = 0;
+    state.candidateHasMore = false;
+    state.candidateCursor = null;
+    elements.namesList.replaceChildren();
+    elements.namesList.style.height = "0px";
+    candidateCardObserver.disconnect();
+  }
+  if (state.characterFilter) {
+    elements.candidateLoadStatus.hidden = false;
+    elements.candidateLoadStatus.textContent = append ? "正在加载更多候选…" : "正在读取候选…";
+  }
   if (state.view === "candidates") elements.resultsCount.textContent = "读取中…";
   try {
-    const payload = await apiRequest(candidateQuery());
+    const payload = await apiRequest(candidateQuery(offset, cursor));
     if (requestId !== state.candidateRequest) return;
-    state.filteredCandidates = enrichCandidates(payload.items || []);
+    const items = enrichCandidates(payload.items || []);
+    if (append) {
+      const seen = new Set(state.filteredCandidates.map((item) => item.id));
+      state.filteredCandidates.push(...items.filter((item) => !seen.has(item.id)));
+    }
+    else state.filteredCandidates = items;
     state.totalCandidates = Number(payload.total || 0);
-    if (state.view === "candidates") renderCandidateView();
+    state.candidateHasMore = Boolean(payload.hasMore);
+    if (items.length) {
+      const last = items.at(-1);
+      state.candidateCursor = { name: last.name, score: last.score, scores: last.scores };
+    }
+    if (state.view === "candidates") renderCandidateView({ appendFrom: append ? previousCount : null });
+    if (state.characterFilter) {
+      const hasMore = state.candidateHasMore;
+      elements.candidateLoadStatus.hidden = !hasMore;
+      elements.candidateLoadStatus.textContent = hasMore
+        ? `已显示 ${state.filteredCandidates.length.toLocaleString("zh-CN")} / ${state.totalCandidates.toLocaleString("zh-CN")} 条，继续滚动加载`
+        : "已显示全部候选";
+      elements.candidateLoadStatus.hidden = !hasMore && state.totalCandidates === 0;
+    }
+    if (autoGenerateIfEmpty && state.totalCandidates === 0 && state.characterFilter
+      && state.autoGeneratingCharacter !== state.characterFilter) {
+      state.autoGeneratingCharacter = state.characterFilter;
+      await generateForSelectedCharacter({ automatic: true, endless: true });
+    }
   } catch (error) {
     if (requestId !== state.candidateRequest) return;
+    if (state.characterFilter) {
+      elements.candidateLoadStatus.hidden = false;
+      elements.candidateLoadStatus.textContent = `加载失败：${error.message}`;
+    }
     if (state.view === "candidates") showLoadError(error);
+  } finally {
+    if (requestId === state.candidateRequest) {
+      state.candidatesLoading = false;
+      if (!state.rebuildingCandidates && append && state.candidateHasMore && state.view === "candidates"
+        && elements.candidateLoadSentinel.getBoundingClientRect().top <= window.innerHeight + 500) {
+        window.setTimeout(() => refreshCandidates({ append: true }), 0);
+      } else if (!state.rebuildingCandidates && append && !state.candidateHasMore && state.waterfallScrollArmed) {
+        maybeGenerateAtWaterfallEnd();
+      }
+    }
+  }
+}
+
+async function reloadCandidateWindow(targetCount) {
+  state.rebuildingCandidates = true;
+  try {
+    await refreshCandidates();
+    while (state.filteredCandidates.length < targetCount && state.candidateHasMore) {
+      await refreshCandidates({ append: true });
+    }
+  } finally {
+    state.rebuildingCandidates = false;
   }
 }
 
 async function refreshCharacters() {
   const requestId = ++state.characterRequest;
-  const offset = (state.characterPage - 1) * state.characterPageSize;
+  state.filteredCharacters = [];
+  state.totalCharacters = 0;
+  state.charactersLoading = false;
+  state.renderedCharacterCount = 0;
+  state.characterColumns = [];
+  elements.characterGrid.replaceChildren();
+  elements.characterGrid.style.height = "0px";
+  elements.characterLoadStatus.textContent = "正在加载…";
+  await loadMoreCharacters(requestId, 0, true);
+}
+
+async function loadMoreCharacters(requestId = state.characterRequest, offset = state.filteredCharacters.length, initial = false) {
+  if (state.charactersLoading || requestId !== state.characterRequest) return;
+  if (!initial && (state.totalCharacters === 0 || offset >= state.totalCharacters)) return;
+  state.charactersLoading = true;
+  let loaded = false;
   const params = new URLSearchParams({
     query: state.characterQuery,
     tier: state.characterTier,
-    limit: String(state.characterPageSize),
+    limit: String(state.characterBatchSize),
     offset: String(offset),
   });
   try {
     const payload = await apiRequest(`/api/characters?${params}`);
     if (requestId !== state.characterRequest) return;
-    state.filteredCharacters = payload.items || [];
     state.totalCharacters = Number(payload.total || 0);
+    const items = payload.items || [];
+    state.filteredCharacters.push(...items);
+    loaded = true;
     if (state.view === "characters") renderCharacterView();
+    elements.characterLoadStatus.textContent = state.filteredCharacters.length >= state.totalCharacters
+      ? `已显示全部 ${state.totalCharacters.toLocaleString("zh-CN")} 个字`
+      : `已显示 ${state.filteredCharacters.length.toLocaleString("zh-CN")} / ${state.totalCharacters.toLocaleString("zh-CN")} 个字`;
   } catch (error) {
     if (requestId !== state.characterRequest) return;
-    if (state.view === "characters") showLoadError(error);
+    if (state.view === "characters") {
+      elements.characterLoadStatus.textContent = `加载失败：${error.message}`;
+    }
+  } finally {
+    if (requestId === state.characterRequest) {
+      state.charactersLoading = false;
+      const sentinelTop = elements.characterLoadSentinel.getBoundingClientRect().top;
+      const hasMore = state.filteredCharacters.length < state.totalCharacters;
+      if (loaded && hasMore && state.view === "characters" && sentinelTop <= window.innerHeight + 500) {
+        window.setTimeout(() => loadMoreCharacters(requestId), 0);
+      }
+    }
   }
 }
 
@@ -352,7 +530,7 @@ function renderDimensionDetails(item) {
   `;
 }
 
-function renderCandidateView() {
+function renderCandidateView({ appendFrom = null } = {}) {
   const items = state.filteredCandidates;
   const totalPages = Math.max(1, Math.ceil(state.totalCandidates / state.candidatePageSize));
   const start = (state.candidatePage - 1) * state.candidatePageSize;
@@ -379,11 +557,17 @@ function renderCandidateView() {
     elements.emptyState.querySelector("strong").textContent = "没有符合条件的名字";
     elements.emptyState.querySelector("p").textContent = "把最低分数调低，或清空搜索词继续查看。";
   }
-  elements.namesList.innerHTML = items
+  elements.automaticGenerationStatus.hidden = !state.characterFilter
+    || state.autoGeneratingCharacter !== state.characterFilter || !state.autoGenerationMessage;
+  elements.automaticGenerationStatus.textContent = state.autoGenerationMessage;
+  elements.clearInitialFilter.textContent = state.characterFilter ? "返回字库" : "清除筛选";
+  elements.generateForCharacterFromNotice.hidden = !state.characterFilter;
+  const cards = items
+    .slice(appendFrom ?? 0)
     .map(
       (item, index) => `
         <article class="name-row">
-          <div class="rank-number">${String(start + index + 1).padStart(2, "0")}</div>
+          <div class="rank-number">${String((appendFrom ?? start) + index + 1).padStart(2, "0")}</div>
           <div class="name-main">
             <div class="name-title-line">
               <strong class="name-title">${escapeHtml(item.name)}</strong>
@@ -401,24 +585,30 @@ function renderCandidateView() {
       `,
     )
     .join("");
-  candidateCardObserver.disconnect();
-  [...elements.namesList.children].forEach((card) => candidateCardObserver.observe(card));
+  if (appendFrom === null) {
+    elements.namesList.innerHTML = cards;
+    candidateCardObserver.disconnect();
+  } else {
+    elements.namesList.insertAdjacentHTML("beforeend", cards);
+  }
+  [...elements.namesList.children].slice(appendFrom ?? 0).forEach((card) => candidateCardObserver.observe(card));
   scheduleCandidateLayout();
   elements.candidatePageLabel.textContent = `${state.candidatePage} / ${totalPages} 页`;
   elements.candidatePrev.disabled = state.candidatePage <= 1;
   elements.candidateNext.disabled = state.candidatePage >= totalPages;
-  elements.candidatePagination.hidden = items.length === 0;
+  elements.candidatePagination.hidden = Boolean(state.characterFilter) || items.length === 0;
+  elements.candidateLoadSentinel.hidden = !state.characterFilter;
+  elements.candidateLoadStatus.hidden = !state.characterFilter || items.length === 0;
   if (state.candidatePage === 1) renderFeatured();
   else elements.featuredStrip.hidden = true;
 }
 
 function renderCharacterView() {
   const items = state.filteredCharacters;
-  const totalPages = Math.max(1, Math.ceil(state.totalCharacters / state.characterPageSize));
-  const start = (state.characterPage - 1) * state.characterPageSize;
+  const startIndex = state.renderedCharacterCount;
   elements.resultsTitle.textContent = "完整汉字库";
   elements.resultsCount.textContent = `${state.totalCharacters.toLocaleString("zh-CN")} 个字库记录`;
-  elements.characterGrid.innerHTML = items
+  elements.characterGrid.insertAdjacentHTML("beforeend", items.slice(state.renderedCharacterCount)
     .map(
       (item) => `
         <button class="character-cell ${state.selectedCharacter === item.character ? "is-selected" : ""}" type="button" data-character="${escapeHtml(item.character)}" data-tier="${item.tier}" aria-label="围绕${escapeHtml(item.character)}生成候选；第 ${item.rank} 个字，${item.tier === 1 ? "一级常用字" : item.tier === 2 ? "二级规范字" : "三级规范字"}" aria-pressed="${state.selectedCharacter === item.character}" title="围绕“${escapeHtml(item.character)}”生成候选 · 第 ${item.rank} 个">
@@ -427,11 +617,14 @@ function renderCharacterView() {
         </button>
       `,
     )
-    .join("");
-  elements.characterPageLabel.textContent = `${state.characterPage} / ${totalPages} 页`;
-  elements.characterPrev.disabled = state.characterPage <= 1;
-  elements.characterNext.disabled = state.characterPage >= totalPages;
-  elements.characterPagination.hidden = items.length === 0;
+    .join(""));
+  state.renderedCharacterCount = items.length;
+  elements.characterGrid.querySelectorAll("[data-character]").forEach((button) => {
+    const selected = button.dataset.character === state.selectedCharacter;
+    button.classList.toggle("is-selected", selected);
+    button.setAttribute("aria-pressed", String(selected));
+  });
+  scheduleCharacterLayout(startIndex);
 }
 
 function setView(view) {
@@ -461,11 +654,24 @@ function selectCharacter(character, tier = state.selectedCharacterTier) {
     : state.aiConfigured
     ? `AI 服务已配置${state.aiModel ? ` · ${state.aiModel}` : ""}`
     : "AI 服务尚未配置。请导入 CC Switch 配置，或设置 OPENAI_API_KEY 后启动本地服务。";
-  renderCharacterView();
+  elements.characterGrid.querySelectorAll("[data-character]").forEach((button) => {
+    const selected = button.dataset.character === character;
+    button.classList.toggle("is-selected", selected);
+    button.setAttribute("aria-pressed", String(selected));
+  });
+}
+
+function openSelectedCharacterGenerator() {
+  setView("characters");
+  elements.characterGenerator.hidden = false;
   elements.characterGenerator.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-function showCandidatesForCharacter() {
+function showCandidatesForCharacter({ autoGenerateIfEmpty = false } = {}) {
+  if (state.characterFilter !== state.selectedCharacter) {
+    state.autoGeneratingCharacter = "";
+    state.autoGenerationMessage = "";
+  }
   state.characterFilter = state.selectedCharacter;
   state.initialCharacter = "";
   state.query = "";
@@ -473,17 +679,24 @@ function showCandidatesForCharacter() {
   state.length = "all";
   state.minimumScore = 0;
   state.candidatePage = 1;
+  state.waterfallScrollArmed = false;
+  state.waterfallAutoBlocked = false;
   elements.searchInput.value = "";
   elements.directionSelect.value = "all";
   elements.lengthSelect.value = "all";
   elements.scoreRange.value = "0";
   elements.scoreValue.textContent = "0";
   setView("candidates");
-  applyCandidateFilters();
+  refreshCandidates({ autoGenerateIfEmpty });
   elements.resultsTitle.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function clearInitialCharacterFilter() {
+  if (state.characterFilter) {
+    setView("characters");
+    elements.resultsTitle.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
   state.initialCharacter = "";
   state.characterFilter = "";
   state.candidatePage = 1;
@@ -570,7 +783,9 @@ async function loadAiStatus() {
     ]);
     state.aiConfigured = Boolean(status.configured);
     state.aiModel = status.model || "";
-    state.aiProviders = Array.isArray(providersPayload.items) ? providersPayload.items : [];
+    state.aiProviders = Array.isArray(providersPayload.items)
+      ? providersPayload.items.filter((provider) => state.savedAiProviders.some((saved) => saved.id === provider.id))
+      : [];
     state.aiProviderId = providersPayload.selectedId || status.providerId || "";
     elements.generationProvider.innerHTML = state.aiProviders.length
       ? state.aiProviders.map((provider) => {
@@ -599,48 +814,227 @@ async function loadAiStatus() {
   }
 }
 
-async function generateForSelectedCharacter() {
-  if (!state.selectedCharacter || !state.aiConfigured || state.generating || state.selectedCharacterTier > 2) return;
+async function loadAiConfig() {
+  const config = await apiRequest("/api/ai/config");
+  state.savedAiProviders = Array.isArray(config.items) ? config.items : [];
+  elements.savedProviderSelect.innerHTML = state.savedAiProviders.length
+    ? state.savedAiProviders.map((provider) => `<option value="${escapeHtml(provider.id)}">${escapeHtml(provider.name)}${provider.id === config.selectedId ? " · 默认" : ""}</option>`).join("")
+    : '<option value="">尚未保存服务商</option>';
+  if (config.selectedId) elements.savedProviderSelect.value = config.selectedId;
+  if (config.selectedId) editAiProvider(config.selectedId);
+  await loadAiStatus();
+}
+
+function setAiSettingsVisible(visible) {
+  elements.appMain.hidden = visible;
+  elements.aiSettingsPage.hidden = !visible;
+  document.querySelector(".hero-section").hidden = visible;
+  document.querySelector(".stats-grid").hidden = visible;
+  elements.workspace.hidden = visible;
+  document.querySelector(".footer-note").hidden = visible;
+  if (visible) {
+    loadAiConfig().catch((error) => setAiProviderMessage(error.message, "error"));
+  }
+}
+
+function setAiProviderMessage(message, stateName = "") {
+  elements.aiProviderFormStatus.textContent = message;
+  elements.aiProviderFormStatus.dataset.state = stateName;
+}
+
+function clearAiProviderForm() {
+  state.aiDraftId = "";
+  state.aiDraftHasKey = false;
+  elements.aiProviderForm.reset();
+  elements.providerFormTitle.textContent = "新增服务商";
+  elements.providerSavedState.textContent = "";
+  elements.apiKeyHint.textContent = "";
+  elements.providerApiKey.required = true;
+  elements.providerModel.innerHTML = '<option value="">可刷新模型或手动填写</option>';
+  elements.providerModel.disabled = true;
+  elements.providerModelManual.value = "";
+  setAiProviderMessage("");
+}
+
+function editAiProvider(providerId) {
+  const provider = state.savedAiProviders.find((item) => item.id === providerId);
+  if (!provider) return clearAiProviderForm();
+  state.aiDraftId = provider.id;
+  state.aiDraftHasKey = Boolean(provider.apiKeyConfigured);
+  state.aiDraftManaged = provider.managed !== false;
+  elements.providerFormTitle.textContent = provider.name;
+  elements.providerSavedState.textContent = provider.id === state.aiProviderId ? "当前默认" : "已保存";
+  elements.providerName.value = provider.name;
+  elements.providerBaseUrl.value = provider.baseUrl;
+  elements.providerApiKey.value = "";
+  elements.providerApiKey.required = !state.aiDraftHasKey;
+  elements.apiKeyHint.textContent = state.aiDraftHasKey
+    ? provider.managed === false ? "来自本机已有配置；保存后将复制到名字项目独立配置" : "Key 已保存；留空表示保留现有 Key"
+    : "未保存 Key";
+  elements.providerWireApi.value = provider.wireApi;
+  fillAiModelOptions(provider.models || [], provider.model);
+  elements.providerModelManual.value = provider.model || "";
+  setAiProviderMessage("");
+}
+
+function fillAiModelOptions(models, selected = "") {
+  const uniqueModels = [...new Set(models.filter((model) => typeof model === "string" && model.trim()))];
+  elements.providerModel.innerHTML = uniqueModels.length
+    ? uniqueModels.map((model) => `<option value="${escapeHtml(model)}">${escapeHtml(model)}</option>`).join("")
+    : '<option value="">可手动填写模型 ID</option>';
+  elements.providerModel.disabled = uniqueModels.length === 0;
+  if (uniqueModels.includes(selected)) elements.providerModel.value = selected;
+}
+
+function aiProviderFormPayload() {
+  const model = elements.providerModelManual.value.trim() || elements.providerModel.value;
+  return {
+    ...(state.aiDraftId ? { id: state.aiDraftId } : {}),
+    name: elements.providerName.value.trim(),
+    baseUrl: elements.providerBaseUrl.value.trim(),
+    apiKey: elements.providerApiKey.value,
+    wireApi: elements.providerWireApi.value,
+    model: model.trim(),
+    models: [...elements.providerModel.options].map((option) => option.value).filter(Boolean),
+  };
+}
+
+async function saveAiProvider(event) {
+  event.preventDefault();
+  setAiProviderMessage("正在保存…");
+  try {
+    const saved = await apiRequest("/api/ai/config/save", { method: "POST", body: JSON.stringify(aiProviderFormPayload()) });
+    await loadAiConfig();
+    const provider = saved.items?.find((item) => item.id === saved.selectedId);
+    if (provider) editAiProvider(provider.id);
+    setAiProviderMessage("服务商已保存并设为默认", "success");
+  } catch (error) {
+    setAiProviderMessage(error.message, "error");
+  }
+}
+
+async function refreshAiProviderModels() {
+  setAiProviderMessage("正在读取模型列表…");
+  try {
+    const result = await apiRequest("/api/ai/config/models", { method: "POST", body: JSON.stringify(aiProviderFormPayload()) });
+    fillAiModelOptions(result.models || [], result.model || "");
+    elements.providerModelManual.value = result.model || "";
+    setAiProviderMessage(result.models.length ? `找到 ${result.models.length} 个模型` : "服务可达，但没有返回模型；可手动填写模型 ID", "success");
+  } catch (error) {
+    setAiProviderMessage(error.message, "error");
+  }
+}
+
+async function testAiProviderConnection() {
+  setAiProviderMessage("正在检查连接…");
+  try {
+    const result = await apiRequest("/api/ai/config/test", { method: "POST", body: JSON.stringify(aiProviderFormPayload()) });
+    setAiProviderMessage(`${result.message} · ${result.modelCount} 个模型可见`, "success");
+  } catch (error) {
+    setAiProviderMessage(error.message, "error");
+  }
+}
+
+async function selectSavedAiProvider(providerId) {
+  if (!providerId) return;
+  try {
+    await apiRequest("/api/ai/config/select", { method: "POST", body: JSON.stringify({ providerId }) });
+    await loadAiConfig();
+    editAiProvider(providerId);
+    setAiProviderMessage("默认服务商已更新", "success");
+  } catch (error) {
+    setAiProviderMessage(error.message, "error");
+  }
+}
+
+async function generateForSelectedCharacter({ automatic = false, endless = false } = {}) {
+  if (!state.selectedCharacter || state.generating) return;
+  const generationStatus = automatic ? elements.automaticGenerationStatus : elements.generatorStatus;
+  if (!state.aiConfigured || state.selectedCharacterTier > 2) {
+    const reason = !state.aiConfigured
+      ? "AI 服务尚未配置，无法自动生成候选。"
+      : "三级规范字暂不支持 AI 生成，请先查看其他字或调整筛选。";
+    if (automatic) state.autoGenerationMessage = reason;
+    if (automatic) state.waterfallAutoBlocked = true;
+    generationStatus.hidden = false;
+    generationStatus.textContent = reason;
+    return;
+  }
   const character = state.selectedCharacter;
+  const previouslyVisibleCount = state.filteredCandidates.length;
   const lengths = [...document.querySelectorAll("input[name='generationLength']:checked")]
     .map((input) => Number(input.value));
   if (!lengths.length) {
-    elements.generatorStatus.textContent = "至少选择一种名字长度。";
+    const message = "至少选择一种名字长度，无法开始生成。";
+    generationStatus.hidden = false;
+    generationStatus.textContent = message;
+    if (automatic) state.autoGenerationMessage = message;
+    if (automatic) state.waterfallAutoBlocked = true;
     return;
   }
 
   state.generating = true;
   elements.generateNamesButton.disabled = true;
   elements.generationProvider.disabled = true;
-  elements.generatorStatus.textContent = `正在围绕“${character}”生成并评分…`;
+  generationStatus.hidden = false;
+  if (automatic) state.autoGenerationMessage = endless
+    ? `“${character}”暂无候选，正在生成一批…`
+    : `候选已加载完，正在为“${character}”生成下一批…`;
+  generationStatus.textContent = automatic ? state.autoGenerationMessage : `正在围绕“${character}”生成并评分…`;
   try {
     const result = await apiRequest("/api/generate/by-character", {
       method: "POST",
       body: JSON.stringify({
         character,
         count: Number(elements.generationCount.value),
+        ...(endless ? { total_count: 200 } : {}),
         lengths,
         providerId: state.aiProviderId || elements.generationProvider.value || undefined,
       }),
     });
-    elements.generatorStatus.textContent = `已生成 ${result.items.length} 个，新增入库 ${result.added} 个${result.model ? ` · ${result.model}` : ""}`;
+    generationStatus.textContent = automatic
+      ? `${endless ? "自动生成完成" : "续生成完成"}：本批新增 ${result.added} 个${result.model ? ` · ${result.model}` : ""}`
+      : `已生成 ${result.items.length} 个，新增入库 ${result.added} 个${result.model ? ` · ${result.model}` : ""}`;
+    if (automatic) state.autoGenerationMessage = generationStatus.textContent;
     await loadStats();
-    state.characterFilter = character;
-    state.initialCharacter = "";
-    state.query = "";
-    state.direction = "all";
-    state.length = "all";
-    state.minimumScore = 0;
-    state.candidatePage = 1;
-    elements.searchInput.value = "";
-    elements.directionSelect.value = "all";
-    elements.lengthSelect.value = "all";
-    elements.scoreRange.value = "0";
-    elements.scoreValue.textContent = "0";
-    setView("candidates");
-    await refreshCandidates();
+    if (automatic) {
+      state.characterFilter = character;
+      state.initialCharacter = "";
+      const visibleCount = endless
+        ? Math.max(state.candidatePageSize, result.added)
+        : previouslyVisibleCount + result.added;
+      await reloadCandidateWindow(visibleCount);
+      state.waterfallAutoBlocked = result.added === 0;
+      elements.candidateLoadStatus.hidden = false;
+      elements.candidateLoadStatus.textContent = result.added > 0
+        ? `已显示 ${state.filteredCandidates.length.toLocaleString("zh-CN")} 条 · 继续向下滚动可生成下一批`
+        : "本批没有新增候选，自动续生成已暂停";
+    } else {
+      if (result.added > 0) state.waterfallAutoBlocked = false;
+      state.characterFilter = character;
+      state.initialCharacter = "";
+      state.query = "";
+      state.direction = "all";
+      state.length = "all";
+      state.minimumScore = 0;
+      state.candidatePage = 1;
+      elements.searchInput.value = "";
+      elements.directionSelect.value = "all";
+      elements.lengthSelect.value = "all";
+      elements.scoreRange.value = "0";
+      elements.scoreValue.textContent = "0";
+      setView("candidates");
+      await refreshCandidates();
+    }
   } catch (error) {
-    elements.generatorStatus.textContent = error.message || "生成失败，请检查本地 AI 配置后重试。";
+    generationStatus.hidden = false;
+    generationStatus.textContent = error.message || "生成失败，请检查本地 AI 配置后重试。";
+    if (automatic) {
+      state.autoGenerationMessage = generationStatus.textContent;
+      state.waterfallAutoBlocked = true;
+      elements.candidateLoadStatus.hidden = false;
+      elements.candidateLoadStatus.textContent = "生成失败，自动续生成已暂停；可检查 AI 配置后重试";
+    }
   } finally {
     state.generating = false;
     elements.generateNamesButton.disabled = !state.aiConfigured || state.selectedCharacterTier > 2;
@@ -650,7 +1044,7 @@ async function generateForSelectedCharacter() {
 
 async function init() {
   try {
-    await Promise.all([loadStats(), loadAiStatus()]);
+    await Promise.all([loadStats(), loadAiConfig()]);
     // 浏览器重新加载后可能恢复下拉框的值，但不会触发变更事件。
     state.sort = SORT_MODES[elements.sortSelect.value] ? elements.sortSelect.value : "score";
     applyCandidateFilters();
@@ -693,7 +1087,22 @@ elements.sortSelect.addEventListener("change", (event) => {
 
 elements.resetButton.addEventListener("click", resetFilters);
 elements.clearInitialFilter.addEventListener("click", clearInitialCharacterFilter);
+elements.generateForCharacterFromNotice.addEventListener("click", openSelectedCharacterGenerator);
 elements.exportButton.addEventListener("click", exportCurrentNames);
+elements.openAiSettings.addEventListener("click", () => setAiSettingsVisible(true));
+elements.closeAiSettings.addEventListener("click", () => setAiSettingsVisible(false));
+elements.addAiProvider.addEventListener("click", clearAiProviderForm);
+elements.savedProviderSelect.addEventListener("change", (event) => {
+  editAiProvider(event.target.value);
+  selectSavedAiProvider(event.target.value);
+});
+elements.aiProviderForm.addEventListener("submit", saveAiProvider);
+elements.refreshAiModels.addEventListener("click", refreshAiProviderModels);
+elements.testAiConnection.addEventListener("click", testAiProviderConnection);
+elements.providerModel.addEventListener("change", (event) => {
+  elements.providerModelManual.value = event.target.value;
+});
+
 elements.candidatePrev.addEventListener("click", () => {
   state.candidatePage = Math.max(1, state.candidatePage - 1);
   applyCandidateFilters();
@@ -702,22 +1111,51 @@ elements.candidateNext.addEventListener("click", () => {
   state.candidatePage += 1;
   applyCandidateFilters();
 });
-elements.characterPrev.addEventListener("click", () => {
-  state.characterPage = Math.max(1, state.characterPage - 1);
-  applyCharacterFilters();
-});
-elements.characterNext.addEventListener("click", () => {
-  state.characterPage += 1;
-  applyCharacterFilters();
-});
+
+const candidateLoadObserver = new IntersectionObserver((entries) => {
+  if (entries.some((entry) => entry.isIntersecting) && state.view === "candidates"
+    && state.characterFilter && !state.candidatesLoading && !state.rebuildingCandidates) {
+    if (state.candidateHasMore) refreshCandidates({ append: true });
+    else maybeGenerateAtWaterfallEnd();
+  }
+}, { rootMargin: "600px 0px" });
+candidateLoadObserver.observe(elements.candidateLoadSentinel);
+let previousScrollY = window.scrollY;
+function maybeGenerateAtWaterfallEnd() {
+  if (!state.characterFilter || state.candidateHasMore || !state.waterfallScrollArmed || state.waterfallAutoBlocked
+    || state.generating || state.candidatesLoading || state.view !== "candidates") return;
+  if (elements.candidateLoadSentinel.getBoundingClientRect().top > window.innerHeight + 350) return;
+  state.waterfallScrollArmed = false;
+  generateForSelectedCharacter({ automatic: true });
+}
+window.addEventListener("wheel", (event) => {
+  if (event.deltaY < 0 && state.characterFilter) {
+    state.waterfallAutoBlocked = false;
+    state.waterfallScrollArmed = false;
+  }
+  if (event.deltaY > 0 && state.characterFilter) {
+    state.waterfallScrollArmed = true;
+    maybeGenerateAtWaterfallEnd();
+  }
+}, { passive: true });
+window.addEventListener("scroll", () => {
+  const nextScrollY = window.scrollY;
+  if (nextScrollY < previousScrollY && state.characterFilter) {
+    state.waterfallAutoBlocked = false;
+    state.waterfallScrollArmed = false;
+  }
+  if (nextScrollY > previousScrollY && state.characterFilter) {
+    state.waterfallScrollArmed = true;
+    maybeGenerateAtWaterfallEnd();
+  }
+  previousScrollY = nextScrollY;
+}, { passive: true });
 elements.characterSearch.addEventListener("input", (event) => {
   state.characterQuery = event.target.value.trim();
-  state.characterPage = 1;
   applyCharacterFilters();
 });
 elements.characterTierSelect.addEventListener("change", (event) => {
   state.characterTier = event.target.value;
-  state.characterPage = 1;
   applyCharacterFilters();
 });
 document.querySelectorAll(".view-tab").forEach((button) => {
@@ -731,11 +1169,21 @@ elements.generationProvider.addEventListener("change", (event) => {
   state.aiModel = provider?.model || "";
   if (state.selectedCharacter) selectCharacter(state.selectedCharacter);
 });
-elements.viewCharacterCandidates.addEventListener("click", showCandidatesForCharacter);
+elements.viewCharacterCandidates.addEventListener("click", () => showCandidatesForCharacter({ autoGenerateIfEmpty: true }));
 
 elements.characterGrid.addEventListener("click", (event) => {
   const characterButton = event.target.closest("[data-character]");
-  if (characterButton) selectCharacter(characterButton.dataset.character, characterButton.dataset.tier);
+  if (characterButton) {
+    selectCharacter(characterButton.dataset.character, characterButton.dataset.tier);
+    showCandidatesForCharacter({ autoGenerateIfEmpty: true });
+  }
 });
+
+const characterLoadObserver = new IntersectionObserver((entries) => {
+  if (entries.some((entry) => entry.isIntersecting) && state.view === "characters") {
+    loadMoreCharacters();
+  }
+}, { rootMargin: "500px 0px" });
+characterLoadObserver.observe(elements.characterLoadSentinel);
 
 init();
