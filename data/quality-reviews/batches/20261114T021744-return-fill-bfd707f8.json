@@ -1,0 +1,671 @@
+{
+  "review_id": "20261114T021744-return-fill-bfd707f8",
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "model": "gpt-6.1-sol",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "返场",
+      "返航",
+      "往返间",
+      "忘返",
+      "返初",
+      "返观堂",
+      "春返庭",
+      "返程小站"
+    ],
+    "related_kept_candidates": {
+      "程": [
+        "专程",
+        "一程",
+        "云程",
+        "里程",
+        "锦程",
+        "锂程",
+        "骉程",
+        "半程",
+        "骥程",
+        "薪程",
+        "鹏程",
+        "星程"
+      ],
+      "初": [
+        "初一",
+        "初酵",
+        "晙初",
+        "初凉",
+        "厥初",
+        "初愿",
+        "瑾初",
+        "初霏",
+        "初珩",
+        "初冬",
+        "初蕾",
+        "初觌"
+      ],
+      "春": [
+        "春风匝庭",
+        "庭春",
+        "楸庭春晓",
+        "栌庭春晓",
+        "柘庭春色",
+        "庭砌生春",
+        "庭阶生春",
+        "报春",
+        "春酿",
+        "春葩",
+        "芙春",
+        "春酤"
+      ],
+      "间": [
+        "乡间",
+        "纸间",
+        "篱间",
+        "塄间",
+        "栊间",
+        "峦间",
+        "页间",
+        "桠间",
+        "塬间",
+        "苇间",
+        "楹间",
+        "畹间"
+      ],
+      "庭": [
+        "春风匝庭",
+        "庭春",
+        "楸庭春晓",
+        "栌庭春晓",
+        "柘庭春色",
+        "庭砌生春",
+        "庭阶生春",
+        "榴庭",
+        "庭墅",
+        "萱庭",
+        "苔庭",
+        "庭陔"
+      ],
+      "小": [
+        "小憩",
+        "小禾",
+        "小獭",
+        "小鼹",
+        "小哚",
+        "小咩",
+        "小寐",
+        "小蓟",
+        "小序",
+        "小筑",
+        "小径",
+        "小集"
+      ],
+      "堂": [
+        "观器堂",
+        "静观堂",
+        "萱堂",
+        "槐堂",
+        "砚堂",
+        "庙堂",
+        "煟堂",
+        "隩堂",
+        "黉堂",
+        "椿堂",
+        "云堂",
+        "松堂"
+      ],
+      "观": [
+        "观器堂",
+        "静观堂",
+        "观徼",
+        "观瓷",
+        "观照",
+        "澄观",
+        "观文",
+        "反观",
+        "观舲",
+        "静观",
+        "观鹈",
+        "遐观"
+      ],
+      "场": [
+        "磁场",
+        "场域",
+        "擅场",
+        "在场",
+        "在场感",
+        "扰动场",
+        "场域之间"
+      ],
+      "航": [
+        "歧航",
+        "航行",
+        "续航",
+        "远航",
+        "云航",
+        "星航",
+        "宵航",
+        "峥航",
+        "祕航",
+        "磊航",
+        "震航",
+        "济航"
+      ],
+      "站": [
+        "站云",
+        "站如松"
+      ],
+      "忘": [
+        "忘筌",
+        "备忘",
+        "忘己",
+        "两忘",
+        "忘机叟"
+      ],
+      "往": [
+        "往复",
+        "往昔",
+        "往哲",
+        "心往",
+        "偕往",
+        "日往月来",
+        "光阴往复"
+      ],
+      "返": [
+        "返璞",
+        "返青"
+      ]
+    },
+    "literature_phrase_examples": {
+      "返场": [],
+      "返航": [],
+      "往返间": [],
+      "忘返": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 56129,
+          "context": "征奇忽忘返，遇兴将弥年。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 99983,
+          "context": "丘壑曾忘返，文章敢自诬。"
+        }
+      ],
+      "返初": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 70640,
+          "context": "何由返初服，田野醉芳樽。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 191332,
+          "context": "龙门点额意何如，红尾青鬐却返初。"
+        }
+      ],
+      "返观堂": [],
+      "春返庭": [],
+      "返程小站": []
+    },
+    "dictionary_phrase_entries": {
+      "返场": [],
+      "返航": [
+        {
+          "title": "返航",
+          "pinyin": "fǎn háng",
+          "definition": "飛機、船飛回或駛回出發的地方。如：「這架戰鬥機已經安全返航，回到基地。」",
+          "entry_id": "016390016",
+          "sheet": "1150929辭典匯出",
+          "row": 34896,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "往返间": [],
+      "忘返": [],
+      "返初": [],
+      "返观堂": [],
+      "春返庭": [],
+      "返程小站": []
+    },
+    "direct_dictionary": {
+      "返": {
+        "definition": "return, revert to, restore",
+        "mandarin": "fǎn",
+        "official_dictionary": [
+          {
+            "title": "返",
+            "pinyin": "fǎn",
+            "definition": "[動]\n1.回來。如：「流連忘返」、「去而復返」。唐．樓穎〈西施石〉詩：「一去姑蘇不復返，岸旁桃李為誰春。」\n2.歸還。晉．干寶《搜神記》卷四：「俟汝至石頭城，返汝簪。」《聊齋志異．卷九．喬女》：「宰按之，果真，窮治諸無賴，盡返所取。」\n3.折回。如：「迴光返照」。\n4.更換。《呂氏春秋．孝行覽．慎人》：「孔子烈然，返瑟而弦。」",
+            "entry_id": "01639",
+            "sheet": "1150929辭典匯出",
+            "row": 1643,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "场": {
+        "definition": "open space, field, market",
+        "mandarin": "chǎng",
+        "related_characters": [
+          {
+            "character": "場",
+            "relation": "kTraditionalVariant",
+            "definition": "open space, field, market",
+            "mandarin": "chǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "航": {
+        "definition": "sail; navigate; ship, boat",
+        "mandarin": "háng",
+        "official_dictionary": [
+          {
+            "title": "航",
+            "pinyin": "háng",
+            "definition": "[名]\n1.舟、船。《文選．左思．吳都賦》：「於是乎長鯨吞航，修鯢吐浪。」元．馬致遠〈壽陽曲．遠浦帆歸〉曲：「夕陽下，酒旆閑，兩三航未曾著岸。」\n2.連舟而成的浮橋。《淮南子．氾論》：「古者大川名谷，衝絕道路，不通往來也，乃為窬木方版以為舟航。」\n[動]\n船、飛機等的行走。如：「領航」、「巡航」、「導航」。唐．韓愈〈答張徹〉詩：「疊雪走商嶺，飛波航洞庭。」",
+            "entry_id": "04911",
+            "sheet": "1150929辭典匯出",
+            "row": 4917,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "往": {
+        "definition": "go, depart; past, formerly",
+        "mandarin": "wǎng",
+        "official_dictionary": [
+          {
+            "title": "往",
+            "pinyin": "wǎng",
+            "definition": "[動]\n1.去。如：「前往」、「人來人往」。《易經．繫辭下》：「寒往則暑來，暑往則寒來，寒暑相推而歲成焉。」\n2.歸向。如：「嚮往」、「神往」。《穀梁傳．莊公三年》：「其曰王者，民之所歸往也。」\n3.交際、交朋友。如：「交往」。《禮記．檀弓上》：「非兄弟，雖鄰不往。」\n4.致贈、贈送。《文選．曹植．與楊德祖書》：「今往僕少小所著辭賦一通相與。」\n[形]\n過去的、從前的。如：「往年」、「以往」。五代十國南唐．李煜〈虞美人．春花秋月何時了〉詞：「春花秋月何時了，往事知多少。」\n[名]\n1.昔日、昔時。《易經．繫辭下》：「夫易，彰往而察來，而微顯闡幽。」《荀子．解蔽》：「不慕往，不閔來，無邑憐之心。」\n2.死者。《左傳．僖公九年》：「送往事居。」晉．杜預．注：「往，死者；居，生者。」\n[介]\n向、朝。表示動作的方向。如：「往東走」、「往前看」、「水往低處流，人往高處爬。」",
+            "entry_id": "11534",
+            "sheet": "1150929辭典匯出",
+            "row": 11548,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "忘": {
+        "definition": "forget; neglect; miss, omit",
+        "mandarin": "wàng",
+        "official_dictionary": [
+          {
+            "title": "忘",
+            "pinyin": "wáng",
+            "definition": "(一)之讀音。",
+            "entry_id": "11524",
+            "sheet": "1150929辭典匯出",
+            "row": 11538,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "忘",
+            "pinyin": "wàng",
+            "definition": "[動]\n1.不記得。如：「勿忘我」、「後事不忘前事之師」、「樂而忘返」、「廢寢忘食」、「得意忘形」。\n2.遺失、喪失。《漢書．卷六三．武五子傳．戾太子劉據傳》：「臣聞子胥盡忠而忘其號，比干盡仁而遺其身。」唐．顏師古．注：「忘，亡也。吳王殺之，被以惡名，失其善稱號。」《文選．陸機．歎逝賦》：「樂隤心其如忘，哀緣情而來宅。」唐．李善．注：「忘，失也。」\n3.遺棄、捨棄。《後漢書．卷二六．宋弘傳》：「臣聞貧賤之知不可忘，糟糠之妻不下堂。」",
+            "entry_id": "11540",
+            "sheet": "1150929辭典匯出",
+            "row": 11554,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "初": {
+        "definition": "beginning, initial, primary",
+        "mandarin": "chū",
+        "official_dictionary": [
+          {
+            "title": "初",
+            "pinyin": "chū",
+            "definition": "[名]\n1.根本、本原。《淮南子．俶真》：「是故聖人之學也，欲以返性於初，而游心於虛也。」《史記．卷四七．孔子世家》：「進取不忘其初。」\n2.起源、開始。如：「年初」、「月初」、「和好如初」。唐．柳宗元〈封建論〉：「天地果無初乎？吾不得而知之也。」\n3.姓。如宋代有初暐。\n[形]\n1.從前、原來。如：「初衷」、「初心」。\n2.最先、開頭。如：「初秋」、「初民」、「初雪」。\n3.最低的。如：「初級」、「初等」。\n4.陰曆每月一日到十日，皆冠上「初」字，表上旬的。如：「初一」、「初二」。\n[副]\n1.第一次的。如：「初戀」、「初學」、「初試啼聲」。\n2.甫、剛剛。如：「初出茅廬」。《書經．召誥》：「嗚呼！若生子，罔不在厥初生，自貽哲命。」《史記．卷四九．外戚世家》：「天下初定未久，繼嗣不明。」\n3.全、始終。用於否定句，表範圍。《後漢書．卷八一．獨行傳．彭脩傳》：「受教三日，初不奉行，廢命不忠，豈非過邪？」",
+            "entry_id": "08527",
+            "sheet": "1150929辭典匯出",
+            "row": 8541,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "观": {
+        "definition": "see, observe, view; appearance",
+        "mandarin": "guān",
+        "related_characters": [
+          {
+            "character": "觀",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, view; appearance; hexagram ䷓",
+            "mandarin": "guān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "堂": {
+        "definition": "hall; government office",
+        "mandarin": "táng",
+        "official_dictionary": [
+          {
+            "title": "堂",
+            "pinyin": "táng",
+            "definition": "[名]\n1.正房、大廳。如：「廳堂」、「登堂入室」。《論語．先進》：「由也升堂矣，未入於室也。」\n2.以前官府辦公、審訊、舉行典禮的地方。如：「明堂」、「政事堂」、「大堂」。\n3.用於廳堂名稱。有時也含有某一世系的意義。如：「養志堂」、「三槐堂」。\n4.專門用途的房屋。如：「課堂」、「食堂」、「禮堂」、「佛堂」、「紀念堂」。\n5.同祖父的親屬。參見「堂兄弟」、「堂姪」等條。\n6.量詞：(1）計算成套物品的單位。如：「一堂瓷器」、「兩堂家具」。(2）計算課程分節的單位。如：「一堂課」。\n7.用於商店的名號。如：「同仁堂」、「回春堂」。\n[形]\n宏偉。如：「富麗堂皇」。",
+            "entry_id": "02593",
+            "sheet": "1150929辭典匯出",
+            "row": 2600,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "廳堂",
+                "pinyin": "tīng táng",
+                "definition": "大廳。《魏書．卷五八．楊播傳》：「兄弟旦則聚於廳堂，終日相對，未曾入內。」《初刻拍案驚奇》卷一：「門內大天井，上面一所大廳堂。」",
+                "entry_id": "027350002",
+                "sheet": "1150929辭典匯出",
+                "row": 53204
+              },
+              {
+                "title": "登堂入室",
+                "pinyin": "dēng táng rù shì",
+                "definition": "1.比喻學問或技藝循序漸進，達到高深的境界。參見「升堂入室」條。宋．吳坰《五總志》：「如徐師川、余荀龍、洪玉父昆弟、歐陽元老，皆黃門登堂入室者，實自足以名家。」\n2.未經許可自行進入他人內室。如：「他竟然擅自登堂入室，簡直目中無人。」",
+                "entry_id": "020700020",
+                "sheet": "1150929辭典匯出",
+                "row": 44049
+              },
+              {
+                "title": "明堂",
+                "pinyin": "míng táng",
+                "definition": "1.古代天子舉行大典的地方。《禮記．明堂位》：「昔者周公朝諸侯于明堂之位，天子負斧依南鄉而立。」《文選．曹植．七啟》：「讚典禮於辟雍，講文德於明堂。」也作「翼室」。\n2.打晒糧食的場地、院子。\n3.堪輿家稱墓前聚水的地方。\n4.墓前的祭臺。《後漢書．卷八一．范冉傳》：「其明堂之奠，干飯寒水，飲食之物，勿有所下。」唐．章懷太子．注：「此言明堂，亦神明之堂，謂壙中也。」",
+                "entry_id": "014770062",
+                "sheet": "1150929辭典匯出",
+                "row": 32005
+              },
+              {
+                "title": "大堂",
+                "pinyin": "dà táng",
+                "definition": "1.官衙中的治事廳堂。如：「大堂之上竟敢胡言亂語。」\n2.下屬對主管的稱呼。《儒林外史》第七回：「切記先帝宏治十三年，晚生在工部大堂劉大老爺家扶乩。」",
+                "entry_id": "019130325",
+                "sheet": "1150929辭典匯出",
+                "row": 40384
+              },
+              {
+                "title": "三槐堂",
+                "pinyin": "sān huái táng",
+                "definition": "宋代兵部侍郎王祐，多陰德，手植三槐於庭，自言子孫必有為三公的。其子旦後果為相，世稱為「三槐王氏」，子孫因建三槐堂。《宋史．卷二八二．王旦傳》：「祐手植三槐于庭，曰：『吾之後世，必有為三公者，此其所以志也。』」",
+                "entry_id": "100540328",
+                "sheet": "1150929辭典匯出",
+                "row": 142543
+              },
+              {
+                "title": "課堂",
+                "pinyin": "kè táng",
+                "definition": "1.教室。\n2.教學活動的進行。如：「課堂的秩序良好。」",
+                "entry_id": "044520006",
+                "sheet": "1150929辭典匯出",
+                "row": 75557
+              },
+              {
+                "title": "食堂",
+                "pinyin": "shí táng",
+                "definition": "飯廳、飯館。唐．柳宗元〈盩厔縣新食堂記〉：「新作食堂於縣內之右，始會食之也。」",
+                "entry_id": "087130050",
+                "sheet": "1150929辭典匯出",
+                "row": 126017
+              },
+              {
+                "title": "禮堂",
+                "pinyin": "lǐ táng",
+                "definition": "1.古代講學、習禮的講堂。《後漢書．卷三五．張曹鄭列傳．鄭玄》：「所好群書率皆腐敝，不得於禮堂寫定，傳與其人。」\n2.開會或舉行典禮的廳堂。如：「畢業典禮按往例都在學校禮堂舉行。」",
+                "entry_id": "034310027",
+                "sheet": "1150929辭典匯出",
+                "row": 61402
+              },
+              {
+                "title": "佛堂",
+                "pinyin": "fó táng",
+                "definition": "供奉佛像以供誦經膜拜的廳堂。",
+                "entry_id": "015420016",
+                "sheet": "1150929辭典匯出",
+                "row": 33569
+              },
+              {
+                "title": "紀念堂",
+                "pinyin": "jì niàn táng",
+                "definition": "為紀念有特殊功勛或貢獻的人物而蓋的建築物。堂內常展覽有關其生平或事蹟的物品供人憑弔。如：「中正紀念堂」。",
+                "entry_id": "0542800071",
+                "sheet": "1150929辭典匯出",
+                "row": 87504
+              },
+              {
+                "title": "堂兄弟",
+                "pinyin": "táng xiōng dì",
+                "definition": "稱謂。用以稱伯叔的兒子。",
+                "entry_id": "025930046",
+                "sheet": "1150929辭典匯出",
+                "row": 51078
+              },
+              {
+                "title": "堂姪",
+                "pinyin": "táng zhí",
+                "definition": "稱謂。用以稱堂兄弟的兒子。",
+                "entry_id": "025930047",
+                "sheet": "1150929辭典匯出",
+                "row": 51079
+              },
+              {
+                "title": "富麗堂皇",
+                "pinyin": "fù lì táng huáng",
+                "definition": "形容富偉美麗、氣勢宏偉。《兒女英雄傳》第三四回：「連忙燈下一看，只見當朝聖人出的是三個富麗堂皇的題目。」也作「堂皇富麗」。",
+                "entry_id": "018860010",
+                "sheet": "1150929辭典匯出",
+                "row": 38960
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庭": {
+        "definition": "courtyard; spacious hall or yard",
+        "mandarin": "tíng",
+        "official_dictionary": [
+          {
+            "title": "庭",
+            "pinyin": "tíng",
+            "definition": "[名]\n1.廳堂、正房。《說文解字．广部》：「庭，宮中也。」清．段玉裁．注：「宮者，室也。室之中曰庭。」《論語．季氏》：「嘗獨立，鯉趨而過庭。」\n2.院子、大廳臺階前的空地。如：「庭院」。《文選．古詩十九首．庭中有奇樹》：「庭中有奇樹，綠葉發華滋。」\n3.泛稱寬闊的地方。如：「大庭廣眾」。\n4.審理訴訟案件的場所。如：「法庭」、「開庭」、「民事庭」。\n5.額頭。如：「天庭飽滿」、「庭闕不張」。",
+            "entry_id": "02737",
+            "sheet": "1150929辭典匯出",
+            "row": 2742,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "程": {
+        "definition": "journey, trip; schedule, agenda",
+        "mandarin": "chéng",
+        "official_dictionary": [
+          {
+            "title": "程",
+            "pinyin": "chéng",
+            "definition": "[名]\n1.度量衡的總稱。《荀子．致仕》：「程者，物之準也。」唐．楊倞．注：「程者，度量之總名也。」\n2.事情進行的步驟。如：「過程」、「議程」。\n3.法式、規範。如：「章程」、「規程」。\n4.距離或道路的一段。如：「路程」、「歸程」、「送你一程」。\n5.一定的進度。如：「課程」、「日程」。\n6.姓。如宋代有程顥、程頤。\n[動]\n衡量、估計。《漢書．卷六五．東方朔傳》：「武帝既招英俊，程其器能，用之如不及。」",
+            "entry_id": "08506",
+            "sheet": "1150929辭典匯出",
+            "row": 8520,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "小": {
+        "definition": "small, tiny, insignificant",
+        "mandarin": "xiǎo",
+        "official_dictionary": [
+          {
+            "title": "小",
+            "pinyin": "xiǎo",
+            "definition": "[形]\n與「大」相對：(1)體積、數量、力量等方面不大的。如：「小城」、「小人物」。《荀子．勸學》：「不積小流，無以成江海。」唐．韓愈〈原道〉：「坐井而觀天，曰：『天小者，非天小也。』」(2)年輕、幼稚的。如：「年紀小」、「小伙子」。《晉書．九二．文苑傳．趙至傳》：「我小，未能榮養。」(3)排行最後或地位較低的。如：「小官」、「這兩位是我二弟和小妹。」、「小妹！請你把帳單拿過來。」(4)對自己或與自己有關的人事物的謙稱。如：「恕小民直言。」、「小的不敢！」、「小店」、「小兒」。\n[名]\n1.邪惡的人、壞人。《漢書．卷八九．循吏傳．龔遂傳》：「今大王親近群小，漸漬邪惡所習。」\n2.小孩、年幼者。如：「一家老小」。《詩經．小雅．楚茨》：「既醉既飽，小大稽首」。\n3.妾。如：「嫁給人家當小的。」明．湯顯祖《牡丹亭》第二五齣：「你可知老相公年來因少男兒，常有娶小之意。」\n4.二一四部首之一。\n[動]\n輕視。《左傳．桓公十三年》：「將自用也，必小羅。」唐．李白〈送長沙陳太守〉詩二首之二：「莫小二千石，當安遠俗人。」\n[副]\n稍微。表示程度不深。如：「牛刀小試」、「不無小補」。\n[助]\n詞頭，表對年紀輕者的暱稱。如：「小王」、「小老弟」。",
+            "entry_id": "07022",
+            "sheet": "1150929辭典匯出",
+            "row": 7031,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "站": {
+        "definition": "stand up; a stand, station",
+        "mandarin": "zhàn",
+        "official_dictionary": [
+          {
+            "title": "站",
+            "pinyin": "zhàn",
+            "definition": "[動]\n直立。如：「站立」、「站著」。《紅樓夢》第六回：「平兒站在炕沿邊，打量了劉姥姥兩眼。」\n[名]\n1.旅途中供人暫駐、休息或轉換交通工具的地方。如：「車站」、「驛站」、「休息站」。\n2.機關團體為方便聯絡與服務，在各地設立的小型單位。如：「福利站」、「衛生站」、「加油站」。",
+            "entry_id": "07802",
+            "sheet": "1150929辭典匯出",
+            "row": 7813,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "返场",
+      "decision": "keep",
+      "reason": "指演出结束后再次登场，整词自然，动作感与再次相见的意味清楚；两字凝练，不等同于通用产品或服务类别，与已有“在场”“擅场”等含义不同。"
+    },
+    {
+      "name": "返航",
+      "decision": "keep",
+      "reason": "整词本义为船舶或飞机返回出发地，语义明确，具有归返的动态意象。与已有“远航”“续航”等在方向和动作关系上不同，不属于仅换近义配字。"
+    },
+    {
+      "name": "往返间",
+      "decision": "keep",
+      "reason": "可自然理解为往来行程之间或往返之际，“间”承接“往返”形成时间、空间意味，组合紧凑，有可辨识的流动与间隙意象，不是完整判断句或口号。"
+    },
+    {
+      "name": "忘返",
+      "decision": "keep",
+      "reason": "意为忘记返回，所给诗句中均可按此义理解，组合自然成立。两字能够凝练呈现沉浸、留连的状态，不因与常见成语“流连忘返”有关就等同于直接使用完整成语。"
+    },
+    {
+      "name": "返初",
+      "decision": "keep",
+      "reason": "“初”有本原、起始之义，整名可自然理解为返回最初状态，动宾关系清楚。“返初服”的用例不能直接作为完整词语证据，但不影响组合本身成立；与“返璞”所侧重的回归质朴仍有语义区别。"
+    },
+    {
+      "name": "返观堂",
+      "decision": "reject",
+      "reason": "“返观”可表达回转观照自身，“堂”作为名号后缀也通顺；但与已保留“反观”的核心含义及观照方向近乎相同，主要是同义写法变化后增加“堂”，属于近似变体，不再保留。"
+    },
+    {
+      "name": "春返庭",
+      "decision": "reject",
+      "reason": "可读作春天重返庭院，字义能够成立；但与已保留“庭阶生春”“庭砌生春”同为庭院重新呈现春意的意象，主要改变语序及春意到来的表达，未形成足够不同的语义关系。"
+    },
+    {
+      "name": "返程小站",
+      "decision": "keep",
+      "reason": "可自然理解为归途中供人停留的小站，“返程”与“小站”的修饰关系明确，整体有具体场景和亲近感。整名并非固定的通用服务类别，也不与已有“一程”“半程”等构成近义替换。"
+    }
+  ]
+}
