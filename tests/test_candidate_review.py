@@ -24,6 +24,24 @@ class CandidateReviewTests(unittest.TestCase):
         decisions = {name: 'keep' for name, _, _ in records}
         self.assertEqual(review.comparison_names(['枕秋水'], records, decisions, per_character=1), {'枕': ['枕水'], '水': ['枕水']})
 
+    def test_comparison_prefers_matching_word_order_when_shared_characters_tie(self):
+        records = [(name, 'ai', {}) for name in ['川照夕', '夕照川']]
+        decisions = {name: 'keep' for name, _, _ in records}
+        related = review.comparison_names(['夕照长川'], records, decisions, per_character=1)
+        self.assertEqual(related, {'夕': ['夕照川'], '照': ['夕照川'], '川': ['夕照川']})
+
+    def test_similarity_recheck_selects_kept_expansions_without_automatic_rejection(self):
+        records = [(name, 'ai', {}) for name in ['夕照川', '夕照长川', '云山', '云过山', '云过青山', '林间月']]
+        decisions = {name: 'keep' for name, _, _ in records}
+        decisions['云过青山'] = 'uncertain'
+        names = review.select_similarity_recheck_names(records, decisions, set(), 24)
+        self.assertEqual(set(names), {'夕照长川', '云过山'})
+        self.assertEqual(decisions['夕照长川'], 'keep')
+        self.assertEqual(review.select_similarity_recheck_names(records, decisions, set(names), 24), [])
+        self.assertEqual(len(review.select_similarity_recheck_names(records, decisions, set(), 1)), 1)
+        decisions['夕照川'] = 'reject'
+        self.assertEqual(review.select_similarity_recheck_names(records, decisions, set(), 24), ['云过山'])
+
     def test_phrase_dictionary_lookup_requires_exact_form_and_preserves_senses(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'entries.json'

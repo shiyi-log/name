@@ -1,0 +1,934 @@
+{
+  "review_id": "20261114T021238-e7b4f0df",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 3,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "返青",
+      "孝思",
+      "孝友",
+      "尧风",
+      "尧阶",
+      "芥子",
+      "芥舟",
+      "两仪",
+      "认同"
+    ],
+    "related_kept_candidates": {
+      "风": [
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风"
+      ],
+      "舟": [
+        "一舟",
+        "珀舟",
+        "暮舟",
+        "碳舟",
+        "茗舟",
+        "镠舟",
+        "奇舟",
+        "酒舟",
+        "菼舟",
+        "横舟",
+        "人间舟",
+        "云水浮舟"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉",
+        "酒同频",
+        "同欣",
+        "同翊",
+        "橼果同枝",
+        "同寅",
+        "皎月同舟",
+        "鹡鸰同心",
+        "镯同心",
+        "琨玉同辉",
+        "瑕玉同辉"
+      ],
+      "仪": [
+        "凤仪",
+        "仪态",
+        "壸仪",
+        "令仪",
+        "鸾仪",
+        "腆仪",
+        "姈仪",
+        "𬸦仪",
+        "銮仪",
+        "珽仪",
+        "仪和",
+        "仪川"
+      ],
+      "友": [
+        "诤友",
+        "票友",
+        "戚友",
+        "咖友",
+        "聚友",
+        "密友",
+        "偲友",
+        "鼹友",
+        "啤友会",
+        "毽友",
+        "会友",
+        "弈友"
+      ],
+      "子": [
+        "糜子",
+        "胄子堂",
+        "一枚种子",
+        "孢子方舟",
+        "子午线",
+        "公子兰",
+        "栀子",
+        "菩提子",
+        "孢子蒴",
+        "子衿",
+        "戥子",
+        "银戥子"
+      ],
+      "思": [
+        "杂思",
+        "覃思",
+        "覃思源",
+        "构思",
+        "思慕",
+        "歧思",
+        "奇思",
+        "疑思录",
+        "思齐",
+        "文思",
+        "思远",
+        "心思"
+      ],
+      "阶": [
+        "松影掠阶",
+        "桐荫映阶",
+        "玉阶廊",
+        "苔阶",
+        "月照苔阶",
+        "阶砌",
+        "阶前月",
+        "阶前柳",
+        "玉阶春晓",
+        "阶上清风",
+        "庭阶生春",
+        "星阶"
+      ]
+    },
+    "literature_phrase_examples": {
+      "返青": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 100246,
+          "context": "不返青丝鞚，虚烧夜烛花。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 245310,
+          "context": "鹤归华表山河在，气返青云雨露全。"
+        }
+      ],
+      "孝思": [
+        {
+          "book": "孟子",
+          "line": 411,
+          "context": "《诗》曰：『永言孝思，孝思维则。"
+        },
+        {
+          "book": "诗经",
+          "line": 1463,
+          "context": "永言孝思，孝思维则。"
+        }
+      ],
+      "孝友": [
+        {
+          "book": "诗经",
+          "line": 949,
+          "context": "张仲孝友。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 4561,
+          "context": "孝友自衷，温文性与。"
+        }
+      ],
+      "尧风": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 42692,
+          "context": "偃武尧风接，崇文汉道恢。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 206612,
+          "context": "何须忧伏腊，千载贺尧风。"
+        }
+      ],
+      "尧阶": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 43509,
+          "context": "荆临章观赵丛台，何如尧阶将禹室。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 176428,
+          "context": "楚泽一为梗，尧阶屡变蓂。"
+        }
+      ],
+      "芥子": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 253602,
+          "context": "但用须弥藏芥子，安知牛迹笑东溟。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 338023,
+          "context": "抛芥子降颠狒狒，折杨枝洒醉猩猩。"
+        }
+      ],
+      "芥舟": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 333304,
+          "context": "晶晃明苔砌，参差绕芥舟。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 323215,
+          "context": "身浮一芥舟，业散千金屠。"
+        }
+      ],
+      "两仪": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 796,
+          "context": "【两仪殿赋柏梁体】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 3741,
+          "context": "一德惟宁两仪泰，三才保合四时邕。"
+        }
+      ],
+      "认同": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 622619,
+          "context": "当身认同归，绝学何外慕。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1607485,
+          "context": "看图寻古迹，听语认同乡。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "返青": [],
+      "孝思": [
+        {
+          "title": "孝思",
+          "pinyin": "xiào sī",
+          "definition": "孝心。《詩經．大雅．下武》：「永言孝思，孝思維則。」《儒林外史》第一五回：「只你一點孝思，就是天地也感格的動了。」",
+          "entry_id": "070270035",
+          "sheet": "1150929辭典匯出",
+          "row": 105743,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "孝友": [
+        {
+          "title": "孝友",
+          "pinyin": "xiào yǒu",
+          "definition": "孝順父母，友愛兄弟。《詩經．小雅．六月》：「侯誰在矣？張仲孝友。」《文選．潘勗．冊魏公九錫文》：「君以溫恭為基，孝友為德。」",
+          "entry_id": "070270037",
+          "sheet": "1150929辭典匯出",
+          "row": 105745,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "尧风": [],
+      "尧阶": [],
+      "芥子": [
+        {
+          "title": "芥子",
+          "pinyin": "jiè zǐ",
+          "definition": "1.芥菜的種子。\n2.佛教用語。佛典中常用罌粟之實來比喻極微小。《維摩詰所說經．卷中》：「以須彌山之高廣內芥子中，無所增減，須彌山王本相如故。」《西遊記》第二二回：「自古道：『遣泰山輕如芥子，攜凡夫難脫紅塵。』」",
+          "entry_id": "056010008",
+          "sheet": "1150929辭典匯出",
+          "row": 89580,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "芥舟": [],
+      "两仪": [],
+      "认同": []
+    },
+    "direct_dictionary": {
+      "返": {
+        "definition": "return, revert to, restore",
+        "mandarin": "fǎn",
+        "official_dictionary": [
+          {
+            "title": "返",
+            "pinyin": "fǎn",
+            "definition": "[動]\n1.回來。如：「流連忘返」、「去而復返」。唐．樓穎〈西施石〉詩：「一去姑蘇不復返，岸旁桃李為誰春。」\n2.歸還。晉．干寶《搜神記》卷四：「俟汝至石頭城，返汝簪。」《聊齋志異．卷九．喬女》：「宰按之，果真，窮治諸無賴，盡返所取。」\n3.折回。如：「迴光返照」。\n4.更換。《呂氏春秋．孝行覽．慎人》：「孔子烈然，返瑟而弦。」",
+            "entry_id": "01639",
+            "sheet": "1150929辭典匯出",
+            "row": 1643,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "青",
+            "pinyin": "jīng",
+            "definition": "參見「青青」(二)條。",
+            "entry_id": "05920",
+            "sheet": "1150929辭典匯出",
+            "row": 5928,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "青青",
+                "pinyin": "jīng jīng",
+                "definition": "草木茂盛的樣子。《詩經．衛風．淇奧》：「瞻彼淇奧，綠竹青青。」宋．范仲淹〈岳陽樓記〉：「岸芷汀蘭，郁郁青青。」也作「菁菁」。",
+                "entry_id": "059200001",
+                "sheet": "1150929辭典匯出",
+                "row": 94282
+              },
+              {
+                "title": "青青",
+                "pinyin": "qīng qīng",
+                "definition": "1.形容草木翠綠的顏色。《文選．古詩十九首．青青河邊草》：「青青河邊草，綿綿思遠道。」《三國演義》第九回：「千里草，何青青！十日卜，不得生！」\n2.形容鬢髮烏黑。宋．朱熹〈和秀野蘄簟之句〉詩：「史君兩鬢尚青青，學道仍拋後院笙。」",
+                "entry_id": "065760148",
+                "sheet": "1150929辭典匯出",
+                "row": 100674
+              }
+            ]
+          },
+          {
+            "title": "青",
+            "pinyin": "qīng",
+            "definition": "[名]\n1.顏色：(1)綠色。唐．劉禹錫〈陋室銘〉：「苔痕上階綠，草色入簾青。」(2)藍色。《荀子．勸學》：「青取之於藍，而青於藍。」(3)黑色。如：「玄青」。\n2.綠色的草木、山脈。如：「踏青」、「萬年青」、「青黃不接」。唐．柳宗元〈始得西山宴游記〉：「縈青繚白，外與天際。」\n3.竹皮。如：「汗青」。\n4.地名簡稱：(1)大陸地區青海省簡稱。如：「青藏鐵路」。(2)青島市簡稱。如：「青鹽鐵路」。\n5.二一四部首之一。\n[形]\n1.綠色的。如：「青山綠水」、「山青水秀」。\n2.藍色的。如：「青天白日」。\n3.黑色的。如：「青布」、「青衣」。唐．李白〈將進酒〉：「君不見高堂明鏡悲白髮，朝如青絲暮成雪。」\n4.年輕的。如：「青年」、「青春」。",
+            "entry_id": "06576",
+            "sheet": "1150929辭典匯出",
+            "row": 6585,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "孝": {
+        "definition": "filial piety, obedience; mourning",
+        "mandarin": "xiào",
+        "official_dictionary": [
+          {
+            "title": "孝",
+            "pinyin": "xiào",
+            "definition": "[動]\n盡心奉養父母。如：「孝順」、「孝敬」。《論語．學而》：「弟子入則孝，出則弟。」\n[形]\n有孝心的。如：「孝子」、「孝女」。\n[名]\n1.善事父母的道理、方法。如：「忠孝傳家」。《孝經．開宗明義章》：「夫孝，德之本也。」\n2.居喪的禮儀。如：「守孝」。《北史．卷二四．崔逞傳》：「後喪母，居喪哀毀骨立。人云：『崔九作孝，風吹即倒。』」\n3.居喪時所穿的素服。如：「戴孝」、「穿孝」。《紅樓夢》第一一五回：「恰又忙著脫孝，家中無人，又叫了賈芸來照應大夫。」\n4.姓。如宋代有孝發。",
+            "entry_id": "07027",
+            "sheet": "1150929辭典匯出",
+            "row": 7036,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "思": {
+        "definition": "think, consider, ponder; final particle",
+        "mandarin": "sī",
+        "official_dictionary": [
+          {
+            "title": "思",
+            "pinyin": "sī",
+            "definition": "[動]\n1.考慮。如：「深思熟慮」、「三思而後行」。《論語．為政》：「學而不思則罔，思而不學則殆。」\n2.想念、懷念。如：「思親」、「思家」。唐．李白〈靜夜思〉詩：「舉頭望明月，低頭思故鄉。」\n3.悲悼。《文選．張華．勵志詩》：「吉士思秋，寔感物化。」\n[名]\n1.心緒、心情。如：「情思」、「愁思」。唐．李白〈宣州謝朓樓餞別校書叔雲〉詩：「俱懷逸興壯思飛，欲上青天覽日月。」\n2.想法、意念。如：「心思」、「文思」。南朝梁．劉勰《文心雕龍．雜文》：「唯士衡運思，理新文敏。」\n3.姓。如明代有思志道。\n[助]\n1.用於句首，無義。《詩經．魯頌．泮水》：「思樂泮水，薄采其芹。」\n2.用於句中，無義。《詩經．大雅．文王有聲》：「無思不服，皇王烝哉。」\n3.用於句末，相當於「啊」。《詩經．周南．漢廣》：「漢有游女，不可求思。」",
+            "entry_id": "09935",
+            "sheet": "1150929辭典匯出",
+            "row": 9949,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "思",
+            "pinyin": "sì",
+            "definition": "(一)[名]1.之讀音。",
+            "entry_id": "09970",
+            "sheet": "1150929辭典匯出",
+            "row": 9983,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "思",
+            "pinyin": "sāi",
+            "definition": "[形]\n䯱思：鬍鬚多的樣子。《集韻．平聲．咍韻》：「䰄，䯱䰄，多鬚貌。或作思。」",
+            "entry_id": "10008",
+            "sheet": "1150929辭典匯出",
+            "row": 10021,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "友": {
+        "definition": "friend, companion; fraternity",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "友",
+            "pinyin": "yǒu",
+            "definition": "[名]\n意氣相投、情誼互通的人。如：「好友」、「益友」、「至友」。《詩經．小雅．常棣》：「雖有兄弟，不如友生。」唐．柳宗元〈師友箴〉：「為人友者，不以道而以利，舉世無友。」\n[動]\n1.兄弟相親相愛。《書經．康誥》：「兄亦不念鞠子哀，大不友于弟。」《南史．卷六〇．傅昭傳》：「昭弟映，字徽遠，三歲而孤。兄弟友睦，修身勵行，非禮不動。」\n2.結交。《史記．卷三七．衛康叔世家》：「鄭伯弟段攻其兄，不勝，亡，而州吁求與之友。」\n3.親愛。《詩經．周南．關雎》：「窈窕淑女，琴瑟友之。」\n[形]\n有友好關係的。如：「友軍」、「友邦」。",
+            "entry_id": "10904",
+            "sheet": "1150929辭典匯出",
+            "row": 10918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "尧": {
+        "definition": "a legendary ancient emperor-sage",
+        "mandarin": "yáo",
+        "related_characters": [
+          {
+            "character": "堯",
+            "relation": "kTraditionalVariant",
+            "definition": "a legendary ancient emperor-sage",
+            "mandarin": "yáo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "阶": {
+        "definition": "stairs, steps; rank, degree",
+        "mandarin": "jiē",
+        "related_characters": [
+          {
+            "character": "階",
+            "relation": "kTraditionalVariant",
+            "definition": "stairs, steps; rank, degree",
+            "mandarin": "jiē"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "芥": {
+        "definition": "mustard plant; mustard; tiny",
+        "mandarin": "jiè",
+        "official_dictionary": [
+          {
+            "title": "芥",
+            "pinyin": "jiè",
+            "definition": "[名]\n1.植物名。十字花科蕓薹屬，「芥菜」之簡稱，參見「芥菜」條。\n2.小草。《左傳．哀公元年》：「其亡也，以民為土芥。」《莊子．逍遙遊》：「覆杯水於坳堂之上，則芥為之舟。」\n[形]\n細小的、微賤的。如：「草芥」、「纖芥」。",
+            "entry_id": "05601",
+            "sheet": "1150929辭典匯出",
+            "row": 5608,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "芥菜",
+                "pinyin": "jiè cài",
+                "definition": "植物名。二年生草本。葉柄肥厚，葉緣有深或淺的缺刻，葉片皺摺。春、夏之交從莖頂抽出花軸，花黃色，在莖頂排成總狀花序。莖葉、供蔬食，種子供榨食用油、磨粉為芥末。原產亞洲，廣泛栽培於世界各地。",
+                "entry_id": "056010012",
+                "sheet": "1150929辭典匯出",
+                "row": 89585
+              },
+              {
+                "title": "草芥",
+                "pinyin": "cǎo jiè",
+                "definition": "小草。比喻輕賤不值得重視的東西。《孟子．離婁上》：「視天下悅而歸己，猶草芥也，惟舜為然。」宋．蘇洵〈六國論〉：「子孫視之不甚惜，舉以予人，如棄草芥。」",
+                "entry_id": "097600095",
+                "sheet": "1150929辭典匯出",
+                "row": 139644
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "子": {
+        "definition": "offspring, child; fruit, seed of; first earthly branch",
+        "mandarin": "zǐ",
+        "official_dictionary": [
+          {
+            "title": "子",
+            "pinyin": "zǐ",
+            "definition": "[名]_x000D_\n1.地支的第一位。_x000D_\n2.時辰名。約當晚上十一點到一點。_x000D_\n3.古時指子女，現專指兒子。如：「四子二女」、「父子」、「獨生子」。_x000D_\n4.後代子孫、子代。如：「絕子絕孫」。《荀子．正論》：「聖王之子也，有天下之後也，埶籍之所在也，天下之宗室也。」晉．石崇〈王明君辭〉：「我本漢家子，將適單于庭。」_x000D_\n5.稚幼的鳥獸。如：「鹿子」、「鶴子」、「不入虎穴，焉得虎子。」《論語．雍也》：「犁牛之子，騂且角。」_x000D_\n6.植物的果實、種子或動物的卵。如：「菜子」、「魚子」、「瓜子」、「蓮子」。_x000D_\n7.對一般人的通稱。如：「小女子」、「無聊男子」。《詩經．邶風．匏有苦葉》：「招招舟子，人涉卬否。」_x000D_\n8.對男子的美稱，多指有學問、道德或地位的人。如：「孔子」、「孟子」。_x000D_\n9.夫婦之間相互的稱呼。如：「內子」、「外子」。_x000D_\n10.稱輩分小、年紀輕的人。如：「子弟」。《論語．述而》：「二三子以我為隱乎？」_x000D_\n11.棋粒。唐．鄭谷〈寄棋客〉詩：「覆圖聞夜雨，下子對秋燈。」宋．蘇軾〈觀棋〉詩：「不聞人聲，時聞落子。紋枰坐對，誰究此味？」《山歌．卷六．棋》：「收子象棋著圍碁。」_x000D_\n12.古代圖書分類的第三部。包括諸子百家著作、技藝、術數等書籍。如：「經、史、子、集。」_x000D_\n13.古代五等爵位的第四等。《禮記．王制》：「王者之制祿爵，公、侯、伯、子、男凡五等。」_x000D_\n14.姓。如商代有子昭。_x000D_\n15.二一四部首之一。_x000D_\n[代]_x000D_\n你。《韓非子．難勢》：「以子之矛陷子之楯何如？」《史記．卷七〇．張儀列傳》：「子亦知子之賤於王乎？」_x000D_\n[形]_x000D_\n1.幼小的。如：「子雞」、「子薑」、「子豬」。_x000D_\n2.和母對稱的。參見「子金」、「子音」等條。_x000D_\n3.派生的、有所屬的。參見「子目」、「子句」等條。_x000D_\n[動]_x000D_\n照顧、撫愛。《禮記．中庸》：「子庶民，來百工也。」唐．柳宗元〈封建論〉：「封建者，必私其土，子其人。」",
+            "entry_id": "09404",
+            "sheet": "1150929辭典匯出",
+            "row": 9418,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "父子",
+                "pinyin": "fù zǐ",
+                "definition": "1.父親與兒子。《易經．序卦》：「有男女然後有夫婦，有夫婦然後有父子。」《三國演義》第六九回：「輅見其父子情切。」\n2.古時稱叔與姪為「父子」。《漢書．卷七一．雋疏于薛平彭傳．疏廣》：「父子並為師傅，朝廷以為榮。」",
+                "entry_id": "018570031",
+                "sheet": "1150929辭典匯出",
+                "row": 38369
+              },
+              {
+                "title": "獨生子",
+                "pinyin": "dú shēng zǐ",
+                "definition": "唯一的兒子，且沒有其他兄弟姐妹的人。如：「他是家裡的獨生子，需獨自承擔起照顧年邁父母的責任。」",
+                "entry_id": "022810108",
+                "sheet": "1150929辭典匯出",
+                "row": 46919
+              },
+              {
+                "title": "絕子絕孫",
+                "pinyin": "jué zǐ jué sūn",
+                "definition": "罵人斷絕子嗣的話。《官場現形記》第二二回：「我想這人，一定不得好死，將來還要絕子絕孫哩！」",
+                "entry_id": "061020120",
+                "sheet": "1150929辭典匯出",
+                "row": 96151
+              },
+              {
+                "title": "菜子",
+                "pinyin": "cài zǐ",
+                "definition": "蔬菜的種子。宋．楊萬里〈夢種菜〉詩：「菜子已抽蝴蝶翅，菊花猶著鬱金裳。」也作「菜籽」。",
+                "entry_id": "097490045",
+                "sheet": "1150929辭典匯出",
+                "row": 139441
+              },
+              {
+                "title": "魚子",
+                "pinyin": "yú zǐ",
+                "definition": "魚卵。唐．皮日休〈奉和魯望漁具十五詠．種魚〉詩：「移土湖岸邊，一半和魚子。」",
+                "entry_id": "116190134",
+                "sheet": "1150929辭典匯出",
+                "row": 161204
+              },
+              {
+                "title": "瓜子",
+                "pinyin": "guā zǐ",
+                "definition": "1.泛稱瓜果的種子。\n2.一種食品。大多以西瓜、倭瓜、南瓜、葵花等的種子，加調味品煮炒、焙製而成。",
+                "entry_id": "041970034",
+                "sheet": "1150929辭典匯出",
+                "row": 70834
+              },
+              {
+                "title": "瓜子",
+                "pinyin": "guā zi",
+                "definition": "伸著兩個指頭戳打。《醒世姻緣傳》第七五回：「我合你贏打瓜子。我輸了，給你一個錢；你輸了，打你一瓜子。」",
+                "entry_id": "0419700391",
+                "sheet": "1150929辭典匯出",
+                "row": 70840
+              },
+              {
+                "title": "蓮子",
+                "pinyin": "lián zǐ",
+                "definition": "「蓮」的堅果，呈橢圓形，種子子葉乳白色。除食用外，尚可入藥。",
+                "entry_id": "035900030",
+                "sheet": "1150929辭典匯出",
+                "row": 63416
+              },
+              {
+                "title": "小女子",
+                "pinyin": "xiǎo nǚ zǐ",
+                "definition": "女性自稱的謙詞。如：「小女子告退。」",
+                "entry_id": "0702202111",
+                "sheet": "1150929辭典匯出",
+                "row": 105263
+              },
+              {
+                "title": "孔子",
+                "pinyin": "kǒng zǐ",
+                "definition": "春秋時孔丘。參見「孔丘」條。",
+                "entry_id": "047040067",
+                "sheet": "1150929辭典匯出",
+                "row": 78049
+              },
+              {
+                "title": "孟子",
+                "pinyin": "mèng zǐ",
+                "definition": "1.戰國時孟軻。參見「孟軻」條。\n2.書名。孟軻撰，由弟子輯錄而成，七篇，十四卷。有漢趙岐注、宋孫奭疏、朱熹集注，與《大學》、《中庸》、《論語》合稱「四書」。",
+                "entry_id": "013330046",
+                "sheet": "1150929辭典匯出",
+                "row": 30370
+              },
+              {
+                "title": "內子",
+                "pinyin": "nèi zǐ",
+                "definition": "1.古代卿大夫的嫡妻。《禮記．曾子問》：「大夫內子有殷事，亦之君所，朝夕否。」漢．鄭玄．注：「內子，大夫妻也。」\n2.稱人的妻。《晏子春秋．內篇．雜下》：「飲酒，酣。公見其妻曰：『此子之內子邪？』晏子對曰：『然！是也。』」\n3.稱謂。對他人稱自己的妻子。唐．權德輿〈七夕見與孫題乞巧文〉詩：「外孫爭乞巧，內子共題文。」也作「內人」。",
+                "entry_id": "029520189",
+                "sheet": "1150929辭典匯出",
+                "row": 55987
+              },
+              {
+                "title": "外子",
+                "pinyin": "wài zǐ",
+                "definition": "1.稱謂。婦人對人自稱其夫。\n2.外婦之子。《宋史．卷三三九．蘇徹傳》：「梁師成方用事，自言為軾外子。」",
+                "entry_id": "113530230",
+                "sheet": "1150929辭典匯出",
+                "row": 158302
+              },
+              {
+                "title": "子弟",
+                "pinyin": "zǐ dì",
+                "definition": "1.後生晚輩。《左傳．襄公十三年》：「我有子弟，子產誨之；我有田疇，子產殖之。」《史記．卷七．項羽本紀》：「且籍與江東子弟八千人渡江而西，今無一人還，縱江東父老憐而王我，我何面目見之？」\n2.從軍的士兵。《史記．卷九二．淮陰侯列傳》：「且三秦王為秦將，將秦子弟數歲矣，所殺亡不可勝計。」唐．元稹〈授王播中書侍郎同平章事使職如故制〉：「昔蕭何用新造之漢，而能調發子弟，完補敗亡。」\n3.尋花問柳的人。元．關漢卿《救風塵》第一折：「自小上花臺做子弟，這汴梁城中有一歌者，乃是宋引章，他一心待嫁我。」《警世通言．卷三〇．金明池吳清逢愛愛》：「有一個多情的女兒，沒興遇著個子弟，不能成就，干折了性命。」\n4.古代稱唱戲的演員。元．白樸《梧桐雨．楔子》：「高力士，你快傳旨排宴，梨園子弟奏樂，寡人消遣咱。」《醒世恆言．卷二〇．張廷秀逃生救父》：「我們紹興孫尚書府中子弟，到南京去做生意。」",
+                "entry_id": "094040022",
+                "sheet": "1150929辭典匯出",
+                "row": 135497
+              },
+              {
+                "title": "子金",
+                "pinyin": "zǐ jīn",
+                "definition": "利息。相對於母財而言。",
+                "entry_id": "094040059",
+                "sheet": "1150929辭典匯出",
+                "row": 135532
+              },
+              {
+                "title": "子音",
+                "pinyin": "zǐ yīn",
+                "definition": "發音時氣流受阻所造成不帶音的噪音。相對於母音而言。如國音字母中之ㄅ、ㄆ、ㄇ、ㄈ等均屬之。也稱為「輔音」、「聲母」。",
+                "entry_id": "094040108",
+                "sheet": "1150929辭典匯出",
+                "row": 135570
+              },
+              {
+                "title": "子目",
+                "pinyin": "zǐ mù",
+                "definition": "一種書籍條例。為總綱內再分出的細目。",
+                "entry_id": "094040013",
+                "sheet": "1150929辭典匯出",
+                "row": 135489
+              }
+            ]
+          },
+          {
+            "title": "子",
+            "pinyin": "zi",
+            "definition": "[綴]\n詞尾：(1)接名詞。如：「桌子」、「筷子」。(2)接動詞。如：「起子」、「拍子」。(3)接形容詞。如：「聾子」、「亂子」。(4)接量詞。如：「兩下子」、「一檔子」。",
+            "entry_id": "09431",
+            "sheet": "1150929辭典匯出",
+            "row": 9445,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "official_dictionary": [
+          {
+            "title": "舟",
+            "pinyin": "zhōu",
+            "definition": "[名]\n1.船。如：「輕舟」、「一葉扁舟」、「逆水行舟」。《詩經．邶風．二子乘舟》：「二子乘舟，汎汎其景。」\n2.姓。如春秋時虢國有舟之僑。\n3.二一四部首之一。\n[動]\n乘船。《禮記．祭義》：「壹舉足而不敢忘父母，是故道而不徑，舟而不游。」",
+            "entry_id": "07735",
+            "sheet": "1150929辭典匯出",
+            "row": 7746,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "两": {
+        "definition": "two, both, pair, couple; ounce",
+        "mandarin": "liǎng",
+        "related_characters": [
+          {
+            "character": "两",
+            "relation": "kTraditionalVariant",
+            "definition": "two, both, pair, couple; ounce",
+            "mandarin": "liǎng"
+          },
+          {
+            "character": "兩",
+            "relation": "kTraditionalVariant",
+            "definition": "two, both, pair, couple; ounce",
+            "mandarin": "liǎng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "两",
+            "pinyin": null,
+            "definition": "「兩」的異體字。",
+            "entry_id": "03666-2",
+            "sheet": "1150929辭典匯出",
+            "row": 64338,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "仪": {
+        "definition": "ceremony, rites gifts; admire",
+        "mandarin": "yí",
+        "related_characters": [
+          {
+            "character": "仪",
+            "relation": "kTraditionalVariant",
+            "definition": "ceremony, rites gifts; admire",
+            "mandarin": "yí"
+          },
+          {
+            "character": "儀",
+            "relation": "kTraditionalVariant",
+            "definition": "ceremony, rites gifts; admire",
+            "mandarin": "yí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "仪",
+            "pinyin": null,
+            "definition": "「儀」的異體字。",
+            "entry_id": "10550-1",
+            "sheet": "1150929辭典匯出",
+            "row": 148441,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "认": {
+        "definition": "recognize, know, understand",
+        "mandarin": "rèn",
+        "related_characters": [
+          {
+            "character": "認",
+            "relation": "kTraditionalVariant",
+            "definition": "recognize, know, understand",
+            "mandarin": "rèn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "同",
+            "pinyin": "tóng",
+            "definition": "[動]\n1.會合、聚集。《說文解字．𠔼部》：「同，合會也。」如：「會同」。唐．錢起〈送鍾評事應宏詞下第東歸〉詩：「勸君稍盡離筵酒，千里佳期難再同。」\n2.統一、齊一。《書經．舜典》：「協時月正日，同律度量衡。」宋．陸游〈示兒〉詩：「死去元知萬事空，但悲不見九州同。」\n3.一齊分享、從事等。如：「同甘苦，共患難。」《孫子．謀攻》：「不知三軍之事，而同三軍之政者，則軍士惑矣。」\n4.贊成。如：「贊同」、「同意」。\n[形]\n一樣的。如：「同類」、「相同」、「同工同酬」。\n[副]\n一起、共同。如：「有福同享，有難同當。」唐．李白〈長干行〉二首之一：「同居長干里，兩小無嫌猜。」\n[連]\n和、與、跟。如：「有事同你商量。」、「我同他一起去看電影。」\n[名]\n1.和諧、和平。如：「促進世界大同」。《禮記．禮運》：「是故謀閉而不興，盜竊亂賊而不作，故外戶而不閉，是謂大同。」\n2.契約。如：「合同」。\n3.姓。如唐代有同谷。",
+            "entry_id": "02883",
+            "sheet": "1150929辭典匯出",
+            "row": 2889,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "同",
+            "pinyin": "tòng",
+            "definition": "[名]\n巷弄、小街道。如：「胡同」。",
+            "entry_id": "02912",
+            "sheet": "1150929辭典匯出",
+            "row": 2918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "返青",
+      "decision": "keep",
+      "reason": "是草木恢复青绿、生长复苏的自然用语，动作与状态关系明确，名称简洁且有鲜明的生命物象。所给诗句中的连续字形并非该整词用例，但不影响其现代词义成立；与已有含“青”名称不构成近义变体。"
+    },
+    {
+      "name": "孝思",
+      "decision": "keep",
+      "reason": "整词本义为孝心，词典与诗文语境相互印证，不是将“孝”与“思考”机械拼合。作为凝练的情感名词，语义完整，有古雅辨识度，不属于完整判断句或空泛口号。"
+    },
+    {
+      "name": "孝友",
+      "decision": "keep",
+      "reason": "是孝顺父母、友爱兄弟的真实古语，“友”在此指兄弟相亲相爱，不能解释成一般朋友。整词凝练自然，可形成有辨识度的双字名称；与“孝思”分别表达亲属伦理行为和孝心，并非仅换近义配字。"
+    },
+    {
+      "name": "尧风",
+      "decision": "keep",
+      "reason": "指尧的遗风、德政风范，所给诗句支持这一完整词义，人物与风范的修饰关系自然。名称凝练，具有明确的古典指向；与“淑风”等虽有德化语义交集，但尧这一特定人物指向使其不属于单纯近义替换。"
+    },
+    {
+      "name": "尧阶",
+      "decision": "keep",
+      "reason": "可指尧庭的台阶，所给“尧阶屡变蓂”具有相应的庭阶典故语境，专名关系有依据。整名形成具体、凝练的古典空间意象，不需把“阶”牵强解释成成功或晋升；与已有庭阶名称不是同义换字。"
+    },
+    {
+      "name": "芥子",
+      "decision": "keep",
+      "reason": "本义为芥菜种子，也有佛典中表极微小的稳定用法，整词自然且物象清楚。名称短小，兼具种子形象与微小尺度的辨识度，不因其为普通自然物名称而否决；与已有种子类名称不构成简单近义变体。"
+    },
+    {
+      "name": "芥舟",
+      "decision": "keep",
+      "reason": "是以小草为舟、形容极小舟船的古典意象，“芥”的小草及细小义均有依据，诗文用例也支持整词成立。组合紧凑自然，与“芥子”的种子意象不同，与已有舟类名称亦非仅换近义修饰字。"
+    },
+    {
+      "name": "两仪",
+      "decision": "keep",
+      "reason": "是指天地或阴阳的既有哲学词语，整词意义明确，不能按“两种礼仪”逐字误解。名称凝练、概念辨识度强，不是通用产品服务类别，也与已有含“仪”名称的仪态、礼仪等意象不同。"
+    },
+    {
+      "name": "认同",
+      "decision": "keep",
+      "reason": "是表示认可、接受或归属感的自然词语，具有明确的抽象语义，可独立形成简洁名称，不构成完整价值判断或口号。所给古诗片段不足以证明现代整词用法，但现代常用词义本身清楚；与“一同”“同欣”等关系不同，不属近义变体。"
+    }
+  ]
+}

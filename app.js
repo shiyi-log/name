@@ -56,7 +56,6 @@ const state = {
   totalCharacters: 0,
   charactersLoading: false,
   renderedCharacterCount: 0,
-  characterColumns: [],
   characterQuery: "",
   characterTier: "all",
   initialCharacter: "",
@@ -180,47 +179,6 @@ function layoutCandidateCards() {
 
 document.fonts.ready.then(scheduleCandidateLayout);
 
-let characterLayoutFrame = 0;
-let characterLayoutStart = 0;
-function scheduleCharacterLayout(startIndex = 0) {
-  characterLayoutStart = characterLayoutFrame ? Math.min(characterLayoutStart, startIndex) : startIndex;
-  if (characterLayoutFrame) return;
-  characterLayoutFrame = window.requestAnimationFrame(() => {
-    characterLayoutFrame = 0;
-    const start = characterLayoutStart;
-    characterLayoutStart = 0;
-    layoutCharacterCards(start);
-  });
-}
-
-function layoutCharacterCards(startIndex = 0) {
-  const grid = elements.characterGrid;
-  if (state.view !== "characters" || grid.clientWidth === 0) return;
-  const cards = [...grid.children];
-  const style = window.getComputedStyle(grid);
-  const columns = style.gridTemplateColumns.split(" ").length;
-  const columnGap = parseFloat(style.columnGap) || 0;
-  const rowGap = parseFloat(style.rowGap) || 0;
-  const cardWidth = (grid.clientWidth - columnGap * (columns - 1)) / columns;
-  if (state.characterLayoutWidth !== grid.clientWidth || state.characterColumns.length !== columns) {
-    startIndex = 0;
-    state.characterLayoutWidth = grid.clientWidth;
-    state.characterColumns = Array(columns).fill(0);
-  }
-  const columnHeights = state.characterColumns;
-
-  for (let index = startIndex; index < cards.length; index += 1) {
-    const card = cards[index];
-    card.style.width = `${cardWidth}px`;
-    const column = columnHeights.indexOf(Math.min(...columnHeights));
-    card.style.transform = `translate(${column * (cardWidth + columnGap)}px, ${columnHeights[column]}px)`;
-    columnHeights[column] += card.getBoundingClientRect().height + rowGap;
-  }
-  grid.style.height = `${Math.max(0, ...columnHeights) - (cards.length ? rowGap : 0) + 18}px`;
-}
-
-window.addEventListener("resize", scheduleCharacterLayout);
-document.fonts.ready.then(scheduleCharacterLayout);
 
 function escapeHtml(value) {
   return String(value)
@@ -398,9 +356,8 @@ async function refreshCharacters() {
   state.totalCharacters = 0;
   state.charactersLoading = false;
   state.renderedCharacterCount = 0;
-  state.characterColumns = [];
   elements.characterGrid.replaceChildren();
-  elements.characterGrid.style.height = "0px";
+  elements.characterGrid.style.removeProperty("height");
   elements.characterLoadStatus.textContent = "正在加载…";
   await loadMoreCharacters(requestId, 0, true);
 }
@@ -605,7 +562,6 @@ function renderCandidateView({ appendFrom = null } = {}) {
 
 function renderCharacterView() {
   const items = state.filteredCharacters;
-  const startIndex = state.renderedCharacterCount;
   elements.resultsTitle.textContent = "完整汉字库";
   elements.resultsCount.textContent = `${state.totalCharacters.toLocaleString("zh-CN")} 个字库记录`;
   elements.characterGrid.insertAdjacentHTML("beforeend", items.slice(state.renderedCharacterCount)
@@ -624,7 +580,6 @@ function renderCharacterView() {
     button.classList.toggle("is-selected", selected);
     button.setAttribute("aria-pressed", String(selected));
   });
-  scheduleCharacterLayout(startIndex);
 }
 
 function setView(view) {

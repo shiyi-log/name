@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import difflib
 import functools
 import hashlib
 import json
@@ -99,9 +100,18 @@ def comparison_names(names: list[str], records: list, decisions: dict, per_chara
             group = related.setdefault(character, [])
             if name not in group:
                 group.append(name)
-    target_characters = [set(name) for name in names]
-    return {character: sorted(group, key=lambda name: -max(
-        len(set(name) & target) for target in target_characters))[:per_character]
+    target_characters = [(name, set(name)) for name in names]
+
+    @functools.lru_cache(maxsize=None)
+    def similarity(name: str) -> tuple:
+        # Equal character overlap must not let an earlier, reordered name hide
+        # a closer phrase expansion at the comparison limit. This ranks context
+        # only; similarity never decides whether a candidate is acceptable.
+        return max((len(set(name) & characters),
+                    difflib.SequenceMatcher(None, name, target, autojunk=False).ratio())
+                   for target, characters in target_characters)
+
+    return {character: sorted(group, key=similarity, reverse=True)[:per_character]
         for character, group in related.items()}
 
 
@@ -216,7 +226,16 @@ def select_review_names(records: list, reviewed: set, batch_size: int, shard_ind
             and int.from_bytes(hashlib.sha256(record[0].encode()).digest()[:8], 'big') % shard_count == shard_index][:batch_size]
 
 
-def run(batch_size: int, max_batches: int, provider_id: str | None, shard_index: int = 0, shard_count: int = 1) -> None:
+def select_similarity_recheck_names(records: list, decisions: dict, rechecked: set, batch_size: int) -> list[str]:
+    kept = {record[0] for record in records if decisions.get(record[0]) == 'keep'}
+    candidates = [name for name in kept if len(name) >= 3 and name not in rechecked
+                  and any(name[:index] + name[index + 1:] in kept for index in range(len(name)))]
+    # Similarity only schedules independent review; natural phrase expansions
+    # can be distinct and must never be rejected by string matching alone.
+    return sorted(candidates, key=lambda name: hashlib.sha256(name.encode()).hexdigest())[:batch_size]
+
+
+def run(batch_size: int, max_batches: int, provider_id: str | None, shard_index: int = 0, shard_count: int = 1, similarity_recheck: bool = False) -> None:
     provider = api_server.selected_ai_provider(provider_id)
     if provider is None:
         raise RuntimeError('没有可用复核服务商')
@@ -227,8 +246,11 @@ def run(batch_size: int, max_batches: int, provider_id: str | None, shard_index:
         with sqlite3.connect(api_server.DB_PATH, timeout=30) as connection:
             ensure_review_table(connection)
             decisions = dict(connection.execute('SELECT name,decision FROM candidate_quality_reviews ORDER BY rowid'))
+            rechecked = {row[0] for row in connection.execute(
+                "SELECT DISTINCT name FROM candidate_quality_reviews WHERE review_id LIKE '%-crossbatch-%'")} if similarity_recheck else set()
         records = load_character_names()
-        names = select_review_names(records, set(decisions), batch_size, shard_index, shard_count)
+        names = (select_similarity_recheck_names(records, decisions, rechecked, batch_size) if similarity_recheck
+                 else select_review_names(records, set(decisions), batch_size, shard_index, shard_count))
         if not names:
             if max_batches:
                 return
@@ -236,17 +258,19 @@ def run(batch_size: int, max_batches: int, provider_id: str | None, shard_index:
             continue
         try:
             decisions, prompt = request_review(names, provider, comparison_names(names, records, decisions))
-            review_id = time.strftime('%Y%m%dT%H%M%S') + '-' + uuid.uuid4().hex[:8]
+            review_id = time.strftime('%Y%m%dT%H%M%S') + ('-crossbatch-' if similarity_recheck else '-') + uuid.uuid4().hex[:8]
             evidence = {'review_id': review_id, 'model': provider['model'],
                 'shard_index': shard_index, 'shard_count': shard_count,
                 'quality_status': 'independent_model_screen_not_final_acceptance',
+                'purpose': 'cross_batch_similarity_recheck' if similarity_recheck else 'initial_independent_review',
                 'input': prompt, 'reviews': decisions}
             path = output / (review_id + '.json')
             path.write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + '\n')
             save_reviews(api_server.DB_PATH, decisions, review_id, provider['model'])
             progress = review_progress(api_server.DB_PATH, load_character_names(),
                 api_server.load_json(api_server.CHARACTERS_PATH), 500)
-            progress_filename = ('character_quality_review_progress.json' if shard_count == 1
+            progress_filename = ('character_similarity_review_progress.json' if similarity_recheck else
+                                'character_quality_review_progress.json' if shard_count == 1
                                  else f'character_quality_review_progress_{shard_index}.json')
             progress_path = ROOT / 'data' / progress_filename
             progress_path.with_suffix('.tmp').write_text(json.dumps(progress, ensure_ascii=False, indent=2))
@@ -265,9 +289,12 @@ if __name__ == '__main__':
     parser.add_argument('--provider-id', default=None)
     parser.add_argument('--shard-index', type=int, default=0)
     parser.add_argument('--shard-count', type=int, default=1)
+    parser.add_argument('--similarity-recheck', action='store_true', help='Recheck kept names with a shorter kept peer; resume from review evidence')
     args = parser.parse_args()
     if not 1 <= args.batch_size <= 48 or args.max_batches < 0:
         parser.error('batch-size must be 1..48; max-batches must be nonnegative')
     if args.shard_count < 1 or not 0 <= args.shard_index < args.shard_count:
         parser.error('invalid review shard range')
-    run(args.batch_size, args.max_batches, args.provider_id, args.shard_index, args.shard_count)
+    if args.similarity_recheck and args.shard_count != 1:
+        parser.error('similarity recheck uses one worker to avoid overlapping rechecks')
+    run(args.batch_size, args.max_batches, args.provider_id, args.shard_index, args.shard_count, args.similarity_recheck)

@@ -851,6 +851,9 @@ def _read_responses_stream(response) -> dict:
                 data_lines.clear()
                 if event.get("type") == "response.completed":
                     completed = event.get("response")
+                    if not isinstance(completed, dict):
+                        raise RuntimeError("AI Responses 流未返回完成事件")
+                    return completed
                 elif event.get("type") == "response.failed":
                     raise RuntimeError("AI Responses 流式请求失败")
             continue

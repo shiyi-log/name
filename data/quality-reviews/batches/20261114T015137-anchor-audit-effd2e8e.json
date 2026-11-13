@@ -1,0 +1,1299 @@
+{
+  "review_id": "20261114T015137-anchor-audit-effd2e8e",
+  "model": "gpt-6.1-sol",
+  "purpose": "inspect_large_anchor_batch_quality",
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "anchor": "坑",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "梅坑",
+      "龙坑",
+      "西坑",
+      "北坑",
+      "南坑",
+      "东坑",
+      "坑中见月",
+      "沙坑湾",
+      "金坑山",
+      "九坑山",
+      "九坑",
+      "坑中月",
+      "坑井",
+      "坑口",
+      "坑道",
+      "银坑",
+      "金坑",
+      "沙坑"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "楪中见月",
+        "盅中月",
+        "碟中月",
+        "箩中月",
+        "杯中月",
+        "硔中月",
+        "井中月",
+        "矿中月",
+        "埙中月",
+        "扇中月",
+        "瓢中月",
+        "雾中月"
+      ],
+      "山": [
+        "九嶷山",
+        "九嶷山居",
+        "崞山见月",
+        "山麇见月",
+        "黛山见月",
+        "埙中见山",
+        "岐山见月",
+        "潭中见山",
+        "前山见月",
+        "山城见月",
+        "昽山见月",
+        "西山见月"
+      ],
+      "见": [
+        "楪中见月",
+        "鹮见月",
+        "翡见月",
+        "崞山见月",
+        "凉云见月",
+        "山麇见月",
+        "矿中见海",
+        "黛山见月",
+        "埙中见山",
+        "萱林见月",
+        "岐山见月",
+        "邨间见月"
+      ],
+      "九": [
+        "九嶷山",
+        "九嶷山居",
+        "九垓",
+        "九嶷",
+        "九旒",
+        "九隩",
+        "九皋",
+        "九仞",
+        "九逵",
+        "九和",
+        "九如",
+        "九安"
+      ],
+      "金": [
+        "金乌",
+        "金镞",
+        "蹙金",
+        "金镯",
+        "金镳",
+        "钨金",
+        "金珀",
+        "寸金",
+        "金猊",
+        "金铚",
+        "金鹂",
+        "金荚"
+      ],
+      "南": [
+        "迦南",
+        "南埼",
+        "南斗",
+        "南衡",
+        "司南",
+        "南溟",
+        "图南",
+        "终南",
+        "岭南",
+        "南星",
+        "南枝",
+        "指南"
+      ],
+      "龙": [
+        "鼍龙",
+        "龙虺",
+        "蛰龙",
+        "龙脊",
+        "螭龙",
+        "蟠龙",
+        "蛟龙",
+        "龙湫",
+        "应龙",
+        "龙艘",
+        "龙骧",
+        "夔龙"
+      ],
+      "中": [
+        "楪中见月",
+        "盅中月",
+        "碟中月",
+        "箩中月",
+        "杯中月",
+        "硔中月",
+        "井中月",
+        "矿中月",
+        "埙中月",
+        "扇中月",
+        "瓢中月",
+        "雾中月"
+      ],
+      "道": [
+        "烤道",
+        "币道",
+        "商道",
+        "恕道",
+        "道合",
+        "闻道",
+        "敩道",
+        "弈道",
+        "直道",
+        "砼道",
+        "琴道",
+        "道心"
+      ],
+      "梅": [
+        "梅萼",
+        "蜡梅",
+        "梅斋",
+        "黄梅",
+        "咏梅",
+        "冬梅",
+        "梅醋",
+        "梅序",
+        "梅知",
+        "梅川",
+        "梅境",
+        "梅信"
+      ],
+      "北": [
+        "北斗",
+        "北辰",
+        "北岸",
+        "北野",
+        "北川",
+        "北原",
+        "北望",
+        "北行",
+        "北风",
+        "朔北",
+        "北垠",
+        "北罡"
+      ],
+      "口": [
+        "口碑",
+        "口福",
+        "谷口",
+        "湖口",
+        "开口",
+        "口信",
+        "口弦",
+        "口彩",
+        "渡口",
+        "风口",
+        "碶口",
+        "岙口"
+      ],
+      "湾": [
+        "龙湾",
+        "涡湾",
+        "港湾",
+        "海湾",
+        "湾岸",
+        "湾光",
+        "湾舟",
+        "汭湾",
+        "茳湾",
+        "河湾",
+        "山湾",
+        "月湾"
+      ],
+      "井": [
+        "井中月",
+        "井然",
+        "井泉",
+        "井田",
+        "藻井",
+        "井渫",
+        "天井",
+        "井源",
+        "井养",
+        "市井星河",
+        "深井长绠"
+      ],
+      "银": [
+        "银鲳",
+        "银梭",
+        "银篦",
+        "银舟",
+        "银桥",
+        "银杉",
+        "银帆",
+        "银露",
+        "银岚",
+        "银涛",
+        "银棠",
+        "银辉"
+      ],
+      "东": [
+        "东壁",
+        "东望",
+        "向东",
+        "东行",
+        "东禾",
+        "东厢",
+        "东溟",
+        "东岙",
+        "东陞",
+        "傃东",
+        "东升",
+        "东崦"
+      ],
+      "沙": [
+        "黄沙",
+        "沙鸥",
+        "沙蝎",
+        "沙碛",
+        "沙鸻",
+        "白沙鸥",
+        "驼鸣沙",
+        "平沙无垠",
+        "鹬落平沙",
+        "牥渡流沙"
+      ],
+      "西": [
+        "西山见月",
+        "西望",
+        "西行",
+        "西风",
+        "西岭",
+        "西野",
+        "西原",
+        "西成",
+        "西陆",
+        "西山晴",
+        "西岭春",
+        "西风暖"
+      ]
+    },
+    "literature_phrase_examples": {
+      "梅坑": [],
+      "龙坑": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 250088,
+          "context": "香匳扃凤诏，朱篆动龙坑。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 329906,
+          "context": "万卷祖龙坑外物，一泓孙楚耳中泉。"
+        }
+      ],
+      "西坑": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 670989,
+          "context": "【次韵常元明西坑见寄二首  其一】"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 670991,
+          "context": "西坑只在乱山间，寻得仇池十九泉。"
+        }
+      ],
+      "北坑": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 93083,
+          "context": "人非西喻蜀，兴在北坑赵。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1515882,
+          "context": "【北坑拜扫有感】"
+        }
+      ],
+      "南坑": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 100978,
+          "context": "【送施景仁太博提点江南坑冶】"
+        },
+        {
+          "book": "太平广记",
+          "line": 605,
+          "context": "大江扶犂耕亦自不成反反亦无所成敦怒谓璞曰卿命尽㡬何璞曰下官命尽今日敦诛璞江水暴上市璞尸出城南坑见璞家载棺器及送终之具已在坑侧两松𣗳间上有鹊巢璞逆报家书所言也谓伍伯曰吾年十三时于栅塘脱袍与汝吾命应在汝手中可用吾刀伍伯感昔念惠衔"
+        }
+      ],
+      "东坑": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 345755,
+          "context": "石桥高思在，且为看东坑。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1479672,
+          "context": "骏马却还国西域，病鸱堕落屋东坑。"
+        }
+      ],
+      "坑中见月": [],
+      "沙坑湾": [],
+      "金坑山": [],
+      "九坑山": [],
+      "九坑": [
+        {
+          "book": "楚辞",
+          "line": 270,
+          "context": "吾与君兮齐速，导帝之兮九坑"
+        }
+      ],
+      "坑中月": [],
+      "坑井": [],
+      "坑口": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 441226,
+          "context": "【辛酉憩刀坑口】"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 441334,
+          "context": "【八月十四日夜刀坑口对月奉寄王子难子闻适用】"
+        }
+      ],
+      "坑道": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1068310,
+          "context": "【桑茶坑道中八首  其一】"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1068315,
+          "context": "【桑茶坑道中八首  其二】"
+        }
+      ],
+      "银坑": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 222994,
+          "context": "日暖提筐依茗树，天阴把酒入银坑。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 25135,
+          "context": "冯君夙驾一何速，捧檄银坑按辛谷。"
+        }
+      ],
+      "金坑": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 436608,
+          "context": "狂卒猝起金坑西，胁从数百马百蹄。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1057203,
+          "context": "金坑津头看韶石，十十五五不整齐。"
+        }
+      ],
+      "沙坑": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 134848,
+          "context": "怅望沙坑须会到。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 766201,
+          "context": "长乐沙坑郑了然，不依本分要参禅。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "梅坑": [],
+      "龙坑": [],
+      "西坑": [],
+      "北坑": [],
+      "南坑": [],
+      "东坑": [],
+      "坑中见月": [],
+      "沙坑湾": [],
+      "金坑山": [],
+      "九坑山": [],
+      "九坑": [],
+      "坑中月": [],
+      "坑井": [],
+      "坑口": [],
+      "坑道": [
+        {
+          "title": "坑道",
+          "pinyin": "kēng dào",
+          "definition": "地面以下的通道，有天然與人為兩種。",
+          "entry_id": "045490004",
+          "sheet": "1150929辭典匯出",
+          "row": 76742,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "银坑": [],
+      "金坑": [],
+      "沙坑": [
+        {
+          "title": "沙坑",
+          "pinyin": "shā kēng",
+          "definition": "1.田徑場上填滿細沙的坑地，一般作為跳遠運動的練習或比賽場地。如：「跳遠沙坑」。\n2.高爾夫球場的障礙設施。如：「障礙沙坑」。\n3.鋪上細沙的坑地，供兒童玩耍的場地。如：「自從後院沙坑弄好以後，弟弟每天一睡醒，就吵著媽媽到後院陪他玩沙。」",
+          "entry_id": "0878300621",
+          "sheet": "1150929辭典匯出",
+          "row": 127254,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "梅": {
+        "definition": "plums; prunes; surname",
+        "mandarin": "méi",
+        "official_dictionary": [
+          {
+            "title": "梅",
+            "pinyin": "méi",
+            "definition": "[名]\n1.植物名。薔薇科李屬，落葉喬木。性耐寒。葉卵形，先端尾狀漸尖，鋸齒緣。早春開花，花單生或二朵聚生，花瓣五片，色紅或白，芳香。核果近球形，外被細毛，味酸，可食。各地均有栽培。\n2.姓。宋代有梅堯臣，明代有梅鼎祚。",
+            "entry_id": "01118",
+            "sheet": "1150929辭典匯出",
+            "row": 1120,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "坑": {
+        "definition": "pit, hole; bury, trap; harry",
+        "mandarin": "kēng",
+        "official_dictionary": [
+          {
+            "title": "坑",
+            "pinyin": "kēng",
+            "definition": "[名]\n1.地面凹陷的地方。如：「泥坑」、「彈坑」、「沙坑」、「坑坑洞洞」。\n2.地洞、地道。如：「礦坑」、「坑道」。《舊唐書．卷四八．食貨志上》：「其天下自五嶺以北，見採銀坑，並宜禁斷。」\n3.俗稱廁所。如：「茅坑」、「糞坑」、「登坑」。\n[動]\n1.活埋。如：「坑殺」、「焚書坑儒」。\n2.陷害、欺騙。如：「坑人」、「坑害」。《紅樓夢》第九三回：「我並沒得罪人，為什麼這麼坑我？」",
+            "entry_id": "04549",
+            "sheet": "1150929辭典匯出",
+            "row": 4556,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "龙": {
+        "definition": "dragon; symbolic of emperor",
+        "mandarin": "lóng",
+        "related_characters": [
+          {
+            "character": "龍",
+            "relation": "kTraditionalVariant",
+            "definition": "dragon; Kangxi radical 212",
+            "mandarin": "lóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "西": {
+        "definition": "west(ern); westward; occident; Kangxi radical 146",
+        "mandarin": "xī",
+        "official_dictionary": [
+          {
+            "title": "西",
+            "pinyin": "xī",
+            "definition": "[名]\n1.方位名。為日落的一方，與「東」相對。如：「由西往東」。\n2.稱歐美西方國家。如：「中西合併」。\n3.西班牙的簡稱。\n4.姓。如明代有西鳴岐。\n[形]\n1.西邊的。如：「日落西山」。\n2.西方國家的、歐美國家的。如：「西服」、「西餐」、「西裝」、「西醫」。",
+            "entry_id": "06734",
+            "sheet": "1150929辭典匯出",
+            "row": 6743,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "北": {
+        "definition": "north; northern; northward",
+        "mandarin": "běi",
+        "official_dictionary": [
+          {
+            "title": "北",
+            "pinyin": "bò",
+            "definition": "(一)之讀音。",
+            "entry_id": "00119",
+            "sheet": "1150929辭典匯出",
+            "row": 120,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "北",
+            "pinyin": "běi",
+            "definition": "[名]\n1.方位名。與「南」相對。如：「東西南北」、「漠北」。\n2.敗逃的軍隊。漢．李陵〈答蘇武書〉：「斬將搴旗，追奔逐北。」\n[形]\n在北方或從北來的。如：「北方」、「北國」、「北風」。《詩經．邶風．北風》：「北風其涼，雨雪其雱。」\n[動]\n1.向北行。《呂氏春秋．孟春紀．孟春》：「東風解凍，蟄蟲始振，魚上冰，獺祭魚，候鴈北。」\n2.失敗、敗逃。如：「敗北」。《韓非子．五蠹》：「魯人從君戰，三戰三北。」\n[副]\n向北，表示行動的方向。如：「北上」、「北征」。晉．陸機〈漢高祖功臣頌〉：「京索既扼，引師北討。」",
+            "entry_id": "00164",
+            "sheet": "1150929辭典匯出",
+            "row": 165,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "北",
+            "pinyin": "bèi",
+            "definition": "[動]\n違反、背叛。通「背」。《說文解字．北部》：「北，乖也，从二人相背也。」《戰國策．齊策六》：「食人炊骨，士無反北之心，是孫臏、吳起之兵也。」",
+            "entry_id": "00166",
+            "sheet": "1150929辭典匯出",
+            "row": 167,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "南": {
+        "definition": "south; southern part; southward",
+        "mandarin": "nán",
+        "official_dictionary": [
+          {
+            "title": "南",
+            "pinyin": "ná",
+            "definition": "參見「南無」條。",
+            "entry_id": "02917",
+            "sheet": "1150929辭典匯出",
+            "row": 2923,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "南無",
+                "pinyin": "ná mó",
+                "definition": "佛教用語。梵語Namas的音譯。為敬禮的意思。但在中國常被誤解為歸依的意思。《妙法蓮華經》卷一：「我聞聖師子，深淨微妙音，喜稱南無佛。」宋．蘇軾〈阿彌陀佛贊〉：「口誦南無阿彌陀，如日出地萬國曉。」",
+                "entry_id": "029170001",
+                "sheet": "1150929辭典匯出",
+                "row": 55467
+              }
+            ]
+          },
+          {
+            "title": "南",
+            "pinyin": "nán",
+            "definition": "[名]\n1.方位名。與「北」相對。如：「坐北朝南」、「大江南北」。《詩經．小雅．何人斯》：「胡不自南？」\n2.南方的樂曲。《禮記．文王世子》：「胥鼓南。」漢．鄭玄．注：「南，南夷之樂也。」\n3.姓。如唐代有南霽雲。\n[動]\n向南行、向南移動。《周禮．地官．大司徒》：「日南則景短，多暑。」《宋史．卷四二八．道學傳二．楊時傳》：「其歸也，顥目送之曰：『吾道南矣！』」\n[形]\n南邊的。如：「南岸」、「南極」。《陳書．卷二一．王固傳》：「魏人以南人嗜魚，大設罟網。」",
+            "entry_id": "02979",
+            "sheet": "1150929辭典匯出",
+            "row": 2986,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "东": {
+        "definition": "east, eastern, eastward",
+        "mandarin": "dōng",
+        "related_characters": [
+          {
+            "character": "東",
+            "relation": "kTraditionalVariant",
+            "definition": "east, eastern, eastward",
+            "mandarin": "dōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "official_dictionary": [
+          {
+            "title": "中",
+            "pinyin": "zhōng",
+            "definition": "[名]\n1.距離四方或兩端相等的部位。如：「居中」、「中央」、「日正當中」。\n2.內、裡面。如：「水中」、「夢中」、「心中」。\n3.泛指某一時期以內。如：「一年之中」、「晉太元中」。\n4.中國的簡稱。如：「古今中外」。\n5.姓。如漢代有中京。\n[形]\n1.居間介紹、連絡的。如：「中人」。\n2.居於高低、大小、好壞之間的。如：「中級」、「中型」、「中等」。\n3.半。如：「中夜」、「中途」。\n[副]\n1.正好。如：「適中」。\n2.表示動作正在進行。如：「事情正在交涉中。」",
+            "entry_id": "08130",
+            "sheet": "1150929辭典匯出",
+            "row": 8144,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "中",
+            "pinyin": "zhòng",
+            "definition": "[動]\n1.達到要點。《論語．子路》：「刑罰不中，則民無所錯手足。」《漢書．卷一〇．成帝紀》：「朕涉道日寡，舉錯不中。」\n2.合、正對上。如：「中規中矩」。《左傳．定公元年》：「未嘗不中吾志也。」《戰國策．西周策》：「去柳葉者百步而射之，百發百中。」\n3.遭受、感染。如：「中風」、「中毒」。\n4.得。如：「中獎」、「中籤」、「中選」。\n5.考取。如：「范進中舉」、「考中大學」。《儒林外史》第二回：「這王大老爺，就是前科新中的。」",
+            "entry_id": "08150",
+            "sheet": "1150929辭典匯出",
+            "row": 8164,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "沙": {
+        "definition": "sand, gravel, pebbles; granulated",
+        "mandarin": "shā",
+        "official_dictionary": [
+          {
+            "title": "沙",
+            "pinyin": "shā",
+            "definition": "[名]\n1.細碎的石粒。如：「風沙」、「泥沙」、「飛沙走石」。也稱為「沙子」。\n2.水邊的土地。《詩經．大雅．鳧鷖》：「鳧鷖在沙，公尸來燕來宜。」漢．毛亨．傳：「沙，水旁也。」\n3.細碎而呈顆粒狀的東西。如：「豆沙」、「金沙」、「鐵沙」。\n4.姓。如宋代有沙世堅。\n[副]\n聲音嘶啞。如：「沙啞」。《周禮．天官．內饔》：「鳥皫色而沙鳴。」．漢．鄭玄．注：「沙，澌也。」\n[形]\n1.瓜果過度成熟，使肉質鬆散而呈微粒。如：「沙瓤的西瓜。」\n2.粗糙呈顆粒狀的。如：「沙紙」。宋．陸游《老學庵筆記》卷六：「沙糖，中國本無之。唐太宗時，外國貢至。」\n[助]\n語尾助詞。同「唦」。相當於「啊」。元．石君寶《曲江池》第一折：「不因你個小名兒沙，他怎肯誤入桃源？」",
+            "entry_id": "08783",
+            "sheet": "1150929辭典匯出",
+            "row": 8797,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "湾": {
+        "definition": "bay, cove, inlet, bend of stream",
+        "mandarin": "wān",
+        "related_characters": [
+          {
+            "character": "湾",
+            "relation": "kTraditionalVariant",
+            "definition": "bay, cove, inlet, bend of stream",
+            "mandarin": "wān"
+          },
+          {
+            "character": "灣",
+            "relation": "kTraditionalVariant",
+            "definition": "a bay, cove, inlet, bend of stream",
+            "mandarin": "wān"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "湾",
+            "pinyin": null,
+            "definition": "「灣」的異體字。",
+            "entry_id": "11451-1",
+            "sheet": "1150929辭典匯出",
+            "row": 159228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "金": {
+        "definition": "gold; metals in general; money; Kangxi radical 167",
+        "mandarin": "jīn",
+        "official_dictionary": [
+          {
+            "title": "金",
+            "pinyin": "jīn",
+            "definition": "[名]\n1.（gold，Au）化學元素。原子序79。金屬元素之一，質地柔軟，延展性極大，可與銀、銅等合金製成貨幣、裝飾品、筆尖等。由於色澤黃澄，俗稱為「黃金」。\n2.金屬的總稱。如：「五金」、「合金」。\n3.刀劍之類的武器。《淮南子．說山》：「砥石不利而可以利金。」\n4.古代八音之一。指鉦、鐘一類的金屬打擊樂器。《宋書．卷一九．樂志一》：「樂器凡八音：曰金，曰石，曰土，曰革，曰絲，曰木，曰匏，曰竹。」\n5.五行之一。參見「五行」條。\n6.金星的簡稱。\n7.錢。如：「金額」、「你身上有多少現金？」\n8.朝代名。參見「金朝」條。\n9.姓。如元代有金履祥，明代有金聖歎。\n10. 二一四部首之一。\n[形]\n1.堅固。《韓非子．用人》：「不謹蕭牆之患，而固金城於遠境。」《漢書．卷四五．蒯通傳》：「皆為金城湯池，不可攻也。」\n2.珍貴。如：「金玉良言」。《文選．揚雄．劇秦美新》：「懿律嘉量，金科玉條。」《紅樓夢》第一五回：「奶奶也要保重金體才是。」\n3.顏色澄黃。唐．孟郊〈送淡公〉詩一二首之九：「橙橘金蓋檻，竹蕉綠凝禪。」唐．薛濤〈九日遇雨〉詩二首之二：「茱萸秋節佳期阻，金菊寒花滿院香。」",
+            "entry_id": "05838",
+            "sheet": "1150929辭典匯出",
+            "row": 5845,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "黃金",
+                "pinyin": "huáng jīn",
+                "definition": "1.一種貴重金屬，因具美麗奪目的金黃色光澤而得名。延展性極佳，化學性穩定，可用於電力、太空等工業，也可用來製造貨幣、首飾等。也稱為「金子」。_x000D_\n2.銅。《書經．舜典》：「金作贖刑。」漢．孔安國．傳：「金，黃金。」唐．孔穎達．正義：「此傳黃金，呂刑黃鐵，皆是今之銅也。」_x000D_\n3.糞便的戲稱。如：「不可讓寵物隨地便溺，以免黃金遍地，有礙市容觀瞻。」",
+                "entry_id": "052400177",
+                "sheet": "1150929辭典匯出",
+                "row": 85441
+              },
+              {
+                "title": "五金",
+                "pinyin": "wǔ jīn",
+                "definition": "金、銀、銅、鐵、錫（或鉛）五種金屬。亦泛指各種金屬製品。如：「五金雜貨」、「家庭五金」。",
+                "entry_id": "112510140",
+                "sheet": "1150929辭典匯出",
+                "row": 157312
+              },
+              {
+                "title": "合金",
+                "pinyin": "hé jīn",
+                "definition": "由二種或二種以上的元素，其中至少一種為金屬元素所組成具有金屬特性的物質，稱為「合金」。具實用性，如鋼為鐵和碳的合金，黃銅為銅、鋅的合金。由兩種主要元素組成的合金為二元合金，以此類推。",
+                "entry_id": "047240081",
+                "sheet": "1150929辭典匯出",
+                "row": 78442
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "金額",
+                "pinyin": "jīn é",
+                "definition": "1.金錢的數目。如期票、匯票上所載的錢數稱為「票據金額」；股票公債上所載的錢數稱為「票面金額」。\n2.黃金所製的匾額。",
+                "entry_id": "058380374",
+                "sheet": "1150929辭典匯出",
+                "row": 93082
+              },
+              {
+                "title": "金朝",
+                "pinyin": "jīn cháo",
+                "definition": "朝代名。（西元1115～1234）宋徽宗政和五年，女真酋長完顏阿骨打稱帝，國號金。後被蒙古所滅。",
+                "entry_id": "058380275",
+                "sheet": "1150929辭典匯出",
+                "row": 92986
+              },
+              {
+                "title": "金玉良言",
+                "pinyin": "jīn yù liáng yán",
+                "definition": "比喻珍貴的勸告或教誨。《官場現形記》第一一回：「鄒太爺一看苗頭不對，趕緊陪著笑臉道：『老哥哥教導的話，句句是金玉良言。』」也作「金石良言」、「金石之言」、「金玉之言」。",
+                "entry_id": "058380420",
+                "sheet": "1150929辭典匯出",
+                "row": 93123
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "九": {
+        "definition": "nine",
+        "mandarin": "jiǔ",
+        "official_dictionary": [
+          {
+            "title": "九",
+            "pinyin": "jiǔ",
+            "definition": "[名]\n1.介於八與十之間的自然數。如：「七、八、九、十……。」大寫作「玖」。阿拉伯數字作「9」。\n2.姓。如唐代有九嘉。\n[形]\n形容極多。如：「九霄雲外」、「九泉之下」、「九牛一毛」。\n[副]\n表示多數、多次。如：「九死一生」。《淮南子．脩務》：「公輸般設攻宋之械，墨子設守宋之備，九攻而墨子九卻之。」",
+            "entry_id": "05706",
+            "sheet": "1150929辭典匯出",
+            "row": 5713,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "井": {
+        "definition": "well, mine shaft, pit; surname; 22nd lunar mansion, determinative star μ Geminorum (Tejat); hexagram ䷯",
+        "mandarin": "jǐng",
+        "official_dictionary": [
+          {
+            "title": "井",
+            "pinyin": "jǐng",
+            "definition": "[名]\n1.為汲水而挖掘的深洞。如：「水井」、「枯井」。《孟子．公孫丑上》：「今人乍見孺子將入於井。」\n2.像井的坑洞。如：「鹽井」、「油井」。\n3.人口聚居的地方。如：「市井」。《史記．卷七七．魏公子傳》：「臣迺市井鼓刀屠者，而公子親數從之。」唐．陳子昂〈謝賜冬衣表〉：「三軍協慶，萬井相歡。」\n4.家鄉。如：「鄉井」、「離鄉背井」。\n5.周代田制以百畝為一井。參見「井田」條。\n6.《易經》卦名。六十四卦之一。巽（☴）下坎（☵）上。表示君子修德，終始無變之象。\n7.姓。如明代有井源。\n[形]\n整齊的樣子。如：「井井有條」。",
+            "entry_id": "05937",
+            "sheet": "1150929辭典匯出",
+            "row": 5945,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "水井",
+                "pinyin": "shuǐ jǐng",
+                "definition": "往地下打鑿用以取水的深洞。",
+                "entry_id": "091410264",
+                "sheet": "1150929辭典匯出",
+                "row": 132550
+              },
+              {
+                "title": "枯井",
+                "pinyin": "kū jǐng",
+                "definition": "無水的井。《水滸傳》第五四回：「宋江聽了，慌忙著藺仁引入，直到後牢枯井邊。」《三國演義》第四一回：「糜夫人乃棄阿斗於地，翻身投入枯井而死。」",
+                "entry_id": "045590018",
+                "sheet": "1150929辭典匯出",
+                "row": 76787
+              },
+              {
+                "title": "鹽井",
+                "pinyin": "yán jǐng",
+                "definition": "產井鹽的滷井。四川、雲南諸省鹽井甚多，是取自地質上古海沉積鹽類所形成滷水。",
+                "entry_id": "109820042",
+                "sheet": "1150929辭典匯出",
+                "row": 153305
+              },
+              {
+                "title": "油井",
+                "pinyin": "yóu jǐng",
+                "definition": "為汲取原油，由地面鑽鑿至地下油層的深井。",
+                "entry_id": "108850095",
+                "sheet": "1150929辭典匯出",
+                "row": 151691
+              },
+              {
+                "title": "市井",
+                "pinyin": "shì jǐng",
+                "definition": "1.市集或街道。《詩經．陳風．東門之枌．序》：「男女棄其舊業，亟會於道路，歌舞於市井爾。」《後漢書．卷七六．循吏傳．劉寵傳》：「山民愿朴，乃有白首不入市井者，頗為官吏所擾。」\n2.商人。《史記．卷三〇．平準書》：「孝惠、高后時，為天下初定，復弛商賈之律，然市井之子孫亦不得仕宦為吏。」\n3.無賴。《醒世恆言．卷七．錢秀才錯占鳳凰儔》：「尤辰雖然市井，從未熬刑，只得實說。」",
+                "entry_id": "087380028",
+                "sheet": "1150929辭典匯出",
+                "row": 126555
+              },
+              {
+                "title": "鄉井",
+                "pinyin": "xiāng jǐng",
+                "definition": "家鄉、故鄉。宋．蘇軾〈清遠舟中寄耘老〉詩：「清遠聊為泛宅行，一夢分明墮鄉井。」也作「鄉國」、「鄉關」。",
+                "entry_id": "071870048",
+                "sheet": "1150929辭典匯出",
+                "row": 108429
+              },
+              {
+                "title": "離鄉背井",
+                "pinyin": "lí xiāng bèi jǐng",
+                "definition": "離開故鄉，在外地生活。元．鄭光祖《倩女離魂》第四折：「則被他將一個痴小冤家，送的來離鄉背井。」也作「背井離鄉」、「離鄉背土」、「離鄉避井」。",
+                "entry_id": "033910075",
+                "sheet": "1150929辭典匯出",
+                "row": 60995
+              },
+              {
+                "title": "井田",
+                "pinyin": "jǐng tián",
+                "definition": "1.周代授田之法。以地一方里畫成九區，由八家各占百畝，稱為私田，中間百畝為公田，因形如井字，故稱為「井田」。\n2.泛指田地。北齊．顏之推《顏氏家訓．歸心》：「豈令罄井田而起塔廟，窮編戶以為僧尼也？」",
+                "entry_id": "059370007",
+                "sheet": "1150929辭典匯出",
+                "row": 94792
+              },
+              {
+                "title": "井井有條",
+                "pinyin": "jǐng jǐng yǒu tiáo",
+                "definition": "形容整齊有序的樣子。如：「書籍滿架，井井有條」。《儒林外史》第一三回：「魯小姐上侍孀姑，下理家政，井井有條，親戚無不稱羨。」",
+                "entry_id": "0593700161",
+                "sheet": "1150929辭典匯出",
+                "row": 94800
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "口": {
+        "definition": "mouth; open end; entrance, gate",
+        "mandarin": "kǒu",
+        "official_dictionary": [
+          {
+            "title": "口",
+            "pinyin": "kǒu",
+            "definition": "[名]\n1.人或動物飲食、發聲的器官。《說文解字．口部》：「口，人所以言食也。」如：「張口」、「閉口」、「守口如瓶」。也稱為「嘴」。\n2.器物納入取出的地方。如：「槍口」、「瓶口」。漢．王充《論衡．道虛》：「致生息之物密器之中，覆蓋其口。」\n3.內外相通的出入處。如：「港口」、「門口」、「巷口」、「海口」。\n4.關隘。常用於地名。如：「張家口」、「喜峰口」、「古北口」。\n5.兵器或工具上的鋒刃。如：「刀口」、「劍口」。\n6.破裂的地方。如：「傷口」、「裂口」、「缺口」。\n7.量詞：(1)計算人數的單位。如：「一家八口」。(2)計算牲畜數量的單位。相當於「隻」、「頭」。如：「三口豬」。(3)計算器物數量的單位。如：「兩口鍋子」、「一口鋼刀」、「一口枯井」。\n8.二一四部首之一。",
+            "entry_id": "04490",
+            "sheet": "1150929辭典匯出",
+            "row": 4496,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "道": {
+        "definition": "path, road, street; method, way",
+        "mandarin": "dào",
+        "official_dictionary": [
+          {
+            "title": "道",
+            "pinyin": "dào",
+            "definition": "[名]\n1.路途、途徑。如：「鐵道」、「河道」、「國道高速公路」。《論語．泰伯》：「士不可以不弘毅，任重而道遠。」\n2.方法、道理。如：「頭頭是道」、「以其人之道，還治其人之身」。《禮記．中庸》：「果能此道矣！雖愚必明，雖柔必強。」\n3.真理。《論語．里仁》：「子曰：『朝聞道，夕死可矣！』」\n4.思想、學說。如：「老莊之道」。《論語．里仁》：「子曰：『參乎！吾道一以貫之。』」\n5.技藝、技巧。《論語．子張》：「雖小道，必有可觀者焉。致遠恐泥，是以君子不為也。」\n6.中國古代的一個思想流派。參見「道家」條。\n7.中國主要的宗教之一。參見「道教」條。\n8.道士的簡稱。如：「老道」、「貧道」、「一僧一道」。\n9.宗教的教義、義理。如：「學道」、「得道」、「傳道」、「布道」。\n10.古代行政區域名稱：(1)唐太宗貞觀時代分天下為十道，後增為十五道，相當於現在的省。(2)清代和民初在省下設道。\n11.量詞：(1)計算條狀物的單位。如：「三道黃線」、「一道閃電」。(2)計算有出入口設施的單位。如：「兩道門」、「多道關卡」。(3)計算題目、命令等的單位。相當於「則」、「條」。如：「十道題目」、「下一道命令」。(4)計算工作次數的單位。如：「省一道手續」、「上了兩道油漆」。(5)計算菜餚的單位。如：「總共有十二道菜。」\n12.姓。如春秋時楚國有道朔。\n[動]\n1.說、談。如：「常言道」、「一語道破」、「能言善道」、「說長道短」。《論語．季氏》：「樂節禮樂，樂道人之善，樂多賢友。」\n2.用言語表示心意、情意。如：「道喜」、「道賀」、「道歉」、「道謝」。\n3.以為、認為、料想。如：「我道是誰呢？原來是你來了！」《紅樓夢》第一一六回：「眾人都見他忽笑忽悲，也不解是何意，只道是他的舊病。」\n4.引導、指引。通「導」。《論語．為政》：「道之以德，齊之以禮，有恥且格。」明．馬中錫〈中山狼傳〉：「趙簡子大獵於中山，虞人道前，鷹犬羅後。」\n[介]\n由、從。《管子．禁藏》：「故凡治亂之情，皆道上始。」《史記．卷八．高祖本紀》：「太尉周勃道太原入，定代地。」",
+            "entry_id": "01970",
+            "sheet": "1150929辭典匯出",
+            "row": 1975,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "鐵道",
+                "pinyin": "tiě dào",
+                "definition": "設有鐵軌，供火車、電車行駛的道路。也稱為「鐵路」。",
+                "entry_id": "026700052",
+                "sheet": "1150929辭典匯出",
+                "row": 51771
+              },
+              {
+                "title": "河道",
+                "pinyin": "hé dào",
+                "definition": "1.河水流經的通道。多指能通航的河流水道。《元史．卷六四．河渠志一》：「今歲新開牐河，分引渾、榆二河上源之水，故自李二寺至通州三十餘里，河道淺澀。」《紅樓夢》第一一八回：「且言賈政扶了賈母靈柩一路南行，因遇著班師的兵將船隻過境，河道擁擠，不能速行，在道實在心焦。」\n2.清代掌管河務的道臺。在清代凡與河務有關的地方均設有河道，如江南淮徐河道駐徐州，淮揚河道駐淮安，山東運河道駐濟寧，直隸永定河道駐固安。也稱為「河工道」。",
+                "entry_id": "047290028",
+                "sheet": "1150929辭典匯出",
+                "row": 78669
+              },
+              {
+                "title": "頭頭是道",
+                "pinyin": "tóu tóu shì dào",
+                "definition": "原為禪宗語，指道無所不在。《續傳燈錄．卷二六．慧力洞源禪師》：「佛祖不立，雨落街頭自溼，凡聖何依，晴乾自是無泥。方知頭頭皆是道，法法本圓成。」後遂用以形容言行清楚明白、有條理。《西湖佳話．靈隱詩跡》：「老師父既出口便成，想胸中定然頭頭是道。」",
+                "entry_id": "025230055",
+                "sheet": "1150929辭典匯出",
+                "row": 50202
+              },
+              {
+                "title": "道家",
+                "pinyin": "dào jiā",
+                "definition": "1.先秦時期的一個思想派別。以老子、莊子為代表人物，主張順應自然，無為而治。後亦指崇尚黃帝、老莊之說者。《漢書．卷三〇．藝文志》：「道家者流，蓋出於史官，歷記成敗存亡禍福古今之道，然後知秉要執本，清虛以自守，卑弱以自持，此君人南面之術也。」《西遊記》第二回：「流字門中，乃是儒家、釋家、道家、陰陽家、墨家、醫家，或看經、或念佛，並朝真降聖之類。」\n2.煉丹服藥、修道求仙之士。漢．王充《論衡．道虛》：「道家或以導氣養性，度世而不死。」《南齊書．卷五四．高逸列傳．顧歡》：「今道家稱長生不死，名補天曹，大乖老、莊立言本理。」\n3.指道教。唐．張敬忠〈准勅勘復蜀州靑城山常道觀奏〉：「觀還道家，寺依山外舊所，使道佛兩所各有區分者。」《宋史．卷一七九．食貨志下一》：「既而玉淸昭應宮災，遂詔諭中外，不復繕修。自是道家之奉有節，土木之費省矣。」",
+                "entry_id": "019700099",
+                "sheet": "1150929辭典匯出",
+                "row": 42698
+              },
+              {
+                "title": "道教",
+                "pinyin": "dào jiào",
+                "definition": "崇奉元始天尊及太上老君為教祖的宗教。相傳創於東漢張陵，陵著有道書二十篇，自號天師，故也稱為「天師道」。以符咒為人治病，講煉丹長生之術，入教者須繳納五斗米，時人稱為「五斗米道」。始盛行於蜀郡，後經弟子廣布，信徒漸增，遂正式成為道教，流傳於全國。",
+                "entry_id": "019700100",
+                "sheet": "1150929辭典匯出",
+                "row": 42699
+              },
+              {
+                "title": "老道",
+                "pinyin": "lǎo dào",
+                "definition": "1.修習道教經典、戒律、儀式，或修煉法術丹藥的人。即道士。\n2.做事老練純熟。《程乙本紅樓夢》第五七回：「離了姨媽，他就是個最老道的；見了姨媽，他就撒嬌兒！」也作「老到」。",
+                "entry_id": "032690120",
+                "sheet": "1150929辭典匯出",
+                "row": 59512
+              },
+              {
+                "title": "貧道",
+                "pinyin": "pín dào",
+                "definition": "漢魏、兩晉出家人的謙稱。意謂自己對佛道的修養仍少。《西遊記》第四四回：「手敲著漁鼓，口唱著道情詞，近城門，迎著兩個道士，當面躬身道：『道長，貧道起手。』」《初刻拍案驚奇》卷三一：「貧道是玄武殿裡道士何正寅，昨夜夢見玄帝分付貧道說：『這裡有個唐某當為此地女主，爾當輔之！汝可急急去講解天書，共成大事。』」",
+                "entry_id": "009380014",
+                "sheet": "1150929辭典匯出",
+                "row": 25315
+              },
+              {
+                "title": "學道",
+                "pinyin": "xué dào",
+                "definition": "職官名。掌管教育行政及各省學校生員的考課升降等事務的官。也稱為「學政」。",
+                "entry_id": "073360024",
+                "sheet": "1150929辭典匯出",
+                "row": 110160
+              },
+              {
+                "title": "得道",
+                "pinyin": "dé dào",
+                "definition": "1.行事合於正道。《孟子．公孫丑下》：「得道者多助，失道者寡助。」\n2.尋獲道路。《韓非子．說林》：「乃放老馬而隨之，遂得道。」\n3.道家指道術修鍊完成。《抱朴子．內篇．明本》：「上士得道於三軍，中士得道於都市，下士得道於山林。」\n4.佛家謂證悟、解脫煩惱。南朝陳．文帝〈大通方廣懺文〉：「聞名者離塵，受持者得道。」",
+                "entry_id": "019170021",
+                "sheet": "1150929辭典匯出",
+                "row": 41541
+              },
+              {
+                "title": "傳道",
+                "pinyin": "chuán dào",
+                "definition": "1.傳述、傳說。《楚辭．屈原．天問》：「遂古之初，誰傳道之？」唐．杜甫〈秦州雜詩〉二〇首之一三：「傳道東柯谷，深藏數十家。」\n2.傳授哲理或宗教教義。唐．韓愈〈師說〉：「師者，所以傳道、授業、解惑也。」",
+                "entry_id": "086250041",
+                "sheet": "1150929辭典匯出",
+                "row": 124203
+              },
+              {
+                "title": "布道",
+                "pinyin": "bù dào",
+                "definition": "基督教的傳教工作。如：「布道大會」。",
+                "entry_id": "005660032",
+                "sheet": "1150929辭典匯出",
+                "row": 21871
+              },
+              {
+                "title": "則",
+                "pinyin": "zé",
+                "definition": "[動]\n1.依照等級劃分物體。《說文解字．刀部》：「則，等畫物也。」\n2.效法。《孟子．滕文公上》：「惟天為大，惟堯則之。」《史記．卷二．夏本紀》：「皋陶於是敬禹之德，令民皆則禹。」\n3.做。參見「則甚」、「則聲」等條。\n[名]\n1.法度、規章。如：「法則」、「細則」、「稅則」、「青年守則」。《書經．五子之歌》：「有典有則，貽厥子孫。」\n2.規範、榜樣。如：「以身作則」。《詩經．大雅．抑》：「敬慎威儀，維民之則。」\n3.量詞。計算文字分項段落的單位。如：「一則消息」、「三則寓言」、「試題二則」、「新聞五則」。\n4.姓。如漢代有則長。\n[連]\n1.便、就。如：「學如逆水行舟，不進則退。」《詩經．召南．草蟲》：「亦既見止，亦既覯止，我心則降。」《鏡花緣》第一二回：「酒過一、二巡，則上小盤小碗。」\n2.表示平列、對待的關係。《論語．學而》：「弟子入則孝，出則悌。」\n3.只、僅。《荀子．勸學》：「口、耳之閒則四寸耳，曷足以美七尺之軀哉？」元．關漢卿《竇娥冤．楔子》：「端雲孩兒該打呵，看小生面則罵幾句。」\n4.卻、而。如：「欲速則不達。」《孟子．梁惠王下》：「竭力以事大國，則不得免焉。」\n5.如果。《左傳．僖公七年》：「心則不競，何憚于病？」\n6.是、乃是。《孟子．公孫丑下》：「此則寡人之罪也。」",
+                "entry_id": "09453",
+                "sheet": "1150929辭典匯出",
+                "row": 9467
+              },
+              {
+                "title": "條",
+                "pinyin": "tiáo",
+                "definition": "[名]\n1.細長的樹枝。如：「柳條」、「枝條」。唐．李白〈折楊柳〉詩：「攀條折春色，遠寄龍庭前。」\n2.長條形的物體。如：「線條」、「麵條」、「便條」、「油條」。\n3.項目、條目。如：「條款」、「條例」、「法條」。\n4.次序、系統。如：「有條不紊」、「井井有條」。\n5.量詞：(1)計算條狀物的單位。如：「一條魚」、「兩條線」、「三條香菸」、「五條裙子」。(2)計算文書分項的單位。如：「《民法》共有一二二五條。」\n[形]\n1.長。《書經．禹貢》：「厥草惟繇，厥木惟條。」\n2.暢通無阻。如：「條暢洞達」。《戰國策．魏策一》：「地四平，諸侯四通，條達幅輳，無有名山大川之阻。」",
+                "entry_id": "02686",
+                "sheet": "1150929辭典匯出",
+                "row": 2692
+              },
+              {
+                "title": "一語道破",
+                "pinyin": "yī yǔ dào pò",
+                "definition": "一句話就能說明事情的真相。清．袁枚《隨園詩話》卷二：「余稱其詩，專主性情。慈山寄札謝云：『老人生平苦心，被君一語道破。』」",
+                "entry_id": "104821390",
+                "sheet": "1150929辭典匯出",
+                "row": 147881
+              },
+              {
+                "title": "能言善道",
+                "pinyin": "néng yán shàn dào",
+                "definition": "口舌伶俐、善於說話。如：「虧他能言善道，否則難保不挨罵。」也作「能說慣道」。",
+                "entry_id": "029960059",
+                "sheet": "1150929辭典匯出",
+                "row": 56668
+              },
+              {
+                "title": "說長道短",
+                "pinyin": "shuō cháng dào duǎn",
+                "definition": "隨意議論別人的是非、好壞。元．無名氏《神奴兒》第一折：「俺倒不言語，他倒說長道短的。」也作「白說綠道」、「數黑論黃」、「數黃道白」、「數黃道黑」、「說白道綠」、「說白道黑」、「說短論長」、「說黃道黑」、「說長論短」、「說長說短」。",
+                "entry_id": "091140128",
+                "sheet": "1150929辭典匯出",
+                "row": 132130
+              },
+              {
+                "title": "道喜",
+                "pinyin": "dào xǐ",
+                "definition": "對喜慶事向人表示祝賀。《紅樓夢》第四五回：「鳳姐兒等忙站起來笑道：『大娘坐。』又都給他道喜。」《文明小史》第五八回：「江甯上元兩縣王、朱兩位大老爺，跟著江甯府鄒大夫都來了，說是要面見老爺道喜呢。」",
+                "entry_id": "019700119",
+                "sheet": "1150929辭典匯出",
+                "row": 42717
+              },
+              {
+                "title": "道賀",
+                "pinyin": "dào hè",
+                "definition": "用言語向人祝賀。如：「一得知他高升的消息，同事們便紛紛向他道賀。」",
+                "entry_id": "019700094",
+                "sheet": "1150929辭典匯出",
+                "row": 42692
+              },
+              {
+                "title": "道歉",
+                "pinyin": "dào qiàn",
+                "definition": "向人表示歉意。如：「他為自己的莽撞行為，向她道歉，希望得到她的原諒。」",
+                "entry_id": "019700112",
+                "sheet": "1150929辭典匯出",
+                "row": 42710
+              },
+              {
+                "title": "道謝",
+                "pinyin": "dào xiè",
+                "definition": "用言語表示謝意。《紅樓夢》第六二回：「香菱忙又萬福道謝，襲人拿了髒裙便走。」《老殘遊記》第四回：「老殘拿茶壺，替他倒了碗茶。那人連忙立起，請了個安，道謝。」",
+                "entry_id": "019700120",
+                "sheet": "1150929辭典匯出",
+                "row": 42718
+              },
+              {
+                "title": "導",
+                "pinyin": "dǎo",
+                "definition": "[動]\n1.帶領、指引。如：「疏導」、「引導」、「導航」。《國語．周語上》：「是故為川者，決之使導；為民者，宣之使言。」\n2.教育、啟發。如：「指導」、「開導」、「勸導」。《孟子．盡心上》：「西伯善養老者，制其田里，教之樹畜，導其妻子，使養其老。」《國語．晉語二》：「夫長國者唯知哀樂喜怒之節，是以導民。」\n3.傳送。如：「導電」、「導熱」、「傳導」。",
+                "entry_id": "01963",
+                "sheet": "1150929辭典匯出",
+                "row": 1968
+              },
+              {
+                "title": "導",
+                "pinyin": "dào",
+                "definition": "(一)之讀音。",
+                "entry_id": "01971",
+                "sheet": "1150929辭典匯出",
+                "row": 1976
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "银": {
+        "definition": "silver; cash, money, wealth",
+        "mandarin": "yín",
+        "related_characters": [
+          {
+            "character": "銀",
+            "relation": "kTraditionalVariant",
+            "definition": "silver (element 47, Ag); cash, money, wealth",
+            "mandarin": "yín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "梅坑",
+      "decision": "uncertain",
+      "reason": "“梅”与“坑”均可直接核义，但组合主要像未经修饰的地名或地点名称，语义关系仅为梅树与坑地的并置，品牌凝练感和辨识度不足，暂无法确认适合作为品牌名。"
+    },
+    {
+      "name": "龙坑",
+      "decision": "uncertain",
+      "reason": "“龙坑”可理解为龙形或与龙相关的坑地，也有古籍连续用例，但“坑”本身带有凹陷、地洞及陷害等义，整体更像地名或自然地点称谓，品牌语义方向不够明确。"
+    },
+    {
+      "name": "西坑",
+      "decision": "reject",
+      "reason": "仅由方位词“西”和地点通名“坑”组成，属于泛化地名式组合，缺乏品牌凝练感与独立辨识度。"
+    },
+    {
+      "name": "北坑",
+      "decision": "reject",
+      "reason": "仅表示北面的坑地，属于泛化地点名称，语义机械且品牌辨识度不足；“北”的其他读音和背叛义项也不适用于此处。"
+    },
+    {
+      "name": "南坑",
+      "decision": "reject",
+      "reason": "仅表示南面的坑地，属于泛化地名式组合，缺少独立语义和品牌辨识度。"
+    },
+    {
+      "name": "东坑",
+      "decision": "reject",
+      "reason": "仅表示东面的坑地，属于泛化地点名称，组合过于直白，品牌凝练感不足。"
+    },
+    {
+      "name": "坑中见月",
+      "decision": "reject",
+      "reason": "是“在坑中看见月亮”的完整画面句式，具有诗句或文案感，句法和意象均偏叙述性；且与“楪中见月”“盅中见月”等同属“某物中见月”的近似意象组合，重复度过高。"
+    },
+    {
+      "name": "沙坑湾",
+      "decision": "reject",
+      "reason": "“沙坑”与“湾”均为地点或地貌称谓，连续堆叠后关系不清，像机械拼接的地名；“沙坑”本身还是跳远、高尔夫及儿童游乐设施等通用类别词。"
+    },
+    {
+      "name": "金坑山",
+      "decision": "reject",
+      "reason": "“金坑”与“山”均为地点性名词，组合像未经提炼的地名堆叠；“坑山”关系生硬，整体缺乏清楚的品牌语义。"
+    },
+    {
+      "name": "九坑山",
+      "decision": "reject",
+      "reason": "“九”作数量修饰“坑”后再接“山”，形成地貌名词的机械叠加，语义关系不自然，品牌辨识度和凝练感不足。"
+    },
+    {
+      "name": "九坑",
+      "decision": "reject",
+      "reason": "虽有《楚辞》“九坑”用例，但原句中的“坑”属特定古语语境，脱离语境后通常只能理解为九个坑或坑地，整体意象偏负面且品牌语义不清。"
+    },
+    {
+      "name": "坑中月",
+      "decision": "reject",
+      "reason": "是“坑中之月”的省略式画面表达，偏诗意片段而非凝练品牌名；且与“井中月”“盅中月”等同属“某物中月”的近似意象组合，重复度过高。"
+    },
+    {
+      "name": "坑井",
+      "decision": "reject",
+      "reason": "“坑”与“井”都指凹陷或地下空间，语义近重复叠加，构词生硬，且整体容易联想到矿坑、井坑等通用地点类别。"
+    },
+    {
+      "name": "坑口",
+      "decision": "reject",
+      "reason": "“坑口”是坑道或矿坑的出入口，属于直接的地点或功能类别词，完整名称缺少品牌化提炼。"
+    },
+    {
+      "name": "坑道",
+      "decision": "reject",
+      "reason": "教育部词条直接释为地面以下的通道，属于明确的通用功能类别词，不能作为具有品牌辨识度的完整名称。"
+    },
+    {
+      "name": "银坑",
+      "decision": "reject",
+      "reason": "可理解为产银矿坑或带银色意象的坑地，但组合主要是矿产地点或地名式称谓；“坑”的负面与地下空间联想削弱品牌自然度。"
+    },
+    {
+      "name": "金坑",
+      "decision": "reject",
+      "reason": "可理解为金矿坑或含金之坑，语义偏矿坑地点名称，且“坑”带有凹陷、矿坑及陷害等联想，整体品牌辨识度不足。"
+    },
+    {
+      "name": "沙坑",
+      "decision": "reject",
+      "reason": "教育部词条明确收录为跳远、高尔夫及儿童玩耍用的沙坑，属于通用设施或产品场景类别词，不能作为具有独立品牌凝练感的名称。"
+    }
+  ]
+}

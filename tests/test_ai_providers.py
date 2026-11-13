@@ -15,6 +15,21 @@ import api_server
 
 
 class ProviderTests(unittest.TestCase):
+    def test_completed_response_does_not_wait_for_gateway_connection_close(self):
+        response = {'output_text': '{"names": []}'}
+
+        def delayed_close_stream():
+            yield b'event: response.completed\n'
+            yield ('data: ' + json.dumps({'type': 'response.completed', 'response': response}) + '\n').encode()
+            yield b'\n'
+            raise TimeoutError('gateway kept the completed stream open')
+
+        try:
+            result = api_server._read_responses_stream(delayed_close_stream())
+        except TimeoutError:
+            self.fail('read beyond the completed response into the delayed connection close')
+        self.assertEqual(result, response)
+
     def setUp(self):
         self.contexts = ExitStack()
         self.addCleanup(self.contexts.close)
