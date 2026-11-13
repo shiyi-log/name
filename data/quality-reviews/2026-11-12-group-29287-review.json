@@ -1,0 +1,421 @@
+{
+  "created_at": "2026-11-12T15:24:01+0800",
+  "model": "gpt-6.1-sol",
+  "status": "model_group_review_not_applied",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "牧歌",
+      "牧野",
+      "自牧",
+      "牧笛",
+      "春山牧歌",
+      "清风牧野",
+      "牧原",
+      "牧川",
+      "牧禾",
+      "归牧",
+      "牧源",
+      "山牧",
+      "云牧",
+      "牧山听泉"
+    ],
+    "related_kept_candidates": {},
+    "literature_phrase_examples": {
+      "牧歌": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 535983,
+          "context": "放荡不耕空劫地，暮天何用牧歌催。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 950656,
+          "context": "一川樵牧歌太平，万古关河感亡国。"
+        }
+      ],
+      "牧野": [
+        {
+          "book": "诗经",
+          "line": 1401,
+          "context": "矢于牧野，维予侯兴。"
+        },
+        {
+          "book": "诗经",
+          "line": 1402,
+          "context": "牧野洋洋，檀车煌煌，驷𫘪彭彭。"
+        }
+      ],
+      "自牧": [
+        {
+          "book": "孟子",
+          "line": 425,
+          "context": "伊训曰：『天诛造攻自牧宫，朕载自亳。"
+        },
+        {
+          "book": "诗经",
+          "line": 230,
+          "context": "自牧归荑，洵美且异。"
+        }
+      ],
+      "牧笛": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 281220,
+          "context": "渔人遗火成寒烧，牧笛吹风起夜波。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 299406,
+          "context": "牧笛自由随草远，渔歌得意扣舷归。"
+        }
+      ],
+      "春山牧歌": [],
+      "清风牧野": [],
+      "牧原": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 492979,
+          "context": "万蹄纵牧原野赤，汧陇收驹日复日。"
+        }
+      ],
+      "牧川": [],
+      "牧禾": [],
+      "归牧": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 293122,
+          "context": "未见山前归牧马，犹闻江上带征鞞。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 323413,
+          "context": "政源归牧马，宫法付神羊。"
+        }
+      ],
+      "牧源": [],
+      "山牧": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1669202,
+          "context": "九顷农歌乐丰年，赤山牧唱喧朝夕。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1758537,
+          "context": "不拚一死报封疆，忍使湖山牧虎狼。"
+        }
+      ],
+      "云牧": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1717655,
+          "context": "帝教云牧重云山，柱辄清朝玉立班。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1775645,
+          "context": "曾梦苏武开笑口，云牧羝羊今尽乳。"
+        }
+      ],
+      "牧山听泉": []
+    },
+    "dictionary_phrase_entries": {
+      "牧歌": [
+        {
+          "title": "牧歌",
+          "pinyin": "mù gē",
+          "definition": "泛指以鄉村生活情趣為題材的詩歌和樂曲。",
+          "entry_id": "015120012",
+          "sheet": "1150929辭典匯出",
+          "row": 32781,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "牧野": [
+        {
+          "title": "牧野",
+          "pinyin": "mù yě",
+          "definition": "地名。周武王克殷紂於此，在今河南省淇縣南。也稱為「沬鄉」。",
+          "entry_id": "015120029",
+          "sheet": "1150929辭典匯出",
+          "row": 32797,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "自牧": [],
+      "牧笛": [],
+      "春山牧歌": [],
+      "清风牧野": [],
+      "牧原": [],
+      "牧川": [],
+      "牧禾": [],
+      "归牧": [],
+      "牧源": [],
+      "山牧": [],
+      "云牧": [],
+      "牧山听泉": []
+    },
+    "direct_dictionary": {
+      "牧": {
+        "definition": "tend cattle, shepherd",
+        "mandarin": "mù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "歌": {
+        "definition": "song, lyrics; sing, chant; praise",
+        "mandarin": "gē",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "笛": {
+        "definition": "bamboo flute; whistle",
+        "mandarin": "dí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "原": {
+        "definition": "source, origin, beginning",
+        "mandarin": "yuán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "归": {
+        "definition": "return; return to, revert to",
+        "mandarin": "guī",
+        "related_characters": [
+          {
+            "character": "归",
+            "relation": "kTraditionalVariant",
+            "definition": "return; return to, revert to",
+            "mandarin": "guī"
+          },
+          {
+            "character": "歸",
+            "relation": "kTraditionalVariant",
+            "definition": "return; return to, revert to",
+            "mandarin": "guī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "源": {
+        "definition": "spring; source, head; surname",
+        "mandarin": "yuán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "牧歌",
+      "decision": "keep",
+      "reason": "词义明确，指以乡村生活为题材的诗歌、乐曲；组合自然凝练，有田园意象和品牌辨识度。"
+    },
+    {
+      "name": "牧野",
+      "decision": "keep",
+      "reason": "可理解为牧放的原野，语义自然简洁；虽有牧野这一历史地名义，也不妨碍其作为品牌名使用。"
+    },
+    {
+      "name": "自牧",
+      "decision": "uncertain",
+      "reason": "有古典用例，但相关语境分别涉及地名和采荑，不能据此确定“自牧”作为完整名称的稳定含义；现代语感也较不明晰。"
+    },
+    {
+      "name": "牧笛",
+      "decision": "keep",
+      "reason": "牧人与笛声构成自然、具体的田园意象，简洁易记，不依赖牵强字义。"
+    },
+    {
+      "name": "春山牧歌",
+      "decision": "keep",
+      "reason": "春山与牧歌共同构成连贯的田园画面，组合自然；虽偏诗意，但不是完整判断句或口号。"
+    },
+    {
+      "name": "清风牧野",
+      "decision": "keep",
+      "reason": "清风与牧野形成连贯的开阔田园意象，读起来顺畅，具有一定辨识度。"
+    },
+    {
+      "name": "牧原",
+      "decision": "keep",
+      "reason": "可理解为牧放之原野，构词自然简洁；单字含义相合，不依赖特定行业解释。"
+    },
+    {
+      "name": "牧川",
+      "decision": "keep",
+      "reason": "牧与川构成自然景观意象，读音简洁，语义可理解，不属于明显机械堆字。"
+    },
+    {
+      "name": "牧禾",
+      "decision": "keep",
+      "reason": "牧与禾均关联田野生活，组合简短自然，可形成清晰的乡野意象。"
+    },
+    {
+      "name": "归牧",
+      "decision": "keep",
+      "reason": "可理解为牧人归来或归牧的景象，动作关系自然，具有凝练的画面感。"
+    },
+    {
+      "name": "牧源",
+      "decision": "keep",
+      "reason": "可理解为牧业或牧放之源，也可作抽象品牌组合；语义关系自然，未见明显借义或生硬拼接。"
+    },
+    {
+      "name": "山牧",
+      "decision": "uncertain",
+      "reason": "可勉强理解为山间牧放，但通常语序更自然的是“牧山”或“山野牧放”；作为完整名称的语义关系和自然度不够明确。"
+    },
+    {
+      "name": "云牧",
+      "decision": "keep",
+      "reason": "云与牧组合形成轻盈的自然意象，简洁且可辨识；不必借用繁体字“雲”的额外义项。"
+    },
+    {
+      "name": "牧山听泉",
+      "decision": "reject",
+      "reason": "由牧、山、听泉串接成景物描写，整体更像诗句或宣传文案，缺少公司品牌名所需的凝练感。"
+    }
+  ]
+}

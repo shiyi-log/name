@@ -1,0 +1,964 @@
+{
+  "review_id": "20261112T145453-6fa93056",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "山川所及",
+      "风行所及",
+      "言及山海",
+      "心之所及",
+      "及人",
+      "斩获",
+      "斩新",
+      "云开见埼",
+      "埼岸",
+      "望埼",
+      "风过埼",
+      "日照埼",
+      "星河映埼",
+      "旭日临埼",
+      "琨珸",
+      "绉布",
+      "绉纹",
+      "锦绉",
+      "绉波",
+      "月照绉",
+      "月映绉波",
+      "风过绉波",
+      "远山绉水",
+      "绉波映星"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川",
+        "晙川"
+      ],
+      "月": [
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月",
+        "月下伞",
+        "月笼纱",
+        "云衔月",
+        "盅中月",
+        "月照桹影"
+      ],
+      "水": [
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水",
+        "山水清斋",
+        "秋水凉",
+        "水螭",
+        "枕水"
+      ],
+      "之": [
+        "一念之间",
+        "焊之道",
+        "芙蓉之外",
+        "十亩之间",
+        "碳之桥",
+        "碳之本",
+        "义之光"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "铘见山海",
+        "鹂见山"
+      ],
+      "风": [
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风",
+        "熏风"
+      ],
+      "星": [
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "阎星野",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "星野斋",
+        "摘星",
+        "摘星辰",
+        "箕星"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义"
+      ],
+      "心": [
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态"
+      ],
+      "云": [
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间",
+        "烝云",
+        "翀云间"
+      ],
+      "锦": [
+        "锦绣",
+        "锦椟"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "海": [
+        "山海貘",
+        "海鳐",
+        "山海酵香",
+        "海峤",
+        "峥海",
+        "云海峥嵘",
+        "观海云斋",
+        "望海斋",
+        "瞰海",
+        "瞰山海",
+        "海徼",
+        "鲲海"
+      ],
+      "言": [
+        "讱言",
+        "诤言"
+      ],
+      "映": [
+        "晖映",
+        "郁川映月",
+        "榴映秋",
+        "映芙",
+        "芹露映晨",
+        "芭蕉映月",
+        "芭影映山",
+        "芭叶映星",
+        "墟山映日",
+        "崧川映月",
+        "日映崧",
+        "瓷映长川"
+      ],
+      "埼": [
+        "山埼",
+        "南埼",
+        "云绕埼",
+        "清风临埼",
+        "长风越埼",
+        "松涛绕埼",
+        "远帆归埼"
+      ],
+      "望": [
+        "硕望",
+        "阎望舒",
+        "芹田望月",
+        "望海斋",
+        "凉秋望远"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "照": [
+        "月照桹影",
+        "榴花照影",
+        "芙蓉照水",
+        "月照芭叶",
+        "芭花照水",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "崧云照野",
+        "枫照川",
+        "玉螭照夜",
+        "螭照长夜"
+      ],
+      "日": [
+        "春日葳蕤",
+        "墟山映日",
+        "日映崧",
+        "日暮"
+      ],
+      "开": [
+        "云开山峙",
+        "崧云开",
+        "开口"
+      ],
+      "旭": [
+        "峥旭"
+      ],
+      "过": [
+        "风过芭林",
+        "棹过春山",
+        "崧风过岭",
+        "茅风过岭",
+        "鹁过晴川",
+        "鹂影过桥",
+        "风过蒹汀"
+      ],
+      "纹": [
+        "缠枝纹",
+        "玳纹",
+        "蟒纹",
+        "刀纹"
+      ],
+      "河": [
+        "瞰山河",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "河垠",
+        "枕星河",
+        "碳映星河"
+      ],
+      "岸": [
+        "葭岸",
+        "憩岸",
+        "蒹岸新晴"
+      ],
+      "临": [
+        "星临暮野",
+        "暮色临川",
+        "清风临埼"
+      ],
+      "人": [
+        "个中人"
+      ],
+      "所": [
+        "憩所"
+      ],
+      "波": [
+        "渟波"
+      ],
+      "及": [
+        "及远"
+      ],
+      "斩": [
+        "斩棘",
+        "斩关"
+      ],
+      "绉": [
+        "绉纱",
+        "绉绸"
+      ]
+    },
+    "literature_phrase_examples": {
+      "山川所及": [],
+      "风行所及": [],
+      "言及山海": [],
+      "心之所及": [],
+      "及人": [
+        {
+          "book": "孟子",
+          "line": 45,
+          "context": "老吾老，以及人之老；"
+        },
+        {
+          "book": "孟子",
+          "line": 45,
+          "context": "幼吾幼，以及人之幼。"
+        }
+      ],
+      "斩获": [
+        {
+          "book": "史记",
+          "line": 8711,
+          "context": "：「骠骑将军去病率师，躬将所获荤粥之士，约轻赍，绝大幕，涉获章渠，以诛比车耆，转击左大将，斩获旗鼓，历涉离侯。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 6305,
+          "context": "武陵郡沅南县建武中/所置县在沅水之隂因以沅南)(为名县治故城昔马/援讨临乡所筑也)击破蛮兵斩获二千余人初援尝有疾虎贲中郎将梁松来候之(虎贲中郎将掌/虎贲郎贲音奔)独拜床下援不答松去后诸子问曰梁伯孙帝婿(梁松字伯孙/尚帝女舞隂"
+        }
+      ],
+      "斩新": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 95690,
+          "context": "楸树馨香倚钓矶，斩新花蘂未应飞。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 131574,
+          "context": "斩新衣踏尽，还似去年时。"
+        }
+      ],
+      "云开见埼": [],
+      "埼岸": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 161496,
+          "context": "荻洲素浩渺，埼岸澌碐磳。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 188040,
+          "context": "野塘水边埼岸侧，森森两丛十五茎。"
+        }
+      ],
+      "望埼": [],
+      "风过埼": [],
+      "日照埼": [],
+      "星河映埼": [],
+      "旭日临埼": [],
+      "琨珸": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 472344,
+          "context": "坚质温润如荆瑜，冷光凌乱侵琨珸。"
+        },
+        {
+          "book": "史记",
+          "line": 8951,
+          "context": "其石则赤玉玫瑰，琳瑉琨珸，瑊玏玄厉，瑌石武夫。"
+        }
+      ],
+      "绉布": [],
+      "绉纹": [],
+      "锦绉": [],
+      "绉波": [],
+      "月照绉": [],
+      "月映绉波": [],
+      "风过绉波": [],
+      "远山绉水": [],
+      "绉波映星": []
+    },
+    "dictionary_phrase_entries": {
+      "山川所及": [],
+      "风行所及": [],
+      "言及山海": [],
+      "心之所及": [],
+      "及人": [],
+      "斩获": [],
+      "斩新": [],
+      "云开见埼": [],
+      "埼岸": [],
+      "望埼": [],
+      "风过埼": [],
+      "日照埼": [],
+      "星河映埼": [],
+      "旭日临埼": [],
+      "琨珸": [],
+      "绉布": [],
+      "绉纹": [],
+      "锦绉": [],
+      "绉波": [],
+      "月照绉": [],
+      "月映绉波": [],
+      "风过绉波": [],
+      "远山绉水": [],
+      "绉波映星": []
+    },
+    "direct_dictionary": {
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "所": {
+        "definition": "place, location; numerary adjunct",
+        "mandarin": "suǒ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "及": {
+        "definition": "extend; reach; come up to; and",
+        "mandarin": "jí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "言": {
+        "definition": "words, speech; speak, say; Kangxi radical 149",
+        "mandarin": "yán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "斩": {
+        "definition": "cut, chop, sever; behead",
+        "mandarin": "zhǎn",
+        "related_characters": [
+          {
+            "character": "斬",
+            "relation": "kTraditionalVariant",
+            "definition": "cut, chop, sever; behead",
+            "mandarin": "zhǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "获": {
+        "definition": "obtain, get, receive; seize",
+        "mandarin": "huò",
+        "related_characters": [
+          {
+            "character": "獲",
+            "relation": "kTraditionalVariant",
+            "definition": "obtain, get, receive; seize",
+            "mandarin": "huò"
+          },
+          {
+            "character": "穫",
+            "relation": "kTraditionalVariant",
+            "definition": "harvest, cut grain",
+            "mandarin": "huò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "埼": {
+        "definition": "headland",
+        "mandarin": "qí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岸": {
+        "definition": "bank, shore; beach, coast",
+        "mandarin": "àn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "日": {
+        "definition": "sun; day; daytime",
+        "mandarin": "rì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "旭": {
+        "definition": "rising sun; brilliance; radiant",
+        "mandarin": "xù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "临": {
+        "definition": "draw near, approach; descend",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "臨",
+            "relation": "kTraditionalVariant",
+            "definition": "draw near, approach; descend; hexagram ䷒",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "琨": {
+        "definition": "beautiful jade, precious stones",
+        "mandarin": "kūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "珸": {
+        "mandarin": "wú",
+        "supplemental_dictionary": {
+          "explanation": "珸wú 1.见\"琨珸\"。",
+          "source_url": "https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/word.json",
+          "source_sha256": "8ae3453eacc5b0f3fdfba47eac8bb686cd73914d278e8b851ae6ef81082f80e7",
+          "authority": "third_party_compilation_requires_cross_check"
+        },
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "绉": {
+        "definition": "crepe, crape, wrinkles, creases",
+        "mandarin": "zhòu",
+        "related_characters": [
+          {
+            "character": "縐",
+            "relation": "kTraditionalVariant",
+            "definition": "crepe, crape, wrinkles, creases",
+            "mandarin": "zhòu"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "布": {
+        "definition": "cotton cloth, textiles, linen",
+        "mandarin": "bù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "纹": {
+        "definition": "line, streak, stripe; wrinkle",
+        "mandarin": "wén",
+        "related_characters": [
+          {
+            "character": "紋",
+            "relation": "kTraditionalVariant",
+            "definition": "line, streak, stripe; wrinkle",
+            "mandarin": "wén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "锦": {
+        "definition": "brocade, tapestry; embroidered",
+        "mandarin": "jǐn",
+        "related_characters": [
+          {
+            "character": "錦",
+            "relation": "kTraditionalVariant",
+            "definition": "brocade, tapestry; embroidered",
+            "mandarin": "jǐn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "波": {
+        "definition": "waves, breakers; undulations",
+        "mandarin": "bō",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "山川所及",
+      "decision": "reject",
+      "reason": "完整表达更像“山川所能达到”的书面判断短语，语义边界不清，缺少凝练的品牌名感。"
+    },
+    {
+      "name": "风行所及",
+      "decision": "reject",
+      "reason": "“风行”与“所及”拼成句式生硬，完整组合像未说完的描述语。"
+    },
+    {
+      "name": "言及山海",
+      "decision": "uncertain",
+      "reason": "可理解为言谈涉及山海，但语序和关系较含混，像文学性短句，品牌指向不够明确。"
+    },
+    {
+      "name": "心之所及",
+      "decision": "reject",
+      "reason": "是完整的抽象判断短语，近于表达“心所能及”的口号化文字，缺乏品牌名的凝练感。"
+    },
+    {
+      "name": "及人",
+      "decision": "uncertain",
+      "reason": "有“推及他人、惠及他人”之意，但单独成名略显残缺，语义依赖省略的上下文。"
+    },
+    {
+      "name": "斩获",
+      "decision": "reject",
+      "reason": "虽是自然词语，但通常指斩杀或取得成果，整体带有强烈的战功、竞赛结果意味，不适合作为中性品牌名。"
+    },
+    {
+      "name": "斩新",
+      "decision": "uncertain",
+      "reason": "“斩新”确有崭新、全新的旧词用法，但现代语感不稳定，容易被理解成“斩”与“新”的生硬组合。"
+    },
+    {
+      "name": "云开见埼",
+      "decision": "reject",
+      "reason": "“云开见”通常引出可见景物，接地形词“埼”形成不自然的句式；不应把“埼”借作“奇”等字的含义。"
+    },
+    {
+      "name": "埼岸",
+      "decision": "keep",
+      "reason": "“埼”指曲折突出的岸或岬角，与“岸”构成明确自然地貌意象，简洁且有辨识度。"
+    },
+    {
+      "name": "望埼",
+      "decision": "keep",
+      "reason": "可自然理解为眺望岬岸，结构简洁，意象清楚；与“埼岸”虽共享锚字，但表达关系和完整意象不同。"
+    },
+    {
+      "name": "风过埼",
+      "decision": "keep",
+      "reason": "可理解为风掠过岬岸，画面关系自然，简洁且有具体意象。"
+    },
+    {
+      "name": "日照埼",
+      "decision": "keep",
+      "reason": "可理解为阳光照在岬岸之上，构词自然，画面明确。"
+    },
+    {
+      "name": "星河映埼",
+      "decision": "keep",
+      "reason": "星河映照岬岸，景物关系清楚，具有凝练的自然意象和辨识度。"
+    },
+    {
+      "name": "旭日临埼",
+      "decision": "keep",
+      "reason": "旭日升临岬岸，语义自然，意象完整；与其他“埼”名共享字形但非近义替换组合。"
+    },
+    {
+      "name": "琨珸",
+      "decision": "keep",
+      "reason": "是有文献用例的玉石相关联绵词，二字组合有据且简洁，不是凭单字义机械拼接。"
+    },
+    {
+      "name": "绉布",
+      "decision": "reject",
+      "reason": "完整名称直接等同于一种织物类别，属于通用产品类别词。"
+    },
+    {
+      "name": "绉纹",
+      "decision": "uncertain",
+      "reason": "可理解为绉布的纹理或皱褶纹路，但作为独立品牌名语义偏描述性，辨识度和自然度有限。"
+    },
+    {
+      "name": "锦绉",
+      "decision": "uncertain",
+      "reason": "可理解为锦与绉的织物或纹理组合，但关系不明确，易显为两种面料字眼的堆叠。"
+    },
+    {
+      "name": "绉波",
+      "decision": "keep",
+      "reason": "将绉褶与水波起伏联系起来，构词简洁，意象可辨，具备品牌名的凝练感。"
+    },
+    {
+      "name": "月照绉",
+      "decision": "reject",
+      "reason": "“月照”后接织物或皱褶义的“绉”不自然，意象关系难以成立。"
+    },
+    {
+      "name": "月映绉波",
+      "decision": "keep",
+      "reason": "月光映照如绉褶般起伏的波纹，关系清楚，兼有自然意象与凝练感。"
+    },
+    {
+      "name": "风过绉波",
+      "decision": "keep",
+      "reason": "风掠过起伏如绉纹的水波，画面自然，组合简洁。"
+    },
+    {
+      "name": "远山绉水",
+      "decision": "uncertain",
+      "reason": "可理解为远山与绉纹般的水，但“绉水”搭配较生造，山水关系不够顺畅。"
+    },
+    {
+      "name": "绉波映星",
+      "decision": "keep",
+      "reason": "星光映在起伏如绉纹的水波上，语义关系明确，意象完整且不属于近义替换重复。"
+    }
+  ]
+}

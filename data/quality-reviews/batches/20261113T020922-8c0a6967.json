@@ -1,0 +1,721 @@
+{
+  "review_id": "20261113T020922-8c0a6967",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "踢踏",
+      "蟾轮",
+      "蟾映海",
+      "蟾望舒",
+      "山月照蟾",
+      "郡守",
+      "云水郡",
+      "山郡"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "月照山罅",
+        "山月照橼",
+        "山月照菊",
+        "山月照舲",
+        "月照岐山",
+        "山月照筀",
+        "月照桹影",
+        "月照芭叶",
+        "月照松斋",
+        "月照墟",
+        "崞山见月",
+        "一杯山月"
+      ],
+      "望": [
+        "邓望舒",
+        "一望",
+        "硕望",
+        "芹田望月",
+        "望海斋",
+        "凉秋望远",
+        "灵猊望月",
+        "望海埼",
+        "望埼",
+        "长弓望月",
+        "奇峰望远",
+        "赫望"
+      ],
+      "水": [
+        "云水浮舟",
+        "云水图",
+        "云水乡",
+        "云水留踪",
+        "云水绕冈",
+        "云水篇",
+        "蟠云映水",
+        "云水见獭",
+        "云水籁",
+        "云水归舲",
+        "云水行僧",
+        "云水之娱"
+      ],
+      "山": [
+        "月照山罅",
+        "山月照橼",
+        "山月照菊",
+        "山月照舲",
+        "月照岐山",
+        "山月照筀",
+        "崞山见月",
+        "一杯山月",
+        "夕照山",
+        "山麇见月",
+        "蕖山月",
+        "山月酿酒"
+      ],
+      "云": [
+        "云水浮舟",
+        "云水图",
+        "云水乡",
+        "云水留踪",
+        "云水绕冈",
+        "云水篇",
+        "蟠云映水",
+        "云水见獭",
+        "云水籁",
+        "云水归舲",
+        "云水行僧",
+        "云水之娱"
+      ],
+      "海": [
+        "月照绀海",
+        "山海互照",
+        "海螺映月",
+        "月照海獭",
+        "瑆映山海",
+        "瑆映海",
+        "荣山映海",
+        "暾映海",
+        "山海貘",
+        "海鳐",
+        "山海酵香",
+        "海峤"
+      ],
+      "映": [
+        "诸山映月",
+        "山月映筠",
+        "蟠云映水",
+        "海螺映月",
+        "芊山映月",
+        "山月映嵎",
+        "𬘬山映月",
+        "芝山映月",
+        "瑆映山海",
+        "瑆映海",
+        "荣山映海",
+        "暾映海"
+      ],
+      "照": [
+        "月照山罅",
+        "山月照橼",
+        "山月照菊",
+        "山月照舲",
+        "月照岐山",
+        "山月照筀",
+        "月照桹影",
+        "月照芭叶",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "月照绀海"
+      ],
+      "舒": [
+        "邓望舒",
+        "凉云舒",
+        "夕云舒",
+        "蓓舒",
+        "宽舒",
+        "舒畅",
+        "晚云舒",
+        "冬云舒",
+        "舒媛",
+        "斓云舒"
+      ],
+      "守": [
+        "守义",
+        "义守真",
+        "守恕",
+        "守璞",
+        "守谊",
+        "婞守",
+        "守均堂",
+        "相守",
+        "守醇",
+        "守祕",
+        "慎守",
+        "守洵"
+      ],
+      "轮": [
+        "年轮",
+        "轮廓",
+        "月轮",
+        "轮回",
+        "轮转",
+        "桦木年轮",
+        "巨轮",
+        "柚木年轮",
+        "斫轮",
+        "斫轮堂",
+        "桫椤年轮",
+        "冰轮"
+      ],
+      "踏": [
+        "踏春",
+        "踏歌",
+        "踏访",
+        "踏云",
+        "踏浪",
+        "踏风",
+        "踏月",
+        "踏山",
+        "踏石",
+        "踏潮",
+        "踏星河",
+        "踏晨光"
+      ],
+      "蟾": [
+        "蟾光",
+        "秋蟾"
+      ]
+    },
+    "literature_phrase_examples": {
+      "踢踏": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 55617,
+          "context": "马踢踏破前村冻。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1367825,
+          "context": "耸耳长鸣随踢踏，不知业债倩谁除。"
+        }
+      ],
+      "蟾轮": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 301563,
+          "context": "戏应过蚌浦，飞合入蟾轮。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 324353,
+          "context": "冷容横钓浦，轻缕绊蟾轮。"
+        }
+      ],
+      "蟾映海": [],
+      "蟾望舒": [],
+      "山月照蟾": [],
+      "郡守": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 40754,
+          "context": "宰臣更献纳，郡守各明扬。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 63602,
+          "context": "郡守虚陈榻，林间召楚材。"
+        }
+      ],
+      "云水郡": [],
+      "山郡": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 36209,
+          "context": "山郡不沟郭，荒居无翳壅。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 74611,
+          "context": "山郡多暇日，社时放吏归。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "踢踏": [],
+      "蟾轮": [],
+      "蟾映海": [],
+      "蟾望舒": [],
+      "山月照蟾": [],
+      "郡守": [
+        {
+          "title": "郡守",
+          "pinyin": "jùn shǒu",
+          "definition": "1.職官名。秦時一郡最高的行政首長。漢景帝時更名為太守。見《漢書．卷一九．百官公卿表上》。\n2.舊時知府的別稱。",
+          "entry_id": "061790011",
+          "sheet": "1150929辭典匯出",
+          "row": 96744,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "云水郡": [],
+      "山郡": []
+    },
+    "direct_dictionary": {
+      "踢": {
+        "definition": "kick",
+        "mandarin": "tī",
+        "official_dictionary": [
+          {
+            "title": "踢",
+            "pinyin": "tī",
+            "definition": "[動]\n用腳觸擊。如：「踢皮球」、「踢他一腳。」",
+            "entry_id": "02622",
+            "sheet": "1150929辭典匯出",
+            "row": 2629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "踏": {
+        "definition": "step on, trample, tread on, walk",
+        "mandarin": "tà",
+        "official_dictionary": [
+          {
+            "title": "踏",
+            "pinyin": "tà",
+            "definition": "[動]\n1.用腳踩著地或東西。如：「踏步」、「踏水車」、「踐踏」、「腳踏實地」。\n2.跟隨。《喻世明言．卷三六．宋四公大鬧禁魂張》：「我妝做丞局，後面踏將你來，你喫擺番了。」\n3.實地勘驗。如：「踏勘」。《元史．卷一〇二．刑法志一》：「諸郡縣災傷，過時而不申，或申不以實，及按治官不以時檢踏，皆罪之。」",
+            "entry_id": "02430",
+            "sheet": "1150929辭典匯出",
+            "row": 2438,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蟾": {
+        "definition": "toad",
+        "mandarin": "chán",
+        "official_dictionary": [
+          {
+            "title": "蟾",
+            "pinyin": "chán",
+            "definition": "[名]\n1.參見「蟾蜍」條。\n2.傳說月亮中有蟾蜍，故代稱月亮為「蟾」。宋．陳師道〈夜句〉詩三首之二：「老樹仍孤秀，秋蟾只獨明。」",
+            "entry_id": "08381",
+            "sheet": "1150929辭典匯出",
+            "row": 8395,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "蟾蜍",
+                "pinyin": "chán chú",
+                "definition": "1.動物名。兩棲綱無尾目蟾蜍科。體型肥大，性遲緩，不能鳴，常棲於陰溼之地。皮膚有疣，可分泌毒液。也稱為「癩蛤蟆」、「戚施」、「詹諸」。\n2.語出《淮南子．精神》：「日中有踆烏，而月中有蟾蜍。」後用為月亮的代稱。唐．劉商〈胡笳十八拍．第十一拍〉：「幾回鴻雁來又去，腸斷蟾蜍虧復圓。」元．白樸《牆頭馬上》第二折：「月也你本細如弓一半兒蟾蜍，卻休明如鏡照三千世界。」",
+                "entry_id": "083810011",
+                "sheet": "1150929辭典匯出",
+                "row": 121265
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "轮": {
+        "definition": "wheel; revolve, turn; recur",
+        "mandarin": "lún",
+        "related_characters": [
+          {
+            "character": "輪",
+            "relation": "kTraditionalVariant",
+            "definition": "wheel; revolve, turn; recur",
+            "mandarin": "lún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "official_dictionary": [
+          {
+            "title": "海",
+            "pinyin": "hǎi",
+            "definition": "[名]_x000D_\n1.地球上鄰接大陸而小於洋的水域。如：「南海」、「黃海」、「地中海」。《漢書．卷二八．地理志上》：「又北播為九河，同為逆河，入于海。」唐．顏師古．注：「海，即渤海是也。」_x000D_\n2.海水。《漢書．卷四九．爰盎鼂錯傳．鼂錯》：「吳王即山鑄錢，煮海為鹽。」漢．曹操〈與王脩書〉：「但恐旁人淺見，以蠡測海，為蛇畫足。」_x000D_\n3.內陸的大湖或人工湖。如：「青海」、「洱海」。_x000D_\n4.積聚眾多的人或同類事物。如：「棉海」、「人海」、「火海」。宋．陸游〈驛舍見故屏風畫海棠有感〉詩：「燕宮最盛號花海，霸國雄豪有遺跡。」《水滸傳》第八二回：「雖無炮龍烹鳳，端的是肉山酒海。當日盡皆大醉，各扶歸幕次裡安歇。」_x000D_\n5.領域、淵藪。如：「苦海無邊」、「學海無涯」。《廣弘明集．卷二八下．南朝陳．文帝．無礙會捨身懺文》：「又以世相泡影、有為露電，愛河奔迅，欲海飛騰。」宋．陸游〈休日感興〉詩：「宦海風波實飽經，久將人世寄郵亭。」_x000D_\n6.荒遠之地。《周禮．夏官司馬．校人》：「凡將事于四海山川，則飾黃駒。」漢．鄭玄．注：「四海，猶四方也。」_x000D_\n7.較寬大的器皿。如：「茶海」。《水滸傳》第七五回：「再將九瓶都打開，傾在酒海內，卻是一般的淡薄村醪。」《紅樓夢》第四一回：「妙玉執壺，只向海內斟了約有一杯。」_x000D_\n8.姓。如明代有海瑞。_x000D_\n[形]_x000D_\n巨大的。如：「海派」。唐．陳子昂〈我府君有周居士文林郎陳公墓誌銘〉：「公河目海口，鷰頷虎頭，性英雄而志尚元默。」《孤本元明雜劇．騙英布．第三折》：「俺主公豁達大度，海量寬洪，納諫如流，有堯舜禹湯之德。」_x000D_\n[副]_x000D_\n1.任意地、漫無目標地。如：「海選」。《紅樓夢》第七回：「他比不得咱們家的孩子們，胡打海摔的慣了。」《海上花列傳》第九回：「阿珠、阿金大都跟著海罵。蓮生氣得怔怔的，半晌說不出話。」_x000D_\n2.狠狠地、嚴重地。如：「海扁」、「海削」、「他嚴重怠工，所以被老闆海刮了一頓。」",
+            "entry_id": "04776",
+            "sheet": "1150929辭典匯出",
+            "row": 4782,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "official_dictionary": [
+          {
+            "title": "望",
+            "pinyin": "wàng",
+            "definition": "[動]\n1.向遠處或高處看。如：「登高望遠」、「一望無際」。唐．李白〈靜夜思〉詩：「舉頭望明月，低頭思故鄉。」宋．汪元量〈潮州歌〉：「北望燕雲不盡頭，大江東去水悠悠。」\n2.希冀、期盼。如：「盼望」、「期望」、「渴望」。《孟子．梁惠王上》：「王如知此，則無望民之多於鄰國也。」\n3.拜訪、慰問。如：「拜望」、「探望」。\n4.怨恨、責備。《史記．卷八九．張耳陳餘傳》：「不意君之望臣深也！豈以臣為重去將哉？」《文選．司馬遷．報任少卿書》：「若望僕不相師，而用流俗人之言，僕非敢如此。」\n5.將近、接近。唐．韓愈〈祭竇司業文〉：「逾七望八，年孰非翁。」《兒女英雄傳》第一回：「你那我雖然不至於老邁不堪，也是望五的人了。」\n[名]\n1.志願、心願。如：「願望」、「絕望」。\n2.名譽、名聲。如：「名望」、「聲望」、「德高望重」。《三國演義》第八三回：「陸遜年幼望輕，恐諸公不服。」\n3.農曆每月十五日，地球上所看見的滿月月相，後指農曆的每月十五日。《文選．枚乘．七發》：「將以八月之望，與諸侯遠方交游兄弟，並往觀濤乎廣陵之曲江。」宋．蘇軾〈後赤壁賦〉：「是歲十月之望，步自雪堂，將歸于臨皋。」\n[介]\n向、朝。如：「望後退」、「望前看」、「望我點點頭」。",
+            "entry_id": "11541",
+            "sheet": "1150929辭典匯出",
+            "row": 11555,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舒": {
+        "definition": "open up, unfold, stretch out; comfortable, easy",
+        "mandarin": "shū",
+        "official_dictionary": [
+          {
+            "title": "舒",
+            "pinyin": "shū",
+            "definition": "[動]\n1.伸展。如：「舒手舒腳」、「舒眉弄眼」。\n2.宣洩、抒發。如：「舒懷」。《楚辭．屈原．九章．思美人》：「申旦以舒中情兮，志忱菀而莫達。」《文選．司馬遷．報任少卿書》：「退而論書策，以舒其憤。」\n[形]\n1.遲緩、從容不迫。《詩經．召南．野有死麕》：「舒而脫脫兮，無感我帨兮，無使尨也吠。」唐．柳宗元〈游黃溪記〉：「又南一里，至大冥之川，山舒水緩，有土田。」\n2.安適、舒暢。如：「舒泰」、「舒服」。《文選．張衡．西京賦》：「夫人在陽時則舒，在陰時則慘。」\n[名]\n姓。如唐代有舒元輿。",
+            "entry_id": "09049",
+            "sheet": "1150929辭典匯出",
+            "row": 9064,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "official_dictionary": [
+          {
+            "title": "照",
+            "pinyin": "zhào",
+            "definition": "[動]\n1.映射。如：「照耀」、「陽光照在窗戶上。」\n2.投映。如：「照鏡子」。\n3.比擬、依據。如：「仿照」、「照貓畫虎」、「比照辦理」、「照本宣科」。\n4.比對、核對。如：「對照」。\n5.通知。如：「照會」、「關照」。\n6.向著、對著。如：「照頭一棍」、「照著敵人開槍」。\n7.看、顧。如：「照顧」、「照應」、「照料」。\n8.知曉。如：「心照不宣」。《三國志．卷一九．魏書．陳思王植傳》：「臣聞騏驥長鳴，則伯樂照其能；盧狗悲號，則韓國知其才。」\n9.攝取影像。如：「照相」、「這張像片是新照的。」\n[名]\n1.日光。如：「夕照」、「殘照」。\n2.像片。如：「近照」、「玉照」。\n3.憑證。如：「執照」、「護照」。《喻世明言．卷三三．張古老種瓜娶文女》：「申公道：『錢卻有，何以為照？』」",
+            "entry_id": "07719",
+            "sheet": "1150929辭典匯出",
+            "row": 7730,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "郡": {
+        "definition": "administrative division",
+        "mandarin": "jùn",
+        "official_dictionary": [
+          {
+            "title": "郡",
+            "pinyin": "jùn",
+            "definition": "[名]\n1.中國古代地方行政區域的名稱。周時縣大郡小，以縣統郡，至秦始皇時，廢封建，行郡縣，郡大縣小，以郡統縣，漢以後歷代因襲，隋唐時曾罷郡置州，宋時改郡為府。《史記．卷六．秦始皇本紀》：「海內為郡縣，法令由一統。」\n2.姓。如明代有郡敬。",
+            "entry_id": "06179",
+            "sheet": "1150929辭典匯出",
+            "row": 6188,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "守": {
+        "definition": "defend, protect, guard, conserve",
+        "mandarin": "shǒu",
+        "official_dictionary": [
+          {
+            "title": "守",
+            "pinyin": "shǒu",
+            "definition": "[名]\n1.官職、職責。《漢書．卷三〇．藝文志》：「墨家者流，蓋出於清廟之守。」元．關漢卿《謝天香》第四折：「官守所拘，功名在念，豈飲酒。」\n2.職官名。古代一郡的行政長官。如：「郡守」、「太守」。\n3.節操、品性。如：「操守」。《禮記．儒行》：「劫之以眾，沮之以兵，見死不更其守。」\n4.姓。如宋代有守恭。\n[動]\n1.防衛、保護。如：「防守」、「駐守」、「堅守」。\n2.保持、堅持。如：「守信」、「守節」、「墨守成規」、「守身如玉」。\n3.遵行。如：「恪守」、「守法」、「遵守」、「守規律」。\n4.等待。如：「守候」、「獨守」、「守歲」、「空守一夜」。\n5.依賴、依傍。《水滸傳》第一八回：「自和他父親宋太公在村中務農，守些田園過活。」",
+            "entry_id": "08893",
+            "sheet": "1150929辭典匯出",
+            "row": 8907,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "守",
+            "pinyin": "shòu",
+            "definition": "通「狩」。參見「巡守」條。",
+            "entry_id": "08896",
+            "sheet": "1150929辭典匯出",
+            "row": 8910,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "狩",
+                "pinyin": "shòu",
+                "definition": "[動]\n1.打獵。《詩經．魏風．伐檀》：「不狩不獵，胡瞻爾庭有縣貆兮。」《列子．黃帝》：「趙襄子率徒十萬，狩於中山。」\n2.參見「巡狩」條。",
+                "entry_id": "08897",
+                "sheet": "1150929辭典匯出",
+                "row": 8911
+              },
+              {
+                "title": "巡守",
+                "pinyin": "xún shǒu",
+                "definition": "舊稱天子巡行諸國。《書經．舜典》：「歲二月，東巡守，至于岱宗。」《左傳．莊公二十三年》：「諸侯有王，王有巡守。」也作「巡狩」。",
+                "entry_id": "0742100511",
+                "sheet": "1150929辭典匯出",
+                "row": 111016
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "official_dictionary": [
+          {
+            "title": "水",
+            "pinyin": "shuǐ",
+            "definition": "[名]\n1.無色無臭的液體。由氫氣與氧氣化合而成。\n2.汁、液。如：「墨水」、「藥水」、「橘子水」、「檸檬水」。\n3.海、河、江、湖的總稱。如：「漢水」。《書經．微子》：「今殷其淪喪，若涉大水，其無津涯。」\n4.五行之一。參見「五行」條。\n5.水星的簡稱。參見「水星」條。\n6.額外的收入、費用。如：「撈油水」。《鄰女語》第二回：「你一路上發的水還不彀麼？還要到這地方來想方麼？」\n7.量詞。計算衣物刷洗次數的單位。如：「這件衣服洗兩水就走樣了。」\n8.姓。如明代有水甦民。\n9.二一四部首之一。\n[形]\n瓜果等多汁而不脆甜。如：「這梨吃起來水水的，不脆。」",
+            "entry_id": "09141",
+            "sheet": "1150929辭典匯出",
+            "row": 9156,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "墨水",
+                "pinyin": "mò shuǐ",
+                "definition": "1.寫字用的各種顏色的水汁。如：「紅墨水」、「藍墨水」。唐．杜佑《通典．卷一四．選舉二．歷代制中》：「北齊選舉多沿後魏之制，……書有濫劣者，飲墨水一升」《孽海花》第二五回：「家人送上一枝蘸滿墨水的筆，珏齋提筆，在紙上揮灑自如的寫了一百多字。」\n2.比喻學問、才識。如：「看不出他肚子裡還真有點兒墨水。」《鏡花緣》第二二回：「可惜你枉自生得白淨。腹中也少墨水，就是出來貿易，也該略認幾字。」",
+                "entry_id": "010970053",
+                "sheet": "1150929辭典匯出",
+                "row": 27647
+              },
+              {
+                "title": "藥水",
+                "pinyin": "yào shuǐ",
+                "definition": "泛指藥物的溶液，一般為含藥水溶液。",
+                "entry_id": "108550077",
+                "sheet": "1150929辭典匯出",
+                "row": 151285
+              },
+              {
+                "title": "漢水",
+                "pinyin": "hàn shuǐ",
+                "definition": "河川名。發源於陝西省寧羌縣北嶓冢山，至湖北省漢口與漢陽之間流入長江。是長江最長的支流，亦是漢中盆地的命脈。也稱為「漢江」。",
+                "entry_id": "048890049",
+                "sheet": "1150929辭典匯出",
+                "row": 81095
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "水星",
+                "pinyin": "shuǐ xīng",
+                "definition": "行星名。距離太陽最近的行星，也是太陽系中體積最小的行星，只比月球略大。屬於類地行星，地表多隕石坑。幾乎沒有大氣，晝夜溫差極大。也稱為「辰勾」、「辰星」。",
+                "entry_id": "091410306",
+                "sheet": "1150929辭典匯出",
+                "row": 132590
+              },
+              {
+                "title": "撈油水",
+                "pinyin": "lāo yóu shui",
+                "definition": "吳語。指用不當的手段取得錢財。",
+                "entry_id": "032580021",
+                "sheet": "1150929辭典匯出",
+                "row": 59264
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "踢踏",
+      "decision": "reject",
+      "reason": "是常见动作叠词，整体主要表示脚步踢踩或行走声，品牌辨识度弱，且与已暂留的“踏春”等踏字候选意象相近。"
+    },
+    {
+      "name": "蟾轮",
+      "decision": "keep",
+      "reason": "“蟾”可代指月亮，“轮”可指圆轮，组合可自然理解为月轮，凝练且有古典意象；虽与已有“月轮”意象相近，但并非仅替换近义配字。"
+    },
+    {
+      "name": "蟾映海",
+      "decision": "keep",
+      "reason": "可理解为月亮映照海面，语义连贯、画面明确；“蟾”代月有依据，整体具有名称凝练感。"
+    },
+    {
+      "name": "蟾望舒",
+      "decision": "uncertain",
+      "reason": "“蟾”代月有据，但“望舒”通常指代月驾或月亮相关意象，组合成“蟾望舒”关系不清，像把两个月亮代称并置，语义自然度存疑。"
+    },
+    {
+      "name": "山月照蟾",
+      "decision": "reject",
+      "reason": "“山月照蟾”呈现完整的主谓宾式诗句，且“蟾”代月后成为月照月的关系，语义重复而不自然。"
+    },
+    {
+      "name": "郡守",
+      "decision": "reject",
+      "reason": "完整名称就是古代官职通称，属于通用身份类别词，且语义与品牌名称的凝练辨识要求不符。"
+    },
+    {
+      "name": "云水郡",
+      "decision": "uncertain",
+      "reason": "“云水”可构成自然意象，“郡”则是行政区划名；整体缺少明确自然的语义关系，容易被理解为地名或生硬拼接，现有信息不足以确认其名称自然度。"
+    },
+    {
+      "name": "山郡",
+      "decision": "keep",
+      "reason": "可自然理解为山中郡地或山地之郡，结构简洁；古诗中亦有“山郡”实际用例，作为地域意象具有一定辨识度。"
+    }
+  ]
+}

@@ -1,0 +1,664 @@
+{
+  "review_id": "20261113T032100-69b2ad5f",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "炎禾",
+      "炎光序",
+      "炎舟渡",
+      "炎之",
+      "炎同",
+      "炎朗",
+      "炎熠",
+      "烁炎",
+      "息恚",
+      "长嗥",
+      "风嗥"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "鎏光岁序",
+        "颐光序",
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光"
+      ],
+      "风": [
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风"
+      ],
+      "舟": [
+        "一舟",
+        "珀舟",
+        "暮舟",
+        "碳舟",
+        "茗舟",
+        "镠舟",
+        "奇舟",
+        "酒舟",
+        "菼舟",
+        "横舟",
+        "人间舟",
+        "云水浮舟"
+      ],
+      "之": [
+        "一念之间",
+        "焊之道",
+        "芙蓉之外",
+        "十亩之间",
+        "碳之桥",
+        "碳之本",
+        "义之源",
+        "义之光",
+        "茗之初",
+        "涡之源",
+        "涡之境",
+        "万象之柢"
+      ],
+      "渡": [
+        "一苇渡江",
+        "青枫渡",
+        "渡口",
+        "广陵渡月",
+        "横渡",
+        "杭渡",
+        "青牛渡",
+        "青牛渡海",
+        "摆渡",
+        "渡人",
+        "共渡",
+        "渡川"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉",
+        "酒同频",
+        "同欣",
+        "同翊",
+        "橼果同枝",
+        "同寅",
+        "皎月同舟",
+        "鹡鸰同心",
+        "镯同心",
+        "琨玉同辉",
+        "瑕玉同辉"
+      ],
+      "禾": [
+        "苠禾",
+        "欧禾",
+        "芙禾",
+        "晙禾",
+        "青禾斋",
+        "暮禾",
+        "夕禾",
+        "碳禾",
+        "唐青禾",
+        "唐禾",
+        "蔓禾",
+        "茗禾"
+      ],
+      "长": [
+        "长揖",
+        "瓷映长川",
+        "螭照长夜",
+        "螭起长风",
+        "长风越埼",
+        "长弓望月",
+        "弓引长风",
+        "酒映长天",
+        "消长",
+        "长风漻月",
+        "蜜野长风",
+        "鳅映长天"
+      ],
+      "序": [
+        "鎏光岁序",
+        "颐光序",
+        "晙序",
+        "瓷序",
+        "碳序",
+        "唐序",
+        "茗序",
+        "赫序",
+        "王序",
+        "人间序",
+        "蓓序",
+        "月序"
+      ],
+      "朗": [
+        "崧朗",
+        "酷朗",
+        "鲜朗",
+        "珺朗",
+        "奕朗",
+        "宽朗",
+        "岳朗",
+        "澄朗",
+        "骏朗",
+        "厚朗",
+        "岑朗",
+        "朗玥"
+      ],
+      "息": [
+        "憩息",
+        "消息",
+        "止息",
+        "息壤"
+      ],
+      "烁": [
+        "星河闪烁",
+        "闪烁"
+      ]
+    },
+    "literature_phrase_examples": {
+      "炎禾": [],
+      "炎光序": [],
+      "炎舟渡": [],
+      "炎之": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 288625,
+          "context": "乞余之夫尤慕膻，附炎之子弥脇肩。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1548320,
+          "context": "留建炎之御制兮，彰复古之素志。"
+        }
+      ],
+      "炎同": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1195391,
+          "context": "无复趋炎同褦襶，但能寻睡学希夷。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 29249,
+          "context": "事犹欲䧟之况有此迹其同/党能不首告乎又朝野佥载裴炎为中书令时徐敬业)(欲反令骆賔王画计取裴炎同起事賔王足踏壁静思/食顷乃为谣曰一片火两片火绯衣小儿当殿坐教炎)(庄上小儿诵之并都下小儿皆唱炎乃访学者令解之/召賔王数啖以寳物锦绮"
+        }
+      ],
+      "炎朗": [],
+      "炎熠": [],
+      "烁炎": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 74574,
+          "context": "羲轮亭午烁炎威，溪上轩窗匝翠微。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 767733,
+          "context": "薰风烁炎日，沸鼎助薪蒸。"
+        }
+      ],
+      "息恚": [],
+      "长嗥": [],
+      "风嗥": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 37546,
+          "context": "冰渡忧濡尾，风嗥乐在梁。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 94472,
+          "context": "朔风嗥枯枝，远雁不能起。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "炎禾": [],
+      "炎光序": [],
+      "炎舟渡": [],
+      "炎之": [],
+      "炎同": [],
+      "炎朗": [],
+      "炎熠": [],
+      "烁炎": [],
+      "息恚": [],
+      "长嗥": [],
+      "风嗥": []
+    },
+    "direct_dictionary": {
+      "炎": {
+        "definition": "flame, blaze; hot",
+        "mandarin": "yán",
+        "official_dictionary": [
+          {
+            "title": "炎",
+            "pinyin": "yán",
+            "definition": "[動]\n1.火光上升。《說文解字．炎部》：「炎，火光上也。」《書經．洪範》：「水曰潤下，火曰炎上。」孔穎達正義引王肅曰：「火之性，炎盛而升上。」\n2.焚燒。《書經．胤征》：「火炎崑岡，玉石俱焚。」《後漢書．卷三．肅宗孝章帝紀》引漢．章帝〈禱雨詔〉：「去秋雨澤不適，今時復旱，如炎如焚。」《晉書．卷八七．列傳．涼武昭王李玄盛》：「飛塵翕以蔽日，大火炎其燎原。」\n[名]\n1.得病時發熱、紅腫、疼痛的現象。如：「發炎」、「肺炎」、「盲腸炎」。\n2.比喻擁有炙人權勢者。唐．柳宗元〈宋清傳〉：「吾觀今之交乎人者，炎而附，寒而棄，鮮有能類清之為者。」《三俠五義》第六二回：「觀內當家的叫做吳道成，生的黑面大腹，自稱綽號鐵羅漢，一身好武藝，慣會趨炎附勢。」\n3.炎帝，即上古傳說中之神農氏，與黃帝合稱「炎黃」。《呂氏春秋．孟秋紀．蕩兵》：「兵所自來者久矣，黃炎故用水火矣，共工氏固次作難矣，五帝固相與爭矣。」《漢書．卷三三．魏豹田儋韓王信傳》：「周室既壞，至春秋末，諸侯秏盡，而炎黃唐虞之苗裔尚猶頗有存者。」\n4.火光，火焰。漢．張衡〈西京賦〉：「光炎燭天庭，囂聲震海浦。」《大正藏．史傳部．唐．僧詳．法華經傳記．卷九．王舍城旃陀羅子》：「驅吾入火車持拳，率在三方相副，火籠在頭上，隨振火迸如鐵火，繩率在前導，各口吐火炎。」\n[形]\n酷熱、極熱。如：「炎熱」、「炎夏」。《楚辭．屈原．九章．悲回風》：「觀炎氣之相仍兮，窺煙液之所積。」唐．柳宗元〈籠鷹詞〉：「炎風溽暑忽然至，羽翼脫落自摧藏。」",
+            "entry_id": "10962",
+            "sheet": "1150929辭典匯出",
+            "row": 10977,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "禾",
+            "pinyin": "hé",
+            "definition": "[名]\n1.穀類植物的總稱。《詩經．豳風．七月》：「十月納禾稼。」唐．李紳〈古風〉詩二首之二：「鋤禾日當午，汗滴禾下土。」\n2.姓。如宋代有禾實。\n3.二一四部首之一。",
+            "entry_id": "04720",
+            "sheet": "1150929辭典匯出",
+            "row": 4727,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "序": {
+        "definition": "series, serial order, sequence",
+        "mandarin": "xù",
+        "official_dictionary": [
+          {
+            "title": "序",
+            "pinyin": "xù",
+            "definition": "[名]\n1.廳堂的東西牆。《說文解字．广部》：「序，東西牆也。」《儀禮．士冠禮》：「主人玄端爵韠，立于阼階下，直東序西面。」\n2.古代的學校名稱。如：「鄉序」。《孟子．梁惠王上》：「謹庠序之教，申之以孝悌之義。」\n3.排列的次第。如：「順序」、「次序」。《儀禮．鄉飲酒禮》：「眾賓序升，即席。」《隋書．卷十三．音樂志上．序》：「樂失其序，則親疏亂。」\n4.文體名：(1)通常放在正文前，概說、評述作品內容。南朝梁．劉勰《文心雕龍．詮賦》：「序以建言，首引情本。」(2)通常臨別贈言的文章稱為「序」，創始於唐。如韓愈有〈送孟東野序〉、〈送李愿歸盤谷序〉等。唐．韓愈〈送水陸運使韓侍御歸所治序〉：「聞其歸，皆相勉為詩以推大之，而屬余為序。」\n5.季節。《文選．江淹．雜體詩．謝僕射》：「淒淒節序高，寥寥心悟永。」《紅樓夢》第八十七回：「（永）回憶海棠結社，序屬清秋。」\n[形]\n開頭的。如：「序曲」、「序幕」。",
+            "entry_id": "07303",
+            "sheet": "1150929辭典匯出",
+            "row": 7312,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "official_dictionary": [
+          {
+            "title": "舟",
+            "pinyin": "zhōu",
+            "definition": "[名]\n1.船。如：「輕舟」、「一葉扁舟」、「逆水行舟」。《詩經．邶風．二子乘舟》：「二子乘舟，汎汎其景。」\n2.姓。如春秋時虢國有舟之僑。\n3.二一四部首之一。\n[動]\n乘船。《禮記．祭義》：「壹舉足而不敢忘父母，是故道而不徑，舟而不游。」",
+            "entry_id": "07735",
+            "sheet": "1150929辭典匯出",
+            "row": 7746,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "渡": {
+        "definition": "cross, ferry over; ferry",
+        "mandarin": "dù",
+        "official_dictionary": [
+          {
+            "title": "渡",
+            "pinyin": "dù",
+            "definition": "[動]\n1.過河、由此岸到彼岸。如：「渡河」、「渡海」。唐．李華〈弔古戰場文〉：「萬里奔走，連年暴露。沙草晨牧，河冰夜渡。」\n2.通過、跨越。如：「渡過難關」。《史記．卷八．高祖本紀》：「淮陰已受命東，未渡平原。」宋．蘇軾〈梅花〉詩二首之一：「一夜東風吹石裂，半隨飛雪渡關山。」\n3.交付、轉手。如：「引渡」、「讓渡」。\n[名]\n坐船過河的地方。《晉書．卷三四．杜預傳》：「預又以孟津渡險，有覆沒之患，請建河橋于富平津。」唐．王維〈歸嵩山作〉詩：「荒城臨古渡，落日滿秋山。」",
+            "entry_id": "02303",
+            "sheet": "1150929辭典匯出",
+            "row": 2310,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "之",
+            "pinyin": "zhī",
+            "definition": "[介]\n1.的、底。《論語．公冶長》：「夫子之文章。」《左傳．襄公十四年》：「余弟死，而子來，是而子殺余之弟也。」\n2.於。《易經．比卦．象曰》：「比之匪人，不亦傷乎？」《禮記．大學》：「人之其所親愛而辟焉。」\n3.諸、之於。《孟子．滕文公上》：「禹疏九河，瀹濟、漯而注諸海；決汝、漢，排淮、泗而注之江。」\n[連]\n1.與、及。《書經．立政》：「文王罔攸兼于庶言、庶獄、庶慎，惟有司之牧夫。」《呂氏春秋．仲夏紀．適音》：「樂之弗樂者，心也。」\n2.而。《戰國策．秦策二》：「臣恐王為臣之投杼也。」\n3.若、如果。《書經．盤庚上》：「邦之臧，惟汝眾，邦之不臧，惟予一人有佚罰。」《論語．子張》：「我之大賢與，於人何所不容？我之不賢與，人將拒我，如之何其拒人也？」\n4.則。《左傳．僖公九年》：「東略之不知，西則否矣。」《呂氏春秋．仲春紀．功名》：「故民無常處，見利之聚，無之去。」\n[助]\n用於強調或補足語氣，無義。《書經．西伯戡黎》：「殷之即喪！指乃功，不無戮于爾邦？」《史記．卷四八．陳涉世家》：「悵恨久之。」\n[代]\n1.他、彼。《書經．皋陶謨》：「安民則惠，黎民懷之。」《論語．顏淵》：「愛之欲其生。」\n2.其、他的。《武王伐紂平話．卷中》：「紂王令推上法場，斬之老母。」清．王士禎《池北偶談．卷二四．談異五．女化男》：「乃以聘禮還之夫家。」\n3.此、這個。《詩經．邶風．日月》：「乃如之人兮，逝不古處。」《莊子．知北遊》：「知以之言也，問乎狂屈。」\n[動]\n1.往。如唐朝李白有〈黃鶴樓送孟浩然之廣陵〉詩。《詩經．鄘風．載馳》：「百爾所思，不如我所之。」\n2.至、到。《西京雜記》卷五：「此自少之多，自微至著也。」\n3.是、為。《公羊傳．宣公十五年》：「吾見子之君子也，是以告情于子也。」漢．揚雄《法言．吾子》：「羊質而虎皮，見草而說，見豺而戰，忘其皮之虎也。」\n4.取用。《戰國策．齊策三》：「故物舍其所長，之其所短，堯亦有所不及矣。」\n[名]\n姓。如漢代有之馬宇。",
+            "entry_id": "07464",
+            "sheet": "1150929辭典匯出",
+            "row": 7474,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "同",
+            "pinyin": "tóng",
+            "definition": "[動]\n1.會合、聚集。《說文解字．𠔼部》：「同，合會也。」如：「會同」。唐．錢起〈送鍾評事應宏詞下第東歸〉詩：「勸君稍盡離筵酒，千里佳期難再同。」\n2.統一、齊一。《書經．舜典》：「協時月正日，同律度量衡。」宋．陸游〈示兒〉詩：「死去元知萬事空，但悲不見九州同。」\n3.一齊分享、從事等。如：「同甘苦，共患難。」《孫子．謀攻》：「不知三軍之事，而同三軍之政者，則軍士惑矣。」\n4.贊成。如：「贊同」、「同意」。\n[形]\n一樣的。如：「同類」、「相同」、「同工同酬」。\n[副]\n一起、共同。如：「有福同享，有難同當。」唐．李白〈長干行〉二首之一：「同居長干里，兩小無嫌猜。」\n[連]\n和、與、跟。如：「有事同你商量。」、「我同他一起去看電影。」\n[名]\n1.和諧、和平。如：「促進世界大同」。《禮記．禮運》：「是故謀閉而不興，盜竊亂賊而不作，故外戶而不閉，是謂大同。」\n2.契約。如：「合同」。\n3.姓。如唐代有同谷。",
+            "entry_id": "02883",
+            "sheet": "1150929辭典匯出",
+            "row": 2889,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "同",
+            "pinyin": "tòng",
+            "definition": "[名]\n巷弄、小街道。如：「胡同」。",
+            "entry_id": "02912",
+            "sheet": "1150929辭典匯出",
+            "row": 2918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朗": {
+        "definition": "clear, bright; distinct",
+        "mandarin": "lǎng",
+        "official_dictionary": [
+          {
+            "title": "朗",
+            "pinyin": "lǎng",
+            "definition": "[形]\n明亮。如：「明朗」、「晴朗」。晉．王羲之〈三月三日蘭亭詩序〉：「天朗氣清，惠風和暢。」\n[副]\n響亮。如：「朗誦」、「朗讀」。《文選．孫綽．遊天台山賦》：「凝思幽巖，朗詠長川。」",
+            "entry_id": "03365",
+            "sheet": "1150929辭典匯出",
+            "row": 3372,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "熠": {
+        "definition": "bright and sparkling",
+        "mandarin": "yì",
+        "official_dictionary": [
+          {
+            "title": "熠",
+            "pinyin": "yì",
+            "definition": "[形]\n光耀、明亮。《說文解字．火部》：「熠，盛光也。」如：「熠熤」、「繁星熠熠」。《詩經．豳風．東山》：「倉庚于飛，熠燿其羽。」漢．鄭玄．箋：「熠燿其羽，羽鮮明也。」",
+            "entry_id": "10678",
+            "sheet": "1150929辭典匯出",
+            "row": 10692,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "烁": {
+        "definition": "shine, glitter, sparkle",
+        "mandarin": "shuò",
+        "related_characters": [
+          {
+            "character": "爍",
+            "relation": "kTraditionalVariant",
+            "definition": "shine, glitter, sparkle",
+            "mandarin": "shuò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "息": {
+        "definition": "rest, put stop to, end, cease",
+        "mandarin": "xī",
+        "official_dictionary": [
+          {
+            "title": "息",
+            "pinyin": "xí",
+            "definition": "[名]\n1.呼吸時出入的氣。如：「窒息」、「奄奄一息」、「一息尚存」。《聊齋志異．卷七．青娥》：「略聞香息，心願竊慰。」\n2.子女、兒子。如：「子息」。《戰國策．趙策四》：「老臣賤息舒祺，最少，不肖。」《聊齋志異．卷二．嬰寧》：「弱息僅存，亦為庶產。」\n3.利錢。如：「利息」、「月息」、「年息」。《史記．卷七五．孟嘗君傳》：「貧不能與息者，取其券而燒之。」\n4.音訊、音信。如：「消息」、「信息」。\n5.贅肉。通「瘜」。《黃帝素問靈樞經．卷一．邪氣藏府病形篇》：「若鼻息肉不通，緩甚為多汗，微緩為痿瘻偏風。」\n6.姓。如明代有息隆泰。\n[動]\n1.呼吸、喘氣。《漢書．卷五四．蘇建傳》：「武氣絕，半日復息。」\n2.休憩、放鬆身心。如：「歇息」、「休息」。《孟子．梁惠王下》：「飢者弗食，勞者弗息。」\n3.停止、消失。如：「止息」、「息怒」、「川流不息」。《漢書．卷四八．賈誼傳》：「百姓素樸，獄訟衰息。」\n4.繁殖、滋長。《荀子．大略》：「有國之君，不息牛羊。」《戰國策．齊策四》：「振困窮，補不足，是助王息其民者也。」",
+            "entry_id": "06809",
+            "sheet": "1150929辭典匯出",
+            "row": 6818,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "恚": {
+        "definition": "anger, rage",
+        "mandarin": "huì",
+        "official_dictionary": [
+          {
+            "title": "恚",
+            "pinyin": "huì",
+            "definition": "[動]\n怨恨、憤怒。如：「恚恨」、「恚怒」。《戰國策．齊策六》：「故去忿恚之心，而成終身之名。」《三國志．卷五四．吳書．呂蒙傳》：「歸以告蒙母，母恚欲罰之。」",
+            "entry_id": "05119",
+            "sheet": "1150929辭典匯出",
+            "row": 5126,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嗥": {
+        "definition": "roar, call out, wail; bark, yelp",
+        "mandarin": "háo",
+        "official_dictionary": [
+          {
+            "title": "嗥",
+            "pinyin": "háo",
+            "definition": "[動]\n1.吼叫。如：「狼嗥」。《左傳．襄公十四年》：「賜我南鄙之田，狐狸所居，豺狼所嗥。」\n2.大聲號哭。如：「嗥叫」。《莊子．庚桑楚》：「兒子終日嗥而嗌不嗄，和之至也。」",
+            "entry_id": "04797",
+            "sheet": "1150929辭典匯出",
+            "row": 4803,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "炎禾",
+      "decision": "keep",
+      "reason": "“炎”与“禾”构成火与谷物的鲜明物象组合，字义明确、简洁易记，作为品牌名自然；不与已保留的“禾”字候选构成近似重复。"
+    },
+    {
+      "name": "炎光序",
+      "decision": "uncertain",
+      "reason": "“炎光”可理解为火光，“序”可指次第或开端，但三字组合关系不够清楚，整体自然度和语义凝聚度存疑；与已保留的“鎏光岁序”“颐光序”共享“光序”意象，近似组合不宜重复保留。"
+    },
+    {
+      "name": "炎舟渡",
+      "decision": "reject",
+      "reason": "“舟渡”语义相近，整体像围绕舟船渡河的描述性短语，组合生硬，缺少凝练的品牌表达。"
+    },
+    {
+      "name": "炎之",
+      "decision": "reject",
+      "reason": "“之”作为结构助词或代词需要后续成分承接；两字组合语义悬空，未形成完整自然的名称。"
+    },
+    {
+      "name": "炎同",
+      "decision": "uncertain",
+      "reason": "“炎”与“同”各自字义明确，但组合关系不自然，难以形成清晰、稳定的整体语义。"
+    },
+    {
+      "name": "炎朗",
+      "decision": "keep",
+      "reason": "可自然理解为明朗、明亮之感，并带有炎光联想；两字简洁，组合通顺，具备品牌辨识度。"
+    },
+    {
+      "name": "炎熠",
+      "decision": "uncertain",
+      "reason": "两字均有光热意象，但“炎”与“熠”语义叠加，组合略显堆叠，整体自然度和辨识度有限。"
+    },
+    {
+      "name": "烁炎",
+      "decision": "reject",
+      "reason": "“烁”与“炎”都指向光热，组合成词不自然，呈现近义字机械叠加感。"
+    },
+    {
+      "name": "息恚",
+      "decision": "reject",
+      "reason": "“息恚”可解作止息愤怒，但整体是直接表达劝止情绪的动作短语，语气偏训诫，不够凝练自然，品牌感不足。"
+    },
+    {
+      "name": "长嗥",
+      "decision": "reject",
+      "reason": "可解为长声吼叫或哀号，语义清楚但整体意象尖锐、负面，不适合作为通用公司品牌名。"
+    },
+    {
+      "name": "风嗥",
+      "decision": "reject",
+      "reason": "虽可理解为风中呼啸，但“风嗥”搭配生硬，整体偏向凄厉的自然声响描写；且与已保留的“风褰云”等风意象名称有明显近似风险。"
+    }
+  ]
+}

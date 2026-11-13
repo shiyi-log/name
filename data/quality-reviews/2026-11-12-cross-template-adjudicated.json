@@ -1,0 +1,740 @@
+{
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "阎云起",
+      "阎松月",
+      "阎巷清风",
+      "山光入畈",
+      "春风过畈",
+      "春满畈",
+      "春水绕畈",
+      "畈上春",
+      "畈间风",
+      "畈间月",
+      "塄上春",
+      "塄上月",
+      "塄间月",
+      "清风过塄",
+      "垄间风",
+      "田垄间",
+      "禾垄间",
+      "云开见畈",
+      "山水錾刻",
+      "一树百获",
+      "他山攻玉",
+      "云芃野",
+      "梌川",
+      "郧川"
+    ],
+    "literature_phrase_examples": {
+      "阎云起": [],
+      "阎松月": [],
+      "阎巷清风": [],
+      "山光入畈": [],
+      "春风过畈": [],
+      "春满畈": [],
+      "春水绕畈": [],
+      "畈上春": [],
+      "畈间风": [],
+      "畈间月": [],
+      "塄上春": [],
+      "塄上月": [],
+      "塄间月": [],
+      "清风过塄": [],
+      "垄间风": [],
+      "田垄间": [],
+      "禾垄间": [],
+      "云开见畈": [],
+      "山水錾刻": [],
+      "一树百获": [
+        {
+          "book": "管子",
+          "line": 59,
+          "context": "如树人(而成立之/树人谓济)一树一获者榖也一树十获者木也(枯悴故曰十获也/果木过十年渐就)一树百获者人也(亦有嗣之而报德者故曰百获也/人有百年之寿虽使充百年子孙)我苟种之如神用之(种/一)(其由故曰如神用也/百获近识者莫能测)举"
+        }
+      ],
+      "他山攻玉": [],
+      "云芃野": [],
+      "梌川": [],
+      "郧川": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 56910,
+          "context": "郧川梦泽地，古迹堪询求。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 366156,
+          "context": "高秋万嶂出，一望通郧川。"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "阎": {
+        "definition": "village gate; surname",
+        "mandarin": "yán",
+        "related_characters": [
+          {
+            "character": "閻",
+            "relation": "kTraditionalVariant",
+            "definition": "village gate; surname",
+            "mandarin": "yán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "起": {
+        "definition": "rise, stand up; go up; begin",
+        "mandarin": "qǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "巷": {
+        "definition": "alley, lane",
+        "mandarin": "xiàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "入": {
+        "definition": "enter, come in(to), join",
+        "mandarin": "rù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "畈": {
+        "definition": "field; farm",
+        "mandarin": "fàn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "满": {
+        "definition": "fill; full, satisfied",
+        "mandarin": "mǎn",
+        "related_characters": [
+          {
+            "character": "滿",
+            "relation": "kTraditionalVariant",
+            "definition": "fill; full, satisfied",
+            "mandarin": "mǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "绕": {
+        "definition": "entwine; wind around; surround",
+        "mandarin": "rào",
+        "related_characters": [
+          {
+            "character": "繞",
+            "relation": "kTraditionalVariant",
+            "definition": "entwine; wind around; surround",
+            "mandarin": "rào"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "上": {
+        "definition": "top; superior, highest; go up, send up",
+        "mandarin": "shàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "塄": {
+        "definition": "elevated bank in field",
+        "mandarin": "léng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "垄": {
+        "definition": "grave, mound; ridge in field",
+        "mandarin": "lǒng",
+        "related_characters": [
+          {
+            "character": "壟",
+            "relation": "kTraditionalVariant",
+            "definition": "grave, mound; ridge in field",
+            "mandarin": "lǒng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "田": {
+        "definition": "field, arable land, cultivated",
+        "mandarin": "tián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "錾": {
+        "definition": "engraving tool, chisel",
+        "mandarin": "zàn",
+        "related_characters": [
+          {
+            "character": "鏨",
+            "relation": "kTraditionalVariant",
+            "definition": "engraving tool, chisel",
+            "mandarin": "zàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "刻": {
+        "definition": "carve, engrave; quarter hour",
+        "mandarin": "kè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "树": {
+        "definition": "tree; plant; set up, establish",
+        "mandarin": "shù",
+        "related_characters": [
+          {
+            "character": "樹",
+            "relation": "kTraditionalVariant",
+            "definition": "tree; plant; set up, establish",
+            "mandarin": "shù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "百": {
+        "definition": "one hundred; numerous, many",
+        "mandarin": "bǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "获": {
+        "definition": "obtain, get, receive; seize",
+        "mandarin": "huò",
+        "related_characters": [
+          {
+            "character": "獲",
+            "relation": "kTraditionalVariant",
+            "definition": "obtain, get, receive; seize",
+            "mandarin": "huò"
+          },
+          {
+            "character": "穫",
+            "relation": "kTraditionalVariant",
+            "definition": "harvest, cut grain",
+            "mandarin": "huò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "他": {
+        "definition": "other, another; he, she, it",
+        "mandarin": "tā",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "攻": {
+        "definition": "attack, assault; criticize",
+        "mandarin": "gōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "玉": {
+        "definition": "jade, precious stone, gem",
+        "mandarin": "yù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "芃": {
+        "definition": "luxuriant growth",
+        "mandarin": "péng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "梌": {
+        "mandarin": "tú",
+        "supplemental_dictionary": {
+          "explanation": "梌tú 1.木名。即楸。 2.木名。即枫。",
+          "source_url": "https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/word.json",
+          "source_sha256": "8ae3453eacc5b0f3fdfba47eac8bb686cd73914d278e8b851ae6ef81082f80e7",
+          "authority": "third_party_compilation_requires_cross_check"
+        },
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "郧": {
+        "definition": "county in Hubei province",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "鄖",
+            "relation": "kTraditionalVariant",
+            "definition": "county in Hubei province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "阎云起",
+      "decision": "uncertain",
+      "reason": "“云起”意为云气升起，组合自然，但“阎”作为姓氏置于前面更像个人姓名，缺少足够的公司品牌构词关系。"
+    },
+    {
+      "name": "阎松月",
+      "decision": "uncertain",
+      "reason": "“松月”是自然的景物组合，但整体容易读作姓阎者的姓名，品牌构词关系不明确。"
+    },
+    {
+      "name": "阎巷清风",
+      "decision": "reject",
+      "reason": "“巷清风”近于“巷间清风”的景物短语，前置“阎”无法形成自然语义，整体拼接生硬。"
+    },
+    {
+      "name": "山光入畈",
+      "decision": "uncertain",
+      "reason": "可理解为山间光色进入田畈，意象明确，但完整组合偏写景句式，品牌凝练感不足。"
+    },
+    {
+      "name": "春风过畈",
+      "decision": "uncertain",
+      "reason": "语义自然，描写春风吹过田畈；完整名称更像写景短句，品牌辨识度有限。"
+    },
+    {
+      "name": "春满畈",
+      "decision": "uncertain",
+      "reason": "与畈上春同为田畈春意，仅以语序改写场景，组内保留畈上春，避免近似改写计数。"
+    },
+    {
+      "name": "春水绕畈",
+      "decision": "uncertain",
+      "reason": "可理解为春水环绕田畈，语义自然，但整体主要是景物描写，品牌名凝练度一般。"
+    },
+    {
+      "name": "畈上春",
+      "decision": "keep",
+      "reason": "意为田畈上的春意，语序简洁自然，乡野景象明确，具有可识别的品牌意象。"
+    },
+    {
+      "name": "畈间风",
+      "decision": "keep",
+      "reason": "意为田畈之间的风，构词自然简短，具体意象清楚，具备品牌名的凝练感。"
+    },
+    {
+      "name": "畈间月",
+      "decision": "uncertain",
+      "reason": "与畈间风共用同一空间模板，仅替换景物，缺少进一步整体差异；先待定不计数。"
+    },
+    {
+      "name": "塄上春",
+      "decision": "keep",
+      "reason": "“塄”指田间高埂，整体可解为田埂上的春意；字义有据，组合简洁且意象明确。"
+    },
+    {
+      "name": "塄上月",
+      "decision": "uncertain",
+      "reason": "与塄间月仅替换方位字，为同一田埂月色场景，近似组先待定不计数。"
+    },
+    {
+      "name": "塄间月",
+      "decision": "uncertain",
+      "reason": "与塄上月仅替换方位字，为同一田埂月色场景，近似组先待定不计数。"
+    },
+    {
+      "name": "清风过塄",
+      "decision": "uncertain",
+      "reason": "可理解为清风掠过田埂，语义成立，但整体是完整的写景短句，名称化程度不足。"
+    },
+    {
+      "name": "垄间风",
+      "decision": "keep",
+      "reason": "意为田垄之间的风，结构简洁自然，农田意象具体，具备辨识度。"
+    },
+    {
+      "name": "田垄间",
+      "decision": "uncertain",
+      "reason": "能理解为田地与田垄之间或田垄之中，但名词关系不够明确，整体更像方位片段。"
+    },
+    {
+      "name": "禾垄间",
+      "decision": "uncertain",
+      "reason": "整体是禾苗田垄间的方位片段，与田垄间高度接近，名称凝练度仍需复核。"
+    },
+    {
+      "name": "云开见畈",
+      "decision": "uncertain",
+      "reason": "“云开见畈”可理解为云散后显出田畈，画面清楚，但整体是叙述性写景句，凝练感略弱。"
+    },
+    {
+      "name": "山水錾刻",
+      "decision": "uncertain",
+      "reason": "可理解为以錾刻呈现山水，也可能指山水的錾刻工艺；语义关系可辨但偏工艺描述，品牌指向不够明确。"
+    },
+    {
+      "name": "一树百获",
+      "decision": "reject",
+      "reason": "出自《管子》，原文以种树比喻树人、育人所得长远；属于完整的古典比喻句式，且与常见成语式宣言相近，不符合名称凝练要求。"
+    },
+    {
+      "name": "他山攻玉",
+      "decision": "reject",
+      "reason": "熟悉的成语式典故表达借助外力成就自身，完整组合是价值宣言而非凝练品牌名。"
+    },
+    {
+      "name": "云芃野",
+      "decision": "uncertain",
+      "reason": "“芃”确有草木茂盛义，但“云、芃、野”之间缺少自然明确的语法或语义连接，组合近于意象堆叠。"
+    },
+    {
+      "name": "梌川",
+      "decision": "uncertain",
+      "reason": "“梌”有楸或枫等树木义，“梌川”可作树木与河川的意象组合，但词义关系及自然度不足以确认其品牌语义。"
+    },
+    {
+      "name": "郧川",
+      "decision": "uncertain",
+      "reason": "“郧”指湖北郧县，且有古诗中的“郧川”用例；整体可作地名或专名理解，但不能在背景未知时确认其与品牌的自然关联。"
+    }
+  ],
+  "status": "agent_adjudicated_not_final_acceptance",
+  "review_id": "20261112-cross-template-adjudicated",
+  "before": [
+    {
+      "name": "阎云起",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "阎松月",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "阎巷清风",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "山光入畈",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "春风过畈",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "春满畈",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "春水绕畈",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "畈上春",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "畈间风",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "畈间月",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "塄上春",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "塄上月",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "塄间月",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "清风过塄",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "垄间风",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "田垄间",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "禾垄间",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "云开见畈",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "山水錾刻",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "一树百获",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "他山攻玉",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "云芃野",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "梌川",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "郧川",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    }
+  ]
+}

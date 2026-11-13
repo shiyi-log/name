@@ -1,0 +1,785 @@
+{
+  "review_id": "20261113T042317-b54c3ea3",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "平凡",
+      "万凡",
+      "凡则",
+      "凡有章法",
+      "凡响",
+      "尘凡",
+      "超凡",
+      "泣露"
+    ],
+    "related_kept_candidates": {
+      "尘": [
+        "涤尘",
+        "非尘",
+        "浮尘",
+        "尘寰",
+        "祛尘",
+        "拔尘"
+      ],
+      "平": [
+        "昇平",
+        "砥平",
+        "平安帖",
+        "星落平塅",
+        "平塅",
+        "平沙无垠",
+        "鹬落平沙",
+        "日暖平塬",
+        "慎平",
+        "霞映平川",
+        "斠平"
+      ],
+      "章": [
+        "仓颉新章",
+        "酷乐章",
+        "奎章",
+        "人间新章",
+        "斐章",
+        "篇章",
+        "四时篇章",
+        "含章",
+        "华章",
+        "序章",
+        "珵章",
+        "鎏章"
+      ],
+      "万": [
+        "万顷晴光",
+        "万象初酿",
+        "万物鲜",
+        "万象常鲜",
+        "万象之柢",
+        "人间万象",
+        "万象之门",
+        "万象成码",
+        "见万物",
+        "万里清风",
+        "绎万象",
+        "万籁"
+      ],
+      "有": [
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度",
+        "梾间有光",
+        "溪山有蹊",
+        "春山有蹊",
+        "有斐",
+        "柯间有光",
+        "大有",
+        "有谱儿"
+      ],
+      "露": [
+        "芹露",
+        "芹露映晨",
+        "芭露",
+        "葭露",
+        "蔓生朝露",
+        "蕖露",
+        "蕖叶承露",
+        "柘露",
+        "珂露",
+        "菼露",
+        "蓓含朝露",
+        "露晞"
+      ],
+      "响": [
+        "轰响",
+        "窣响",
+        "巨响",
+        "冬山清响",
+        "畦间清响",
+        "楮间清响",
+        "眉间清响",
+        "山河回响",
+        "桠间清响",
+        "叮响",
+        "窗前叮响",
+        "脆响"
+      ],
+      "凡": [
+        "非凡境",
+        "凡川"
+      ],
+      "超": [
+        "超轶",
+        "超迈",
+        "超卓",
+        "超逸",
+        "超常",
+        "超前",
+        "超骧"
+      ],
+      "法": [
+        "得法",
+        "法诀",
+        "法眼",
+        "取法",
+        "法度"
+      ]
+    },
+    "literature_phrase_examples": {
+      "平凡": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1203841,
+          "context": "顾我最平凡，辱君误推许。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 1871,
+          "context": "仆秩亦千石成帝绥和元年更令相/治民如郡太守中尉如郡都尉康曰广陵人召平与东)(陵侯召平及此召平凡三人此召平之子奴以平死事/封黎侯见功臣表召与邵同姓谱驷郑七穆驷氏之后)(祝周武王封黄帝之/后于祝后以为氏)八月丙午齐王欲使人诛相相"
+        }
+      ],
+      "万凡": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 2727,
+          "context": "读/曰预)于是大司农经用竭不足以奉战士六月诏令民得买爵及赎禁锢免臧罪置赏官名曰武功爵级十七万凡直三十余万金诸买武功爵至千夫者得先除为吏(禁锢重/击也臣)(瓉曰茂陵中书有武功爵一级曰造士二级曰闲舆卫/三级曰良士四级曰元戎士五级"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 2729,
+          "context": "(级十七万凡直三十余万金今瓒引茂陵中书说之不/尽也贡父曰直三十余万金其价之差殊不可详也或)(说七当作一与茂陵书合矣予谓卖爵当级级稍増其/价岂可"
+        }
+      ],
+      "凡则": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 496808,
+          "context": "尘中物外，凡则全凡，圣则全圣。"
+        }
+      ],
+      "凡有章法": [],
+      "凡响": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 398288,
+          "context": "天然一曲非凡响，万颗明珠落玉盘。"
+        }
+      ],
+      "尘凡": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 391147,
+          "context": "除却幽人到，尘凡路不通。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 15131,
+          "context": "我自疏狂异趣，君何事、奔走尘凡。"
+        }
+      ],
+      "超凡": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 364974,
+          "context": "举世若能知所寓，超凡入圣弗为难。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 366360,
+          "context": "坎离即是真常家，见者超凡须入圣。"
+        }
+      ],
+      "泣露": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 46097,
+          "context": "正歌春可乐，行泣露先晞。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 170072,
+          "context": "昆山玉碎凤皇呌，芙蓉泣露香兰笑。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "平凡": [
+        {
+          "title": "平凡",
+          "pinyin": "píng fán",
+          "definition": "平常、不出色。宋．朱熹〈齋居感興詩．序〉：「欲效其體，作十數篇，顧以思致平凡，筆力萎弱，竟不能居。」",
+          "entry_id": "009560051",
+          "sheet": "1150929辭典匯出",
+          "row": 25539,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "万凡": [],
+      "凡则": [],
+      "凡有章法": [],
+      "凡响": [],
+      "尘凡": [],
+      "超凡": [
+        {
+          "title": "超凡",
+          "pinyin": "chāo fán",
+          "definition": "超越凡俗之上。如：「技藝超凡」。",
+          "entry_id": "082950005",
+          "sheet": "1150929辭典匯出",
+          "row": 120534,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "泣露": []
+    },
+    "direct_dictionary": {
+      "平": {
+        "definition": "flat, level, even; peaceful",
+        "mandarin": "píng",
+        "official_dictionary": [
+          {
+            "title": "平",
+            "pinyin": "pián",
+            "definition": "[動]\n辨別。參見「平章百姓」條。",
+            "entry_id": "00918",
+            "sheet": "1150929辭典匯出",
+            "row": 920,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "平章百姓",
+                "pinyin": "pián zhāng bó xìng",
+                "definition": "百姓，百官。「平章百姓」指辨明各官員的職守。《書經．堯典》：「九族既睦，平章百姓。」《隋書．卷二五．刑法志》：「內以平章百姓，外以和協萬邦，寔曰輕平，稱為簡易。」",
+                "entry_id": "009180002",
+                "sheet": "1150929辭典匯出",
+                "row": 25155
+              }
+            ]
+          },
+          {
+            "title": "平",
+            "pinyin": "píng",
+            "definition": "[形]\n1.不高不低、不凸出的。如：「平地」、「平房」、「平沙」。唐．王維〈觀獵〉詩：「迴看射雕處，千里暮雲平。」宋．陸游〈初發夷陵〉詩：「山平水遠蒼茫外，地闢天開指顧中。」\n2.協調的。《左傳．襄公二十九年》：「五聲和，八風平。」\n3.均等的。如：「平均」、「平等」。\n4.安寧的。如：「心平氣和」、「風平浪靜」。唐．王灣〈次北固山下〉詩：「潮平兩岸闊，風正一帆懸。」\n5.沒有戰爭的。如：「和平」、「太平」。唐．韓愈〈爭臣論〉：「閔其時之不平，人之不乂。」\n6.尋常的。如：「平日」、「平時」、「平常」。\n7.不分勝負的。如：「平手」。\n8.缺少變化的。如：「聲音低平」。\n[副]\n1.公正的、無偏倚的。如：「平分」、「平反」。\n2.不高不低的。如：「平推」、「平剷」。\n[動]\n1.使安定、征服。如：「平亂」、「跨海平魔」。唐．李白〈子夜吳歌．秋歌〉：「何日平胡虜，良人罷遠征。」\n2.媾和、和好。《左傳．桓公八年》：「秋，隨及楚平，楚子將不許。」\n3.壓抑。如：「怨氣難平」。\n4.犁平、輾平、推平。如：「去將地平一平。」\n[名]\n1.平上去入四聲之一。參見「平聲」條。\n2.大陸地區北平市的簡稱。如：「王兄今日赴平公幹。」\n3.姓。如漢代有平當。",
+            "entry_id": "00956",
+            "sheet": "1150929辭典匯出",
+            "row": 958,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "平地",
+                "pinyin": "píng dì",
+                "definition": "1.平坦的土地。《大宋宣和遺事．元集》：「恃著強力，不用水向平地上推了舟船，共他徒黨在家為淫亂之行。」《老殘遊記》第一五回：「店後有個大坑塘，卻早凍得如平地了。」\n2.整平地面。《論語．子罕》：「譬如平地，雖覆一簣，進，吾往也。」\n3.忽然的，無緣無故的。如：「平地風波」。《永樂大典戲文三種．張協狀元．第三一出》：「跳過禹門三尺浪，俄然平地一聲雷。」",
+                "entry_id": "009560076",
+                "sheet": "1150929辭典匯出",
+                "row": 25568
+              },
+              {
+                "title": "平房",
+                "pinyin": "píng fáng",
+                "definition": "無樓的房子。如：「隨著居民經濟的好轉，原本隨處可見的平房，紛紛改建成高樓大廈。」",
+                "entry_id": "009560058",
+                "sheet": "1150929辭典匯出",
+                "row": 25546
+              },
+              {
+                "title": "平均",
+                "pinyin": "píng jūn",
+                "definition": "1.輕重相等，分量一致。《漢書．卷二一．律曆志上》：「鈞者，均也，陽施其氣，陰化其物，皆得其成就平均也。」\n2.均勻計算。如：「董事會決議，公司今年的盈餘平均分給員工。」《清史稿．卷一〇七．選舉志二》：「臨時試無定期，學期、年終、畢業考試分數與平日分數平均計算。」",
+                "entry_id": "009560177",
+                "sheet": "1150929辭典匯出",
+                "row": 25673
+              },
+              {
+                "title": "平等",
+                "pinyin": "píng děng",
+                "definition": "1.彼此同等、相等。《文明小史》第一八回：「無論他是什麼人，我等皆當平等相看，把他引而進之，豈宜疏而遠之？」\n2.縣名。在河南省洛陽縣西南，位於伊河之西。",
+                "entry_id": "009560069",
+                "sheet": "1150929辭典匯出",
+                "row": 25558
+              },
+              {
+                "title": "心平氣和",
+                "pinyin": "xīn píng qì hé",
+                "definition": "心氣平和，不急不怒。《宋史．卷四三四．儒林傳四．呂祖謙傳》：「心平氣和，不立崖異，一時英偉卓犖之士皆歸心焉。」《官場現形記》第三三回：「外國人瞧不起我們中國的官，也不自今日為始了。這件事我碰著了，倒還是心平氣和。」也作「心平靜氣」、「心平氣定」、「心和氣平」。",
+                "entry_id": "071530024",
+                "sheet": "1150929辭典匯出",
+                "row": 107142
+              },
+              {
+                "title": "風平浪靜",
+                "pinyin": "fēng píng làng jìng",
+                "definition": "無風無浪。比喻平靜或情勢穩定。《醒世恆言．卷四〇．馬當神風送滕王閣》：「須臾，霧散雲收，風平浪靜，滿船之人俱各無事，唯有王勃乃作神仙去矣！」《二十年目睹之怪現狀》第一七回：「我又帶上房門，到艙面上去看看，只見天水相連，茫茫無際；喜得風平浪靜，船也甚穩。」也作「平風靜浪」、「風靜浪平」。",
+                "entry_id": "017270020",
+                "sheet": "1150929辭典匯出",
+                "row": 36559
+              },
+              {
+                "title": "和平",
+                "pinyin": "hé píng",
+                "definition": "1.和洽安寧。《易經．咸卦》：「聖人感人心而天下和平，觀其所感而天地萬物之情可見矣。」\n2.沒有戰爭的狀態。如：「促進世界和平，是人類共同的目標。」\n3.溫和。如：「藥性和平」。",
+                "entry_id": "047210004",
+                "sheet": "1150929辭典匯出",
+                "row": 78242
+              },
+              {
+                "title": "太平",
+                "pinyin": "tài píng",
+                "definition": "1.極盛之世。《史記．卷二．夏本紀》：「天下於是太平治。」《文選．王康琚．反招隱詩》：「伯夷竄首陽，老聃伏柱史，昔在太平時，亦有巢居子。」也作「泰平」。\n2.安寧、平安無事。《警世通言．卷三四．王嬌鸞百年長恨》：「店主人見張客無事，偶話及此房內曾有婦人縊死，往往作怪，今番卻太平了。」也作「泰平」。\n3.南北朝梁敬帝的年號（西元556～557）。",
+                "entry_id": "024780013",
+                "sheet": "1150929辭典匯出",
+                "row": 49174
+              },
+              {
+                "title": "平日",
+                "pinyin": "píng rì",
+                "definition": "平時、平常。《後漢書．卷一〇．皇后紀上．和熹鄧皇后紀》：「太后以先帝左右，待之有恩，平日尚無惡言，今反若此，不合人情。」《文明小史》第三二回：「登時臉上發青，要待翻腔，卻因平日合他交情尚好……，只得忍住了。」",
+                "entry_id": "009560268",
+                "sheet": "1150929辭典匯出",
+                "row": 25765
+              },
+              {
+                "title": "平時",
+                "pinyin": "píng shí",
+                "definition": "平常、平日。《初刻拍案驚奇》卷一五：「你平時那一班同歡同賞，知音識趣的朋友，怎沒一個來偢睬。」《文明小史》第二一回：「這錢木仙雖然平時佩服他的，此時卻不以為然。」",
+                "entry_id": "009560248",
+                "sheet": "1150929辭典匯出",
+                "row": 25743
+              },
+              {
+                "title": "平常",
+                "pinyin": "píng cháng",
+                "definition": "1.平時、往常。《後漢書．卷一．光武帝紀上》：「未嘗自伐昆陽之功，又不敢為伯升服喪，飲食言笑如平常。」《老殘遊記》第六回：「因為天陰，所以比平常更黑得快。」\n2.普通、平凡，沒有特異之處。《文明小史》第三九回：「果然有這樣一個閨女，皮色呢倒也很白淨，只是招牙露齒的，相貌其實平常，配不上我這逢兒。」《紅樓夢》第五七回：「別人之父母皆年高有德之人，獨他父母偏是酒糟透之人，於女兒分中平常。」",
+                "entry_id": "009560242",
+                "sheet": "1150929辭典匯出",
+                "row": 25737
+              },
+              {
+                "title": "平手",
+                "pinyin": "píng shǒu",
+                "definition": "不分勝負的比賽結果。如：「今年大專盃籃球賽，本校與去年冠軍隊打成平手。」",
+                "entry_id": "009560254",
+                "sheet": "1150929辭典匯出",
+                "row": 25749
+              },
+              {
+                "title": "平分",
+                "pinyin": "píng fēn",
+                "definition": "平均分配。《史記．卷六四．司馬穰苴傳》：「悉取將軍之資糧享士卒，身與士卒平分糧食。」《儒林外史》第一三回：「老婆白白送你，還可以發得幾百銀子財！你須要大大的請我，將來銀子同我平分，我纔和你說。」",
+                "entry_id": "009560052",
+                "sheet": "1150929辭典匯出",
+                "row": 25540
+              },
+              {
+                "title": "平反",
+                "pinyin": "píng fān",
+                "definition": "推翻錯判，洗雪冤情。《漢書．卷三六．楚元王傳》：「每行京兆尹事，多所平反罪人。」《清史稿．卷二七三．郎廷佐列傳》：「擢江西贛州知府，平反冤獄，居官有聲。」",
+                "entry_id": "009560050",
+                "sheet": "1150929辭典匯出",
+                "row": 25538
+              },
+              {
+                "title": "平亂",
+                "pinyin": "píng luàn",
+                "definition": "平定叛亂。《後漢書．卷四八．楊李翟應霍爰徐列傳．楊終》：「高祖平亂，約法三章。太宗至仁，除去收孥。」《三國志．卷一一．魏書．袁張涼國田王邴管傳．袁渙》：「若夫兼愛天下而反之於正，雖以武平亂而濟之以德，誠百王不易之道也。」",
+                "entry_id": "009560134",
+                "sheet": "1150929辭典匯出",
+                "row": 25628
+              },
+              {
+                "title": "平聲",
+                "pinyin": "píng shēng",
+                "definition": "一種漢語調類。聲調平出而沒有高低的變化。今國音分化為陰平、陽平二類，即第一聲、第二聲。第二聲注音符號用「ˊ」來表示。",
+                "entry_id": "009560263",
+                "sheet": "1150929辭典匯出",
+                "row": 25760
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凡": {
+        "definition": "all, any, every; ordinary, common",
+        "mandarin": "fán",
+        "official_dictionary": [
+          {
+            "title": "凡",
+            "pinyin": "fán",
+            "definition": "[形]\n1.平庸、平常。如：「平凡」、「非凡」、「自命不凡」。清．洪昇《長生殿》第三八齣：「我聽你這琵琶，非同凡手。」\n2.塵世的、世俗的。如：「凡間」。唐．李中〈寄廬山簡寂觀重道者〉詩：「似醒一夢歸凡世，空向彤霞寄夢頻。」《西遊記》第二回：「去時凡骨凡胎重，得道身輕體亦輕。」\n[名]\n1.大旨、綱要。如：「發凡起例」。《漢書．卷八七．揚雄傳下》：「僕嘗倦談，不能一二其詳，請略舉凡，而客自覽其切焉。」\n2.塵世間。如：「仙凡路隔」、「天仙下凡」。\n[副]\n1.概括之詞。如：「凡是有生命之物，都稱生物。」\n2.總共。如：「全書凡二十章。」《文選．司馬遷．報任少卿書》：「凡百三十篇。」唐．柳宗元〈愚溪詩序〉：「愚泉凡六穴，皆出山下平地。」",
+            "entry_id": "01614",
+            "sheet": "1150929辭典匯出",
+            "row": 1618,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "万": {
+        "definition": "ten thousand; innumerable",
+        "mandarin": "wàn mò",
+        "related_characters": [
+          {
+            "character": "万",
+            "relation": "kTraditionalVariant",
+            "definition": "ten thousand; innumerable",
+            "mandarin": "wàn mò"
+          },
+          {
+            "character": "萬",
+            "relation": "kTraditionalVariant",
+            "definition": "ten thousand; innumerable",
+            "mandarin": "wàn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "万",
+            "pinyin": "mò",
+            "definition": "參見「万俟」條。",
+            "entry_id": "01062",
+            "sheet": "1150929辭典匯出",
+            "row": 1064,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "万俟",
+                "pinyin": "mò qí",
+                "definition": "複姓。本為鮮卑部落名，後魏以為姓氏。如北齊有万俟普、北宋末南宋初有万俟詠。",
+                "entry_id": "010620001",
+                "sheet": "1150929辭典匯出",
+                "row": 27328
+              }
+            ]
+          },
+          {
+            "title": "万",
+            "pinyin": null,
+            "definition": "「萬」的異體字。",
+            "entry_id": "11494-1",
+            "sheet": "1150929辭典匯出",
+            "row": 159524,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "则": {
+        "definition": "rule, law, regulation; grades",
+        "mandarin": "zé",
+        "related_characters": [
+          {
+            "character": "則",
+            "relation": "kTraditionalVariant",
+            "definition": "rule, law, regulation; grades",
+            "mandarin": "zé"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "有",
+            "pinyin": "yǒu",
+            "definition": "[動]\n表事實、狀況的正面存在，與「無」相對。如：「有困難」、「有利有弊」、「有學問」、「有錢」、「擁有」、「面有飢色」。\n[形]\n1.豐足、富裕。如：「他是個非常富有的人。」《詩經．大雅．公劉》：「止基迺理，爰眾爰有。」\n2.多，表示時間久或年齡大。如：「本店開設有年。」、「母親已有了年紀。」\n3.故意。如：「有心犯錯應嚴懲，無心疏忽可原諒。」\n[綴]\n置於名詞前，作音節的襯字。如：「有夏」、「有清」。《韓非子．五蠹》：「當舜之時，有苗不服，禹將伐之。」\n[代]\n某，表示不確定。如：「有一天晚上」、「有人說你做人很講義氣。」\n[名]\n姓。如漢代有有祿。",
+            "entry_id": "10905",
+            "sheet": "1150929辭典匯出",
+            "row": 10919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "有",
+            "pinyin": "yòu",
+            "definition": "[副]\n表示重複、反覆、連續。通「又」。唐．裴守真〈請重耕織表〉：「奸偽由此而生，黎庶緣斯而苦，此有國之大患也。」\n[連]\n用於整數與餘數之間，表示數目的附加。如：「七十有七人」。《論語．為政》：「吾十有五而志於學，三十而立。」",
+            "entry_id": "10922",
+            "sheet": "1150929辭典匯出",
+            "row": 10936,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "official_dictionary": [
+          {
+            "title": "章",
+            "pinyin": "zhāng",
+            "definition": "[名]\n1.成篇的文字。如：「文章」、「出口成章」、「下筆成章」。\n2.文體名。古代臣子上奏國君的文書。漢．蔡邕《獨斷．卷上》：「凡群臣尚書於天子者有四名：一曰章，二曰奏，三曰表，四曰駁議。」南朝梁．劉勰《文心雕龍．章表》：「章以謝恩，奏以按劾，表以陳請，議以執異。」\n3.量詞。計算書、文等段落的單位。如：「全書共分二十五章。」\n4.文采、花彩。《左傳．僖公二十四年》：「目不別五色之章為昧，心不則德義之經為頑。」唐．柳宗元〈捕蛇者說〉：「永州之野，產異蛇，黑質而白章。」\n5.條理、次序。如：「雜亂無章」。唐．韓愈〈送孟東野序〉：「其為言也，亂雜而無章。」\n6.法規、條例。如：「規章」。《史記．卷八．高祖本紀》：「與父老約法三章。」\n7.印信。如：「私章」、「圖章」。\n8.標識、標記。如：「徽章」、「勛章」、「臂章」。\n9.姓。如漢代有章明。\n[動]\n表揚、顯揚。《禮記．緇衣》：「有國者章善𤺺惡，以示民厚，則民情不貳。」《史記．卷三七．衛康叔世家》：「舉康叔為周司寇，賜衛寶祭器，以章有德。」",
+            "entry_id": "07876",
+            "sheet": "1150929辭典匯出",
+            "row": 7888,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "法": {
+        "definition": "law, rule, regulation, statute; France, French",
+        "mandarin": "fǎ",
+        "official_dictionary": [
+          {
+            "title": "法",
+            "pinyin": "fā",
+            "definition": "在「沒法兒」、「想個法兒」等語詞中的音讀。",
+            "entry_id": "01525",
+            "sheet": "1150929辭典匯出",
+            "row": 1530,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "法",
+            "pinyin": "fá",
+            "definition": "參見「法子」條。",
+            "entry_id": "01534",
+            "sheet": "1150929辭典匯出",
+            "row": 1539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "法子",
+                "pinyin": "fá zi",
+                "definition": "方法。《紅樓夢》第七三回：「問我，我也沒什麼法子。」《文明小史》第三七回：「我們國家自有處置他的法子，這不干兄弟的事。」",
+                "entry_id": "015340001",
+                "sheet": "1150929辭典匯出",
+                "row": 33295
+              }
+            ]
+          },
+          {
+            "title": "法",
+            "pinyin": "fǎ",
+            "definition": "[名]_x000D_\n1.律令。如：「法令」、「法律」。《韓非子．定法》：「法者，憲令著於官府。」_x000D_\n2.制度。《禮記．曲禮下》：「祭祀之禮，居喪之服，哭泣之位，皆如其國之故，謹修其法而審行之。」_x000D_\n3.範式、原則。如：「文法」、「語法」。_x000D_\n4.途徑。如：「方法」、「辦法」。_x000D_\n5.佛、道等的道理。如：「佛法」、「法壇」。《五燈會元．卷六．谷山藏禪師》：「法尚應捨，何況非法？」_x000D_\n6.方術、技巧。如：「道士作法」、「魔法」。_x000D_\n7.法國的簡稱。舊音ㄈㄚˋ fà。如：「中法戰爭」、「英法戰爭」。_x000D_\n8.姓。如漢代有法雄。_x000D_\n[動]_x000D_\n仿效。《周易．繫辭上》：「知崇禮卑，崇效天，卑法地，天地設位，而易行乎其中矣。」_x000D_\n[形]_x000D_\n1.可為法則的。如：「法書」、「法帖」。_x000D_\n2.屬於佛家的。如：「法衣」、「法號」。",
+            "entry_id": "01536",
+            "sheet": "1150929辭典匯出",
+            "row": 1541,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "响": {
+        "definition": "make sound, make noise; sound",
+        "mandarin": "xiǎng",
+        "related_characters": [
+          {
+            "character": "响",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          },
+          {
+            "character": "響",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "响",
+            "pinyin": null,
+            "definition": "「響」的異體字。",
+            "entry_id": "07207-1",
+            "sheet": "1150929辭典匯出",
+            "row": 108596,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "尘": {
+        "definition": "dust, dirt, ashes, cinders",
+        "mandarin": "chén",
+        "related_characters": [
+          {
+            "character": "塵",
+            "relation": "kTraditionalVariant",
+            "definition": "dust, dirt, ashes, cinders",
+            "mandarin": "chén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "超": {
+        "definition": "jump over, leap over; surpass",
+        "mandarin": "chāo",
+        "official_dictionary": [
+          {
+            "title": "超",
+            "pinyin": "chāo",
+            "definition": "[動]\n1.跳上。《說文解字．走部》：「超，跳也。」《左傳．昭公元年》：「子南戎服入，左右射，超乘而出。」\n2.越過。如：「超越巔峰」。《孟子．梁惠王上》：「挾太山以超北海。」\n3.高出、多出。《韓非子．五蠹》：「超五帝，侔三王者，必此法也。」《後漢書．卷二八上．馮衍傳》：「顯忠貞之節，立超世之功。」\n4.救度。如：「超度亡魂」。\n[形]\n遙遠。《楚辭．屈原．九歌．國殤》：「出不入兮往不反，平原忽兮路超遠。」",
+            "entry_id": "08295",
+            "sheet": "1150929辭典匯出",
+            "row": 8309,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泣": {
+        "definition": "cry, sob, weep",
+        "mandarin": "qì",
+        "official_dictionary": [
+          {
+            "title": "泣",
+            "pinyin": "qì",
+            "definition": "[動]\n只掉眼淚而不出聲的哭，或指低聲的哭。如：「泣血」、「泣不成聲」。《史記．卷七七．魏公子傳》：「公子畏死邪？何泣也？」宋．陸游〈夜泊水村〉詩：「老子猶堪絕大漠，諸君何至泣新亭？」\n[名]\n眼淚。如：「暗自飲泣」、「泣下如雨」。《史記．卷七．項羽本紀》：「項王泣數行下。」",
+            "entry_id": "06302",
+            "sheet": "1150929辭典匯出",
+            "row": 6311,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "露": {
+        "definition": "dew; bare, open, exposed",
+        "mandarin": "lù",
+        "official_dictionary": [
+          {
+            "title": "露",
+            "pinyin": "lòu",
+            "definition": "[動]\n1.顯現。如：「露出馬腳」、「衣角外露」。\n2.洩漏。如：「露了口風」。《後漢書．卷七一．皇甫嵩傳》：「角等知事已露，晨夜馳敕諸方，一時俱起。」",
+            "entry_id": "03313",
+            "sheet": "1150929辭典匯出",
+            "row": 3320,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "露",
+            "pinyin": "lù",
+            "definition": "[名]\n1.靠近地面的水蒸氣，夜間遇冷而凝結成的小水珠。《楚辭．屈原．離騷》：「朝飲木蘭之墜露兮，夕餐秋菊之落英。」唐．杜甫〈月夜憶舍弟〉詩：「露從今夜白，月是故鄉明。」\n2.芳香可飲的酒或液體。如：「玫瑰露」、「果子露」。\n3.姓。如漢代有露平。\n[動]\n表現、顯現。如：「顯露」、「表露」、「暴露」、「原形畢露」。",
+            "entry_id": "03780",
+            "sheet": "1150929辭典匯出",
+            "row": 3786,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "平凡",
+      "decision": "reject",
+      "reason": "完整词义为平常、不出色，作为公司品牌名辨识度弱，直接表达平庸意味。"
+    },
+    {
+      "name": "万凡",
+      "decision": "uncertain",
+      "reason": "“万”与“凡”可分别理解为众多、平常，但组合语义关系不清，读作“万般平凡”或其他含义均缺少明确依据，构词自然度存疑。"
+    },
+    {
+      "name": "凡则",
+      "decision": "uncertain",
+      "reason": "“凡”可指平常或总括，“则”可指规则、准则，但组合关系不明确；虽有古语用例，语境义不能直接支持其作为凝练品牌名的自然性。"
+    },
+    {
+      "name": "凡有章法",
+      "decision": "reject",
+      "reason": "完整名称近似判断句或描述性短语，意为凡事都有章法，表达口号化，缺乏品牌名所需的凝练感。"
+    },
+    {
+      "name": "凡响",
+      "decision": "reject",
+      "reason": "“凡响”通常见于“不同凡响”等固定表达，单独使用容易落入熟语截取，且“凡”与“响”组合的独立语义不够自然。"
+    },
+    {
+      "name": "尘凡",
+      "decision": "uncertain",
+      "reason": "可理解为尘世、俗世，古典语境义可核，但作为品牌名较像现成的抽象词语，辨识度和语义指向有限；与暂留候选“尘寰”意象接近，组合关系也相似。"
+    },
+    {
+      "name": "超凡",
+      "decision": "reject",
+      "reason": "词义明确为超越凡俗，属于常见评价性表达，作为品牌名容易显得泛化、宣传口号化；且与暂留候选“超卓”“超逸”等同属近似的超越、卓异表达。"
+    },
+    {
+      "name": "泣露",
+      "decision": "keep",
+      "reason": "“泣”作拟人化动作、“露”指露珠，可形成露珠仿佛含泪的凝练意象；字义可核、组合有诗性画面感，并非判断句或通用类别词。"
+    }
+  ]
+}

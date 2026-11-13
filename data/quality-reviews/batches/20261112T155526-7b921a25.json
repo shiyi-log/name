@@ -1,0 +1,993 @@
+{
+  "review_id": "20261112T155526-7b921a25",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "浮游",
+      "浮岛",
+      "浮香",
+      "浮光里",
+      "浮舟行",
+      "浮云新雨",
+      "浮光照远",
+      "一叶浮舟",
+      "星浮",
+      "舟浮",
+      "浮月明",
+      "浮生记",
+      "浮云志",
+      "松影浮泉",
+      "浮舟听雨",
+      "浮云见月",
+      "浮云载月",
+      "浮云松月",
+      "江天浮月",
+      "沉浮"
+    ],
+    "related_kept_candidates": {
+      "明": [
+        "一川明月",
+        "凉月明",
+        "明月瓷",
+        "昌明",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜"
+      ],
+      "一": [
+        "一川明月",
+        "一隅",
+        "一木",
+        "抱一",
+        "水天一色",
+        "一念之间",
+        "一见青山",
+        "一川风月",
+        "一树春风",
+        "一庭清欢",
+        "一苇渡江",
+        "百川归一"
+      ],
+      "香": [
+        "丁香",
+        "香薷",
+        "藠香",
+        "藿香",
+        "馕香",
+        "枣花香",
+        "榴香",
+        "山海酵香",
+        "酸香",
+        "芹香",
+        "香茅",
+        "荃香"
+      ],
+      "月": [
+        "凉云见月",
+        "一川明月",
+        "云衔月",
+        "月照松斋",
+        "崞山见月",
+        "凉月明",
+        "崧云栖月",
+        "明月瓷",
+        "螭居松月",
+        "广陵江月",
+        "广陵松月",
+        "山麇见月"
+      ],
+      "星": [
+        "七星",
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "摘星",
+        "摘星辰",
+        "箕星",
+        "棹星河"
+      ],
+      "天": [
+        "江天又阔",
+        "水天一色",
+        "掀天",
+        "壸中天",
+        "天圜",
+        "天翱",
+        "天资",
+        "天垓",
+        "天垠",
+        "绀天",
+        "瓶中天地",
+        "天女花"
+      ],
+      "见": [
+        "凉云见月",
+        "崞山见月",
+        "云开见硔",
+        "山麇见月",
+        "黛山见月",
+        "一见青山",
+        "见山斋",
+        "见崧",
+        "藏酒见山",
+        "矿中见海",
+        "罅见晴",
+        "涂见远"
+      ],
+      "江": [
+        "江天又阔",
+        "广陵江月",
+        "月横江",
+        "一苇渡江",
+        "江墅",
+        "棹春江",
+        "棹影入江",
+        "清江棹影",
+        "江垠",
+        "涉江",
+        "江菼",
+        "江上菼"
+      ],
+      "行": [
+        "蓓光远行",
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "行义",
+        "麇行远山",
+        "鲜行",
+        "肯行"
+      ],
+      "光": [
+        "芙光里",
+        "憩光里",
+        "蕖光里",
+        "烛光里",
+        "蓓光远行",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光"
+      ],
+      "云": [
+        "凉云见月",
+        "云衔月",
+        "崧云栖月",
+        "云开见硔",
+        "珂云抱月",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮"
+      ],
+      "远": [
+        "蓓光远行",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远"
+      ],
+      "影": [
+        "弓影入松",
+        "篾影",
+        "伞影",
+        "墙影",
+        "枣影清风",
+        "月照桹影",
+        "剪影",
+        "榴花照影",
+        "远山葶影",
+        "竹影山墅",
+        "清溪芹影",
+        "芭影映山"
+      ],
+      "松": [
+        "月照松斋",
+        "螭听松雨",
+        "螭居松月",
+        "广陵松月",
+        "麇栖松月",
+        "松月弓声",
+        "弓影入松",
+        "蟠松",
+        "松间鼯",
+        "松间䴓",
+        "坝畔松",
+        "松峙"
+      ],
+      "游": [
+        "鳝游春",
+        "壮游",
+        "翱游",
+        "鲲游",
+        "青螭游",
+        "游螭",
+        "螭游清境",
+        "卧游",
+        "游刃",
+        "鲳游",
+        "游侠",
+        "鲼游"
+      ],
+      "泉": [
+        "氿泉",
+        "峋石听泉",
+        "崟泉",
+        "渟泉",
+        "硔间清泉",
+        "涡泉",
+        "井泉",
+        "涧泉",
+        "云梾听泉",
+        "嶷泉",
+        "石罅泉",
+        "浴月听泉"
+      ],
+      "岛": [
+        "神祕岛"
+      ],
+      "里": [
+        "芙光里",
+        "憩光里",
+        "蕖光里",
+        "烛光里",
+        "千里骃",
+        "壳里乾坤",
+        "葶花里",
+        "墅里",
+        "熏风里",
+        "芭蕉里",
+        "墟里",
+        "墟里烟"
+      ],
+      "叶": [
+        "茎叶",
+        "蒌叶",
+        "月照芭叶",
+        "芭叶映星",
+        "蔓叶",
+        "蕖叶承露",
+        "柘叶",
+        "梾叶",
+        "萚叶",
+        "枝叶蔽空",
+        "柯叶"
+      ],
+      "新": [
+        "楮林新雨",
+        "玉珂新雨",
+        "柯新雨",
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "又新",
+        "竞新",
+        "新荚",
+        "茗新"
+      ],
+      "生": [
+        "梣木生辉",
+        "粗笔生春",
+        "凉生",
+        "春又生",
+        "蔓生",
+        "蔓生朝露",
+        "蔓生集",
+        "生态",
+        "广陵潮生",
+        "奇木生春",
+        "葜生",
+        "蓓生"
+      ],
+      "照": [
+        "月照松斋",
+        "月照桹影",
+        "榴花照影",
+        "芙蓉照水",
+        "月照芭叶",
+        "芭花照水",
+        "月照墟",
+        "凉月照川",
+        "崧云照野",
+        "玉螭照夜",
+        "螭照长夜",
+        "月照绀海"
+      ],
+      "雨": [
+        "峤听雨",
+        "听雨斋",
+        "楮林新雨",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "玉珂新雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅"
+      ],
+      "听": [
+        "峤听雨",
+        "听雨斋",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅",
+        "涂听雨",
+        "横窗听雨"
+      ],
+      "记": [
+        "采芹记",
+        "钤记",
+        "寻瓷记",
+        "玉刀记",
+        "奇遇记",
+        "矿石记"
+      ],
+      "舟": [
+        "珀舟",
+        "暮舟",
+        "碳舟",
+        "茗舟",
+        "镠舟",
+        "奇舟",
+        "酒舟",
+        "菼舟",
+        "横舟",
+        "人间舟"
+      ],
+      "浮": [
+        "磁浮"
+      ],
+      "载": [
+        "横川载月",
+        "酒载清欢"
+      ]
+    },
+    "literature_phrase_examples": {
+      "浮游": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 19279,
+          "context": "浮游五湖内，宛转三江里。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 28510,
+          "context": "飒沓睢阳涘，浮游汉水隈。"
+        }
+      ],
+      "浮岛": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 274903,
+          "context": "鹭毛浮岛白，鱼尾撇波赪。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 435072,
+          "context": "罗山万仞云中起，浮岛一峰天外来。"
+        }
+      ],
+      "浮香": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 483,
+          "context": "船移分细浪，风散动浮香。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 21249,
+          "context": "浮香绕曲岸，圆影覆华池。"
+        }
+      ],
+      "浮光里": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 4502,
+          "context": "浮光里，寒声聚，队禽栖。"
+        }
+      ],
+      "浮舟行": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1234218,
+          "context": "兴乘不暇止，遂作浮舟行。"
+        }
+      ],
+      "浮云新雨": [],
+      "浮光照远": [],
+      "一叶浮舟": [],
+      "星浮": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 336668,
+          "context": "鱼口星浮没，马毛锦斑骍。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 418963,
+          "context": "回身掉臂弄金丸，月转星浮满眼看。"
+        }
+      ],
+      "舟浮": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 20195,
+          "context": "造舟浮渭日，鞭石表秦初。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 67031,
+          "context": "舟浮潇湘月，山倒洞庭波。"
+        }
+      ],
+      "浮月明": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1041214,
+          "context": "玻瓈彻底镜面清，忽思短棹中流横，钓丝随风浮月明。"
+        }
+      ],
+      "浮生记": [],
+      "浮云志": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 68786,
+          "context": "浩然能养浮云志，风月樽前且献酬。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 265557,
+          "context": "君怀浮云志，尘埃兹可浴。"
+        }
+      ],
+      "松影浮泉": [],
+      "浮舟听雨": [],
+      "浮云见月": [],
+      "浮云载月": [],
+      "浮云松月": [],
+      "江天浮月": [],
+      "沉浮": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 247547,
+          "context": "灵魄自沉浮，从来任浊流。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 390336,
+          "context": "生逢世多僻，委任信沉浮。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "浮游": [
+        {
+          "title": "浮游",
+          "pinyin": "fú yóu",
+          "definition": "1.游泳。如：「魚兒們自由自在的浮游在江面落花間。」\n2.周流、漫游。《淮南子．俶真》：「獨浮游無方之外，不與物相弊摋。」\n3.沒有職業而到處流浪。《漢書．卷二四．食貨志下》：「民浮游無事，出夫布一匹。」\n4.蜉蝣的別名。參見「蜉蝣」條。",
+          "entry_id": "017960127",
+          "sheet": "1150929辭典匯出",
+          "row": 37858,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "浮岛": [],
+      "浮香": [],
+      "浮光里": [],
+      "浮舟行": [],
+      "浮云新雨": [],
+      "浮光照远": [],
+      "一叶浮舟": [],
+      "星浮": [],
+      "舟浮": [],
+      "浮月明": [],
+      "浮生记": [],
+      "浮云志": [],
+      "松影浮泉": [],
+      "浮舟听雨": [],
+      "浮云见月": [],
+      "浮云载月": [],
+      "浮云松月": [],
+      "江天浮月": [],
+      "沉浮": [
+        {
+          "title": "沉浮",
+          "pinyin": "chén fú",
+          "definition": "1.隨波起伏。唐．曹松〈岳陽晚泊〉詩：「白波爭起倒，青嶼或沉浮。」\n2.盛衰、消長。《淮南子．原道》：「是故聖人將養其神，和弱其氣，平夷其形，而與道沉浮俛仰。」唐．儲光羲〈漁父詞〉：「靜言念終始，安坐看沉浮。」\n3.比喻隨俗變遷、隨波逐流。《史記．卷一二四．游俠列傳．序》：「今拘學或抱咫尺之義，久孤於世，豈若卑論儕俗，與世沉浮而取榮名哉！」《抱朴子．外篇．正郭》：「無故沉浮於波濤之間，倒屣於埃塵之中。」\n4.眾多。漢．揚雄〈長楊賦〉：「今朝廷純仁，遵道顯義，并包書林，聖風雲靡，英華沉浮，洋溢八區。」",
+          "entry_id": "084130019",
+          "sheet": "1150929辭典匯出",
+          "row": 121419,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "浮": {
+        "definition": "to float, drift, waft; to exceed; superfluous",
+        "mandarin": "fú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "游": {
+        "definition": "to swim; float, drift; wander, roam",
+        "mandarin": "yóu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岛": {
+        "definition": "island",
+        "mandarin": "dǎo",
+        "related_characters": [
+          {
+            "character": "島",
+            "relation": "kTraditionalVariant",
+            "definition": "island",
+            "mandarin": "dǎo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "香": {
+        "definition": "fragrant, sweet-smelling; incense; Kangxi radical 186",
+        "mandarin": "xiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "叶": {
+        "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+        "mandarin": "yè",
+        "related_characters": [
+          {
+            "character": "叶",
+            "relation": "kTraditionalVariant",
+            "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+            "mandarin": "yè"
+          },
+          {
+            "character": "葉",
+            "relation": "kTraditionalVariant",
+            "definition": "leaf, petal; page of book; period",
+            "mandarin": "yè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "生": {
+        "definition": "life, living, lifetime; birth",
+        "mandarin": "shēng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "记": {
+        "definition": "record; keep in mind, remember",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "記",
+            "relation": "kTraditionalVariant",
+            "definition": "record; keep in mind, remember",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "载": {
+        "definition": "load; carry; transport, convey",
+        "mandarin": "zài",
+        "related_characters": [
+          {
+            "character": "載",
+            "relation": "kTraditionalVariant",
+            "definition": "load; carry; transport, convey",
+            "mandarin": "zài"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "江": {
+        "definition": "large river; the Yangzi; surname",
+        "mandarin": "jiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "沉": {
+        "definition": "sink, submerge; addicted to",
+        "mandarin": "chén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "浮游",
+      "decision": "keep",
+      "reason": "词语本身自然，可指漂浮游动、漫游，意象轻盈，有品牌辨识度；虽有蜉蝣别名及漂泊义，仍非必然负面。"
+    },
+    {
+      "name": "浮岛",
+      "decision": "keep",
+      "reason": "自然物象组合清晰，指漂浮的岛屿，简洁且有画面感，适合作为品牌名。"
+    },
+    {
+      "name": "浮香",
+      "decision": "keep",
+      "reason": "可自然理解为飘散的香气，语义凝练，有感官意象；与其他浮字候选并非近义配字的重复组合。"
+    },
+    {
+      "name": "浮光里",
+      "decision": "keep",
+      "reason": "可理解为浮光映照之处或光影之间，结构自然，有空间感和记忆点；不同于仅替换近义字的光里类候选。"
+    },
+    {
+      "name": "浮舟行",
+      "decision": "uncertain",
+      "reason": "可理解为乘舟漂行或浮舟而行，但三字关系略显压缩，语义指向不够稳定，作为完整品牌名的自然度存疑。"
+    },
+    {
+      "name": "浮云新雨",
+      "decision": "reject",
+      "reason": "由浮云、新雨两个常见景物意象直接拼接，缺少明确的语法或语义联系，整体像意象清单而非凝练名称。"
+    },
+    {
+      "name": "浮光照远",
+      "decision": "reject",
+      "reason": "完整组合更像“浮光照向远方”的抒情句或口号，动作关系展开过度，不够像凝练品牌名。"
+    },
+    {
+      "name": "一叶浮舟",
+      "decision": "keep",
+      "reason": "可自然理解为一叶小舟浮于水面，意象完整而简洁；并非仅将既有一字候选换序或作近义替换。"
+    },
+    {
+      "name": "星浮",
+      "decision": "keep",
+      "reason": "可理解为星辰浮现或星光浮动，简短自然，有明确的天象意象和品牌辨识度。"
+    },
+    {
+      "name": "舟浮",
+      "decision": "uncertain",
+      "reason": "字义可确认，但通常更自然的语序是舟浮于水或浮舟；倒装虽可见于诗句，脱离语境后略显生硬。"
+    },
+    {
+      "name": "浮月明",
+      "decision": "uncertain",
+      "reason": "可解作月光浮动而月色明亮，但三字间的句法关系不清，易被读成压缩的诗句，完整名称自然度存疑。"
+    },
+    {
+      "name": "浮生记",
+      "decision": "keep",
+      "reason": "“浮生”是自然且可理解的词语，“记”可作记录、故事类后缀；整体简洁，有叙事感，不是完整判断句。"
+    },
+    {
+      "name": "浮云志",
+      "decision": "keep",
+      "reason": "可理解为如浮云般高远或不拘的志意，语义可通且有古典用法依据，具有凝练的抽象品牌感。"
+    },
+    {
+      "name": "松影浮泉",
+      "decision": "uncertain",
+      "reason": "松影与泉水各自可辨，但“浮泉”的关系及整组景物之间的联系不够明确，组合略显拼接，语义自然度存疑。"
+    },
+    {
+      "name": "浮舟听雨",
+      "decision": "keep",
+      "reason": "可自然理解为舟行水上听雨，动作与场景关系清楚，具有凝练的诗性意象；并非仅替换近义字构成的重复名。"
+    },
+    {
+      "name": "浮云见月",
+      "decision": "keep",
+      "reason": "可理解为浮云之间显出月亮，语序和景象关系清楚，作为诗性品牌名自然且易形成画面。"
+    },
+    {
+      "name": "浮云载月",
+      "decision": "keep",
+      "reason": "可理解为浮云承载月色或月亮，修辞关系清楚且有想象力；与浮云见月的意象关系不同，不构成近义替换重复。"
+    },
+    {
+      "name": "浮云松月",
+      "decision": "reject",
+      "reason": "将浮云、松、月并列堆叠，缺少清楚的语法和意象关系，整体像景物清单。"
+    },
+    {
+      "name": "江天浮月",
+      "decision": "keep",
+      "reason": "可理解为月影浮现于江天之间，景物关系自然，凝练而有开阔的画面感；不同于仅以近义字替换形成的重复组合。"
+    },
+    {
+      "name": "沉浮",
+      "decision": "keep",
+      "reason": "完整常用词，指起伏、盛衰或随世变迁，含义明确、简洁有力，具有抽象品牌辨识度。"
+    }
+  ]
+}

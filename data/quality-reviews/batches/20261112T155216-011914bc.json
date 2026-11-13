@@ -1,0 +1,983 @@
+{
+  "review_id": "20261112T155216-011914bc",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "蓓知",
+      "蓓云开",
+      "蓓致远行",
+      "蓓明以诚",
+      "蓓光同尘",
+      "蓓润万物",
+      "蓓光远行",
+      "蓓守其真",
+      "蓓聚成光",
+      "蓓行千里",
+      "蓓悦",
+      "蓓序",
+      "蓓望川",
+      "蓓若水",
+      "蓓声",
+      "光蓓成林",
+      "蓓润无声",
+      "蓓生",
+      "蓓含朝露",
+      "蓓开新境"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川",
+        "晙川"
+      ],
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "水": [
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水",
+        "山水清斋",
+        "秋水凉",
+        "水螭",
+        "枕水"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉",
+        "酒同频",
+        "菉野同春",
+        "同欣"
+      ],
+      "成": [
+        "碳成林",
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "林": [
+        "碳成林",
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林"
+      ],
+      "行": [
+        "寸心远行",
+        "麇行远山",
+        "涂行远",
+        "资远行",
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "行义",
+        "鲜行"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "云": [
+        "云开山峙",
+        "崧云开",
+        "云开见硔",
+        "五云开",
+        "涂云开",
+        "云开见黛",
+        "云开三径",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云"
+      ],
+      "尘": [
+        "涤尘",
+        "非尘"
+      ],
+      "远": [
+        "寸心远行",
+        "麇行远山",
+        "涂行远",
+        "资远行",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声",
+        "豪声",
+        "篥声",
+        "篪声",
+        "松月弓声"
+      ],
+      "境": [
+        "祕境",
+        "臻境",
+        "螭游清境",
+        "婳境",
+        "摹境",
+        "非凡境",
+        "涡之境",
+        "酒境",
+        "砗磲之境",
+        "人境"
+      ],
+      "千": [
+        "千里骃",
+        "千顷月",
+        "千峤",
+        "螭越千峰",
+        "千丈峰",
+        "千丈飞瀑",
+        "蔓越千峰",
+        "珂越千峰",
+        "历千帆",
+        "历千秋",
+        "千嶂"
+      ],
+      "里": [
+        "千里骃",
+        "壳里乾坤",
+        "葶花里",
+        "墅里",
+        "芙光里",
+        "熏风里",
+        "芭蕉里",
+        "墟里",
+        "墟里烟",
+        "秋枫里",
+        "清葭里",
+        "憩光里"
+      ],
+      "诚": [
+        "悃诚",
+        "焊诚",
+        "诚斋",
+        "臻诚",
+        "义诚",
+        "赟诚",
+        "珺诚",
+        "依诚"
+      ],
+      "望": [
+        "硕望",
+        "芹田望月",
+        "望海斋",
+        "凉秋望远",
+        "灵猊望月",
+        "望海埼",
+        "望埼",
+        "长弓望月",
+        "奇峰望远",
+        "赫望",
+        "望山厅"
+      ],
+      "无": [
+        "无价",
+        "无讼堂",
+        "酷无界",
+        "无虞",
+        "无瑕"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远",
+        "菉知春"
+      ],
+      "物": [
+        "万物鲜",
+        "庶物",
+        "风物成瓷",
+        "酷物",
+        "广陵风物",
+        "风物常鲜"
+      ],
+      "致": [
+        "中庸致和"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "新荚",
+        "茗新",
+        "新貌"
+      ],
+      "生": [
+        "蔓生朝露",
+        "梣木生辉",
+        "粗笔生春",
+        "凉生",
+        "春又生",
+        "蔓生",
+        "蔓生集",
+        "生态",
+        "广陵潮生",
+        "奇木生春",
+        "日暖生菉",
+        "葜生"
+      ],
+      "万": [
+        "万物鲜",
+        "万顷晴光",
+        "万象初酿",
+        "万象常鲜",
+        "万象之柢",
+        "人间万象"
+      ],
+      "润": [
+        "淑润",
+        "雨润荒墟",
+        "凉润",
+        "广润",
+        "鲜润",
+        "莹润",
+        "珵润",
+        "资润"
+      ],
+      "悦": [
+        "淑悦",
+        "芙悦",
+        "臻悦",
+        "唐悦",
+        "悦婷",
+        "缤悦",
+        "怡悦",
+        "资悦"
+      ],
+      "含": [
+        "含萼",
+        "荚含春",
+        "硔石含光",
+        "蕴含",
+        "山含黛",
+        "水含黛色"
+      ],
+      "开": [
+        "云开山峙",
+        "崧云开",
+        "云开见硔",
+        "五云开",
+        "涂云开",
+        "云开见黛",
+        "云开三径",
+        "开口"
+      ],
+      "若": [
+        "若芙"
+      ],
+      "露": [
+        "蔓生朝露",
+        "芹露",
+        "芹露映晨",
+        "芭露",
+        "葭露",
+        "蕖露",
+        "蕖叶承露",
+        "柘露",
+        "珂露",
+        "菼露"
+      ],
+      "序": [
+        "晙序",
+        "瓷序",
+        "暮光序",
+        "碳序",
+        "唐序",
+        "茗序",
+        "赫序",
+        "王序",
+        "人间序"
+      ],
+      "真": [
+        "义守真",
+        "臻本真",
+        "真诠"
+      ],
+      "朝": [
+        "蔓生朝露",
+        "朝暾",
+        "浴朝阳",
+        "朝飧"
+      ],
+      "聚": [
+        "聚和",
+        "聚友",
+        "聚币"
+      ],
+      "蓓": [
+        "蓓蕾"
+      ],
+      "守": [
+        "义守真",
+        "守义"
+      ]
+    },
+    "literature_phrase_examples": {
+      "蓓知": [],
+      "蓓云开": [],
+      "蓓致远行": [],
+      "蓓明以诚": [],
+      "蓓光同尘": [],
+      "蓓润万物": [],
+      "蓓光远行": [],
+      "蓓守其真": [],
+      "蓓聚成光": [],
+      "蓓行千里": [],
+      "蓓悦": [],
+      "蓓序": [],
+      "蓓望川": [],
+      "蓓若水": [],
+      "蓓声": [],
+      "光蓓成林": [],
+      "蓓润无声": [],
+      "蓓生": [],
+      "蓓含朝露": [],
+      "蓓开新境": []
+    },
+    "dictionary_phrase_entries": {
+      "蓓知": [],
+      "蓓云开": [],
+      "蓓致远行": [],
+      "蓓明以诚": [],
+      "蓓光同尘": [],
+      "蓓润万物": [],
+      "蓓光远行": [],
+      "蓓守其真": [],
+      "蓓聚成光": [],
+      "蓓行千里": [],
+      "蓓悦": [],
+      "蓓序": [],
+      "蓓望川": [],
+      "蓓若水": [],
+      "蓓声": [],
+      "光蓓成林": [],
+      "蓓润无声": [],
+      "蓓生": [],
+      "蓓含朝露": [],
+      "蓓开新境": []
+    },
+    "direct_dictionary": {
+      "蓓": {
+        "definition": "bud",
+        "mandarin": "bèi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "致": {
+        "definition": "send, deliver, present; cause",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "緻",
+            "relation": "kTraditionalVariant",
+            "definition": "delicate, fine; dense",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "致",
+            "relation": "kTraditionalVariant",
+            "definition": "send, deliver, present; cause",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "以": {
+        "definition": "by means of; thereby, therefore; consider as; in order to",
+        "mandarin": "yǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "诚": {
+        "definition": "sincere, honest; true, real",
+        "mandarin": "chéng",
+        "related_characters": [
+          {
+            "character": "誠",
+            "relation": "kTraditionalVariant",
+            "definition": "sincere, honest; true, real",
+            "mandarin": "chéng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "尘": {
+        "definition": "dust, dirt, ashes, cinders",
+        "mandarin": "chén",
+        "related_characters": [
+          {
+            "character": "塵",
+            "relation": "kTraditionalVariant",
+            "definition": "dust, dirt, ashes, cinders",
+            "mandarin": "chén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "润": {
+        "definition": "soft, moist; sleek; freshen",
+        "mandarin": "rùn",
+        "related_characters": [
+          {
+            "character": "潤",
+            "relation": "kTraditionalVariant",
+            "definition": "soft, moist; sleek; freshen",
+            "mandarin": "rùn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "万": {
+        "definition": "ten thousand; innumerable",
+        "mandarin": "wàn mò",
+        "related_characters": [
+          {
+            "character": "万",
+            "relation": "kTraditionalVariant",
+            "definition": "ten thousand; innumerable",
+            "mandarin": "wàn mò"
+          },
+          {
+            "character": "萬",
+            "relation": "kTraditionalVariant",
+            "definition": "ten thousand; innumerable",
+            "mandarin": "wàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "物": {
+        "definition": "thing, substance, creature",
+        "mandarin": "wù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "守": {
+        "definition": "defend, protect, guard, conserve",
+        "mandarin": "shǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "其": {
+        "definition": "his, her, its, their; that",
+        "mandarin": "qí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "真": {
+        "definition": "real, actual, true, genuine",
+        "mandarin": "zhēn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "聚": {
+        "definition": "assemble, meet together, collect",
+        "mandarin": "jù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "千": {
+        "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+        "mandarin": "qiān",
+        "related_characters": [
+          {
+            "character": "千",
+            "relation": "kTraditionalVariant",
+            "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+            "mandarin": "qiān"
+          },
+          {
+            "character": "韆",
+            "relation": "kTraditionalVariant",
+            "definition": "swing",
+            "mandarin": "qiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "悦": {
+        "definition": "pleased, contented, gratified",
+        "mandarin": "yuè",
+        "related_characters": [
+          {
+            "character": "悅",
+            "relation": "kTraditionalVariant",
+            "definition": "pleased",
+            "mandarin": "yuè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "序": {
+        "definition": "series, serial order, sequence",
+        "mandarin": "xù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "若": {
+        "definition": "if, supposing, assuming; similar",
+        "mandarin": "ruò",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "无": {
+        "definition": "negative, no, not; Kangxi radical 71",
+        "mandarin": "wú",
+        "related_characters": [
+          {
+            "character": "无",
+            "relation": "kTraditionalVariant",
+            "definition": "negative, no, not; Kangxi radical 71",
+            "mandarin": "wú"
+          },
+          {
+            "character": "無",
+            "relation": "kTraditionalVariant",
+            "definition": "negative, no, not; lack, have no",
+            "mandarin": "wú"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "生": {
+        "definition": "life, living, lifetime; birth",
+        "mandarin": "shēng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "含": {
+        "definition": "hold in mouth; cherish; contain",
+        "mandarin": "hán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朝": {
+        "definition": "dynasty; morning",
+        "mandarin": "cháo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "露": {
+        "definition": "dew; bare, open, exposed",
+        "mandarin": "lù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "境": {
+        "definition": "boundary, frontier; area, region",
+        "mandarin": "jìng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "蓓知",
+      "decision": "keep",
+      "reason": "“蓓”有花蕾初生之意，“知”指知晓、认知，组合简洁自然，有萌发新知的联想，具备品牌名凝练感。"
+    },
+    {
+      "name": "蓓云开",
+      "decision": "keep",
+      "reason": "“云开”是自然顺畅的景象表达，与“蓓”相连可形成花蕾初绽、云开见明的意象，名称简洁，有辨识度。"
+    },
+    {
+      "name": "蓓致远行",
+      "decision": "reject",
+      "reason": "“致远行”语义关系生硬，像将“致远”与“远行”拼接，整体更接近行动口号，缺乏凝练自然的品牌名结构。"
+    },
+    {
+      "name": "蓓明以诚",
+      "decision": "reject",
+      "reason": "整体是“明以诚”的价值宣示式句法，语义不够顺畅，像口号或判断性表达，不够凝练。"
+    },
+    {
+      "name": "蓓光同尘",
+      "decision": "reject",
+      "reason": "“光同尘”借用了“和光同尘”的固定表达，却改动关键字形成不自然的拼接；整体辨识依赖熟语变体，名称结构不够自足。"
+    },
+    {
+      "name": "蓓润万物",
+      "decision": "reject",
+      "reason": "“润万物”是完整的施益表达，整体近似功能性宣传口号，且“蓓”与后半句连接生硬。"
+    },
+    {
+      "name": "蓓光远行",
+      "decision": "keep",
+      "reason": "“光”与“远行”可自然构成光亮照向远方的意象，整体简洁、连贯，具有品牌名的画面感。"
+    },
+    {
+      "name": "蓓守其真",
+      "decision": "reject",
+      "reason": "整体是“守其真”的价值宣言或劝诫句，属于完整判断式表达，口号感强，不够像凝练品牌名。"
+    },
+    {
+      "name": "蓓聚成光",
+      "decision": "keep",
+      "reason": "“聚成光”语义清楚，表达汇聚而发光的意象；与“蓓”相接虽带有抽象联想，但整体简洁顺畅，具备品牌辨识度。"
+    },
+    {
+      "name": "蓓行千里",
+      "decision": "reject",
+      "reason": "“行千里”是常见的励志行动表达，整体口号化；“蓓”与后半句结合也未形成足够凝练的新意象。"
+    },
+    {
+      "name": "蓓悦",
+      "decision": "keep",
+      "reason": "两字搭配顺口简洁，“蓓”带花蕾意象，“悦”表达喜悦，整体自然，适合作为品牌名。"
+    },
+    {
+      "name": "蓓序",
+      "decision": "keep",
+      "reason": "“蓓”与表示次序、序章的“序”组合简洁，容易形成花蕾初启、开启序章的联想，语义自然且有辨识度。"
+    },
+    {
+      "name": "蓓望川",
+      "decision": "keep",
+      "reason": "“望川”构成自然的观景意象，与“蓓”组合后简洁有画面感，不依赖牵强释义。"
+    },
+    {
+      "name": "蓓若水",
+      "decision": "reject",
+      "reason": "“若水”是常见的完整熟语式表达，整体借用既有哲理意象，品牌辨识度不足，且“蓓”与之结合略显拼接。"
+    },
+    {
+      "name": "蓓声",
+      "decision": "keep",
+      "reason": "组合简短顺畅，可理解为花蕾初发之声或品牌之声，含义开放但不牵强，具备品牌名的简洁感。"
+    },
+    {
+      "name": "光蓓成林",
+      "decision": "reject",
+      "reason": "“光蓓”搭配关系不自然，“成林”又像结果性陈述；整体为意象与句式的机械拼合，难形成清楚连贯的品牌语义。"
+    },
+    {
+      "name": "蓓润无声",
+      "decision": "reject",
+      "reason": "整体明显借用“润物无声”的熟语句式并替换“物”为“蓓”，语义关系因此失衡，且带有宣传口号感。"
+    },
+    {
+      "name": "蓓生",
+      "decision": "keep",
+      "reason": "两字组合简洁自然，可理解为蓓蕾生发、生命初生，语义清楚，有品牌名的凝练感。"
+    },
+    {
+      "name": "蓓含朝露",
+      "decision": "keep",
+      "reason": "“含朝露”与花蕾意象衔接自然，形成清晨含露的具体画面；虽偏描写性，整体仍简洁完整，适合作为品牌名继续复核。"
+    },
+    {
+      "name": "蓓开新境",
+      "decision": "reject",
+      "reason": "“开新境”属于常见的开创、拓展式宣传表达，整体近似口号；“蓓”与之结合未消除其句式化和泛化特征。"
+    }
+  ]
+}

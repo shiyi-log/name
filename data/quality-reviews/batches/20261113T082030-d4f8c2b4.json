@@ -1,0 +1,832 @@
+{
+  "review_id": "20261113T082030-d4f8c2b4",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "湘里见山",
+      "湘山共远",
+      "湘野",
+      "沐湘",
+      "湘源",
+      "湘间有味",
+      "湘川共济",
+      "湘书远航",
+      "湘声越岭"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "山川见璨",
+        "济川",
+        "昆济川",
+        "百川共汇",
+        "百川共生",
+        "远山辿川",
+        "山川阔远",
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川"
+      ],
+      "间": [
+        "鏊间有味",
+        "瓷间有度",
+        "松间有茗",
+        "梾间有光",
+        "人间味",
+        "人间知味",
+        "柯间有光",
+        "硅间有光",
+        "菊间有光",
+        "嵝间有光",
+        "杄间有光",
+        "栌间见山"
+      ],
+      "山": [
+        "邨里见山",
+        "墨里见山",
+        "一见青山",
+        "远山葶影",
+        "远山芙蓉",
+        "见山斋",
+        "远山近墟",
+        "崞山见月",
+        "麇行远山",
+        "山麇见月",
+        "藏酒见山",
+        "远山矿语"
+      ],
+      "见": [
+        "邨里见山",
+        "墨里见山",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "山麇见月",
+        "藏酒见山",
+        "黛山见月",
+        "柯见山",
+        "埙中见山",
+        "渟水见山",
+        "亦见山"
+      ],
+      "味": [
+        "鏊间有味",
+        "人间味",
+        "人间知味",
+        "一味",
+        "杯中味",
+        "三味",
+        "寻味",
+        "饼知味",
+        "一脔知味",
+        "鏊味",
+        "饹味",
+        "醋知味"
+      ],
+      "远": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "踏远山",
+        "书香递远",
+        "远山连冈"
+      ],
+      "野": [
+        "湘野拾青",
+        "山野鳟",
+        "岍野",
+        "骉野",
+        "葑野",
+        "葑野集",
+        "垄野",
+        "顷野",
+        "榴野",
+        "野墅",
+        "芹野初晴",
+        "晙野"
+      ],
+      "声": [
+        "瀑声越岭",
+        "西岭松声",
+        "崂岭松声",
+        "湘声",
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声"
+      ],
+      "源": [
+        "泂源",
+        "淑源",
+        "酵源",
+        "楮源",
+        "凯源",
+        "瓷源",
+        "珀源",
+        "覃思源",
+        "义之源",
+        "茗源",
+        "硔源",
+        "镠源"
+      ],
+      "里": [
+        "邨里见山",
+        "墨里见山",
+        "山菊里",
+        "笛里春山",
+        "山村里",
+        "千里骃",
+        "壳里乾坤",
+        "葶花里",
+        "墅里",
+        "芙光里",
+        "熏风里",
+        "芭蕉里"
+      ],
+      "岭": [
+        "瀑声越岭",
+        "西岭松声",
+        "崂岭松声",
+        "骝越岭",
+        "牥越岭",
+        "牥越云岭",
+        "峣岭",
+        "峋岭听风",
+        "崞岭",
+        "崞岭听松",
+        "崧风过岭",
+        "崒岭听松"
+      ],
+      "有": [
+        "鏊间有味",
+        "瓷间有度",
+        "松间有茗",
+        "梾间有光",
+        "柯间有光",
+        "硅间有光",
+        "菊间有光",
+        "嵝间有光",
+        "杄间有光",
+        "枳间有光",
+        "桠间有光",
+        "薇间有光"
+      ],
+      "越": [
+        "瀑声越岭",
+        "骝越岭",
+        "牥越岭",
+        "牥越云岭",
+        "峥越",
+        "崧越",
+        "螭越千峰",
+        "猊越山",
+        "唐越",
+        "奔越",
+        "蔓越千峰",
+        "长风越埼"
+      ],
+      "沐": [
+        "熏沐",
+        "栉沐",
+        "沐湉",
+        "筀沐阳",
+        "薰沐",
+        "沐霜",
+        "沐露",
+        "歆沐光"
+      ],
+      "书": [
+        "书香递远",
+        "见书山",
+        "裴书远",
+        "湘书有光",
+        "云间书斋",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "女书",
+        "书椠",
+        "佳书",
+        "瑾书"
+      ],
+      "济": [
+        "济川",
+        "昆济川",
+        "共济",
+        "广济",
+        "兼济堂",
+        "互济",
+        "赒济",
+        "济安",
+        "济众",
+        "济航",
+        "济时",
+        "利济"
+      ],
+      "航": [
+        "远航",
+        "玓远航",
+        "歧航",
+        "航行",
+        "续航",
+        "云航",
+        "星航",
+        "宵航",
+        "峥航",
+        "祕航",
+        "磊航",
+        "震航"
+      ],
+      "湘": [
+        "湘山水",
+        "湘山雨",
+        "湘声",
+        "湘山月",
+        "湘书有光",
+        "湘野拾青",
+        "湘流",
+        "清湘",
+        "云湘",
+        "湘月",
+        "潇湘月",
+        "风入潇湘"
+      ],
+      "共": [
+        "共济",
+        "百川共汇",
+        "百川共生",
+        "共渡",
+        "鹡鸰共生",
+        "鑫禾共生",
+        "共舞",
+        "共织",
+        "同镲共鸣",
+        "共酿",
+        "共赏",
+        "共融"
+      ]
+    },
+    "literature_phrase_examples": {
+      "湘里见山": [],
+      "湘山共远": [],
+      "湘野": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 930897,
+          "context": "幽寻胜践我亦喜，梦魂已落潇湘野。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1166034,
+          "context": "归眠梦绕潇湘野，红叶黄花满望斑。"
+        }
+      ],
+      "沐湘": [],
+      "湘源": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 23165,
+          "context": "家在湘源住，君今海峤行。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 24655,
+          "context": "【自湘源至潭州衡山县】"
+        }
+      ],
+      "湘间有味": [],
+      "湘川共济": [],
+      "湘书远航": [],
+      "湘声越岭": []
+    },
+    "dictionary_phrase_entries": {
+      "湘里见山": [],
+      "湘山共远": [],
+      "湘野": [],
+      "沐湘": [],
+      "湘源": [],
+      "湘间有味": [],
+      "湘川共济": [],
+      "湘书远航": [],
+      "湘声越岭": []
+    },
+    "direct_dictionary": {
+      "湘": {
+        "definition": "alternate name for Hunan",
+        "mandarin": "xiāng",
+        "official_dictionary": [
+          {
+            "title": "湘",
+            "pinyin": "xiāng",
+            "definition": "[名]\n1.參見「湘江」條。\n2.大陸地區湖南省的簡稱。\n[動]\n烹煮。《詩經．召南．采蘋》：「于以湘之，維錡及釜。」宋．蘇軾〈元修菜〉詩：「烝之復湘之，香色蔚其饛。」",
+            "entry_id": "07181",
+            "sheet": "1150929辭典匯出",
+            "row": 7190,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "湘江",
+                "pinyin": "xiāng jiāng",
+                "definition": "河川名。源出廣西靈川縣東的海陽山，與灕江同源，為湖南省四大河流之一。東北流入湖南省境，經零陵、衡陽諸縣，合瀟水、蒸水，北流經長沙縣注入洞庭湖，長約八百一十七公里。也稱為「湘水」。",
+                "entry_id": "071810011",
+                "sheet": "1150929辭典匯出",
+                "row": 108220
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "里",
+            "pinyin": "lǐ",
+            "definition": "[名]\n1.居所、居處。《詩經．鄭風．將仲子》：「將仲子兮，無踰我里。」《孟子．離婁下》：「去三年不反，然後收其田里。」\n2.街坊、巷弄。《後漢書．卷五四．楊震列傳》：「連里竟街，雕修繕飾，窮極巧技。」唐．韓愈〈柳子厚墓誌銘〉：「今夫平居里巷相慕悅，酒食游戲相徵逐。」\n3.故鄉。如：「故里」。南朝梁．江淹〈別賦〉：「割慈忍愛，離邦去里。」\n4.今地方政府行政區域之一。在鎮之下，鄰之上，與村平行。\n5.量詞。古代用於表示長度的單位。不同年代有不同的定義方式，例如在漢代，以三百六十步為一里。\n6.內部。通「裡」。元．馬致遠〈四塊玉．佐國心〉曲：「命里無時莫剛求，隨時過遣休生受。」\n7.二一四部首之一。",
+            "entry_id": "03419",
+            "sheet": "1150929辭典匯出",
+            "row": 3426,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "共": {
+        "definition": "together with, all, total; to share",
+        "mandarin": "gòng",
+        "official_dictionary": [
+          {
+            "title": "共",
+            "pinyin": "gōng",
+            "definition": "[動]\n供給。通「供」。《左傳．僖公三十年》：「行李之往來，共其乏困，君亦無所害。」\n[形]\n恭敬。通「恭」。《左傳．文公十八年》：「父義，母慈，兄友，弟共，子孝。」\n[名]\n姓。如黃帝時有共鼓。",
+            "entry_id": "04375",
+            "sheet": "1150929辭典匯出",
+            "row": 4381,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "共",
+            "pinyin": "gǒng",
+            "definition": "[動]\n1.雙手抱拳。通「拱」。《荀子．賦》：「聖人共手，時幾將矣。」\n2.環繞、護衛。通「拱」。《論語．為政》：「為政以德，譬如北辰，居其所而眾星共之。」",
+            "entry_id": "04384",
+            "sheet": "1150929辭典匯出",
+            "row": 4390,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "共",
+            "pinyin": "gòng",
+            "definition": "[副]\n1.一起、一同。如：「共鳴」、「共存」、「和平共處」。《史記．卷八．高祖本紀》：「天下共立義帝，北面事之。」\n2.合、總計。如：「共計」、「籃子裡共有十顆蘋果。」\n[動]\n分享、合用。《論語．公冶長》：「願車馬衣輕裘與朋友共，敝之而無憾。」\n[形]\n相同的。如：「共識」、「共相」。\n[連]\n跟、和。唐．王勃〈滕王閣序〉：「落霞與孤鶩齊飛，秋水共長天一色。」元．關漢卿《救風塵》第一折：「姻緣簿全憑我共你，誰不待揀個稱意的？」",
+            "entry_id": "04393",
+            "sheet": "1150929辭典匯出",
+            "row": 4399,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "official_dictionary": [
+          {
+            "title": "野",
+            "pinyin": "yě",
+            "definition": "[名]\n1.郊外。《書經．武成》：「歸馬于華山之陽，放牛于桃林之野。」唐．柳宗元〈捕蛇者說〉：「永州之野產異蛇，黑質而白章。」\n2.廣平的地方。《呂氏春秋．季秋紀．審己》：「稼生於野而藏於倉，稼非有欲也。」《三國志．卷三五．蜀書．諸葛亮傳》：「益州險塞，沃野千里。」\n3.界限、地域。如：「分野」、「視野」。《淮南子．原道》：「上游於霄雿之野，下出於無垠之門。」\n4.民間。《書經．大禹謨》：「君子在野，小人在位。」《三國志．卷四二．蜀書．郤正傳》：「故君臣協美於朝，黎庶欣戴於野。」\n[形]\n1.質樸。《論語．雍也》：「質勝文則野，文勝質則史。」唐．柳宗元〈柳宗直西漢文類序〉：「首紀殷周之前，其文簡而野。」\n2.粗鄙無禮、放縱不馴。如：「粗野」、「撒野」。《左傳．宣公四年》：「諺曰：『狼子野心。』是乃狼也，其可畜乎？」《禮記．仲尼燕居》：「敬而不中禮謂之野，恭而不中禮謂之給。」\n3.野生而未經人工栽培或馴養的。如：「野菜」、「野菊」、「野牛」、「野馬」。\n4.非正式的。如：「野錄」、「野乘」、「野史」。\n[副]\n非常、很。如：「朔風野大」。",
+            "entry_id": "10755",
+            "sheet": "1150929辭典匯出",
+            "row": 10769,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "沐": {
+        "definition": "bathe, cleanse, wash, shampoo",
+        "mandarin": "mù",
+        "official_dictionary": [
+          {
+            "title": "沐",
+            "pinyin": "mù",
+            "definition": "[動]\n1.洗髮。《莊子．田子方》：「孔子見老聃，老聃新沐，方將被髮而乾，熟然似非人。」\n2.承受。唐．劉長卿〈送嚴維赴河南充嚴中丞幕府〉詩：「何當舉嚴助，遍沐漢朝恩。」\n3.休假。《文選．沈約．酬謝宣城朓詩》：「晨趨朝建禮，晚沐臥效園。」\n[名]\n1.洗髮的米汁。《史記．卷四九．外戚世家》：「姊去我西時，與我決於傳舍中，丐沐沐我，請食飯我，乃去。」\n2.姓。如漢代有沐寵。",
+            "entry_id": "01506",
+            "sheet": "1150929辭典匯出",
+            "row": 1512,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "源": {
+        "definition": "spring; source, head; surname",
+        "mandarin": "yuán",
+        "official_dictionary": [
+          {
+            "title": "源",
+            "pinyin": "yuán",
+            "definition": "[名]\n1.水流的出處。如：「水源」、「泉源」、「飲水思源」。《國語．晉語一》：「伐木不自其本，必復生；塞水不自其源，必復流。」唐．李嶠〈河〉詩：「源出崑崙中，長波接漢空。」\n2.根本、由來。《韓非子．主道》：「是以明君守始以知萬物之源，治紀以知善敗之端。」《文選．班固．東都賦》：「嗜欲之源滅，廉恥之心生。」\n3.姓。如唐代有源乾曜。",
+            "entry_id": "11789",
+            "sheet": "1150929辭典匯出",
+            "row": 11802,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "有",
+            "pinyin": "yǒu",
+            "definition": "[動]\n表事實、狀況的正面存在，與「無」相對。如：「有困難」、「有利有弊」、「有學問」、「有錢」、「擁有」、「面有飢色」。\n[形]\n1.豐足、富裕。如：「他是個非常富有的人。」《詩經．大雅．公劉》：「止基迺理，爰眾爰有。」\n2.多，表示時間久或年齡大。如：「本店開設有年。」、「母親已有了年紀。」\n3.故意。如：「有心犯錯應嚴懲，無心疏忽可原諒。」\n[綴]\n置於名詞前，作音節的襯字。如：「有夏」、「有清」。《韓非子．五蠹》：「當舜之時，有苗不服，禹將伐之。」\n[代]\n某，表示不確定。如：「有一天晚上」、「有人說你做人很講義氣。」\n[名]\n姓。如漢代有有祿。",
+            "entry_id": "10905",
+            "sheet": "1150929辭典匯出",
+            "row": 10919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "有",
+            "pinyin": "yòu",
+            "definition": "[副]\n表示重複、反覆、連續。通「又」。唐．裴守真〈請重耕織表〉：「奸偽由此而生，黎庶緣斯而苦，此有國之大患也。」\n[連]\n用於整數與餘數之間，表示數目的附加。如：「七十有七人」。《論語．為政》：「吾十有五而志於學，三十而立。」",
+            "entry_id": "10922",
+            "sheet": "1150929辭典匯出",
+            "row": 10936,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "味": {
+        "definition": "taste, smell, odor; delicacy",
+        "mandarin": "wèi",
+        "official_dictionary": [
+          {
+            "title": "味",
+            "pinyin": "wèi",
+            "definition": "[名]\n1.舌頭嘗東西所得到的感覺。如：「食不知味」、「酸、甜、苦、辣、鹹稱為五味。」《孫子．勢》：「味不過五，五味之變不可勝嘗也。」\n2.鼻子聞東西所得到的感覺。如：「香味」、「怪味」、「臭味」。\n3.感受、旨趣、意義。如：「趣味」、「禪味」。南朝梁．劉勰《文心雕龍．宗經》：「是以往者雖舊，餘味日新。」《紅樓夢》第一回：「滿紙荒唐言，一把辛酸淚，都云作者痴，誰解其中味？」\n4.量詞。計算食物或中藥的單位。如：「菜五味」、「藥八味」。《左傳．哀公元年》：「昔闔盧食不二味，居不重席。」《儒林外史》第一一回：「改用一個丸劑的方子，加入幾味袪風的藥。」\n5.菜餚。如：「山珍海味」。《後漢書．卷一．光武帝紀下》：「往年已敕郡國，異味不得有所獻御，今猶未止，非徒有豫養尊擇之勞。」\n[動]\n1.品嘗。《荀子．哀公》：「黼衣黻裳者不茹葷，非口不能味也，服使然也。」\n2.研究、體察。如：「玩味」、「耐人尋味」。《文選．班固．答賓戲》：「委命供己，味道之腴。」《三國志．卷四五．蜀書．楊戲傳》：「抗志存義，味覽典文。」",
+            "entry_id": "11420",
+            "sheet": "1150929辭典匯出",
+            "row": 11434,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "济": {
+        "definition": "help, aid, relieve; ferry, cross",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "濟",
+            "relation": "kTraditionalVariant",
+            "definition": "to help, aid, relieve; to ferry, cross",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "航": {
+        "definition": "sail; navigate; ship, boat",
+        "mandarin": "háng",
+        "official_dictionary": [
+          {
+            "title": "航",
+            "pinyin": "háng",
+            "definition": "[名]\n1.舟、船。《文選．左思．吳都賦》：「於是乎長鯨吞航，修鯢吐浪。」元．馬致遠〈壽陽曲．遠浦帆歸〉曲：「夕陽下，酒旆閑，兩三航未曾著岸。」\n2.連舟而成的浮橋。《淮南子．氾論》：「古者大川名谷，衝絕道路，不通往來也，乃為窬木方版以為舟航。」\n[動]\n船、飛機等的行走。如：「領航」、「巡航」、「導航」。唐．韓愈〈答張徹〉詩：「疊雪走商嶺，飛波航洞庭。」",
+            "entry_id": "04911",
+            "sheet": "1150929辭典匯出",
+            "row": 4917,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "声",
+            "pinyin": null,
+            "definition": "「聲」的異體字。",
+            "entry_id": "09031-1",
+            "sheet": "1150929辭典匯出",
+            "row": 130793,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "越": {
+        "definition": "exceed, go beyond; the more ...",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "越",
+            "pinyin": "yuè",
+            "definition": "[動]\n1.度過、跨過。如：「翻山越嶺」、「越牆而走」。《楚辭．屈原．天問》：「阻窮西征，巖何越焉？」唐．杜甫〈自京赴奉先縣詠懷五百字〉詩：「行旅相攀援，川廣不可越。」\n2.經過。《書經．召誥》：「惟二月既望，越六日，乙未，王朝步自周，則至于豐。」宋．范仲淹〈岳陽樓記〉：「越明年，政通人和，百廢具興。」\n3.不按次序，超出某種範圍或常規。如：「越位」、「越俎代庖」。《易經．繫辭下》：「其稱名也，雜而不越。」《後漢書．卷七．孝桓帝紀》：「桓自宗支，越躋天祿。」\n4.墜落。《左傳．成公二年》：「射其左，越于車下；射其右，斃于車中。」\n5.宣揚。《國語．晉語八》：「宣其德行，順其憲則，使越于諸侯。」\n[形]\n悠揚。《禮記．聘義》：「叩之，其聲清越以長，其終詘然，樂。」\n[名]\n1.中國古代少數民族之一。主要分布於大陸地區浙江、福建、廣東一帶。也稱為「百越」、「百粵」。\n2.國名。春秋時諸侯國，姒姓。建都於會稽。曾占有今江蘇、浙江及山東的一部分，後滅於楚。\n3.浙江省的別名。\n4.姓。如春秋時齊有越百父。\n[副]\n更加。如：「越大越不懂事。」元．關漢卿《拜月亭》第三折：「恰隨妹妹閑行散悶些，到池沼，陌觀絕，越教人嘆嗟。」\n[助]\n句首發語詞，無義。《書經．微子》：「殷遂喪，越至于今。」《漢書．卷九九．王莽傳上》：「越若翊辛丑，諸生、庶民大和會。」",
+            "entry_id": "11732",
+            "sheet": "1150929辭典匯出",
+            "row": 11745,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岭": {
+        "definition": "mountain ridge, mountain peak",
+        "mandarin": "lǐng",
+        "related_characters": [
+          {
+            "character": "嶺",
+            "relation": "kTraditionalVariant",
+            "definition": "mountain ridge, mountain peak",
+            "mandarin": "lǐng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "湘里见山",
+      "decision": "reject",
+      "reason": "借湘地意象组合“里见山”，与跨批暂留的“邨里见山”“墨里见山”意象和关系近似，仅以“湘”替换地域字，属于近似变体。"
+    },
+    {
+      "name": "湘山共远",
+      "decision": "uncertain",
+      "reason": "可理解为湘地山川共同延展或共赴远方，但“共远”的搭配关系不够自然，整体语义需要牵强补足。"
+    },
+    {
+      "name": "湘野",
+      "decision": "keep",
+      "reason": "简洁自然，可理解为湘地原野；“潇湘野”的诗句用例也支持其山野意象。作为地域自然物象组合，凝练且有辨识度。"
+    },
+    {
+      "name": "沐湘",
+      "decision": "uncertain",
+      "reason": "“沐”有洗沐、承受之义，“湘”可指湘江或湖南，但两字组合关系不明确，容易成为单字拼合，缺少清楚自然的整体语义。"
+    },
+    {
+      "name": "湘源",
+      "decision": "uncertain",
+      "reason": "可解作湘地水源或湘江源头，但没有材料支持其为特定专名；作为完整组合语义明确，却较像普通地理描述，品牌辨识度存疑。"
+    },
+    {
+      "name": "湘间有味",
+      "decision": "reject",
+      "reason": "“湘间有味”是完整判断式表达，近于宣传句或口号；其中“有味”又使整体偏向泛化的风味描述，不够凝练为品牌名。"
+    },
+    {
+      "name": "湘川共济",
+      "decision": "reject",
+      "reason": "“共济”通常表示共同渡过或互相帮助，与“湘川”并列后关系生硬；整体像宏观协作口号，且“川”容易引向四川，与“湘”并置缺乏明确语义联系。"
+    },
+    {
+      "name": "湘书远航",
+      "decision": "reject",
+      "reason": "“湘书”与“远航”缺少自然的语义衔接，组合像将地域、书籍和航行意象机械堆叠，整体不够凝练。"
+    },
+    {
+      "name": "湘声越岭",
+      "decision": "uncertain",
+      "reason": "可理解为湘地声响越过山岭，意象可辨，但“声越岭”的搭配较生硬，整体更像诗句片段，作为品牌名的自然度存疑。"
+    }
+  ]
+}

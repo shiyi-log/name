@@ -1,0 +1,949 @@
+{
+  "review_id": "20261113T015449-2d91bcc0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "远郊",
+      "郊游",
+      "春到郊",
+      "郊山",
+      "郊水",
+      "郊岚",
+      "郊阳",
+      "郊风",
+      "郊禾",
+      "郊畔",
+      "郊山月",
+      "郊田新",
+      "郊山远客",
+      "郊迎"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "崞山见月",
+        "一杯山月",
+        "山麇见月",
+        "蕖山月",
+        "山月酿酒",
+        "月照山罅",
+        "山月厅",
+        "黛山见月",
+        "诸山映月",
+        "山间漻月",
+        "远山漻月",
+        "山月映筠"
+      ],
+      "风": [
+        "春风到",
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒"
+      ],
+      "春": [
+        "春风到",
+        "春到槐梢",
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春"
+      ],
+      "水": [
+        "远山泚水",
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水",
+        "山水清斋",
+        "秋水凉",
+        "水螭"
+      ],
+      "山": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "崞山见月",
+        "一杯山月",
+        "麇行远山",
+        "山麇见月",
+        "蕖山月",
+        "山月酿酒",
+        "远山矿语",
+        "月照山罅",
+        "山月厅"
+      ],
+      "远": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "踏远山",
+        "远山连冈",
+        "远山带霭"
+      ],
+      "游": [
+        "鳝游春",
+        "壮游",
+        "翱游",
+        "鲲游",
+        "青螭游",
+        "游螭",
+        "螭游清境",
+        "卧游",
+        "游刃",
+        "鲳游",
+        "游侠",
+        "鲼游"
+      ],
+      "禾": [
+        "黄田新禾",
+        "苠禾",
+        "欧禾",
+        "芙禾",
+        "晙禾",
+        "青禾斋",
+        "暮禾",
+        "夕禾",
+        "碳禾",
+        "唐青禾",
+        "唐禾",
+        "蔓禾"
+      ],
+      "畔": [
+        "坝畔松",
+        "塄畔星",
+        "垄畔春",
+        "溪畔鹂",
+        "溪畔柯影",
+        "篱畔新晴",
+        "篱畔云开",
+        "篱畔水",
+        "溪畔蜻影",
+        "湖畔",
+        "河畔",
+        "枕畔"
+      ],
+      "新": [
+        "黄田新禾",
+        "荠田新绿",
+        "芋田新雨",
+        "麦田新雨",
+        "砚田新雨",
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新"
+      ],
+      "阳": [
+        "梣向阳",
+        "蔓向阳",
+        "梾木向阳",
+        "太阳雨",
+        "浴朝阳",
+        "崌阳",
+        "少阳",
+        "雪后初阳",
+        "鎏朝阳",
+        "麈伴朝阳",
+        "柑向阳",
+        "阳燧"
+      ],
+      "田": [
+        "黄田新禾",
+        "荠田新绿",
+        "芋田新雨",
+        "麦田新雨",
+        "砚田新雨",
+        "蔗田",
+        "垄田",
+        "田墅",
+        "芹田望月",
+        "十亩田",
+        "憩心田",
+        "荚田"
+      ],
+      "岚": [
+        "欧岚",
+        "峒岚",
+        "芙岚",
+        "岚峤",
+        "崧岚",
+        "崌岚",
+        "珀岚",
+        "枫岚",
+        "麇岚",
+        "柘岚",
+        "嶷岚",
+        "岚嶂"
+      ],
+      "客": [
+        "仙山客",
+        "镖客",
+        "蒿间客",
+        "槎客",
+        "钓客",
+        "遨客",
+        "披蓑客",
+        "松间蓑客",
+        "客缘"
+      ],
+      "迎": [
+        "迎刃",
+        "蓓迎风",
+        "冈松迎晓",
+        "藿叶迎风",
+        "麈迎晨",
+        "柳迎风",
+        "岐峰迎日",
+        "芝迎风",
+        "迎风旗",
+        "霜叶迎风",
+        "蓑竹迎风"
+      ],
+      "到": [
+        "春风到",
+        "春到槐梢",
+        "溪声到门",
+        "云到",
+        "风到",
+        "月到",
+        "星到",
+        "福到",
+        "松风到汭",
+        "泉声到砚"
+      ]
+    },
+    "literature_phrase_examples": {
+      "远郊": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2338,
+          "context": "薄烟幂远郊，遥峰没归翼。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 13211,
+          "context": "金鞭拂云挥鸣鞘，半酣呼鹰出远郊。"
+        }
+      ],
+      "郊游": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 39131,
+          "context": "主家园囿极新规，帝郊游豫奉天仪。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 74232,
+          "context": "【西郊游宴寄赠邑僚李巽】"
+        }
+      ],
+      "春到郊": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 18667,
+          "context": "春到郊原日迟迟，枪旗展山谷里。"
+        }
+      ],
+      "郊山": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 249822,
+          "context": "高树月生沧海外，远郊山在夕阳西。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 251398,
+          "context": "上马江城暮，出郊山戍秋。"
+        }
+      ],
+      "郊水": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 190375,
+          "context": "岭徼云成栈，江郊水当郛。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 207697,
+          "context": "平沙漫漫马悠悠，弓箭闲抛郊水头。"
+        }
+      ],
+      "郊岚": [],
+      "郊阳": [],
+      "郊风": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 22065,
+          "context": "东郊风物正熏馨，素浐凫鹥戏绿汀。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 249357,
+          "context": "近寺路闻梵，出郊风满衣。"
+        }
+      ],
+      "郊禾": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 218600,
+          "context": "郊禾薿薿青如积，宫瓦差差翠欲流。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 835801,
+          "context": "四郊禾黍未全熟，满眼云山何限情。"
+        }
+      ],
+      "郊畔": [],
+      "郊山月": [],
+      "郊田新": [],
+      "郊山远客": [],
+      "郊迎": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 3422,
+          "context": "【郊庙歌辞 五郊乐章 黄郊迎神】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 3436,
+          "context": "【郊庙歌辞 五郊乐章 青郊迎神】"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "远郊": [],
+      "郊游": [],
+      "春到郊": [],
+      "郊山": [],
+      "郊水": [],
+      "郊岚": [],
+      "郊阳": [],
+      "郊风": [],
+      "郊禾": [],
+      "郊畔": [],
+      "郊山月": [],
+      "郊田新": [],
+      "郊山远客": [],
+      "郊迎": [
+        {
+          "title": "郊迎",
+          "pinyin": "jiāo yíng",
+          "definition": "到郊外迎接賓客，表示敬重之意。《管子．小匡》：「桓公郊迎管子而問焉，管仲辭讓。」《漢書．卷五七．司馬相如傳下》：「至蜀，太守以下郊迎。」",
+          "entry_id": "056190013",
+          "sheet": "1150929辭典匯出",
+          "row": 89961,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "郊": {
+        "definition": "suburbs; waste land, open spaces",
+        "mandarin": "jiāo",
+        "official_dictionary": [
+          {
+            "title": "郊",
+            "pinyin": "jiāo",
+            "definition": "[名]\n1.城市周圍的地區。如：「市郊」、「荒郊野外」。《禮記．曲禮上》：「四郊多壘。」唐．杜甫〈野望〉詩：「跨馬出郊時極目，不堪人事日蕭條。」\n2.古代祭祀天地的典禮。《禮記．郊特牲》：「郊之祭也，迎長日之至也。」\n3.地名。春秋時晉國的屬地。約在今大陸地區山西省虞鄉縣境。",
+            "entry_id": "05619",
+            "sheet": "1150929辭典匯出",
+            "row": 5626,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "游": {
+        "definition": "to swim; float, drift; wander, roam",
+        "mandarin": "yóu",
+        "official_dictionary": [
+          {
+            "title": "游",
+            "pinyin": "yóu",
+            "definition": "[動]\n1.在水中行動。如：「游泳」。《詩經．邶風．谷風》：「就其淺矣，泳之游之。」《淮南子．墬形》：「食水者善游能寒，食士者無心而慧。」\n2.遨遊。通「遊」。《墨子．貴義》：「子墨子南游於楚，見楚獻惠王。」\n3.交往。通「遊」。《左傳．隱公三年》：「其子厚與州吁游，禁之不可。」\n[形]\n飄蕩不定。如：「游民」、「游資」、「氣若游絲」。《新唐書．卷九五．竇威傳》：「周洛間，因隋亂，人不土著，軌下令諸縣，有游手末作者按之，由是威信大行，民皆趨本。」\n[名]\n1.河流、江河的段落。如：「上游」、「中游」、「下游」。《詩經．秦風．蒹葭》：「溯洄從之，道阻且長，溯游從之，宛在水中央。」《史記．卷七．項羽本紀》：「古之帝者地方千里，必居上游。」\n2.姓。如清代有游士鳳。",
+            "entry_id": "10891",
+            "sheet": "1150929辭典匯出",
+            "row": 10905,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "到": {
+        "definition": "go to, arrive, been to",
+        "mandarin": "dào",
+        "official_dictionary": [
+          {
+            "title": "到",
+            "pinyin": "dào",
+            "definition": "[動]\n1.抵達、到達。如：「火車到站」、「支票到期」、「堅持到底」。《文選．江淹．恨賦》：「人生到此，天道寧論。」\n2.往、去。如：「到非洲叢林探險。」、「我晚上到你家拜訪。」\n[形]\n周密。如：「若有不到之處，尚請多多包涵！」《晉書．卷三二．后妃傳下．康獻褚皇后傳》：「所奏懇到，形于翰墨，執省未究，以悲以懼。」《文選．袁宏．三國名臣序贊》：「君親自然，匪由名教，敬授既同，情禮兼到。」\n[名]\n姓。如南朝宋有到彥之。",
+            "entry_id": "01966",
+            "sheet": "1150929辭典匯出",
+            "row": 1971,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "official_dictionary": [
+          {
+            "title": "水",
+            "pinyin": "shuǐ",
+            "definition": "[名]\n1.無色無臭的液體。由氫氣與氧氣化合而成。\n2.汁、液。如：「墨水」、「藥水」、「橘子水」、「檸檬水」。\n3.海、河、江、湖的總稱。如：「漢水」。《書經．微子》：「今殷其淪喪，若涉大水，其無津涯。」\n4.五行之一。參見「五行」條。\n5.水星的簡稱。參見「水星」條。\n6.額外的收入、費用。如：「撈油水」。《鄰女語》第二回：「你一路上發的水還不彀麼？還要到這地方來想方麼？」\n7.量詞。計算衣物刷洗次數的單位。如：「這件衣服洗兩水就走樣了。」\n8.姓。如明代有水甦民。\n9.二一四部首之一。\n[形]\n瓜果等多汁而不脆甜。如：「這梨吃起來水水的，不脆。」",
+            "entry_id": "09141",
+            "sheet": "1150929辭典匯出",
+            "row": 9156,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "墨水",
+                "pinyin": "mò shuǐ",
+                "definition": "1.寫字用的各種顏色的水汁。如：「紅墨水」、「藍墨水」。唐．杜佑《通典．卷一四．選舉二．歷代制中》：「北齊選舉多沿後魏之制，……書有濫劣者，飲墨水一升」《孽海花》第二五回：「家人送上一枝蘸滿墨水的筆，珏齋提筆，在紙上揮灑自如的寫了一百多字。」\n2.比喻學問、才識。如：「看不出他肚子裡還真有點兒墨水。」《鏡花緣》第二二回：「可惜你枉自生得白淨。腹中也少墨水，就是出來貿易，也該略認幾字。」",
+                "entry_id": "010970053",
+                "sheet": "1150929辭典匯出",
+                "row": 27647
+              },
+              {
+                "title": "藥水",
+                "pinyin": "yào shuǐ",
+                "definition": "泛指藥物的溶液，一般為含藥水溶液。",
+                "entry_id": "108550077",
+                "sheet": "1150929辭典匯出",
+                "row": 151285
+              },
+              {
+                "title": "漢水",
+                "pinyin": "hàn shuǐ",
+                "definition": "河川名。發源於陝西省寧羌縣北嶓冢山，至湖北省漢口與漢陽之間流入長江。是長江最長的支流，亦是漢中盆地的命脈。也稱為「漢江」。",
+                "entry_id": "048890049",
+                "sheet": "1150929辭典匯出",
+                "row": 81095
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "水星",
+                "pinyin": "shuǐ xīng",
+                "definition": "行星名。距離太陽最近的行星，也是太陽系中體積最小的行星，只比月球略大。屬於類地行星，地表多隕石坑。幾乎沒有大氣，晝夜溫差極大。也稱為「辰勾」、「辰星」。",
+                "entry_id": "091410306",
+                "sheet": "1150929辭典匯出",
+                "row": 132590
+              },
+              {
+                "title": "撈油水",
+                "pinyin": "lāo yóu shui",
+                "definition": "吳語。指用不當的手段取得錢財。",
+                "entry_id": "032580021",
+                "sheet": "1150929辭典匯出",
+                "row": 59264
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岚": {
+        "definition": "mountain mist, mountain haze",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "嵐",
+            "relation": "kTraditionalVariant",
+            "definition": "mountain mist, mountain haze",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "阳": {
+        "definition": "'male' principle; light; sun",
+        "mandarin": "yáng",
+        "related_characters": [
+          {
+            "character": "陽",
+            "relation": "kTraditionalVariant",
+            "definition": "the active, male principle in Chinese philosophy (yang); light; sun",
+            "mandarin": "yáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "禾",
+            "pinyin": "hé",
+            "definition": "[名]\n1.穀類植物的總稱。《詩經．豳風．七月》：「十月納禾稼。」唐．李紳〈古風〉詩二首之二：「鋤禾日當午，汗滴禾下土。」\n2.姓。如宋代有禾實。\n3.二一四部首之一。",
+            "entry_id": "04720",
+            "sheet": "1150929辭典匯出",
+            "row": 4727,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "畔": {
+        "definition": "boundary path dividing fields",
+        "mandarin": "pàn",
+        "official_dictionary": [
+          {
+            "title": "畔",
+            "pinyin": "pàn",
+            "definition": "[名]\n1.田界。《左傳．襄公二十五年》：「行無越思，如農之有畔。」\n2.邊側、旁側。如：「湖畔」、「枕畔」、「橋畔」。《文選．古詩十九首．青青河畔草》：「青青河畔草，鬱鬱園中柳。」\n[動]\n違背、背叛。同「叛」。《論語．雍也》：「君子博學於文，約之以禮，亦可以弗畔矣夫。」《漢書．卷一．高帝紀上》：「及聞漢王并關中，而齊、梁畔之，羽大怒。」",
+            "entry_id": "00730",
+            "sheet": "1150929辭典匯出",
+            "row": 732,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "田": {
+        "definition": "field, arable land, cultivated",
+        "mandarin": "tián",
+        "official_dictionary": [
+          {
+            "title": "田",
+            "pinyin": "tián",
+            "definition": "[名]\n1.土地。如：「稻田」、「梯田」、「瓜田李下」、「蔗田」。《左傳．僖公二十八年》：「我執曹君，而分曹魏之田以賜宋人。」《孟子．梁惠王上》：「百畝之田，勿奪其時。」\n2.可開採某些資源的地帶。如：「煤田」、「鹽田」。\n3.姓。如戰國時魏有田子方。\n4.二一四部首之一。\n[動]\n1.耕種。通「佃」。《漢書．卷一．高帝紀上》：「故秦苑囿園池，令民得田之。」\n2.打獵。通「畋」。如：「田獵」。《詩經．鄭風．大叔于田》：「大叔于田，乘乘馬，執轡如組，兩驂如舞。」《國語．齊語》：「田、狩、罼、弋，不聽國政。」",
+            "entry_id": "02704",
+            "sheet": "1150929辭典匯出",
+            "row": 2710,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "新",
+            "pinyin": "xīn",
+            "definition": "[形]\n1.沒有使用過的。與「舊」相對。如：「新辦法」、「新衣」、「新筆」。\n2.剛開始的、始出現的。如：「新芽」、「新生兒」、「新品種」。\n[名]\n1.泛指一切新的人、事、物、知識等。如：「履新」、「汰舊換新」、「溫故知新」。\n2.剛收成的農作物。《禮記．月令》：「是月也，農乃登穀，天子嘗新。」《新唐書．卷一一八．宋務光傳》：「家無接新之儲，國乏俟荒之蓄。」\n3.朝代名。參見「新莽」條。\n4.姓。如春秋時晉國有新穆子。\n[動]\n改進或使改變，而成為新的、好的。如：「改過自新」、「一新耳目」。《書經．胤征》：「舊染汙俗，咸與惟新。」《禮記．大學》：「苟日新、日日新、又日新。」\n[副]\n不久前、剛才。如：「新寫的字」、「新買的衣服」。《荀子．不苟》：「新浴者振其衣，新沐者彈其冠。」",
+            "entry_id": "07163",
+            "sheet": "1150929辭典匯出",
+            "row": 7172,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "舊",
+                "pinyin": "jiù",
+                "definition": "[形]\n不新的、古老的、從前的。如：「舊日」、「舊交」、「舊車」、「舊衣服」、「舊習慣」。《詩經．大雅．文王》：「周雖舊邦，其命維新。」唐．杜牧〈旅宿〉詩：「寒燈思舊事，斷雁警愁眠。」\n[名]\n交情、老朋友。如：「念舊」、「懷舊」、「親朋故舊」。《三國志．卷三八．蜀書．許靖傳》：「吳郡都尉許貢、會稽太守王朗素與靖有舊，故往保焉。」",
+                "entry_id": "05717",
+                "sheet": "1150929辭典匯出",
+                "row": 5724
+              },
+              {
+                "title": "新芽",
+                "pinyin": "xīn yá",
+                "definition": "新長出的嫩芽。如：「窗前的那盆玫瑰花，開始抽新芽了。」",
+                "entry_id": "071630304",
+                "sheet": "1150929辭典匯出",
+                "row": 107803
+              },
+              {
+                "title": "新生兒",
+                "pinyin": "xīn shēng ér",
+                "definition": "從剛出生到一個月大的嬰兒，都稱為「新生兒」。",
+                "entry_id": "071630270",
+                "sheet": "1150929辭典匯出",
+                "row": 107776
+              },
+              {
+                "title": "履新",
+                "pinyin": "lǚ xīn",
+                "definition": "1.時逢新的一年。《新唐書．卷一九．禮樂志九》：「在位者皆再拜，宣制曰：『履新之慶，與公等同之。』」\n2.官吏接任新職。《文明小史》第六回：「新委的是傅祝登傅大人，不日就來履新。」也作「履任」。",
+                "entry_id": "038930017",
+                "sheet": "1150929辭典匯出",
+                "row": 66851
+              },
+              {
+                "title": "汰舊換新",
+                "pinyin": "tài jiù huàn xīn",
+                "definition": "把舊的淘汰，更換成新的。如：「這些設備即將汰舊換新，以增加生產效率。」",
+                "entry_id": "024790001",
+                "sheet": "1150929辭典匯出",
+                "row": 49426
+              },
+              {
+                "title": "溫故知新",
+                "pinyin": "wēn gù zhī xīn",
+                "definition": "語本《論語．為政》：「子曰：『溫故而知新，可以為師矣。』」指溫習舊業，可增進新知。亦指複習學過的知識，而獲得新的知識、體會。《漢書．卷一〇．成帝紀》：「儒林之官，四海淵原，宜皆明於古今，溫故知新，通達國體，故謂之博士。」《文明小史》第二五回：「起先教他經書，不上一年，溫故知新，五經均已讀熟。」",
+                "entry_id": "114950028",
+                "sheet": "1150929辭典匯出",
+                "row": 159732
+              },
+              {
+                "title": "新莽",
+                "pinyin": "xīn mǎng",
+                "definition": "王莽篡漢自立，國號新（西元9～23），建都長安，史稱為「新莽」。",
+                "entry_id": "071630016",
+                "sheet": "1150929辭典匯出",
+                "row": 107600
+              },
+              {
+                "title": "改過自新",
+                "pinyin": "gǎi guò zì xīn",
+                "definition": "改正過失，重新做人。《漢書．卷二三．刑法志》：「刑者不可復屬，雖後欲改過自新，其道亡繇也。」唐．白居易〈議肉刑可廢不可用〉：「其欲廢之者，則曰：『刻膚革，斷肢體，人主忍而用之。則愷悌惻隱之心乖矣。』此緹縈所謂雖欲改過自新，其道亡繇者也。」也作「改過從新」。",
+                "entry_id": "039760028",
+                "sheet": "1150929辭典匯出",
+                "row": 67702
+              },
+              {
+                "title": "一新耳目",
+                "pinyin": "yī xīn ěr mù",
+                "definition": "所見所聞給人截然不同的新感受。如：「近來公司大刀闊斧的革新，令人一新耳目。」",
+                "entry_id": "104820877",
+                "sheet": "1150929辭典匯出",
+                "row": 147429
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "客": {
+        "definition": "guest, traveller; customer",
+        "mandarin": "kè",
+        "official_dictionary": [
+          {
+            "title": "客",
+            "pinyin": "kè",
+            "definition": "[名]\n1.賓，相對於主人而言。如：「賓客」、「請客」、「寒夜客來茶當酒」。《禮記．曲禮下》：「主人敬客，則先拜客；客敬主人，則先拜主人。」《文選．古樂府．飲馬長城窟行》：「客從遠方來，遺我雙鯉魚。」\n2.做生意、買賣等的人對顧主的稱呼。如：「顧客」、「乘客」、「客滿」。《韓非子．外儲說右上》：「宋人有酤酒者，升概既平，愈客甚謹。」《老殘遊記》第五回：「漸漸的打尖的客陸續都到店裡。」\n3.泛稱從事某種活動或具有某類特長的人。如：「鏢客」、「掮客」、「說客」、「政客」、「珠寶客」。\n4.寄食貴族豪門的人。如：「食客」、「門客」。《戰國策．齊策四》：「後孟嘗君出記，問門下諸客誰習計會。」《晉書．卷六九．刁協傳》：「刁氏素殷富，奴客縱橫。」\n5.寄旅於外的人。唐．王維〈九月九日憶山東兄弟〉詩：「獨在異鄉為異客，每逢佳節倍思親。」唐．杜甫〈中夜〉詩：「長為萬里客，有愧百年身。」\n6.泛稱人。如：「旅人過客」。《史記．卷七七．魏公子傳》：「然嬴欲就公子之名，故久立公子車騎市中，過客以觀公子，公子愈恭。」《儒林外史》第三四回：「一個人占了幾個婦人，天下必有幾個無妻之客。」\n7.量詞。計算定量出售食品的單位。如：「他點了一客八分熟的牛排。」\n8.姓。如漢代有客孫。\n[動]\n1.寄居、旅居。《三國志．卷一六．魏書．杜畿傳》：「會天下之亂，遂棄官客荊州，建安中乃還。」\n2.以客禮相待。《史記．卷三一．吳太伯世家》：「五年，楚之亡臣伍子胥來奔，公子光客之。」唐．司馬貞．索隱：「是謂客禮以接待也。」\n[形]\n1.次要的。清．顧炎武《日知錄．卷一．朱子周易本義》：「傳為主，經為客。」\n2.在人類意識外獨立存在的。如：「客觀」。",
+            "entry_id": "04446",
+            "sheet": "1150929辭典匯出",
+            "row": 4452,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "迎": {
+        "definition": "receive, welcome, greet",
+        "mandarin": "yíng",
+        "official_dictionary": [
+          {
+            "title": "迎",
+            "pinyin": "yíng",
+            "definition": "[動]\n1.接。如：「迎接」、「送往迎來」。《儀禮．士昏禮》：「主人如賓服迎于門外。」宋．王安石〈白溝行〉：「白溝河邊蕃塞地，送迎蕃使年年事。」\n2.奉承。如：「逢迎」。《新唐書．卷九六．杜如晦傳》：「懷道及隋時位吏部主事，方煬帝幸江都，群臣迎阿，獨懷道執不可。」\n3.朝著、向著。如：「迎面」、「迎風」。唐．李華〈河南府參軍廳壁記〉：「每從容府中，或有異政，雖不吾以，必預咨謀，如川決防，如竹迎刃。」",
+            "entry_id": "11187",
+            "sheet": "1150929辭典匯出",
+            "row": 11202,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "迎",
+            "pinyin": "yìng",
+            "definition": "[動]\n對方尚未到達而親自前往迎接。《詩經．大雅．大明》：「文定厥祥，親迎于渭。」晉．干寶《搜神記》卷一一：「昔縣人陳明，與梅氏為婚，未成而妖魅詐迎婦去。」",
+            "entry_id": "11212",
+            "sheet": "1150929辭典匯出",
+            "row": 11227,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "远郊",
+      "decision": "keep",
+      "reason": "自然地指向远离城市的郊野，简洁成词，有开阔、清静的空间意象，具备品牌名的凝练感。"
+    },
+    {
+      "name": "郊游",
+      "decision": "keep",
+      "reason": "常见自然词，指到郊外游玩，语义清楚、读音顺畅，可作为品牌名；并非完整等同于某一产品或服务类别。"
+    },
+    {
+      "name": "春到郊",
+      "decision": "uncertain",
+      "reason": "可理解为春天来到郊野，意象明确，但整体更像诗句片段，作为品牌名的凝练度和自然度不足。"
+    },
+    {
+      "name": "郊山",
+      "decision": "keep",
+      "reason": "可自然理解为郊野之山，构成简洁的自然地貌意象，读写顺畅，有品牌辨识度。"
+    },
+    {
+      "name": "郊水",
+      "decision": "uncertain",
+      "reason": "可理解为郊野水域，但两个名词的组合关系较松散，完整名称的自然度和品牌凝练感不足以明确判断。"
+    },
+    {
+      "name": "郊岚",
+      "decision": "keep",
+      "reason": "以郊野与山间雾气组合成清晰的自然意象，字义可核，简洁且有辨识度。"
+    },
+    {
+      "name": "郊阳",
+      "decision": "uncertain",
+      "reason": "可联想到郊野阳光，但“郊阳”并非常见自然搭配，语义关系略显生硬，品牌自然度存疑。"
+    },
+    {
+      "name": "郊风",
+      "decision": "keep",
+      "reason": "可理解为郊野之风，简洁形成自然物象，语义通顺，不依赖牵强借义。"
+    },
+    {
+      "name": "郊禾",
+      "decision": "uncertain",
+      "reason": "可联想到郊野禾苗或谷物，但名词组合关系不够明确，整体略显拼接，品牌自然度存疑。"
+    },
+    {
+      "name": "郊畔",
+      "decision": "uncertain",
+      "reason": "“郊”与“畔”都指向郊野、边侧一带，组合后语义重复且关系不清，凝练度不足。"
+    },
+    {
+      "name": "郊山月",
+      "decision": "keep",
+      "reason": "可自然理解为郊野山间之月，三字构成完整、清晰的景物意象，具有品牌辨识度。"
+    },
+    {
+      "name": "郊田新",
+      "decision": "reject",
+      "reason": "词序生硬，“郊田新”难以形成自然的修饰关系或完整意象，像未完成的短语。"
+    },
+    {
+      "name": "郊山远客",
+      "decision": "uncertain",
+      "reason": "可理解为郊山中的远方来客，但“郊山”与“远客”的关系未明确，整体像叙述片段，作为品牌名略松散。"
+    },
+    {
+      "name": "郊迎",
+      "decision": "reject",
+      "reason": "完整词语指到郊外迎接宾客，语义确实成立，但属于具体礼仪动作，整体更像行为描述而非凝练品牌名。"
+    }
+  ]
+}

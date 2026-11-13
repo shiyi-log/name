@@ -1,0 +1,916 @@
+{
+  "review_id": "20261112T145721-cd8abed5",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "镛音",
+      "雅镛",
+      "镛颂",
+      "烙时光",
+      "烙新章",
+      "荪华",
+      "荪和",
+      "荪声",
+      "荪白",
+      "荪艺",
+      "是非",
+      "非凡境",
+      "非止步",
+      "非寻常",
+      "非池中",
+      "非凡路",
+      "非同小可",
+      "非凡格局",
+      "非常",
+      "非尘",
+      "非墨",
+      "非池中物",
+      "水非止",
+      "明是非"
+    ],
+    "related_kept_candidates": {
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "水": [
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水",
+        "山水清斋",
+        "秋水凉",
+        "水螭",
+        "枕水"
+      ],
+      "同": [
+        "一同"
+      ],
+      "格": [
+        "自成一格"
+      ],
+      "时": [
+        "巳时",
+        "戌时",
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "鹂知时",
+        "唐时雨"
+      ],
+      "艺": [
+        "艺林",
+        "艺囿",
+        "焊艺",
+        "酵艺",
+        "镘艺",
+        "烤艺"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "烙": [
+        "烙印",
+        "烙痕"
+      ],
+      "尘": [
+        "涤尘"
+      ],
+      "和": [
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和",
+        "珺和",
+        "中庸致和",
+        "均和",
+        "淑和",
+        "和斋",
+        "臻和"
+      ],
+      "小": [
+        "小憩"
+      ],
+      "荪": [
+        "兰荪"
+      ],
+      "华": [
+        "馥华",
+        "岁华",
+        "华胄",
+        "华萼",
+        "岁华新酿",
+        "华葩",
+        "芙华",
+        "华珑",
+        "棣华",
+        "葭华",
+        "华裳"
+      ],
+      "音": [
+        "籁音",
+        "铴音",
+        "软音"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "枫声入野",
+        "葭声",
+        "鹂声",
+        "鹂声入林",
+        "铴声"
+      ],
+      "境": [
+        "祕境",
+        "臻境",
+        "螭游清境",
+        "摹境"
+      ],
+      "雅": [
+        "姱雅",
+        "淑雅",
+        "雅墅",
+        "芙兰雅",
+        "臻雅",
+        "珀雅",
+        "酷雅",
+        "婳雅",
+        "绉雅"
+      ],
+      "中": [
+        "壸中天",
+        "中庸",
+        "中庸致和",
+        "盅中月",
+        "云中酿",
+        "酸中趣",
+        "碟中月",
+        "云中帜",
+        "山中桫椤",
+        "箩中春",
+        "箩中月",
+        "杯中月"
+      ],
+      "物": [
+        "庶物",
+        "风物成瓷",
+        "酷物"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "章": [
+        "仓颉新章",
+        "酷乐章"
+      ],
+      "寻": [
+        "寻山斋",
+        "寻瓷记",
+        "摹影寻光"
+      ],
+      "白": [
+        "月白斋",
+        "楮白",
+        "白瓷",
+        "剖白",
+        "暮山白",
+        "唐白"
+      ],
+      "墨": [
+        "楮墨",
+        "楮墨春秋",
+        "羲墨"
+      ],
+      "步": [
+        "寸步",
+        "蹀步",
+        "虎步"
+      ],
+      "镛": [
+        "金镛"
+      ]
+    },
+    "literature_phrase_examples": {
+      "镛音": [],
+      "雅镛": [],
+      "镛颂": [],
+      "烙时光": [],
+      "烙新章": [],
+      "荪华": [],
+      "荪和": [],
+      "荪声": [],
+      "荪白": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 102808,
+          "context": "坐惜牛羊迳，芳荪白露滋。"
+        }
+      ],
+      "荪艺": [],
+      "是非": [
+        {
+          "book": "孟子",
+          "line": 162,
+          "context": "无是非之心，非人也。"
+        },
+        {
+          "book": "孟子",
+          "line": 162,
+          "context": "是非之心，智之端也。"
+        }
+      ],
+      "非凡境": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 394117,
+          "context": "上盘下际非凡境，个里何曾俗客来。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 414127,
+          "context": "时人不信非凡境，试入玄关一夜听。"
+        }
+      ],
+      "非止步": [],
+      "非寻常": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 254911,
+          "context": "文采非寻常，志愿期卓立。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 366769,
+          "context": "丹入腹，非寻常，阴阳剥尽化纯阳。"
+        }
+      ],
+      "非池中": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 118092,
+          "context": "我觉君非池中物，咫尺蛟龙云雨。"
+        },
+        {
+          "book": "幼学琼林",
+          "line": 255,
+          "context": "蛟龙得云雨，终非池中物，比人大有为。"
+        }
+      ],
+      "非凡路": [],
+      "非同小可": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 55264,
+          "context": "(带云)我想：儿孙的福分，非同小可也。"
+        },
+        {
+          "book": "元曲_开源整理本",
+          "line": 69994,
+          "context": "这场大战，非同小可也。"
+        }
+      ],
+      "非凡格局": [],
+      "非常": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 8570,
+          "context": "男儿本自重横行，天子非常赐颜色。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 40906,
+          "context": "鸾翮非常戢，鹏天会昭旷。"
+        }
+      ],
+      "非尘": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 74293,
+          "context": "【紫阁东林居士叔缄赐松英丸捧对忻喜盖非尘侣之所当服輙献诗代启】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 155131,
+          "context": "水为风生浪，珠非尘可昏。"
+        }
+      ],
+      "非墨": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 312159,
+          "context": "虽愧篆工非墨宝，英辞终与借辉光。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1486141,
+          "context": "大儒晚作韩考异，往哲曾非墨尚同。"
+        }
+      ],
+      "非池中物": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 118092,
+          "context": "我觉君非池中物，咫尺蛟龙云雨。"
+        },
+        {
+          "book": "幼学琼林",
+          "line": 255,
+          "context": "蛟龙得云雨，终非池中物，比人大有为。"
+        }
+      ],
+      "水非止": [],
+      "明是非": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 189590,
+          "context": "只要明是非，何曾虞祸福。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 331565,
+          "context": "有眼不能分黼黻，有口不能明是非。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "镛音": [],
+      "雅镛": [],
+      "镛颂": [],
+      "烙时光": [],
+      "烙新章": [],
+      "荪华": [],
+      "荪和": [],
+      "荪声": [],
+      "荪白": [],
+      "荪艺": [],
+      "是非": [
+        {
+          "title": "是非",
+          "pinyin": "shì fēi",
+          "definition": "1.事理的對與錯。《孟子．告子上》：「是非之心，人皆有之。」《文選．司馬遷．報任少卿書》：「要之死日，然後是非乃定。」\n2.泛稱口舌的爭論。《儒林外史》第三二回：「替他免了一場是非，成全了功名。」《紅樓夢》第一〇一回：「鳳姐知道不過是家下婆子們，又不知搬什麼是非。」",
+          "entry_id": "087580004",
+          "sheet": "1150929辭典匯出",
+          "row": 126980,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "非凡境": [],
+      "非止步": [],
+      "非寻常": [],
+      "非池中": [],
+      "非凡路": [],
+      "非同小可": [
+        {
+          "title": "非同小可",
+          "pinyin": "fēi tóng xiǎo kě",
+          "definition": "1.形容事情的重要或情況嚴重。《官場現形記》第一四回：「這一嚇非同小可，立刻張皇起來。」《文明小史》第二六回：「這一喜非同小可，覺得他們也算我為同志，非常榮幸。」\n2.形容人的學問或本領不同尋常。《儒林外史》第四七回：「話說虞華軒也是一個非同小可之人。」《文明小史》第二九回：「這位大紳鄉非同小可，乃曾做過出使英國欽差大臣。」也作「非通小可」。",
+          "entry_id": "015440028",
+          "sheet": "1150929辭典匯出",
+          "row": 33668,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "非凡格局": [],
+      "非常": [
+        {
+          "title": "非常",
+          "pinyin": "fēi cháng",
+          "definition": "1.特別，異乎尋常。《文選．司馬遷．報任少卿書》：「唯倜儻非常之人稱焉，蓋文王拘演《周易》。」\n2.突來的禍患。《史記．卷七．項羽本紀》：「故遣將守關者，備他盜出入與非常也。」",
+          "entry_id": "015440079",
+          "sheet": "1150929辭典匯出",
+          "row": 33715,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "非尘": [],
+      "非墨": [],
+      "非池中物": [
+        {
+          "title": "非池中物",
+          "pinyin": "fēi chí zhōng wù",
+          "definition": "指非長期生活在池塘中之小生物。「非池中物」比喻志向遠大，有抱負的人。《三國志．卷五四．吳書．周瑜魯肅呂蒙傳．周瑜》：「今猥割土地以資業之，聚此三人，俱在疆場，恐蛟龍得雲雨，終非池中物也。」《三國演義》第七九回：「子健懷才抱智，終非池中物，若不早除，必為後患。」",
+          "entry_id": "015440077",
+          "sheet": "1150929辭典匯出",
+          "row": 33714,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "水非止": [],
+      "明是非": []
+    },
+    "direct_dictionary": {
+      "镛": {
+        "definition": "large bell used as musical instrument",
+        "mandarin": "yōng",
+        "related_characters": [
+          {
+            "character": "鏞",
+            "relation": "kTraditionalVariant",
+            "definition": "a large bell used as a musical instrument",
+            "mandarin": "yōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "音": {
+        "definition": "sound, tone, pitch, pronunciation; Kangxi radical 180",
+        "mandarin": "yīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雅": {
+        "definition": "elegant, graceful, refined",
+        "mandarin": "yǎ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "颂": {
+        "definition": "laud, acclaim; hymn; ode",
+        "mandarin": "sòng",
+        "related_characters": [
+          {
+            "character": "頌",
+            "relation": "kTraditionalVariant",
+            "definition": "laud, acclaim; hymn; ode",
+            "mandarin": "sòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "烙": {
+        "definition": "brand, burn; branding iron",
+        "mandarin": "lào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "荪": {
+        "definition": "aromatic grass; iris, flower",
+        "mandarin": "sūn",
+        "related_characters": [
+          {
+            "character": "蓀",
+            "relation": "kTraditionalVariant",
+            "definition": "aromatic grass; iris, flower",
+            "mandarin": "sūn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "华": {
+        "definition": "flowery; illustrious; Chinese",
+        "mandarin": "huá",
+        "related_characters": [
+          {
+            "character": "華",
+            "relation": "kTraditionalVariant",
+            "definition": "flowery; illustrious; Chinese",
+            "mandarin": "huá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "白": {
+        "definition": "white; pure, unblemished; bright",
+        "mandarin": "bái",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "艺": {
+        "definition": "art; talent, ability; craft",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "藝",
+            "relation": "kTraditionalVariant",
+            "definition": "art; talent, ability; craft",
+            "mandarin": "yì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "是": {
+        "definition": "indeed, yes, right; to be; demonstrative pronoun, this, that",
+        "mandarin": "shì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "非": {
+        "definition": "not, negative, non-; oppose; Kangxi radical 175",
+        "mandarin": "fēi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凡": {
+        "definition": "all, any, every; ordinary, common",
+        "mandarin": "fán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "境": {
+        "definition": "boundary, frontier; area, region",
+        "mandarin": "jìng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "止": {
+        "definition": "stop, halt, desist; detain",
+        "mandarin": "zhǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "步": {
+        "definition": "step, pace; walk, stroll",
+        "mandarin": "bù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "寻": {
+        "definition": "seek, search, look for; ancient",
+        "mandarin": "xún",
+        "related_characters": [
+          {
+            "character": "尋",
+            "relation": "kTraditionalVariant",
+            "definition": "seek, search, look for; ancient",
+            "mandarin": "xún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "常": {
+        "definition": "common, normal, frequent, regular",
+        "mandarin": "cháng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "池": {
+        "definition": "pool, pond; moat; cistern",
+        "mandarin": "chí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "路": {
+        "definition": "road, path, street; journey",
+        "mandarin": "lù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "小": {
+        "definition": "small, tiny, insignificant",
+        "mandarin": "xiǎo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "可": {
+        "definition": "may, can, -able; possibly",
+        "mandarin": "kě",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "格": {
+        "definition": "pattern, standard, form; style",
+        "mandarin": "gé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "局": {
+        "definition": "bureau, office; circumstance",
+        "mandarin": "jú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "尘": {
+        "definition": "dust, dirt, ashes, cinders",
+        "mandarin": "chén",
+        "related_characters": [
+          {
+            "character": "塵",
+            "relation": "kTraditionalVariant",
+            "definition": "dust, dirt, ashes, cinders",
+            "mandarin": "chén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "墨": {
+        "definition": "ink; writing",
+        "mandarin": "mò",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "物": {
+        "definition": "thing, substance, creature",
+        "mandarin": "wù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "镛音",
+      "decision": "keep",
+      "reason": "“镛”为大钟，“音”指声音，组合可理解为钟音，语义清楚且简洁，有听觉辨识度。"
+    },
+    {
+      "name": "雅镛",
+      "decision": "keep",
+      "reason": "可理解为雅正的钟乐或雅致之镛，搭配自然，兼具器物意象与审美色彩。"
+    },
+    {
+      "name": "镛颂",
+      "decision": "keep",
+      "reason": "“镛”与“颂”分别关联钟乐和颂歌，组合有礼乐、赞颂意象，凝练通顺。"
+    },
+    {
+      "name": "烙时光",
+      "decision": "reject",
+      "reason": "“烙”有烫、烙印之义，与“时光”组合呈现把时间烙下的口号式表达，语义牵强且不够凝练。"
+    },
+    {
+      "name": "烙新章",
+      "decision": "keep",
+      "reason": "可理解为烙下新的篇章，虽有鲜明动作感，但组合通顺、意象明确，具品牌辨识度。"
+    },
+    {
+      "name": "荪华",
+      "decision": "keep",
+      "reason": "“荪”指香草，“华”可指花或光彩，组合可形成芳草繁华之意，简洁雅致。"
+    },
+    {
+      "name": "荪和",
+      "decision": "uncertain",
+      "reason": "字义可分别理解为香草与和谐，但二字间的语义关系不够自然，完整意象不易确认。"
+    },
+    {
+      "name": "荪声",
+      "decision": "uncertain",
+      "reason": "“荪”与“声”虽各有明确字义，但组合关系不明，难形成自然稳定的完整意象。"
+    },
+    {
+      "name": "荪白",
+      "decision": "keep",
+      "reason": "可联想到芳荪与白露或白色芳草，清简自然；古诗用例也呈现“芳荪白露”的真实物象关系。"
+    },
+    {
+      "name": "荪艺",
+      "decision": "uncertain",
+      "reason": "“荪”指香草，“艺”指技艺或艺术，组合语义连接较弱，完整名称的自然度存疑。"
+    },
+    {
+      "name": "是非",
+      "decision": "reject",
+      "reason": "完整词语通常指对错或口舌争论，属于常见抽象判断词，品牌辨识度不足且易带争议意味。"
+    },
+    {
+      "name": "非凡境",
+      "decision": "keep",
+      "reason": "意为不同寻常的境界，语义完整、凝练，有清楚的品质与空间意象，不是完整判断句。"
+    },
+    {
+      "name": "非止步",
+      "decision": "reject",
+      "reason": "表达“并非止步”或“不要止步”的口号式句子结构，完整名称不够凝练。"
+    },
+    {
+      "name": "非寻常",
+      "decision": "reject",
+      "reason": "意为不同寻常，属于直接的评价表达，名称整体更像通用宣传语，辨识度不足。"
+    },
+    {
+      "name": "非池中",
+      "decision": "uncertain",
+      "reason": "明显借用“非池中物”的典故表达，但截去“物”后语义悬置，作为完整名称自然度存疑。"
+    },
+    {
+      "name": "非凡路",
+      "decision": "uncertain",
+      "reason": "可理解为不凡之路，但搭配不像稳定自然的词组，语义关系与名称感均不够明确。"
+    },
+    {
+      "name": "非同小可",
+      "decision": "reject",
+      "reason": "完整名称是固定成语，用作品牌属于通用评价表达，且生成要求已排除常见成语。"
+    },
+    {
+      "name": "非凡格局",
+      "decision": "reject",
+      "reason": "完整组合是“格局不凡”的宣传式评价，属于空泛口号表达，缺少凝练的品牌意象。"
+    },
+    {
+      "name": "非常",
+      "decision": "reject",
+      "reason": "虽有“特别、异乎寻常”之义，但也是极常用程度副词及日常词语，作为完整品牌名过于通用。"
+    },
+    {
+      "name": "非尘",
+      "decision": "keep",
+      "reason": "可理解为超脱尘俗或非尘世之物，语义凝练，有清晰的抽象意象与辨识度。"
+    },
+    {
+      "name": "非墨",
+      "decision": "uncertain",
+      "reason": "可按字面理解为非墨或不属墨色，但组合所指不明确；现有用例也不足以确认其自然语义。"
+    },
+    {
+      "name": "非池中物",
+      "decision": "reject",
+      "reason": "完整名称是固定典故表达，指志向远大、有抱负的人，属于现成成语式宣言，未形成独立凝练的品牌名。"
+    },
+    {
+      "name": "水非止",
+      "decision": "reject",
+      "reason": "字序与语法关系生硬，难以确认完整语义，像把“水”“非”“止”机械拼接。"
+    },
+    {
+      "name": "明是非",
+      "decision": "reject",
+      "reason": "完整词组意为辨明对错，是表达主张或行为要求的句式，具有宣言感，不适合作为凝练品牌名。"
+    }
+  ]
+}

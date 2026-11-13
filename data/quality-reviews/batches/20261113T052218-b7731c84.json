@@ -1,0 +1,879 @@
+{
+  "review_id": "20261113T052218-b7731c84",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "磏励",
+      "风过松萝",
+      "云萝见山",
+      "萝衣",
+      "萝窗",
+      "萝庭",
+      "萝汀",
+      "萝影窗前",
+      "萝蔓书房"
+    ],
+    "related_kept_candidates": {
+      "风": [
+        "松风过樟",
+        "风过松霭",
+        "风过松岚",
+        "松风过墈",
+        "松风峒",
+        "风过芭林",
+        "凉风入松",
+        "崧风过岭",
+        "茅风过岭",
+        "螭吟松风",
+        "卧听松风",
+        "风过埼"
+      ],
+      "山": [
+        "疏云见山",
+        "一见青山",
+        "云开山峙",
+        "云山墅",
+        "见山斋",
+        "崞山见月",
+        "山麇见月",
+        "藏酒见山",
+        "黛山见月",
+        "柯见山",
+        "云泊山",
+        "埙中见山"
+      ],
+      "见": [
+        "疏云见山",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "云开见硔",
+        "山麇见月",
+        "藏酒见山",
+        "黛山见月",
+        "柯见山",
+        "埙中见山",
+        "渟水见山"
+      ],
+      "庭": [
+        "风过宵庭",
+        "风过庭隅",
+        "筱风过庭",
+        "一庭清欢",
+        "榴庭",
+        "庭墅",
+        "庭前芹绿",
+        "萱庭",
+        "苔庭",
+        "一庭秋凉",
+        "庭陔",
+        "庭燎"
+      ],
+      "衣": [
+        "一衣带水",
+        "袗衣",
+        "绀衣",
+        "𫄨衣",
+        "骍衣",
+        "蝉衣",
+        "绉衣",
+        "麻衣巷",
+        "黻衣",
+        "蓑衣人",
+        "衲衣",
+        "月照衣袂"
+      ],
+      "云": [
+        "疏云见山",
+        "云开山峙",
+        "云山墅",
+        "凉云见月",
+        "云开见硔",
+        "云泊山",
+        "云开见岩",
+        "云深见鹒",
+        "暮云山",
+        "云覆山",
+        "云水见獭",
+        "云开见璧"
+      ],
+      "窗": [
+        "竹影覆窗",
+        "榆影映窗",
+        "僧窗竹影",
+        "竹影遮窗",
+        "桉影入窗",
+        "风过窗栊",
+        "柞影入窗",
+        "柯影横窗",
+        "桠影入窗",
+        "窗前叮响",
+        "槐影过窗",
+        "樟影入窗"
+      ],
+      "萝": [
+        "青萝",
+        "菠萝",
+        "女萝",
+        "莳萝"
+      ],
+      "影": [
+        "竹影覆窗",
+        "榆影映窗",
+        "僧窗竹影",
+        "竹影遮窗",
+        "桉影入窗",
+        "潭影松风",
+        "松风棹影",
+        "柞影入窗",
+        "柯影横窗",
+        "桠影入窗",
+        "槐影过窗",
+        "樟影入窗"
+      ],
+      "松": [
+        "松风过樟",
+        "风过松霭",
+        "风过松岚",
+        "松风过墈",
+        "松风峒",
+        "凉风入松",
+        "螭吟松风",
+        "卧听松风",
+        "松风入蹊",
+        "松风窣叶",
+        "松风入榻",
+        "松风侣"
+      ],
+      "房": [
+        "葳蕤山房",
+        "绿房紫菂",
+        "房星",
+        "砚山房",
+        "墨砚山房"
+      ],
+      "汀": [
+        "芹汀",
+        "菼汀",
+        "横汀",
+        "芦汀",
+        "鸼过长汀",
+        "柳汀",
+        "䴔汀",
+        "鸥栖汀",
+        "鸥汀",
+        "蒹汀",
+        "蒹汀晚照",
+        "鹳汀"
+      ],
+      "前": [
+        "窗前叮响",
+        "前山云起",
+        "前山见月",
+        "庭前芹绿",
+        "门前柳",
+        "前途",
+        "崖前海",
+        "瀑前听雨",
+        "庭前枳",
+        "超前",
+        "灯前花飐",
+        "凳前月"
+      ],
+      "过": [
+        "松风过樟",
+        "风过松霭",
+        "风过松岚",
+        "松风过墈",
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "风过埙声"
+      ],
+      "书": [
+        "见书山",
+        "风过书",
+        "云间书斋",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "女书",
+        "书椠",
+        "佳书",
+        "书香递远",
+        "瑾书",
+        "书林"
+      ],
+      "蔓": [
+        "蔓生",
+        "蔓山居",
+        "蔓影入林",
+        "蔓引清风",
+        "蔓生朝露",
+        "蔓野",
+        "蔓禾",
+        "蔓春",
+        "蔓芳",
+        "蔓生集",
+        "蔓间光",
+        "蔓草"
+      ]
+    },
+    "literature_phrase_examples": {
+      "磏励": [],
+      "风过松萝": [],
+      "云萝见山": [],
+      "萝衣": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 59218,
+          "context": "故山桃李月，初服薜萝衣。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 62207,
+          "context": "日落伴将稀，山风拂萝衣。"
+        }
+      ],
+      "萝窗": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 783083,
+          "context": "下知人在萝窗里，瞑目炉薰百虑空。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 784240,
+          "context": "薜荔藩篱秋蔓衍，女萝窗户月依稀。"
+        }
+      ],
+      "萝庭": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 16308,
+          "context": "烟萝庭户重栖倚，渔浦人家旧往还。"
+        }
+      ],
+      "萝汀": [],
+      "萝影窗前": [],
+      "萝蔓书房": []
+    },
+    "dictionary_phrase_entries": {
+      "磏励": [],
+      "风过松萝": [],
+      "云萝见山": [],
+      "萝衣": [],
+      "萝窗": [],
+      "萝庭": [],
+      "萝汀": [],
+      "萝影窗前": [],
+      "萝蔓书房": []
+    },
+    "direct_dictionary": {
+      "磏": {
+        "mandarin": "lián",
+        "supplemental_dictionary": {
+          "explanation": "磏lián 1.赤色的砺石。亦泛指有棱角的石块。 2.引申为激励;磨练。",
+          "source_url": "https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/word.json",
+          "source_sha256": "8ae3453eacc5b0f3fdfba47eac8bb686cd73914d278e8b851ae6ef81082f80e7",
+          "authority": "third_party_compilation_requires_cross_check"
+        },
+        "official_dictionary": [
+          {
+            "title": "磏",
+            "pinyin": "lián",
+            "definition": "[名]\n紅色的磨刀石。《說文解字．石部》：「磏，厲石也。赤色。」",
+            "entry_id": "03595",
+            "sheet": "1150929辭典匯出",
+            "row": 3601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "励": {
+        "definition": "strive; encourage",
+        "mandarin": "lì",
+        "related_characters": [
+          {
+            "character": "励",
+            "relation": "kTraditionalVariant",
+            "definition": "strive; encourage",
+            "mandarin": "lì"
+          },
+          {
+            "character": "勵",
+            "relation": "kTraditionalVariant",
+            "definition": "strive; encourage",
+            "mandarin": "lì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "励",
+            "pinyin": null,
+            "definition": "「勵」的異體字。",
+            "entry_id": "03478-1",
+            "sheet": "1150929辭典匯出",
+            "row": 62014,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "过",
+            "pinyin": null,
+            "definition": "「過」的異體字。",
+            "entry_id": "04226-1",
+            "sheet": "1150929辭典匯出",
+            "row": 71117,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "萝": {
+        "definition": "type of creeping plant; turnip",
+        "mandarin": "luó",
+        "related_characters": [
+          {
+            "character": "萝",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          },
+          {
+            "character": "蘿",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "萝",
+            "pinyin": null,
+            "definition": "「蘿」的異體字。",
+            "entry_id": "03797-1",
+            "sheet": "1150929辭典匯出",
+            "row": 65743,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "衣": {
+        "definition": "clothes, clothing; cover, skin; Kangxi radical 145",
+        "mandarin": "yī",
+        "official_dictionary": [
+          {
+            "title": "衣",
+            "pinyin": "yī",
+            "definition": "[名]\n1.用布帛、皮革或各種纖維材質等做成。穿著在身上，用以遮蔽身體、防熱禦寒。通常古多指上衣。《詩經．邶風．綠衣》：「綠兮衣兮，綠衣黃裳」漢．毛亨．傳：「上曰衣，下曰裳。」漢．揚雄《法言．修身》：「惜乎衣未成而轉為裳也。」今或泛指衣服。如：「毛衣」、「雨衣」、「成衣」、「衣不蔽體」。《詩經．豳風．七月》：「無衣無褐，何以卒歲？」\n2.包覆在物體外的東西。如：「書衣」、「胞衣」、「糖衣藥丸」。\n3.蔬菜、果實外的薄皮。也指表皮的霜粉。唐．李建勳〈宿友人山居寄司徒相公〉詩二首之一：「隔紙烘茶蕊，移鐺剝芋衣。」宋．莊綽《雞肋編》卷上：「京師賣生果，凡李子必摘其蒂，不敢觸其實，必留上衣，令勃勃然，人方以新而為好。至食者須雪去之。」\n4.特指苔蘚等延貼地面、岩石或樹皮上生長的隱花植物。如：「苔衣」、「地衣」。唐．白居易〈營閒事〉詩：「暖變牆衣色，晴催木筆花。」\n5.姓。如明代有衣守信。\n6.二一四部首之一。",
+            "entry_id": "10483",
+            "sheet": "1150929辭典匯出",
+            "row": 10495,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "衣",
+            "pinyin": "yì",
+            "definition": "[動]\n1.穿衣服。《論語．子罕》：「衣敝縕袍，與衣狐貉者立而不恥者，其由也與？」《史記．卷九二．淮陰侯列傳》：「漢王授我上將軍印，予我數萬眾，解衣衣我，推食食我。」\n2.覆蓋、裹紥。《易經．繫辭下》：「古之葬者，厚衣之以薪。」唐．柳宗元〈段太尉&f5fd4_.png;事狀〉：「太尉大泣曰：『乃我困汝！』即自取水洗去血，裂裳衣瘡，手注善藥，旦夕自哺農者，然後食。」\n3.倚靠。同「依」。元．關漢卿《雙赴夢》第四折：「衣的我奉玉甌，進御酒，一齊山壽。」清．孫星衍《尙書今古文注疏．卷一五．康誥》：「今民將在祇遹乃文考，紹聞衣德言。」疏：「釋詁云：……衣，同依。」",
+            "entry_id": "10594",
+            "sheet": "1150929辭典匯出",
+            "row": 10608,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窗": {
+        "definition": "window",
+        "mandarin": "chuāng",
+        "official_dictionary": [
+          {
+            "title": "窗",
+            "pinyin": "chuāng",
+            "definition": "[名]\n房屋中用來透光通氣的洞孔。如：「窗戶」、「天窗」、「玻璃窗」。",
+            "entry_id": "08649",
+            "sheet": "1150929辭典匯出",
+            "row": 8663,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庭": {
+        "definition": "courtyard; spacious hall or yard",
+        "mandarin": "tíng",
+        "official_dictionary": [
+          {
+            "title": "庭",
+            "pinyin": "tíng",
+            "definition": "[名]\n1.廳堂、正房。《說文解字．广部》：「庭，宮中也。」清．段玉裁．注：「宮者，室也。室之中曰庭。」《論語．季氏》：「嘗獨立，鯉趨而過庭。」\n2.院子、大廳臺階前的空地。如：「庭院」。《文選．古詩十九首．庭中有奇樹》：「庭中有奇樹，綠葉發華滋。」\n3.泛稱寬闊的地方。如：「大庭廣眾」。\n4.審理訴訟案件的場所。如：「法庭」、「開庭」、「民事庭」。\n5.額頭。如：「天庭飽滿」、「庭闕不張」。",
+            "entry_id": "02737",
+            "sheet": "1150929辭典匯出",
+            "row": 2742,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "汀": {
+        "definition": "sandbar, beach, bank, shore",
+        "mandarin": "tīng",
+        "official_dictionary": [
+          {
+            "title": "汀",
+            "pinyin": "tīng",
+            "definition": "[名]\n水邊平地或河流中的小沙洲。如：「汀洲」、「綠汀」。唐．王勃〈滕王閣序〉：「鶴汀鳧渚，窮島嶼之縈迴。」宋．陸游〈夜泊水村〉詩：「記取江湖泊船處，臥聞新雁落寒汀。」俗讀為ㄉㄧㄥ（dīng）。",
+            "entry_id": "02728",
+            "sheet": "1150929辭典匯出",
+            "row": 2733,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "official_dictionary": [
+          {
+            "title": "影",
+            "pinyin": "yǐng",
+            "definition": "[名]\n1.光線被遮擋而造成的陰暗形象。如：「人影」、「樹影」、「陰影」。唐．李白〈月下獨酌〉詩四首之一：「舉杯邀明月，對影成三人。」\n2.人、物的形象或圖像。如：「攝影」、「背影」、「身影」。《水滸傳》第三一回：「寫了武松鄉貫、年甲、相模樣，畫影圖形，出三千貫信賞錢。」《紅樓夢》第三一回：「老太太和舅母那日想是纔拜了影回來。」\n[動]\n1.參見「影印」條。\n2.仿照、描摹。如：「這篇小說是影了此一真人實事所寫成的。」南朝梁．劉勰《文心雕龍．通變》：「漢之賦頌，影寫楚世。」\n3.掩蔽、隱藏。《水滸傳》第一六回：「只見對面松林裡影著一個人，在那里舒頭探腦家望。」",
+            "entry_id": "11208",
+            "sheet": "1150929辭典匯出",
+            "row": 11223,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "人影",
+                "pinyin": "rén yǐng",
+                "definition": "1.人的身影。如：「窗外忽然有個人影一閃而過，讓我嚇了一跳。」《鄰女語》第五回：「店內燈光射出，看見人影憧憧，彷彿是生意鬧忙之時。」\n2.代指人。如：「幾個月不見你的人影，你到哪兒去了？」《兒女英雄傳》第五回：「說著，叫了店家拉過那驢兒騎上，說了聲，公子保重，請了，一陣電卷星飛，霎時不見人影。」",
+                "entry_id": "0921404432",
+                "sheet": "1150929辭典匯出",
+                "row": 134131
+              },
+              {
+                "title": "陰影",
+                "pinyin": "yīn yǐng",
+                "definition": "1.陰暗的影子。如日光、月光、燈光下的人影及一切物影。\n2.比喻心中的鬱結。如：「那次意外事件，使他心中蒙上一層陰影。」",
+                "entry_id": "110760193",
+                "sheet": "1150929辭典匯出",
+                "row": 154368
+              },
+              {
+                "title": "攝影",
+                "pinyin": "shè yǐng",
+                "definition": "拍攝人物影像。如：「攝影留念」、「攝影存證」。",
+                "entry_id": "088490024",
+                "sheet": "1150929辭典匯出",
+                "row": 127849
+              },
+              {
+                "title": "背影",
+                "pinyin": "bèi yǐng",
+                "definition": "背後的影像。如：「望著父親蹣跚離去的背影，不禁悲從中來。」《文明小史》第五八回：「一進門就看見你的背影，本來想嚇你一下的，於今可給你看見了。」也稱為「後影」。",
+                "entry_id": "001680099",
+                "sheet": "1150929辭典匯出",
+                "row": 15114
+              },
+              {
+                "title": "身影",
+                "pinyin": "shēn yǐng",
+                "definition": "形體的影像。如：「雖離別經年，他的身影仍深深地印在我的腦海裡。」",
+                "entry_id": "089680095",
+                "sheet": "1150929辭典匯出",
+                "row": 129403
+              },
+              {
+                "title": "影印",
+                "pinyin": "yǐng yìn",
+                "definition": "將圖片文字直接經由影印機或照相複製。",
+                "entry_id": "112080070",
+                "sheet": "1150929辭典匯出",
+                "row": 156108
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "前": {
+        "definition": "in front, forward; preceding",
+        "mandarin": "qián",
+        "official_dictionary": [
+          {
+            "title": "前",
+            "pinyin": "qián",
+            "definition": "[形]\n1.在正面的、臉所向的一面。與「後」相對。如：「前門」、「前方」、「面前」。《論語．子罕》：「瞻之在前，忽焉在後。」唐．李白〈靜夜思〉詩：「床前明月光，疑是地上霜。」\n2.次序在先的。如：「前三名」、「請大家坐到前排來。」\n3.過去的、較早的。與「後」相對。如：「前天」、「前人種樹，後人乘涼。」《史記．卷六．秦始皇本紀》云：「前事之不忘，後事之師也。」\n4.已成歷史的。如：「前清」、「前蘇聯」。\n5.前任的簡稱。如：「前妻」、「前總理」。\n6.未來的。如：「前程」、「前途」、「前景看好」。\n[動]\n向前走。如：「勇往直前」、「畏縮不前」。唐．韓愈〈左遷至藍關示姪孫湘〉詩：「雲橫秦嶺家何在？雪擁藍關馬不前。」",
+            "entry_id": "06470",
+            "sheet": "1150929辭典匯出",
+            "row": 6478,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蔓": {
+        "definition": "creeping plants, tendrils, vines",
+        "mandarin": "màn",
+        "official_dictionary": [
+          {
+            "title": "蔓",
+            "pinyin": "mán",
+            "definition": "參見「蔓菁」條。",
+            "entry_id": "01221",
+            "sheet": "1150929辭典匯出",
+            "row": 1224,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "蔓菁",
+                "pinyin": "mán jing",
+                "definition": "植物名。十字花科蕓薹屬，一年或二年生草本。葉寬卵形，緣略有缺刻。春日開黃花，總狀花序頂生，長角果線形。塊根長圓多肉，與葉俱可供食用。也作「大頭芥」、「大頭菜」、「蕪菁」。",
+                "entry_id": "012210001",
+                "sheet": "1150929辭典匯出",
+                "row": 29397
+              }
+            ]
+          },
+          {
+            "title": "蔓",
+            "pinyin": "màn",
+            "definition": "[名]\n藤本或蔓性植物細長而能攀繞他物的莖。如：「藤蔓」。唐．孟郊〈亂離〉詩：「直松摧高柯，弱蔓將何依？」唐．柳宗元〈至小邱西小石潭記〉：「青樹翠蔓，蒙絡搖綴。」\n[動]\n延伸、滋長。如：「蔓延」。《左傳．隱公元年》：「無使滋蔓，蔓，難圖也。」",
+            "entry_id": "01244",
+            "sheet": "1150929辭典匯出",
+            "row": 1247,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "房": {
+        "definition": "house, building; room; 4th lunar mansion, determinative star π Scorpii",
+        "mandarin": "fáng",
+        "official_dictionary": [
+          {
+            "title": "房",
+            "pinyin": "fáng",
+            "definition": "[名]_x000D_\n1.居室的全體，也稱為房子或房屋。如：「樓房」、「平房」。宋．梅堯臣〈杜鵑〉詩：「月樹啼方急，山房客未眠。」《水滸傳》第三二回：「廳上放著三把虎皮交椅，後面有百十間草房。」《警世通言．卷三一．趙春兒重旺曹家莊》：「在墳邊左近，有一所空房要賣，只要五十兩銀子。」_x000D_\n2.居室中的一間。如：「書房」、「臥房」、「閨房」、「客房」。三國魏．曹丕〈燕歌行〉：「賤妾煢煢守空房，憂來思君不敢忘，不覺淚下霑衣裳。」《太平廣記．卷二三六．隋煬帝》引《紀聞》：「又殿內房中，不燃膏火，懸大珠一百二十以照之，光比白日。」_x000D_\n3.構造或作用像房子的物體。如：「蜂房」、「蓮房」、「花房」。北周．庾信〈詠園花〉詩：「燕送歸菱井，蜂銜上蜜房。」唐．柳宗元〈柳州山水近治可游者記〉：「其宇下有流石成形，如肺肝，如茄房。」_x000D_\n4.家族的分支。《新唐書．卷七五．宰相世系表五上》：「大房白麟後絕，第三房叔夜後無聞。」《警世通言．卷二五．桂員外途窮懺悔》：「我有遠房親族在會稽地方。向因家貧久不來往。」《儒林外史》第一六回：「恰好三房的阿叔過來催房子，匡超人丟下酒，向阿叔作揖下跪。」 _x000D_\n5.妻室、妻子。《晉書．卷三三．列傳．石苞》：「後房百數，皆曳紈繡，珥金翠。」《喻世明言．卷一．蔣興哥重會珍珠衫》：「這平氏到是明媒正娶，又且平氏年長一歲，讓平氏為正房，王氏反做偏房。」《儒林外史》第五回：「明日我若死了，就把你扶正做個填房。」_x000D_\n6.姓。如唐代有房玄齡、房琯。_x000D_\n[量]_x000D_\n1.舊時計算妻妾的單位。《喻世明言．卷二二．木綿菴鄭虎臣報冤》：「只我家相公要討一房側室，你若願意，我攛掇多把幾貫錢鈔與你。」《儒林外史》第二八回：「我們風流人物，只要才子佳人會合，一房兩房，何足為奇？」_x000D_\n2.計算親事、親戚家數的單位。如：「有三房親戚」、「五房兄弟」。《喻世明言．卷九．裴晉公義還原配》：「某幼年定下一房親事，因屢任南方，未成婚配。」《紅樓復夢》第八五回：「況且我家兩房兄弟得道，已是古今創聞。」_x000D_\n3.計算花朵、果實的單位。宋．陸游《老學庵筆記》卷三：「蜀孟氏時，苑中忽生百合花一本，數百房，皆並蒂。」宋．王溥《唐會要．卷一〇〇．雜錄》：「葉護獻馬乳葡萄一房，長二尺，子亦稍大，其色紫。」_x000D_\n4.計算形狀、結構似房的物品的單位。唐．李洞〈山居喜友人見訪〉詩：「看待詩人無別物，半潭秋水一房山。」明．李時珍《本草綱目．卷三九．蟲部一．大黃蜂》：「一房蜂兒五、六斗至一石，揀狀如蠶蛹瑩白者，以鹽炒暴乾，寄入京洛以為方物。」",
+            "entry_id": "01709",
+            "sheet": "1150929辭典匯出",
+            "row": 1713,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "磏励",
+      "decision": "uncertain",
+      "reason": "“磏”有红色磨刀石及棱角石义，也有第三方资料记载引申为激励、磨练；但此引申缺少更强的词义交叉佐证，与“励”组合成“磨练激励”仍显生硬，完整名称的语义和自然度难以确认。"
+    },
+    {
+      "name": "风过松萝",
+      "decision": "keep",
+      "reason": "可自然理解为风掠过松树与女萝的景象，语义连贯、意象具体，有凝练的品牌名感；未见与已保留名称构成相同意象关系的近似变体。"
+    },
+    {
+      "name": "云萝见山",
+      "decision": "keep",
+      "reason": "可理解为云气、女萝映衬山景，或云萝间山峦显现，意象清楚且组合凝练；虽与“疏云见山”共享“云见山”的构词框架，但本名以“萝”构成不同意象，并非只替换近义配字。"
+    },
+    {
+      "name": "萝衣",
+      "decision": "keep",
+      "reason": "有古典用例，指薜萝或女萝制成、披拂如衣的衣着意象；词形简洁自然，具辨识度。"
+    },
+    {
+      "name": "萝窗",
+      "decision": "keep",
+      "reason": "有古典用例，可指女萝或蔓萝掩映的窗户，意象完整、简洁，具品牌名凝练感。"
+    },
+    {
+      "name": "萝庭",
+      "decision": "keep",
+      "reason": "有古典用例，可理解为萝蔓环绕的庭院，组合自然，意象明确而不等同于通用类别词。"
+    },
+    {
+      "name": "萝汀",
+      "decision": "keep",
+      "reason": "可理解为萝蔓相映的水边平地或沙洲，字义搭配自然，意象简洁；与其他保留名称不构成仅换近义字的重复。"
+    },
+    {
+      "name": "萝影窗前",
+      "decision": "reject",
+      "reason": "整体是“萝影在窗前”的景物陈述，语法虽通顺，但完整名称像截取的诗句或场景描述，缺少品牌名所需的凝练感。"
+    },
+    {
+      "name": "萝蔓书房",
+      "decision": "reject",
+      "reason": "“书房”直接指明房间类别，前置“萝蔓”仅作装饰性修饰；完整名称落在通用空间类别词上，品牌辨识度不足。"
+    }
+  ]
+}

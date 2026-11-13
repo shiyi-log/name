@@ -1,0 +1,866 @@
+{
+  "review_id": "20261113T090743-03a315c0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "箬竹",
+      "箬竹青",
+      "箬竹里",
+      "箬竹听风",
+      "箬叶轻舟",
+      "风过箬林",
+      "箬声",
+      "艺传",
+      "传悦",
+      "心传"
+    ],
+    "related_kept_candidates": {
+      "风": [
+        "风过芭林",
+        "修竹听风",
+        "风过岑林",
+        "冬风过林",
+        "风过潇林",
+        "风过城林",
+        "风过鸫林",
+        "风过鹟林",
+        "风过林凇",
+        "峋岭听风",
+        "听风斋",
+        "崧风过岭"
+      ],
+      "心": [
+        "一心",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心",
+        "心所及"
+      ],
+      "舟": [
+        "一叶浮舟",
+        "黄叶舟",
+        "桉叶如舟",
+        "轻舟",
+        "轻舟划月",
+        "一舟",
+        "珀舟",
+        "暮舟",
+        "碳舟",
+        "茗舟",
+        "镠舟",
+        "奇舟"
+      ],
+      "青": [
+        "竹青",
+        "青秆听风",
+        "风过青筜",
+        "风过青檐",
+        "青竹映伞",
+        "一蔸青竹",
+        "鸲过青林",
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷"
+      ],
+      "林": [
+        "风过芭林",
+        "风过岑林",
+        "冬风过林",
+        "风过潇林",
+        "风过城林",
+        "风过鸫林",
+        "风过鹟林",
+        "风过林凇",
+        "莿林听风",
+        "棕林听风",
+        "风掠林",
+        "鸥语风林"
+      ],
+      "艺": [
+        "艺林",
+        "艺囿",
+        "焊艺",
+        "酵艺",
+        "镘艺",
+        "烤艺",
+        "俍艺",
+        "篾艺",
+        "演艺",
+        "模艺",
+        "码艺",
+        "修艺"
+      ],
+      "声": [
+        "风过埙声",
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声",
+        "豪声",
+        "篥声",
+        "篪声"
+      ],
+      "里": [
+        "竹里迳",
+        "竹里清庵",
+        "千里骃",
+        "壳里乾坤",
+        "葶花里",
+        "墅里",
+        "芙光里",
+        "熏风里",
+        "芭蕉里",
+        "墟里",
+        "墟里烟",
+        "秋枫里"
+      ],
+      "叶": [
+        "一叶浮舟",
+        "黄叶舟",
+        "桉叶如舟",
+        "芋叶听风",
+        "菱叶听风",
+        "扫叶听风",
+        "槟叶听风",
+        "茎叶",
+        "蒌叶",
+        "月照芭叶",
+        "芭叶映星",
+        "蔓叶"
+      ],
+      "悦": [
+        "淑悦",
+        "芙悦",
+        "臻悦",
+        "唐悦",
+        "悦婷",
+        "缤悦",
+        "怡悦",
+        "资悦",
+        "蓓悦",
+        "朋悦",
+        "珺悦",
+        "宾悦"
+      ],
+      "竹": [
+        "修竹听风",
+        "竹影鎏风",
+        "竹青",
+        "清风入竹",
+        "竹里迳",
+        "风惊竹",
+        "顾风过竹",
+        "筀竹听雨",
+        "翠竹风",
+        "风响竹间",
+        "竹影风响",
+        "蓑竹迎风"
+      ],
+      "听": [
+        "修竹听风",
+        "峋岭听风",
+        "听风斋",
+        "卧听风",
+        "卧听松风",
+        "莿林听风",
+        "听涧风",
+        "奇石听风",
+        "枸听风",
+        "听榆风",
+        "听荻风",
+        "听芦风"
+      ],
+      "过": [
+        "风过芭林",
+        "风过岑林",
+        "冬风过林",
+        "风过潇林",
+        "风过城林",
+        "风过鸫林",
+        "风过鹟林",
+        "风过林凇",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过刃鸣"
+      ],
+      "轻": [
+        "轻舟",
+        "轻舟划月",
+        "轻篙",
+        "轻跹",
+        "轻悄",
+        "轻舲",
+        "轻云遮峰",
+        "水阔船轻",
+        "轻棹",
+        "轻毳",
+        "轻轺",
+        "轻轺远行"
+      ],
+      "传": [
+        "传世",
+        "家传",
+        "碑帖传薪",
+        "传檄",
+        "秘传",
+        "祕传",
+        "驲传"
+      ],
+      "箬": [
+        "箬林"
+      ]
+    },
+    "literature_phrase_examples": {
+      "箬竹": [],
+      "箬竹青": [],
+      "箬竹里": [],
+      "箬竹听风": [],
+      "箬叶轻舟": [],
+      "风过箬林": [],
+      "箬声": [],
+      "艺传": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 360329,
+          "context": "蒙氏艺传黄氏子，独闻相继得名高。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 382088,
+          "context": "《新唐书》卷二百二《文艺传》，又说他「景龙〖七○七--七○九〗初，自崖州遇赦还」。"
+        }
+      ],
+      "传悦": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 21737,
+          "context": "曰梁帝纪中大通元年正月甲子魏汝南王悦/  还本国许之二年六月丁巳遣悦还北为魏主按魏)(书悦传悦未尝归魏复/入梁今删去元年事)　戊寅魏诏胡氏亲属受爵于"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 33209,
+          "context": "九域志邯郸县在磁州/东北七十里栅测革翻邯音寒郸音单断音短)悦自将兵数万围临洺(邢考异曰马燧传悦自将兵三万围/  州次临洺燕南记悦自统马歩五)(千人应接/今从旧传)邢州刺史李共临洺将张伾坚壁拒守(伾音/丕)贝州刺史邢曹俊田承嗣"
+        }
+      ],
+      "心传": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 206775,
+          "context": "紫霞妖女琼华飞，秘法虔心传付与。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 277849,
+          "context": "灵一心传清塞心，可公吟后础公吟。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "箬竹": [],
+      "箬竹青": [],
+      "箬竹里": [],
+      "箬竹听风": [],
+      "箬叶轻舟": [],
+      "风过箬林": [],
+      "箬声": [],
+      "艺传": [],
+      "传悦": [],
+      "心传": []
+    },
+    "direct_dictionary": {
+      "箬": {
+        "definition": "the cuticle of the bamboo a broad-leaved bamboo",
+        "mandarin": "ruò",
+        "official_dictionary": [
+          {
+            "title": "箬",
+            "pinyin": "ruò",
+            "definition": "[名]\n1.竹皮。「篛」的本字。《說文解字．竹部》：「箬，楚謂竹皮曰箬。」\n2.竹名。稈細柱形，高約一公尺，葉片很大，可包粽子及做斗笠等。同「篛」。《玉篇．竹部》：「箬，竹大葉。」\n3.箬竹的葉子。同「篛」。唐．柳宗元〈柳州峒氓〉詩：「青箬裹鹽歸峒客，綠荷包飯趁虛人。」",
+            "entry_id": "119060025",
+            "sheet": "1150929辭典匯出",
+            "row": 163818,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "竹": {
+        "definition": "bamboo; flute; Kangxi radical 118",
+        "mandarin": "zhú",
+        "official_dictionary": [
+          {
+            "title": "竹",
+            "pinyin": "zhú",
+            "definition": "[名]\n1.植物名。多年生常綠植物。莖木質，有隆起之節，節間部中空，細長作管狀，色綠。竹莖堅韌，可供建築製器之用。\n2.樂器名。笛、簫之屬。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」晉．王羲之〈三月三日蘭亭詩序〉：「雖無絲竹管絃之盛，一觴一詠，亦足以暢敘幽情。」\n3.簡冊。如：「竹帛」、「竹簡」。漢．桓寬《鹽鐵論．利議》：「明枯竹，守空言，不知趨舍之宜，時世之變。」\n4.姓。如漢代有竹多同。\n5.二一四部首之一。",
+            "entry_id": "07958",
+            "sheet": "1150929辭典匯出",
+            "row": 7970,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "青",
+            "pinyin": "jīng",
+            "definition": "參見「青青」(二)條。",
+            "entry_id": "05920",
+            "sheet": "1150929辭典匯出",
+            "row": 5928,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "青青",
+                "pinyin": "jīng jīng",
+                "definition": "草木茂盛的樣子。《詩經．衛風．淇奧》：「瞻彼淇奧，綠竹青青。」宋．范仲淹〈岳陽樓記〉：「岸芷汀蘭，郁郁青青。」也作「菁菁」。",
+                "entry_id": "059200001",
+                "sheet": "1150929辭典匯出",
+                "row": 94282
+              },
+              {
+                "title": "青青",
+                "pinyin": "qīng qīng",
+                "definition": "1.形容草木翠綠的顏色。《文選．古詩十九首．青青河邊草》：「青青河邊草，綿綿思遠道。」《三國演義》第九回：「千里草，何青青！十日卜，不得生！」\n2.形容鬢髮烏黑。宋．朱熹〈和秀野蘄簟之句〉詩：「史君兩鬢尚青青，學道仍拋後院笙。」",
+                "entry_id": "065760148",
+                "sheet": "1150929辭典匯出",
+                "row": 100674
+              }
+            ]
+          },
+          {
+            "title": "青",
+            "pinyin": "qīng",
+            "definition": "[名]\n1.顏色：(1)綠色。唐．劉禹錫〈陋室銘〉：「苔痕上階綠，草色入簾青。」(2)藍色。《荀子．勸學》：「青取之於藍，而青於藍。」(3)黑色。如：「玄青」。\n2.綠色的草木、山脈。如：「踏青」、「萬年青」、「青黃不接」。唐．柳宗元〈始得西山宴游記〉：「縈青繚白，外與天際。」\n3.竹皮。如：「汗青」。\n4.地名簡稱：(1)大陸地區青海省簡稱。如：「青藏鐵路」。(2)青島市簡稱。如：「青鹽鐵路」。\n5.二一四部首之一。\n[形]\n1.綠色的。如：「青山綠水」、「山青水秀」。\n2.藍色的。如：「青天白日」。\n3.黑色的。如：「青布」、「青衣」。唐．李白〈將進酒〉：「君不見高堂明鏡悲白髮，朝如青絲暮成雪。」\n4.年輕的。如：「青年」、「青春」。",
+            "entry_id": "06576",
+            "sheet": "1150929辭典匯出",
+            "row": 6585,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "里",
+            "pinyin": "lǐ",
+            "definition": "[名]\n1.居所、居處。《詩經．鄭風．將仲子》：「將仲子兮，無踰我里。」《孟子．離婁下》：「去三年不反，然後收其田里。」\n2.街坊、巷弄。《後漢書．卷五四．楊震列傳》：「連里竟街，雕修繕飾，窮極巧技。」唐．韓愈〈柳子厚墓誌銘〉：「今夫平居里巷相慕悅，酒食游戲相徵逐。」\n3.故鄉。如：「故里」。南朝梁．江淹〈別賦〉：「割慈忍愛，離邦去里。」\n4.今地方政府行政區域之一。在鎮之下，鄰之上，與村平行。\n5.量詞。古代用於表示長度的單位。不同年代有不同的定義方式，例如在漢代，以三百六十步為一里。\n6.內部。通「裡」。元．馬致遠〈四塊玉．佐國心〉曲：「命里無時莫剛求，隨時過遣休生受。」\n7.二一四部首之一。",
+            "entry_id": "03419",
+            "sheet": "1150929辭典匯出",
+            "row": 3426,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "听",
+            "pinyin": "yǐn",
+            "definition": "[副]\n笑的樣子。《文選．司馬相如．上林賦》：「亡是公听然而笑。」唐．劉禹錫〈說驥〉：「睹之周體，眙然視，听然笑，既而抃隨之。」",
+            "entry_id": "11104",
+            "sheet": "1150929辭典匯出",
+            "row": 11119,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "听",
+            "pinyin": null,
+            "definition": "「聽」的異體字。",
+            "entry_id": "02734-1",
+            "sheet": "1150929辭典匯出",
+            "row": 53128,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "叶": {
+        "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+        "mandarin": "yè",
+        "related_characters": [
+          {
+            "character": "叶",
+            "relation": "kTraditionalVariant",
+            "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+            "mandarin": "yè"
+          },
+          {
+            "character": "葉",
+            "relation": "kTraditionalVariant",
+            "definition": "leaf, petal; page of book; period",
+            "mandarin": "yè"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "叶",
+            "pinyin": null,
+            "definition": "「協」的異體字。",
+            "entry_id": "06927-1",
+            "sheet": "1150929辭典匯出",
+            "row": 104468,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "轻": {
+        "definition": "light; easy, simple; gentle",
+        "mandarin": "qīng",
+        "related_characters": [
+          {
+            "character": "輕",
+            "relation": "kTraditionalVariant",
+            "definition": "light; easy, simple; gentle",
+            "mandarin": "qīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "official_dictionary": [
+          {
+            "title": "舟",
+            "pinyin": "zhōu",
+            "definition": "[名]\n1.船。如：「輕舟」、「一葉扁舟」、「逆水行舟」。《詩經．邶風．二子乘舟》：「二子乘舟，汎汎其景。」\n2.姓。如春秋時虢國有舟之僑。\n3.二一四部首之一。\n[動]\n乘船。《禮記．祭義》：「壹舉足而不敢忘父母，是故道而不徑，舟而不游。」",
+            "entry_id": "07735",
+            "sheet": "1150929辭典匯出",
+            "row": 7746,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "过",
+            "pinyin": null,
+            "definition": "「過」的異體字。",
+            "entry_id": "04226-1",
+            "sheet": "1150929辭典匯出",
+            "row": 71117,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "声",
+            "pinyin": null,
+            "definition": "「聲」的異體字。",
+            "entry_id": "09031-1",
+            "sheet": "1150929辭典匯出",
+            "row": 130793,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "艺": {
+        "definition": "art; talent, ability; craft",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "藝",
+            "relation": "kTraditionalVariant",
+            "definition": "art; talent, ability; craft",
+            "mandarin": "yì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "传": {
+        "definition": "summon; propagate, transmit",
+        "mandarin": "chuán",
+        "related_characters": [
+          {
+            "character": "傳",
+            "relation": "kTraditionalVariant",
+            "definition": "summon; propagate, transmit",
+            "mandarin": "chuán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "悦": {
+        "definition": "pleased, contented, gratified",
+        "mandarin": "yuè",
+        "related_characters": [
+          {
+            "character": "悅",
+            "relation": "kTraditionalVariant",
+            "definition": "pleased",
+            "mandarin": "yuè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "心",
+            "pinyin": "xīn",
+            "definition": "[名]\n1.內臟之一。參見「心臟」條。\n2.我國古代認為心主管思維，故相沿以為腦的代稱。如：「用心」、「勞心勞力」。《孟子．告子上》：「心之官則思。」\n3.思想、意念、感情。如：「傷心」、「心中不安」、「心情煩悶」。三國魏．曹丕〈與吳質書〉：「東望於邑，裁書敘心。」唐．柳宗元〈始得西山宴游記〉：「心凝形釋。」\n4.思慮、謀畫。如：「有心人」、「有口無心」。《呂氏春秋．審應覽．精諭》：「紂雖多心，弗能知矣。」\n5.性情。如：「心性」。《韓非子．觀行》：「西門豹之性急，故佩韋以自緩，董安于之心緩，故佩弦以自急。」\n6.平面或物體的中央或內部。如：「江心」、「掌心」、「圓心」。唐．劉禹錫〈洞庭秋月行〉：「洞庭秋月生湖心，層波萬頃如鎔金。」\n7.植物的花蕊或苗尖。如：「花心」。南朝梁．簡文帝〈上巳侍宴林光殿曲水詩〉：「林花初墮蔕，池荷欲吐心。」\n8.星宿名。二十八星宿之一，東方蒼龍七宿的第五宿。\n9.星官名，心宿之首，共有三顆星，在西方屬天蠍座。《詩經．唐風．綢繆》：「三星在天。」漢．鄭玄．箋：「三星，謂心星也。」《晉書．卷一一．天文志上》：「心三星，天王正位也。」\n10.二一四部首之一。",
+            "entry_id": "07153",
+            "sheet": "1150929辭典匯出",
+            "row": 7162,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "心臟",
+                "pinyin": "xīn zàng",
+                "definition": "1.心肌構成的中空、紅色器官，其大如拳，居胸腔中央偏左，正常時內有四個腔室，行規律性的自發收縮，以保持血液的循環作用。與上下腔靜脈、肺動脈、肺靜脈、主動脈相通。\n2.形容最重要的部分。如：「此區是本市的心臟地帶。」",
+                "entry_id": "071530378",
+                "sheet": "1150929辭典匯出",
+                "row": 107466
+              },
+              {
+                "title": "用心",
+                "pinyin": "yòng xīn",
+                "definition": "1.盡心。《孟子．梁惠王上》：「察鄰國之政，無如寡人之用心者。」《儒林外史》第三四回：「宰相若肯如此用心，天下可立致太平。」\n2.存心、居心。《五代史平話．周史．卷上》：「郭威奏曰：『……全宥其家，免行族滅。』聞者皆謂郭威用心忠厚。」",
+                "entry_id": "119050044",
+                "sheet": "1150929辭典匯出",
+                "row": 163754
+              },
+              {
+                "title": "傷心",
+                "pinyin": "shāng xīn",
+                "definition": "心懷悲痛。唐．劉長卿〈重送裴郎中貶吉州〉詩：「猿啼客散暮江頭，人自傷心水自流。」《初刻拍案驚奇》卷二七：「足下見此芙蓉，何故傷心？」",
+                "entry_id": "090100035",
+                "sheet": "1150929辭典匯出",
+                "row": 130019
+              },
+              {
+                "title": "有心人",
+                "pinyin": "yǒu xīn rén",
+                "definition": "1.懷有某種意念或想法的人。《紅樓夢》第三四回：「俗語說：『沒事常思有事』，世上多少無頭腦的事，多半因為無心中做出，有心人看見，當作有心事，反說壞了。」清．孔尚任《桃花扇》第四齣：「傳將隨口話，報與有心人。」\n2.有志向、有理想的人。《初刻拍案驚奇》卷一九：「李公佐向齊公嘆道：『壯哉！壯哉！然此事卻非容易。』齊公道：『天下無難事，只怕有心人。』」《蟫史》卷八：「披肝而談意氣，真有心人；交臂而失英雄，為無目者。」\n3.別有目的或企圖的人。《兒女英雄傳》卷一七回：「從來俗語說的再不錯，道是：『無心人說話，只怕有心人來聽。』何況是兩個有心的裝作個無心的彼此一答一合說話，旁邊聽話的又本是個有心人，從無心中聽得心裡的一句話，憑他怎的聰明，有個不落圈套的麼？」\n4.心思細密的人。《初刻拍案驚奇》卷二七：「中含冤仇意思在裡面，遇著有心人玩著詞句，究問根由，未必不查出蹤跡來。」\n5.有情意的人。唐．任氏〈書桐葉〉詩：「天下有心人，盡解相思死。天下負心人，不識相思字。」",
+                "entry_id": "109050356",
+                "sheet": "1150929辭典匯出",
+                "row": 152273
+              },
+              {
+                "title": "有口無心",
+                "pinyin": "yǒu kǒu wú xīn",
+                "definition": "1.心直口快。《兒女英雄傳》第一五回：「老爺此時早看透了鄧九公，是個重交尚義，有口無心，年高好勝的人。」《瞎騙奇聞》第一回：「我曉得這個人向來是有口無心的，但也不可不拘什麼話便脫口而出。」也作「有嘴無心」。\n2.隨口說說，毫不放在心上。《金瓶梅》第三九回：「你便有口無心許下，神明都記著。」也作「有嘴無心」。",
+                "entry_id": "109050202",
+                "sheet": "1150929辭典匯出",
+                "row": 152161
+              },
+              {
+                "title": "心性",
+                "pinyin": "xīn xìng",
+                "definition": "本心、性情。《西遊記》第二三回：「那獃子雖是心性愚頑，卻只是一味懞直，倒也有些膂力，挑得行李，還看當日菩薩之念，救他隨我們去罷。」《紅樓夢》第四九回：「鳳姐冷眼敁敠岫烟的心性為人，竟不像邢夫人及他的父母一樣，卻是個溫厚可疼的人。」",
+                "entry_id": "071530285",
+                "sheet": "1150929辭典匯出",
+                "row": 107374
+              },
+              {
+                "title": "江心",
+                "pinyin": "jiāng xīn",
+                "definition": "江水中央。唐．白居易〈琵琶行〉：「東船西舫悄無言，唯見江心秋月白。」《三國演義》第四九回：「聘立在船頭，大叫：『承相鈞旨：南船且休近寨，就江心拋住。』」",
+                "entry_id": "058870085",
+                "sheet": "1150929辭典匯出",
+                "row": 93850
+              },
+              {
+                "title": "掌心",
+                "pinyin": "zhǎng xīn",
+                "definition": "1.手心。\n2.比喻能力控制的範圍。如：「孫悟空終究是逃不出如來佛的掌心。」",
+                "entry_id": "078930030",
+                "sheet": "1150929辭典匯出",
+                "row": 115502
+              },
+              {
+                "title": "圓心",
+                "pinyin": "yuán xīn",
+                "definition": "圓形的中心點，稱為「圓心」。",
+                "entry_id": "117950068",
+                "sheet": "1150929辭典匯出",
+                "row": 162916
+              },
+              {
+                "title": "花心",
+                "pinyin": "huā xīn",
+                "definition": "風流、形容對愛情不專一。如：「他是個不折不扣的花心大少。」",
+                "entry_id": "050050231",
+                "sheet": "1150929辭典匯出",
+                "row": 82430
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "箬竹",
+      "decision": "keep",
+      "reason": "“箬竹”是有明确所指的竹类名称，字义直接、组合自然简洁，可作为自然物象型品牌名。"
+    },
+    {
+      "name": "箬竹青",
+      "decision": "uncertain",
+      "reason": "可理解为箬竹的青翠之色，语义可通，但整体更像颜色或植物状态的描述，品牌辨识度偏弱。"
+    },
+    {
+      "name": "箬竹里",
+      "decision": "uncertain",
+      "reason": "可理解为箬竹之中或箬竹所在之处，但“里”的空间关系不够明确，整体更像地点描述，名称感存疑。"
+    },
+    {
+      "name": "箬竹听风",
+      "decision": "reject",
+      "reason": "将植物与拟人化动作直接拼接成完整景物句，结构偏诗句化、画面描述化，作为公司品牌名凝练度不足；且“听”使用简体字形虽可通用，整体表达仍显生造。"
+    },
+    {
+      "name": "箬叶轻舟",
+      "decision": "keep",
+      "reason": "“箬叶”与“轻舟”形成清楚的自然意象，轻巧、有画面感，组合自然且有一定辨识度。"
+    },
+    {
+      "name": "风过箬林",
+      "decision": "uncertain",
+      "reason": "可理解为风吹过箬竹林，意象清晰，但完整名称更像景物句，品牌凝练感有限；与已保留的“风过芭林”等同为“风过+林木”结构，意象关系高度接近，作为近似组合不宜再保留。"
+    },
+    {
+      "name": "箬声",
+      "decision": "uncertain",
+      "reason": "可联想到箬竹林间的声响，但“箬”与“声”的语义关系需依赖联想，完整词义不够自然明确。"
+    },
+    {
+      "name": "艺传",
+      "decision": "uncertain",
+      "reason": "可理解为艺术传承或传播艺术，但“艺传”并非自然稳定的常用组合，语序和具体含义不够明晰。"
+    },
+    {
+      "name": "传悦",
+      "decision": "reject",
+      "reason": "“传”与“悦”的关系不清，既可牵强解释为传递喜悦，也容易显得是常见褒义字的机械拼合，缺少自然完整的品牌语义。"
+    },
+    {
+      "name": "心传",
+      "decision": "keep",
+      "reason": "“心传”可自然理解为以心相传、心意传承，语义凝练且有传统文化语感；与“传世”“家传”等虽共享“传”字，意象关系不同，不构成近似重复。"
+    }
+  ]
+}

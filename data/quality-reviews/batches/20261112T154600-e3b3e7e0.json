@@ -1,0 +1,709 @@
+{
+  "review_id": "20261112T154600-e3b3e7e0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "人本",
+      "人悦",
+      "人文心",
+      "人文志",
+      "山水与人",
+      "人文之光",
+      "星河与人",
+      "人间集",
+      "人文远景",
+      "人与山川",
+      "人间远游",
+      "人心",
+      "人信",
+      "人自知",
+      "人间味"
+    ],
+    "related_kept_candidates": {
+      "星": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河",
+        "广星河"
+      ],
+      "川": [
+        "山川入瓷",
+        "山川清鲜",
+        "赫山映川",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川"
+      ],
+      "水": [
+        "山水清斋",
+        "山水茗心",
+        "菉水照山",
+        "黛山映水",
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水"
+      ],
+      "之": [
+        "义之光",
+        "一念之间",
+        "焊之道",
+        "芙蓉之外",
+        "十亩之间",
+        "碳之桥",
+        "碳之本",
+        "义之源",
+        "茗之初",
+        "涡之源",
+        "涡之境",
+        "万象之柢"
+      ],
+      "间": [
+        "人间清欢",
+        "人间行旅",
+        "人间万象",
+        "人间序",
+        "人间舟",
+        "人间梦",
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "山间邨",
+        "松间䴓"
+      ],
+      "山": [
+        "山水清斋",
+        "山川入瓷",
+        "螭与山海",
+        "山水茗心",
+        "山川清鲜",
+        "赫山映川",
+        "锹与山",
+        "菉水照山",
+        "雯与远山",
+        "黛山映水",
+        "山中人",
+        "一见青山"
+      ],
+      "自": [
+        "自成一格",
+        "自豪",
+        "自忞",
+        "自牧",
+        "涂自明"
+      ],
+      "味": [
+        "一味",
+        "杯中味"
+      ],
+      "心": [
+        "山水茗心",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心",
+        "心所及"
+      ],
+      "光": [
+        "义之光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光"
+      ],
+      "远": [
+        "雯与远山",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远"
+      ],
+      "集": [
+        "山柰集",
+        "云斓集",
+        "芳蘅集",
+        "芳茝集",
+        "葑野集",
+        "峥嵘集",
+        "萱草集",
+        "春芭集",
+        "椋鸟集",
+        "鲲集",
+        "蔓生集",
+        "菥草集"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文",
+        "文椠",
+        "奇文",
+        "文牍",
+        "珂文",
+        "文奎",
+        "文奎堂"
+      ],
+      "游": [
+        "鳝游春",
+        "壮游",
+        "翱游",
+        "鲲游",
+        "青螭游",
+        "游螭",
+        "螭游清境",
+        "卧游",
+        "游刃",
+        "鲳游",
+        "游侠",
+        "鲼游"
+      ],
+      "知": [
+        "知人",
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远"
+      ],
+      "景": [
+        "淑景",
+        "叠石成景",
+        "景慕",
+        "怡景"
+      ],
+      "悦": [
+        "淑悦",
+        "芙悦",
+        "臻悦",
+        "唐悦",
+        "悦婷",
+        "缤悦",
+        "怡悦",
+        "资悦"
+      ],
+      "信": [
+        "榴花信",
+        "口信",
+        "瓶中信",
+        "义信",
+        "信牍",
+        "赫信",
+        "太和春信",
+        "珂信",
+        "昭信"
+      ],
+      "本": [
+        "臻本真",
+        "碳之本",
+        "椠本",
+        "本柢",
+        "揆本"
+      ],
+      "河": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河",
+        "广星河"
+      ],
+      "与": [
+        "螭与山海",
+        "锹与山",
+        "锹与星辰",
+        "雯与远山"
+      ],
+      "人": [
+        "知人",
+        "人间清欢",
+        "人间行旅",
+        "人间万象",
+        "山中人",
+        "人间序",
+        "人间舟",
+        "人间梦",
+        "个中人",
+        "人境",
+        "云上人",
+        "伊人"
+      ]
+    },
+    "literature_phrase_examples": {
+      "人本": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 24496,
+          "context": "无人本无我，非后亦非前。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 75919,
+          "context": "牧人本无术，命至苟复迁。"
+        }
+      ],
+      "人悦": [
+        {
+          "book": "孟子",
+          "line": 393,
+          "context": "人悦之、好色、富贵，无足以解忧者，惟顺于父母，可以解忧。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 213255,
+          "context": "教通因渐染，人悦尚和平。"
+        }
+      ],
+      "人文心": [],
+      "人文志": [
+        {
+          "book": "太平广记",
+          "line": 16981,
+          "context": "瘢痕是也(出芝/田录)范令卿(缢死复再生/)隋文帝开皇二年汴州浚仪县功曹范钦子令卿在家与族人文志挍书竞工拙令卿以手反击文志鼻血出"
+        }
+      ],
+      "山水与人": [],
+      "人文之光": [],
+      "星河与人": [],
+      "人间集": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1499932,
+          "context": "牙签漆玉纷宝墨，未数人间集古堂。"
+        }
+      ],
+      "人文远景": [],
+      "人与山川": [],
+      "人间远游": [],
+      "人心": [
+        {
+          "book": "孟子",
+          "line": 194,
+          "context": "非直为观美也，然后尽于人心。"
+        },
+        {
+          "book": "孟子",
+          "line": 194,
+          "context": "且比化者，无使土亲肤，于人心独无恔乎？"
+        }
+      ],
+      "人信": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 31091,
+          "context": "其道惟正直，其人信美偲。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 32955,
+          "context": "无人信高洁，谁为表予心。"
+        }
+      ],
+      "人自知": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 283915,
+          "context": "达人自知命，世俗徒悲歌。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 380035,
+          "context": "从今无事唯须饮，文字声名人自知。"
+        }
+      ],
+      "人间味": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1099918,
+          "context": "三年一觉青云梦，始觉人间味许长。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1288668,
+          "context": "五侯鲭具人间味，百衲衣裒天下工。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "人本": [],
+      "人悦": [],
+      "人文心": [],
+      "人文志": [],
+      "山水与人": [],
+      "人文之光": [],
+      "星河与人": [],
+      "人间集": [],
+      "人文远景": [],
+      "人与山川": [],
+      "人间远游": [],
+      "人心": [
+        {
+          "title": "人心",
+          "pinyin": "rén xīn",
+          "definition": "1.人的心地。《孟子．滕文公下》：「我亦欲正人心、息邪說、距詖行、放淫辭，以承三聖者。」\n2.人的意志、感情。《三國演義》第一〇回：「目今人心未寧，頻動干戈，深為不便。」《紅樓夢》第六五回：「奶奶便有禮讓，他看見奶奶比他標致，又比他得人心，他怎肯干休善罷。」\n3.善良的心意。《紅樓夢》第六九回：「你們就只配沒人心的打著罵著使也罷了；一個病人，也不知可憐可憐。」\n4.報恩的心意，亦暗指財物。如：「對於您的大恩大德，我雖不能每月定期看望，但逢年過節必有一份人心。」",
+          "entry_id": "092140239",
+          "sheet": "1150929辭典匯出",
+          "row": 133958,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "人信": [],
+      "人自知": [],
+      "人间味": []
+    },
+    "direct_dictionary": {
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "本": {
+        "definition": "root, origin, source; basis",
+        "mandarin": "běn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "悦": {
+        "definition": "pleased, contented, gratified",
+        "mandarin": "yuè",
+        "related_characters": [
+          {
+            "character": "悅",
+            "relation": "kTraditionalVariant",
+            "definition": "pleased",
+            "mandarin": "yuè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "集": {
+        "definition": "assemble, collect together",
+        "mandarin": "jí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "景": {
+        "definition": "scenery, view; conditions",
+        "mandarin": "jǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "游": {
+        "definition": "to swim; float, drift; wander, roam",
+        "mandarin": "yóu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "味": {
+        "definition": "taste, smell, odor; delicacy",
+        "mandarin": "wèi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "人本",
+      "decision": "keep",
+      "reason": "“以人为本”的凝练表达，组合自然，体现以人为根本的理念，具备品牌辨识度；不与已保留候选构成近似变体。"
+    },
+    {
+      "name": "人悦",
+      "decision": "uncertain",
+      "reason": "可理解为使人愉悦或人们喜悦，但两字关系和表达指向不够明确，作为品牌名自然度存疑。"
+    },
+    {
+      "name": "人文心",
+      "decision": "uncertain",
+      "reason": "可拆解为人文与心，但三字间关系不清，读来像概念拼接，完整语义不够自然。"
+    },
+    {
+      "name": "人文志",
+      "decision": "uncertain",
+      "reason": "可理解为人文志向或关于人文的记录，但具体结构与所指不明确，品牌语义自然度存疑。"
+    },
+    {
+      "name": "山水与人",
+      "decision": "reject",
+      "reason": "完整组合是对山水和人的并列陈述，像文章主题或标题，缺少凝练的品牌名结构。"
+    },
+    {
+      "name": "人文之光",
+      "decision": "reject",
+      "reason": "属于常见的赞誉性比喻和价值宣言，表达宽泛，缺少名称所需的凝练辨识度。"
+    },
+    {
+      "name": "星河与人",
+      "decision": "reject",
+      "reason": "以“与”连接星河和人，形成宽泛并列主题，语义关系未落实，像标题而非凝练品牌名。"
+    },
+    {
+      "name": "人间集",
+      "decision": "keep",
+      "reason": "“人间”与“集”组合自然，可表达汇集人间见闻或事物，简洁且有一定品牌感；与已保留的“人间序”“人间舟”等意象和关系不同。"
+    },
+    {
+      "name": "人文远景",
+      "decision": "reject",
+      "reason": "整体是宽泛的愿景或规划类表达，偏通用概念描述，品牌名的凝练感不足。"
+    },
+    {
+      "name": "人与山川",
+      "decision": "reject",
+      "reason": "是人与山川的并列主题表达，像标题或议题，缺少完整而凝练的品牌命名关系。"
+    },
+    {
+      "name": "人间远游",
+      "decision": "keep",
+      "reason": "可自然理解为在人世间远行、漫游，具有清晰的行旅意象和简洁的品牌辨识度；与已保留的“人间行旅”虽同属行旅主题，但不是仅换近义字的组合，表达关系与意象构成不同。"
+    },
+    {
+      "name": "人心",
+      "decision": "uncertain",
+      "reason": "词义明确，指人的心地、意志或感情，但作为品牌名过于宽泛，缺少明确的辨识度；是否适合须视具体品牌定位而定。"
+    },
+    {
+      "name": "人信",
+      "decision": "uncertain",
+      "reason": "可猜作人的信任或使人相信，但常用语序通常为“信人”或“诚信”，此组合关系不够自然，语义存疑。"
+    },
+    {
+      "name": "人自知",
+      "decision": "reject",
+      "reason": "是“人能够自知”的完整陈述，句子感明显，不符合凝练品牌名要求。"
+    },
+    {
+      "name": "人间味",
+      "decision": "keep",
+      "reason": "可自然理解为人世生活的滋味或人情气息，语义清楚、简洁，有品牌感；与已保留的“人间清欢”等并非仅换近义字的重复组合。"
+    }
+  ]
+}

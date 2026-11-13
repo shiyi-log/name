@@ -100,6 +100,62 @@ class CharacterNameValidationTests(unittest.TestCase):
         }, "云山"))
         self.assertFalse(api_server.has_quality_evidence({"meaning": "云与山"}))
 
+    def test_real_state_suffix_is_not_rejected_as_a_brand_filler(self):
+        self.assertTrue(api_server.has_quality_evidence({
+            'character_roles': {'蘧': '与然组合表示惊喜的样子',
+                                '然': '用作状态后缀，与蘧组成惊喜之貌'},
+            'naturalness': 4,
+        }, '蘧然'))
+        self.assertFalse(api_server.has_quality_evidence({
+            'character_roles': {'云': '云气构成自然意象', '禾': '作为品牌字后缀'},
+            'naturalness': 5,
+        }, '云禾'))
+        self.assertFalse(api_server.has_quality_evidence({
+            'character_roles': {'蘧': '与然组合表示惊喜的样子',
+                                '然': '状态后缀只是装饰，凑字使用'},
+            'naturalness': 5,
+        }, '蘧然'))
+
+    def test_explicit_homophone_substitution_is_not_semantic_evidence(self):
+        self.assertFalse(api_server.has_quality_evidence({
+            'character_roles': {'桉': '以桉树替代同音字，赋予名称鲜明的植物意象',
+                                '然': '表示自然如此，形成从容安定的语气'},
+            'naturalness': 5,
+        }, '桉然'))
+        self.assertTrue(api_server.has_quality_evidence({
+            'character_roles': {'桉': '指桉树本身，不借同音字安的安定含义',
+                                '林': '指桉树成片生长形成的树林'},
+            'naturalness': 5,
+        }, '桉林'))
+
+    def test_declared_sound_association_does_not_supply_character_meaning(self):
+        self.assertFalse(api_server.has_quality_evidence({
+            'character_roles': {'柚': '以自然果实形象带出亲和感，并形成“有”的音韵联想',
+                                '见': '表示看见、相逢与发现'},
+            'naturalness': 4,
+        }, '柚见'))
+        self.assertTrue(api_server.has_quality_evidence({
+            'character_roles': {'柚': '指柚树本身，不借有字的同音联想',
+                                '林': '指柚树成片生长形成的树林'},
+            'naturalness': 5,
+        }, '柚林'))
+
+    def test_identification_filler_does_not_supply_character_meaning(self):
+        for name, roles in [
+            ('羲川', {'羲': '作为核心识别字，赋予名称专名感', '川': '指河川，寓意流动与通达'}),
+            ('阎听雨', {'阎': '姓氏式识别字，构成独特专名',
+                      '听': '聆听雨声的感知动作', '雨': '自然降雨的听觉意象'}),
+        ]:
+            with self.subTest(name=name):
+                self.assertFalse(api_server.has_quality_evidence({
+                    'character_roles': roles, 'naturalness': 5,
+                }, name))
+        self.assertTrue(api_server.has_quality_evidence({
+            'character_roles': {'羲': '与和构成神话中日御羲和之名',
+                                '和': '与羲组成完整神话专名羲和'},
+            'naturalness': 4,
+        }, '羲和'))
+
 
 class QuietHandler(api_server.NamingRequestHandler):
     def log_message(self, *_args):
@@ -260,6 +316,7 @@ class CandidateCursorTests(unittest.TestCase):
 
             raw_names = [
                 {"name": "云山", "meaning": "云与山", "character_roles": {"云": "云气与山岳构成清楚自然的山水意象", "山": "山岳与云气构成清楚自然的山水意象"}, "naturalness": 5},
+                {"name": "山云", "meaning": "山与云", "character_roles": {"云": "云气与山岳构成清楚自然的山水意象", "山": "山岳与云气构成清楚自然的山水意象"}, "naturalness": 5},
                 {"name": "云山", "meaning": "重复候选"},
                 {"name": "山月", "meaning": "没有锚字"},
                 {"name": "云云", "meaning": "重复字"},
@@ -282,7 +339,7 @@ class CandidateCursorTests(unittest.TestCase):
                 result = api_server.generate_for_character({"character": "云", "lengths": [2], "count": 5})
 
             self.assertEqual(result["added"], 1)
-            self.assertEqual(result["rejected"], 8)
+            self.assertEqual(result["rejected"], 9)
             self.assertEqual(result["items"][0]["name"], "云山")
             with closing(sqlite3.connect(database_path)) as connection:
                 row = connection.execute(
@@ -321,6 +378,32 @@ class CandidateCursorTests(unittest.TestCase):
             self.assertEqual(request.call_args_list[1].kwargs["avoid_names"], ["云山", "云月"])
             with closing(sqlite3.connect(database_path)) as connection:
                 self.assertEqual(connection.execute("SELECT count(*) FROM name_candidates").fetchone()[0], 3)
+
+    def test_generator_passes_later_existing_names_to_avoid_repeated_work(self):
+        known = ['云' + chr(0x4e00 + index) for index in range(620)]
+        existing = [{'name': name, 'leftToken': name, 'rightToken': ''} for name in known]
+        with patch.object(api_server, 'load_json', return_value=list('云山')), patch.object(
+            api_server, 'load_existing_candidates', return_value=existing
+        ), patch.object(api_server, 'excluded_names', return_value=set()), patch.object(
+            api_server, 'request_ai_names', return_value=[]
+        ) as request, patch.dict(api_server.os.environ, {'OPENAI_API_KEY': 'test-token'}):
+            result = api_server.generate_for_character({'character': '云', 'count': 1, 'lengths': [2]})
+        self.assertEqual(result['added'], 0)
+        self.assertEqual(request.call_args.kwargs['avoid_names'], known)
+
+    def test_later_rounds_avoid_raw_names_that_failed_quality_screening(self):
+        rejected = {'name': '云禾', 'meaning': '泛化成长意象',
+                    'character_roles': {'云': '作为核心识别字', '禾': '禾苗提供成长意象'},
+                    'naturalness': 5}
+        with patch.object(api_server, 'load_json', return_value=list('云山禾')), patch.object(
+            api_server, 'load_existing_candidates', return_value=[]
+        ), patch.object(api_server, 'excluded_names', return_value=set()), patch.object(
+            api_server, 'request_ai_names', side_effect=[[rejected], [], [], []]
+        ) as request, patch.dict(api_server.os.environ, {'OPENAI_API_KEY': 'test-token'}):
+            result = api_server.generate_for_character({'character': '云', 'total_count': 2, 'lengths': [2]})
+        self.assertEqual(result['added'], 0)
+        self.assertEqual(request.call_args_list[0].kwargs['avoid_names'], [])
+        self.assertIn('云禾', request.call_args_list[1].kwargs['avoid_names'])
 
     def test_total_generation_retries_late_missing_candidates(self):
         with tempfile.TemporaryDirectory() as directory:

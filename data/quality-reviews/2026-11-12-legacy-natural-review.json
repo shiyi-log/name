@@ -1,0 +1,557 @@
+{
+  "created_at": "2026-11-12T15:31:41+0800",
+  "status": "model_review_not_applied",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "丁香",
+      "园丁",
+      "丁宁",
+      "丁当",
+      "丁点",
+      "七月",
+      "七弦",
+      "七彩",
+      "七曜",
+      "专才",
+      "丁酉",
+      "丁火"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月",
+        "月下伞",
+        "月笼纱",
+        "云衔月",
+        "盅中月",
+        "月照桹影"
+      ],
+      "当": [
+        "允当",
+        "咣当"
+      ],
+      "火": [
+        "篝火",
+        "镫火",
+        "榴火",
+        "钨火"
+      ],
+      "园": [
+        "柰园",
+        "枳园",
+        "枣园",
+        "葚园",
+        "榴园",
+        "桫椤园",
+        "棣园",
+        "鹂园",
+        "憩园",
+        "柘园",
+        "柘园听雨",
+        "柘园春信"
+      ],
+      "香": [
+        "香薷",
+        "藠香",
+        "藿香",
+        "馕香",
+        "枣花香",
+        "榴香",
+        "山海酵香",
+        "酸香",
+        "芹香",
+        "香茅",
+        "荃香",
+        "烤香"
+      ],
+      "宁": [
+        "敉宁",
+        "欧宁",
+        "淑宁",
+        "晙宁",
+        "凯宁",
+        "珀宁",
+        "酷宁",
+        "婳宁",
+        "广宁",
+        "赟宁",
+        "赫宁",
+        "太宁"
+      ],
+      "彩": [
+        "彩珑",
+        "玳彩",
+        "口彩",
+        "缤彩",
+        "珐彩",
+        "珐彩万象",
+        "映珂流彩"
+      ],
+      "弦": [
+        "口弦",
+        "弓弦",
+        "弓弦和鸣"
+      ],
+      "酉": [
+        "二酉"
+      ],
+      "曜": [
+        "二曜同辉"
+      ],
+      "专": [
+        "专注如常"
+      ],
+      "才": [
+        "隽才"
+      ]
+    },
+    "literature_phrase_examples": {
+      "丁香": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 6254,
+          "context": "瑶姬一去一千年，丁香笻竹啼老猨。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 9173,
+          "context": "乱系丁香梢，满阑花向夕。"
+        }
+      ],
+      "园丁": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 136545,
+          "context": "问讯园丁，宁如归去，细与从头看。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 257748,
+          "context": "天时纵不雨，灌溉頼园丁。"
+        }
+      ],
+      "丁宁": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 95611,
+          "context": "即遣花开深造次，便觉莺语太丁宁。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 130154,
+          "context": "丁宁相劝勉，苦口幸无尤。"
+        }
+      ],
+      "丁当": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2709,
+          "context": "晴日晓升金晃曜，寒泉夜落玉丁当。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 229796,
+          "context": "我家公相家，劒佩尝丁当。"
+        }
+      ],
+      "丁点": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 182597,
+          "context": "无何天宝大征兵，户有三丁点一丁。"
+        }
+      ],
+      "七月": [
+        {
+          "book": "诗经",
+          "line": 782,
+          "context": "【豳风 · 七月 · 国风】"
+        },
+        {
+          "book": "诗经",
+          "line": 783,
+          "context": "七月流火，九月授衣。"
+        }
+      ],
+      "七弦": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 55355,
+          "context": "泠泠七弦遍，万木澄幽阴。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 196047,
+          "context": "七弦为益友，两耳是知音。"
+        }
+      ],
+      "七彩": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 180382,
+          "context": "闪铄神锤飞电光，磨砺七彩成文章。"
+        },
+        {
+          "book": "玉台新咏",
+          "line": 7069,
+          "context": "七彩芙蓉之羽帐，九华葡萄之锦衾。"
+        }
+      ],
+      "七曜": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2943,
+          "context": "九玄著象，七曜贞明。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 21774,
+          "context": "圣泽九垓普，天文七曜周。"
+        }
+      ],
+      "专才": [],
+      "丁酉": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 391326,
+          "context": "末书太岁丁酉，盖蜀孟昶时，当石晋天福中也。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 430912,
+          "context": "丁酉侧，高低徒种植。"
+        }
+      ],
+      "丁火": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1453329,
+          "context": "单丁火亦追，逃户租尽刷。"
+        },
+        {
+          "book": "西游记",
+          "line": 3633,
+          "context": "那魔慌了，将左手擎著宝剑，右手伸于项后，取出芭蕉扇子，望东南丙丁火，正对离宫，唿喇的一扇子搧将下来只见那就地上，火光焰焰。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "丁香": [
+        {
+          "title": "丁香",
+          "pinyin": "dīng xiāng",
+          "definition": "1.植物名。常綠喬木。葉對生，卵狀長橢圓形，長五至十三公分。頂生聚繖花序，花白色或紫色，四瓣，有香味。因花形甚小，有如雞舌，故也稱為「雞舌香」。花蕾及其精油為重要香料，均可入藥，為芳香健胃劑、驅風劑及興奮劑。也稱為「素客」。_x000D_\n2.紫丁香的別名。參見「紫丁香」條。_x000D_\n3.女子的舌尖。五代十國．李煜〈一斛珠．晚妝初過〉詞：「晚妝初過，沉檀輕注些兒個，向人微露丁香顆。」_x000D_\n4.鈕扣。清．孔尚任《桃花扇》第七齣：「兩個在那裡交扣丁香，並照菱花，梳洗才完，穿戴未畢。」也稱為「丁香結」。",
+          "entry_id": "022520039",
+          "sheet": "1150929辭典匯出",
+          "row": 46362,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "园丁": [],
+      "丁宁": [],
+      "丁当": [],
+      "丁点": [],
+      "七月": [
+        {
+          "title": "七月",
+          "pinyin": "qī yuè",
+          "definition": "《詩經．豳風》的篇名。共八章。根據〈詩序〉：「七月，陳王業也。」或亦指詠豳地風土之詩。首章二句為：「七月流火，九月授衣。」",
+          "entry_id": "0620201461",
+          "sheet": "1150929辭典匯出",
+          "row": 96941,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "七弦": [],
+      "七彩": [],
+      "七曜": [
+        {
+          "title": "七曜",
+          "pinyin": "qī yào",
+          "definition": "1.中國古稱日、月及金、木、水、火、土五星為「七曜」。\n2.北斗七星。唐．王勃〈益州夫子廟碑〉：「述夫帝車南指，遁七曜於中階。」",
+          "entry_id": "062020137",
+          "sheet": "1150929辭典匯出",
+          "row": 96931,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "专才": [],
+      "丁酉": [],
+      "丁火": []
+    },
+    "direct_dictionary": {
+      "丁": {
+        "definition": "male adult; robust, vigorous; 4th heavenly stem",
+        "mandarin": "dīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "香": {
+        "definition": "fragrant, sweet-smelling; incense; Kangxi radical 186",
+        "mandarin": "xiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "园": {
+        "definition": "garden; park, orchard",
+        "mandarin": "yuán",
+        "related_characters": [
+          {
+            "character": "园",
+            "relation": "kTraditionalVariant",
+            "definition": "garden; park, orchard",
+            "mandarin": "yuán"
+          },
+          {
+            "character": "園",
+            "relation": "kTraditionalVariant",
+            "definition": "garden; park, orchard",
+            "mandarin": "yuán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宁": {
+        "definition": "calm, peaceful, serene; healthy",
+        "mandarin": "níng",
+        "related_characters": [
+          {
+            "character": "宁",
+            "relation": "kTraditionalVariant",
+            "definition": "calm, peaceful, serene; healthy",
+            "mandarin": "níng"
+          },
+          {
+            "character": "寧",
+            "relation": "kTraditionalVariant",
+            "definition": "repose, serenity, peace; peaceful",
+            "mandarin": "níng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "当": {
+        "definition": "bear, accept, undertake; just",
+        "mandarin": "dāng",
+        "related_characters": [
+          {
+            "character": "噹",
+            "relation": "kTraditionalVariant",
+            "definition": "sound of bells",
+            "mandarin": "dāng"
+          },
+          {
+            "character": "当",
+            "relation": "kTraditionalVariant",
+            "definition": "bear, accept, undertake; just",
+            "mandarin": "dāng"
+          },
+          {
+            "character": "當",
+            "relation": "kTraditionalVariant",
+            "definition": "bear, accept, undertake; just",
+            "mandarin": "dāng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "点": {
+        "definition": "dot, speck, spot; point, degree",
+        "mandarin": "diǎn",
+        "related_characters": [
+          {
+            "character": "点",
+            "relation": "kTraditionalVariant",
+            "definition": "dot, speck, spot; point, degree",
+            "mandarin": "diǎn"
+          },
+          {
+            "character": "點",
+            "relation": "kTraditionalVariant",
+            "definition": "dot, speck, spot; point, degree",
+            "mandarin": "diǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "七": {
+        "definition": "seven",
+        "mandarin": "qī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "弦": {
+        "definition": "string; hypotenuse, crescent",
+        "mandarin": "xián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "彩": {
+        "definition": "hue, color; variegated colors",
+        "mandarin": "cǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "曜": {
+        "definition": "glorious, as sun; daylight, sunlight; one of the seven planets of pre-modern astronomy (the sun, the moon, Mercury, Venus, Mars, Jupiter, and Saturn)",
+        "mandarin": "yào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "专": {
+        "definition": "monopolize, take sole possession",
+        "mandarin": "zhuān",
+        "related_characters": [
+          {
+            "character": "專",
+            "relation": "kTraditionalVariant",
+            "definition": "monopolize, take sole possession",
+            "mandarin": "zhuān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "才": {
+        "definition": "talent, ability; just, only",
+        "mandarin": "cái",
+        "related_characters": [
+          {
+            "character": "才",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          },
+          {
+            "character": "纔",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "酉": {
+        "definition": "a wine vessel; tenth earthly branch; Kangxi radical 164",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "火": {
+        "definition": "fire, flame; burn; anger, rage",
+        "mandarin": "huǒ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "丁香",
+      "decision": "keep",
+      "reason": "常见花木名称，意象具体、组合自然，简洁且有辨识度；可作为品牌名继续复核。"
+    },
+    {
+      "name": "园丁",
+      "decision": "reject",
+      "reason": "完整名称直接指从事园艺劳动的人，是通用职业称谓，品牌辨识度不足。"
+    },
+    {
+      "name": "丁宁",
+      "decision": "keep",
+      "reason": "有“再三叮嘱、恳切告诫”之义，词语成立且语气凝练；可作为品牌名继续复核。"
+    },
+    {
+      "name": "丁当",
+      "decision": "keep",
+      "reason": "可表示清脆的碰击声，读音轻快、意象明确，组合自然；不依赖将“当”字单独释为铃声。"
+    },
+    {
+      "name": "丁点",
+      "decision": "reject",
+      "reason": "口语中表示极少的一点，完整组合偏数量描述，缺乏作为品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "七月",
+      "decision": "keep",
+      "reason": "月份名称自然简洁，也有明确的季节与时间意象；虽有《诗经》同名篇目，仍可作为品牌名继续复核。"
+    },
+    {
+      "name": "七弦",
+      "decision": "keep",
+      "reason": "可指七弦琴的弦，文化意象明确，组合自然凝练；与已有候选不构成相同意象的近似变体。"
+    },
+    {
+      "name": "七彩",
+      "decision": "reject",
+      "reason": "通常泛指多种颜色，属于通用色彩描述，名称本身辨识度不足。"
+    },
+    {
+      "name": "七曜",
+      "decision": "keep",
+      "reason": "是日月与金木水火土五星的传统合称，也指北斗七星，含义清楚、构词自然且有辨识度。"
+    },
+    {
+      "name": "专才",
+      "decision": "reject",
+      "reason": "直接表示具有专门才能的人，属于通用人才类别称谓，品牌辨识度不足。"
+    },
+    {
+      "name": "丁酉",
+      "decision": "uncertain",
+      "reason": "是天干地支纪年中的明确组合，但孤立作品牌名时更像历法标记，缺少可确认的品牌语义与自然的称名感。"
+    },
+    {
+      "name": "丁火",
+      "decision": "keep",
+      "reason": "是传统术数语境中的固定称谓，组合有明确含义且简洁；未借用同音或形近字义，可作为品牌名继续复核。"
+    }
+  ]
+}

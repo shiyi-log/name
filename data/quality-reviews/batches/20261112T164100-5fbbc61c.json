@@ -1,0 +1,1783 @@
+{
+  "review_id": "20261112T164100-5fbbc61c",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "侣行",
+      "佳侣",
+      "侣心",
+      "侣悦",
+      "仙侣",
+      "忘年侣",
+      "与书为侣",
+      "爱侣",
+      "江月侣",
+      "共振效应",
+      "联动效应",
+      "规模效应",
+      "边际效应",
+      "漫谈",
+      "漫行",
+      "漫时光",
+      "漫星河",
+      "漫山春",
+      "漫江月",
+      "漫林间",
+      "心漫天宽",
+      "山川漫远"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光"
+      ],
+      "时": [
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "儿时",
+        "巳时",
+        "戌时",
+        "唐时雨",
+        "四时清鲜",
+        "四时常鲜",
+        "需时",
+        "四时花厅"
+      ],
+      "月": [
+        "广陵江月",
+        "月横江",
+        "江天浮月",
+        "远山漻月",
+        "七月",
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月"
+      ],
+      "星": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "枕星河",
+        "碳映星河",
+        "星河映埼",
+        "邂逅星河",
+        "广星河",
+        "广厦星河",
+        "星河照蕖",
+        "弓映星河",
+        "涉星河"
+      ],
+      "川": [
+        "山川入瓷",
+        "山川清鲜",
+        "赫山映川",
+        "晴川远嶂",
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川"
+      ],
+      "春": [
+        "棹过春山",
+        "蔓入春山",
+        "春山茗",
+        "春山鲜明",
+        "涧上春山",
+        "鹩鸣春山",
+        "春山有蹊",
+        "鹒鸣春山",
+        "鳅与春山",
+        "一枝春",
+        "一树春风",
+        "一篼春"
+      ],
+      "心": [
+        "宽心",
+        "一心",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心"
+      ],
+      "天": [
+        "江天浮月",
+        "水天一色",
+        "掀天",
+        "壸中天",
+        "天圜",
+        "天翱",
+        "天资",
+        "江天又阔",
+        "天垓",
+        "天垠",
+        "绀天",
+        "瓶中天地"
+      ],
+      "间": [
+        "林间鼬",
+        "林间䴕鸣",
+        "林间哝语",
+        "墅林间",
+        "林间鹂",
+        "林间鲵",
+        "林间窸窣",
+        "林间鹪",
+        "一念之间",
+        "云间鹮",
+        "松间鼯",
+        "山间邨"
+      ],
+      "山": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "棹过春山",
+        "山川入瓷",
+        "蔓入春山",
+        "春山茗",
+        "麇行远山",
+        "山川清鲜",
+        "春山鲜明",
+        "涧上春山",
+        "鹩鸣春山"
+      ],
+      "江": [
+        "广陵江月",
+        "月横江",
+        "江天浮月",
+        "江湖侣",
+        "一苇渡江",
+        "江墅",
+        "棹春江",
+        "棹影入江",
+        "清江棹影",
+        "江天又阔",
+        "江垠",
+        "涉江"
+      ],
+      "年": [
+        "丰年",
+        "禧年",
+        "酷光年",
+        "亿年",
+        "年轮",
+        "年齿",
+        "椿年",
+        "佳年",
+        "绮年"
+      ],
+      "林": [
+        "林间鼬",
+        "林间䴕鸣",
+        "林间哝语",
+        "墅林间",
+        "林间鹂",
+        "林间鲵",
+        "林间窸窣",
+        "林间鹪",
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛"
+      ],
+      "行": [
+        "麇行远山",
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "行义",
+        "鲜行",
+        "肯行",
+        "涧行"
+      ],
+      "宽": [
+        "宽心",
+        "宽和",
+        "宽裕",
+        "宽厚",
+        "宽宏",
+        "宽容",
+        "宽博",
+        "宽野",
+        "宽庭",
+        "宽川",
+        "宽朗",
+        "宽舒"
+      ],
+      "远": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "晴川远嶂",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "迈远",
+        "远星团"
+      ],
+      "边": [
+        "簖边月",
+        "边徼",
+        "涧边春",
+        "簖边春"
+      ],
+      "悦": [
+        "淑悦",
+        "芙悦",
+        "臻悦",
+        "唐悦",
+        "悦婷",
+        "缤悦",
+        "怡悦",
+        "资悦",
+        "蓓悦"
+      ],
+      "联": [
+        "花萼联芳"
+      ],
+      "佳": [
+        "佳酿",
+        "佳木",
+        "佳禾",
+        "佳言",
+        "佳雨",
+        "佳书",
+        "佳年",
+        "佳实"
+      ],
+      "书": [
+        "云间书斋",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "女书",
+        "书椠",
+        "佳书"
+      ],
+      "河": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "枕星河",
+        "碳映星河",
+        "星河映埼",
+        "邂逅星河",
+        "广星河",
+        "广厦星河",
+        "星河照蕖",
+        "弓映星河",
+        "涉星河"
+      ],
+      "与": [
+        "雯与远山",
+        "鳅与春山",
+        "螭与山海",
+        "锹与山",
+        "锹与星辰",
+        "厂与城",
+        "鳅与石"
+      ],
+      "爱": [
+        "酷爱"
+      ],
+      "模": [
+        "模因",
+        "模源",
+        "模界",
+        "模山",
+        "模艺"
+      ],
+      "谈": [
+        "奇谈",
+        "酒谈",
+        "榆下清谈"
+      ],
+      "漫": [
+        "澶漫"
+      ],
+      "侣": [
+        "江湖侣",
+        "鹣侣",
+        "知侣",
+        "松风侣",
+        "云霞侣",
+        "鸥侣",
+        "松间侣"
+      ],
+      "应": [
+        "蝴蝶效应"
+      ],
+      "效": [
+        "蝴蝶效应"
+      ]
+    },
+    "literature_phrase_examples": {
+      "侣行": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 2731,
+          "context": "牛尾马足五色圜蹄一角角端有/肉音中钟吕行中规矩游必择地详而后)(处不履生虫不践生草不群居不侣行不入陷穽不罹/罗网王者至仁则出今并州界有麟大小如鹿非瑞应)(麟也京房易传曰麟麕身牛尾马蹄有五采腹下黄髙/丈二尔雅麟麕身牛尾一角盖麟"
+        }
+      ],
+      "佳侣": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 21206,
+          "context": "浩渺湖天，酒浮黄菊携佳侣。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 195920,
+          "context": "琴樽啸佳侣，以乐军事少。"
+        }
+      ],
+      "侣心": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 114812,
+          "context": "得时少壮相揄扬，独行无侣心浶浪。"
+        },
+        {
+          "book": "玉台新咏",
+          "line": 7677,
+          "context": "既不得离别，安知慕侣心。"
+        }
+      ],
+      "侣悦": [],
+      "仙侣": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 8292,
+          "context": "何为不学金仙侣？"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 98098,
+          "context": "佳人拾翠春相问，仙侣同舟晚更移。"
+        }
+      ],
+      "忘年侣": [],
+      "与书为侣": [],
+      "爱侣": [],
+      "江月侣": [],
+      "共振效应": [],
+      "联动效应": [],
+      "规模效应": [],
+      "边际效应": [],
+      "漫谈": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 385085,
+          "context": "曲士漫谈道，夏虫岂知霜。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 531322,
+          "context": "漫谈景德祥符际，几许辞源赋八哀。"
+        }
+      ],
+      "漫行": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 148804,
+          "context": "春光好，寻个□□，小小篮舆漫行适。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 192771,
+          "context": "阆中胜事知无限，且向城南烂漫行。"
+        }
+      ],
+      "漫时光": [],
+      "漫星河": [],
+      "漫山春": [],
+      "漫江月": [],
+      "漫林间": [],
+      "心漫天宽": [],
+      "山川漫远": []
+    },
+    "dictionary_phrase_entries": {
+      "侣行": [],
+      "佳侣": [],
+      "侣心": [],
+      "侣悦": [],
+      "仙侣": [],
+      "忘年侣": [],
+      "与书为侣": [],
+      "爱侣": [],
+      "江月侣": [],
+      "共振效应": [],
+      "联动效应": [],
+      "规模效应": [],
+      "边际效应": [],
+      "漫谈": [],
+      "漫行": [],
+      "漫时光": [],
+      "漫星河": [],
+      "漫山春": [],
+      "漫江月": [],
+      "漫林间": [],
+      "心漫天宽": [],
+      "山川漫远": []
+    },
+    "direct_dictionary": {
+      "侣": {
+        "definition": "companion; associate with",
+        "mandarin": "lǚ",
+        "related_characters": [
+          {
+            "character": "侶",
+            "relation": "kTraditionalVariant",
+            "definition": "companion; associate with",
+            "mandarin": "lǚ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "official_dictionary": [
+          {
+            "title": "行",
+            "pinyin": "háng",
+            "definition": "[名]\n1.行列。直列為行，橫排為列。《左傳．成公二年》：「屬當戎行，無所逃隱。」唐．杜甫〈贈衛八處士〉詩：「昔別君未婚，兒女忽成行。」\n2.兄弟姐妹長幼的次序。如：「排行老三。」\n3.量詞。計算成排東西的單位。如：「一行樹」、「一目十行」。唐．杜甫〈絕句〉四首之三：「兩個黃鸝鳴翠柳，一行白鷺上青天。」\n4.營業交易的機構。如：「銀行」、「洋行」、「分行」、「商行」、「行庫」。\n5.職業。如：「各行各業」、「行行出狀元」、「三句話不離本行」。\n6.表處所，用於人稱之後。宋．周邦彥〈風流子．新綠小池塘〉詞：「最苦夢魂，今宵不到伊行。」《水滸傳》第一四回：「你這等賊心賊肝，我行須使不得！」",
+            "entry_id": "04903",
+            "sheet": "1150929辭典匯出",
+            "row": 4909,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "hàng",
+            "definition": "參見「行行」、「樹行子」等條。",
+            "entry_id": "04913",
+            "sheet": "1150929辭典匯出",
+            "row": 4919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "行行",
+                "pinyin": "háng háng",
+                "definition": "1.各個行業。如：「三百六十行，行行出狀元。」\n2.每一行。如：「隊伍行進時，動作必須劃一，行行都要對齊。」",
+                "entry_id": "0490300193",
+                "sheet": "1150929辭典匯出",
+                "row": 81202
+              },
+              {
+                "title": "行行",
+                "pinyin": "hàng hàng",
+                "definition": "剛強的樣子。《論語．先進》：「閔子侍側誾誾如也，子路行行如也。」",
+                "entry_id": "049130001",
+                "sheet": "1150929辭典匯出",
+                "row": 81289
+              },
+              {
+                "title": "行行",
+                "pinyin": "xíng xíng",
+                "definition": "1.慢步行走。通常形容走走停停，徘徊不進的樣子。《文選．古詩十九首．行行重行行》：「行行重行行，與君生別離。」\n2.施行、辦理。如：「行行好事」。",
+                "entry_id": "072400177",
+                "sheet": "1150929辭典匯出",
+                "row": 109350
+              },
+              {
+                "title": "樹行子",
+                "pinyin": "shù hàng zi",
+                "definition": "栽植整齊的樹林。",
+                "entry_id": "091020033",
+                "sheet": "1150929辭典匯出",
+                "row": 131842
+              }
+            ]
+          },
+          {
+            "title": "行",
+            "pinyin": "xíng",
+            "definition": "[動]_x000D_\n1.走、走路。如：「直行」、「寸步難行」、「錦衣夜行」。《論語．述而》：「三人行，必有我師焉？」唐．王維〈終南別業〉詩：「行到水窮處，坐看雲起時。」_x000D_\n2.往。《詩經．秦風．無衣》：「脩我甲兵，與子偕行。」唐．杜甫〈奉濟驛重送嚴公四韻〉：「幾時杯重把，昨夜月同行。」_x000D_\n3.移動、流動。如：「運行」。《易經．乾卦》：「《象》曰：『天行健，君子以自強不息。』」唐．杜甫〈夢李白〉詩二首之二：「浮雲終日行，遊子久不至。」_x000D_\n4.流通。如：「流行」、「風行一時」、「通行全國」、「發行報刊」。《左傳．襄公二十五年》：「言之無文，行而不遠。」_x000D_\n5.做、從事。如：「行醫」、「行善」。《左傳．隱公元年》：「多行不義必自斃。」_x000D_\n6.實施、實行。《易經．繫辭上》：「推而行之謂之通。」唐．孔穎達．正義：「因推此以可變而施行之，謂之通也。」《老子》第四一章：「上士聞道，勤而行之。」_x000D_\n7.同意、允許。多用於徵詢意見。如：「今天中午我想吃麵，行不行？」《小五義》第二一回：「蔣爺說：『咱們到底說下個時候。』柳爺說：『限你三晝夜的工夫，行不行？』」_x000D_\n8.經歷、經過。《管子．問》：「城粟軍糧，其可以行幾何年也？」唐．房玄齡．注：「行，由經也。」_x000D_\n9.出嫁。《詩經．邶風．泉水》：「女子有行，遠父母兄弟。」_x000D_\n[名]_x000D_\n1.道路。《詩經．小雅．小弁》：「行有死人，尚或墐之。」_x000D_\n2.路程。《老子》第六四章：「九層之臺，起於累土；千里之行，始於足下。」_x000D_\n3.行為。《荀子．不苟》：「庸言必信之，庸行必慎之。」《禮記．樂記》：「禮以道其志，樂以和其聲，政以一其行，刑以防其姦。」_x000D_\n4.行書的簡稱。如：「行草」、「行楷」。_x000D_\n5.一種樂府和古詩的體裁。如：〈短歌行〉、〈琵琶行〉、〈飲馬長城窟行〉。_x000D_\n6.量詞。計算酌酒奉客的單位。漢．揚雄《法言．修身》：「賓主百拜，而酒三行。」宋．司馬光〈訓儉示康〉：「客至未嘗不置酒，或三行五行，多不過七行。」_x000D_\n7.姓。如漢代有行宏。_x000D_\n8.二一四部首之一。_x000D_\n[形]_x000D_\n1.能幹、幹練。如：「你真行。」「他在這方面行得很。」_x000D_\n2.可以、恰當。如：「他這篇文章寫得還行。」「做事只要盡心盡力就行了。」《朱子語類．卷三三．論語一五．雍也篇四》：「如讀書，要理會得透徹；做事，亦要做得行。」_x000D_\n[副]_x000D_\n不久、將要。如：「行將就木」。唐．元稹〈遣悲懷〉詩三首之二：「衣裳已施行看盡，針線猶存未忍開。」_x000D_\n[連]_x000D_\n且、又。三國魏．曹丕〈與吳質書〉：「既痛逝者，行自念也。」",
+            "entry_id": "07240",
+            "sheet": "1150929辭典匯出",
+            "row": 7249,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "xìng",
+            "definition": "[名]\n行為舉止。如：「品行」、「操行」、「獸行」、「德行」。《論語．公冶長》：「聽其言而觀其行。」",
+            "entry_id": "07249",
+            "sheet": "1150929辭典匯出",
+            "row": 7258,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "佳": {
+        "definition": "good, auspicious; beautiful; delightful",
+        "mandarin": "jiā",
+        "official_dictionary": [
+          {
+            "title": "佳",
+            "pinyin": "jiā",
+            "definition": "[形]\n美、好。如：「佳人」、「佳景」、「佳音」。《文選．曹植．與楊德祖書》：「文之佳惡，吾自得之。」《文選．陶淵明．雜詩二首之一》：「山氣日夕佳，飛鳥相與還。」\n[名]\n姓。如明代有佳正。",
+            "entry_id": "05488",
+            "sheet": "1150929辭典匯出",
+            "row": 5495,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "心",
+            "pinyin": "xīn",
+            "definition": "[名]\n1.內臟之一。參見「心臟」條。\n2.我國古代認為心主管思維，故相沿以為腦的代稱。如：「用心」、「勞心勞力」。《孟子．告子上》：「心之官則思。」\n3.思想、意念、感情。如：「傷心」、「心中不安」、「心情煩悶」。三國魏．曹丕〈與吳質書〉：「東望於邑，裁書敘心。」唐．柳宗元〈始得西山宴游記〉：「心凝形釋。」\n4.思慮、謀畫。如：「有心人」、「有口無心」。《呂氏春秋．審應覽．精諭》：「紂雖多心，弗能知矣。」\n5.性情。如：「心性」。《韓非子．觀行》：「西門豹之性急，故佩韋以自緩，董安于之心緩，故佩弦以自急。」\n6.平面或物體的中央或內部。如：「江心」、「掌心」、「圓心」。唐．劉禹錫〈洞庭秋月行〉：「洞庭秋月生湖心，層波萬頃如鎔金。」\n7.植物的花蕊或苗尖。如：「花心」。南朝梁．簡文帝〈上巳侍宴林光殿曲水詩〉：「林花初墮蔕，池荷欲吐心。」\n8.星宿名。二十八星宿之一，東方蒼龍七宿的第五宿。\n9.星官名，心宿之首，共有三顆星，在西方屬天蠍座。《詩經．唐風．綢繆》：「三星在天。」漢．鄭玄．箋：「三星，謂心星也。」《晉書．卷一一．天文志上》：「心三星，天王正位也。」\n10.二一四部首之一。",
+            "entry_id": "07153",
+            "sheet": "1150929辭典匯出",
+            "row": 7162,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "心臟",
+                "pinyin": "xīn zàng",
+                "definition": "1.心肌構成的中空、紅色器官，其大如拳，居胸腔中央偏左，正常時內有四個腔室，行規律性的自發收縮，以保持血液的循環作用。與上下腔靜脈、肺動脈、肺靜脈、主動脈相通。\n2.形容最重要的部分。如：「此區是本市的心臟地帶。」",
+                "entry_id": "071530378",
+                "sheet": "1150929辭典匯出",
+                "row": 107466
+              },
+              {
+                "title": "用心",
+                "pinyin": "yòng xīn",
+                "definition": "1.盡心。《孟子．梁惠王上》：「察鄰國之政，無如寡人之用心者。」《儒林外史》第三四回：「宰相若肯如此用心，天下可立致太平。」\n2.存心、居心。《五代史平話．周史．卷上》：「郭威奏曰：『……全宥其家，免行族滅。』聞者皆謂郭威用心忠厚。」",
+                "entry_id": "119050044",
+                "sheet": "1150929辭典匯出",
+                "row": 163754
+              },
+              {
+                "title": "傷心",
+                "pinyin": "shāng xīn",
+                "definition": "心懷悲痛。唐．劉長卿〈重送裴郎中貶吉州〉詩：「猿啼客散暮江頭，人自傷心水自流。」《初刻拍案驚奇》卷二七：「足下見此芙蓉，何故傷心？」",
+                "entry_id": "090100035",
+                "sheet": "1150929辭典匯出",
+                "row": 130019
+              },
+              {
+                "title": "有心人",
+                "pinyin": "yǒu xīn rén",
+                "definition": "1.懷有某種意念或想法的人。《紅樓夢》第三四回：「俗語說：『沒事常思有事』，世上多少無頭腦的事，多半因為無心中做出，有心人看見，當作有心事，反說壞了。」清．孔尚任《桃花扇》第四齣：「傳將隨口話，報與有心人。」\n2.有志向、有理想的人。《初刻拍案驚奇》卷一九：「李公佐向齊公嘆道：『壯哉！壯哉！然此事卻非容易。』齊公道：『天下無難事，只怕有心人。』」《蟫史》卷八：「披肝而談意氣，真有心人；交臂而失英雄，為無目者。」\n3.別有目的或企圖的人。《兒女英雄傳》卷一七回：「從來俗語說的再不錯，道是：『無心人說話，只怕有心人來聽。』何況是兩個有心的裝作個無心的彼此一答一合說話，旁邊聽話的又本是個有心人，從無心中聽得心裡的一句話，憑他怎的聰明，有個不落圈套的麼？」\n4.心思細密的人。《初刻拍案驚奇》卷二七：「中含冤仇意思在裡面，遇著有心人玩著詞句，究問根由，未必不查出蹤跡來。」\n5.有情意的人。唐．任氏〈書桐葉〉詩：「天下有心人，盡解相思死。天下負心人，不識相思字。」",
+                "entry_id": "109050356",
+                "sheet": "1150929辭典匯出",
+                "row": 152273
+              },
+              {
+                "title": "有口無心",
+                "pinyin": "yǒu kǒu wú xīn",
+                "definition": "1.心直口快。《兒女英雄傳》第一五回：「老爺此時早看透了鄧九公，是個重交尚義，有口無心，年高好勝的人。」《瞎騙奇聞》第一回：「我曉得這個人向來是有口無心的，但也不可不拘什麼話便脫口而出。」也作「有嘴無心」。\n2.隨口說說，毫不放在心上。《金瓶梅》第三九回：「你便有口無心許下，神明都記著。」也作「有嘴無心」。",
+                "entry_id": "109050202",
+                "sheet": "1150929辭典匯出",
+                "row": 152161
+              },
+              {
+                "title": "心性",
+                "pinyin": "xīn xìng",
+                "definition": "本心、性情。《西遊記》第二三回：「那獃子雖是心性愚頑，卻只是一味懞直，倒也有些膂力，挑得行李，還看當日菩薩之念，救他隨我們去罷。」《紅樓夢》第四九回：「鳳姐冷眼敁敠岫烟的心性為人，竟不像邢夫人及他的父母一樣，卻是個溫厚可疼的人。」",
+                "entry_id": "071530285",
+                "sheet": "1150929辭典匯出",
+                "row": 107374
+              },
+              {
+                "title": "江心",
+                "pinyin": "jiāng xīn",
+                "definition": "江水中央。唐．白居易〈琵琶行〉：「東船西舫悄無言，唯見江心秋月白。」《三國演義》第四九回：「聘立在船頭，大叫：『承相鈞旨：南船且休近寨，就江心拋住。』」",
+                "entry_id": "058870085",
+                "sheet": "1150929辭典匯出",
+                "row": 93850
+              },
+              {
+                "title": "掌心",
+                "pinyin": "zhǎng xīn",
+                "definition": "1.手心。\n2.比喻能力控制的範圍。如：「孫悟空終究是逃不出如來佛的掌心。」",
+                "entry_id": "078930030",
+                "sheet": "1150929辭典匯出",
+                "row": 115502
+              },
+              {
+                "title": "圓心",
+                "pinyin": "yuán xīn",
+                "definition": "圓形的中心點，稱為「圓心」。",
+                "entry_id": "117950068",
+                "sheet": "1150929辭典匯出",
+                "row": 162916
+              },
+              {
+                "title": "花心",
+                "pinyin": "huā xīn",
+                "definition": "風流、形容對愛情不專一。如：「他是個不折不扣的花心大少。」",
+                "entry_id": "050050231",
+                "sheet": "1150929辭典匯出",
+                "row": 82430
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "悦": {
+        "definition": "pleased, contented, gratified",
+        "mandarin": "yuè",
+        "related_characters": [
+          {
+            "character": "悅",
+            "relation": "kTraditionalVariant",
+            "definition": "pleased",
+            "mandarin": "yuè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "仙": {
+        "definition": "Taoist super-being, transcendent, immortal",
+        "mandarin": "xiān",
+        "official_dictionary": [
+          {
+            "title": "仙",
+            "pinyin": "xiān",
+            "definition": "[名]\n1.經修煉後長生不老、超脫塵俗的人。如：「神仙」、「八仙過海」、「修道成仙」。唐．李白〈廬山謠寄盧侍御虛舟〉詩：「五嶽尋仙不辭遠，一生好入名山遊。」\n2.性情或行為超凡不俗的人。如：「詩仙」、「劍仙」。唐．杜甫．〈飲中八僊歌〉：「天子呼來不上船，自稱臣是酒中仙。」\n3.姓。如宋代有仙源明。\n[形]\n1.神仙的、仙人的。如：「仙宮」、「仙居」、「仙丹」。《文選．張衡．西京賦》：「含利颬颬，化為仙車。」\n2.輕飄、輕盈。《文選．何敬祖．雜詩》：「心虛體自輕，飄颻若仙步。」唐．杜甫〈覽鏡呈柏中丞〉詩：「起晚堪從事，行遲更覺仙。」\n3.超俗不凡。如：「仙容」、「仙品」、「仙才」。唐．白居易〈琵琶行〉：「今夜聞君琵琶語，如聽仙樂耳暫明。」\n[副]\n稱死的婉辭。如：「仙化」、「仙去」、「仙逝」。",
+            "entry_id": "07064",
+            "sheet": "1150929辭典匯出",
+            "row": 7073,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "忘": {
+        "definition": "forget; neglect; miss, omit",
+        "mandarin": "wàng",
+        "official_dictionary": [
+          {
+            "title": "忘",
+            "pinyin": "wáng",
+            "definition": "(一)之讀音。",
+            "entry_id": "11524",
+            "sheet": "1150929辭典匯出",
+            "row": 11538,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "忘",
+            "pinyin": "wàng",
+            "definition": "[動]\n1.不記得。如：「勿忘我」、「後事不忘前事之師」、「樂而忘返」、「廢寢忘食」、「得意忘形」。\n2.遺失、喪失。《漢書．卷六三．武五子傳．戾太子劉據傳》：「臣聞子胥盡忠而忘其號，比干盡仁而遺其身。」唐．顏師古．注：「忘，亡也。吳王殺之，被以惡名，失其善稱號。」《文選．陸機．歎逝賦》：「樂隤心其如忘，哀緣情而來宅。」唐．李善．注：「忘，失也。」\n3.遺棄、捨棄。《後漢書．卷二六．宋弘傳》：「臣聞貧賤之知不可忘，糟糠之妻不下堂。」",
+            "entry_id": "11540",
+            "sheet": "1150929辭典匯出",
+            "row": 11554,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "年": {
+        "definition": "year; new-years; person's age",
+        "mandarin": "nián",
+        "official_dictionary": [
+          {
+            "title": "年",
+            "pinyin": "nián",
+            "definition": "[名]\n1.相當於地球環繞太陽一周所需的時間。參見「太陽年」條。\n2.收成、年成。如：「豐年」、「歉年」、「年景」。《新唐書．卷九九．列傳．戴冑》：「七月以來，霖潦未止，濱河南北，田正洿下，年之有亡未可知。」\n3.年節。如：「過年」。宋．陳師道〈早春〉詩：「度臘不成雪，迎年遽得春。」《儒林外史》第一一回：「新年正月，公子回家拜祖父、母親的年回來。」\n4.歲數、年齡。如：「盛年」、「延年益壽」、「年輕力壯」。唐．杜甫〈暮歸〉詩：「年過半百不稱意，明日看雲還杖藜。」\n5.時代、時期。如：「八十年代」、「康熙年間」。唐．杜甫〈寄題江外草堂〉詩：「經營上元始，斷手寶應年。」\n6.人生中的某時期。如：「童年」、「青少年」、「壯年」、「老年」。\n7.量詞。計算時間的單位。一年有十二個月。如：「這件事要花四年才能完成。」\n8.姓。如清代有年羹堯。\n[形]\n1.每年。如：「年鑑」、「年表」、「年刊」、「年產量」。\n2.年節的。如：「年糕」、「年畫」、「辦年貨」。",
+            "entry_id": "03081",
+            "sheet": "1150929辭典匯出",
+            "row": 3088,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "太陽年",
+                "pinyin": "tài yáng nián",
+                "definition": "地球繞行太陽時，太陽兩次出現於相同位置（例如春分點）的間隔時間，相當於365天5小時48分又45秒。",
+                "entry_id": "024780265",
+                "sheet": "1150929辭典匯出",
+                "row": 49399
+              },
+              {
+                "title": "豐年",
+                "pinyin": "fēng nián",
+                "definition": "1.農田收成富足的年頭。《詩經．周頌．豐年》：「豐年多黍多稌，亦有高廩。」\n2.《詩經．周頌》的篇名。共一章。根據〈詩序〉：「豐年，秋冬報也。」本章二句為：「豐年多黍多稌，亦有高廩。」",
+                "entry_id": "017350014",
+                "sheet": "1150929辭典匯出",
+                "row": 37082
+              },
+              {
+                "title": "歉年",
+                "pinyin": "qiàn nián",
+                "definition": "收成不好的年頭。如：「近年氣候異常影響耕作，導致部分農民收成歉年。」元．石君寶《秋胡戲妻》第三折：「早則是生計蕭疏，更值著沒收成歉年時序。」",
+                "entry_id": "064990002",
+                "sheet": "1150929辭典匯出",
+                "row": 99920
+              },
+              {
+                "title": "年景",
+                "pinyin": "nián jǐng",
+                "definition": "1.過年的景象。如：「鞭炮聲不絕於耳，呈現一片熱鬧的年景。」\n2.農作物的歲收狀況。清．潘榮陛《帝京歲時紀勝．十二月．市賣》：「臘月諸物價昂，蓋年景豐裕，人工忙促，故有『臘月水土貴三分』之諺。」\n3.年華。《紅樓夢》第七一回：「因年景漸老，事重身衰。」",
+                "entry_id": "030810091",
+                "sheet": "1150929辭典匯出",
+                "row": 57405
+              },
+              {
+                "title": "過年",
+                "pinyin": "guò nián",
+                "definition": "1.度過除夕。《初刻拍案驚奇》卷八：「別人家多歡歡喜喜過年，獨有他家煩煩惱惱。」\n2.在新年裡慶祝、作樂的活動。",
+                "entry_id": "042450067",
+                "sheet": "1150929辭典匯出",
+                "row": 71723
+              },
+              {
+                "title": "過年",
+                "pinyin": "guò nian",
+                "definition": "明年。如：「反正我們過年還會來的，又不是以後就見不著了。」",
+                "entry_id": "042450069",
+                "sheet": "1150929辭典匯出",
+                "row": 71725
+              },
+              {
+                "title": "盛年",
+                "pinyin": "shèng nián",
+                "definition": "年輕壯盛的時期。晉．陶淵明〈雜詩〉一二首之一：「盛年不重來，一日難再晨。」",
+                "entry_id": "090380014",
+                "sheet": "1150929辭典匯出",
+                "row": 130968
+              },
+              {
+                "title": "延年益壽",
+                "pinyin": "yán nián yì shòu",
+                "definition": "延長壽命，多為頌祝人長壽的用詞。《文選．宋玉．高唐賦》：「九竅通鬱，精神察滯，延年益壽千萬歲。」《史記．卷六八．商君傳》：「君之危若朝露，尚將欲延年益壽乎？」也作「益壽延年」。",
+                "entry_id": "109640019",
+                "sheet": "1150929辭典匯出",
+                "row": 153085
+              },
+              {
+                "title": "年輕力壯",
+                "pinyin": "nián qīng lì zhuàng",
+                "definition": "形容人年紀輕且身體強壯。《文明小史》第一一回：「而且諸位年輕力壯，將來正好轟轟烈烈做一番事業。」《紅樓夢》第七一回：「老太太也太想的到。實在我們年輕力壯的人綑上十個也趕不上。」",
+                "entry_id": "030810095",
+                "sheet": "1150929辭典匯出",
+                "row": 57409
+              },
+              {
+                "title": "童年",
+                "pinyin": "tóng nián",
+                "definition": "幼年時期。唐．黃滔〈遊東林寺〉詩：「莫怪遲遲不歸去，童年已夢遶林行。」",
+                "entry_id": "028960011",
+                "sheet": "1150929辭典匯出",
+                "row": 55288
+              },
+              {
+                "title": "青少年",
+                "pinyin": "qīng shào nián",
+                "definition": "年齡在十二至十八歲，介於兒童、成人間的青春期階段。如：「這場舞蹈比賽，顯現出青少年的活力。」",
+                "entry_id": "065760178",
+                "sheet": "1150929辭典匯出",
+                "row": 100701
+              },
+              {
+                "title": "壯年",
+                "pinyin": "zhuàng nián",
+                "definition": "稱人在三、四十歲的時期。晉．袁淑〈效古〉詩：「勤役未云已，壯年徒為空。」《三國演義》第一二〇回：「昔討逆壯年，以一校尉創立基業；今孫皓舉江南而棄之！」",
+                "entry_id": "081230010",
+                "sheet": "1150929辭典匯出",
+                "row": 118025
+              },
+              {
+                "title": "老年",
+                "pinyin": "lǎo nián",
+                "definition": "1.年歲老了。《晉書．卷三三．何曾傳》：「曾以老年，屢乞遜位。」《儒林外史》第二〇回：「一個老年的，繭紬直裰，絲絛朱履。」\n2.昔時。也作「老年程」。",
+                "entry_id": "032690172",
+                "sheet": "1150929辭典匯出",
+                "row": 59560
+              },
+              {
+                "title": "年鑑",
+                "pinyin": "nián jiàn",
+                "definition": "匯聚載錄時事資料至出版年為止的書，內容包括各方面或某專門學科的敘述，與統計、圖表等資料。可供了解過去發展的情形及未來規劃設計的參考。如：「教育年鑑」、「中華民國年鑑」。《清史稿．卷一一九．職官志六》：「敘官掌考功定課，彙覈履行。統計掌統一計表，刊行年鑑。印鑄掌編輯官報。」",
+                "entry_id": "030810083",
+                "sheet": "1150929辭典匯出",
+                "row": 57399
+              },
+              {
+                "title": "年表",
+                "pinyin": "nián biǎo",
+                "definition": "1.按照年代先後次序，記載史事或人物事蹟而編成的表格。表列歷史治亂興衰的大概，可補志、傳的不足。如《史記》的十二諸侯年表、六國年表。\n2.將個人的生平經歷、著作等，按時間先後條列而成的表。如：「從某作家的著作年表中，可以大概得知他的生平學術成就。」也稱為「年譜」。",
+                "entry_id": "030810005",
+                "sheet": "1150929辭典匯出",
+                "row": 57331
+              },
+              {
+                "title": "年刊",
+                "pinyin": "nián kān",
+                "definition": "一年發行一次的出版品。如：「中國學術年刊」、「中國進出口貿易統計年刊」。",
+                "entry_id": "0308100621",
+                "sheet": "1150929辭典匯出",
+                "row": 57379
+              },
+              {
+                "title": "年產量",
+                "pinyin": "nián chǎn liàng",
+                "definition": "一年生產的總數量。如：「今年風調雨順，所以稻米年產量較往年增加許多。」",
+                "entry_id": "0308101071",
+                "sheet": "1150929辭典匯出",
+                "row": 57426
+              },
+              {
+                "title": "年糕",
+                "pinyin": "nián gāo",
+                "definition": "用糯米或米粉蒸成的糕。是過舊曆年的應節食品。",
+                "entry_id": "030810051",
+                "sheet": "1150929辭典匯出",
+                "row": 57370
+              },
+              {
+                "title": "年畫",
+                "pinyin": "nián huà",
+                "definition": "過年時所張貼的應節圖畫，用以討吉祥或增強歡樂的氣氛。如：「楊柳青年畫」。",
+                "entry_id": "030810065",
+                "sheet": "1150929辭典匯出",
+                "row": 57382
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "为": {
+        "definition": "do, handle, govern, act; be",
+        "mandarin": "wèi",
+        "related_characters": [
+          {
+            "character": "為",
+            "relation": "kTraditionalVariant",
+            "definition": "do, handle, govern, act; be",
+            "mandarin": "wèi"
+          },
+          {
+            "character": "爲",
+            "relation": "kTraditionalVariant",
+            "definition": "do, handle, govern, act; be",
+            "mandarin": "wèi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "爱": {
+        "definition": "love, be fond of, like",
+        "mandarin": "ài",
+        "related_characters": [
+          {
+            "character": "愛",
+            "relation": "kTraditionalVariant",
+            "definition": "love, be fond of, like",
+            "mandarin": "ài"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "江": {
+        "definition": "large river; the Yangzi; surname",
+        "mandarin": "jiāng",
+        "official_dictionary": [
+          {
+            "title": "江",
+            "pinyin": "jiāng",
+            "definition": "[名]\n1.大河的通稱。如：「珠江」、「松花江」、「三江五嶽」。《水滸傳》第三八回：「前面靠江有那琵琶亭酒館，是唐朝白樂天古跡。」\n2.大陸地區長江的簡稱。如：「江南」、「偏安江左」。\n3.國名。嬴姓。春秋時為楚所滅，故址約在今大陸地區河南省息縣西南。\n4.姓。如南朝梁有江淹。",
+            "entry_id": "05887",
+            "sheet": "1150929辭典匯出",
+            "row": 5895,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "共": {
+        "definition": "together with, all, total; to share",
+        "mandarin": "gòng",
+        "official_dictionary": [
+          {
+            "title": "共",
+            "pinyin": "gōng",
+            "definition": "[動]\n供給。通「供」。《左傳．僖公三十年》：「行李之往來，共其乏困，君亦無所害。」\n[形]\n恭敬。通「恭」。《左傳．文公十八年》：「父義，母慈，兄友，弟共，子孝。」\n[名]\n姓。如黃帝時有共鼓。",
+            "entry_id": "04375",
+            "sheet": "1150929辭典匯出",
+            "row": 4381,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "共",
+            "pinyin": "gǒng",
+            "definition": "[動]\n1.雙手抱拳。通「拱」。《荀子．賦》：「聖人共手，時幾將矣。」\n2.環繞、護衛。通「拱」。《論語．為政》：「為政以德，譬如北辰，居其所而眾星共之。」",
+            "entry_id": "04384",
+            "sheet": "1150929辭典匯出",
+            "row": 4390,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "共",
+            "pinyin": "gòng",
+            "definition": "[副]\n1.一起、一同。如：「共鳴」、「共存」、「和平共處」。《史記．卷八．高祖本紀》：「天下共立義帝，北面事之。」\n2.合、總計。如：「共計」、「籃子裡共有十顆蘋果。」\n[動]\n分享、合用。《論語．公冶長》：「願車馬衣輕裘與朋友共，敝之而無憾。」\n[形]\n相同的。如：「共識」、「共相」。\n[連]\n跟、和。唐．王勃〈滕王閣序〉：「落霞與孤鶩齊飛，秋水共長天一色。」元．關漢卿《救風塵》第一折：「姻緣簿全憑我共你，誰不待揀個稱意的？」",
+            "entry_id": "04393",
+            "sheet": "1150929辭典匯出",
+            "row": 4399,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "振": {
+        "definition": "raise, excite, arouse action",
+        "mandarin": "zhèn",
+        "official_dictionary": [
+          {
+            "title": "振",
+            "pinyin": "zhēn",
+            "definition": "參見「振振」(二)條。",
+            "entry_id": "07823",
+            "sheet": "1150929辭典匯出",
+            "row": 7834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "振振",
+                "pinyin": "zhēn zhēn",
+                "definition": "1.仁厚的樣子。《詩經．周南．麟之趾》：「麟之趾，振振公子，于嗟麟兮。」唐．柳宗元．〈道州文宣王廟碑〉：「振振薛公，惟德之造。」\n2.美盛的樣子。《詩經．周南．螽斯》：「螽斯羽，詵詵兮。宜爾子孫振振兮。」《左傳．僖公五年》：「均服振振，取虢之旂。」",
+                "entry_id": "078230001",
+                "sheet": "1150929辭典匯出",
+                "row": 114810
+              },
+              {
+                "title": "振振",
+                "pinyin": "zhèn zhèn",
+                "definition": "鳥群飛的樣子。《詩經．魯頌．有駜》：「振振鷺，鷺于下。」",
+                "entry_id": "078630038",
+                "sheet": "1150929辭典匯出",
+                "row": 115129
+              }
+            ]
+          },
+          {
+            "title": "振",
+            "pinyin": "zhèn",
+            "definition": "[動]\n1.舉起。《文選．賈誼．過秦論》：「振長策而御宇內，吞二周而亡諸侯。」唐．王勃〈上劉右相書〉：「朽索充羈，不收奔馬之逸；輕緡振網，或隨吞舟之勢。」\n2.搖動、抖動。《詩經．豳風．七月》：「五月斯螽動股，六月莎雞振羽。」《楚辭．王襃．九懷．蓄英》：「秋風兮蕭蕭，舒芳兮振條。」\n3.奮發。如：「士氣大振」、「萎靡不振」。\n4.震撼。通「震」。如：「威振天下」。唐．孟郊〈感懷〉詩八首之一：「秋氣悲萬物，驚風振長道。」\n5.發放、開放。《左傳．文公十六年》：「自廬以往，振廩同食。」南朝梁．劉勰《文心雕龍．情采》：「夫水性虛而論漪結，木性實而花萼振，文附質也。」\n6.救濟、救助。通「賑」。《禮記．月令》：「命有司發倉廩，賜貧窮，振乏絕。」《戰國策．燕策三》：「是以委肉當餓虎之蹊，禍必不振矣。」\n[名]\n姓。如宋代有振紀。",
+            "entry_id": "07863",
+            "sheet": "1150929辭典匯出",
+            "row": 7875,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "效": {
+        "definition": "result, effect; effectiveness",
+        "mandarin": "xiào",
+        "official_dictionary": [
+          {
+            "title": "效",
+            "pinyin": "xiào",
+            "definition": "[動]\n1.摹仿。如：「東施效顰」、「上行下效」。唐．王勃〈滕王閣序〉：「阮籍猖狂，豈效窮途之哭？」\n2.致送、奉獻。如：「效勞」、「效力」、「效忠」。《韓非子．五蠹》：「獻圖則地削，效璽則名卑。」《文選．司馬遷．報任少卿書》：「誠欲效其款款之愚。」\n[名]\n1.功用。如：「功效」、「藥效」、「見效」。《淮南子．脩務》：「夫聖人之心，日夜不忘於欲利人，其澤之所及者，效亦大矣。」《紅樓夢》第一一回：「今日頭眩的略好些，別的仍不見怎麼樣大見效。」\n2.徵驗。《淮南子．脩務》：「哭者，悲之效也。」漢．王充《論衡．雷虛》：「夫論雷之為火有五驗，言雷為天怒無一效。」",
+            "entry_id": "07032",
+            "sheet": "1150929辭典匯出",
+            "row": 7041,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "应": {
+        "definition": "should, ought to, must",
+        "mandarin": "yīng",
+        "related_characters": [
+          {
+            "character": "应",
+            "relation": "kTraditionalVariant",
+            "definition": "should, ought to, must",
+            "mandarin": "yīng"
+          },
+          {
+            "character": "應",
+            "relation": "kTraditionalVariant",
+            "definition": "should, ought to, must",
+            "mandarin": "yīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "应",
+            "pinyin": null,
+            "definition": "「應」的異體字。",
+            "entry_id": "11174-1",
+            "sheet": "1150929辭典匯出",
+            "row": 155712,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "联": {
+        "definition": "connect, join; associate, ally",
+        "mandarin": "lián",
+        "related_characters": [
+          {
+            "character": "联",
+            "relation": "kTraditionalVariant",
+            "definition": "connect, join; associate, ally",
+            "mandarin": "lián"
+          },
+          {
+            "character": "聯",
+            "relation": "kTraditionalVariant",
+            "definition": "connect, join; associate, ally",
+            "mandarin": "lián"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "联",
+            "pinyin": null,
+            "definition": "「聯」的異體字。",
+            "entry_id": "03604-1",
+            "sheet": "1150929辭典匯出",
+            "row": 63488,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "动": {
+        "definition": "move, happen; movement, action",
+        "mandarin": "dòng",
+        "related_characters": [
+          {
+            "character": "动",
+            "relation": "kTraditionalVariant",
+            "definition": "move, happen; movement, action",
+            "mandarin": "dòng"
+          },
+          {
+            "character": "動",
+            "relation": "kTraditionalVariant",
+            "definition": "move, happen; movement, action",
+            "mandarin": "dòng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "动",
+            "pinyin": null,
+            "definition": "「動」的異體字。",
+            "entry_id": "02409-1",
+            "sheet": "1150929辭典匯出",
+            "row": 48536,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "规": {
+        "definition": "rules, regulations, customs, law",
+        "mandarin": "guī",
+        "related_characters": [
+          {
+            "character": "規",
+            "relation": "kTraditionalVariant",
+            "definition": "rules, regulations, customs, law",
+            "mandarin": "guī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "模": {
+        "definition": "model, standard, pattern; copy",
+        "mandarin": "mó",
+        "official_dictionary": [
+          {
+            "title": "模",
+            "pinyin": "mó",
+            "definition": "[名]\n1.範式、榜樣。如：「楷模」、「模範」。《晉書．卷四一．劉寔傳》：「可謂國之碩老，邦之宗模。」\n2.姓。如宋代有模造成。\n[動]\n仿效。如：「模仿」。《資治通鑑．卷六五．漢紀五十七．獻帝建安十三年》：「今兄既不能法柳下惠和光同塵於內，則宜模范蠡遷化於外。」",
+            "entry_id": "01054",
+            "sheet": "1150929辭典匯出",
+            "row": 1056,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "模",
+            "pinyin": "mú",
+            "definition": "參見「模子」、「模樣」等條。",
+            "entry_id": "01495",
+            "sheet": "1150929辭典匯出",
+            "row": 1501,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "模子",
+                "pinyin": "mú zi",
+                "definition": "製造器物的標準型器。《紅樓夢》第三五回：「原來是個小匣子，裡面裝著四副銀模子，都有一尺多長，一寸見方。」",
+                "entry_id": "014950002",
+                "sheet": "1150929辭典匯出",
+                "row": 32389
+              },
+              {
+                "title": "模樣",
+                "pinyin": "mú yàng",
+                "definition": "1.形狀、式樣。《文明小史》第三二回：「我前月進省，才看見那種新鮮模樣兒，回來氣得要死。」\n2.容貌。元．關漢卿《望江亭》第一折：「此處有一女人，乃是譚記兒，生得模樣過人。」《紅樓夢》第三九回：「可惜這麼個好體面模樣兒，命卻平常，只落得屋裡使喚。」\n3.表示概略的用語。《文明小史》第四九回：「聽見院子裡面一個差官模樣的，問那間是勞老爺的屋子。」",
+                "entry_id": "014950003",
+                "sheet": "1150929辭典匯出",
+                "row": 32390
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "边": {
+        "definition": "edge, margin, side, border",
+        "mandarin": "biān",
+        "related_characters": [
+          {
+            "character": "边",
+            "relation": "kTraditionalVariant",
+            "definition": "edge, margin, side, border",
+            "mandarin": "biān"
+          },
+          {
+            "character": "邊",
+            "relation": "kTraditionalVariant",
+            "definition": "edge, margin, side, border",
+            "mandarin": "biān"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "边",
+            "pinyin": null,
+            "definition": "「邊」的異體字。",
+            "entry_id": "00472-1",
+            "sheet": "1150929辭典匯出",
+            "row": 18601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "际": {
+        "definition": "border, boundary, juncture",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "际",
+            "relation": "kTraditionalVariant",
+            "definition": "border, boundary, juncture",
+            "mandarin": "jì"
+          },
+          {
+            "character": "際",
+            "relation": "kTraditionalVariant",
+            "definition": "border, boundary, juncture",
+            "mandarin": "jì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "际",
+            "pinyin": null,
+            "definition": "「際」的異體字。",
+            "entry_id": "05447-1",
+            "sheet": "1150929辭典匯出",
+            "row": 87784,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "漫": {
+        "definition": "overflow of water; spreading",
+        "mandarin": "màn",
+        "official_dictionary": [
+          {
+            "title": "漫",
+            "pinyin": "mán",
+            "definition": "[形]\n水廣大的樣子。《集韻．平聲．桓聲》：「漫，水廣大貌。」\n[動]\n盈滿。宋．蘇軾〈寓居定惠院之東雜花滿山有海棠一株土人不知貴也〉詩：「嫣然一笑竹籬間，桃李漫山總麤俗。」",
+            "entry_id": "01220",
+            "sheet": "1150929辭典匯出",
+            "row": 1223,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "漫",
+            "pinyin": "màn",
+            "definition": "[動]_x000D_\n1.水滿而外溢。《新唐書．卷一七六．列傳．張籍》：「其流波漫。」_x000D_\n2.蒙、覆蓋。宋．洪邁《夷堅乙志．卷三．混沌燈》：「令其僕買大竹作燈毬，漫以黑紙，挂于几桉之側。」_x000D_\n[形]_x000D_\n1.遍布的、充滿的。如：「漫山遍野」、「漫天大霧」。_x000D_\n2.放縱不加拘束。如：「浪漫」、「散漫」、「漫不經心」。《明史．卷二一二．戚繼光列傳》：「諸鎮入衛之兵，嫌非統屬，漫無紀律。」_x000D_\n3.模糊不可辨認的樣子。宋．王安石〈遊褒禪山記〉：「有碑仆道，其文漫滅。」_x000D_\n4.長、遠。如：「漫漫長夜」。《文選．古詩十九首．涉江采芙蓉》：「還顧望舊鄉，長路漫浩浩。」_x000D_\n[副]_x000D_\n1.徒、空、枉。唐．杜甫〈有客〉詩：「漫勞車馬駐江干。」宋．陸游〈謝池春．壯歲從戎〉詞：「漫悲歌、傷懷弔古。」_x000D_\n2.莫、不要。如：「漫說是他，就是你去也不成。」唐．張謂〈贈趙使君美人〉詩：「羅敷獨向東方去，漫學他家作使君。」_x000D_\n3.隨便、胡亂。唐．杜甫〈聞官軍收河南河北〉詩：「卻看妻子愁何在？漫卷詩書喜欲狂。」《聊齋志異．卷二．蓮香》：「生疑其妒，漫應之。」",
+            "entry_id": "01237",
+            "sheet": "1150929辭典匯出",
+            "row": 1240,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "谈": {
+        "definition": "talk; conversation; surname",
+        "mandarin": "tán",
+        "related_characters": [
+          {
+            "character": "談",
+            "relation": "kTraditionalVariant",
+            "definition": "talk; conversation; surname",
+            "mandarin": "tán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "时",
+            "pinyin": null,
+            "definition": "「時」的異體字。",
+            "entry_id": "08715-1",
+            "sheet": "1150929辭典匯出",
+            "row": 126095,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "河",
+            "pinyin": "hé",
+            "definition": "[名]\n1.水道的通稱。如：「河流」、「運河」。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n2.黃河的簡稱。如：「河套」。\n3.成河川狀的群體。如：「星河」、「銀河」。\n4.姓。如南北朝時有河禎。",
+            "entry_id": "04729",
+            "sheet": "1150929辭典匯出",
+            "row": 4736,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "official_dictionary": [
+          {
+            "title": "天",
+            "pinyin": "tiān",
+            "definition": "[名]\n1.日月星辰所羅列的空間，即天空。如：「碧海青天」、「頂天立地」。唐．韓愈〈原道〉：「坐井而觀天，曰天小者，非天小也。」\n2.一晝夜的時間。如：「昨天」、「今天」、「大後天」、「一天」。\n3.白天或一天中的某一段時間。如：「三天三夜」、「三更天」。宋．程顥〈春日偶成〉詩：「雲淡風輕近午天，傍花隨柳過前川。」\n4.時節、季節。如：「春天」、「三伏天」、「黃梅天」。\n5.氣候。如：「晴天」、「陰天」、「大熱天」、「下雨天」。\n6.自然。如：「人定勝天」、「樂天知命」。《莊子．天道》：「是故古之明大道者，先明天而道德次之。」\n7.指宇宙萬物的主宰。有時指大自然、有時指命運、有時指天神等。如：「生死有命，富貴在天。」、「謀事在人，成事在天。」、「不怨天，不尤人。」《書經．泰誓中》：「天視自我民視，天聽自我民聽。」\n8.指神靈所住的世界。如：「升天」、「歸天」。\n9.不可或缺或最重要的事物。如：「以夫為天」。《漢書．卷四十三．酈食其傳》：「王者以民為天，而民以食為天。」\n10. 量詞。計算時間的單位。一天有二十四小時。如：「這項工作限你三十天時間完成，不得拖延。」\n[形]\n1.自然的、天然的。如：「天才」、「天險」、「天籟」、「天性」。\n2.數目極大的。如：「天價」、「天量」、「天文數字」。\n3.騰空架設的、駕於空中的。如：「天橋」、「天窗」、「天棚」。\n[副]\n很、非常。如：「天大的好消息」、「天大的新聞」。",
+            "entry_id": "02701",
+            "sheet": "1150929辭典匯出",
+            "row": 2707,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宽": {
+        "definition": "broad, wide; spacious, vast",
+        "mandarin": "kuān",
+        "related_characters": [
+          {
+            "character": "寬",
+            "relation": "kTraditionalVariant",
+            "definition": "broad, wide; spacious, vast",
+            "mandarin": "kuān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "侣行",
+      "decision": "uncertain",
+      "reason": "可理解为结伴出行，但“侣行”读感略像“旅行”的谐音替换，语义关系不够直接，品牌自然度存疑。"
+    },
+    {
+      "name": "佳侣",
+      "decision": "keep",
+      "reason": "“佳侣”指美好的伴侣，构词自然、寓意明确且简洁，具备品牌名的凝练感。"
+    },
+    {
+      "name": "侣心",
+      "decision": "uncertain",
+      "reason": "可联想到伴侣之心或心意相伴，但修饰关系不明确，组合自然度和含义辨识度不足。"
+    },
+    {
+      "name": "侣悦",
+      "decision": "reject",
+      "reason": "“侣”与“悦”并置缺少清晰自然的语义关系，像将陪伴与愉悦概念机械拼合。"
+    },
+    {
+      "name": "仙侣",
+      "decision": "keep",
+      "reason": "“仙侣”是自然的传统词语，指仙人伴侣，也可形成超凡、相伴的意象，简洁而有辨识度。"
+    },
+    {
+      "name": "忘年侣",
+      "decision": "uncertain",
+      "reason": "可理解为忘年之交般的伴侣，但“忘年侣”并非自然凝练的常见构词，容易产生关系含义上的歧义。"
+    },
+    {
+      "name": "与书为侣",
+      "decision": "reject",
+      "reason": "完整表达是“以书为伴”的判断句或生活宣言，不够凝练，句子感明显。"
+    },
+    {
+      "name": "爱侣",
+      "decision": "uncertain",
+      "reason": "“爱侣”语义明确，指相爱伴侣，但属于常见关系类别称呼，作为完整品牌名辨识度偏弱。"
+    },
+    {
+      "name": "江月侣",
+      "decision": "uncertain",
+      "reason": "可构想为江月相伴的诗意意象，但“侣”与前面的景物关系不清，组合略显生硬。"
+    },
+    {
+      "name": "共振效应",
+      "decision": "reject",
+      "reason": "完整名称是通用科学或技术术语类别，直接指一种效应，不具备品牌名所需的独立凝练感。"
+    },
+    {
+      "name": "联动效应",
+      "decision": "reject",
+      "reason": "完整名称是通用管理或经济概念，直接指联动产生的效应，属于功能类别词。"
+    },
+    {
+      "name": "规模效应",
+      "decision": "reject",
+      "reason": "完整名称是通用经济学术语，指规模变化带来的效应，属于通用概念类别词。"
+    },
+    {
+      "name": "边际效应",
+      "decision": "reject",
+      "reason": "完整名称是通用经济学术语，指边际变化产生的效应，属于通用概念类别词。"
+    },
+    {
+      "name": "漫谈",
+      "decision": "keep",
+      "reason": "“漫谈”是自然简洁的词语，表达随意交谈、从容讨论，语义清楚，具备直接的品牌识别性。"
+    },
+    {
+      "name": "漫行",
+      "decision": "keep",
+      "reason": "可自然理解为随意漫步、从容行走，动作意象清楚且简洁，不依赖牵强解释。"
+    },
+    {
+      "name": "漫时光",
+      "decision": "reject",
+      "reason": "“漫时光”将“漫”与常见抒情套语“时光”拼接，整体偏空泛的生活方式口号，品牌凝练度不足。"
+    },
+    {
+      "name": "漫星河",
+      "decision": "uncertain",
+      "reason": "可形成星河漫展或漫游星河的想象，但“漫”与“星河”的关系和具体语义不够明确，略显拼接。"
+    },
+    {
+      "name": "漫山春",
+      "decision": "uncertain",
+      "reason": "可理解为春意遍布山野，但语序较生硬，通常会说“春漫山野”或“漫山春色”。"
+    },
+    {
+      "name": "漫江月",
+      "decision": "uncertain",
+      "reason": "可能借“漫”表达江月铺展或漫溢，但语义关系不明确，整体像截取的诗句片段。"
+    },
+    {
+      "name": "漫林间",
+      "decision": "reject",
+      "reason": "“漫林间”缺少自然的句法关系，既不像完整动作表达，也难形成清晰稳定的名词意象。"
+    },
+    {
+      "name": "心漫天宽",
+      "decision": "reject",
+      "reason": "完整组合是“心胸宽广、天地开阔”一类价值宣言，句子感和口号感明显。"
+    },
+    {
+      "name": "山川漫远",
+      "decision": "uncertain",
+      "reason": "可理解为山川绵延辽远，但“漫远”搭配不够自然，且整名更像诗句片段，语义关系存疑。"
+    }
+  ]
+}

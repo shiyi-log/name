@@ -1,0 +1,689 @@
+{
+  "review_id": "20261112T230111-52e391d2",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "林湫",
+      "林深见湫",
+      "龙湫",
+      "玉湫",
+      "风过湫",
+      "雨歇湫",
+      "星垂照湫",
+      "千峰映湫"
+    ],
+    "related_kept_candidates": {
+      "星": [
+        "星河照蕖",
+        "星照滟川",
+        "星照淞",
+        "巨星照野",
+        "星垂柳岸",
+        "星河照玥",
+        "漪照星",
+        "星月照畦",
+        "星河照堧",
+        "星照迳",
+        "星河映湫",
+        "七星"
+      ],
+      "风": [
+        "长风过湫",
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "风过埙声",
+        "清风过淞",
+        "松风过樟",
+        "风过冈"
+      ],
+      "雨": [
+        "一川烟雨",
+        "霪雨初霁",
+        "峤听雨",
+        "芹畦雨",
+        "听雨斋",
+        "雨润荒墟",
+        "楮林新雨",
+        "雨凉",
+        "暮雨",
+        "螭听松雨",
+        "刀雨",
+        "窗旁雨"
+      ],
+      "见": [
+        "林深见浔",
+        "林深见冈",
+        "云深见鹒",
+        "见林霏",
+        "萱林见月",
+        "棫林见山",
+        "筜林见山",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧"
+      ],
+      "林": [
+        "林深见浔",
+        "林深见冈",
+        "风过芭林",
+        "林深藏嶂",
+        "见林霏",
+        "萱林见月",
+        "风过岑林",
+        "冬风过林",
+        "风过潇林",
+        "林深有迳",
+        "棫林见山",
+        "林深鹀鸣"
+      ],
+      "玉": [
+        "风过玉阑",
+        "玉屑",
+        "砆玉",
+        "玉肌",
+        "攻玉",
+        "玉石錾花",
+        "玉盅",
+        "玉萼",
+        "玉葩",
+        "玉芙蓉",
+        "玉椟",
+        "玉钤"
+      ],
+      "峰": [
+        "墙映千峰",
+        "瀑映千峰",
+        "螭越千峰",
+        "千丈峰",
+        "蔓越千峰",
+        "珂越千峰",
+        "云卷千峰",
+        "牛向千峰",
+        "骏越千峰",
+        "璧立千峰",
+        "巉峰映日",
+        "崴峰映月"
+      ],
+      "龙": [
+        "鼍龙",
+        "龙虺",
+        "蛰龙",
+        "龙脊",
+        "螭龙",
+        "蟠龙",
+        "蛟龙",
+        "六龙行远"
+      ],
+      "千": [
+        "墙映千峰",
+        "瀑映千峰",
+        "螭越千峰",
+        "千丈峰",
+        "蔓越千峰",
+        "珂越千峰",
+        "云卷千峰",
+        "牛向千峰",
+        "璟映千川",
+        "骏越千峰",
+        "琨映千山",
+        "璧立千峰"
+      ],
+      "映": [
+        "墙映千峰",
+        "瀑映千峰",
+        "璟映千川",
+        "琨映千山",
+        "巉峰映日",
+        "鸥映千帆",
+        "崴峰映月",
+        "星河映湫",
+        "晖映",
+        "郁川映月",
+        "榴映秋",
+        "映芙"
+      ],
+      "照": [
+        "星河照蕖",
+        "星照滟川",
+        "星照淞",
+        "巨星照野",
+        "星河照玥",
+        "漪照星",
+        "星月照畦",
+        "星河照堧",
+        "星照迳",
+        "晨光照湫",
+        "月照桹影",
+        "榴花照影"
+      ],
+      "过": [
+        "长风过湫",
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "风过埙声",
+        "清风过淞",
+        "松风过樟",
+        "风过冈"
+      ],
+      "深": [
+        "林深见浔",
+        "林深见冈",
+        "林深藏嶂",
+        "云深见鹒",
+        "林深有迳",
+        "林深鹀鸣",
+        "林深鸧鸣",
+        "林深翠",
+        "莿野春深",
+        "深诣",
+        "深海鲼",
+        "巨野春深"
+      ],
+      "垂": [
+        "星垂柳岸",
+        "垂柳",
+        "垂露",
+        "垂虹",
+        "垂云",
+        "云垂野",
+        "垂裕",
+        "垂光"
+      ],
+      "湫": [
+        "长风过湫",
+        "林间湫",
+        "星河映湫",
+        "晨光照湫",
+        "行舟过湫",
+        "山湫",
+        "云湫",
+        "松湫",
+        "湫月",
+        "清湫",
+        "碧湫",
+        "灵湫"
+      ]
+    },
+    "literature_phrase_examples": {
+      "林湫": [],
+      "林深见湫": [],
+      "龙湫": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 79516,
+          "context": "回风吹虎穴，片雨当龙湫。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 92223,
+          "context": "嵯峨白帝城东西，南有龙湫北虎溪。"
+        }
+      ],
+      "玉湫": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1264882,
+          "context": "怀玉湫龙懒心性，六月困眠祈未醒。"
+        }
+      ],
+      "风过湫": [],
+      "雨歇湫": [],
+      "星垂照湫": [],
+      "千峰映湫": []
+    },
+    "dictionary_phrase_entries": {
+      "林湫": [],
+      "林深见湫": [],
+      "龙湫": [],
+      "玉湫": [],
+      "风过湫": [],
+      "雨歇湫": [],
+      "星垂照湫": [],
+      "千峰映湫": []
+    },
+    "direct_dictionary": {
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "湫": {
+        "definition": "a small pond; a damp and narrow place",
+        "mandarin": "jiǎo",
+        "official_dictionary": [
+          {
+            "title": "湫",
+            "pinyin": "jiǎo",
+            "definition": "參見「湫隘」條。",
+            "entry_id": "05658",
+            "sheet": "1150929辭典匯出",
+            "row": 5665,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "湫隘",
+                "pinyin": "jiǎo ài",
+                "definition": "居處低溼狹小。《左傳．昭公三年》：「子之宅近市，湫隘囂塵，不可以居。」唐．白行簡《李娃傳》：「懼其淺陋湫隘，不足以辱長者所處，安敢言直耶。」",
+                "entry_id": "056580001",
+                "sheet": "1150929辭典匯出",
+                "row": 90317
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "深": {
+        "definition": "deep; depth; far; very, extreme",
+        "mandarin": "shēn",
+        "official_dictionary": [
+          {
+            "title": "深",
+            "pinyin": "shēn",
+            "definition": "[形]\n1.從高到下，從表面到底部的距離很大。與「淺」相反。如：「深海」、「深淵」。\n2.高奧、精微。如：「他這句話的用意很深。」\n3.濃厚。如：「一往情深」、「深藍色」。\n4.形容時間的久、晚。如：「年深日久」。\n5.茂盛。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n[副]\n很、非常。如：「深得人緣」、「深加讚美」。",
+            "entry_id": "08977",
+            "sheet": "1150929辭典匯出",
+            "row": 8992,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "龙": {
+        "definition": "dragon; symbolic of emperor",
+        "mandarin": "lóng",
+        "related_characters": [
+          {
+            "character": "龍",
+            "relation": "kTraditionalVariant",
+            "definition": "dragon; Kangxi radical 212",
+            "mandarin": "lóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "玉": {
+        "definition": "jade, precious stone, gem",
+        "mandarin": "yù",
+        "official_dictionary": [
+          {
+            "title": "玉",
+            "pinyin": "yù",
+            "definition": "[名]_x000D_\n1.寶石的一種，一般指的是閃玉或輝玉。閃玉為含鎂的透閃石或含鐵的陽起石，輝玉為含鈉的輝石。閃玉的顏色為墨綠色、白色、黑色或棕色，蠟狀光澤、韌度高，部分纖維較長的可形成貓眼現象。臺灣的閃玉（也稱為「臺灣玉」）主要產地為花蓮縣豐田與萬榮地區。_x000D_\n2.二一四部首之一。_x000D_\n[形]_x000D_\n1.用玉做成的。如：「玉璽」、「玉簪」、「玉環」。《史記．卷七．項羽本紀》：「玉斗一雙，欲與亞父。」_x000D_\n2.潔白、晶瑩如玉般的美好。如：「玉手」、「玉顏」。晉．郭璞〈遊仙詩〉七首之二：「靈妃顧我美，粲然啟玉齒。」《南史．卷一九．列傳．謝晦》：「帝目之曰：『一時頓有兩玉人耳。』」_x000D_\n3.珍貴的、精美的。如：「錦衣玉食」、「玉液瓊漿」。晉．左思〈吳都賦〉：「矜其宴居，則珠服玉饌。」_x000D_\n4.敬辭。用於尊稱他人的身體或言行。如：「玉體」、「玉照」。三國魏．曹植〈七啟〉：「將敬滌耳，以聽玉音。」《水滸傳》第四回：「萬望長老收錄。慈悲，慈悲！看趙某薄面，披剃為僧。一應所用，弟子自當准備。煩望長老玉成。」_x000D_\n[動]_x000D_\n珍愛，襄助。《詩經．大雅．民勞》：「王欲玉女，是用大諫。」宋．朱熹．集傳：「玉，寶愛之意。」宋．張載〈西銘〉：「富貴福澤，將厚吾之生也。貧賤憂戚，庸玉女於成也。」",
+            "entry_id": "11645",
+            "sheet": "1150929辭典匯出",
+            "row": 11659,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "过",
+            "pinyin": null,
+            "definition": "「過」的異體字。",
+            "entry_id": "04226-1",
+            "sheet": "1150929辭典匯出",
+            "row": 71117,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "official_dictionary": [
+          {
+            "title": "雨",
+            "pinyin": "yǔ",
+            "definition": "[名]\n1.空氣中的水蒸氣遇冷凝結而降落的小水滴。如：「春雨」、「梅雨」、「風雨交加」、「秋風秋雨愁煞人」。\n2.朋友。如：「舊雨新知」。唐．杜甫〈秋述〉：「秋，杜子臥病長安旅次，……，青苔及榻，常時車馬之客，舊雨來，今雨不來。」\n3.二一四部首之一。",
+            "entry_id": "11624",
+            "sheet": "1150929辭典匯出",
+            "row": 11638,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "雨",
+            "pinyin": "yù",
+            "definition": "[動]\n1.下雨。《詩經．小雅．大田》：「雨我公田，遂及我私。」《史記．卷六七．仲尼弟子傳．有若傳》：「他日，月宿畢，竟不雨。」\n2.降落、落下。如：「雨雪」、「雨雹」。《淮南子．本經》：「昔者蒼頡作書，而天雨粟，鬼夜哭。」宋．蘇軾〈喜雨亭記〉：「使天而雨珠，寒者不得以為襦；使天而雨玉，飢者不得以為粟。」\n3.滋潤、灌溉。唐．孟郊〈終南山下作〉詩：「山村不假陰，流水自雨田。」唐．鮑溶〈答客〉詩：「勞問圃人終歲事，桔槔聲裡雨春畦。」",
+            "entry_id": "11661",
+            "sheet": "1150929辭典匯出",
+            "row": 11675,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "歇": {
+        "definition": "rest, stop, lodge",
+        "mandarin": "xiē",
+        "official_dictionary": [
+          {
+            "title": "歇",
+            "pinyin": "xiē",
+            "definition": "[動]\n1.休息。《說文解字．欠部》：「歇，息也。」如：「這事不急，您歇會兒再做。」唐．孟浩然〈秋登蘭山寄張五〉詩：「時見歸村人，沙行渡頭歇。」\n2.停止。如：「歇業」、「歇手」。宋．岳飛〈滿江紅．怒髮衝冠〉詞：「憑欄處，瀟瀟雨歇。」\n3.睡覺、住宿。如：「安歇」、「歇宿」。《水滸傳》第三二回：「當夜直吃到五更，叫小嘍囉伏侍宋江歇了。」《紅樓夢》第四四回：「平兒就在李紈處歇了一夜。」\n4.竭盡、凋零、衰敗。南朝齊．謝朓〈王孫遊〉詩：「無論君不歸，君歸芳已歇。」唐．李賀〈傷心行〉：「燈青蘭膏歇，落照飛蛾舞。」\n5.氣味消散。《文選．顏延之．和謝監靈運詩》：「芬馥歇蘭若，清越奪琳珪。」\n[名]\n量詞：(1)計算動作次數的單位。相當於「番」、「次」。《董西廂》卷五：「送下階來欲待別，又囑付兩三歇。」(2)計算時段的單位。《水滸傳》第四回：「下得亭子，松樹根邊又坐了半歇。」",
+            "entry_id": "06924",
+            "sheet": "1150929辭典匯出",
+            "row": 6933,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "垂": {
+        "definition": "let down; suspend, hand; down",
+        "mandarin": "chuí",
+        "official_dictionary": [
+          {
+            "title": "垂",
+            "pinyin": "chuí",
+            "definition": "[動]\n1.由上往下掉落。如：「垂淚」、「垂涎」、「垂纓」。\n2.留傳後世。如：「名垂青史」、「永垂不朽」。\n[副]\n1.及、將要。如：「垂危」、「功敗垂成」。唐．元稹〈聞樂天授江州司馬〉詩：「垂死病中驚坐起。」\n2.晚輩受長輩關愛的敬語。如：「垂愛」、「垂詢」、「垂念」。\n[名]\n1.邊疆。通「陲」。《荀子．臣道》：「邊境之臣處，則疆垂不喪。」《史記．卷五．秦本紀》：「在西戎，保西垂。」\n2.旁邊。《文選．王粲．詠史詩》：「妻子當門泣，兄弟哭路垂。」",
+            "entry_id": "08600",
+            "sheet": "1150929辭典匯出",
+            "row": 8614,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "official_dictionary": [
+          {
+            "title": "照",
+            "pinyin": "zhào",
+            "definition": "[動]\n1.映射。如：「照耀」、「陽光照在窗戶上。」\n2.投映。如：「照鏡子」。\n3.比擬、依據。如：「仿照」、「照貓畫虎」、「比照辦理」、「照本宣科」。\n4.比對、核對。如：「對照」。\n5.通知。如：「照會」、「關照」。\n6.向著、對著。如：「照頭一棍」、「照著敵人開槍」。\n7.看、顧。如：「照顧」、「照應」、「照料」。\n8.知曉。如：「心照不宣」。《三國志．卷一九．魏書．陳思王植傳》：「臣聞騏驥長鳴，則伯樂照其能；盧狗悲號，則韓國知其才。」\n9.攝取影像。如：「照相」、「這張像片是新照的。」\n[名]\n1.日光。如：「夕照」、「殘照」。\n2.像片。如：「近照」、「玉照」。\n3.憑證。如：「執照」、「護照」。《喻世明言．卷三三．張古老種瓜娶文女》：「申公道：『錢卻有，何以為照？』」",
+            "entry_id": "07719",
+            "sheet": "1150929辭典匯出",
+            "row": 7730,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "千": {
+        "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+        "mandarin": "qiān",
+        "related_characters": [
+          {
+            "character": "千",
+            "relation": "kTraditionalVariant",
+            "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+            "mandarin": "qiān"
+          },
+          {
+            "character": "韆",
+            "relation": "kTraditionalVariant",
+            "definition": "swing",
+            "mandarin": "qiān"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "千",
+            "pinyin": "qiān",
+            "definition": "[名]\n1.數目字。十的百倍。《說文解字．十部》：「千，十百也。」大寫作「仟」。\n2.姓。如漢代有千獻。\n[形]\n眾多。如：「千方百計」、「千山萬水」。《老子》第六四章：「千里之行，始於足下。」唐．李白〈將進酒〉：「天生我材必有用，千金散盡還復來。」",
+            "entry_id": "06437",
+            "sheet": "1150929辭典匯出",
+            "row": 6445,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "峰": {
+        "definition": "peak, summit; hump of camel",
+        "mandarin": "fēng",
+        "official_dictionary": [
+          {
+            "title": "峰",
+            "pinyin": "fēng",
+            "definition": "[名]\n1.高而尖的山頭。如：「頂峰」、「高峰」、「顛峰」。宋．蘇軾〈題西林壁〉詩：「橫看成嶺側成峰，遠近高低總不同。」\n2.形似山頭高起的部分。如：「駝峰」、「波峰」。",
+            "entry_id": "01731",
+            "sheet": "1150929辭典匯出",
+            "row": 1735,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "林湫",
+      "decision": "keep",
+      "reason": "“林”与“湫”组成简洁自然的林间水潭意象，语义清楚且有辨识度；湫可读作表示水潭的 qiū，不必套用 jiǎo 的“湫隘”义。"
+    },
+    {
+      "name": "林深见湫",
+      "decision": "uncertain",
+      "reason": "可理解为林深处见到水潭，画面连贯，但完整组合近似写景句，品牌名凝练度不足；且与暂留名称“林深见浔”句式高度相近，需谨慎避免近似变体。"
+    },
+    {
+      "name": "龙湫",
+      "decision": "keep",
+      "reason": "“龙湫”是自然成立的传统词语，可指瀑布或深潭等景观，古诗用例也符合这一语境；名称简洁，有传统山水意象。"
+    },
+    {
+      "name": "玉湫",
+      "decision": "uncertain",
+      "reason": "可理解为玉色或珍贵的水潭，但“玉”与“湫”的具体关系不够明确，整体语义略显生造；现有诗句用例也不足以确立通行词义。"
+    },
+    {
+      "name": "风过湫",
+      "decision": "reject",
+      "reason": "可读作风掠过水潭的景象，但完整组合呈现为未收束的写景短句；又与暂留名称“长风过湫”仅增删修饰字，属于近似变体。"
+    },
+    {
+      "name": "雨歇湫",
+      "decision": "uncertain",
+      "reason": "可理解为雨停后水潭显现或归于宁静，但“歇”与“湫”的关系省略较多，组合自然度和语义指向不够确定。"
+    },
+    {
+      "name": "星垂照湫",
+      "decision": "reject",
+      "reason": "“星垂”与“照湫”拼接后语法关系不清，星垂通常写星空低垂，直接接“照湫”显得生硬；也与暂留名称“星河映湫”共享相近的星光映照水潭意象。"
+    },
+    {
+      "name": "千峰映湫",
+      "decision": "keep",
+      "reason": "“千峰映湫”构成清楚自然的山峰倒映水潭意象，虽为写景组合，但凝练、有画面感，具备品牌辨识度。"
+    }
+  ]
+}

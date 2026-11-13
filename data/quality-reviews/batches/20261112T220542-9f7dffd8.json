@@ -1,0 +1,811 @@
+{
+  "review_id": "20261112T220542-9f7dffd8",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "青葱",
+      "春葱",
+      "葱珩",
+      "青葱岁月",
+      "葱翠山河",
+      "山色葱茏",
+      "嘉觞",
+      "觞歌",
+      "风月共觞"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "一川风月",
+        "岁月琥珀",
+        "二月风",
+        "长风漻月",
+        "览月听风",
+        "皎月临风",
+        "长风带月",
+        "月照青岑",
+        "澹月松风",
+        "六月风",
+        "六月长风",
+        "山河裹月"
+      ],
+      "色": [
+        "黝色山河",
+        "山色闻鹒",
+        "皎色山河",
+        "山色含霏",
+        "暮色山河",
+        "茶藏山色",
+        "山间菊色",
+        "菊色山河",
+        "杄间山色",
+        "山含筠色",
+        "眉间山色",
+        "山色映瀑"
+      ],
+      "风": [
+        "一川风月",
+        "二月风",
+        "长风漻月",
+        "览月听风",
+        "皎月临风",
+        "长风带月",
+        "澹月松风",
+        "六月风",
+        "六月长风",
+        "一枰风月",
+        "风回见月",
+        "一枕清风"
+      ],
+      "春": [
+        "春山鎏翠",
+        "春山滟色",
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春"
+      ],
+      "山": [
+        "瞰山河",
+        "涡映山河",
+        "黝色山河",
+        "涂山河",
+        "山河浮光",
+        "璟映山河",
+        "览山河",
+        "山河入篇",
+        "笔下山河",
+        "山色闻鹒",
+        "皎色山河",
+        "山色含霏"
+      ],
+      "青": [
+        "月照青岑",
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青"
+      ],
+      "嘉": [
+        "嘉赟",
+        "嘉禧堂",
+        "嘉懿",
+        "嘉淑",
+        "国有嘉木",
+        "嘉穑",
+        "赫嘉禾",
+        "资嘉",
+        "蓓嘉",
+        "嘉奕",
+        "嘉菂",
+        "嘉珺"
+      ],
+      "岁": [
+        "岁月琥珀",
+        "岁月成页",
+        "岁华",
+        "岁华新酿",
+        "岁时图",
+        "鎏光岁序",
+        "时和岁穰"
+      ],
+      "歌": [
+        "桹歌",
+        "哞歌",
+        "芭歌",
+        "棹歌",
+        "镛歌",
+        "涡歌",
+        "柘枝歌",
+        "酒歌",
+        "酒如歌",
+        "月下酒歌",
+        "牧歌",
+        "鹪歌"
+      ],
+      "葱": [
+        "葱翠",
+        "葱岭新月",
+        "葱郁",
+        "葱岭",
+        "葱岭长风"
+      ],
+      "河": [
+        "瞰山河",
+        "涡映山河",
+        "黝色山河",
+        "涂山河",
+        "山河浮光",
+        "璟映山河",
+        "览山河",
+        "山河入篇",
+        "笔下山河",
+        "皎色山河",
+        "山河一舟",
+        "暮色山河"
+      ],
+      "翠": [
+        "春山鎏翠",
+        "远山荟翠",
+        "远山将翠",
+        "山吐翠",
+        "葱翠",
+        "翠崟",
+        "奇峰叠翠",
+        "翠嶂",
+        "鹒栖翠竹",
+        "翠帷",
+        "翠漪",
+        "翠幄"
+      ],
+      "珩": [
+        "珩光",
+        "清珩",
+        "云珩",
+        "星珩",
+        "山珩",
+        "初珩",
+        "安珩",
+        "和珩",
+        "雅珩",
+        "珩序",
+        "珩然",
+        "珩悦"
+      ],
+      "共": [
+        "共渡",
+        "鹡鸰共生",
+        "鑫禾共生"
+      ],
+      "觞": [
+        "羽觞"
+      ]
+    },
+    "literature_phrase_examples": {
+      "青葱": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1483,
+          "context": "伊我轩宫，奇树青葱。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 54523,
+          "context": "青葱林间岭，隐见淮海徼。"
+        }
+      ],
+      "春葱": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 88600,
+          "context": "无声细下飞碎雪，有骨已剁觜春葱。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 200675,
+          "context": "双眸剪秋水，十指剥春葱。"
+        }
+      ],
+      "葱珩": [
+        {
+          "book": "诗经",
+          "line": 955,
+          "context": "服其命服，朱芾斯皇，有玱葱珩。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 247957,
+          "context": "解我葱珩脱孟劳，暮年甘与子同袍。"
+        }
+      ],
+      "青葱岁月": [],
+      "葱翠山河": [],
+      "山色葱茏": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1216426,
+          "context": "湖光潋滟新磨镜，山色葱茏罨画图。"
+        }
+      ],
+      "嘉觞": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 211312,
+          "context": "鼎湖龙远，九祭毕嘉觞。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 211411,
+          "context": "嘉觞好在新宫荐，万世妥神灵。"
+        }
+      ],
+      "觞歌": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 215033,
+          "context": "称觞歌袖三千指，屏星畔、绕绿围红。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 215117,
+          "context": "门楣他日作，椒觞歌今日。"
+        }
+      ],
+      "风月共觞": []
+    },
+    "dictionary_phrase_entries": {
+      "青葱": [],
+      "春葱": [],
+      "葱珩": [],
+      "青葱岁月": [],
+      "葱翠山河": [],
+      "山色葱茏": [],
+      "嘉觞": [],
+      "觞歌": [],
+      "风月共觞": []
+    },
+    "direct_dictionary": {
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "青",
+            "pinyin": "jīng",
+            "definition": "參見「青青」(二)條。",
+            "entry_id": "05920",
+            "sheet": "1150929辭典匯出",
+            "row": 5928,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "青青",
+                "pinyin": "jīng jīng",
+                "definition": "草木茂盛的樣子。《詩經．衛風．淇奧》：「瞻彼淇奧，綠竹青青。」宋．范仲淹〈岳陽樓記〉：「岸芷汀蘭，郁郁青青。」也作「菁菁」。",
+                "entry_id": "059200001",
+                "sheet": "1150929辭典匯出",
+                "row": 94282
+              },
+              {
+                "title": "青青",
+                "pinyin": "qīng qīng",
+                "definition": "1.形容草木翠綠的顏色。《文選．古詩十九首．青青河邊草》：「青青河邊草，綿綿思遠道。」《三國演義》第九回：「千里草，何青青！十日卜，不得生！」\n2.形容鬢髮烏黑。宋．朱熹〈和秀野蘄簟之句〉詩：「史君兩鬢尚青青，學道仍拋後院笙。」",
+                "entry_id": "065760148",
+                "sheet": "1150929辭典匯出",
+                "row": 100674
+              }
+            ]
+          },
+          {
+            "title": "青",
+            "pinyin": "qīng",
+            "definition": "[名]\n1.顏色：(1)綠色。唐．劉禹錫〈陋室銘〉：「苔痕上階綠，草色入簾青。」(2)藍色。《荀子．勸學》：「青取之於藍，而青於藍。」(3)黑色。如：「玄青」。\n2.綠色的草木、山脈。如：「踏青」、「萬年青」、「青黃不接」。唐．柳宗元〈始得西山宴游記〉：「縈青繚白，外與天際。」\n3.竹皮。如：「汗青」。\n4.地名簡稱：(1)大陸地區青海省簡稱。如：「青藏鐵路」。(2)青島市簡稱。如：「青鹽鐵路」。\n5.二一四部首之一。\n[形]\n1.綠色的。如：「青山綠水」、「山青水秀」。\n2.藍色的。如：「青天白日」。\n3.黑色的。如：「青布」、「青衣」。唐．李白〈將進酒〉：「君不見高堂明鏡悲白髮，朝如青絲暮成雪。」\n4.年輕的。如：「青年」、「青春」。",
+            "entry_id": "06576",
+            "sheet": "1150929辭典匯出",
+            "row": 6585,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "葱": {
+        "definition": "scallions, leeks, green onions",
+        "mandarin": "cōng",
+        "related_characters": [
+          {
+            "character": "葱",
+            "relation": "kTraditionalVariant",
+            "definition": "scallions, leeks, green onions",
+            "mandarin": "cōng"
+          },
+          {
+            "character": "蔥",
+            "relation": "kTraditionalVariant",
+            "definition": "scallions, onions, leeks",
+            "mandarin": "cōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "葱",
+            "pinyin": null,
+            "definition": "「蔥」的異體字。",
+            "entry_id": "09915-1",
+            "sheet": "1150929辭典匯出",
+            "row": 140884,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "珩": {
+        "definition": "the top gem of a pendant",
+        "mandarin": "héng",
+        "official_dictionary": [
+          {
+            "title": "珩",
+            "pinyin": "héng",
+            "definition": "[名]\n古代一組玉佩上端的橫玉。清．朱駿聲《說文通訓定聲．壯部》：「珩者，佩首橫玉，所以繫組。」《國語．晉語二》：「黃金四十鎰，白玉之珩六雙。」三國吳．韋昭．注：「珩，佩上飾也。珩形似磬而小。」",
+            "entry_id": "04922",
+            "sheet": "1150929辭典匯出",
+            "row": 4929,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岁": {
+        "definition": "year; age; harvest",
+        "mandarin": "suì",
+        "related_characters": [
+          {
+            "character": "岁",
+            "relation": "kTraditionalVariant",
+            "definition": "year; age; harvest",
+            "mandarin": "suì"
+          },
+          {
+            "character": "歲",
+            "relation": "kTraditionalVariant",
+            "definition": "year; age; harvest",
+            "mandarin": "suì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "岁",
+            "pinyin": null,
+            "definition": "「歲」的異體字。",
+            "entry_id": "10171-1",
+            "sheet": "1150929辭典匯出",
+            "row": 143887,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "翠": {
+        "definition": "color green; kingfisher",
+        "mandarin": "cuì",
+        "official_dictionary": [
+          {
+            "title": "翠",
+            "pinyin": "cuì",
+            "definition": "[名]\n1.翠鳥的簡稱。《文選．左思．蜀都賦》：「孔翠群翔，犀象競馳。」\n2.綠色的玉。參見「翡翠」條。如：「珠翠」。《文選．曹植．洛神賦》：「戴金翠之首飾，綴明珠以耀驅。」\n3.古代婦女用來畫眉的深青色顏料。唐．溫庭筠〈更漏子．玉爐香〉詞：「眉翠薄，鬢雲殘，夜長衾枕寒。」\n4.比喻美女、妓女。如：「倚翠偎紅」、「翠繞珠圍」。\n5.姓。如漢代有翠鴛鴦。\n[形]\n1.用翠羽裝飾的。如：「翠衾」、「翠旌」。《文選．司馬相如．子虛賦》：「張翠帷，建羽蓋。」\n2.青綠色的。如：「翠柏」、「翠樓」、「草木蒼翠」。",
+            "entry_id": "09884",
+            "sheet": "1150929辭典匯出",
+            "row": 9898,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "翡翠",
+                "pinyin": "fěi cuì",
+                "definition": "1.動物名。一種鳥。鳥綱佛法僧目。與魚狗同類，稍大，全體羽毛帶赤褐色，惟臀部中央與上尾間有白紋一條，又雜以青色斑紋，羽毛可作裝飾品。\n2.硬玉中含鉻而呈翠綠色者。主要成分為鈉鋁矽酸鹽，屬單斜晶系，光澤如脂，半透明，可作珍貴飾品。也稱為「翠玉」。",
+                "entry_id": "015690001",
+                "sheet": "1150929辭典匯出",
+                "row": 34163
+              },
+              {
+                "title": "珠翠",
+                "pinyin": "zhū cuì",
+                "definition": "1.珍珠及翠玉。指首飾或飾物。《文選．傅毅．舞賦》：「珠翠的皪而炤燿兮，華袿飛髾而雜纖羅。」\n2.借指盛飾的女子。唐．王維〈寓言詩〉二首之一：「曲陌車騎盛，高堂珠翠繁。」\n3.珍貴的食物。《文選．曹植．七啟》：「山鵽斥鷃，珠翠之珍。」",
+                "entry_id": "079420048",
+                "sheet": "1150929辭典匯出",
+                "row": 116409
+              },
+              {
+                "title": "倚翠偎紅",
+                "pinyin": "yǐ cuì wēi hóng",
+                "definition": "文學作品中指親近狎昵女性。比喻狎妓。元．王實甫《西廂記．第三本．第三折》：「晴乾了尤雲殢雨心，悔過了竊玉偷香膽，刪抹了倚翠偎紅話。」元．季子安〈粉蝶兒．這些時套〉：「想當初倚翠偎紅，我風流，他俊雅。」也作「偎紅倚翠」。",
+                "entry_id": "105640047",
+                "sheet": "1150929辭典匯出",
+                "row": 148818
+              },
+              {
+                "title": "翠繞珠圍",
+                "pinyin": "cuì rào zhū wéi",
+                "definition": "1.繞以翡翠，圍以珠玉。形容婦女華麗的裝飾。元．睢玄明〈耍孩兒．錢塘自古繁華地套．九煞〉：「騁豪富誇榮貴，恣豔冶王孫士女，逞風流翠繞珠圍。」\n2.比喻花木繁茂。元．梁曾〈木蘭花慢．問花花不語〉詞：「千古幕天席地，一春翠繞珠圍。」",
+                "entry_id": "098440028",
+                "sheet": "1150929辭典匯出",
+                "row": 140395
+              },
+              {
+                "title": "翠樓",
+                "pinyin": "cuì lóu",
+                "definition": "華麗的樓閣。多指女子的閨房。南朝梁．江淹〈山中楚辭〉六首之二：「日華粲於芳閣，月金披於翠樓。」唐．王昌齡〈閨怨〉詩：「閨中少婦不曾愁，春日凝妝上翠樓。」",
+                "entry_id": "098840012",
+                "sheet": "1150929辭典匯出",
+                "row": 140595
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "河",
+            "pinyin": "hé",
+            "definition": "[名]\n1.水道的通稱。如：「河流」、「運河」。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n2.黃河的簡稱。如：「河套」。\n3.成河川狀的群體。如：「星河」、「銀河」。\n4.姓。如南北朝時有河禎。",
+            "entry_id": "04729",
+            "sheet": "1150929辭典匯出",
+            "row": 4736,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "色": {
+        "definition": "color, tint, hue, shade; form, body; beauty, desire for beauty; Kangxi radical 139",
+        "mandarin": "sè",
+        "official_dictionary": [
+          {
+            "title": "色",
+            "pinyin": "shè",
+            "definition": "[名]_x000D_\n俗稱性慾衝動。",
+            "entry_id": "08831",
+            "sheet": "1150929辭典匯出",
+            "row": 8845,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "shǎi",
+            "definition": "(一)[名]1.之語音。",
+            "entry_id": "08852",
+            "sheet": "1150929辭典匯出",
+            "row": 8866,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "sè",
+            "definition": "[名]\n1.物體表面的色彩。如：「五顏六色」、「五光十色」、「花色鮮豔」。\n2.面容、神情。如：「不動聲色」、「和顏悅色」、「面不改色」、「察言觀色」。\n3.女色，容貌美麗的婦女。《論語．季氏》：「少之時，血氣未定，戒之在色。」唐．白居易〈長恨歌〉：「漢皇重色思傾國，御宇多年求不得。」\n4.景象。如：「暮色深沉」、「景色宜人」。\n5.種類、式樣。如：「貨色齊全」、「形形色色」、「花色繁多」。\n6.品質、成分。多指金銀而言。如：「成色」、「足色」。\n7.性慾、情慾。如：「色情」、「桃色糾紛」。《孟子．告子上》：「告子曰：『食、色，性也。』」\n8.二一四部首之一。\n[動]\n1.生氣發怒，改變臉色。《戰國策．韓策二》：「怒於室者色於市，今公叔怨齊，無奈何也。」\n2.訪求。如：「物色」。",
+            "entry_id": "09995",
+            "sheet": "1150929辭典匯出",
+            "row": 10008,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "茏": {
+        "definition": "tall grass; water-weeds",
+        "mandarin": "lóng",
+        "related_characters": [
+          {
+            "character": "蘢",
+            "relation": "kTraditionalVariant",
+            "definition": "tall grass; water-weeds",
+            "mandarin": "lóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嘉": {
+        "definition": "excellent; joyful; auspicious",
+        "mandarin": "jiā",
+        "official_dictionary": [
+          {
+            "title": "嘉",
+            "pinyin": "jiā",
+            "definition": "[形]\n美好的。如：「嘉名」、「嘉賓」。《詩經．豳風．東山》：「其新孔嘉，其舊如之何？」唐．柳宗元〈永州韋使君新堂記〉：「茂樹惡木，嘉葩毒卉，亂雜而爭植。」\n[動]\n讚美、誇獎。如：「嘉獎」、「嘉許」、「其志可嘉」。《論語．子張》：「嘉善而矜不能。」唐．韓愈〈師說〉：「余嘉其能行古道，作師說以貽之。」\n[名]\n姓。如元代有嘉兆。",
+            "entry_id": "05485",
+            "sheet": "1150929辭典匯出",
+            "row": 5492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "觞": {
+        "definition": "wine vessel; propose toast; feast",
+        "mandarin": "shāng",
+        "related_characters": [
+          {
+            "character": "觴",
+            "relation": "kTraditionalVariant",
+            "definition": "wine vessel; propose toast; feast",
+            "mandarin": "shāng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "歌": {
+        "definition": "song, lyrics; sing, chant; praise",
+        "mandarin": "gē",
+        "official_dictionary": [
+          {
+            "title": "歌",
+            "pinyin": "gē",
+            "definition": "[動]_x000D_\n1.唱。按樂曲或節拍來發聲。如：「高歌一曲」、「引吭高歌」。《詩經．魏風．園有桃》：「心之憂矣，我歌且謠。」_x000D_\n2.頌揚。如：「歌功頌德」。《漢書．卷六二．司馬遷傳》：「夫天下稱周公，言其能論歌文武之德，宣周召之風。」唐．李白〈天長節度使鄂州刺史韋公德政碑〉：「噫大塊之氣，歌炎漢之風。」_x000D_\n[名]_x000D_\n1.合樂的曲調。如：「民歌」、「俚歌」、「漁歌」。《書經．舜典》：「詩言志，歌永言。」《後漢書．卷八三．逸民列傳．梁鴻》：「因東出關，過京師，作五噫之歌。」_x000D_\n2.一種詩歌體裁。屬於能唱的韻文。如〈長恨歌〉、〈子夜歌〉等。",
+            "entry_id": "03929",
+            "sheet": "1150929辭典匯出",
+            "row": 3935,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "共": {
+        "definition": "together with, all, total; to share",
+        "mandarin": "gòng",
+        "official_dictionary": [
+          {
+            "title": "共",
+            "pinyin": "gōng",
+            "definition": "[動]\n供給。通「供」。《左傳．僖公三十年》：「行李之往來，共其乏困，君亦無所害。」\n[形]\n恭敬。通「恭」。《左傳．文公十八年》：「父義，母慈，兄友，弟共，子孝。」\n[名]\n姓。如黃帝時有共鼓。",
+            "entry_id": "04375",
+            "sheet": "1150929辭典匯出",
+            "row": 4381,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "共",
+            "pinyin": "gǒng",
+            "definition": "[動]\n1.雙手抱拳。通「拱」。《荀子．賦》：「聖人共手，時幾將矣。」\n2.環繞、護衛。通「拱」。《論語．為政》：「為政以德，譬如北辰，居其所而眾星共之。」",
+            "entry_id": "04384",
+            "sheet": "1150929辭典匯出",
+            "row": 4390,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "共",
+            "pinyin": "gòng",
+            "definition": "[副]\n1.一起、一同。如：「共鳴」、「共存」、「和平共處」。《史記．卷八．高祖本紀》：「天下共立義帝，北面事之。」\n2.合、總計。如：「共計」、「籃子裡共有十顆蘋果。」\n[動]\n分享、合用。《論語．公冶長》：「願車馬衣輕裘與朋友共，敝之而無憾。」\n[形]\n相同的。如：「共識」、「共相」。\n[連]\n跟、和。唐．王勃〈滕王閣序〉：「落霞與孤鶩齊飛，秋水共長天一色。」元．關漢卿《救風塵》第一折：「姻緣簿全憑我共你，誰不待揀個稱意的？」",
+            "entry_id": "04393",
+            "sheet": "1150929辭典匯出",
+            "row": 4399,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "青葱",
+      "decision": "keep",
+      "reason": "“青葱”可自然表示草木青翠茂盛，古典用例亦有此义；组合简洁，有清新生长的意象，不等同于通用产品类别。"
+    },
+    {
+      "name": "春葱",
+      "decision": "uncertain",
+      "reason": "可解作春日的葱，也有“春葱”指纤细手指的旧用法；脱离语境含义不够明确，作为品牌的自然度和辨识度存疑。"
+    },
+    {
+      "name": "葱珩",
+      "decision": "uncertain",
+      "reason": "“葱珩”有《诗经》用例，指葱色的珩玉，字义有据；但词义较专门，现代语境中自然度和辨识度存疑，不能仅凭古语用例判定适合品牌。"
+    },
+    {
+      "name": "青葱岁月",
+      "decision": "reject",
+      "reason": "完整名称是熟见的青春岁月表达，语义完整而偏叙述性、抒情化，缺少凝练的品牌名感。"
+    },
+    {
+      "name": "葱翠山河",
+      "decision": "reject",
+      "reason": "以“葱翠”修饰“山河”虽可理解，但整体更像景物描写，组合不够凝练自然，品牌辨识度弱。"
+    },
+    {
+      "name": "山色葱茏",
+      "decision": "keep",
+      "reason": "“山色葱茏”是自然通顺的景物词组，有明确的山林繁盛意象；虽非固定词条，但简洁完整，可作为品牌名。与“葱翠山河”意象不同，不构成近似重复。"
+    },
+    {
+      "name": "嘉觞",
+      "decision": "keep",
+      "reason": "“嘉”表美好，“觞”指酒器或宴饮，且“嘉觞”有古典用例，语义可核；组合简洁雅致，有品牌辨识度。"
+    },
+    {
+      "name": "觞歌",
+      "decision": "uncertain",
+      "reason": "“觞歌”可理解为宴饮时歌唱，古典语境有用例；但作为现代品牌名语义依赖宴饮场景，脱离语境后的自然度与辨识度存疑。"
+    },
+    {
+      "name": "风月共觞",
+      "decision": "reject",
+      "reason": "整体像描绘风月相伴、举杯共饮的诗句或文案，句意完整且偏口号化，不够凝练为品牌名。"
+    }
+  ]
+}

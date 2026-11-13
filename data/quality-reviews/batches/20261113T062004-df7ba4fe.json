@@ -1,0 +1,797 @@
+{
+  "review_id": "20261113T062004-df7ba4fe",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "山间汫流",
+      "汫然",
+      "汫入林",
+      "汫见海",
+      "汫月同舟",
+      "裨民",
+      "官窑",
+      "官能"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "皎月同舟",
+        "山间漻月",
+        "皎月归舟",
+        "蒹月照舟",
+        "月入幽林",
+        "蓑舟载月",
+        "山间溱月",
+        "溟舟载月",
+        "汫映月",
+        "七月",
+        "一川明月",
+        "一川风月"
+      ],
+      "舟": [
+        "皎月同舟",
+        "皎月归舟",
+        "蒹月照舟",
+        "蓑舟载月",
+        "榈海同舟",
+        "羿同舟",
+        "溟舟载月",
+        "一舟",
+        "珀舟",
+        "暮舟",
+        "碳舟",
+        "茗舟"
+      ],
+      "间": [
+        "山间邨",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "山间铃",
+        "山间蛱",
+        "山间菊色"
+      ],
+      "山": [
+        "山间邨",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "蟠山见海",
+        "山间铃",
+        "山间蛱"
+      ],
+      "见": [
+        "矿中见海",
+        "寻川见海",
+        "蟠山见海",
+        "螺峰见海",
+        "邨山见海",
+        "峦开见海",
+        "栌间见山",
+        "凰见海",
+        "玤山见海",
+        "峰回见海",
+        "山海见翠",
+        "撞见海"
+      ],
+      "同": [
+        "皎月同舟",
+        "榈海同舟",
+        "羿同舟",
+        "一同",
+        "二曜同辉",
+        "酒同频",
+        "同欣",
+        "同翊",
+        "橼果同枝",
+        "同寅",
+        "鹡鸰同心",
+        "镯同心"
+      ],
+      "林": [
+        "蔓影入林",
+        "鹪入林",
+        "听螽入林",
+        "螺声入林",
+        "蝉入林",
+        "麈入林",
+        "麈入长林",
+        "蛩入林",
+        "鸥入林",
+        "澹光入林",
+        "羚声入林",
+        "瀑声入林"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "蘧然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然"
+      ],
+      "海": [
+        "矿中见海",
+        "人间山海",
+        "寻川见海",
+        "纸间山海",
+        "蟠山见海",
+        "螺峰见海",
+        "邨山见海",
+        "峦开见海",
+        "凰见海",
+        "玤山见海",
+        "峰回见海",
+        "山海见翠"
+      ],
+      "入": [
+        "蔓影入林",
+        "鹪入林",
+        "听螽入林",
+        "螺声入林",
+        "蝉入林",
+        "麈入林",
+        "麈入长林",
+        "蛩入林",
+        "鸥入林",
+        "澹光入林",
+        "羚声入林",
+        "瀑声入林"
+      ],
+      "流": [
+        "汫流",
+        "绀色流光",
+        "奔流",
+        "赫月流光",
+        "螳影流光",
+        "映珂流彩",
+        "流光浮影",
+        "鹪影流光",
+        "大江流",
+        "湘流",
+        "踏江流",
+        "扇影流光"
+      ],
+      "能": [
+        "贮能",
+        "能达",
+        "知能",
+        "潜能",
+        "能动",
+        "能量岛",
+        "飓能"
+      ],
+      "民": [
+        "民间山海",
+        "民间见山",
+        "民悦",
+        "民声集",
+        "民间拾艺",
+        "民本",
+        "民望",
+        "民间新声",
+        "民间拾光",
+        "民与山海",
+        "民间有风"
+      ],
+      "汫": [
+        "汫林",
+        "汫山行",
+        "汫流",
+        "汫映月",
+        "汫谷春",
+        "汫溪"
+      ]
+    },
+    "literature_phrase_examples": {
+      "山间汫流": [],
+      "汫然": [],
+      "汫入林": [],
+      "汫见海": [],
+      "汫月同舟": [],
+      "裨民": [],
+      "官窑": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1569490,
+          "context": "到家二月亦晚矣，未办翠色官窑缾。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1675269,
+          "context": "今日萧萧风物好，官窑窑瓶里插红蕉。"
+        }
+      ],
+      "官能": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 110288,
+          "context": "渔父置词相借问，郎官能赋许依投。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 133269,
+          "context": "君子贵从俗，小官能养贤。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "山间汫流": [],
+      "汫然": [],
+      "汫入林": [],
+      "汫见海": [],
+      "汫月同舟": [],
+      "裨民": [],
+      "官窑": [],
+      "官能": [
+        {
+          "title": "官能",
+          "pinyin": "guān néng",
+          "definition": "1.器官的感覺機能，如視覺、聽覺等是。如：「有些老年人有官能減退的現象。」\n2.官吏的才能。《韓詩外傳》卷六：「考其事業，較其官能，莫不理法則公道達而私門塞。」",
+          "entry_id": "043060068",
+          "sheet": "1150929辭典匯出",
+          "row": 72677,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "汫": {
+        "definition": "a pit, trap; the appearance of a small, meandering stream",
+        "mandarin": "jǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "流": {
+        "definition": "flow, circulate, drift; class",
+        "mandarin": "liú",
+        "official_dictionary": [
+          {
+            "title": "流",
+            "pinyin": "liú",
+            "definition": "[名]\n1.水的通稱。《史記．卷四．周本紀》：「武王渡河，中流，白魚躍入王舟中，武王俯取以祭。」唐．李白〈望廬山瀑布水〉詩二首之二：「飛流直下三千尺，疑是銀河落九天。」\n2.像水流的東西。如：「氣流」、「暖流」、「電流」、「車流」。\n3.派別。如：「九流十家」。《漢書．卷一〇〇．敘傳下》：「群言紛亂，諸子相騰。秦人是滅，漢修其缺，劉向司籍，九流以別。」\n4.品類、等級。如：「上流」、「名流」、「第一流」。\n[動]\n1.移動。如：「人口外流」。《易經．乾卦．九五》：「水流溼，火就燥。」唐．李白〈黃鶴樓送孟浩然之廣陵〉詩：「孤帆遠影碧山盡，唯見長江天際流。」\n2.留傳、散布。如：「流芳萬世」。《孟子．公孫丑上》：「德之流行，速於置郵而傳命。」\n3.趨向。如：「流於形式」。《文選．曹丕．典論論文》：「貧賤則懾於飢寒，富貴則流於逸樂。」\n4.放逐。《國語．周語上》：「王不聽，於是國莫敢出言，三年，乃流王於彘。」南朝宋．劉義慶《世說新語．任誕》：「宜流之海外，以正風教。」\n5.放縱。《國語．晉語一》：「肆侈不違，流志而行，無所不疚，是以及亡而不獲追鑒。」\n[形]\n1.往來不定的。如：「流雲」、「流民」。\n2.快速通過的、運轉不停的。如：「流星」、「流年」。宋．蔣捷〈一翦梅．一片春愁待酒澆〉詞：「流光容易把人拋，紅了櫻桃，綠了芭蕉。」\n3.意外的、不明來處的。如：「流矢」、「流彈」。\n4.沒有根據的。如：「流言」、「流譽」。",
+            "entry_id": "03553",
+            "sheet": "1150929辭典匯出",
+            "row": 3560,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "official_dictionary": [
+          {
+            "title": "然",
+            "pinyin": "rán",
+            "definition": "[動]\n1.燒。燃的本字。《孟子．公孫丑上》：「若火之始然，泉之始達。」\n2.贊同。《史記．卷八．高祖本紀》：「沛公然其計，從之。」《三國演義》第一回：「劉焉然其說，隨即出榜招募義兵。」\n[形]\n對、正確。如：「不以為然」。《論語．雍也》：「雍之言然。」\n[代]\n如此。《論語．憲問》：「子曰：『何必高宗，古之人皆然。』」唐．柳宗元〈桐葉封弟辯〉：「周公曰：『天子不可戲。』乃封小弱弟於唐。吾意不然。」\n[連]\n1.但是、可是。《左傳．僖公三十年》：「吾不能早用子，今急而求子，是寡人之過也。然鄭亡，子亦有不利焉。」\n2.雖。《董西廂》卷八：「師言然善，奈處凡浮，遭此屈辱，不能無恨。」\n3.然後。《隋書．卷七〇．李密傳》：「待士馬肥充，然可與人爭利。」\n[助]\n1.形容詞或副詞詞尾。如：「斐然」、「赫然」、「恍然」。《詩經．邶風．終風》：「終風且霾，惠然肯來。」\n2.用於句末，表肯定、斷定的語氣。《論語．憲問》：「羿善射，奡盪舟，俱不得其死然。」《禮記．檀弓下》：「穆公召縣子而問然。」\n3.表示比擬的語助詞。《呂氏春秋．孟秋紀．蕩兵》：「夫兵不可偃也，譬之若水火然，善用之則為福，不能用之則為禍。」\n[歎]\n唯，表應答。《論語．陽貨》：「子曰：『然！有是言也。』」《晏子春秋．內篇．雜下》：「公見其妻曰：『此子之內子邪？』晏子對曰：『然！是也。』」\n[名]\n姓。如漢代有然溫。",
+            "entry_id": "09207",
+            "sheet": "1150929辭典匯出",
+            "row": 9221,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "入": {
+        "definition": "enter, come in(to), join",
+        "mandarin": "rù",
+        "official_dictionary": [
+          {
+            "title": "入",
+            "pinyin": "rì",
+            "definition": "[動]\n發生性關係。《水滸傳》第五一回：「那婆婆那裡有好氣，便指著罵道：『你這……亂人入的賤母狗！做什麼倒罵我！』」",
+            "entry_id": "09176",
+            "sheet": "1150929辭典匯出",
+            "row": 9191,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "入",
+            "pinyin": "rǔ",
+            "definition": "[動]\n1.不留心的塞放。如：「一張鈔票不知入到那裡？」\n2.暗中把財物給人。如：「偷偷入給他一包東西。」\n3.陷於其中、投於其中。如：「一腳入到泥裡了。」",
+            "entry_id": "09293",
+            "sheet": "1150929辭典匯出",
+            "row": 9307,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "入",
+            "pinyin": "rù",
+            "definition": "[動]\n1.進，由外面到裡面。如：「入內」、「入場」、「入境」。\n2.收進。如：「收入」、「月入十萬」。《史記．卷七五．孟嘗君傳》：「歲餘不入，貨錢者多不能與其息，客奉將不給。」\n3.接納、繳納。《國語．吳語》：「昔楚靈王不君，其臣箴諫以不入。」《金瓶梅》第一七回：「到明日他蓋這房子，多是入官抄沒的數兒。」\n4.參加。如：「入會」、「入股」、「入學」、「入伍」。\n5.到、達。如：「入夜」、「入冬」。\n6.沉沒。如：「日出而作，日入而息。」\n7.合宜、適合。如：「入時」、「入情入理」。\n8.沉浸、深透。如：「入味」、「入骨」、「入迷」。\n[名]\n1.平上去入四聲之一。參見「入聲」條。\n2.二一四部首之一。",
+            "entry_id": "09298",
+            "sheet": "1150929辭典匯出",
+            "row": 9312,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "入場",
+                "pinyin": "rù cháng",
+                "definition": "進入會場、試場或戲院的通稱。宋．孟元老《東京夢華錄．卷七．駕登寶津樓諸軍呈百戲》：「唱訖，鼓笛舉，一紅巾者弄大旗，次獅豹入場，坐作進退，奮迅舉止畢。」",
+                "entry_id": "092980086",
+                "sheet": "1150929辭典匯出",
+                "row": 134781
+              },
+              {
+                "title": "入境",
+                "pinyin": "rù jìng",
+                "definition": "1.進入某個地區。唐．朱慶餘〈上江州李史君〉詩：「入境無餘事，唯聞父老歌。」《新唐書．卷一八一．列傳．李紳》：「大旱，蝗不入境。」\n2.進入國境。《入出國及移民法》對此有相關規定，例如：入出國者應經入出國及移民署查驗。",
+                "entry_id": "092980060",
+                "sheet": "1150929辭典匯出",
+                "row": 134756
+              },
+              {
+                "title": "收入",
+                "pinyin": "shōu rù",
+                "definition": "1.收下、進入。《說唐演義》第二回：「仁兄且收入，還有一場大富貴送與令兄，肯容納否？」\n2.收進來的錢款。《宋書．卷四二．列傳．王弘》：「雖資以廩贍，收入甚微。」\n3.映入。如：「這樣美的景色，一一收入眼底，叫人好不感動！」",
+                "entry_id": "088890107",
+                "sheet": "1150929辭典匯出",
+                "row": 128203
+              },
+              {
+                "title": "入會",
+                "pinyin": "rù huì",
+                "definition": "1.加入團體組織。如：「經過入會資格的審查後，他就成為正式會員了。」《文明小史》第四〇回：「現在各處開了天足會，有幾位外國人承頭，入會的人各處都有。」《紅樓夢》第二二回：「今日原聽見老太太這裡大設春燈雅謎，故也備了綵禮酒席，特來入會。」\n2.參加民間的一種儲蓄組織。如：「他正在籌組互助會，到處邀人入會。」",
+                "entry_id": "092980051",
+                "sheet": "1150929辭典匯出",
+                "row": 134747
+              },
+              {
+                "title": "入股",
+                "pinyin": "rù gǔ",
+                "definition": "取得事業單位的部分股權。如：「要員工產生向心力，請員工入股是很好的方式。」",
+                "entry_id": "092980036",
+                "sheet": "1150929辭典匯出",
+                "row": 134731
+              },
+              {
+                "title": "入學",
+                "pinyin": "rù xué",
+                "definition": "開始進入某個學校學習，成為該校的學生。如：「入學考試」。《初刻拍案驚奇》卷一一：「王生雖是業儒，尚不曾入學，只在家中誦習，也有時出外結友論文。」《紅樓夢》第四回：「珠雖大亡，幸存一子，取名賈蘭，今方五歲，已入學攻書。」",
+                "entry_id": "092980075",
+                "sheet": "1150929辭典匯出",
+                "row": 134772
+              },
+              {
+                "title": "入伍",
+                "pinyin": "rù wǔ",
+                "definition": "進入軍營，開始服兵役。如：「我弟弟前天應召入伍。」",
+                "entry_id": "092980116",
+                "sheet": "1150929辭典匯出",
+                "row": 134808
+              },
+              {
+                "title": "入夜",
+                "pinyin": "rù yè",
+                "definition": "到了晚上。唐．李端〈雲際中峰居喜見苗發〉詩：「經秋無客到，入夜有僧還。」",
+                "entry_id": "092980110",
+                "sheet": "1150929辭典匯出",
+                "row": 134803
+              },
+              {
+                "title": "入時",
+                "pinyin": "rù shí",
+                "definition": "合乎時尚，趕上潮流。唐．朱慶餘〈近試上張水部〉詩：「妝罷低聲問夫婿，畫眉深淺入時無？」",
+                "entry_id": "092980088",
+                "sheet": "1150929辭典匯出",
+                "row": 134783
+              },
+              {
+                "title": "入情入理",
+                "pinyin": "rù qíng rù lǐ",
+                "definition": "非常切合情理。《掃迷帚》第三回：「心齋側著耳朵，覺得此段議論，入情入理，不禁連連點首。」《獅子吼》第五回：「你沒有看見佛家戒殺牛馬的條文嗎？何嘗不說得入情入理，但是事實上那裡有人聽他的呢！」",
+                "entry_id": "092980068",
+                "sheet": "1150929辭典匯出",
+                "row": 134765
+              },
+              {
+                "title": "入味",
+                "pinyin": "rù wèi",
+                "definition": "1.有滋味。如：「醃漬肉類，時間久了自能入味。」\n2.有趣味。如：「臺下來賓聽得十分入味，不時報以掌聲和笑聲。」",
+                "entry_id": "092980121",
+                "sheet": "1150929辭典匯出",
+                "row": 134812
+              },
+              {
+                "title": "入骨",
+                "pinyin": "rù gǔ",
+                "definition": "深入骨髓。形容感受達到極點。即非常、極為之意。宋．釋惠洪〈西江月．入骨風流國色〉詞：「入骨風流國色，透塵種性真香。」《水滸傳》第五四回：「小人貪賭，流落在江湖上。因此權在此間打鐵度日。入骨好使鎗棒。」",
+                "entry_id": "092980037",
+                "sheet": "1150929辭典匯出",
+                "row": 134732
+              },
+              {
+                "title": "入迷",
+                "pinyin": "rù mí",
+                "definition": "專注於某種事物而心無旁騖。如：「他對科幻類的小說很入迷。」",
+                "entry_id": "092980012",
+                "sheet": "1150929辭典匯出",
+                "row": 134708
+              },
+              {
+                "title": "入聲",
+                "pinyin": "rù shēng",
+                "definition": "一種漢語調類。聲調短促而急。現國音中已無入聲，入聲字分別歸入陰平、陽平、上聲、去聲四聲之中。如：「屋」、「竹」、「谷」、「玉」等字。",
+                "entry_id": "092980100",
+                "sheet": "1150929辭典匯出",
+                "row": 134796
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "official_dictionary": [
+          {
+            "title": "海",
+            "pinyin": "hǎi",
+            "definition": "[名]_x000D_\n1.地球上鄰接大陸而小於洋的水域。如：「南海」、「黃海」、「地中海」。《漢書．卷二八．地理志上》：「又北播為九河，同為逆河，入于海。」唐．顏師古．注：「海，即渤海是也。」_x000D_\n2.海水。《漢書．卷四九．爰盎鼂錯傳．鼂錯》：「吳王即山鑄錢，煮海為鹽。」漢．曹操〈與王脩書〉：「但恐旁人淺見，以蠡測海，為蛇畫足。」_x000D_\n3.內陸的大湖或人工湖。如：「青海」、「洱海」。_x000D_\n4.積聚眾多的人或同類事物。如：「棉海」、「人海」、「火海」。宋．陸游〈驛舍見故屏風畫海棠有感〉詩：「燕宮最盛號花海，霸國雄豪有遺跡。」《水滸傳》第八二回：「雖無炮龍烹鳳，端的是肉山酒海。當日盡皆大醉，各扶歸幕次裡安歇。」_x000D_\n5.領域、淵藪。如：「苦海無邊」、「學海無涯」。《廣弘明集．卷二八下．南朝陳．文帝．無礙會捨身懺文》：「又以世相泡影、有為露電，愛河奔迅，欲海飛騰。」宋．陸游〈休日感興〉詩：「宦海風波實飽經，久將人世寄郵亭。」_x000D_\n6.荒遠之地。《周禮．夏官司馬．校人》：「凡將事于四海山川，則飾黃駒。」漢．鄭玄．注：「四海，猶四方也。」_x000D_\n7.較寬大的器皿。如：「茶海」。《水滸傳》第七五回：「再將九瓶都打開，傾在酒海內，卻是一般的淡薄村醪。」《紅樓夢》第四一回：「妙玉執壺，只向海內斟了約有一杯。」_x000D_\n8.姓。如明代有海瑞。_x000D_\n[形]_x000D_\n巨大的。如：「海派」。唐．陳子昂〈我府君有周居士文林郎陳公墓誌銘〉：「公河目海口，鷰頷虎頭，性英雄而志尚元默。」《孤本元明雜劇．騙英布．第三折》：「俺主公豁達大度，海量寬洪，納諫如流，有堯舜禹湯之德。」_x000D_\n[副]_x000D_\n1.任意地、漫無目標地。如：「海選」。《紅樓夢》第七回：「他比不得咱們家的孩子們，胡打海摔的慣了。」《海上花列傳》第九回：「阿珠、阿金大都跟著海罵。蓮生氣得怔怔的，半晌說不出話。」_x000D_\n2.狠狠地、嚴重地。如：「海扁」、「海削」、「他嚴重怠工，所以被老闆海刮了一頓。」",
+            "entry_id": "04776",
+            "sheet": "1150929辭典匯出",
+            "row": 4782,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "同",
+            "pinyin": "tóng",
+            "definition": "[動]\n1.會合、聚集。《說文解字．𠔼部》：「同，合會也。」如：「會同」。唐．錢起〈送鍾評事應宏詞下第東歸〉詩：「勸君稍盡離筵酒，千里佳期難再同。」\n2.統一、齊一。《書經．舜典》：「協時月正日，同律度量衡。」宋．陸游〈示兒〉詩：「死去元知萬事空，但悲不見九州同。」\n3.一齊分享、從事等。如：「同甘苦，共患難。」《孫子．謀攻》：「不知三軍之事，而同三軍之政者，則軍士惑矣。」\n4.贊成。如：「贊同」、「同意」。\n[形]\n一樣的。如：「同類」、「相同」、「同工同酬」。\n[副]\n一起、共同。如：「有福同享，有難同當。」唐．李白〈長干行〉二首之一：「同居長干里，兩小無嫌猜。」\n[連]\n和、與、跟。如：「有事同你商量。」、「我同他一起去看電影。」\n[名]\n1.和諧、和平。如：「促進世界大同」。《禮記．禮運》：「是故謀閉而不興，盜竊亂賊而不作，故外戶而不閉，是謂大同。」\n2.契約。如：「合同」。\n3.姓。如唐代有同谷。",
+            "entry_id": "02883",
+            "sheet": "1150929辭典匯出",
+            "row": 2889,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "同",
+            "pinyin": "tòng",
+            "definition": "[名]\n巷弄、小街道。如：「胡同」。",
+            "entry_id": "02912",
+            "sheet": "1150929辭典匯出",
+            "row": 2918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "official_dictionary": [
+          {
+            "title": "舟",
+            "pinyin": "zhōu",
+            "definition": "[名]\n1.船。如：「輕舟」、「一葉扁舟」、「逆水行舟」。《詩經．邶風．二子乘舟》：「二子乘舟，汎汎其景。」\n2.姓。如春秋時虢國有舟之僑。\n3.二一四部首之一。\n[動]\n乘船。《禮記．祭義》：「壹舉足而不敢忘父母，是故道而不徑，舟而不游。」",
+            "entry_id": "07735",
+            "sheet": "1150929辭典匯出",
+            "row": 7746,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "裨": {
+        "definition": "aid, benefit, help; supplement",
+        "mandarin": "bì",
+        "official_dictionary": [
+          {
+            "title": "裨",
+            "pinyin": "bì",
+            "definition": "[動]\n1.增加、幫助。如：「裨益」、「無裨於事」。《國語．晉語八》：「子若能以忠信贊君，而裨諸侯之闕。」\n2.修補。南朝梁．王琰《冥祥記．趙泰》：「乃遣泰為水官監作吏，將二千餘人，運沙裨岸。」",
+            "entry_id": "00373",
+            "sheet": "1150929辭典匯出",
+            "row": 375,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "裨",
+            "pinyin": "pí",
+            "definition": "[形]\n1.小的。《文選．張衡．西京賦》：「爾乃商賈百族，裨販夫婦。」\n2.副的、偏的。《三國志．卷五六．吳書．呂範傳》：「曹公至赤壁，（呂範）與周瑜等俱拒破之，拜裨將軍，領彭澤太守。」《晉書．卷五九．東海王越傳》：「自頃胡寇內逼，偏裨失利。」\n[名]\n姓。如春秋時鄭國有裨諶。",
+            "entry_id": "00839",
+            "sheet": "1150929辭典匯出",
+            "row": 841,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "民": {
+        "definition": "people, subjects, citizens",
+        "mandarin": "mín",
+        "official_dictionary": [
+          {
+            "title": "民",
+            "pinyin": "mín",
+            "definition": "[名]\n人、人類、百姓。如：「人民」、「平民」、「庶民」。《書經．五子之歌》：「民惟邦本，本固邦寧。」",
+            "entry_id": "01446",
+            "sheet": "1150929辭典匯出",
+            "row": 1452,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "官": {
+        "definition": "official, public servant",
+        "mandarin": "guān",
+        "official_dictionary": [
+          {
+            "title": "官",
+            "pinyin": "guān",
+            "definition": "[名]\n1.在政府機關擔任公職的人。《字彙．宀部》：「官，宦也。」如：「縣官」、「法官」、「貪官汙吏」。《書經．咸有一德》：「任官惟賢材，左右惟其人。」\n2.宦吏的居處。《論語．子張》：「不見宗廟之美，百官之富。」\n3.職位、官職。如：「辭官歸隱」。漢．王充《論衡．命祿》：「智慮深而無財，才能高而無官。」\n4.對人的尊稱。如：「看官」、「客官」。\n5.生物體中負責某種獨立機能的組織。如：「器官」、「感官」、「五官」。《孟子．告子上》：「耳目之官不思而蔽於物，物交物則引之而已矣。」\n6.姓。如宋代有官熙。\n[動]\n1.任命、授職。《禮記．學記》：「君子大德不官，大道不器。」漢．曹操〈論吏士行能令〉：「故明君不官無功之臣，不賞不戰之士。」\n2.任職。《禮記．雜記下》：「管仲死，桓公使為之服。官於大夫者之為之服也，自管仲始也。」\n[形]\n國家的、政府的。如：「官費」、「官倉」、「官方說法」。《文選．任昉．王文憲集序》：「春秋三十有八七年五月三日，薨於建康官舍。」",
+            "entry_id": "04306",
+            "sheet": "1150929辭典匯出",
+            "row": 4312,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窑": {
+        "definition": "kiln; coal mine pit",
+        "mandarin": "yáo",
+        "related_characters": [
+          {
+            "character": "窯",
+            "relation": "kTraditionalVariant",
+            "definition": "kiln; coal mine pit",
+            "mandarin": "yáo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "能": {
+        "definition": "to be able; can, permitted to; ability",
+        "mandarin": "néng",
+        "official_dictionary": [
+          {
+            "title": "能",
+            "pinyin": "néng",
+            "definition": "[名]_x000D_\n1.傳說中的動物。如熊，足似鹿。《說文解字．能部》：「能，熊屬，足似鹿。」唐．韓愈〈憶昨行和張十一〉詩：「近者三姦悉破碎，羽窟無底幽黃能。」_x000D_\n2.能力、才幹。如：「逞能」、「智能」。《論語．子罕》：「夫子聖者與？何其多能也。」《文選．沈約．宋書謝靈運傳論》：「並摽能擅美，獨映當時。」_x000D_\n3.人才、有才能的人。《禮記．禮運》：「選賢與能，講信脩睦。」《文選．司馬遷．報任少卿書》：「招賢進能，顯巖穴之士。」_x000D_\n4.用途、功用。唐．柳宗元〈愚溪詩序〉：「可以染也，名之以其能，故謂之染溪。」_x000D_\n5.一種日本古典戲劇。由猿樂發展的歌舞劇，以動作、表情和音樂表現。如：「夢幻能」、「修羅能」。_x000D_\n6.物質運動的能量。因運動形式不同而有電能、熱能、機械能、化學能、原子能等。能量間可互相轉換，以功率為計算單位。也稱為「能量」。_x000D_\n[形]_x000D_\n有才幹的。如：「能人」、「能者多勞」。《孟子．公孫丑上》：「賢者在位，能者在職。」_x000D_\n[動]_x000D_\n1.可以做、有才幹。《論語．先進》：「非曰能之，願學焉。」《荀子．勸學》：「假舟楫者，非能水也，而絕江河。」_x000D_\n2.投契、睦。《詩經．大雅．民勞》：「柔遠能邇，以定我王。」《史記．卷五三．蕭相國世家》：「何素不與曹參相能。」_x000D_\n3.及、到。《戰國策．趙策一》：「韓與秦接境壤界，其地不能千里。」_x000D_\n[副]_x000D_\n1.可以、能夠。如：「你現在能不能去？」《論語．述而》：「聞義不能徙，不善不能改，是吾憂也。」唐．杜甫〈贈衛八處士〉詩：「少壯能幾時？鬢髮各已蒼。」_x000D_\n2.只、僅僅。唐．杜甫〈月〉詩：「只益丹心苦，能添白髮明。」宋．蘇軾〈舟中夜起〉詩：「此生忽忽憂患裡，清境過眼能須臾。」_x000D_\n3.寧、寧可。宋．蘇軾〈六和寺沖師閘山溪為水軒〉詩：「出山定被江潮涴，能為山僧更少留。」元．喬吉《金錢記》第一折：「能為君子儒，莫為小人儒。」",
+            "entry_id": "02996",
+            "sheet": "1150929辭典匯出",
+            "row": 3003,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "山间汫流",
+      "decision": "keep",
+      "reason": "可理解为山间蜿蜒的小溪，汫有小水流貌之义，意象具体且组合通顺；与已保留的“山间漻月”意象不同，不构成近似重复。"
+    },
+    {
+      "name": "汫然",
+      "decision": "keep",
+      "reason": "可按“汫”表小水流貌、“然”作状态词尾理解，形成清简的水态意象；虽非固定词，构词自然，且未与已保留的“悄然”等形成同一意象的近义替换。"
+    },
+    {
+      "name": "汫入林",
+      "decision": "keep",
+      "reason": "可理解为细流进入林间，动作与自然意象明确，名称简洁；与已保留的“鹪入林”等虽共享结构，但意象和关系不同，不视为重复。"
+    },
+    {
+      "name": "汫见海",
+      "decision": "keep",
+      "reason": "可理解为细流终将见海，形成由小至大的自然画面，语义连贯、有辨识度；与“寻川见海”等共享“见海”结构，但前置意象与关系并非近义替换，不视为重复。"
+    },
+    {
+      "name": "汫月同舟",
+      "decision": "reject",
+      "reason": "将水流、月与同舟拼合，语义关系不清；与已保留的“皎月同舟”等共享月下同舟的核心意象，仅以汫替换前置修饰，属于近似变体。"
+    },
+    {
+      "name": "裨民",
+      "decision": "uncertain",
+      "reason": "裨可读bì，意为增益、帮助，组合可解作有益于民，但整体偏文言且像公益宗旨表达，作为品牌名的自然度和凝练感存疑。"
+    },
+    {
+      "name": "官窑",
+      "decision": "reject",
+      "reason": "完整名称直接指向官办窑场或官窑器物这一既有类别，属于通用类别名称，品牌辨识度不足。"
+    },
+    {
+      "name": "官能",
+      "decision": "reject",
+      "reason": "完整词已有明确常用义，指器官的感觉机能，也可指官吏才能；作为公司品牌名容易被理解为功能类别术语，缺少适宜的品牌指向。"
+    }
+  ]
+}

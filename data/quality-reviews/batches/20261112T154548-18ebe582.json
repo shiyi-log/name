@@ -1,0 +1,787 @@
+{
+  "review_id": "20261112T154548-18ebe582",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "人和",
+      "人文",
+      "人望",
+      "人间春",
+      "人之友",
+      "人间有光",
+      "人和物丰",
+      "人间有序",
+      "人之初",
+      "人和物序",
+      "人文有光",
+      "人和四时",
+      "人间新章",
+      "人文自在",
+      "达人",
+      "人间山海",
+      "人文山水",
+      "人间知味"
+    ],
+    "related_kept_candidates": {
+      "时": [
+        "四时清鲜",
+        "四时常鲜",
+        "四时花厅",
+        "儿时",
+        "巳时",
+        "戌时",
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "唐时雨",
+        "需时"
+      ],
+      "水": [
+        "山水清斋",
+        "山水茗心",
+        "菉水照山",
+        "黛山映水",
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水"
+      ],
+      "之": [
+        "茗之初",
+        "菉之初",
+        "一念之间",
+        "焊之道",
+        "芙蓉之外",
+        "十亩之间",
+        "碳之桥",
+        "碳之本",
+        "义之源",
+        "义之光",
+        "涡之源",
+        "涡之境"
+      ],
+      "间": [
+        "梾间有光",
+        "山间邨",
+        "瓷间有度",
+        "蔓间光",
+        "松间有茗",
+        "山间麇影",
+        "菉间光",
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "松间䴓"
+      ],
+      "山": [
+        "山海貘",
+        "山间邨",
+        "山海酵香",
+        "山水清斋",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "铘见山海",
+        "邂逅山海",
+        "山水茗心",
+        "山间麇影",
+        "缱绻山海"
+      ],
+      "春": [
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春",
+        "春酿"
+      ],
+      "自": [
+        "自成一格",
+        "自豪",
+        "自忞",
+        "自牧",
+        "涂自明"
+      ],
+      "味": [
+        "一味",
+        "杯中味"
+      ],
+      "丰": [
+        "丰年",
+        "丰穰",
+        "丰垄",
+        "臻丰",
+        "穑丰",
+        "资丰"
+      ],
+      "友": [
+        "诤友",
+        "票友",
+        "戚友",
+        "咖友",
+        "聚友"
+      ],
+      "光": [
+        "梾间有光",
+        "蔓间光",
+        "涧有光",
+        "珐有光",
+        "菉间光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光"
+      ],
+      "和": [
+        "太和新章",
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和",
+        "珺和",
+        "中庸致和",
+        "均和",
+        "淑和",
+        "和斋"
+      ],
+      "海": [
+        "山海貘",
+        "山海酵香",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "铘见山海",
+        "邂逅山海",
+        "缱绻山海",
+        "山海藏刃",
+        "横山见海",
+        "资山海",
+        "海鳐"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文",
+        "文椠",
+        "奇文",
+        "文牍",
+        "珂文",
+        "文奎",
+        "文奎堂"
+      ],
+      "望": [
+        "硕望",
+        "阎望舒",
+        "芹田望月",
+        "望海斋",
+        "凉秋望远",
+        "灵猊望月",
+        "望海埼",
+        "望埼",
+        "长弓望月",
+        "奇峰望远",
+        "赫望",
+        "望山厅"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远",
+        "菉知春"
+      ],
+      "物": [
+        "庶物",
+        "风物成瓷",
+        "酷物",
+        "广陵风物",
+        "万物鲜",
+        "风物常鲜"
+      ],
+      "新": [
+        "仓颉新章",
+        "珐艺新章",
+        "太和新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "新荚"
+      ],
+      "章": [
+        "仓颉新章",
+        "珐艺新章",
+        "太和新章",
+        "酷乐章",
+        "奎章"
+      ],
+      "初": [
+        "茗之初",
+        "菉之初",
+        "霪雨初霁",
+        "初酵",
+        "万象初酿",
+        "芹野初晴",
+        "晙初",
+        "初凉",
+        "厥初",
+        "唐雨初晴",
+        "涧雨初晴",
+        "涂如初"
+      ],
+      "有": [
+        "梾间有光",
+        "瓷间有度",
+        "松间有茗",
+        "涧有光",
+        "珐有光",
+        "国有嘉木",
+        "蔓有度",
+        "鲜明有度",
+        "溪山有蹊",
+        "春山有蹊",
+        "菉有节"
+      ],
+      "序": [
+        "晙序",
+        "瓷序",
+        "暮光序",
+        "碳序",
+        "唐序",
+        "茗序",
+        "赫序",
+        "王序"
+      ],
+      "达": [
+        "臻达",
+        "酷达",
+        "旁达",
+        "亿达",
+        "义达",
+        "掞达",
+        "广达",
+        "赟达",
+        "珺达",
+        "资达"
+      ],
+      "人": [
+        "个中人"
+      ],
+      "四": [
+        "四时清鲜",
+        "四时常鲜",
+        "四时花厅",
+        "四季"
+      ],
+      "在": [
+        "涂在野"
+      ]
+    },
+    "literature_phrase_examples": {
+      "人和": [
+        {
+          "book": "孟子",
+          "line": 169,
+          "context": "孟子曰：「天时不如地利，地利不如人和。"
+        },
+        {
+          "book": "孟子",
+          "line": 169,
+          "context": "委而去之，是地利不如人和也。"
+        }
+      ],
+      "人文": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 40919,
+          "context": "雅尚骚人文，怀沙何迫促。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 46358,
+          "context": "君徒视人文，吾固和天倪。"
+        }
+      ],
+      "人望": [
+        {
+          "book": "论语",
+          "line": 554,
+          "context": "君子正其衣冠，尊其瞻视，俨然人望而畏之，斯不亦威而不猛乎？"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2387,
+          "context": "征人望乡思，战马闻鼙惊。"
+        }
+      ],
+      "人间春": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 171938,
+          "context": "人间春荡荡，帐暖香扬扬。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 216588,
+          "context": "人间春日正欢乐，日暮东风何处去。"
+        }
+      ],
+      "人之友": [
+        {
+          "book": "吕氏春秋",
+          "line": 1357,
+          "context": "荆有善相人者所言无遗策(失也/遗犹)闻于国(之也/国人闻)庄王见而问焉对曰臣非能相人也能观人之友也观布衣也其友皆孝悌纯谨畏令如此者其家必日益(也/益富)身必日荣矣所谓吉人也观事君者也其友皆诚信有行好善如此者事君日益官职日进此所"
+        },
+        {
+          "book": "吕氏春秋",
+          "line": 1359,
+          "context": "人也能观人之友也庄王善之于是疾收士日夜不懈遂霸天下故贤主之时见文艺之人也非特具之而已也所以就大务也(也/就成)夫事无大小固相与通田猎驰骋弋射走狗"
+        }
+      ],
+      "人间有光": [],
+      "人和物丰": [],
+      "人间有序": [],
+      "人之初": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 240572,
+          "context": "吾闻人之初，好恶尚无朕。"
+        },
+        {
+          "book": "三字经_传统版",
+          "line": 7,
+          "context": "人之初，性本善，性相近，习相远。"
+        }
+      ],
+      "人和物序": [],
+      "人文有光": [],
+      "人和四时": [],
+      "人间新章": [],
+      "人文自在": [],
+      "达人": [
+        {
+          "book": "论语",
+          "line": 165,
+          "context": "夫仁者，己欲立而立人，己欲达而达人。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 13689,
+          "context": "吾观自古贤达人，功成不退皆殒身。"
+        }
+      ],
+      "人间山海": [],
+      "人文山水": [],
+      "人间知味": []
+    },
+    "dictionary_phrase_entries": {
+      "人和": [
+        {
+          "title": "人和",
+          "pinyin": "rén hé",
+          "definition": "人與人之間團結，感情融洽。《孟子．公孫丑下》：「孟子曰：『天時不如地利，地利不如人和。』」《三國演義》第三八回：「將軍欲成霸業，北讓曹操占天時，南讓孫權占地利，將軍可占人和。」",
+          "entry_id": "092140168",
+          "sheet": "1150929辭典匯出",
+          "row": 133887,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "人文": [
+        {
+          "title": "人文",
+          "pinyin": "rén wén",
+          "definition": "1.人類的禮樂教化。《易經．賁卦．彖曰》：「觀乎天文以察時變，觀乎人文以化成天下。」唐．孔穎達．正義：「人文，則詩書禮樂之謂。」\n2.人事。《後漢書．卷七三．劉虞等傳．論曰》：「舍諸天運，徵乎人文，則古之休烈，何遠之有！」\n3.泛指人類社會的各種文化現象。",
+          "entry_id": "092140471",
+          "sheet": "1150929辭典匯出",
+          "row": 134153,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "人望": [
+        {
+          "title": "人望",
+          "pinyin": "rén wàng",
+          "definition": "眾人所屬望。《後漢書．卷一二．王昌傳》：「郎以百姓思漢，既多言翟義不死，故詐稱之，以從人望。」《三國演義》第四回：「李儒勸卓擢用名流，以收人望，因薦蔡邕之才。」",
+          "entry_id": "092140482",
+          "sheet": "1150929辭典匯出",
+          "row": 134164,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "人间春": [],
+      "人之友": [],
+      "人间有光": [],
+      "人和物丰": [],
+      "人间有序": [],
+      "人之初": [],
+      "人和物序": [],
+      "人文有光": [],
+      "人和四时": [],
+      "人间新章": [],
+      "人文自在": [],
+      "达人": [],
+      "人间山海": [],
+      "人文山水": [],
+      "人间知味": []
+    },
+    "direct_dictionary": {
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "友": {
+        "definition": "friend, companion; fraternity",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "物": {
+        "definition": "thing, substance, creature",
+        "mandarin": "wù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "丰": {
+        "definition": "abundant, lush, bountiful, plenty",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "丰",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "豐",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty; hexagram ䷶",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "序": {
+        "definition": "series, serial order, sequence",
+        "mandarin": "xù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "初": {
+        "definition": "beginning, initial, primary",
+        "mandarin": "chū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "四": {
+        "definition": "four",
+        "mandarin": "sì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "在": {
+        "definition": "be at, in, on; consist in, rest",
+        "mandarin": "zài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "达": {
+        "definition": "arrive at, reach; intelligent; smooth, slippery",
+        "mandarin": "dá",
+        "related_characters": [
+          {
+            "character": "達",
+            "relation": "kTraditionalVariant",
+            "definition": "arrive at, reach; intelligent",
+            "mandarin": "dá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "味": {
+        "definition": "taste, smell, odor; delicacy",
+        "mandarin": "wèi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "人和",
+      "decision": "reject",
+      "reason": "含义清楚且有典故，但直接是“天时地利人和”中的通用理念词，品牌辨识度不足。"
+    },
+    {
+      "name": "人文",
+      "decision": "reject",
+      "reason": "完整名称是泛指人类社会文化现象的通用概念词，类别感强，品牌辨识度不足。"
+    },
+    {
+      "name": "人望",
+      "decision": "uncertain",
+      "reason": "词义为众人所仰望、期望，语义成立，但整体更像抽象声望概念，作为品牌名的凝练度与自然度存疑。"
+    },
+    {
+      "name": "人间春",
+      "decision": "keep",
+      "reason": "“人间”与“春”组合自然，形成春意来到人间的鲜明意象，简洁且有辨识度。"
+    },
+    {
+      "name": "人之友",
+      "decision": "uncertain",
+      "reason": "可理解为人的朋友或人类的友伴，但“人之友”关系指向不够明确，略显文言拼合，整体自然度存疑。"
+    },
+    {
+      "name": "人间有光",
+      "decision": "reject",
+      "reason": "完整表达是“人间有光”的句子式祝愿或价值宣言，口号感明显，不符合凝练品牌名要求。"
+    },
+    {
+      "name": "人和物丰",
+      "decision": "uncertain",
+      "reason": "可理解为人与物产丰足，但“人和物丰”的并列关系及表达不够自然，像压缩的祝颂语。"
+    },
+    {
+      "name": "人间有序",
+      "decision": "reject",
+      "reason": "完整名称表达“人间有序”的判断或愿景，句子感与理念口号感明显。"
+    },
+    {
+      "name": "人之初",
+      "decision": "reject",
+      "reason": "是《三字经》开篇的固定短语，语义依赖熟知的整句“人之初，性本善”，辨识度主要来自既有经典文本，不宜作为独立品牌名。"
+    },
+    {
+      "name": "人和物序",
+      "decision": "reject",
+      "reason": "“物序”与“人和”硬性并列，关系不清、语法生硬，有机械堆字感。"
+    },
+    {
+      "name": "人文有光",
+      "decision": "reject",
+      "reason": "完整表达是“人文有光”的判断式愿景，口号感强，且人文与有光的搭配偏宣传语。"
+    },
+    {
+      "name": "人和四时",
+      "decision": "uncertain",
+      "reason": "可理解为人与四时相和，但表达关系较含混，读来像未完成的主题短语，品牌凝练度不足。"
+    },
+    {
+      "name": "人间新章",
+      "decision": "keep",
+      "reason": "“新章”可自然指新的篇章，与“人间”结合形成开启新篇的简洁意象，语义明确且有品牌感。"
+    },
+    {
+      "name": "人文自在",
+      "decision": "uncertain",
+      "reason": "可理解为人文气息自在，但“人文”与“自在”的修饰关系不够确定，整体略像概念拼接。"
+    },
+    {
+      "name": "达人",
+      "decision": "reject",
+      "reason": "是常见通用称谓，指有专长或擅长某领域的人，也常作推广口号式用语，缺乏足够品牌辨识度。"
+    },
+    {
+      "name": "人间山海",
+      "decision": "keep",
+      "reason": "“人间”与“山海”构成自然、开阔的整体意象，简洁有画面感；与暂留候选“山海”类名称并非仅换近义配字。"
+    },
+    {
+      "name": "人文山水",
+      "decision": "uncertain",
+      "reason": "可理解为人文与山水并举，但更像通用主题类别或描述性短语，作为独立品牌名的辨识度有限。"
+    },
+    {
+      "name": "人间知味",
+      "decision": "keep",
+      "reason": "可自然理解为在人间体察滋味、品味生活，语义凝练且有感官意象；虽含“知味”，整体并非单纯通用产品类别词。"
+    }
+  ]
+}

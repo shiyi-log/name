@@ -1,0 +1,808 @@
+{
+  "review_id": "20261113T052225-2bc16758",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "磏石",
+      "松萝含翠",
+      "萝音",
+      "萝舟",
+      "萝书",
+      "萝舟行",
+      "萝山行",
+      "萝香满庭",
+      "锅中煸香"
+    ],
+    "related_kept_candidates": {
+      "香": [
+        "香樟满庭",
+        "蒿香满径",
+        "庭前香樟",
+        "丁香",
+        "香薷",
+        "藠香",
+        "藿香",
+        "馕香",
+        "枣花香",
+        "榴香",
+        "山海酵香",
+        "酸香"
+      ],
+      "舟": [
+        "璟行舟",
+        "舟行",
+        "冬行舟",
+        "汭水行舟",
+        "顾行舟",
+        "谭行舟",
+        "卢行舟",
+        "行舟过湫",
+        "俞行舟",
+        "郗行舟",
+        "洱舟行",
+        "冯行舟"
+      ],
+      "山": [
+        "麇行远山",
+        "酒伴山行",
+        "依山行",
+        "獭行山海",
+        "猄行山野",
+        "岐山行",
+        "仙山行",
+        "琰与山行",
+        "冬山行",
+        "玤山行",
+        "鹇行山野",
+        "山川含翠"
+      ],
+      "庭": [
+        "香樟满庭",
+        "庭前香樟",
+        "霜满庭",
+        "霞满庭",
+        "满庭飔",
+        "温光满庭",
+        "一庭清欢",
+        "榴庭",
+        "庭墅",
+        "庭前芹绿",
+        "萱庭",
+        "苔庭"
+      ],
+      "行": [
+        "麇行远山",
+        "酒伴山行",
+        "依山行",
+        "璟行舟",
+        "舟行",
+        "獭行山海",
+        "猄行山野",
+        "岐山行",
+        "仙山行",
+        "琰与山行",
+        "冬山行",
+        "冬行舟"
+      ],
+      "萝": [
+        "青萝",
+        "菠萝",
+        "女萝",
+        "莳萝"
+      ],
+      "松": [
+        "松翠",
+        "松间翠",
+        "蟠松",
+        "松间鼯",
+        "松间䴓",
+        "坝畔松",
+        "松峙",
+        "松风峒",
+        "松峤",
+        "峤听松",
+        "峥松",
+        "松斋"
+      ],
+      "音": [
+        "籁音",
+        "铴音",
+        "软音",
+        "镛音",
+        "珂音",
+        "五音",
+        "瑶音",
+        "璆音",
+        "锵音",
+        "铿音",
+        "乡音",
+        "宽音"
+      ],
+      "中": [
+        "壸中天",
+        "中庸",
+        "中庸致和",
+        "盅中月",
+        "云中酿",
+        "酸中趣",
+        "碟中月",
+        "云中帜",
+        "山中桫椤",
+        "箩中春",
+        "箩中月",
+        "杯中月"
+      ],
+      "石": [
+        "砭石堂",
+        "金石錾刻",
+        "玉石錾花",
+        "峋石听泉",
+        "峋石",
+        "石斋",
+        "苔石",
+        "叠石",
+        "叠石成景",
+        "石猊",
+        "枕石",
+        "磁石"
+      ],
+      "含": [
+        "山川含翠",
+        "含翠",
+        "翠含光",
+        "含萼",
+        "荚含春",
+        "硔石含光",
+        "蕴含",
+        "蓓含朝露",
+        "含章",
+        "山色含霏",
+        "含睇",
+        "山含霭"
+      ],
+      "书": [
+        "云间书斋",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "女书",
+        "书椠",
+        "佳书",
+        "书香递远",
+        "瑾书",
+        "书林",
+        "书衡",
+        "见书山"
+      ],
+      "翠": [
+        "松翠",
+        "山川含翠",
+        "含翠",
+        "松间翠",
+        "翠含光",
+        "翠崟",
+        "奇峰叠翠",
+        "翠嶂",
+        "鹒栖翠竹",
+        "春山鎏翠",
+        "远山荟翠",
+        "翠帷"
+      ],
+      "满": [
+        "香樟满庭",
+        "蒿香满径",
+        "霜满庭",
+        "霞满庭",
+        "满庭飔",
+        "温光满庭",
+        "橼满枝头",
+        "月满东篱",
+        "春满垧野",
+        "月色满户",
+        "春满隰",
+        "松风满壑"
+      ]
+    },
+    "literature_phrase_examples": {
+      "磏石": [],
+      "松萝含翠": [],
+      "萝音": [],
+      "萝舟": [],
+      "萝书": [],
+      "萝舟行": [],
+      "萝山行": [],
+      "萝香满庭": [],
+      "锅中煸香": []
+    },
+    "dictionary_phrase_entries": {
+      "磏石": [],
+      "松萝含翠": [],
+      "萝音": [],
+      "萝舟": [],
+      "萝书": [],
+      "萝舟行": [],
+      "萝山行": [],
+      "萝香满庭": [],
+      "锅中煸香": []
+    },
+    "direct_dictionary": {
+      "磏": {
+        "mandarin": "lián",
+        "supplemental_dictionary": {
+          "explanation": "磏lián 1.赤色的砺石。亦泛指有棱角的石块。 2.引申为激励;磨练。",
+          "source_url": "https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/word.json",
+          "source_sha256": "8ae3453eacc5b0f3fdfba47eac8bb686cd73914d278e8b851ae6ef81082f80e7",
+          "authority": "third_party_compilation_requires_cross_check"
+        },
+        "official_dictionary": [
+          {
+            "title": "磏",
+            "pinyin": "lián",
+            "definition": "[名]\n紅色的磨刀石。《說文解字．石部》：「磏，厲石也。赤色。」",
+            "entry_id": "03595",
+            "sheet": "1150929辭典匯出",
+            "row": 3601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "石": {
+        "definition": "stone, rock, mineral; Kangxi radical 112",
+        "mandarin": "shí",
+        "official_dictionary": [
+          {
+            "title": "石",
+            "pinyin": "dàn",
+            "definition": "[名]_x000D_\n量詞：(1)計算容量的單位。公制一石等於十斗。也稱為「公石」。(2)古代計算重量的單位。漢．鼂錯〈論貴粟疏〉：「數石之重，中人弗勝，不為奸邪所利，一日弗得而飢寒至，是故明君貴五穀而賤金玉。」《戰國策．齊策四》：「大王據千乘之地，而建千石鍾，萬石虡。」",
+            "entry_id": "02020",
+            "sheet": "1150929辭典匯出",
+            "row": 2025,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "石",
+            "pinyin": "shí",
+            "definition": "[名]\n1.由礦物集結而成的堅硬塊狀物，是構成地殼的物質。如：「岩石」、「礦石」、「花岡石」。\n2.碑、碣。《呂氏春秋．慎行論．求人》：「故功績銘乎金石，著於盤盂。」《史記．卷六．秦始皇本紀》：「乃遂上泰山，立石。」\n3.藥石。《左傳．襄公二十三年》：「季孫之愛我，疾疢也；孟孫之惡我，藥石也，美疢不如惡石。」唐．孔穎達．正義：「治病藥分用石。《本草》云：『鍾乳、礬、磁石之類多矣。』」\n4.姓。如宋代有石延年。\n5.二一四部首之一。\n6.中國古代樂器「八音」分類法之一，通常以製作材質來分，此處泛指石類樂器，如磬之屬一類的敲擊樂器。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」",
+            "entry_id": "08708",
+            "sheet": "1150929辭典匯出",
+            "row": 8722,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "萝": {
+        "definition": "type of creeping plant; turnip",
+        "mandarin": "luó",
+        "related_characters": [
+          {
+            "character": "萝",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          },
+          {
+            "character": "蘿",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "萝",
+            "pinyin": null,
+            "definition": "「蘿」的異體字。",
+            "entry_id": "03797-1",
+            "sheet": "1150929辭典匯出",
+            "row": 65743,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "含": {
+        "definition": "hold in mouth; cherish; contain",
+        "mandarin": "hán",
+        "official_dictionary": [
+          {
+            "title": "含",
+            "pinyin": "hán",
+            "definition": "[動]\n1.東西銜在嘴裡，不吐出也不吞下。如：「含著藥片。」漢．劉熙《釋名．釋飲食》：「含，合也，合口亭之也。」《史記．卷十三．三代世表》：「有燕銜卵墮之，契母得，故含之，誤吞之，即生契。」\n2.裡面藏著，存在著。如：「含水分」、「含養分」、「含苞待放」。《文選．宋玉．登徒子好色賦》：「此郊之姝，華色含光，體美容冶，不待飾裝。」\n3.包容、容納。如：「包含」。《易經．坤卦．文言曰》：「後得主而有常，含萬物而化光。」唐．杜甫〈絕句四首〉之三：「窗含西嶺千秋雪，門泊東吳萬里船。」\n4.懷著。如：「含怒」、「含恨」、「含羞帶怯」、「含情脈脈」。唐．沈佺期〈古意呈補闕喬知之〉詩：「誰謂含愁獨不見，更教明月照流黃。」\n5.忍受、忍耐。如：「茹苦含辛」。宋．胡銓〈戊午上高宗封事〉：「含垢忍恥，與天下而臣之，甘心焉。」",
+            "entry_id": "04851",
+            "sheet": "1150929辭典匯出",
+            "row": 4857,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "含",
+            "pinyin": "hàn",
+            "definition": "[名]\n古代喪禮中，置入亡者口中的物品，種類依其身分階級而有別。通「琀」。《公羊傳．文公五年》：「含者何？口實也。」漢．何休．解詁：「緣生以事死，不忍虛其口。天子以珠，諸侯以玉，大夫以碧，士以貝，春秋之制也。」《戰國策．趙策三》：「鄒、魯之臣，生不得事養，死則不得飯含。」《廣韻．去聲．勘韻》：「琀，送死口中玉。亦作含。」\n[動]\n古代喪葬禮俗，以珠玉或米貝放入亡者口中，稱為「含」。《左傳．襄公十九年》：「二月甲寅，（荀偃）卒，而視，不可含。」《禮記．檀弓下》：「邾婁考公之喪，徐君使容居來弔，含。」",
+            "entry_id": "04880",
+            "sheet": "1150929辭典匯出",
+            "row": 4886,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "翠": {
+        "definition": "color green; kingfisher",
+        "mandarin": "cuì",
+        "official_dictionary": [
+          {
+            "title": "翠",
+            "pinyin": "cuì",
+            "definition": "[名]\n1.翠鳥的簡稱。《文選．左思．蜀都賦》：「孔翠群翔，犀象競馳。」\n2.綠色的玉。參見「翡翠」條。如：「珠翠」。《文選．曹植．洛神賦》：「戴金翠之首飾，綴明珠以耀驅。」\n3.古代婦女用來畫眉的深青色顏料。唐．溫庭筠〈更漏子．玉爐香〉詞：「眉翠薄，鬢雲殘，夜長衾枕寒。」\n4.比喻美女、妓女。如：「倚翠偎紅」、「翠繞珠圍」。\n5.姓。如漢代有翠鴛鴦。\n[形]\n1.用翠羽裝飾的。如：「翠衾」、「翠旌」。《文選．司馬相如．子虛賦》：「張翠帷，建羽蓋。」\n2.青綠色的。如：「翠柏」、「翠樓」、「草木蒼翠」。",
+            "entry_id": "09884",
+            "sheet": "1150929辭典匯出",
+            "row": 9898,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "翡翠",
+                "pinyin": "fěi cuì",
+                "definition": "1.動物名。一種鳥。鳥綱佛法僧目。與魚狗同類，稍大，全體羽毛帶赤褐色，惟臀部中央與上尾間有白紋一條，又雜以青色斑紋，羽毛可作裝飾品。\n2.硬玉中含鉻而呈翠綠色者。主要成分為鈉鋁矽酸鹽，屬單斜晶系，光澤如脂，半透明，可作珍貴飾品。也稱為「翠玉」。",
+                "entry_id": "015690001",
+                "sheet": "1150929辭典匯出",
+                "row": 34163
+              },
+              {
+                "title": "珠翠",
+                "pinyin": "zhū cuì",
+                "definition": "1.珍珠及翠玉。指首飾或飾物。《文選．傅毅．舞賦》：「珠翠的皪而炤燿兮，華袿飛髾而雜纖羅。」\n2.借指盛飾的女子。唐．王維〈寓言詩〉二首之一：「曲陌車騎盛，高堂珠翠繁。」\n3.珍貴的食物。《文選．曹植．七啟》：「山鵽斥鷃，珠翠之珍。」",
+                "entry_id": "079420048",
+                "sheet": "1150929辭典匯出",
+                "row": 116409
+              },
+              {
+                "title": "倚翠偎紅",
+                "pinyin": "yǐ cuì wēi hóng",
+                "definition": "文學作品中指親近狎昵女性。比喻狎妓。元．王實甫《西廂記．第三本．第三折》：「晴乾了尤雲殢雨心，悔過了竊玉偷香膽，刪抹了倚翠偎紅話。」元．季子安〈粉蝶兒．這些時套〉：「想當初倚翠偎紅，我風流，他俊雅。」也作「偎紅倚翠」。",
+                "entry_id": "105640047",
+                "sheet": "1150929辭典匯出",
+                "row": 148818
+              },
+              {
+                "title": "翠繞珠圍",
+                "pinyin": "cuì rào zhū wéi",
+                "definition": "1.繞以翡翠，圍以珠玉。形容婦女華麗的裝飾。元．睢玄明〈耍孩兒．錢塘自古繁華地套．九煞〉：「騁豪富誇榮貴，恣豔冶王孫士女，逞風流翠繞珠圍。」\n2.比喻花木繁茂。元．梁曾〈木蘭花慢．問花花不語〉詞：「千古幕天席地，一春翠繞珠圍。」",
+                "entry_id": "098440028",
+                "sheet": "1150929辭典匯出",
+                "row": 140395
+              },
+              {
+                "title": "翠樓",
+                "pinyin": "cuì lóu",
+                "definition": "華麗的樓閣。多指女子的閨房。南朝梁．江淹〈山中楚辭〉六首之二：「日華粲於芳閣，月金披於翠樓。」唐．王昌齡〈閨怨〉詩：「閨中少婦不曾愁，春日凝妝上翠樓。」",
+                "entry_id": "098840012",
+                "sheet": "1150929辭典匯出",
+                "row": 140595
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "音": {
+        "definition": "sound, tone, pitch, pronunciation; Kangxi radical 180",
+        "mandarin": "yīn",
+        "official_dictionary": [
+          {
+            "title": "音",
+            "pinyin": "yīn",
+            "definition": "[名]\n1.聲響、聲音。如：「噪音」、「雜音」、「錄音」、「餘音繞梁」。\n2.腔調。如：「口音」、「鄉音」。宋．蘇軾〈祭石幼安文〉：「竄流江湖，隻影自憐，聞人蜀音，回首粲然。」\n3.字的音讀。如：「字音」、「注音」、「音切」。《晉書．卷九一．儒林傳．徐邈傳》：「撰正五經音訓，學者宗之。」\n4.書信、消息。如：「回音」、「靜候佳音」、「音信全無」。\n5.敬稱他人的言語。如：「玉音」、「德音」。\n6.姓。如清代有音泰。\n7.二一四部首之一。",
+            "entry_id": "11065",
+            "sheet": "1150929辭典匯出",
+            "row": 11080,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "音",
+            "pinyin": "yìn",
+            "definition": "[名]\n樹蔭。通「蔭」。《左傳．文公十七年》：「鹿死不擇音，小國之事大國也，德則其人也，不德則其鹿也。」",
+            "entry_id": "11115",
+            "sheet": "1150929辭典匯出",
+            "row": 11130,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "official_dictionary": [
+          {
+            "title": "舟",
+            "pinyin": "zhōu",
+            "definition": "[名]\n1.船。如：「輕舟」、「一葉扁舟」、「逆水行舟」。《詩經．邶風．二子乘舟》：「二子乘舟，汎汎其景。」\n2.姓。如春秋時虢國有舟之僑。\n3.二一四部首之一。\n[動]\n乘船。《禮記．祭義》：「壹舉足而不敢忘父母，是故道而不徑，舟而不游。」",
+            "entry_id": "07735",
+            "sheet": "1150929辭典匯出",
+            "row": 7746,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "official_dictionary": [
+          {
+            "title": "行",
+            "pinyin": "háng",
+            "definition": "[名]\n1.行列。直列為行，橫排為列。《左傳．成公二年》：「屬當戎行，無所逃隱。」唐．杜甫〈贈衛八處士〉詩：「昔別君未婚，兒女忽成行。」\n2.兄弟姐妹長幼的次序。如：「排行老三。」\n3.量詞。計算成排東西的單位。如：「一行樹」、「一目十行」。唐．杜甫〈絕句〉四首之三：「兩個黃鸝鳴翠柳，一行白鷺上青天。」\n4.營業交易的機構。如：「銀行」、「洋行」、「分行」、「商行」、「行庫」。\n5.職業。如：「各行各業」、「行行出狀元」、「三句話不離本行」。\n6.表處所，用於人稱之後。宋．周邦彥〈風流子．新綠小池塘〉詞：「最苦夢魂，今宵不到伊行。」《水滸傳》第一四回：「你這等賊心賊肝，我行須使不得！」",
+            "entry_id": "04903",
+            "sheet": "1150929辭典匯出",
+            "row": 4909,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "hàng",
+            "definition": "參見「行行」、「樹行子」等條。",
+            "entry_id": "04913",
+            "sheet": "1150929辭典匯出",
+            "row": 4919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "行行",
+                "pinyin": "háng háng",
+                "definition": "1.各個行業。如：「三百六十行，行行出狀元。」\n2.每一行。如：「隊伍行進時，動作必須劃一，行行都要對齊。」",
+                "entry_id": "0490300193",
+                "sheet": "1150929辭典匯出",
+                "row": 81202
+              },
+              {
+                "title": "行行",
+                "pinyin": "hàng hàng",
+                "definition": "剛強的樣子。《論語．先進》：「閔子侍側誾誾如也，子路行行如也。」",
+                "entry_id": "049130001",
+                "sheet": "1150929辭典匯出",
+                "row": 81289
+              },
+              {
+                "title": "行行",
+                "pinyin": "xíng xíng",
+                "definition": "1.慢步行走。通常形容走走停停，徘徊不進的樣子。《文選．古詩十九首．行行重行行》：「行行重行行，與君生別離。」\n2.施行、辦理。如：「行行好事」。",
+                "entry_id": "072400177",
+                "sheet": "1150929辭典匯出",
+                "row": 109350
+              },
+              {
+                "title": "樹行子",
+                "pinyin": "shù hàng zi",
+                "definition": "栽植整齊的樹林。",
+                "entry_id": "091020033",
+                "sheet": "1150929辭典匯出",
+                "row": 131842
+              }
+            ]
+          },
+          {
+            "title": "行",
+            "pinyin": "xíng",
+            "definition": "[動]_x000D_\n1.走、走路。如：「直行」、「寸步難行」、「錦衣夜行」。《論語．述而》：「三人行，必有我師焉？」唐．王維〈終南別業〉詩：「行到水窮處，坐看雲起時。」_x000D_\n2.往。《詩經．秦風．無衣》：「脩我甲兵，與子偕行。」唐．杜甫〈奉濟驛重送嚴公四韻〉：「幾時杯重把，昨夜月同行。」_x000D_\n3.移動、流動。如：「運行」。《易經．乾卦》：「《象》曰：『天行健，君子以自強不息。』」唐．杜甫〈夢李白〉詩二首之二：「浮雲終日行，遊子久不至。」_x000D_\n4.流通。如：「流行」、「風行一時」、「通行全國」、「發行報刊」。《左傳．襄公二十五年》：「言之無文，行而不遠。」_x000D_\n5.做、從事。如：「行醫」、「行善」。《左傳．隱公元年》：「多行不義必自斃。」_x000D_\n6.實施、實行。《易經．繫辭上》：「推而行之謂之通。」唐．孔穎達．正義：「因推此以可變而施行之，謂之通也。」《老子》第四一章：「上士聞道，勤而行之。」_x000D_\n7.同意、允許。多用於徵詢意見。如：「今天中午我想吃麵，行不行？」《小五義》第二一回：「蔣爺說：『咱們到底說下個時候。』柳爺說：『限你三晝夜的工夫，行不行？』」_x000D_\n8.經歷、經過。《管子．問》：「城粟軍糧，其可以行幾何年也？」唐．房玄齡．注：「行，由經也。」_x000D_\n9.出嫁。《詩經．邶風．泉水》：「女子有行，遠父母兄弟。」_x000D_\n[名]_x000D_\n1.道路。《詩經．小雅．小弁》：「行有死人，尚或墐之。」_x000D_\n2.路程。《老子》第六四章：「九層之臺，起於累土；千里之行，始於足下。」_x000D_\n3.行為。《荀子．不苟》：「庸言必信之，庸行必慎之。」《禮記．樂記》：「禮以道其志，樂以和其聲，政以一其行，刑以防其姦。」_x000D_\n4.行書的簡稱。如：「行草」、「行楷」。_x000D_\n5.一種樂府和古詩的體裁。如：〈短歌行〉、〈琵琶行〉、〈飲馬長城窟行〉。_x000D_\n6.量詞。計算酌酒奉客的單位。漢．揚雄《法言．修身》：「賓主百拜，而酒三行。」宋．司馬光〈訓儉示康〉：「客至未嘗不置酒，或三行五行，多不過七行。」_x000D_\n7.姓。如漢代有行宏。_x000D_\n8.二一四部首之一。_x000D_\n[形]_x000D_\n1.能幹、幹練。如：「你真行。」「他在這方面行得很。」_x000D_\n2.可以、恰當。如：「他這篇文章寫得還行。」「做事只要盡心盡力就行了。」《朱子語類．卷三三．論語一五．雍也篇四》：「如讀書，要理會得透徹；做事，亦要做得行。」_x000D_\n[副]_x000D_\n不久、將要。如：「行將就木」。唐．元稹〈遣悲懷〉詩三首之二：「衣裳已施行看盡，針線猶存未忍開。」_x000D_\n[連]_x000D_\n且、又。三國魏．曹丕〈與吳質書〉：「既痛逝者，行自念也。」",
+            "entry_id": "07240",
+            "sheet": "1150929辭典匯出",
+            "row": 7249,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "xìng",
+            "definition": "[名]\n行為舉止。如：「品行」、「操行」、「獸行」、「德行」。《論語．公冶長》：「聽其言而觀其行。」",
+            "entry_id": "07249",
+            "sheet": "1150929辭典匯出",
+            "row": 7258,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "香": {
+        "definition": "fragrant, sweet-smelling; incense; Kangxi radical 186",
+        "mandarin": "xiāng",
+        "official_dictionary": [
+          {
+            "title": "香",
+            "pinyin": "xiāng",
+            "definition": "[名]\n1.芬芳美好的氣味。如：「花香」、「書香」、「粉香」。\n2.用香料製成棒、線、球、餅的東西，可供拜祭鬼神或驅除蚊蟲。如：「線香」、「檀香」、「燒香」、「蚊香」、「焚香操琴」。\n3.比喻女子。如：「憐香惜玉」、「香消玉殞」。\n4.姓。如戰國時齊國有香居。\n5.二一四部首之一。\n[動]\n親吻。如：「香一香臉」、「香一下好嗎？」\n[形]\n1.氣味美好。如：「香茗」、「香泉」、「這飯很香。」唐．杜甫〈古柏行〉：「香葉曾經宿鸞鳳。」\n2.與女性有關的。如：「香閨」、「香魂」、「香汗淋漓」。元．王德信〈十二月過堯民歌．自別後遙山隱隱〉曲：「今春，香肌瘦幾分，摟帶寬三寸。」\n[副]\n酣暢。如：「吃得很香」、「睡得很香」。",
+            "entry_id": "07185",
+            "sheet": "1150929辭典匯出",
+            "row": 7194,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "满": {
+        "definition": "fill; full, satisfied",
+        "mandarin": "mǎn",
+        "related_characters": [
+          {
+            "character": "滿",
+            "relation": "kTraditionalVariant",
+            "definition": "fill; full, satisfied",
+            "mandarin": "mǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庭": {
+        "definition": "courtyard; spacious hall or yard",
+        "mandarin": "tíng",
+        "official_dictionary": [
+          {
+            "title": "庭",
+            "pinyin": "tíng",
+            "definition": "[名]\n1.廳堂、正房。《說文解字．广部》：「庭，宮中也。」清．段玉裁．注：「宮者，室也。室之中曰庭。」《論語．季氏》：「嘗獨立，鯉趨而過庭。」\n2.院子、大廳臺階前的空地。如：「庭院」。《文選．古詩十九首．庭中有奇樹》：「庭中有奇樹，綠葉發華滋。」\n3.泛稱寬闊的地方。如：「大庭廣眾」。\n4.審理訴訟案件的場所。如：「法庭」、「開庭」、「民事庭」。\n5.額頭。如：「天庭飽滿」、「庭闕不張」。",
+            "entry_id": "02737",
+            "sheet": "1150929辭典匯出",
+            "row": 2742,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "锅": {
+        "definition": "cooking-pot, saucepan",
+        "mandarin": "guō",
+        "related_characters": [
+          {
+            "character": "鍋",
+            "relation": "kTraditionalVariant",
+            "definition": "cooking-pot, saucepan",
+            "mandarin": "guō"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "official_dictionary": [
+          {
+            "title": "中",
+            "pinyin": "zhōng",
+            "definition": "[名]\n1.距離四方或兩端相等的部位。如：「居中」、「中央」、「日正當中」。\n2.內、裡面。如：「水中」、「夢中」、「心中」。\n3.泛指某一時期以內。如：「一年之中」、「晉太元中」。\n4.中國的簡稱。如：「古今中外」。\n5.姓。如漢代有中京。\n[形]\n1.居間介紹、連絡的。如：「中人」。\n2.居於高低、大小、好壞之間的。如：「中級」、「中型」、「中等」。\n3.半。如：「中夜」、「中途」。\n[副]\n1.正好。如：「適中」。\n2.表示動作正在進行。如：「事情正在交涉中。」",
+            "entry_id": "08130",
+            "sheet": "1150929辭典匯出",
+            "row": 8144,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "中",
+            "pinyin": "zhòng",
+            "definition": "[動]\n1.達到要點。《論語．子路》：「刑罰不中，則民無所錯手足。」《漢書．卷一〇．成帝紀》：「朕涉道日寡，舉錯不中。」\n2.合、正對上。如：「中規中矩」。《左傳．定公元年》：「未嘗不中吾志也。」《戰國策．西周策》：「去柳葉者百步而射之，百發百中。」\n3.遭受、感染。如：「中風」、「中毒」。\n4.得。如：「中獎」、「中籤」、「中選」。\n5.考取。如：「范進中舉」、「考中大學」。《儒林外史》第二回：「這王大老爺，就是前科新中的。」",
+            "entry_id": "08150",
+            "sheet": "1150929辭典匯出",
+            "row": 8164,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "煸": {
+        "definition": "to stir-fry before broiling or stewing",
+        "mandarin": "biān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "磏石",
+      "decision": "keep",
+      "reason": "“磏”读lián，指赤色磨刀石，也可泛指有棱角的石块；与“石”组合成简洁、可确认的石质意象，虽有语义重叠，但整体自然凝练，未借用其他字义。"
+    },
+    {
+      "name": "松萝含翠",
+      "decision": "keep",
+      "reason": "“松萝”可理解为松与藤萝构成的自然景象，“含翠”形容蕴含青绿色泽，组合为凝练的山林意象，不是完整判断句或口号。"
+    },
+    {
+      "name": "萝音",
+      "decision": "keep",
+      "reason": "“萝”指藤萝类植物，“音”指声音，组合可自然理解为草木间的声响，简短且有辨识度，语义不牵强。"
+    },
+    {
+      "name": "萝舟",
+      "decision": "keep",
+      "reason": "“萝”与“舟”组合成带有藤萝与舟的简洁自然意象，虽非固定词语，但可直接理解，作为品牌名凝练。"
+    },
+    {
+      "name": "萝书",
+      "decision": "uncertain",
+      "reason": "两字分别可释为藤萝与书籍，但组合关系不明确，难以形成自然、清楚的整体意象；未见足够依据确认其为稳定词语或有辨识度的品牌组合。"
+    },
+    {
+      "name": "萝舟行",
+      "decision": "reject",
+      "reason": "整体近似“萝舟”加动作后缀“行”，语义关系含混，像临时拼接的诗意短语；与暂留候选“洱舟行”同属舟行组合，仅更换前字，近似变体不宜重复保留。"
+    },
+    {
+      "name": "萝山行",
+      "decision": "reject",
+      "reason": "“萝山行”语序与关系不自然，既可被读作“萝山”这一缺乏依据的专名，也可读作藤萝山间行走，完整组合含混；且与暂留候选“岐山行”“冬山行”等仅替换山前修饰字，近似变体不宜保留。"
+    },
+    {
+      "name": "萝香满庭",
+      "decision": "reject",
+      "reason": "组合可理解为藤萝花香充满庭院，但整体是常见景物描写式句子，篇幅较长、画面陈述感强，凝练品牌辨识度不足；也与暂留候选“香樟满庭”构成近似的“香/植物意象＋满庭”组合。"
+    },
+    {
+      "name": "锅中煸香",
+      "decision": "reject",
+      "reason": "“锅中煸香”直接描述烹饪过程或气味，完整名称等同于通用烹调场景描述，功能类别感明显，缺乏品牌名所需的凝练辨识度。"
+    }
+  ]
+}

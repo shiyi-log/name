@@ -1,0 +1,991 @@
+{
+  "review_id": "20261113T044924-462bf487",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "漴涛",
+      "漴石声",
+      "漴川",
+      "刀叉",
+      "栟木堂",
+      "栟风",
+      "栟庭",
+      "锅铲",
+      "铲平"
+    ],
+    "related_kept_candidates": {
+      "木": [
+        "榅木堂",
+        "梌木堂",
+        "柚木堂",
+        "棪木堂",
+        "柞木堂",
+        "桠木堂",
+        "栲木堂",
+        "一木",
+        "柃木",
+        "梾木",
+        "乔木",
+        "梣木"
+      ],
+      "风": [
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风"
+      ],
+      "川": [
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川"
+      ],
+      "庭": [
+        "一庭清欢",
+        "榴庭",
+        "庭墅",
+        "庭前芹绿",
+        "萱庭",
+        "苔庭",
+        "一庭秋凉",
+        "庭陔",
+        "庭燎",
+        "茱庭",
+        "广庭",
+        "豪庭"
+      ],
+      "堂": [
+        "榅木堂",
+        "梌木堂",
+        "柚木堂",
+        "棪木堂",
+        "柞木堂",
+        "桠木堂",
+        "栲木堂",
+        "獬豸堂",
+        "嘉禧堂",
+        "明璨堂",
+        "清懿堂",
+        "瑾玤堂"
+      ],
+      "声": [
+        "石上湲声",
+        "石碓声",
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声",
+        "豪声",
+        "篥声"
+      ],
+      "平": [
+        "昇平",
+        "砥平",
+        "平安帖",
+        "星落平塅",
+        "平塅",
+        "平沙无垠",
+        "鹬落平沙",
+        "日暖平塬",
+        "慎平",
+        "霞映平川",
+        "斠平"
+      ],
+      "石": [
+        "石上湲声",
+        "石碓声",
+        "砭石堂",
+        "金石錾刻",
+        "玉石錾花",
+        "峋石听泉",
+        "峋石",
+        "石斋",
+        "苔石",
+        "叠石",
+        "叠石成景",
+        "石猊"
+      ],
+      "刀": [
+        "刀匠",
+        "刀工",
+        "金错刀",
+        "刀月",
+        "刀雨",
+        "刀溪",
+        "刀韵",
+        "刀鸣",
+        "刀影",
+        "刀纹",
+        "玉刀记",
+        "镘刀"
+      ],
+      "涛": [
+        "枕松涛",
+        "赑涛",
+        "松涛绕埼",
+        "浴松涛",
+        "鸥听松涛",
+        "荥涛",
+        "瀑涛",
+        "惊涛",
+        "湟水听涛",
+        "听涛叟",
+        "貘听松涛",
+        "霞映松涛"
+      ],
+      "叉": [
+        "叉路",
+        "分叉"
+      ]
+    },
+    "literature_phrase_examples": {
+      "漴涛": [],
+      "漴石声": [],
+      "漴川": [],
+      "刀叉": [
+        {
+          "book": "西游记",
+          "line": 1401,
+          "context": "只见那四壁上挂几张强弓硬弩，插几壶箭﹔过梁上搭两块血腥的虎皮﹔墙根头插著许多枪刀叉棒﹔正中间设两张坐器。"
+        }
+      ],
+      "栟木堂": [],
+      "栟风": [],
+      "栟庭": [],
+      "锅铲": [
+        {
+          "book": "红楼梦",
+          "line": 2435,
+          "context": "”黛玉忙道：“铁锅一口，锅铲一个。"
+        }
+      ],
+      "铲平": []
+    },
+    "dictionary_phrase_entries": {
+      "漴涛": [],
+      "漴石声": [],
+      "漴川": [],
+      "刀叉": [
+        {
+          "title": "刀叉",
+          "pinyin": "dāo chā",
+          "definition": "刀子與叉子，為西餐中的用具。多為不鏽鋼製成。《二十年目睹之怪現狀》第五一回：「督辦道：『吃大菜是用刀叉吃的，不用筷子。』說罷，又取自己跟前的刀叉，遞給他看。」",
+          "entry_id": "019540055",
+          "sheet": "1150929辭典匯出",
+          "row": 42197,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "栟木堂": [],
+      "栟风": [],
+      "栟庭": [],
+      "锅铲": [],
+      "铲平": []
+    },
+    "direct_dictionary": {
+      "漴": {
+        "mandarin": "chóng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "涛": {
+        "definition": "large waves",
+        "mandarin": "tāo",
+        "related_characters": [
+          {
+            "character": "涛",
+            "relation": "kTraditionalVariant",
+            "definition": "large waves",
+            "mandarin": "tāo"
+          },
+          {
+            "character": "濤",
+            "relation": "kTraditionalVariant",
+            "definition": "large waves",
+            "mandarin": "tāo"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "涛",
+            "pinyin": null,
+            "definition": "「濤」的異體字。",
+            "entry_id": "02495-1",
+            "sheet": "1150929辭典匯出",
+            "row": 49552,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "石": {
+        "definition": "stone, rock, mineral; Kangxi radical 112",
+        "mandarin": "shí",
+        "official_dictionary": [
+          {
+            "title": "石",
+            "pinyin": "dàn",
+            "definition": "[名]_x000D_\n量詞：(1)計算容量的單位。公制一石等於十斗。也稱為「公石」。(2)古代計算重量的單位。漢．鼂錯〈論貴粟疏〉：「數石之重，中人弗勝，不為奸邪所利，一日弗得而飢寒至，是故明君貴五穀而賤金玉。」《戰國策．齊策四》：「大王據千乘之地，而建千石鍾，萬石虡。」",
+            "entry_id": "02020",
+            "sheet": "1150929辭典匯出",
+            "row": 2025,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "石",
+            "pinyin": "shí",
+            "definition": "[名]\n1.由礦物集結而成的堅硬塊狀物，是構成地殼的物質。如：「岩石」、「礦石」、「花岡石」。\n2.碑、碣。《呂氏春秋．慎行論．求人》：「故功績銘乎金石，著於盤盂。」《史記．卷六．秦始皇本紀》：「乃遂上泰山，立石。」\n3.藥石。《左傳．襄公二十三年》：「季孫之愛我，疾疢也；孟孫之惡我，藥石也，美疢不如惡石。」唐．孔穎達．正義：「治病藥分用石。《本草》云：『鍾乳、礬、磁石之類多矣。』」\n4.姓。如宋代有石延年。\n5.二一四部首之一。\n6.中國古代樂器「八音」分類法之一，通常以製作材質來分，此處泛指石類樂器，如磬之屬一類的敲擊樂器。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」",
+            "entry_id": "08708",
+            "sheet": "1150929辭典匯出",
+            "row": 8722,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "声",
+            "pinyin": null,
+            "definition": "「聲」的異體字。",
+            "entry_id": "09031-1",
+            "sheet": "1150929辭典匯出",
+            "row": 130793,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "刀": {
+        "definition": "knife; old coin; measure",
+        "mandarin": "dāo",
+        "official_dictionary": [
+          {
+            "title": "刀",
+            "pinyin": "dāo",
+            "definition": "[名]\n1.武器名。一種用來砍殺，頗具殺傷力的兵器。如：「大刀」、「寶刀」、「軍刀」、「武士刀」。\n2.切、削、剪、刻、割、斬的工具。多以鋼鐵製成。如：「菜刀」、「鍘刀」、「剪刀」、「鐮刀」、「雕刻刀」。\n3.古代的錢幣。外形如刀。《史記．卷三〇．平準書》：「農、工、商交易之路通，而龜貝金錢刀布之幣興焉。」\n4.量詞：(1)計算切割次數的單位。如：「老屠戶在那塊豬肉上劃了幾刀。」(2)計算紙張的單位。一百張為一刀。如：「一刀稿紙」。\n5.姓。如明代有刀幹孟。\n6.二一四部首之一。",
+            "entry_id": "01954",
+            "sheet": "1150929辭典匯出",
+            "row": 1959,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "叉": {
+        "definition": "crotch; fork, prong",
+        "mandarin": "chā",
+        "official_dictionary": [
+          {
+            "title": "叉",
+            "pinyin": "chā",
+            "definition": "[動]\n1.交錯。如：「雙手交叉」。\n2.刺取、刺殺。如：「叉魚」。《後漢書．卷七九．儒林傳．楊政傳》：「旄頭又以戟叉政，傷胸，政猶不退。」\n3.用手掐住人的脖子將人推開。如：「叉出門去」。元．王實甫《破窯記》第三折：「罵了我一場，叉出我門來了。」\n[名]\n1.一端有分歧的器物。如：「刀叉」、「魚叉」、「音叉」。\n2.稱用以表示錯誤或作廢的「ㄨ」形符號。如：「錯誤的請打一個叉。」\n[形]\n分歧的。如：「叉路」。",
+            "entry_id": "08225",
+            "sheet": "1150929辭典匯出",
+            "row": 8239,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "叉",
+            "pinyin": "chá",
+            "definition": "[動]\n阻塞、堵塞。如：「一塊骨頭叉在喉嚨裡。」《兒女英雄傳》第七回：「待要出門，那大師傅就叉著門，不叫我們走。」",
+            "entry_id": "08234",
+            "sheet": "1150929辭典匯出",
+            "row": 8248,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "叉",
+            "pinyin": "chǎ",
+            "definition": "[動]\n分開、張開。如：「叉著雙腿」。《水滸傳》第二一回：「這婆子乘著酒興，叉開五指，去那唐牛兒臉上連打兩掌。」",
+            "entry_id": "08245",
+            "sheet": "1150929辭典匯出",
+            "row": 8259,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "栟": {
+        "definition": "hemp palm",
+        "mandarin": "bēn",
+        "official_dictionary": [
+          {
+            "title": "栟",
+            "pinyin": "bīng",
+            "definition": "參見「栟櫚」、「栟柑」條。",
+            "entry_id": "00528",
+            "sheet": "1150929辭典匯出",
+            "row": 530,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "栟櫚",
+                "pinyin": "bīng lǘ",
+                "definition": "棕櫚的別名。參見「棕櫚」條。",
+                "entry_id": "005280001",
+                "sheet": "1150929辭典匯出",
+                "row": 19178
+              },
+              {
+                "title": "栟柑",
+                "pinyin": "bīng gān",
+                "definition": "植物名。芸香科柑桔屬。「椪柑」之別稱，參見「椪柑」條。",
+                "entry_id": "005280002",
+                "sheet": "1150929辭典匯出",
+                "row": 19179
+              }
+            ]
+          },
+          {
+            "title": "栟",
+            "pinyin": "píng",
+            "definition": "(一)之又音。",
+            "entry_id": "00966",
+            "sheet": "1150929辭典匯出",
+            "row": 968,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "木": {
+        "definition": "tree; wood, lumber; wooden",
+        "mandarin": "mù",
+        "official_dictionary": [
+          {
+            "title": "木",
+            "pinyin": "mù",
+            "definition": "[名]\n1.樹、木本植物的通稱。如：「草木」、「樹木」、「花木扶疏」。\n2.木材。如：「朽木不可雕」、「棺木」、「壽木」。《書經．說命上》：「說復于王曰：『惟木從繩則正，從諫則聖。』」\n3.棺材。如：「行將就木」。\n4.五行之一。參見「五行」條。\n5.木星的簡稱。\n6.姓。如晉朝有木華。\n7.二一四部首之一。\n[形]\n1.用木材製成的。如：「木椅」、「木屋」。\n2.性情樸實。如：「剛毅木訥」。《新五代史．卷二二．梁臣傳．牛存節傳》：「存節為人木彊忠謹，太祖愛之。」\n3.沒有知覺的。如：「麻木」。\n4.呆笨的。如：「鈍頭木腦」。\n[動]\n失去知覺、感覺。《紅樓夢》第一〇回：「賈瑞聽了，身上已木了半邊。」",
+            "entry_id": "01505",
+            "sheet": "1150929辭典匯出",
+            "row": 1511,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "草木",
+                "pinyin": "cǎo mù",
+                "definition": "草與樹木。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」宋．歐陽修〈秋聲賦〉：「嗟乎！草木無情，有時飄零。」",
+                "entry_id": "097600028",
+                "sheet": "1150929辭典匯出",
+                "row": 139589
+              },
+              {
+                "title": "樹木",
+                "pinyin": "shù mù",
+                "definition": "1.直立木本植物的通稱，包括喬木與灌木。如：「請勿濫伐樹木。」\n2.種植樹木。《管子．權修》：「十年之計，莫如樹木；終身之計，莫如樹人。」《儒林外史》第四九回：「樹木譬如名節，非素修弗能成。」",
+                "entry_id": "091020009",
+                "sheet": "1150929辭典匯出",
+                "row": 131820
+              },
+              {
+                "title": "花木扶疏",
+                "pinyin": "huā mù fú shū",
+                "definition": "花草樹木枝葉繁茂。如：「這座森林公園花木扶疏，景致優美，難怪遊客絡繹不絕。」",
+                "entry_id": "0500500531",
+                "sheet": "1150929辭典匯出",
+                "row": 82271
+              },
+              {
+                "title": "棺木",
+                "pinyin": "guān mù",
+                "definition": "棺材。《儒林外史》第三五回：「莊徵君拿幾十兩銀子來買了棺木，市上僱了些人抬到這裡，把兩人殮了。」",
+                "entry_id": "043080001",
+                "sheet": "1150929辭典匯出",
+                "row": 72818
+              },
+              {
+                "title": "壽木",
+                "pinyin": "shòu mù",
+                "definition": "1.高齡的樹木。《呂氏春秋．孝行覽．本味》：「菜之美者，崑崙之蘋，壽木之華。」唐．元結〈退谷銘．序〉：「滿谷生壽木，又多壽藤縈之。」\n2.棺木。《紅樓夢》第六三回：「壽木已係早年備下，寄在此廟的，甚是便宜。」",
+                "entry_id": "089020009",
+                "sheet": "1150929辭典匯出",
+                "row": 128713
+              },
+              {
+                "title": "行將就木",
+                "pinyin": "xíng jiāng jiù mù",
+                "definition": "比喻年紀已大，壽命將盡。語本《左傳．僖公二十三年》：「將適齊，謂季隗曰：『待我二十五年，不來而後嫁。』對曰：『我二十五年矣，又如是而嫁，則就木焉。請待子！』」",
+                "entry_id": "072400138",
+                "sheet": "1150929辭典匯出",
+                "row": 109317
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "木屋",
+                "pinyin": "mù wū",
+                "definition": "用木質材料建成的屋子。如：「這場火災，燒掉了整排的木屋。」「半山腰的那間木屋是伐木工人的臨時住所。」",
+                "entry_id": "015050171",
+                "sheet": "1150929辭典匯出",
+                "row": 32623
+              },
+              {
+                "title": "剛毅木訥",
+                "pinyin": "gāng yì mù nè",
+                "definition": "個性剛強堅毅、質樸且不善於言辭。《論語．子路》：「剛毅木訥，近仁。」",
+                "entry_id": "040950049",
+                "sheet": "1150929辭典匯出",
+                "row": 69577
+              },
+              {
+                "title": "麻木",
+                "pinyin": "má mù",
+                "definition": "1.醫學上稱知覺完全喪失，分為全身麻木、局部麻木及部位麻木三種。《西遊記》第四〇回：「沙僧聞言，打了一個失驚，渾身麻木道：『師兄，你都說的是那裡話，我等因生前有罪，感蒙觀世音菩薩勸化，與我們摩頂受戒，改換法名，皈依佛果。』」《儒林外史》第一一回：「昨晚跌了一交，半身麻木，口眼有些歪斜。」\n2.譏人感覺頑鈍，不能振作。如：「麻木不仁」。",
+                "entry_id": "010230016",
+                "sheet": "1150929辭典匯出",
+                "row": 26505
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "堂": {
+        "definition": "hall; government office",
+        "mandarin": "táng",
+        "official_dictionary": [
+          {
+            "title": "堂",
+            "pinyin": "táng",
+            "definition": "[名]\n1.正房、大廳。如：「廳堂」、「登堂入室」。《論語．先進》：「由也升堂矣，未入於室也。」\n2.以前官府辦公、審訊、舉行典禮的地方。如：「明堂」、「政事堂」、「大堂」。\n3.用於廳堂名稱。有時也含有某一世系的意義。如：「養志堂」、「三槐堂」。\n4.專門用途的房屋。如：「課堂」、「食堂」、「禮堂」、「佛堂」、「紀念堂」。\n5.同祖父的親屬。參見「堂兄弟」、「堂姪」等條。\n6.量詞：(1）計算成套物品的單位。如：「一堂瓷器」、「兩堂家具」。(2）計算課程分節的單位。如：「一堂課」。\n7.用於商店的名號。如：「同仁堂」、「回春堂」。\n[形]\n宏偉。如：「富麗堂皇」。",
+            "entry_id": "02593",
+            "sheet": "1150929辭典匯出",
+            "row": 2600,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "廳堂",
+                "pinyin": "tīng táng",
+                "definition": "大廳。《魏書．卷五八．楊播傳》：「兄弟旦則聚於廳堂，終日相對，未曾入內。」《初刻拍案驚奇》卷一：「門內大天井，上面一所大廳堂。」",
+                "entry_id": "027350002",
+                "sheet": "1150929辭典匯出",
+                "row": 53204
+              },
+              {
+                "title": "登堂入室",
+                "pinyin": "dēng táng rù shì",
+                "definition": "1.比喻學問或技藝循序漸進，達到高深的境界。參見「升堂入室」條。宋．吳坰《五總志》：「如徐師川、余荀龍、洪玉父昆弟、歐陽元老，皆黃門登堂入室者，實自足以名家。」\n2.未經許可自行進入他人內室。如：「他竟然擅自登堂入室，簡直目中無人。」",
+                "entry_id": "020700020",
+                "sheet": "1150929辭典匯出",
+                "row": 44049
+              },
+              {
+                "title": "明堂",
+                "pinyin": "míng táng",
+                "definition": "1.古代天子舉行大典的地方。《禮記．明堂位》：「昔者周公朝諸侯于明堂之位，天子負斧依南鄉而立。」《文選．曹植．七啟》：「讚典禮於辟雍，講文德於明堂。」也作「翼室」。\n2.打晒糧食的場地、院子。\n3.堪輿家稱墓前聚水的地方。\n4.墓前的祭臺。《後漢書．卷八一．范冉傳》：「其明堂之奠，干飯寒水，飲食之物，勿有所下。」唐．章懷太子．注：「此言明堂，亦神明之堂，謂壙中也。」",
+                "entry_id": "014770062",
+                "sheet": "1150929辭典匯出",
+                "row": 32005
+              },
+              {
+                "title": "大堂",
+                "pinyin": "dà táng",
+                "definition": "1.官衙中的治事廳堂。如：「大堂之上竟敢胡言亂語。」\n2.下屬對主管的稱呼。《儒林外史》第七回：「切記先帝宏治十三年，晚生在工部大堂劉大老爺家扶乩。」",
+                "entry_id": "019130325",
+                "sheet": "1150929辭典匯出",
+                "row": 40384
+              },
+              {
+                "title": "三槐堂",
+                "pinyin": "sān huái táng",
+                "definition": "宋代兵部侍郎王祐，多陰德，手植三槐於庭，自言子孫必有為三公的。其子旦後果為相，世稱為「三槐王氏」，子孫因建三槐堂。《宋史．卷二八二．王旦傳》：「祐手植三槐于庭，曰：『吾之後世，必有為三公者，此其所以志也。』」",
+                "entry_id": "100540328",
+                "sheet": "1150929辭典匯出",
+                "row": 142543
+              },
+              {
+                "title": "課堂",
+                "pinyin": "kè táng",
+                "definition": "1.教室。\n2.教學活動的進行。如：「課堂的秩序良好。」",
+                "entry_id": "044520006",
+                "sheet": "1150929辭典匯出",
+                "row": 75557
+              },
+              {
+                "title": "食堂",
+                "pinyin": "shí táng",
+                "definition": "飯廳、飯館。唐．柳宗元〈盩厔縣新食堂記〉：「新作食堂於縣內之右，始會食之也。」",
+                "entry_id": "087130050",
+                "sheet": "1150929辭典匯出",
+                "row": 126017
+              },
+              {
+                "title": "禮堂",
+                "pinyin": "lǐ táng",
+                "definition": "1.古代講學、習禮的講堂。《後漢書．卷三五．張曹鄭列傳．鄭玄》：「所好群書率皆腐敝，不得於禮堂寫定，傳與其人。」\n2.開會或舉行典禮的廳堂。如：「畢業典禮按往例都在學校禮堂舉行。」",
+                "entry_id": "034310027",
+                "sheet": "1150929辭典匯出",
+                "row": 61402
+              },
+              {
+                "title": "佛堂",
+                "pinyin": "fó táng",
+                "definition": "供奉佛像以供誦經膜拜的廳堂。",
+                "entry_id": "015420016",
+                "sheet": "1150929辭典匯出",
+                "row": 33569
+              },
+              {
+                "title": "紀念堂",
+                "pinyin": "jì niàn táng",
+                "definition": "為紀念有特殊功勛或貢獻的人物而蓋的建築物。堂內常展覽有關其生平或事蹟的物品供人憑弔。如：「中正紀念堂」。",
+                "entry_id": "0542800071",
+                "sheet": "1150929辭典匯出",
+                "row": 87504
+              },
+              {
+                "title": "堂兄弟",
+                "pinyin": "táng xiōng dì",
+                "definition": "稱謂。用以稱伯叔的兒子。",
+                "entry_id": "025930046",
+                "sheet": "1150929辭典匯出",
+                "row": 51078
+              },
+              {
+                "title": "堂姪",
+                "pinyin": "táng zhí",
+                "definition": "稱謂。用以稱堂兄弟的兒子。",
+                "entry_id": "025930047",
+                "sheet": "1150929辭典匯出",
+                "row": 51079
+              },
+              {
+                "title": "富麗堂皇",
+                "pinyin": "fù lì táng huáng",
+                "definition": "形容富偉美麗、氣勢宏偉。《兒女英雄傳》第三四回：「連忙燈下一看，只見當朝聖人出的是三個富麗堂皇的題目。」也作「堂皇富麗」。",
+                "entry_id": "018860010",
+                "sheet": "1150929辭典匯出",
+                "row": 38960
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庭": {
+        "definition": "courtyard; spacious hall or yard",
+        "mandarin": "tíng",
+        "official_dictionary": [
+          {
+            "title": "庭",
+            "pinyin": "tíng",
+            "definition": "[名]\n1.廳堂、正房。《說文解字．广部》：「庭，宮中也。」清．段玉裁．注：「宮者，室也。室之中曰庭。」《論語．季氏》：「嘗獨立，鯉趨而過庭。」\n2.院子、大廳臺階前的空地。如：「庭院」。《文選．古詩十九首．庭中有奇樹》：「庭中有奇樹，綠葉發華滋。」\n3.泛稱寬闊的地方。如：「大庭廣眾」。\n4.審理訴訟案件的場所。如：「法庭」、「開庭」、「民事庭」。\n5.額頭。如：「天庭飽滿」、「庭闕不張」。",
+            "entry_id": "02737",
+            "sheet": "1150929辭典匯出",
+            "row": 2742,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "锅": {
+        "definition": "cooking-pot, saucepan",
+        "mandarin": "guō",
+        "related_characters": [
+          {
+            "character": "鍋",
+            "relation": "kTraditionalVariant",
+            "definition": "cooking-pot, saucepan",
+            "mandarin": "guō"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "铲": {
+        "definition": "spade, shovel, trowel, scoop",
+        "mandarin": "chǎn",
+        "related_characters": [
+          {
+            "character": "鏟",
+            "relation": "kTraditionalVariant",
+            "definition": "spade, shovel, trowel, scoop",
+            "mandarin": "chǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "平": {
+        "definition": "flat, level, even; peaceful",
+        "mandarin": "píng",
+        "official_dictionary": [
+          {
+            "title": "平",
+            "pinyin": "pián",
+            "definition": "[動]\n辨別。參見「平章百姓」條。",
+            "entry_id": "00918",
+            "sheet": "1150929辭典匯出",
+            "row": 920,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "平章百姓",
+                "pinyin": "pián zhāng bó xìng",
+                "definition": "百姓，百官。「平章百姓」指辨明各官員的職守。《書經．堯典》：「九族既睦，平章百姓。」《隋書．卷二五．刑法志》：「內以平章百姓，外以和協萬邦，寔曰輕平，稱為簡易。」",
+                "entry_id": "009180002",
+                "sheet": "1150929辭典匯出",
+                "row": 25155
+              }
+            ]
+          },
+          {
+            "title": "平",
+            "pinyin": "píng",
+            "definition": "[形]\n1.不高不低、不凸出的。如：「平地」、「平房」、「平沙」。唐．王維〈觀獵〉詩：「迴看射雕處，千里暮雲平。」宋．陸游〈初發夷陵〉詩：「山平水遠蒼茫外，地闢天開指顧中。」\n2.協調的。《左傳．襄公二十九年》：「五聲和，八風平。」\n3.均等的。如：「平均」、「平等」。\n4.安寧的。如：「心平氣和」、「風平浪靜」。唐．王灣〈次北固山下〉詩：「潮平兩岸闊，風正一帆懸。」\n5.沒有戰爭的。如：「和平」、「太平」。唐．韓愈〈爭臣論〉：「閔其時之不平，人之不乂。」\n6.尋常的。如：「平日」、「平時」、「平常」。\n7.不分勝負的。如：「平手」。\n8.缺少變化的。如：「聲音低平」。\n[副]\n1.公正的、無偏倚的。如：「平分」、「平反」。\n2.不高不低的。如：「平推」、「平剷」。\n[動]\n1.使安定、征服。如：「平亂」、「跨海平魔」。唐．李白〈子夜吳歌．秋歌〉：「何日平胡虜，良人罷遠征。」\n2.媾和、和好。《左傳．桓公八年》：「秋，隨及楚平，楚子將不許。」\n3.壓抑。如：「怨氣難平」。\n4.犁平、輾平、推平。如：「去將地平一平。」\n[名]\n1.平上去入四聲之一。參見「平聲」條。\n2.大陸地區北平市的簡稱。如：「王兄今日赴平公幹。」\n3.姓。如漢代有平當。",
+            "entry_id": "00956",
+            "sheet": "1150929辭典匯出",
+            "row": 958,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "平地",
+                "pinyin": "píng dì",
+                "definition": "1.平坦的土地。《大宋宣和遺事．元集》：「恃著強力，不用水向平地上推了舟船，共他徒黨在家為淫亂之行。」《老殘遊記》第一五回：「店後有個大坑塘，卻早凍得如平地了。」\n2.整平地面。《論語．子罕》：「譬如平地，雖覆一簣，進，吾往也。」\n3.忽然的，無緣無故的。如：「平地風波」。《永樂大典戲文三種．張協狀元．第三一出》：「跳過禹門三尺浪，俄然平地一聲雷。」",
+                "entry_id": "009560076",
+                "sheet": "1150929辭典匯出",
+                "row": 25568
+              },
+              {
+                "title": "平房",
+                "pinyin": "píng fáng",
+                "definition": "無樓的房子。如：「隨著居民經濟的好轉，原本隨處可見的平房，紛紛改建成高樓大廈。」",
+                "entry_id": "009560058",
+                "sheet": "1150929辭典匯出",
+                "row": 25546
+              },
+              {
+                "title": "平均",
+                "pinyin": "píng jūn",
+                "definition": "1.輕重相等，分量一致。《漢書．卷二一．律曆志上》：「鈞者，均也，陽施其氣，陰化其物，皆得其成就平均也。」\n2.均勻計算。如：「董事會決議，公司今年的盈餘平均分給員工。」《清史稿．卷一〇七．選舉志二》：「臨時試無定期，學期、年終、畢業考試分數與平日分數平均計算。」",
+                "entry_id": "009560177",
+                "sheet": "1150929辭典匯出",
+                "row": 25673
+              },
+              {
+                "title": "平等",
+                "pinyin": "píng děng",
+                "definition": "1.彼此同等、相等。《文明小史》第一八回：「無論他是什麼人，我等皆當平等相看，把他引而進之，豈宜疏而遠之？」\n2.縣名。在河南省洛陽縣西南，位於伊河之西。",
+                "entry_id": "009560069",
+                "sheet": "1150929辭典匯出",
+                "row": 25558
+              },
+              {
+                "title": "心平氣和",
+                "pinyin": "xīn píng qì hé",
+                "definition": "心氣平和，不急不怒。《宋史．卷四三四．儒林傳四．呂祖謙傳》：「心平氣和，不立崖異，一時英偉卓犖之士皆歸心焉。」《官場現形記》第三三回：「外國人瞧不起我們中國的官，也不自今日為始了。這件事我碰著了，倒還是心平氣和。」也作「心平靜氣」、「心平氣定」、「心和氣平」。",
+                "entry_id": "071530024",
+                "sheet": "1150929辭典匯出",
+                "row": 107142
+              },
+              {
+                "title": "風平浪靜",
+                "pinyin": "fēng píng làng jìng",
+                "definition": "無風無浪。比喻平靜或情勢穩定。《醒世恆言．卷四〇．馬當神風送滕王閣》：「須臾，霧散雲收，風平浪靜，滿船之人俱各無事，唯有王勃乃作神仙去矣！」《二十年目睹之怪現狀》第一七回：「我又帶上房門，到艙面上去看看，只見天水相連，茫茫無際；喜得風平浪靜，船也甚穩。」也作「平風靜浪」、「風靜浪平」。",
+                "entry_id": "017270020",
+                "sheet": "1150929辭典匯出",
+                "row": 36559
+              },
+              {
+                "title": "和平",
+                "pinyin": "hé píng",
+                "definition": "1.和洽安寧。《易經．咸卦》：「聖人感人心而天下和平，觀其所感而天地萬物之情可見矣。」\n2.沒有戰爭的狀態。如：「促進世界和平，是人類共同的目標。」\n3.溫和。如：「藥性和平」。",
+                "entry_id": "047210004",
+                "sheet": "1150929辭典匯出",
+                "row": 78242
+              },
+              {
+                "title": "太平",
+                "pinyin": "tài píng",
+                "definition": "1.極盛之世。《史記．卷二．夏本紀》：「天下於是太平治。」《文選．王康琚．反招隱詩》：「伯夷竄首陽，老聃伏柱史，昔在太平時，亦有巢居子。」也作「泰平」。\n2.安寧、平安無事。《警世通言．卷三四．王嬌鸞百年長恨》：「店主人見張客無事，偶話及此房內曾有婦人縊死，往往作怪，今番卻太平了。」也作「泰平」。\n3.南北朝梁敬帝的年號（西元556～557）。",
+                "entry_id": "024780013",
+                "sheet": "1150929辭典匯出",
+                "row": 49174
+              },
+              {
+                "title": "平日",
+                "pinyin": "píng rì",
+                "definition": "平時、平常。《後漢書．卷一〇．皇后紀上．和熹鄧皇后紀》：「太后以先帝左右，待之有恩，平日尚無惡言，今反若此，不合人情。」《文明小史》第三二回：「登時臉上發青，要待翻腔，卻因平日合他交情尚好……，只得忍住了。」",
+                "entry_id": "009560268",
+                "sheet": "1150929辭典匯出",
+                "row": 25765
+              },
+              {
+                "title": "平時",
+                "pinyin": "píng shí",
+                "definition": "平常、平日。《初刻拍案驚奇》卷一五：「你平時那一班同歡同賞，知音識趣的朋友，怎沒一個來偢睬。」《文明小史》第二一回：「這錢木仙雖然平時佩服他的，此時卻不以為然。」",
+                "entry_id": "009560248",
+                "sheet": "1150929辭典匯出",
+                "row": 25743
+              },
+              {
+                "title": "平常",
+                "pinyin": "píng cháng",
+                "definition": "1.平時、往常。《後漢書．卷一．光武帝紀上》：「未嘗自伐昆陽之功，又不敢為伯升服喪，飲食言笑如平常。」《老殘遊記》第六回：「因為天陰，所以比平常更黑得快。」\n2.普通、平凡，沒有特異之處。《文明小史》第三九回：「果然有這樣一個閨女，皮色呢倒也很白淨，只是招牙露齒的，相貌其實平常，配不上我這逢兒。」《紅樓夢》第五七回：「別人之父母皆年高有德之人，獨他父母偏是酒糟透之人，於女兒分中平常。」",
+                "entry_id": "009560242",
+                "sheet": "1150929辭典匯出",
+                "row": 25737
+              },
+              {
+                "title": "平手",
+                "pinyin": "píng shǒu",
+                "definition": "不分勝負的比賽結果。如：「今年大專盃籃球賽，本校與去年冠軍隊打成平手。」",
+                "entry_id": "009560254",
+                "sheet": "1150929辭典匯出",
+                "row": 25749
+              },
+              {
+                "title": "平分",
+                "pinyin": "píng fēn",
+                "definition": "平均分配。《史記．卷六四．司馬穰苴傳》：「悉取將軍之資糧享士卒，身與士卒平分糧食。」《儒林外史》第一三回：「老婆白白送你，還可以發得幾百銀子財！你須要大大的請我，將來銀子同我平分，我纔和你說。」",
+                "entry_id": "009560052",
+                "sheet": "1150929辭典匯出",
+                "row": 25540
+              },
+              {
+                "title": "平反",
+                "pinyin": "píng fān",
+                "definition": "推翻錯判，洗雪冤情。《漢書．卷三六．楚元王傳》：「每行京兆尹事，多所平反罪人。」《清史稿．卷二七三．郎廷佐列傳》：「擢江西贛州知府，平反冤獄，居官有聲。」",
+                "entry_id": "009560050",
+                "sheet": "1150929辭典匯出",
+                "row": 25538
+              },
+              {
+                "title": "平亂",
+                "pinyin": "píng luàn",
+                "definition": "平定叛亂。《後漢書．卷四八．楊李翟應霍爰徐列傳．楊終》：「高祖平亂，約法三章。太宗至仁，除去收孥。」《三國志．卷一一．魏書．袁張涼國田王邴管傳．袁渙》：「若夫兼愛天下而反之於正，雖以武平亂而濟之以德，誠百王不易之道也。」",
+                "entry_id": "009560134",
+                "sheet": "1150929辭典匯出",
+                "row": 25628
+              },
+              {
+                "title": "平聲",
+                "pinyin": "píng shēng",
+                "definition": "一種漢語調類。聲調平出而沒有高低的變化。今國音分化為陰平、陽平二類，即第一聲、第二聲。第二聲注音符號用「ˊ」來表示。",
+                "entry_id": "009560263",
+                "sheet": "1150929辭典匯出",
+                "row": 25760
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "漴涛",
+      "decision": "uncertain",
+      "reason": "“漴”所给资料仅确认读音，未提供足以核实的字义；与“涛”组成的水势意象无法据现有信息确认。"
+    },
+    {
+      "name": "漴石声",
+      "decision": "uncertain",
+      "reason": "“石声”可理解为石间声响，但“漴”的实际字义未能由所给资料确认，整体意象因此存疑。"
+    },
+    {
+      "name": "漴川",
+      "decision": "uncertain",
+      "reason": "“川”义明确，但“漴”的实际字义未能由所给资料确认，无法核实两字组合所表达的关系。"
+    },
+    {
+      "name": "刀叉",
+      "decision": "reject",
+      "reason": "完整名称就是西餐餐具的通用类别词，缺乏品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "栟木堂",
+      "decision": "uncertain",
+      "reason": "“栟”可指棕榈或椪柑，但与“木堂”的关系不清，整体像生硬拼接的木材与店堂称谓；现有语境不足以确认自然的品牌意象。"
+    },
+    {
+      "name": "栟风",
+      "decision": "uncertain",
+      "reason": "“栟”有棕榈等植物义，但与“风”组合的语义关系不明确，整体自然度存疑。"
+    },
+    {
+      "name": "栟庭",
+      "decision": "uncertain",
+      "reason": "“栟”有棕榈等植物义，但与“庭”组合的指涉关系不清，现有信息不足以确认自然意象。"
+    },
+    {
+      "name": "锅铲",
+      "decision": "reject",
+      "reason": "完整名称直接指常见厨房用具类别，属于通用产品名称，不具备足够品牌辨识度。"
+    },
+    {
+      "name": "铲平",
+      "decision": "reject",
+      "reason": "“铲平”是直接描述铲除、整平的动作，整体更像操作指令或功能描述，品牌名凝练感不足。"
+    }
+  ]
+}

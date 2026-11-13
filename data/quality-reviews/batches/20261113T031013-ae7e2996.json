@@ -1,0 +1,725 @@
+{
+  "review_id": "20261113T031013-ae7e2996",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "炒香四季",
+      "炒见真章",
+      "炒韵",
+      "庶汇",
+      "会稽山",
+      "稽式",
+      "稽往知来"
+    ],
+    "related_kept_candidates": {
+      "香": [
+        "炒香",
+        "丁香",
+        "香薷",
+        "藠香",
+        "藿香",
+        "馕香",
+        "枣花香",
+        "榴香",
+        "山海酵香",
+        "酸香",
+        "芹香",
+        "香茅"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "云开见硔",
+        "山麇见月",
+        "藏酒见山",
+        "矿中见海",
+        "罅见晴",
+        "涂见远",
+        "黛山见月"
+      ],
+      "会": [
+        "会心",
+        "宵会",
+        "啤友会",
+        "会友",
+        "会心堂",
+        "眯会儿",
+        "眯一会儿"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远",
+        "涂知微"
+      ],
+      "庶": [
+        "富庶",
+        "庶物"
+      ],
+      "章": [
+        "仓颉新章",
+        "酷乐章",
+        "奎章",
+        "人间新章",
+        "斐章",
+        "篇章",
+        "四时篇章",
+        "含章",
+        "华章",
+        "序章",
+        "珵章",
+        "鎏章"
+      ],
+      "韵": [
+        "榴韵",
+        "芭韵",
+        "瓷韵",
+        "刀韵",
+        "唐韵",
+        "绉韵",
+        "广竹韵",
+        "广陵清韵",
+        "茗韵",
+        "镛韵",
+        "绤韵",
+        "珐韵"
+      ],
+      "真": [
+        "臻本真",
+        "义守真",
+        "真诠",
+        "真切",
+        "诠本真",
+        "履真",
+        "真𫍯",
+        "锐真",
+        "慕真",
+        "皈真",
+        "真镠不饰",
+        "健守真"
+      ],
+      "四": [
+        "四季",
+        "四时清鲜",
+        "四时常鲜",
+        "四时花厅",
+        "四时递序",
+        "四时篇章",
+        "四时宴",
+        "四时清宴",
+        "四时庼",
+        "鸥行四野",
+        "鸠鸣四野",
+        "凰行四海"
+      ],
+      "季": [
+        "四季",
+        "季春",
+        "季夏",
+        "季秋",
+        "季冬"
+      ],
+      "来": [
+        "日往月来",
+        "朋来",
+        "桧风来",
+        "由来",
+        "远岸来船",
+        "顾风来",
+        "繇来",
+        "来电",
+        "缐引未来",
+        "远飔来",
+        "晚来晴",
+        "晚来清露"
+      ],
+      "汇": [
+        "崧川汇",
+        "融汇",
+        "汇辑",
+        "磊汇",
+        "汇川",
+        "汇和",
+        "汇明",
+        "汇远",
+        "汇声",
+        "汇禾",
+        "汇诚",
+        "汇成林"
+      ],
+      "往": [
+        "日往月来",
+        "往复",
+        "往昔",
+        "往哲",
+        "心往",
+        "光阴往复"
+      ],
+      "炒": [
+        "炒香",
+        "现炒本味",
+        "炒艺",
+        "炒趣",
+        "炒匠",
+        "人间炒趣"
+      ]
+    },
+    "literature_phrase_examples": {
+      "炒香四季": [],
+      "炒见真章": [],
+      "炒韵": [],
+      "庶汇": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 423755,
+          "context": "欲调庶汇情，先与群魔战。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 23050,
+          "context": "陶镕存庶汇，霖雨润寰区。"
+        }
+      ],
+      "会稽山": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 44723,
+          "context": "【和登会稽山】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 70110,
+          "context": "今日赠予兰亭去，兴来洒笔会稽山。"
+        }
+      ],
+      "稽式": [
+        {
+          "book": "道德经",
+          "line": 269,
+          "context": "知此两者，亦稽式。"
+        },
+        {
+          "book": "道德经",
+          "line": 269,
+          "context": "常知稽式，是谓「玄德」，「玄德」深远﹔与物反矣，然后乃至大顺。"
+        }
+      ],
+      "稽往知来": []
+    },
+    "dictionary_phrase_entries": {
+      "炒香四季": [],
+      "炒见真章": [],
+      "炒韵": [],
+      "庶汇": [],
+      "会稽山": [],
+      "稽式": [
+        {
+          "title": "稽式",
+          "pinyin": "jī shì",
+          "definition": "1.法則、楷式。《老子》第六五章：「故以智治國，國之賊；不以智治國，國之福。知此兩者亦稽式。」\n2.考求效法。《後漢書．卷七九．儒林傳．序》：「建武五年，乃修起太學，稽式古典。」",
+          "entry_id": "053190016",
+          "sheet": "1150929辭典匯出",
+          "row": 86279,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "稽往知来": []
+    },
+    "direct_dictionary": {
+      "炒": {
+        "definition": "fry, saute, roast, boil, cook",
+        "mandarin": "chǎo",
+        "official_dictionary": [
+          {
+            "title": "炒",
+            "pinyin": "chǎo",
+            "definition": "[動]\n1.一種烹飪方法。把食物置鍋內，以少量的油略為翻攪至熟者。如：「炒三鮮」。\n2.爭鬧。通「吵」。元．喬吉《金錢記》第一折：「鬧炒炒嫩綠草聒鳴蛙，輕絲絲淡黃柳帶栖鴉。」",
+            "entry_id": "08308",
+            "sheet": "1150929辭典匯出",
+            "row": 8322,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "香": {
+        "definition": "fragrant, sweet-smelling; incense; Kangxi radical 186",
+        "mandarin": "xiāng",
+        "official_dictionary": [
+          {
+            "title": "香",
+            "pinyin": "xiāng",
+            "definition": "[名]\n1.芬芳美好的氣味。如：「花香」、「書香」、「粉香」。\n2.用香料製成棒、線、球、餅的東西，可供拜祭鬼神或驅除蚊蟲。如：「線香」、「檀香」、「燒香」、「蚊香」、「焚香操琴」。\n3.比喻女子。如：「憐香惜玉」、「香消玉殞」。\n4.姓。如戰國時齊國有香居。\n5.二一四部首之一。\n[動]\n親吻。如：「香一香臉」、「香一下好嗎？」\n[形]\n1.氣味美好。如：「香茗」、「香泉」、「這飯很香。」唐．杜甫〈古柏行〉：「香葉曾經宿鸞鳳。」\n2.與女性有關的。如：「香閨」、「香魂」、「香汗淋漓」。元．王德信〈十二月過堯民歌．自別後遙山隱隱〉曲：「今春，香肌瘦幾分，摟帶寬三寸。」\n[副]\n酣暢。如：「吃得很香」、「睡得很香」。",
+            "entry_id": "07185",
+            "sheet": "1150929辭典匯出",
+            "row": 7194,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "四": {
+        "definition": "four",
+        "mandarin": "sì",
+        "official_dictionary": [
+          {
+            "title": "四",
+            "pinyin": "sì",
+            "definition": "[名]\n1.介於三和五之間的自然數。如：「三、四、五、六……」。大寫作「肆」，阿拉伯數字作「4」。\n2.古代樂譜上用來表示音高的符號。如工尺譜、二四譜（潮州音樂）。\n3.姓。如宋代有四象。\n[形]\n第四的。如：「四更天」、「四年級」、「四品官」。",
+            "entry_id": "09956",
+            "sheet": "1150929辭典匯出",
+            "row": 9970,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "季": {
+        "definition": "quarter of year; season; surname",
+        "mandarin": "jì",
+        "official_dictionary": [
+          {
+            "title": "季",
+            "pinyin": "jì",
+            "definition": "[名]_x000D_\n1.古人用伯、仲、叔、季作兄弟排行，年齡最小的稱為「季」。_x000D_\n2.弟的代稱。唐．李白〈春夜宴從弟桃花園序〉：「群季俊秀，皆為惠連。」_x000D_\n3.計時的名稱。一季有三個月。如：「春季」、「夏季」。_x000D_\n4.一個固定的時期。如：「花季」、「雨季」、「球季」、「旺季」、「淡季」。_x000D_\n5.量詞。計算時間的單位。一季有三個月。如：「這個節目已經做了十三季。」_x000D_\n6.姓。如春秋時吳國有季札，漢代有季布。_x000D_\n[形]_x000D_\n1.末了的。如：「季春」、「季冬」。唐．劉禹錫〈祭福建桂尚書文〉：「始識尚書，貞元季年。」_x000D_\n2.幼稚未成熟的。如：「季女」。《周禮．地官司徒．山虞》：「凡服耜，斬季材，以時入之。」",
+            "entry_id": "05435",
+            "sheet": "1150929辭典匯出",
+            "row": 5442,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "真": {
+        "definition": "real, actual, true, genuine",
+        "mandarin": "zhēn",
+        "official_dictionary": [
+          {
+            "title": "真",
+            "pinyin": "zhēn",
+            "definition": "[形]\n純正的、不虛假的。如：「真面目」、「真心誠意」。《莊子．田子方》：「其為人也真。」\n[副]\n的確、實在。如：「真好」、「真棒」。《漢書．卷九四．匈奴傳下》：「唯北狄為不然，真中國之堅敵也。」\n[名]\n1.道家稱得道成仙的人。如：「太乙真人」、「真人不露相」。《紅樓夢．第二五回》：「魘魔法叔嫂逢五鬼，紅樓夢通靈遇雙真。」\n2.自然、本性。如：「天真」。《莊子．秋水》：「謹守而勿失，是謂反其真。」\n3.肖像、畫像。如：「寫真」、「留真」。\n4.實授的官職。《漢書．卷一二．平帝紀》：「吏在位二百石以上，一切滿秩如真。」\n5.姓。如漢代有真玄菟。",
+            "entry_id": "07824",
+            "sheet": "1150929辭典匯出",
+            "row": 7835,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "official_dictionary": [
+          {
+            "title": "章",
+            "pinyin": "zhāng",
+            "definition": "[名]\n1.成篇的文字。如：「文章」、「出口成章」、「下筆成章」。\n2.文體名。古代臣子上奏國君的文書。漢．蔡邕《獨斷．卷上》：「凡群臣尚書於天子者有四名：一曰章，二曰奏，三曰表，四曰駁議。」南朝梁．劉勰《文心雕龍．章表》：「章以謝恩，奏以按劾，表以陳請，議以執異。」\n3.量詞。計算書、文等段落的單位。如：「全書共分二十五章。」\n4.文采、花彩。《左傳．僖公二十四年》：「目不別五色之章為昧，心不則德義之經為頑。」唐．柳宗元〈捕蛇者說〉：「永州之野，產異蛇，黑質而白章。」\n5.條理、次序。如：「雜亂無章」。唐．韓愈〈送孟東野序〉：「其為言也，亂雜而無章。」\n6.法規、條例。如：「規章」。《史記．卷八．高祖本紀》：「與父老約法三章。」\n7.印信。如：「私章」、「圖章」。\n8.標識、標記。如：「徽章」、「勛章」、「臂章」。\n9.姓。如漢代有章明。\n[動]\n表揚、顯揚。《禮記．緇衣》：「有國者章善𤺺惡，以示民厚，則民情不貳。」《史記．卷三七．衛康叔世家》：「舉康叔為周司寇，賜衛寶祭器，以章有德。」",
+            "entry_id": "07876",
+            "sheet": "1150929辭典匯出",
+            "row": 7888,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "韵": {
+        "definition": "rhyme; vowel",
+        "mandarin": "yùn",
+        "related_characters": [
+          {
+            "character": "韵",
+            "relation": "kTraditionalVariant",
+            "definition": "rhyme; vowel",
+            "mandarin": "yùn"
+          },
+          {
+            "character": "韻",
+            "relation": "kTraditionalVariant",
+            "definition": "rhyme; vowel",
+            "mandarin": "yùn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "韵",
+            "pinyin": null,
+            "definition": "「韻」的異體字。",
+            "entry_id": "11845-1",
+            "sheet": "1150929辭典匯出",
+            "row": 163367,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庶": {
+        "definition": "numerous, various; multitude",
+        "mandarin": "shù",
+        "official_dictionary": [
+          {
+            "title": "庶",
+            "pinyin": "shù",
+            "definition": "[形]\n1.眾多。《爾雅．釋詁下》：「庶，眾也。」《詩經．小雅．小明》：「念我獨兮，我事孔庶。」《禮記．孔子閒居》：「地載神氣，神氣風霆，風霆流水，庶物露生，無非教也。」\n2.旁支的、旁系的。參見「庶子」、「庶母」等條。\n[名]\n古代平民稱為「庶」。《左傳．昭公三十二年》：「三后之姓，于今為庶。」\n[副]\n相近、差不多。《論語．先進》：「回也，其庶乎！屢空。」三國魏．何晏．集解：「言回庶幾聖道，雖數空匱而樂在其中。」",
+            "entry_id": "09095",
+            "sheet": "1150929辭典匯出",
+            "row": 9110,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "庶子",
+                "pinyin": "shù zǐ",
+                "definition": "1.嫡子以外的眾子或妾所生的兒子。《儀禮．喪服》：「庶子不得為長子三年，不繼祖也。」《禮記．內則》：「適子、庶子祇事宗子、宗婦，雖貴富，不敢以貴富入宗子之家。」\n2.職官名。太子宮官員之一。掌王族版籍。",
+                "entry_id": "090950017",
+                "sheet": "1150929辭典匯出",
+                "row": 131797
+              },
+              {
+                "title": "庶母",
+                "pinyin": "shù mǔ",
+                "definition": "舊時子女稱父親的姨太太。《儀禮．士昏禮》：「庶母及門內施鞶，申之以父母之命。」《恨海》第九回：「棣華與庶母同住，更是處處避嫌，不敢露一些愁苦。」",
+                "entry_id": "090950004",
+                "sheet": "1150929辭典匯出",
+                "row": 131786
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "汇": {
+        "definition": "concourse; flow together, gather",
+        "mandarin": "huì",
+        "related_characters": [
+          {
+            "character": "匯",
+            "relation": "kTraditionalVariant",
+            "definition": "a concourse; to flow together, gather together; (same as 滙) to remit money",
+            "mandarin": "huì"
+          },
+          {
+            "character": "彙",
+            "relation": "kTraditionalVariant",
+            "definition": "collect, compile, assemble; hedgehog",
+            "mandarin": "huì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "会": {
+        "definition": "assemble, meet together; meeting",
+        "mandarin": "huì",
+        "related_characters": [
+          {
+            "character": "会",
+            "relation": "kTraditionalVariant",
+            "definition": "assemble, meet together; meeting",
+            "mandarin": "huì"
+          },
+          {
+            "character": "會",
+            "relation": "kTraditionalVariant",
+            "definition": "to assemble, meet together; a meeting; an organization",
+            "mandarin": "huì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "会",
+            "pinyin": null,
+            "definition": "「會」的異體字。",
+            "entry_id": "04298-1",
+            "sheet": "1150929辭典匯出",
+            "row": 72611,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "稽": {
+        "definition": "examine, investigate; delay",
+        "mandarin": "jī",
+        "official_dictionary": [
+          {
+            "title": "稽",
+            "pinyin": "jī",
+            "definition": "[動]\n1.停留、延遲、拖延。南朝梁．簡文帝〈隴西行〉三首之三：「迴山時阻路，絕水亟稽程。」《警世通言．卷二四．玉堂春落難逢夫》：「聖旨發回原籍，不敢稽留，收拾轎馬和家眷起身。」\n2.積存、囤積。《史記．卷三〇．平準書》：「蓄積餘業，以稽市物。」\n3.考證、考核、查考。如：「稽查」。《晉書．卷三五．裴秀傳》：「博學稽古，自少知名。」\n4.計較、責難。《漢書．卷四八．賈誼傳》：「婦姑不相說，則反脣而相稽。」\n5.卜問。《書經．洪範》：「稽疑，擇建立卜筮人。」《楚辭．王逸．卜居章句序》：「稽問神明，決之蓍龜。」\n[名]\n1.準則、楷模。《老子》第六五章：「故以智治國，國之賊；不以智治國，國之福。知此兩者亦稽式。」《荀子．儒效》：「千舉萬變，其道一也，是大儒之稽也。」\n2.姓。如春秋時秦國有稽黃。",
+            "entry_id": "05319",
+            "sheet": "1150929辭典匯出",
+            "row": 5326,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "稽",
+            "pinyin": "qǐ",
+            "definition": "參見「稽首」、「稽顙」等條。",
+            "entry_id": "06291",
+            "sheet": "1150929辭典匯出",
+            "row": 6300,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "稽首",
+                "pinyin": "qǐ shǒu",
+                "definition": "一種俯首至地的最敬禮。《書經．舜典》：「禹拜稽首，讓于稷契暨皋陶。」唐．李商隱〈韓碑詩〉：「愈拜稽首蹈且舞，金石刻畫臣能為。」",
+                "entry_id": "062910001",
+                "sheet": "1150929辭典匯出",
+                "row": 97825
+              },
+              {
+                "title": "稽顙",
+                "pinyin": "qǐ sǎng",
+                "definition": "以額觸地的敬禮。《管子．輕重丁》：「稱貸之家皆齊首而稽顙曰：『君之憂萌至於此，請再拜以獻堂下。』」唐．裴鉶《傳奇．裴航》：「盧顥稽顙曰：『兄既得道，如何乞一言而教授？』」",
+                "entry_id": "062910002",
+                "sheet": "1150929辭典匯出",
+                "row": 97826
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "式": {
+        "definition": "style, system, formula, rule",
+        "mandarin": "shì",
+        "official_dictionary": [
+          {
+            "title": "式",
+            "pinyin": "shì",
+            "definition": "[名]\n1.法則、模範。《書經．微子之命》：「世世享德，萬邦作式。」《後漢書．卷四四．鄧彪傳》：「彪在位清白，為百僚式。」\n2.儀節、典禮。如：「儀式」、「閱兵式」、「結婚式」。\n3.規格、樣式。如：「格式」、「款式」。\n4.古代車前的橫木。通「軾」。《周禮．冬官考工記．輿人》：「參分其隧，一在前，二在後，以揉其式。」《宋史．卷四三三．儒林傳三．楊萬里傳》：「苟有車必見其式，苟有言必聞其聲。」\n5.自然科學中指表示某種規律的一組符號。如：「方程式」、「分子式」、「化學式」。\n[動]\n1.效法。《後漢書．卷五二．崔駰傳》：「必欲行若言，當大定其本，使人主師五帝而式三王。」\n2.用。《左傳．成公二年》：「蠻夷戎狄，不式王命。」晉．杜預．注：「式，用也。」\n3.古時人立而乘車，俯而憑軾以示敬意。《書經．武成》：「釋箕子囚，封比干墓，式商容閶。」唐．孔穎達．正義：「式者，車上之橫木，男子立乘有所敬則俯而憑式，遂以式為敬名。」《漢書．卷四〇．周勃傳》：「天子為動，改容式車。」\n[助]\n發語詞，無義。《詩經．邶風．式微》：「式微式微，胡不歸？」漢．鄭玄．箋：「式，發聲也。」",
+            "entry_id": "08746",
+            "sheet": "1150929辭典匯出",
+            "row": 8760,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "往": {
+        "definition": "go, depart; past, formerly",
+        "mandarin": "wǎng",
+        "official_dictionary": [
+          {
+            "title": "往",
+            "pinyin": "wǎng",
+            "definition": "[動]\n1.去。如：「前往」、「人來人往」。《易經．繫辭下》：「寒往則暑來，暑往則寒來，寒暑相推而歲成焉。」\n2.歸向。如：「嚮往」、「神往」。《穀梁傳．莊公三年》：「其曰王者，民之所歸往也。」\n3.交際、交朋友。如：「交往」。《禮記．檀弓上》：「非兄弟，雖鄰不往。」\n4.致贈、贈送。《文選．曹植．與楊德祖書》：「今往僕少小所著辭賦一通相與。」\n[形]\n過去的、從前的。如：「往年」、「以往」。五代十國南唐．李煜〈虞美人．春花秋月何時了〉詞：「春花秋月何時了，往事知多少。」\n[名]\n1.昔日、昔時。《易經．繫辭下》：「夫易，彰往而察來，而微顯闡幽。」《荀子．解蔽》：「不慕往，不閔來，無邑憐之心。」\n2.死者。《左傳．僖公九年》：「送往事居。」晉．杜預．注：「往，死者；居，生者。」\n[介]\n向、朝。表示動作的方向。如：「往東走」、「往前看」、「水往低處流，人往高處爬。」",
+            "entry_id": "11534",
+            "sheet": "1150929辭典匯出",
+            "row": 11548,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "来": {
+        "definition": "come, coming; return, returning",
+        "mandarin": "lái",
+        "related_characters": [
+          {
+            "character": "來",
+            "relation": "kTraditionalVariant",
+            "definition": "come, coming; return, returning",
+            "mandarin": "lái"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "炒香四季",
+      "decision": "reject",
+      "reason": "“炒香”直接指烹炒出香味，后接“四季”语义关系松散，整体像烹饪描述与季节词的拼接，品牌名凝练度不足。"
+    },
+    {
+      "name": "炒见真章",
+      "decision": "reject",
+      "reason": "借用“初见真章／大显身手”一类表达的句式，把“炒”硬置于“见真章”之前，语法和语义均不自然，且呈现口号化表达。"
+    },
+    {
+      "name": "炒韵",
+      "decision": "keep",
+      "reason": "“炒”指烹炒，“韵”可指韵味、风韵；组合简洁，形成烹调特色与风味意象的关联，具有品牌辨识度。"
+    },
+    {
+      "name": "庶汇",
+      "decision": "uncertain",
+      "reason": "“庶”有众多义，“汇”有聚集义，字面可理解为众多事物汇聚；但该组合较少见，作为完整品牌名的自然度和指向仍不够明确。"
+    },
+    {
+      "name": "会稽山",
+      "decision": "uncertain",
+      "reason": "这是有明确历史地理所指的名称，文献用例也显示其专名用法；但未提供企业与该专名的关联依据，作为新品牌使用可能造成专名关系误解。"
+    },
+    {
+      "name": "稽式",
+      "decision": "keep",
+      "reason": "教育部词条释为法则、楷式，也有考求效法义；来源清楚，组合简洁，有规范与准则的含义，适合作为抽象品牌名。"
+    },
+    {
+      "name": "稽往知来",
+      "decision": "reject",
+      "reason": "由“稽往”与“知来”组成完整的文言判断式，表达考察过去、认识未来，属于句子式格言，缺少品牌名所需的凝练感。"
+    }
+  ]
+}

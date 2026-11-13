@@ -1,0 +1,785 @@
+{
+  "review_id": "20261112T205223-dea69ea6",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "初蕾",
+      "蕾知春",
+      "一枝蕾",
+      "风中蕾",
+      "蕾映山",
+      "蕾见青",
+      "山色含蕾",
+      "风过花蕾",
+      "山间春蕾"
+    ],
+    "related_kept_candidates": {
+      "一": [
+        "一枝春",
+        "一见青山",
+        "一荑知春",
+        "一程",
+        "一隅",
+        "一木",
+        "一念",
+        "抱一",
+        "如一",
+        "初一",
+        "一枕清风",
+        "一川烟雨"
+      ],
+      "初": [
+        "初一",
+        "霪雨初霁",
+        "初酵",
+        "万象初酿",
+        "芹野初晴",
+        "晙初",
+        "初凉",
+        "厥初",
+        "唐雨初晴",
+        "茗之初",
+        "涂如初",
+        "初愿"
+      ],
+      "色": [
+        "山色含霏",
+        "山含筠色",
+        "黝色山河",
+        "山色闻鹒",
+        "皎色山河",
+        "暮色山河",
+        "茶藏山色",
+        "山间菊色",
+        "菊色山河",
+        "杄间山色",
+        "眉间春色",
+        "眉间山色"
+      ],
+      "风": [
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风中猊",
+        "风过埼",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "风过埙声",
+        "清风过淞",
+        "松风过樟",
+        "风过冈"
+      ],
+      "春": [
+        "一枝春",
+        "棹过春山",
+        "乃知春",
+        "碳知春",
+        "蔓入春山",
+        "春山茗",
+        "春山鲜明",
+        "涧上春山",
+        "鹩鸣春山",
+        "春山有蹊",
+        "鹒鸣春山",
+        "人间春"
+      ],
+      "枝": [
+        "一枝春",
+        "枝丫",
+        "枝桠",
+        "缠枝",
+        "缠枝纹",
+        "缠枝莲",
+        "茱枝映月",
+        "蔓枝",
+        "柘枝歌",
+        "梾枝映月",
+        "梾枝向远",
+        "梾枝"
+      ],
+      "间": [
+        "山间邨",
+        "山间麇影",
+        "人间春",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "山间铃",
+        "山间蛱"
+      ],
+      "山": [
+        "山色含霏",
+        "山含筠色",
+        "一见青山",
+        "山间邨",
+        "芭影映山",
+        "墟山映日",
+        "棹过春山",
+        "蔓入春山",
+        "春山茗",
+        "山间麇影",
+        "春山鲜明",
+        "涡映山河"
+      ],
+      "见": [
+        "一见青山",
+        "春山见鸼",
+        "青莛见日",
+        "栌间见山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "云开见硔",
+        "山麇见月",
+        "藏酒见山",
+        "矿中见海"
+      ],
+      "青": [
+        "一见青山",
+        "青莛见日",
+        "茯映青山",
+        "船映青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶"
+      ],
+      "花": [
+        "花影过门",
+        "荞花映山",
+        "砑花笺",
+        "玉石錾花",
+        "枣花香",
+        "花萼",
+        "花萼联芳",
+        "榴花",
+        "榴花信",
+        "榴花照影",
+        "一树榴花",
+        "花酿"
+      ],
+      "映": [
+        "芭影映山",
+        "墟山映日",
+        "涡映山河",
+        "赫山映川",
+        "烛映山",
+        "诸山映月",
+        "蓓映山",
+        "山月映筠",
+        "山映滟波",
+        "山映洺",
+        "璟映山河",
+        "山映绢"
+      ],
+      "中": [
+        "风中猊",
+        "壸中天",
+        "中庸",
+        "中庸致和",
+        "盅中月",
+        "云中酿",
+        "酸中趣",
+        "碟中月",
+        "云中帜",
+        "山中桫椤",
+        "箩中春",
+        "箩中月"
+      ],
+      "知": [
+        "乃知春",
+        "碳知春",
+        "鹒知春",
+        "獭知春",
+        "蛱蝶知春",
+        "柳知春",
+        "冬知春",
+        "杄木知春",
+        "一荑知春",
+        "知行馆",
+        "新知斋",
+        "枫知秋"
+      ],
+      "含": [
+        "山色含霏",
+        "山含筠色",
+        "山含霭",
+        "山光含霭",
+        "山水含霭",
+        "山含璧",
+        "山海含岚",
+        "含萼",
+        "荚含春",
+        "硔石含光",
+        "蕴含",
+        "蓓含朝露"
+      ],
+      "蕾": [
+        "芙蕾",
+        "蓓蕾"
+      ],
+      "过": [
+        "风过芭林",
+        "棹过春山",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "花影过门",
+        "风过埙声",
+        "清风过淞",
+        "松风过樟"
+      ]
+    },
+    "literature_phrase_examples": {
+      "初蕾": [],
+      "蕾知春": [],
+      "一枝蕾": [],
+      "风中蕾": [],
+      "蕾映山": [],
+      "蕾见青": [],
+      "山色含蕾": [],
+      "风过花蕾": [],
+      "山间春蕾": []
+    },
+    "dictionary_phrase_entries": {
+      "初蕾": [],
+      "蕾知春": [],
+      "一枝蕾": [],
+      "风中蕾": [],
+      "蕾映山": [],
+      "蕾见青": [],
+      "山色含蕾": [],
+      "风过花蕾": [],
+      "山间春蕾": []
+    },
+    "direct_dictionary": {
+      "初": {
+        "definition": "beginning, initial, primary",
+        "mandarin": "chū",
+        "official_dictionary": [
+          {
+            "title": "初",
+            "pinyin": "chū",
+            "definition": "[名]\n1.根本、本原。《淮南子．俶真》：「是故聖人之學也，欲以返性於初，而游心於虛也。」《史記．卷四七．孔子世家》：「進取不忘其初。」\n2.起源、開始。如：「年初」、「月初」、「和好如初」。唐．柳宗元〈封建論〉：「天地果無初乎？吾不得而知之也。」\n3.姓。如宋代有初暐。\n[形]\n1.從前、原來。如：「初衷」、「初心」。\n2.最先、開頭。如：「初秋」、「初民」、「初雪」。\n3.最低的。如：「初級」、「初等」。\n4.陰曆每月一日到十日，皆冠上「初」字，表上旬的。如：「初一」、「初二」。\n[副]\n1.第一次的。如：「初戀」、「初學」、「初試啼聲」。\n2.甫、剛剛。如：「初出茅廬」。《書經．召誥》：「嗚呼！若生子，罔不在厥初生，自貽哲命。」《史記．卷四九．外戚世家》：「天下初定未久，繼嗣不明。」\n3.全、始終。用於否定句，表範圍。《後漢書．卷八一．獨行傳．彭脩傳》：「受教三日，初不奉行，廢命不忠，豈非過邪？」",
+            "entry_id": "08527",
+            "sheet": "1150929辭典匯出",
+            "row": 8541,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蕾": {
+        "definition": "buds, unopened flowers",
+        "mandarin": "lěi",
+        "official_dictionary": [
+          {
+            "title": "蕾",
+            "pinyin": "lěi",
+            "definition": "[名]\n含苞未開的花。如：「花蕾」、「蓓蕾」。",
+            "entry_id": "03242",
+            "sheet": "1150929辭典匯出",
+            "row": 3249,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "official_dictionary": [
+          {
+            "title": "一",
+            "pinyin": "yī",
+            "definition": "[名]_x000D_\n1.自然數的開始。如：「一、二、三……。」大寫作「壹」。阿拉伯數字作「1」。_x000D_\n2.姓。如明代有一炫宗。_x000D_\n3.二一四部首之一。_x000D_\n[形]_x000D_\n1.單個。如：「一人」、「一物兩用」。_x000D_\n2.相同、一致。如：「一模一樣」、「大小不一」。_x000D_\n3.專注的。如：「一心一意」、「專一不變」。_x000D_\n4.全、滿、整。如：「一身是汗」、「一屋子人」、「一身是膽」。_x000D_\n5.每、各。如：「一班五十人」、「一頁六百字」、「共派八隊，一隊二十人。」_x000D_\n6.一次。如：「一而再，再而三。」《禮記．中庸》：「人一能之，己百之。」_x000D_\n7.另外的。如：「蟬，一名知了。」、「番茄，一名西紅柿。」_x000D_\n[動]_x000D_\n統一。《孟子．梁惠王上》：「不嗜殺人者能一之。」_x000D_\n[副]_x000D_\n1.才、剛剛。如：「一聽就懂」、「天一亮，他就起來。」_x000D_\n2.偶然。如：「一不小心」、「一不留神」。_x000D_\n3.表示加強的動作或突然的現象。如：「把頭一扭」、「用手一摸」、「天氣一涼，就感冒了。」_x000D_\n4.概括。如：「一般來說」。_x000D_\n5.每每、每逢。如：「一想到那件事，她總是笑個不停。」_x000D_\n6.放在二疊字動詞之間，表行為是不費力或嘗試性的。如：「雙手動一動」、「問一問」、「隨便說一說」。_x000D_\n7.事物的某方面。如：「一則以喜，一則以憂。」、「一不沾親，二不帶故。」_x000D_\n8.竟、乃。表示事出意外。如：「一至於斯」。《史記．卷六八．商君傳》：「嗟乎，為法之敝一至此哉！」_x000D_\n9.皆。《荀子．勸學》：「端而言，蠕而動，一可以為法則。」_x000D_\n[助]_x000D_\n表示程度，加強語氣。《文選．古詩十九首．西北有高樓》：「上有絃歌聲，音響一何悲。」《戰國策．燕策一》：「因仰而弔齊王桉戈而郤曰：『此一何慶弔相隨之速也？』」_x000D_\n[連]_x000D_\n或。《莊子．應帝王》：「泰氏其臥徐徐，其覺于于，一以己為馬，一以己為牛。」_x000D_\n（「一」字單用或在一詞一句的末尾，念陰平聲；在去聲字前，念陽平聲；在陰平、陽平、上聲之前，念去聲。）",
+            "entry_id": "10482",
+            "sheet": "1150929辭典匯出",
+            "row": 10494,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "枝": {
+        "definition": "branches, limbs; branch off",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "枝",
+            "pinyin": "qí",
+            "definition": "[名]\n多出的腳趾。同「跂」。如：「駢拇枝指」。《集韻．平聲．支韻》：「跂，《說文》：『足多指也。』或作枝。」",
+            "entry_id": "06241",
+            "sheet": "1150929辭典匯出",
+            "row": 6250,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "枝",
+            "pinyin": "zhī",
+            "definition": "[名]_x000D_\n1.樹幹從旁生出的枝條。《說文解字．木部》：「枝，木別生條也。」如：「枝幹」、「枯枝」、「嫩枝」。《莊子．逍遙遊》：「鷦鷯巢於深林，不過一枝；偃鼠飲河，不過滿腹。」_x000D_\n2.凡自同一本源而分出者。《左傳．莊公六年》：「《詩》云：『本枝百世。』」《荀子．儒效》：「故以枝代主而非越也。」_x000D_\n3.四肢。通「肢」。《莊子．大宗師》：「墮枝體，黜聰明，離形去知。」_x000D_\n4.量詞：（1）計算植物的單位。如：「一枝花」。唐．白居易〈長恨歌〉：「玉容寂寞淚闌干，梨花一枝春帶雨。」宋．葉紹翁〈遊園不值〉詩：「春色滿園關不住，一枝紅杏出牆來。」（2）計算細長物體的單位。如：「三枝毛筆」。元．鄭光祖《智勇定齊》第二折：「潑毛團帶著我一枝金鈚箭走了也。……眾人跟著某，務要趕上。」《水滸傳》第三回：「鬅鬆雲髻，插一枝青玉簪兒。」《蕩寇志》第一回：「左首將台上，豎著一枝沖霄拔地的黃漆旗竿，上有一面杏黃旗。」（3）計算隊伍的單位。《三寶太監西洋記通俗演義》第三七回：「元帥老爺吩咐旗牌官撥出一枝軍馬，跟隨鄭護衛出陣成功。」_x000D_\n5.姓。如漢代有枝百英。_x000D_\n[形]_x000D_\n不中肯的、不一致的。《易經．繫辭下》：「中心疑者，其辭枝。」",
+            "entry_id": "07467",
+            "sheet": "1150929辭典匯出",
+            "row": 7478,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "official_dictionary": [
+          {
+            "title": "中",
+            "pinyin": "zhōng",
+            "definition": "[名]\n1.距離四方或兩端相等的部位。如：「居中」、「中央」、「日正當中」。\n2.內、裡面。如：「水中」、「夢中」、「心中」。\n3.泛指某一時期以內。如：「一年之中」、「晉太元中」。\n4.中國的簡稱。如：「古今中外」。\n5.姓。如漢代有中京。\n[形]\n1.居間介紹、連絡的。如：「中人」。\n2.居於高低、大小、好壞之間的。如：「中級」、「中型」、「中等」。\n3.半。如：「中夜」、「中途」。\n[副]\n1.正好。如：「適中」。\n2.表示動作正在進行。如：「事情正在交涉中。」",
+            "entry_id": "08130",
+            "sheet": "1150929辭典匯出",
+            "row": 8144,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "中",
+            "pinyin": "zhòng",
+            "definition": "[動]\n1.達到要點。《論語．子路》：「刑罰不中，則民無所錯手足。」《漢書．卷一〇．成帝紀》：「朕涉道日寡，舉錯不中。」\n2.合、正對上。如：「中規中矩」。《左傳．定公元年》：「未嘗不中吾志也。」《戰國策．西周策》：「去柳葉者百步而射之，百發百中。」\n3.遭受、感染。如：「中風」、「中毒」。\n4.得。如：「中獎」、「中籤」、「中選」。\n5.考取。如：「范進中舉」、「考中大學」。《儒林外史》第二回：「這王大老爺，就是前科新中的。」",
+            "entry_id": "08150",
+            "sheet": "1150929辭典匯出",
+            "row": 8164,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "青",
+            "pinyin": "jīng",
+            "definition": "參見「青青」(二)條。",
+            "entry_id": "05920",
+            "sheet": "1150929辭典匯出",
+            "row": 5928,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "青青",
+                "pinyin": "jīng jīng",
+                "definition": "草木茂盛的樣子。《詩經．衛風．淇奧》：「瞻彼淇奧，綠竹青青。」宋．范仲淹〈岳陽樓記〉：「岸芷汀蘭，郁郁青青。」也作「菁菁」。",
+                "entry_id": "059200001",
+                "sheet": "1150929辭典匯出",
+                "row": 94282
+              },
+              {
+                "title": "青青",
+                "pinyin": "qīng qīng",
+                "definition": "1.形容草木翠綠的顏色。《文選．古詩十九首．青青河邊草》：「青青河邊草，綿綿思遠道。」《三國演義》第九回：「千里草，何青青！十日卜，不得生！」\n2.形容鬢髮烏黑。宋．朱熹〈和秀野蘄簟之句〉詩：「史君兩鬢尚青青，學道仍拋後院笙。」",
+                "entry_id": "065760148",
+                "sheet": "1150929辭典匯出",
+                "row": 100674
+              }
+            ]
+          },
+          {
+            "title": "青",
+            "pinyin": "qīng",
+            "definition": "[名]\n1.顏色：(1)綠色。唐．劉禹錫〈陋室銘〉：「苔痕上階綠，草色入簾青。」(2)藍色。《荀子．勸學》：「青取之於藍，而青於藍。」(3)黑色。如：「玄青」。\n2.綠色的草木、山脈。如：「踏青」、「萬年青」、「青黃不接」。唐．柳宗元〈始得西山宴游記〉：「縈青繚白，外與天際。」\n3.竹皮。如：「汗青」。\n4.地名簡稱：(1)大陸地區青海省簡稱。如：「青藏鐵路」。(2)青島市簡稱。如：「青鹽鐵路」。\n5.二一四部首之一。\n[形]\n1.綠色的。如：「青山綠水」、「山青水秀」。\n2.藍色的。如：「青天白日」。\n3.黑色的。如：「青布」、「青衣」。唐．李白〈將進酒〉：「君不見高堂明鏡悲白髮，朝如青絲暮成雪。」\n4.年輕的。如：「青年」、「青春」。",
+            "entry_id": "06576",
+            "sheet": "1150929辭典匯出",
+            "row": 6585,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "色": {
+        "definition": "color, tint, hue, shade; form, body; beauty, desire for beauty; Kangxi radical 139",
+        "mandarin": "sè",
+        "official_dictionary": [
+          {
+            "title": "色",
+            "pinyin": "shè",
+            "definition": "[名]_x000D_\n俗稱性慾衝動。",
+            "entry_id": "08831",
+            "sheet": "1150929辭典匯出",
+            "row": 8845,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "shǎi",
+            "definition": "(一)[名]1.之語音。",
+            "entry_id": "08852",
+            "sheet": "1150929辭典匯出",
+            "row": 8866,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "sè",
+            "definition": "[名]\n1.物體表面的色彩。如：「五顏六色」、「五光十色」、「花色鮮豔」。\n2.面容、神情。如：「不動聲色」、「和顏悅色」、「面不改色」、「察言觀色」。\n3.女色，容貌美麗的婦女。《論語．季氏》：「少之時，血氣未定，戒之在色。」唐．白居易〈長恨歌〉：「漢皇重色思傾國，御宇多年求不得。」\n4.景象。如：「暮色深沉」、「景色宜人」。\n5.種類、式樣。如：「貨色齊全」、「形形色色」、「花色繁多」。\n6.品質、成分。多指金銀而言。如：「成色」、「足色」。\n7.性慾、情慾。如：「色情」、「桃色糾紛」。《孟子．告子上》：「告子曰：『食、色，性也。』」\n8.二一四部首之一。\n[動]\n1.生氣發怒，改變臉色。《戰國策．韓策二》：「怒於室者色於市，今公叔怨齊，無奈何也。」\n2.訪求。如：「物色」。",
+            "entry_id": "09995",
+            "sheet": "1150929辭典匯出",
+            "row": 10008,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "含": {
+        "definition": "hold in mouth; cherish; contain",
+        "mandarin": "hán",
+        "official_dictionary": [
+          {
+            "title": "含",
+            "pinyin": "hán",
+            "definition": "[動]\n1.東西銜在嘴裡，不吐出也不吞下。如：「含著藥片。」漢．劉熙《釋名．釋飲食》：「含，合也，合口亭之也。」《史記．卷十三．三代世表》：「有燕銜卵墮之，契母得，故含之，誤吞之，即生契。」\n2.裡面藏著，存在著。如：「含水分」、「含養分」、「含苞待放」。《文選．宋玉．登徒子好色賦》：「此郊之姝，華色含光，體美容冶，不待飾裝。」\n3.包容、容納。如：「包含」。《易經．坤卦．文言曰》：「後得主而有常，含萬物而化光。」唐．杜甫〈絕句四首〉之三：「窗含西嶺千秋雪，門泊東吳萬里船。」\n4.懷著。如：「含怒」、「含恨」、「含羞帶怯」、「含情脈脈」。唐．沈佺期〈古意呈補闕喬知之〉詩：「誰謂含愁獨不見，更教明月照流黃。」\n5.忍受、忍耐。如：「茹苦含辛」。宋．胡銓〈戊午上高宗封事〉：「含垢忍恥，與天下而臣之，甘心焉。」",
+            "entry_id": "04851",
+            "sheet": "1150929辭典匯出",
+            "row": 4857,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "含",
+            "pinyin": "hàn",
+            "definition": "[名]\n古代喪禮中，置入亡者口中的物品，種類依其身分階級而有別。通「琀」。《公羊傳．文公五年》：「含者何？口實也。」漢．何休．解詁：「緣生以事死，不忍虛其口。天子以珠，諸侯以玉，大夫以碧，士以貝，春秋之制也。」《戰國策．趙策三》：「鄒、魯之臣，生不得事養，死則不得飯含。」《廣韻．去聲．勘韻》：「琀，送死口中玉。亦作含。」\n[動]\n古代喪葬禮俗，以珠玉或米貝放入亡者口中，稱為「含」。《左傳．襄公十九年》：「二月甲寅，（荀偃）卒，而視，不可含。」《禮記．檀弓下》：「邾婁考公之喪，徐君使容居來弔，含。」",
+            "entry_id": "04880",
+            "sheet": "1150929辭典匯出",
+            "row": 4886,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "过",
+            "pinyin": null,
+            "definition": "「過」的異體字。",
+            "entry_id": "04226-1",
+            "sheet": "1150929辭典匯出",
+            "row": 71117,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "花": {
+        "definition": "flower; blossoms",
+        "mandarin": "huā",
+        "official_dictionary": [
+          {
+            "title": "花",
+            "pinyin": "huā",
+            "definition": "[名]_x000D_\n1.被子植物的生殖器官，由許多變形的葉集生而成。包括花托、花萼、花冠、雄蕊群與雌蕊或心皮群。可供人觀賞。如：「菊花」、「梅花」、「玫瑰花」。唐．崔護〈題都城南莊〉詩：「去年今日此門中，人面桃花相映紅。」_x000D_\n2.形狀像花的物體。如：「雪花」、「水花」、「浪花」、「爆米花」。_x000D_\n3.比喻美女。如：「姊妹花」、「解語花」。唐．白居易〈霓裳羽衣歌〉：「嬌花巧笑久寂寥，娃館苧蘿空處所。」_x000D_\n4.姓。如唐代有花敬定。_x000D_\n[形]_x000D_\n1.有花的。如：「花季」。_x000D_\n2.有花紋的、雜色的。如：「花布」、「花貓」、「花邊」。_x000D_\n3.式樣、種類繁多的。如：「花式游泳」。_x000D_\n4.虛假的、巧妙的。如：「耍花招」、「花言巧語」。_x000D_\n5.模糊不清。如：「眼睛都花了。」_x000D_\n6.人心性不定、好玩樂稱為「花」。如：「花心大少」、「這個人很花，你最好不要和他交往。」_x000D_\n[動]_x000D_\n1.開花。唐．杜甫〈偪仄行〉：「辛夷始花亦已落，況我與子非壯年。」_x000D_\n2.耗費。如：「花錢」、「花時間」、「這些錢夠他花的了。」",
+            "entry_id": "05005",
+            "sheet": "1150929辭典匯出",
+            "row": 5012,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "初蕾",
+      "decision": "keep",
+      "reason": "“初”指初始，“蕾”指含苞未开的花，组合自然凝练，有新生、待放的意象，具品牌名辨识度。"
+    },
+    {
+      "name": "蕾知春",
+      "decision": "keep",
+      "reason": "可自然理解为花蕾感知春意，语序虽带诗性但语义清楚，意象连贯，不是完整判断句。"
+    },
+    {
+      "name": "一枝蕾",
+      "decision": "keep",
+      "reason": "“一枝”与“蕾”构成具体自然物象，简洁易记；虽不如“一枝花”常见，仍可理解为一枝含苞花蕾。"
+    },
+    {
+      "name": "风中蕾",
+      "decision": "keep",
+      "reason": "描绘花蕾处于风中，画面清楚、构词自然，有简洁的诗性品牌感。"
+    },
+    {
+      "name": "蕾映山",
+      "decision": "keep",
+      "reason": "可理解为花蕾映衬山景，意象关系明确，简洁而有画面感。"
+    },
+    {
+      "name": "蕾见青",
+      "decision": "uncertain",
+      "reason": "“见青”通常需要明确的对象或语境；与“蕾”组合后关系不够自然，语义指向存疑。"
+    },
+    {
+      "name": "山色含蕾",
+      "decision": "uncertain",
+      "reason": "“山色含蕾”将山色与花蕾相连，虽可作诗性表达，但搭配关系较牵强，完整意象不够清楚。"
+    },
+    {
+      "name": "风过花蕾",
+      "decision": "keep",
+      "reason": "自然描写风吹过花蕾，语序通顺、物象明确，具简洁的动态画面感。"
+    },
+    {
+      "name": "山间春蕾",
+      "decision": "keep",
+      "reason": "指山间春日的花蕾，语义自然凝练；与暂留候选“一枝春”意象和关系不同，不构成近似重复。"
+    }
+  ]
+}

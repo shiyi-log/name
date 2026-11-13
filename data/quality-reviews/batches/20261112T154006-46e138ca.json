@@ -1,0 +1,989 @@
+{
+  "review_id": "20261112T154006-46e138ca",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "纵横",
+      "横波",
+      "横空出世",
+      "横流四海",
+      "横窗听雨",
+      "经横",
+      "横汀",
+      "横晖",
+      "横青",
+      "横舟渡远",
+      "横岭松风",
+      "横川载月",
+      "横岭听松",
+      "横空朗月",
+      "云横岭",
+      "横天际",
+      "横云起",
+      "横越山",
+      "横云间",
+      "横川远",
+      "横山见"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "一川明月",
+        "一川风月",
+        "郁川映月",
+        "崞山见月",
+        "凉月照川",
+        "崧川映月",
+        "蒹月临川",
+        "蒹月照川",
+        "蒹舟载月",
+        "茗川照月",
+        "山麇见月",
+        "柘枝载月"
+      ],
+      "川": [
+        "一川明月",
+        "一川风月",
+        "郁川映月",
+        "凉月照川",
+        "崧川映月",
+        "蒹月临川",
+        "蒹月照川",
+        "茗川照月",
+        "黛影横川",
+        "长川远黛",
+        "晴川远嶂",
+        "百川归一"
+      ],
+      "天": [
+        "水天一色",
+        "掀天",
+        "壸中天",
+        "天圜",
+        "天翱",
+        "天资",
+        "江天又阔",
+        "天垓",
+        "天垠",
+        "绀天",
+        "瓶中天地",
+        "天女花"
+      ],
+      "间": [
+        "云间鹮",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "云间书斋",
+        "云间桫椤",
+        "翱云间",
+        "凉云间",
+        "云间棣影",
+        "暮云间",
+        "云间猊影",
+        "卧云间"
+      ],
+      "山": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "铘见山海",
+        "猊越山",
+        "枕山听松",
+        "鹂见山",
+        "茗山听雨",
+        "山麇见月",
+        "柘见山",
+        "藏酒见山",
+        "矿山听雨"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "铘见山海",
+        "鹂见山",
+        "山麇见月",
+        "柘见山",
+        "藏酒见山",
+        "菉见山",
+        "黛山见月",
+        "凉云见月",
+        "见崧"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "风": [
+        "暮岭松风",
+        "一川风月",
+        "松风峒",
+        "峋岭听风",
+        "凉风入松",
+        "崧风过岭",
+        "茅风过岭",
+        "螭吟松风",
+        "卧听松风",
+        "松风鹂语",
+        "松风入涧",
+        "松风入蹊"
+      ],
+      "渡": [
+        "一苇渡江",
+        "青枫渡",
+        "渡口",
+        "广陵渡月"
+      ],
+      "云": [
+        "云间鹮",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "云间书斋",
+        "云间桫椤",
+        "翱云间",
+        "凉云间",
+        "云间棣影",
+        "暮云间",
+        "云间猊影",
+        "卧云间"
+      ],
+      "窗": [
+        "窗旁雨",
+        "琐窗",
+        "晴窗斋"
+      ],
+      "远": [
+        "长川远黛",
+        "晴川远嶂",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟"
+      ],
+      "海": [
+        "铘见山海",
+        "山海貘",
+        "海鳐",
+        "山海酵香",
+        "海峤",
+        "峥海",
+        "云海峥嵘",
+        "观海云斋",
+        "望海斋",
+        "瞰海",
+        "瞰山海",
+        "海徼"
+      ],
+      "松": [
+        "崞岭听松",
+        "崒岭听松",
+        "暮岭松风",
+        "松风峒",
+        "峤听松",
+        "听松问斋",
+        "凉风入松",
+        "螭吟松风",
+        "螭听松雨",
+        "卧听松风",
+        "枕山听松",
+        "松风鹂语"
+      ],
+      "晖": [
+        "晖映",
+        "暾晖",
+        "广春晖",
+        "昌晖"
+      ],
+      "世": [
+        "世胄堂",
+        "枕书观世",
+        "涉世"
+      ],
+      "听": [
+        "崞岭听松",
+        "崒岭听松",
+        "阎听雨",
+        "峤听松",
+        "峤听雨",
+        "峋岭听风",
+        "听雨斋",
+        "听松问斋",
+        "螭听松雨",
+        "铘听雨",
+        "鹁鸪听雨",
+        "卧听松风"
+      ],
+      "雨": [
+        "阎听雨",
+        "峤听雨",
+        "听雨斋",
+        "螭听松雨",
+        "铘听雨",
+        "窗旁雨",
+        "鹁鸪听雨",
+        "枕云听雨",
+        "蒹听雨",
+        "荃溪听雨",
+        "绉波听雨",
+        "茗山听雨"
+      ],
+      "岭": [
+        "崞岭听松",
+        "崒岭听松",
+        "暮岭松风",
+        "峋岭听风",
+        "崧风过岭",
+        "茅风过岭",
+        "五岭松",
+        "峣岭",
+        "崞岭",
+        "暮岭月",
+        "鹁越岭",
+        "碳岭"
+      ],
+      "汀": [
+        "芹汀",
+        "风过蒹汀",
+        "蒹汀远树",
+        "菼汀"
+      ],
+      "越": [
+        "猊越山",
+        "峥越",
+        "崧越",
+        "螭越千峰",
+        "鹁越岭",
+        "唐越",
+        "奔越",
+        "蔓越千峰",
+        "长风越埼",
+        "珂越千峰",
+        "越嶂"
+      ],
+      "空": [
+        "翱空"
+      ],
+      "朗": [
+        "崧朗",
+        "酷朗",
+        "鲜朗",
+        "珺朗"
+      ],
+      "舟": [
+        "蒹舟载月",
+        "珀舟",
+        "暮舟",
+        "碳舟",
+        "茗舟",
+        "镠舟",
+        "奇舟",
+        "酒舟",
+        "菼舟"
+      ],
+      "起": [
+        "珂云起",
+        "螭起长风",
+        "黛岚初起"
+      ],
+      "流": [
+        "绀色流光",
+        "奔流",
+        "绉水流光",
+        "珐映流光",
+        "赫月流光",
+        "螳影流光",
+        "映珂流彩"
+      ],
+      "波": [
+        "绉波听雨",
+        "渟波",
+        "绉波",
+        "绉波间",
+        "清波微绉",
+        "月映绉波",
+        "风过绉波",
+        "绉波映星",
+        "绉波照野",
+        "碧水绉波",
+        "绉波入画"
+      ],
+      "载": [
+        "蒹舟载月",
+        "柘枝载月",
+        "酒载清欢"
+      ],
+      "四": [
+        "四时清鲜",
+        "四时常鲜",
+        "四季",
+        "四时花厅"
+      ],
+      "出": [
+        "出奇",
+        "奇云出岫",
+        "飞鸟出嶂"
+      ],
+      "横": [
+        "黛影横川",
+        "横戈"
+      ]
+    },
+    "literature_phrase_examples": {
+      "纵横": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1080,
+          "context": "周庐徼道纵横转，飞阁回轩左右长。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 6755,
+          "context": "纵横计不就，慷慨志犹存。"
+        }
+      ],
+      "横波": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 7709,
+          "context": "横波巧能笑，弯蛾不识愁。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 13528,
+          "context": "昔日横波目，今成流泪泉。"
+        }
+      ],
+      "横空出世": [],
+      "横流四海": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 391451,
+          "context": "鉏决隄防纵怒涛，横流四海尽滔滔。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 904896,
+          "context": "洪水横流四海饥，教民稼穑务三时。"
+        }
+      ],
+      "横窗听雨": [],
+      "经横": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 248448,
+          "context": "默坐树阴下，仙经横石床。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 362621,
+          "context": "默坐树阴下，仙经横石床。"
+        }
+      ],
+      "横汀": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1230382,
+          "context": "翁方卖鱼去，孤檝自横汀。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1267804,
+          "context": "浪尽横汀孤树在，微开顽翳夕阳明。"
+        }
+      ],
+      "横晖": [],
+      "横青": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 67918,
+          "context": "开堂振白拂，高论横青云。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 69147,
+          "context": "石梁横青天，侧足履半月。"
+        }
+      ],
+      "横舟渡远": [],
+      "横岭松风": [],
+      "横川载月": [],
+      "横岭听松": [],
+      "横空朗月": [],
+      "云横岭": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 501090,
+          "context": "柔肠欲断云横岭，幽梦初回月挂村。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 653090,
+          "context": "勤劳再见云横岭，志业空惊雪满颠。"
+        }
+      ],
+      "横天际": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 69136,
+          "context": "涛卷海门石，云横天际山。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 366471,
+          "context": "纵横天际为闲客，时遇季秋重阳节。"
+        }
+      ],
+      "横云起": [],
+      "横越山": [],
+      "横云间": [],
+      "横川远": [],
+      "横山见": []
+    },
+    "dictionary_phrase_entries": {
+      "纵横": [],
+      "横波": [],
+      "横空出世": [],
+      "横流四海": [],
+      "横窗听雨": [],
+      "经横": [],
+      "横汀": [],
+      "横晖": [],
+      "横青": [],
+      "横舟渡远": [],
+      "横岭松风": [],
+      "横川载月": [],
+      "横岭听松": [],
+      "横空朗月": [],
+      "云横岭": [],
+      "横天际": [],
+      "横云起": [],
+      "横越山": [],
+      "横云间": [],
+      "横川远": [],
+      "横山见": []
+    },
+    "direct_dictionary": {
+      "纵": {
+        "definition": "indulge in, give free reign to",
+        "mandarin": "zòng",
+        "related_characters": [
+          {
+            "character": "縱",
+            "relation": "kTraditionalVariant",
+            "definition": "indulge in, give free reign to",
+            "mandarin": "zòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "横": {
+        "definition": "across",
+        "mandarin": "héng",
+        "related_characters": [
+          {
+            "character": "橫",
+            "relation": "kTraditionalVariant",
+            "definition": "across, horizontal, lateral",
+            "mandarin": "héng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "波": {
+        "definition": "waves, breakers; undulations",
+        "mandarin": "bō",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "空": {
+        "definition": "empty, hollow, bare, deserted",
+        "mandarin": "kōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "出": {
+        "definition": "go out, send out; stand; produce",
+        "mandarin": "chū",
+        "related_characters": [
+          {
+            "character": "出",
+            "relation": "kTraditionalVariant",
+            "definition": "go out, send out; stand; produce",
+            "mandarin": "chū"
+          },
+          {
+            "character": "齣",
+            "relation": "kTraditionalVariant",
+            "definition": "act; stanza; time, occasion",
+            "mandarin": "chū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "世": {
+        "definition": "generation; world; era",
+        "mandarin": "shì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "流": {
+        "definition": "flow, circulate, drift; class",
+        "mandarin": "liú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "四": {
+        "definition": "four",
+        "mandarin": "sì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窗": {
+        "definition": "window",
+        "mandarin": "chuāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "经": {
+        "definition": "classic works; pass through",
+        "mandarin": "jīng",
+        "related_characters": [
+          {
+            "character": "經",
+            "relation": "kTraditionalVariant",
+            "definition": "classic works; pass through",
+            "mandarin": "jīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "汀": {
+        "definition": "sandbar, beach, bank, shore",
+        "mandarin": "tīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晖": {
+        "definition": "sunshine; light, bright, radiant",
+        "mandarin": "huī",
+        "related_characters": [
+          {
+            "character": "暉",
+            "relation": "kTraditionalVariant",
+            "definition": "sunshine; light, bright, radiant",
+            "mandarin": "huī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "渡": {
+        "definition": "cross, ferry over; ferry",
+        "mandarin": "dù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岭": {
+        "definition": "mountain ridge, mountain peak",
+        "mandarin": "lǐng",
+        "related_characters": [
+          {
+            "character": "嶺",
+            "relation": "kTraditionalVariant",
+            "definition": "mountain ridge, mountain peak",
+            "mandarin": "lǐng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "载": {
+        "definition": "load; carry; transport, convey",
+        "mandarin": "zài",
+        "related_characters": [
+          {
+            "character": "載",
+            "relation": "kTraditionalVariant",
+            "definition": "load; carry; transport, convey",
+            "mandarin": "zài"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朗": {
+        "definition": "clear, bright; distinct",
+        "mandarin": "lǎng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "际": {
+        "definition": "border, boundary, juncture",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "际",
+            "relation": "kTraditionalVariant",
+            "definition": "border, boundary, juncture",
+            "mandarin": "jì"
+          },
+          {
+            "character": "際",
+            "relation": "kTraditionalVariant",
+            "definition": "border, boundary, juncture",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "起": {
+        "definition": "rise, stand up; go up; begin",
+        "mandarin": "qǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "越": {
+        "definition": "exceed, go beyond; the more ...",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "纵横",
+      "decision": "keep",
+      "reason": "常用凝练词，表示纵向横向、广泛贯通或自如驰骋，语义明确且有品牌辨识度；不与“横戈”等候选构成近似重复。"
+    },
+    {
+      "name": "横波",
+      "decision": "keep",
+      "reason": "既可指横向波动，也有古典诗词中目光流转的用法，词形简洁、意象明确；与其他候选不是同一完整意象的近似变体。"
+    },
+    {
+      "name": "横空出世",
+      "decision": "reject",
+      "reason": "完整名称是常见成句，表达突然出现、崛起的判断性描述，口号感明显，不符合凝练品牌名要求。"
+    },
+    {
+      "name": "横流四海",
+      "decision": "reject",
+      "reason": "语义上是洪水横向泛流、遍及四海，文学用例也处于洪水语境；整体偏灾害性陈述，且是成句式表达，不适合作为品牌名。"
+    },
+    {
+      "name": "横窗听雨",
+      "decision": "keep",
+      "reason": "可自然理解为倚窗听雨，画面连贯、语法通顺，具有清晰的静谧意象和品牌辨识度。"
+    },
+    {
+      "name": "经横",
+      "decision": "uncertain",
+      "reason": "两字组合缺少自然明确的语义关系；“经”与“横”虽各自可核义，但完整词义和命名意图无法确认。"
+    },
+    {
+      "name": "横汀",
+      "decision": "keep",
+      "reason": "可理解为横陈于水岸的沙洲或汀岸，简洁而有具体水景意象；古诗用例支持其自然构词。"
+    },
+    {
+      "name": "横晖",
+      "decision": "uncertain",
+      "reason": "“横”与“晖”组合后的关系不明，难以确认是横照的日光还是其他意象，整体自然度存疑。"
+    },
+    {
+      "name": "横青",
+      "decision": "uncertain",
+      "reason": "词义和修饰关系不够清楚；古诗中的“横青云”“横青天”各有后续成分，不能直接证明“横青”独立成词自然。"
+    },
+    {
+      "name": "横舟渡远",
+      "decision": "uncertain",
+      "reason": "可勉强理解为横舟渡向远方，但“横舟”与“渡远”的搭配关系生硬，完整意象需要额外补足语境。"
+    },
+    {
+      "name": "横岭松风",
+      "decision": "keep",
+      "reason": "山岭与松间风声构成连贯自然的景物意象，名称简洁，有古典气息且不依赖特定行业解释。"
+    },
+    {
+      "name": "横川载月",
+      "decision": "keep",
+      "reason": "可理解为月色映照横展的川流，或川流承载月影，意象连贯而凝练，具有辨识度。"
+    },
+    {
+      "name": "横岭听松",
+      "decision": "keep",
+      "reason": "可自然理解为在横岭听松涛，地点与听觉意象衔接清楚，名称完整且简洁。"
+    },
+    {
+      "name": "横空朗月",
+      "decision": "keep",
+      "reason": "可理解为明月横空、月色朗然，景象清楚，组合凝练；与“横川载月”不是仅换近义字的同一构词变体。"
+    },
+    {
+      "name": "云横岭",
+      "decision": "keep",
+      "reason": "可自然理解为云气横过山岭，语序凝练，具有明确山水意象；不是对照候选中同字名称的近似变体。"
+    },
+    {
+      "name": "横天际",
+      "decision": "uncertain",
+      "reason": "“横”通常需要明确的横陈对象，“横天际”虽可从诗句中补出云或山等主语，但单独作为名称语法关系不完整，具体意象不够确定。"
+    },
+    {
+      "name": "横云起",
+      "decision": "uncertain",
+      "reason": "可勉强解作云横陈而起，但“横云”与“起”的关系不够自然，语序和画面表达均有歧义。"
+    },
+    {
+      "name": "横越山",
+      "decision": "uncertain",
+      "reason": "“横越山”可解为横向越过山岭，但作为完整名称略显动作描述不完整，缺少自然的名词性凝练感。"
+    },
+    {
+      "name": "横云间",
+      "decision": "keep",
+      "reason": "可理解为横陈于云间，空间意象明确、简洁自然；与对照候选中的“云间”类名称虽共享云和间字，但语义关系并非仅换序或近义替换。"
+    },
+    {
+      "name": "横川远",
+      "decision": "uncertain",
+      "reason": "“横川”与“远”之间缺少清楚的修饰关系，虽可猜测为横展的远川，但完整表达不够自然。"
+    },
+    {
+      "name": "横山见",
+      "decision": "uncertain",
+      "reason": "可理解为横山可见或见到横山，但语序关系和语义重心不清；与对照名称“崞山见月”等并非足以确认的同一意象近似变体。"
+    }
+  ]
+}

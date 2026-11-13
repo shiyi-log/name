@@ -1,0 +1,963 @@
+{
+  "review_id": "20261113T062945-a431a5dd",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "钲鼓",
+      "钲鼓和鸣",
+      "钲声悠远",
+      "玉钲",
+      "闻钲知止",
+      "暮钲",
+      "山月伴钲",
+      "远山听钲",
+      "钲与松声",
+      "星河映钲"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "山月伴獭",
+        "崞山见月",
+        "一杯山月",
+        "山麇见月",
+        "蕖山月",
+        "松月弓声",
+        "弓伴月",
+        "山月酿酒",
+        "月照山罅",
+        "山月厅",
+        "黛山见月",
+        "诸山映月"
+      ],
+      "星": [
+        "碳映星河",
+        "星河映埼",
+        "弓映星河",
+        "烛映星河",
+        "星河映嶂",
+        "星河映璧",
+        "星河映柳",
+        "屏映星河",
+        "星河映翠",
+        "星河映湫",
+        "星河交映",
+        "璃映星河"
+      ],
+      "山": [
+        "山月伴獭",
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "崞山见月",
+        "一杯山月",
+        "茗山听雨",
+        "麇行远山",
+        "山麇见月",
+        "涡映山河",
+        "蕖山月",
+        "酒伴山行"
+      ],
+      "和": [
+        "鼓铴和鸣",
+        "弓弦和鸣",
+        "鹡鸰和鸣",
+        "陶然和鸣",
+        "陶和鸣",
+        "鸤鸠和鸣",
+        "伊和鸣",
+        "榉木和鸣",
+        "歌和鸣",
+        "和鸣舍",
+        "悠远清和",
+        "宽和"
+      ],
+      "玉": [
+        "玉屑",
+        "砆玉",
+        "玉肌",
+        "攻玉",
+        "玉石錾花",
+        "玉盅",
+        "玉萼",
+        "玉葩",
+        "玉芙蓉",
+        "玉椟",
+        "玉钤",
+        "玉圜"
+      ],
+      "鸣": [
+        "鼓铴和鸣",
+        "弓弦和鸣",
+        "鹡鸰和鸣",
+        "鸠鸣山月",
+        "陶然和鸣",
+        "陶和鸣",
+        "鸤鸠和鸣",
+        "鸧鸣山月",
+        "伊和鸣",
+        "榉木和鸣",
+        "歌和鸣",
+        "雎鸣远山"
+      ],
+      "远": [
+        "鼙声远",
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "踏远山",
+        "远山连冈"
+      ],
+      "松": [
+        "松月弓声",
+        "松月埙声",
+        "琨听松声",
+        "岐山听松",
+        "岐山松月",
+        "杄与松",
+        "霜与松",
+        "蓑与松",
+        "衲影松声",
+        "羿伴松月",
+        "霰与松",
+        "獾听松声"
+      ],
+      "鼓": [
+        "鼓铴和鸣",
+        "鼙鼓",
+        "鼍鼓",
+        "钟鼓喤喤",
+        "箫鼓",
+        "𬭚鼓",
+        "晨鼓",
+        "鼓风",
+        "鼓琴",
+        "风雷鼓荡",
+        "鼓荡",
+        "天鼓"
+      ],
+      "声": [
+        "鼙声远",
+        "松月弓声",
+        "松月埙声",
+        "琨听松声",
+        "山月笛声",
+        "远处叮声",
+        "苇声远",
+        "篙声远",
+        "衲影松声",
+        "桐声入远",
+        "桐声远",
+        "曼声远"
+      ],
+      "映": [
+        "碳映星河",
+        "星河映埼",
+        "弓映星河",
+        "烛映星河",
+        "星河映嶂",
+        "星河映璧",
+        "星河映柳",
+        "屏映星河",
+        "星河映翠",
+        "星河映湫",
+        "星河交映",
+        "璃映星河"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远",
+        "涂知微"
+      ],
+      "听": [
+        "茗山听雨",
+        "矿山听雨",
+        "山柯听泉",
+        "琨听松声",
+        "琨听远钟",
+        "山月听琴",
+        "砚山听雨",
+        "北山听泉",
+        "山间听濑",
+        "春山听濑",
+        "岐山听松",
+        "听瀑山"
+      ],
+      "河": [
+        "碳映星河",
+        "星河映埼",
+        "弓映星河",
+        "烛映星河",
+        "星河映嶂",
+        "星河映璧",
+        "星河映柳",
+        "屏映星河",
+        "星河映翠",
+        "星河映湫",
+        "星河交映",
+        "璃映星河"
+      ],
+      "暮": [
+        "暮星河",
+        "暮色",
+        "暮雨",
+        "暮光",
+        "暮雪",
+        "暮林",
+        "暮潮",
+        "暮钟",
+        "暮霭",
+        "暮野",
+        "暮笛",
+        "暮岑"
+      ],
+      "与": [
+        "雯与远山",
+        "山月与埙",
+        "荞与星河",
+        "杄与松",
+        "猹与星河",
+        "墩与远山",
+        "霜与松",
+        "蓑与松",
+        "霰与松",
+        "梅与星河",
+        "鸮与星河",
+        "螭与山海"
+      ],
+      "伴": [
+        "山月伴獭",
+        "弓伴月",
+        "酒伴山行",
+        "麈伴星河",
+        "蛩伴月",
+        "菊伴远山",
+        "菊伴月",
+        "漪伴月",
+        "凰伴星河",
+        "蕾伴月",
+        "鸧伴月",
+        "狨伴山风"
+      ],
+      "止": [
+        "止戈",
+        "行止",
+        "止息",
+        "雨止",
+        "风止",
+        "止语",
+        "止念"
+      ],
+      "闻": [
+        "山月闻埙",
+        "山月闻铃",
+        "轶闻",
+        "闻埙",
+        "林下闻螽",
+        "博闻",
+        "闻达",
+        "闻山雨",
+        "松间闻泉",
+        "月下闻笛",
+        "见闻",
+        "山色闻鹒"
+      ],
+      "悠": [
+        "悠远",
+        "悠然向远",
+        "悠然见远",
+        "悠远清和",
+        "悠焉",
+        "悠邈",
+        "悠扬",
+        "悠游",
+        "心悠",
+        "悠行",
+        "悠然",
+        "悠和"
+      ]
+    },
+    "literature_phrase_examples": {
+      "钲鼓": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 60426,
+          "context": "依微水戍闻钲鼓，掩映沙村见酒旗。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 141855,
+          "context": "殳鋋方启路，钲鼓正交音。"
+        }
+      ],
+      "钲鼓和鸣": [],
+      "钲声悠远": [],
+      "玉钲": [],
+      "闻钲知止": [],
+      "暮钲": [],
+      "山月伴钲": [],
+      "远山听钲": [],
+      "钲与松声": [],
+      "星河映钲": []
+    },
+    "dictionary_phrase_entries": {
+      "钲鼓": [],
+      "钲鼓和鸣": [],
+      "钲声悠远": [],
+      "玉钲": [],
+      "闻钲知止": [],
+      "暮钲": [],
+      "山月伴钲": [],
+      "远山听钲": [],
+      "钲与松声": [],
+      "星河映钲": []
+    },
+    "direct_dictionary": {
+      "钲": {
+        "definition": "kind of gong used in ancient times by troops on the march",
+        "mandarin": "zhēng",
+        "related_characters": [
+          {
+            "character": "鉦",
+            "relation": "kTraditionalVariant",
+            "definition": "kind of gong used in ancient times by troops on the march",
+            "mandarin": "zhēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鼓": {
+        "definition": "drum; beat, top, strike; Kangxi radical 207",
+        "mandarin": "gǔ",
+        "official_dictionary": [
+          {
+            "title": "鼓",
+            "pinyin": "gǔ",
+            "definition": "[名]\n1.樂器名，打擊樂器。用皮革蒙在中空木桶上所製成的樂器之泛稱，常以手、木棒或鼓槌擊奏。其形狀大小不一，聲音因其大小、深淺各有不同音量與音色。\n2.二一四部首之一。\n[動]\n1.敲擊、拍擊、彈奏。如：「鼓掌」、「鼓琴」、「鼓瑟」。《詩經．小雅．白華》：「鼓鐘于宮，聲聞于外。」唐．孟郊〈上張徐州〉詩：「願鼓空桑弦，永使萬物和。」\n2.振動。如：「鼓動風潮」。《易經．繫辭上》：「鼓之以雷霆，潤之以風雨。」晉．潘尼〈後園頌〉：「翔鳥鼓翼，游魚載浮。」\n3.激勵、使振作。如：「鼓勵」、「鼓舞士氣」。",
+            "entry_id": "04176",
+            "sheet": "1150929辭典匯出",
+            "row": 4182,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "和",
+            "pinyin": "hé",
+            "definition": "[名]\n1.各數相加的總數。如：「總和」、「二加三的和是五。」\n2.適中、恰到好處、剛柔並濟的常道。《論語．學而》：「禮之用，和為貴。」《禮記．中庸》：「和也者，天下之達道也。」\n3.和平、停戰。如：「講和」、「議和」。《孫子．行軍》：「無約而請和者，謀也。」《戰國策．趙策三》：「故不若亟割地求和，以疑天下慰秦心。」\n4.日本的別名。如：「大和民族」。\n5.姓。如漢代有和武、晉代有和嶠。\n[動]\n1.敦睦、調諧。如：「和好如初」。《左傳．隱公四年》：「臣聞以德和民，不聞以亂。」\n2.連同。如：「和衣而眠」。\n[形]\n1.溫順的、安詳的。如：「和藹」、「心平氣和」、「和顏悅色」。南朝陳．徐陵〈晉陵太守王勵德政碑〉：「風神雅淡，識量寬和。」唐．張說〈岳陽早霽南樓〉詩：「心阻意徒馳，神和生自足。」\n2.溫暖的。如：「和煦」、「風和日麗」。唐．白居易〈首夏病間〉詩：「清和好時節，微風吹裌衣。」\n[介]\n對、向。如：「你和尊長講話的態度要恭敬。」《紅樓夢》第八回：「好幾處都有，都稱贊得了不得，還和我們尋呢！」\n[連]\n與、跟。如：「我和他是好朋友。」宋．岳飛〈滿江紅．怒髮衝冠〉詞：「三十功名塵與土，八千里路雲和月。」",
+            "entry_id": "04721",
+            "sheet": "1150929辭典匯出",
+            "row": 4728,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hè",
+            "definition": "[動]\n1.聲音相應。如：「附和」、「唱和」。《資治通鑑．卷二三六．唐紀五十二．順宗永貞元年》：「絪等從而和之，議始定。」宋．蘇軾〈赤壁賦〉：「客有吹洞簫者，倚歌而和之。」\n2.依原詩格律或內容作詩以酬答他人。唐．白居易〈和微之詩．序〉：「微之又以近作四十三首寄來，命僕繼和。」",
+            "entry_id": "04754",
+            "sheet": "1150929辭典匯出",
+            "row": 4761,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hàn",
+            "definition": "(一)[連]之語音。",
+            "entry_id": "04883",
+            "sheet": "1150929辭典匯出",
+            "row": 4889,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hú",
+            "definition": "[動]\n牌戲中牌張已湊齊成副而獲勝稱為「和」。如：「和牌」。《文明小史》第五五回：「秦鳳梧自己買這樣，買那樣，應酬朋友，吃酒碰和，毛毛的也有一萬了。」",
+            "entry_id": "04952",
+            "sheet": "1150929辭典匯出",
+            "row": 4959,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "huò",
+            "definition": "[動]_x000D_\n1.攪拌、混合。《文獻通考．卷一八．征榷考五．榷茶》：「凡在京茶戶擅磨末茶者有禁，並赴官請買，而茶鋪入米豆雜物拌和者有罰，募人告者有賞。」《三國演義》第九一回：「喚行廚宰殺牛馬，和麵為劑，塑成人頭，內以牛羊等肉代之，名曰『饅頭』。」_x000D_\n2.湊熱鬧、加入添亂。《文明小史》第三回：「柳知府詫異道：『與他們甚麼相干？怎麼也和在裡頭。』」",
+            "entry_id": "05041",
+            "sheet": "1150929辭典匯出",
+            "row": 5048,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "huo",
+            "definition": "[形]\n溫暖的。如：「暖和」。",
+            "entry_id": "05069",
+            "sheet": "1150929辭典匯出",
+            "row": 5076,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鸣": {
+        "definition": "cry of bird or animal; make sound",
+        "mandarin": "míng",
+        "related_characters": [
+          {
+            "character": "鳴",
+            "relation": "kTraditionalVariant",
+            "definition": "cry of bird or animal; make sound",
+            "mandarin": "míng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "声",
+            "pinyin": null,
+            "definition": "「聲」的異體字。",
+            "entry_id": "09031-1",
+            "sheet": "1150929辭典匯出",
+            "row": 130793,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "悠": {
+        "definition": "long, far, remote, distant; leisurely",
+        "mandarin": "yōu",
+        "official_dictionary": [
+          {
+            "title": "悠",
+            "pinyin": "yōu",
+            "definition": "[形]\n1.憂悶、煩憂。《文選．江淹．雜體詩．休上人》：「西北秋風至，楚客心悠哉。」\n2.長久、長遠。如：「歷史悠久」。《文選．蘇武．詩四首之四》：「山海隔中州，相去悠且長。」\n3.閒靜、恬適。如：「自在悠閒」。唐．韋莊〈對雨獨酌〉詩：「荷鍤醉翁真達者，臥雲逋客竟悠哉。」\n[動]\n1.北平方言。指懸空擺盪。如：「他用力把鞭子一悠，大家嚇得連退數步。」\n2.控制住、穩住。參見「悠著」、「悠停」等條。",
+            "entry_id": "10865",
+            "sheet": "1150929辭典匯出",
+            "row": 10879,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "悠著",
+                "pinyin": "yōu zhe",
+                "definition": "穩住、控制住。《兒女英雄傳》第一六回：「說是這等說，二叔，你老也得悠著來呀！」",
+                "entry_id": "108650010",
+                "sheet": "1150929辭典匯出",
+                "row": 151338
+              },
+              {
+                "title": "悠停",
+                "pinyin": "yōu ting",
+                "definition": "忖量勿過度。如：「喝酒要悠停點兒，過多就醉了。」",
+                "entry_id": "108650005",
+                "sheet": "1150929辭典匯出",
+                "row": 151333
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "玉": {
+        "definition": "jade, precious stone, gem",
+        "mandarin": "yù",
+        "official_dictionary": [
+          {
+            "title": "玉",
+            "pinyin": "yù",
+            "definition": "[名]_x000D_\n1.寶石的一種，一般指的是閃玉或輝玉。閃玉為含鎂的透閃石或含鐵的陽起石，輝玉為含鈉的輝石。閃玉的顏色為墨綠色、白色、黑色或棕色，蠟狀光澤、韌度高，部分纖維較長的可形成貓眼現象。臺灣的閃玉（也稱為「臺灣玉」）主要產地為花蓮縣豐田與萬榮地區。_x000D_\n2.二一四部首之一。_x000D_\n[形]_x000D_\n1.用玉做成的。如：「玉璽」、「玉簪」、「玉環」。《史記．卷七．項羽本紀》：「玉斗一雙，欲與亞父。」_x000D_\n2.潔白、晶瑩如玉般的美好。如：「玉手」、「玉顏」。晉．郭璞〈遊仙詩〉七首之二：「靈妃顧我美，粲然啟玉齒。」《南史．卷一九．列傳．謝晦》：「帝目之曰：『一時頓有兩玉人耳。』」_x000D_\n3.珍貴的、精美的。如：「錦衣玉食」、「玉液瓊漿」。晉．左思〈吳都賦〉：「矜其宴居，則珠服玉饌。」_x000D_\n4.敬辭。用於尊稱他人的身體或言行。如：「玉體」、「玉照」。三國魏．曹植〈七啟〉：「將敬滌耳，以聽玉音。」《水滸傳》第四回：「萬望長老收錄。慈悲，慈悲！看趙某薄面，披剃為僧。一應所用，弟子自當准備。煩望長老玉成。」_x000D_\n[動]_x000D_\n珍愛，襄助。《詩經．大雅．民勞》：「王欲玉女，是用大諫。」宋．朱熹．集傳：「玉，寶愛之意。」宋．張載〈西銘〉：「富貴福澤，將厚吾之生也。貧賤憂戚，庸玉女於成也。」",
+            "entry_id": "11645",
+            "sheet": "1150929辭典匯出",
+            "row": 11659,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "闻": {
+        "definition": "hear; smell; make known; news",
+        "mandarin": "wén",
+        "related_characters": [
+          {
+            "character": "聞",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; smell; make known; news",
+            "mandarin": "wén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "止": {
+        "definition": "stop, halt, desist; detain",
+        "mandarin": "zhǐ",
+        "official_dictionary": [
+          {
+            "title": "止",
+            "pinyin": "zhǐ",
+            "definition": "[動]\n1.停住、不動。如：「適可而止」。《易經．艮卦．彖曰》：「時止則止，時行則行，動靜不失其時，其道光明。」\n2.達到、安住。《禮記．大學》：「止於至善。」\n3.不准、阻擋。《左傳．桓公六年》：「少師歸，請追楚師，隨侯將許之，季梁止之。」《呂氏春秋．季秋紀．知士》：「靜郭君不能止。」\n4.居住。《詩經．商頌．玄鳥》：「邦畿千里，惟民所止。」\n[名]\n1.腳。同「趾」。《漢書．卷二三．刑法志》：「當劓者，笞三百；當斬左止者，笞五百。」\n2.儀容行動、威儀。《詩經．鄘風．相鼠》：「相鼠有齒，人而無止；人而無止，不死何俟？」\n3.打擊柷的槌子。《爾雅．釋樂》：「所以鼓柷謂之止。」晉．郭璞．注：「柷如漆桶，方二尺四寸，深一尺八寸，中有椎柄，連底桐之，令左右擊，止者其椎名。」\n4.二一四部首之一。\n[形]\n靜的、不動的。《莊子．德充符》：「人莫鑒於流水而鑒於止水。」\n[副]\n僅、只。如：「不止一回」。唐．杜甫〈無家別〉詩：「內顧無所攜，近行止一身。」\n[助]\n用於語尾，以加強語氣。《詩經．周頌．良耜》：「百室盈止，婦子寧止。」",
+            "entry_id": "07517",
+            "sheet": "1150929辭典匯出",
+            "row": 7528,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "暮": {
+        "definition": "evening, dusk, sunset; ending",
+        "mandarin": "mù",
+        "official_dictionary": [
+          {
+            "title": "暮",
+            "pinyin": "mù",
+            "definition": "[名]\n傍晚、太陽將落的時候。如：「日暮」。唐．杜甫〈石壕吏〉詩：「暮投石壕村，有吏夜捉人。」\n[形]\n1.天晚的。如：「暮煙」、「暮色」。\n2.晚、將盡的。如：「暮年」、「暮春」、「天寒歲暮」。\n3.衰頹的。如：「暮氣沉沉」。",
+            "entry_id": "01518",
+            "sheet": "1150929辭典匯出",
+            "row": 1524,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "伴": {
+        "definition": "companion, comrade, partner; accompany",
+        "mandarin": "bàn",
+        "official_dictionary": [
+          {
+            "title": "伴",
+            "pinyin": "bàn",
+            "definition": "[名]\n同在一起的人。如：「伴侶」、「老伴」、「夥伴」。《三國志．卷四〇．蜀書．李嚴傳》：「吾與孔明俱受寄託，憂深責重，思得良伴。」\n[動]\n1.陪同、依隨。如：「伴我良宵」。唐．杜甫〈奉酬李都督表丈早春作〉詩：「轉添愁伴客，更覺老隨人。」宋．周邦彥〈瑞龍吟．章臺路〉詞：「知誰伴、名園露飲，東城閒步。」\n2.和聲。如：「你歌我伴」。\n[副]\n1.陪著。如：「伴讀」、「伴遊」。\n2.和著。如：「伴奏」、「伴唱」。",
+            "entry_id": "00259",
+            "sheet": "1150929辭典匯出",
+            "row": 260,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "听",
+            "pinyin": "yǐn",
+            "definition": "[副]\n笑的樣子。《文選．司馬相如．上林賦》：「亡是公听然而笑。」唐．劉禹錫〈說驥〉：「睹之周體，眙然視，听然笑，既而抃隨之。」",
+            "entry_id": "11104",
+            "sheet": "1150929辭典匯出",
+            "row": 11119,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "听",
+            "pinyin": null,
+            "definition": "「聽」的異體字。",
+            "entry_id": "02734-1",
+            "sheet": "1150929辭典匯出",
+            "row": 53128,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "河",
+            "pinyin": "hé",
+            "definition": "[名]\n1.水道的通稱。如：「河流」、「運河」。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n2.黃河的簡稱。如：「河套」。\n3.成河川狀的群體。如：「星河」、「銀河」。\n4.姓。如南北朝時有河禎。",
+            "entry_id": "04729",
+            "sheet": "1150929辭典匯出",
+            "row": 4736,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "钲鼓",
+      "decision": "keep",
+      "reason": "古代钲与鼓组成的乐器组合，名称简洁凝练；有诗句用例，意象明确，具备品牌辨识度。"
+    },
+    {
+      "name": "钲鼓和鸣",
+      "decision": "reject",
+      "reason": "在“钲鼓”后接“和鸣”构成完整的和谐宣言式表达，意象虽通顺但更像口号，品牌名凝练感不足；且与暂留候选“鼓铴和鸣”关系过近。"
+    },
+    {
+      "name": "钲声悠远",
+      "decision": "keep",
+      "reason": "可自然理解为钲声绵长悠远，语义连贯，具有声音与空间感，整体简洁，未见明显生硬或借义。"
+    },
+    {
+      "name": "玉钲",
+      "decision": "keep",
+      "reason": "“玉”修饰古代钲，形成珍贵、清越的器物意象；组合简短自然，并非仅靠生僻字取义。"
+    },
+    {
+      "name": "闻钲知止",
+      "decision": "reject",
+      "reason": "借“闻钲”拼接“知止”构成劝诫式判断表达，像典故化口号；“闻钲”与“知止”的语义关系也缺少自然连接。"
+    },
+    {
+      "name": "暮钲",
+      "decision": "keep",
+      "reason": "可理解为暮色中的钲声或暮时之钲，构词简洁，时间与声响意象明确，有品牌化凝练感。"
+    },
+    {
+      "name": "山月伴钲",
+      "decision": "reject",
+      "reason": "山月与钲并列为景物，虽能想象画面，但“伴钲”搭配生硬，且与暂留候选“山月伴獭”仅替换末字，整体构式与意象过近。"
+    },
+    {
+      "name": "远山听钲",
+      "decision": "keep",
+      "reason": "可自然理解为远山间听见钲声，画面与听觉关系清楚，表达简洁，不等同于通用类别词。"
+    },
+    {
+      "name": "钲与松声",
+      "decision": "uncertain",
+      "reason": "可读作钲声与松涛声并置，但“钲”本身即为声源，后接“松声”使两种声响关系略显松散；自然度与品牌凝练感存疑。"
+    },
+    {
+      "name": "星河映钲",
+      "decision": "reject",
+      "reason": "星河映照钲的画面关系牵强，钲作为器物如何映现星河缺少清晰语境；且与暂留候选“星河映埼”等同属“星河映X”的近似组合。"
+    }
+  ]
+}

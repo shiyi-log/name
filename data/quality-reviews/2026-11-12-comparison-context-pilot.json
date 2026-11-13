@@ -1,0 +1,413 @@
+{
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "枕清流",
+      "枕秋水",
+      "枕春山",
+      "枕青山",
+      "枕月眠",
+      "枕星河",
+      "枕竹影",
+      "枕长风",
+      "枕春风",
+      "凉月白",
+      "鲲泉",
+      "鲲溪"
+    ],
+    "related_kept_candidates": {
+      "枕": [
+        "枕水",
+        "枕山",
+        "枕月",
+        "枕星",
+        "枕竹"
+      ],
+      "凉": [
+        "凉月明"
+      ],
+      "鲲": [
+        "鲲海"
+      ]
+    },
+    "literature_phrase_examples": {
+      "枕清流": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 71965,
+          "context": "小阁枕清流，一霎莲塘雨。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 18784,
+          "context": "千古剑池呀怪石，一方金地枕清流。"
+        }
+      ],
+      "枕秋水": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 233645,
+          "context": "楚驿枕秋水，湘帆凌暮云。"
+        }
+      ],
+      "枕春山": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 41605,
+          "context": "曲屏映枕春山叠。"
+        }
+      ],
+      "枕青山": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 635315,
+          "context": "军城崪屼枕青山，地脉遥从岱宗起。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 907105,
+          "context": "门枕青山户傍谿，青山流水助凄凄。"
+        }
+      ],
+      "枕月眠": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 252029,
+          "context": "闲期竹色摇霜看，醉惜松声枕月眠。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 217994,
+          "context": "枕月眠云，老华胥闲昼。"
+        }
+      ],
+      "枕星河": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 464452,
+          "context": "支枕星河横醉后，入帘风絮报春深。"
+        }
+      ],
+      "枕竹影": [],
+      "枕长风": [],
+      "枕春风": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 105992,
+          "context": "目断江南烟雨，□□敧枕春风。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 385767,
+          "context": "乘兴闲来就榻眠，一枕春风君莫惜。"
+        }
+      ],
+      "凉月白": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 93540,
+          "context": "𫄨衣挂萝薜，凉月白纷纷。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 11273,
+          "context": "凉月白纷纷。"
+        }
+      ],
+      "鲲泉": [],
+      "鲲溪": []
+    },
+    "dictionary_phrase_entries": {
+      "枕清流": [],
+      "枕秋水": [],
+      "枕春山": [],
+      "枕青山": [],
+      "枕月眠": [],
+      "枕星河": [],
+      "枕竹影": [],
+      "枕长风": [],
+      "枕春风": [],
+      "凉月白": [],
+      "鲲泉": [],
+      "鲲溪": []
+    },
+    "direct_dictionary": {
+      "枕": {
+        "definition": "pillow",
+        "mandarin": "zhěn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "流": {
+        "definition": "flow, circulate, drift; class",
+        "mandarin": "liú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "秋": {
+        "definition": "autumn, fall; year",
+        "mandarin": "qiū",
+        "related_characters": [
+          {
+            "character": "秋",
+            "relation": "kTraditionalVariant",
+            "definition": "autumn, fall; year",
+            "mandarin": "qiū"
+          },
+          {
+            "character": "鞦",
+            "relation": "kTraditionalVariant",
+            "definition": "leather stap; swing",
+            "mandarin": "qiū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "眠": {
+        "definition": "close eyes, sleep; hibernate",
+        "mandarin": "mián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "竹": {
+        "definition": "bamboo; flute; Kangxi radical 118",
+        "mandarin": "zhú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凉": {
+        "definition": "cool, cold; disheartened",
+        "mandarin": "liáng",
+        "related_characters": [
+          {
+            "character": "凉",
+            "relation": "kTraditionalVariant",
+            "definition": "cool, cold; disheartened",
+            "mandarin": "liáng"
+          },
+          {
+            "character": "涼",
+            "relation": "kTraditionalVariant",
+            "definition": "cool, cold; disheartened",
+            "mandarin": "liáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "白": {
+        "definition": "white; pure, unblemished; bright",
+        "mandarin": "bái",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鲲": {
+        "definition": "spawn; roe; fry",
+        "mandarin": "kūn",
+        "related_characters": [
+          {
+            "character": "鯤",
+            "relation": "kTraditionalVariant",
+            "definition": "spawn; roe; fry",
+            "mandarin": "kūn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "溪": {
+        "definition": "mountain stream, creek",
+        "mandarin": "xī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "枕清流",
+      "decision": "keep",
+      "reason": "“枕”作倚卧、临靠理解，与“清流”构成清晰自然的临水意象；措辞凝练，有古典画面感。与暂留的“枕水”意象接近，但多出“清流”这一具体意象，并非仅换近义字。"
+    },
+    {
+      "name": "枕秋水",
+      "decision": "keep",
+      "reason": "可理解为枕临秋水，意象明确而简洁；“秋水”本身是自然词语，与“枕”搭配通顺，具有品牌辨识度。与“枕水”有共同水景，但季节意象使整体并非近似变体。"
+    },
+    {
+      "name": "枕春山",
+      "decision": "keep",
+      "reason": "可理解为枕临春日山景，语义自然，画面明确且简洁；“春山”与“枕”组合有古典意境，不是完整判断句或口号。"
+    },
+    {
+      "name": "枕青山",
+      "decision": "reject",
+      "reason": "整体自然，但与暂留名称“枕山”构成同一枕山意象，仅以“青”修饰山色，属于近义扩写变体；按重复控制不再保留。"
+    },
+    {
+      "name": "枕月眠",
+      "decision": "keep",
+      "reason": "“枕月而眠”是自然、凝练的诗性表达，月与睡眠的关系清楚，具备完整意象；不是生硬堆字或口号。与“枕月”共享月景，但增加了明确动作与情境，并非只替换近义字。"
+    },
+    {
+      "name": "枕星河",
+      "decision": "keep",
+      "reason": "可理解为以星河为枕，形成清晰而有辨识度的想象性意象；表达虽富诗性但关系可理解，不是机械拼接。与“枕星”共享星空元素，但星河是完整具体意象，不是近义替换。"
+    },
+    {
+      "name": "枕竹影",
+      "decision": "keep",
+      "reason": "“竹影”与“枕”构成自然的卧赏竹影意象，语义可理解、画面具体且简洁；没有命中文献用例不影响判断。与暂留“枕竹”有共同竹景，但“竹影”形成了具体不同的意象关系。"
+    },
+    {
+      "name": "枕长风",
+      "decision": "uncertain",
+      "reason": "字面可作枕风或倚风理解，但“长风”在此与“枕”的关系不够明确，容易显得为诗性而组合，整体自然度和语义落点存疑。"
+    },
+    {
+      "name": "枕春风",
+      "decision": "keep",
+      "reason": "可理解为枕着春风而眠，语义关系自然，具有轻盈明确的季节意象；简洁而非判断句或口号。"
+    },
+    {
+      "name": "凉月白",
+      "decision": "uncertain",
+      "reason": "字面可理解为清凉月色与月白之色，但“凉月白”的修饰关系和停顿不够清楚，容易被读成“凉月，白……”的截断表达；作为完整名称的自然度存疑。"
+    },
+    {
+      "name": "鲲泉",
+      "decision": "uncertain",
+      "reason": "“鲲”可指传说中的大鱼，也有字典所列鱼卵、鱼苗义；与“泉”组合后两字关系不明，无法确认是自然物象还是牵强拼接，需更多语义依据。"
+    },
+    {
+      "name": "鲲溪",
+      "decision": "uncertain",
+      "reason": "“鲲”与“溪”分别可核义，但“鲲溪”没有明确自然的构词关系；若理解为鲲所在的溪流，尺度与意象搭配显得牵强，整体含义存疑。"
+    }
+  ],
+  "model": "gpt-6.1-sol",
+  "created_at": "2026-11-12T14:53:08+0800",
+  "applied": false
+}

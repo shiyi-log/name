@@ -1,0 +1,665 @@
+{
+  "review_id": "20261112T200332-eac3f108",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "娱禾",
+      "娱舟",
+      "娱风",
+      "娱人",
+      "星下娱",
+      "月下娱",
+      "春日娱",
+      "星𫘧",
+      "𫘧风行",
+      "𫘧风而行",
+      "𫘧骋"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "月下伞",
+        "月下篝",
+        "月下酒歌",
+        "月下跹",
+        "月下扉",
+        "月下箫",
+        "月下埙",
+        "月下闻笛",
+        "月下酒瓢",
+        "月下獭",
+        "月下鸺",
+        "月下宴"
+      ],
+      "星": [
+        "七星",
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "摘星",
+        "摘星辰",
+        "箕星",
+        "棹星河"
+      ],
+      "日": [
+        "春日葳蕤",
+        "卜日",
+        "墟山映日",
+        "日映崧",
+        "日暮",
+        "日照埼",
+        "旭日临埼",
+        "梾溪映日",
+        "浴日",
+        "巨峰见日",
+        "澄川映日",
+        "皎日"
+      ],
+      "风": [
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风"
+      ],
+      "春": [
+        "春日葳蕤",
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "报春"
+      ],
+      "舟": [
+        "一舟",
+        "珀舟",
+        "暮舟",
+        "碳舟",
+        "茗舟",
+        "镠舟",
+        "奇舟",
+        "酒舟",
+        "菼舟",
+        "横舟",
+        "人间舟",
+        "云水浮舟"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "行义",
+        "麇行远山",
+        "鲜行",
+        "肯行",
+        "涧行"
+      ],
+      "禾": [
+        "苠禾",
+        "欧禾",
+        "芙禾",
+        "晙禾",
+        "青禾斋",
+        "暮禾",
+        "夕禾",
+        "碳禾",
+        "唐青禾",
+        "唐禾",
+        "蔓禾",
+        "茗禾"
+      ],
+      "下": [
+        "月下伞",
+        "月下篝",
+        "月下酒歌",
+        "月下跹",
+        "月下扉",
+        "月下箫",
+        "月下埙",
+        "月下闻笛",
+        "月下酒瓢",
+        "月下獭",
+        "月下鸺",
+        "月下宴"
+      ],
+      "人": [
+        "个中人",
+        "人本",
+        "知人",
+        "人境",
+        "人间春",
+        "人间清欢",
+        "人间行旅",
+        "人间万象",
+        "人间集",
+        "山中人",
+        "云上人",
+        "人间序"
+      ],
+      "而": [
+        "窄而深"
+      ],
+      "娱": [
+        "娱林"
+      ],
+      "𫘧": [
+        "𫘧影"
+      ]
+    },
+    "literature_phrase_examples": {
+      "娱禾": [],
+      "娱舟": [],
+      "娱风": [],
+      "娱人": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 72675,
+          "context": "即事能娱人，从兹得消散。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 154636,
+          "context": "绵蛮宛转似娱人，一心百舌何纷纷。"
+        }
+      ],
+      "星下娱": [],
+      "月下娱": [],
+      "春日娱": [],
+      "星𫘧": [],
+      "𫘧风行": [],
+      "𫘧风而行": [],
+      "𫘧骋": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1126939,
+          "context": "曹刘骥𫘧骋，沈鲍鸿鹄举。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "娱禾": [],
+      "娱舟": [],
+      "娱风": [],
+      "娱人": [],
+      "星下娱": [],
+      "月下娱": [],
+      "春日娱": [],
+      "星𫘧": [],
+      "𫘧风行": [],
+      "𫘧风而行": [],
+      "𫘧骋": []
+    },
+    "direct_dictionary": {
+      "娱": {
+        "definition": "pleasure, enjoyment, amusement",
+        "mandarin": "yú",
+        "related_characters": [
+          {
+            "character": "娛",
+            "relation": "kTraditionalVariant",
+            "definition": "pleasure, enjoyment, amusement",
+            "mandarin": "yú"
+          },
+          {
+            "character": "娱",
+            "relation": "kTraditionalVariant",
+            "definition": "pleasure, enjoyment, amusement",
+            "mandarin": "yú"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "娱",
+            "pinyin": null,
+            "definition": "「娛」的異體字。",
+            "entry_id": "11615-1",
+            "sheet": "1150929辭典匯出",
+            "row": 161066,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "禾",
+            "pinyin": "hé",
+            "definition": "[名]\n1.穀類植物的總稱。《詩經．豳風．七月》：「十月納禾稼。」唐．李紳〈古風〉詩二首之二：「鋤禾日當午，汗滴禾下土。」\n2.姓。如宋代有禾實。\n3.二一四部首之一。",
+            "entry_id": "04720",
+            "sheet": "1150929辭典匯出",
+            "row": 4727,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舟": {
+        "definition": "boat, ship; Kangxi radical 137",
+        "mandarin": "zhōu",
+        "official_dictionary": [
+          {
+            "title": "舟",
+            "pinyin": "zhōu",
+            "definition": "[名]\n1.船。如：「輕舟」、「一葉扁舟」、「逆水行舟」。《詩經．邶風．二子乘舟》：「二子乘舟，汎汎其景。」\n2.姓。如春秋時虢國有舟之僑。\n3.二一四部首之一。\n[動]\n乘船。《禮記．祭義》：「壹舉足而不敢忘父母，是故道而不徑，舟而不游。」",
+            "entry_id": "07735",
+            "sheet": "1150929辭典匯出",
+            "row": 7746,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "official_dictionary": [
+          {
+            "title": "人",
+            "pinyin": "rén",
+            "definition": "[名]\n1.具有高度智慧和靈性，且能製造並使用工具以進行勞動的高等動物。如：「男人」、「女人」、「人類」。\n2.別人、他人。如：「己所不欲，勿施於人。」\n3.每人。如：「人盡皆知」、「人手一冊」。《後漢書．卷一八．吳漢傳》：「若能同心一力，人自為戰，大功可立。」\n4.某種類型、身分的人。如：「軍人」、「主持人」、「介紹人」、「臺北人」。\n5.人的品格和性情。如：「文如其人」。《孟子．萬章下》：「頌其詩，讀其書，不知其人，可乎？」宋．王安石〈祭歐陽文忠公文〉：「世之學者，無問乎識與不識，而讀其文，則其人可知。」\n6.姓。如明代有人杰。\n7.二一四部首之一。",
+            "entry_id": "09214",
+            "sheet": "1150929辭典匯出",
+            "row": 9228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "下": {
+        "definition": "under, underneath, below; down; inferior; bring down",
+        "mandarin": "xià",
+        "official_dictionary": [
+          {
+            "title": "下",
+            "pinyin": "xià",
+            "definition": "[名]\n1.低處、底部。與「上」相對。如：「底下」。《孟子．梁惠王上》：「猶水之就下。」\n2.稱隸屬於人者、地位較低者。如：「部下」、「手下」、「屬下」、「名下」。《文選．曹冏．六代論》：「建置不久，則輕下慢上。」\n3.內、裡面。如：「心下」、「言下之意」、「意下如何」、「不在話下」。\n4.方面。如：「四下看一看」。《清平山堂話本．柳耆卿詩酒翫江樓記》：「兩下相思不相見，知他相會是何年。」\n5.在某個期間或時節。如：「目下」、「時下」、「年下」、「眼下」。《紅樓夢》第三一回：「大節下怎麼好好的哭起來？難道是為爭粽子吃，爭惱了不成？」\n6.量詞。計算動作次數的單位。如：「打十下手心」、「做五十下伏地挺身」。《紅樓夢》第四七回：「用拳頭向他身上擂了幾下。」\n[動]\n1.由高至低、降落。如：「下雨」、「下山」、「下墜」、「順流而下」。《文選．左思．招隱詩二首之二》：「經始東山廬，果下自成榛。」\n2.攻克。如：「不戰而下」、「連下三城」。《史記．卷八〇．樂毅傳》：「齊城不下者，兩城耳。」《三國演義》第一二回：「可引得勝之兵攻之，一鼓可下。」\n3.放入、投入。如：「下麵」、「下毒藥」、「下調味料」、「下網捕魚」。\n4.進入。如：「下水」、「下場比賽」。《儒林外史》第四二回：「我家太老爺做著貴州的都督府，我是回來下場的。」\n5.拆卸、除去。如：「下貨」。《儒林外史》第一六回：「過三日再不出，叫人來摘門下瓦。」\n6.離去、退場。如：「鞠躬下臺」、「你上場換他下來。」\n7.結束工作或學習。如：「下課」、「下班」、「下工了」。\n8.頒布、傳達。如：「下詔」、「下命令」。《漢書．卷四．文帝紀》：「吾詔書數下，歲勸民種樹。」\n9.投送。如：「下狀」、「下書」、「下帖」、「下戰書」。\n10.從事、使用。如：「下棋」、「下刀」、「下筆如有神」。\n11.往、到。如：「南下」、「下鄉視察」。唐．李白〈黃鶴樓送孟浩然之廣陵〉詩：「故人西辭黃鶴樓，煙花三月下揚州。」\n12.輕視。宋．蘇軾〈劉愷丁鴻孰賢論〉：「此范氏之所以賢鴻而下愷也。」\n13.謙抑、謙讓。如：「禮賢下士」。《三國志．卷五八．吳書．陸遜傳》：「臣雖駑懦，竊慕相如，寇恂相下之義，以濟國事。」\n14.生、生產。如：「母雞下蛋」。\n15.住宿、留宿。如：「下榻」。元．王實甫《西廂記．第一本．第一折》：「官人要下呵，俺這裡有乾淨的店。」\n16.做出某種說明、決定。如：「下定義」、「下結論」。\n17.低於、少於。如：「不下於」、「每年參加各種考試的人數不下二十萬人。」\n[形]\n1.等級低。如：「下品」、「下策」、「下級」。\n2.在後面的。如：「下次」、「下文」、「下月」、「下冊」、「下半年」。\n3.身分微賤的。如：「下人」、「下吏」。\n4.自謙之詞。如：「下官」、「下懷」、「下愚」。\n[副]\n1.表示動作完成或結束。如：「躺下」、「坐下」、「打下基礎」、「立下決心」。\n2.降低身分。如：「下嫁」、「不恥下問」。\n3.容納。如：「還坐得下嗎？」「情人眼裡容不下一粒沙子。」",
+            "entry_id": "06911",
+            "sheet": "1150929辭典匯出",
+            "row": 6920,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "日": {
+        "definition": "sun; day; daytime",
+        "mandarin": "rì",
+        "official_dictionary": [
+          {
+            "title": "日",
+            "pinyin": "mì",
+            "definition": "[名]\n人名用字。如漢代有金日磾。",
+            "entry_id": "01373",
+            "sheet": "1150929辭典匯出",
+            "row": 1378,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "日",
+            "pinyin": "rì",
+            "definition": "[名]\n1.太陽。漢．王充《論衡．感虛》：「日之行也，行天星度。」唐．李白〈古風〉詩五九首之二八：「草綠霜已白，日西月復東。」\n2.白天。與「夜」相對。《詩經．唐風．葛生》：「夏之日，冬之夜，百歲之後，歸于其居。」《孟子．離婁下》：「周公思兼三王以施四事，其有不合者，仰而思之，夜以繼日。」\n3.地球自轉一周所需的時間。\n4.每天。《易經．大畜卦》：「《彖》曰：大畜剛健篤實輝光，日新其德。」《論語．學而》：「吾日三省吾身。」\n5.特定的一日。如：「國慶日」、「生日」。《書經．舜典》：「正月上日，受終于文祖。」\n6.季節。如：「春日」、「冬日」。\n7.光陰。《漢書．卷二五．郊祀志下》：「曠日經年，靡有毫釐之驗，足以揆今。」\n8.量詞。計算時間的單位。一日有二十四小時。如：「家無三日糧」。\n9.從前、往昔。《左傳．文公七年》：「日衛不睦，故取其地。」《國語．晉語四》：「日，吾來此也，非以狄為榮，可以成事也。」\n10.日本的簡稱。如：「中日條約」、「中、美、英、日、法」。\n11.二一四部首之一。",
+            "entry_id": "09177",
+            "sheet": "1150929辭典匯出",
+            "row": 9192,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "𫘧": {
+        "definition": "name of a legendary swift horse",
+        "mandarin": "lù",
+        "related_characters": [
+          {
+            "character": "騄",
+            "relation": "kTraditionalVariant",
+            "definition": "name of a legendary swift horse",
+            "mandarin": "lù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "official_dictionary": [
+          {
+            "title": "行",
+            "pinyin": "háng",
+            "definition": "[名]\n1.行列。直列為行，橫排為列。《左傳．成公二年》：「屬當戎行，無所逃隱。」唐．杜甫〈贈衛八處士〉詩：「昔別君未婚，兒女忽成行。」\n2.兄弟姐妹長幼的次序。如：「排行老三。」\n3.量詞。計算成排東西的單位。如：「一行樹」、「一目十行」。唐．杜甫〈絕句〉四首之三：「兩個黃鸝鳴翠柳，一行白鷺上青天。」\n4.營業交易的機構。如：「銀行」、「洋行」、「分行」、「商行」、「行庫」。\n5.職業。如：「各行各業」、「行行出狀元」、「三句話不離本行」。\n6.表處所，用於人稱之後。宋．周邦彥〈風流子．新綠小池塘〉詞：「最苦夢魂，今宵不到伊行。」《水滸傳》第一四回：「你這等賊心賊肝，我行須使不得！」",
+            "entry_id": "04903",
+            "sheet": "1150929辭典匯出",
+            "row": 4909,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "hàng",
+            "definition": "參見「行行」、「樹行子」等條。",
+            "entry_id": "04913",
+            "sheet": "1150929辭典匯出",
+            "row": 4919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "行行",
+                "pinyin": "háng háng",
+                "definition": "1.各個行業。如：「三百六十行，行行出狀元。」\n2.每一行。如：「隊伍行進時，動作必須劃一，行行都要對齊。」",
+                "entry_id": "0490300193",
+                "sheet": "1150929辭典匯出",
+                "row": 81202
+              },
+              {
+                "title": "行行",
+                "pinyin": "hàng hàng",
+                "definition": "剛強的樣子。《論語．先進》：「閔子侍側誾誾如也，子路行行如也。」",
+                "entry_id": "049130001",
+                "sheet": "1150929辭典匯出",
+                "row": 81289
+              },
+              {
+                "title": "行行",
+                "pinyin": "xíng xíng",
+                "definition": "1.慢步行走。通常形容走走停停，徘徊不進的樣子。《文選．古詩十九首．行行重行行》：「行行重行行，與君生別離。」\n2.施行、辦理。如：「行行好事」。",
+                "entry_id": "072400177",
+                "sheet": "1150929辭典匯出",
+                "row": 109350
+              },
+              {
+                "title": "樹行子",
+                "pinyin": "shù hàng zi",
+                "definition": "栽植整齊的樹林。",
+                "entry_id": "091020033",
+                "sheet": "1150929辭典匯出",
+                "row": 131842
+              }
+            ]
+          },
+          {
+            "title": "行",
+            "pinyin": "xíng",
+            "definition": "[動]_x000D_\n1.走、走路。如：「直行」、「寸步難行」、「錦衣夜行」。《論語．述而》：「三人行，必有我師焉？」唐．王維〈終南別業〉詩：「行到水窮處，坐看雲起時。」_x000D_\n2.往。《詩經．秦風．無衣》：「脩我甲兵，與子偕行。」唐．杜甫〈奉濟驛重送嚴公四韻〉：「幾時杯重把，昨夜月同行。」_x000D_\n3.移動、流動。如：「運行」。《易經．乾卦》：「《象》曰：『天行健，君子以自強不息。』」唐．杜甫〈夢李白〉詩二首之二：「浮雲終日行，遊子久不至。」_x000D_\n4.流通。如：「流行」、「風行一時」、「通行全國」、「發行報刊」。《左傳．襄公二十五年》：「言之無文，行而不遠。」_x000D_\n5.做、從事。如：「行醫」、「行善」。《左傳．隱公元年》：「多行不義必自斃。」_x000D_\n6.實施、實行。《易經．繫辭上》：「推而行之謂之通。」唐．孔穎達．正義：「因推此以可變而施行之，謂之通也。」《老子》第四一章：「上士聞道，勤而行之。」_x000D_\n7.同意、允許。多用於徵詢意見。如：「今天中午我想吃麵，行不行？」《小五義》第二一回：「蔣爺說：『咱們到底說下個時候。』柳爺說：『限你三晝夜的工夫，行不行？』」_x000D_\n8.經歷、經過。《管子．問》：「城粟軍糧，其可以行幾何年也？」唐．房玄齡．注：「行，由經也。」_x000D_\n9.出嫁。《詩經．邶風．泉水》：「女子有行，遠父母兄弟。」_x000D_\n[名]_x000D_\n1.道路。《詩經．小雅．小弁》：「行有死人，尚或墐之。」_x000D_\n2.路程。《老子》第六四章：「九層之臺，起於累土；千里之行，始於足下。」_x000D_\n3.行為。《荀子．不苟》：「庸言必信之，庸行必慎之。」《禮記．樂記》：「禮以道其志，樂以和其聲，政以一其行，刑以防其姦。」_x000D_\n4.行書的簡稱。如：「行草」、「行楷」。_x000D_\n5.一種樂府和古詩的體裁。如：〈短歌行〉、〈琵琶行〉、〈飲馬長城窟行〉。_x000D_\n6.量詞。計算酌酒奉客的單位。漢．揚雄《法言．修身》：「賓主百拜，而酒三行。」宋．司馬光〈訓儉示康〉：「客至未嘗不置酒，或三行五行，多不過七行。」_x000D_\n7.姓。如漢代有行宏。_x000D_\n8.二一四部首之一。_x000D_\n[形]_x000D_\n1.能幹、幹練。如：「你真行。」「他在這方面行得很。」_x000D_\n2.可以、恰當。如：「他這篇文章寫得還行。」「做事只要盡心盡力就行了。」《朱子語類．卷三三．論語一五．雍也篇四》：「如讀書，要理會得透徹；做事，亦要做得行。」_x000D_\n[副]_x000D_\n不久、將要。如：「行將就木」。唐．元稹〈遣悲懷〉詩三首之二：「衣裳已施行看盡，針線猶存未忍開。」_x000D_\n[連]_x000D_\n且、又。三國魏．曹丕〈與吳質書〉：「既痛逝者，行自念也。」",
+            "entry_id": "07240",
+            "sheet": "1150929辭典匯出",
+            "row": 7249,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "xìng",
+            "definition": "[名]\n行為舉止。如：「品行」、「操行」、「獸行」、「德行」。《論語．公冶長》：「聽其言而觀其行。」",
+            "entry_id": "07249",
+            "sheet": "1150929辭典匯出",
+            "row": 7258,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "而": {
+        "definition": "and; and then; and yet; but; Kangxi radical 126",
+        "mandarin": "ér",
+        "official_dictionary": [
+          {
+            "title": "而",
+            "pinyin": "ér",
+            "definition": "[名]_x000D_\n1.兩頰上的毛。《說文解字．而部》：「而，須也。」《周禮．冬官考工記．梓人》：「必深其爪，出其目，作其鱗之而。」_x000D_\n2.二一四部首之一。_x000D_\n[代]_x000D_\n1.你。《詩經．大雅．桑柔》：「嗟爾朋友，予豈不知而作！」《左傳．定公十四年》：「夫差！而忘越王之殺而父乎？」_x000D_\n2.我。《戰國策．趙策一》：「豫讓拔劍三躍，呼天擊之曰：『而可以報知伯矣。』」《史記．卷八六．刺客列傳．聶政》：「前日所以不許仲子者，徒以親在，今不幸而母以天終，仲子所欲報仇者為誰？請得從事焉！」_x000D_\n[動]_x000D_\n1.至、到。如：「自南而北」、「自壯而老」。_x000D_\n2.能、可以。《戰國策．齊策六》：「齊多知而解此環不？」《淮南子．原道》：「行柔而剛，用弱而強。」_x000D_\n[介]_x000D_\n1.之、的。《論語．憲問》：「君子恥其言而過其行。」《淮南子．人間》：「虞之與虢，相恃而勢也。」_x000D_\n2.以。如：「從今而後」、「自此而下」。《易經．繫辭上》：「是故形而上者謂之道，形而下者謂之器。」《孟子．盡心下》：「由孔子而來，至於今百有餘歲。」_x000D_\n[副]_x000D_\n1.才、始。表時間。《公羊傳．宣公十五年》：「嘻！甚矣憊！雖然，吾今取此然後而歸爾。」_x000D_\n2.猶。《論語．陽貨》：「年四十而見惡焉，其終也已。」《孟子．告子下》：「舜其至孝矣，五十而慕。」_x000D_\n[連]_x000D_\n1.和、與。《論語．雍也》：「不有祝鮀之佞，而有宋朝之美，難乎免於今之世矣。」《左傳．昭公二十五年》：「哀樂而樂哀，皆喪心也。」_x000D_\n2.並且。《書經．皋陶謨》：「知人則哲，能官人，安民則惠，黎民懷之。能哲而惠，何憂乎驩兜？」《論語．學而》：「學而時習之，不亦說乎？」_x000D_\n3.則、就。《易經．繫辭下》：「君子見幾而作，不俟終日。」《左傳．襄公十八年》：「諸侯方睦於晉，臣請嘗之。若可，君而繼之。」_x000D_\n4.如、若。《論語．為政》：「人而無信，不知其可也。」_x000D_\n5.因而、所以。《左傳．成公八年》：「謂汶陽之田，敝邑之舊也，而用師於齊，使歸諸敝邑。」漢．劉向《說苑．卷一九．脩文》：「情動於中，而形於聲。」_x000D_\n6.然而、但是、卻。表轉折之意。《論語．學而》：「其為人也孝弟，而好犯上者鮮矣。」《孟子．離婁下》：「問其與飲食者，盡富貴也，而未嘗有顯者來。」_x000D_\n7.尚且。《莊子．天道》：「夫天地至神，而有尊卑先後之序，而況之道乎？」《淮南子．人間》：「夫一麑而不忍，又何況於人乎？」_x000D_\n[助]_x000D_\n1.用於句末，相當於「兮」、「罷了」。《詩經．齊風．著》：「俟我於著乎而，充耳以素乎而，尚之以瓊華乎而！」《論語．微子》：「已而已而！今之從政者殆而！」_x000D_\n2.用於句首，相當於「豈」、「難道」。《論語．顏淵》：「為仁由己，而由人乎哉？」《左傳．昭公十三年》：「諸侯事晉，未敢攜貳，況衛在君之宇下，而敢有異志？」_x000D_\n3.用於形容詞或副詞的語尾，無義。《左傳．文公十七年》：「鋌而走險，何能擇？」",
+            "entry_id": "10455",
+            "sheet": "1150929辭典匯出",
+            "row": 10468,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "骋": {
+        "definition": "gallop horse; hasten, hurry",
+        "mandarin": "chěng",
+        "related_characters": [
+          {
+            "character": "騁",
+            "relation": "kTraditionalVariant",
+            "definition": "gallop; hasten, hurry",
+            "mandarin": "chěng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "娱禾",
+      "decision": "reject",
+      "reason": "“娱”与“禾”并置关系不清，缺乏自然的完整词义，像将娱乐概念与谷物字面拼接。"
+    },
+    {
+      "name": "娱舟",
+      "decision": "reject",
+      "reason": "“娱”与“舟”之间语义关系不明，整体更像机械组合，品牌意象不够自然。"
+    },
+    {
+      "name": "娱风",
+      "decision": "reject",
+      "reason": "两字组合缺乏清楚、自然的语义关联，读作品牌名显得生硬。"
+    },
+    {
+      "name": "娱人",
+      "decision": "reject",
+      "reason": "可理解为“使人愉悦”，但整体更像功能描述或施受关系短语，品牌名凝练感不足；古诗中的“娱人”用法也未形成足以消除这一问题的专名语义。"
+    },
+    {
+      "name": "星下娱",
+      "decision": "reject",
+      "reason": "“星下”作场景修饰后接“娱”不合自然表达，整体语法生硬，语义关系难以确认。"
+    },
+    {
+      "name": "月下娱",
+      "decision": "reject",
+      "reason": "“月下”虽能构成场景意象，但接“娱”后不成自然表达，完整名称显得生硬。"
+    },
+    {
+      "name": "春日娱",
+      "decision": "reject",
+      "reason": "像截取“春日”再拼接“娱”，两部分关系不明，完整组合不自然。"
+    },
+    {
+      "name": "星𫘧",
+      "decision": "uncertain",
+      "reason": "“𫘧”是指传说中的骏马之字，但“星”与骏马的关系无法从名称本身确认，整体含义不够明确。"
+    },
+    {
+      "name": "𫘧风行",
+      "decision": "keep",
+      "reason": "“𫘧”指传说中的骏马，“风行”可表达疾驰如风，组合成骏马迅行的紧凑意象；字义有据，整体具有辨识度。"
+    },
+    {
+      "name": "𫘧风而行",
+      "decision": "reject",
+      "reason": "与已暂留的“𫘧风行”意象和关系相同，仅增“而”字，属于近似变体；且“𫘧风而行”整体更像陈述性短语。"
+    },
+    {
+      "name": "𫘧骋",
+      "decision": "keep",
+      "reason": "“𫘧”指传说中的骏马，“骋”有奔驰之义，构成同一语义场内自然凝练的组合；虽古雅少见，但字义明确。"
+    }
+  ]
+}

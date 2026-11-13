@@ -1,0 +1,392 @@
+{
+  "created_at": "2026-11-12T15:27:21+0800",
+  "status": "pilot_not_applied",
+  "input": {
+    "task": "按语义检查以下同字品牌候选的实质差异。先分出真正近似组，再检查各组代表名称本身是否自然。文献仅参考，不要求出处。",
+    "names": [
+      "栎林",
+      "栎园",
+      "栎山",
+      "栎野",
+      "栎谷",
+      "栎溪",
+      "栎原",
+      "栎庭",
+      "栎居",
+      "栎岸",
+      "栎光",
+      "栎月",
+      "山栎居",
+      "栎间月",
+      "栎庭春",
+      "栎影流光",
+      "栎间清响",
+      "栎木知秋",
+      "栎间朝露",
+      "栎谷回声",
+      "栎木",
+      "栎实",
+      "栎材",
+      "栎影",
+      "栎声",
+      "栎鸣",
+      "栎见山",
+      "栎听风",
+      "栎向阳",
+      "栎间有光",
+      "栎野长青",
+      "栎间见月",
+      "栎叶迎光",
+      "栎光映水",
+      "栎间四时",
+      "栎荫",
+      "青栎",
+      "苍栎",
+      "松栎",
+      "秋栎",
+      "嘉栎"
+    ],
+    "rules": [
+      "近似组需要相同核心物象和构词关系，仅换近义字、增删修饰、换动作词的名称才同组；仅共享锚字、句法或同属植物不意味着相似。",
+      "不要把所有山水名称一概合为一组；树木果实、树荫、林木群落、月景、居所和树叶是可区分的实际关系。",
+      "例如枕水与枕秋水主要是季节修饰，篪声与篪音为同义；牧原与牧野同为放牧原野；枫声与枫实则听觉和果实关系不同。",
+      "对每个候选必须说明精确字面关系，不能靠额外补入未表达的行业、人物、地点或动作才理解。",
+      "仅因能想象画面不能判自然；栎见山需补出人在栎旁见山，不能直接理解为栎树见山。",
+      "每名只属于一组。每组至多选择一个暂留代表；关系不清或名称生硬时 representative=null。",
+      "同一组内不能通过为近义字强行分配不同气质来制造差异。",
+      "只返回JSON对象 groups，每组有 names、core_relation、representative、reason。"
+    ]
+  },
+  "output": {
+    "groups": [
+      {
+        "names": [
+          "栎林"
+        ],
+        "core_relation": "栎树构成的林木群落",
+        "representative": "栎林",
+        "reason": "字面关系明确自然，指栎树林。"
+      },
+      {
+        "names": [
+          "栎园"
+        ],
+        "core_relation": "以栎树为特征的园地",
+        "representative": "栎园",
+        "reason": "可直接理解为栽有栎树的园地，与林木群落或居所关系不同。"
+      },
+      {
+        "names": [
+          "栎山"
+        ],
+        "core_relation": "栎树与山地的组合",
+        "representative": "栎山",
+        "reason": "可理解为有栎树的山或栎树生长的山地，关系简洁自然。"
+      },
+      {
+        "names": [
+          "栎野"
+        ],
+        "core_relation": "栎树与原野的组合",
+        "representative": "栎野",
+        "reason": "可理解为栎树生长的野地，与山、谷等具体地貌不同。"
+      },
+      {
+        "names": [
+          "栎谷"
+        ],
+        "core_relation": "栎树与山谷的组合",
+        "representative": "栎谷",
+        "reason": "可理解为有栎树的山谷，字面关系清楚。"
+      },
+      {
+        "names": [
+          "栎溪"
+        ],
+        "core_relation": "栎树与溪流环境的组合",
+        "representative": "栎溪",
+        "reason": "可理解为栎树旁的溪流或有栎树的溪谷，名称自然。"
+      },
+      {
+        "names": [
+          "栎原"
+        ],
+        "core_relation": "栎树与平原、原野的组合",
+        "representative": "栎原",
+        "reason": "可理解为栎树生长的平原，与栎野虽同属地景表达，但原与野并非近义替换。"
+      },
+      {
+        "names": [
+          "栎庭"
+        ],
+        "core_relation": "栎树与庭院的组合",
+        "representative": "栎庭",
+        "reason": "可理解为有栎树的庭院，居所庭院关系明确。"
+      },
+      {
+        "names": [
+          "栎居"
+        ],
+        "core_relation": "栎树与居住处的组合",
+        "representative": "栎居",
+        "reason": "可理解为栎树旁的居所或栎树环绕的居处；不是庭院本身。"
+      },
+      {
+        "names": [
+          "栎岸"
+        ],
+        "core_relation": "栎树与水岸的组合",
+        "representative": "栎岸",
+        "reason": "可理解为长有栎树的岸边，字面关系自然。"
+      },
+      {
+        "names": [
+          "栎光"
+        ],
+        "core_relation": "栎树与光线的组合",
+        "representative": "栎光",
+        "reason": "可理解为栎树间的光或照在栎树上的光，表达简短自然。"
+      },
+      {
+        "names": [
+          "栎月"
+        ],
+        "core_relation": "栎树与月亮、月色的组合",
+        "representative": "栎月",
+        "reason": "可理解为栎树与月色相映的景象，字面关系可直接成立。"
+      },
+      {
+        "names": [
+          "山栎居"
+        ],
+        "core_relation": "山地栎树与居所的组合",
+        "representative": "山栎居",
+        "reason": "可理解为山中的栎树居所，修饰关系明确，不等同于一般的栎居。"
+      },
+      {
+        "names": [
+          "栎间月"
+        ],
+        "core_relation": "栎树之间的月景",
+        "representative": "栎间月",
+        "reason": "可理解为月亮或月光出现在栎树之间，虽略省略谓语，意象关系仍清楚。"
+      },
+      {
+        "names": [
+          "栎庭春"
+        ],
+        "core_relation": "栎树庭院与春季的组合",
+        "representative": "栎庭春",
+        "reason": "可理解为春日栎庭或栎庭春景，名称自然。"
+      },
+      {
+        "names": [
+          "栎影流光"
+        ],
+        "core_relation": "栎树影与流动光线的组合",
+        "representative": "栎影流光",
+        "reason": "影与光构成可直接理解的视觉景象，表达自然。"
+      },
+      {
+        "names": [
+          "栎间清响"
+        ],
+        "core_relation": "栎树之间传来的清越声响",
+        "representative": "栎间清响",
+        "reason": "地点与听觉关系明确；声响来源未限定，但不需额外补入特定对象。"
+      },
+      {
+        "names": [
+          "栎木知秋"
+        ],
+        "core_relation": "栎木与知秋的拟人表达",
+        "representative": null,
+        "reason": "把知秋赋予栎木，需依赖拟人化解读；字面关系不够自然。"
+      },
+      {
+        "names": [
+          "栎间朝露"
+        ],
+        "core_relation": "栎树之间的晨露",
+        "representative": "栎间朝露",
+        "reason": "空间与晨露的关系明确，名称自然。"
+      },
+      {
+        "names": [
+          "栎谷回声"
+        ],
+        "core_relation": "栎谷中的回声",
+        "representative": "栎谷回声",
+        "reason": "明确指山谷中的回声；与栎间清响的声源和关系不同。"
+      },
+      {
+        "names": [
+          "栎木"
+        ],
+        "core_relation": "栎树木材或栎树本身",
+        "representative": "栎木",
+        "reason": "常用词，指栎树木材或树木本体，含义直接。"
+      },
+      {
+        "names": [
+          "栎实"
+        ],
+        "core_relation": "栎树的果实",
+        "representative": "栎实",
+        "reason": "指栎树所结的果实，关系明确。"
+      },
+      {
+        "names": [
+          "栎材"
+        ],
+        "core_relation": "栎树作为木材材料",
+        "representative": "栎材",
+        "reason": "指栎木用材，虽与栎木同属木材语义，但“材”强调材料用途，不是近义字替换。"
+      },
+      {
+        "names": [
+          "栎影"
+        ],
+        "core_relation": "栎树形成的影子",
+        "representative": "栎影",
+        "reason": "树木与其投影的关系直接自然。"
+      },
+      {
+        "names": [
+          "栎声"
+        ],
+        "core_relation": "栎树相关的声音",
+        "representative": null,
+        "reason": "未说明是树木本身发声、风过枝叶还是木材声响，关系含混。"
+      },
+      {
+        "names": [
+          "栎鸣"
+        ],
+        "core_relation": "栎树相关的鸣声",
+        "representative": null,
+        "reason": "“鸣”通常需有明确发声主体；直接以栎为主体略显生硬，且与栎声不能仅凭同属声音概念合并。"
+      },
+      {
+        "names": [
+          "栎见山"
+        ],
+        "core_relation": "栎与见山的动作关系",
+        "representative": null,
+        "reason": "字面上像是栎树见山，若理解为人在栎旁见山则需补入未表达的人物，关系不自然。"
+      },
+      {
+        "names": [
+          "栎听风"
+        ],
+        "core_relation": "栎树听风的拟人表达",
+        "representative": null,
+        "reason": "字面主体是栎树，听风需依赖拟人化；不能直接理解为人在栎旁听风。"
+      },
+      {
+        "names": [
+          "栎向阳"
+        ],
+        "core_relation": "栎树朝向阳光",
+        "representative": "栎向阳",
+        "reason": "可直接理解为栎树向阳生长，关系自然。"
+      },
+      {
+        "names": [
+          "栎间有光"
+        ],
+        "core_relation": "栎树之间有光",
+        "representative": "栎间有光",
+        "reason": "地点与光线存在关系，句意完整自然。"
+      },
+      {
+        "names": [
+          "栎野长青"
+        ],
+        "core_relation": "栎野与常青状态",
+        "representative": "栎野长青",
+        "reason": "可理解为栎树原野常青，表达完整；长青不是单纯的栎野修饰词。"
+      },
+      {
+        "names": [
+          "栎间见月"
+        ],
+        "core_relation": "在栎树之间看见月亮",
+        "representative": "栎间见月",
+        "reason": "省略的观察者可由常见景物表达自然承接，字面关系清楚；与栎间月的静态月景不同。"
+      },
+      {
+        "names": [
+          "栎叶迎光"
+        ],
+        "core_relation": "栎叶朝向光线",
+        "representative": "栎叶迎光",
+        "reason": "叶片与光线的关系明确自然，不等同于整体栎树向阳。"
+      },
+      {
+        "names": [
+          "栎光映水"
+        ],
+        "core_relation": "栎树之光与水面映照",
+        "representative": "栎光映水",
+        "reason": "可理解为栎间光线映在水面，表达清楚；与栎影流光的影光组合不同。"
+      },
+      {
+        "names": [
+          "栎间四时"
+        ],
+        "core_relation": "栎树之间的四季景象",
+        "representative": "栎间四时",
+        "reason": "可理解为栎间四季变化，关系自然，虽偏概括但不需补入额外对象。"
+      },
+      {
+        "names": [
+          "栎荫"
+        ],
+        "core_relation": "栎树形成的树荫",
+        "representative": "栎荫",
+        "reason": "字面直接指栎树的荫蔽，与栎林的群落关系不同。"
+      },
+      {
+        "names": [
+          "青栎"
+        ],
+        "core_relation": "带青色或青翠特征的栎",
+        "representative": "青栎",
+        "reason": "修饰关系自然，可指青翠的栎树；与苍栎不是仅换近义字即可视为同名。"
+      },
+      {
+        "names": [
+          "苍栎"
+        ],
+        "core_relation": "带苍色、苍劲特征的栎",
+        "representative": "苍栎",
+        "reason": "可理解为苍翠或苍劲的栎树，字面自然，色彩与青栎所指不完全相同。"
+      },
+      {
+        "names": [
+          "松栎"
+        ],
+        "core_relation": "松与栎的并列组合",
+        "representative": "松栎",
+        "reason": "可直接理解为松、栎两类树木并列，不是栎树的修饰表达。"
+      },
+      {
+        "names": [
+          "秋栎"
+        ],
+        "core_relation": "秋季的栎树或秋日栎景",
+        "representative": "秋栎",
+        "reason": "季节修饰树木，关系自然；与栎木知秋的拟人结构不同。"
+      },
+      {
+        "names": [
+          "嘉栎"
+        ],
+        "core_relation": "以嘉字褒饰栎树",
+        "representative": "嘉栎",
+        "reason": "构词可理解为美好、佳良之栎，简洁自然，但语义较泛。"
+      }
+    ]
+  }
+}

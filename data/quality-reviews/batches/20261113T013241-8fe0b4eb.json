@@ -1,0 +1,666 @@
+{
+  "review_id": "20261113T013241-8fe0b4eb",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "金盔",
+      "陶盔",
+      "盔甲",
+      "筤听雨",
+      "筤川",
+      "嫩筤",
+      "翠筤",
+      "春雨润筤"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川"
+      ],
+      "雨": [
+        "春雨润冈",
+        "峤听雨",
+        "听雨斋",
+        "雨润荒墟",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅"
+      ],
+      "春": [
+        "春雨润冈",
+        "春水润畦",
+        "春雨洇花",
+        "墨润春山",
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春"
+      ],
+      "金": [
+        "金乌",
+        "金镞",
+        "蹙金",
+        "金镯",
+        "金镳",
+        "金石錾刻",
+        "钨金",
+        "金珀",
+        "寸金",
+        "金猊",
+        "金错刀",
+        "金铚"
+      ],
+      "甲": [
+        "甲胄",
+        "甲壳",
+        "玳甲",
+        "锹甲"
+      ],
+      "润": [
+        "春雨润冈",
+        "雨润荒墟",
+        "春水润畦",
+        "新雨润汭",
+        "新雨润荑",
+        "雨润石迳",
+        "雨润桠",
+        "雨润香樟",
+        "墨润春山",
+        "淑润",
+        "凉润",
+        "广润"
+      ],
+      "听": [
+        "峤听雨",
+        "听雨斋",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅",
+        "涂听雨",
+        "柯听雨"
+      ],
+      "翠": [
+        "翠崟",
+        "奇峰叠翠",
+        "翠嶂",
+        "鹒栖翠竹",
+        "春山鎏翠",
+        "远山荟翠",
+        "翠帷",
+        "翠漪",
+        "翠幄",
+        "翠嵋",
+        "翠筠",
+        "远山将翠"
+      ],
+      "陶": [
+        "陶听雨",
+        "陶埴",
+        "陶然",
+        "陶然集",
+        "陶然新序",
+        "陶然观澜",
+        "陶然映月",
+        "陶然和鸣",
+        "陶然见远",
+        "陶源",
+        "陶心",
+        "陶和"
+      ],
+      "嫩": [
+        "嫩寒",
+        "嫩凉",
+        "嫩色",
+        "嫩绿",
+        "嫩黄",
+        "嫩红",
+        "嫩青",
+        "嫩枝",
+        "嫩云"
+      ]
+    },
+    "literature_phrase_examples": {
+      "金盔": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 2602,
+          "context": "金盔顶，碜可可湿浸浸鲜血早淋漓了战袍领。"
+        },
+        {
+          "book": "元曲_开源整理本",
+          "line": 24979,
+          "context": "戴一顶描星辰、晃日月、插鸡翎、排凤翅玲珑三角叉、枣穰紫金盔，披一付汤的刀，避的箭、锁鱼鳞、掩月镜、柳叶砌成的龟背犭唐猊铠，衬一领摄下魂、耀人目、染猩红、夺天巧，西川新十样无缝锦征袍，系一条"
+        }
+      ],
+      "陶盔": [],
+      "盔甲": [
+        {
+          "book": "红楼梦",
+          "line": 2325,
+          "context": "带在身上．我成日家和人说笑，有个唐僧取经，就有个白马来驮他，刘智远打天下， 就有个瓜精来送盔甲，有个凤丫头，就有个你．你就是你奶奶的一把总钥匙，还要这钥匙作什么． \"平儿笑道：“奶奶吃了酒，又拿了我来打趣著取笑儿了。"
+        },
+        {
+          "book": "三国演义",
+          "line": 3647,
+          "context": "许褚性起，飞回阵中，卸了盔甲，浑身筋突，赤体提刀，翻身上马，来与马超决战。"
+        }
+      ],
+      "筤听雨": [],
+      "筤川": [],
+      "嫩筤": [],
+      "翠筤": [],
+      "春雨润筤": []
+    },
+    "dictionary_phrase_entries": {
+      "金盔": [],
+      "陶盔": [],
+      "盔甲": [
+        {
+          "title": "盔甲",
+          "pinyin": "kuī jiǎ",
+          "definition": "盔，護頭帽子。甲，護身的鎧甲。盔甲指舊日戰士用來護身禦敵的戰服。《西遊記》第四一回：「妖王輪鎗拽步，也無甚麼盔甲，只是腰間束一條錦繡戰裙。」《初刻拍案驚奇》卷三一：「前日送喪回來，果然掘得個石匣，盔甲、寶劍、天書，奴家解不得，望師傅指迷。」",
+          "entry_id": "046120002",
+          "sheet": "1150929辭典匯出",
+          "row": 77196,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "筤听雨": [],
+      "筤川": [],
+      "嫩筤": [],
+      "翠筤": [],
+      "春雨润筤": []
+    },
+    "direct_dictionary": {
+      "金": {
+        "definition": "gold; metals in general; money; Kangxi radical 167",
+        "mandarin": "jīn",
+        "official_dictionary": [
+          {
+            "title": "金",
+            "pinyin": "jīn",
+            "definition": "[名]\n1.（gold，Au）化學元素。原子序79。金屬元素之一，質地柔軟，延展性極大，可與銀、銅等合金製成貨幣、裝飾品、筆尖等。由於色澤黃澄，俗稱為「黃金」。\n2.金屬的總稱。如：「五金」、「合金」。\n3.刀劍之類的武器。《淮南子．說山》：「砥石不利而可以利金。」\n4.古代八音之一。指鉦、鐘一類的金屬打擊樂器。《宋書．卷一九．樂志一》：「樂器凡八音：曰金，曰石，曰土，曰革，曰絲，曰木，曰匏，曰竹。」\n5.五行之一。參見「五行」條。\n6.金星的簡稱。\n7.錢。如：「金額」、「你身上有多少現金？」\n8.朝代名。參見「金朝」條。\n9.姓。如元代有金履祥，明代有金聖歎。\n10. 二一四部首之一。\n[形]\n1.堅固。《韓非子．用人》：「不謹蕭牆之患，而固金城於遠境。」《漢書．卷四五．蒯通傳》：「皆為金城湯池，不可攻也。」\n2.珍貴。如：「金玉良言」。《文選．揚雄．劇秦美新》：「懿律嘉量，金科玉條。」《紅樓夢》第一五回：「奶奶也要保重金體才是。」\n3.顏色澄黃。唐．孟郊〈送淡公〉詩一二首之九：「橙橘金蓋檻，竹蕉綠凝禪。」唐．薛濤〈九日遇雨〉詩二首之二：「茱萸秋節佳期阻，金菊寒花滿院香。」",
+            "entry_id": "05838",
+            "sheet": "1150929辭典匯出",
+            "row": 5845,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "黃金",
+                "pinyin": "huáng jīn",
+                "definition": "1.一種貴重金屬，因具美麗奪目的金黃色光澤而得名。延展性極佳，化學性穩定，可用於電力、太空等工業，也可用來製造貨幣、首飾等。也稱為「金子」。_x000D_\n2.銅。《書經．舜典》：「金作贖刑。」漢．孔安國．傳：「金，黃金。」唐．孔穎達．正義：「此傳黃金，呂刑黃鐵，皆是今之銅也。」_x000D_\n3.糞便的戲稱。如：「不可讓寵物隨地便溺，以免黃金遍地，有礙市容觀瞻。」",
+                "entry_id": "052400177",
+                "sheet": "1150929辭典匯出",
+                "row": 85441
+              },
+              {
+                "title": "五金",
+                "pinyin": "wǔ jīn",
+                "definition": "金、銀、銅、鐵、錫（或鉛）五種金屬。亦泛指各種金屬製品。如：「五金雜貨」、「家庭五金」。",
+                "entry_id": "112510140",
+                "sheet": "1150929辭典匯出",
+                "row": 157312
+              },
+              {
+                "title": "合金",
+                "pinyin": "hé jīn",
+                "definition": "由二種或二種以上的元素，其中至少一種為金屬元素所組成具有金屬特性的物質，稱為「合金」。具實用性，如鋼為鐵和碳的合金，黃銅為銅、鋅的合金。由兩種主要元素組成的合金為二元合金，以此類推。",
+                "entry_id": "047240081",
+                "sheet": "1150929辭典匯出",
+                "row": 78442
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "金額",
+                "pinyin": "jīn é",
+                "definition": "1.金錢的數目。如期票、匯票上所載的錢數稱為「票據金額」；股票公債上所載的錢數稱為「票面金額」。\n2.黃金所製的匾額。",
+                "entry_id": "058380374",
+                "sheet": "1150929辭典匯出",
+                "row": 93082
+              },
+              {
+                "title": "金朝",
+                "pinyin": "jīn cháo",
+                "definition": "朝代名。（西元1115～1234）宋徽宗政和五年，女真酋長完顏阿骨打稱帝，國號金。後被蒙古所滅。",
+                "entry_id": "058380275",
+                "sheet": "1150929辭典匯出",
+                "row": 92986
+              },
+              {
+                "title": "金玉良言",
+                "pinyin": "jīn yù liáng yán",
+                "definition": "比喻珍貴的勸告或教誨。《官場現形記》第一一回：「鄒太爺一看苗頭不對，趕緊陪著笑臉道：『老哥哥教導的話，句句是金玉良言。』」也作「金石良言」、「金石之言」、「金玉之言」。",
+                "entry_id": "058380420",
+                "sheet": "1150929辭典匯出",
+                "row": 93123
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "盔": {
+        "definition": "helmet; bowl; basin",
+        "mandarin": "kuī",
+        "official_dictionary": [
+          {
+            "title": "盔",
+            "pinyin": "kuī",
+            "definition": "[名]\n1.用來保護頭部，使免於受傷的帽子。通常用金屬或塑膠製成。如：「頭盔」。《三國演義》第三〇回：「三通鼓罷，袁紹金盔金甲，錦袍玉帶，立馬陣前。」\n2.缽、盆子一類的器皿。如：「瓦盔」、「陶盔」。",
+            "entry_id": "04612",
+            "sheet": "1150929辭典匯出",
+            "row": 4620,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "陶": {
+        "definition": "pottery, ceramics",
+        "mandarin": "táo",
+        "official_dictionary": [
+          {
+            "title": "陶",
+            "pinyin": "táo",
+            "definition": "[名]\n1.用黏土燒製的器物。如：「黑陶」、「彩陶」。\n2.姓。如晉代有陶潛。\n[動]\n1.製造陶器。如：「陶冶」。《孟子．告子下》：「萬室之國，一人陶，則可乎？」\n2.比喻培養、教育。如：「陶鑄性情」、「熏陶」。\n3.暢通。《文選．枚乘．七發》：「陶陽氣，蕩春心。」",
+            "entry_id": "02500",
+            "sheet": "1150929辭典匯出",
+            "row": 2508,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "陶",
+            "pinyin": "yáo",
+            "definition": "[名]\n皋陶：人名。相傳為舜之臣，掌刑獄之事。",
+            "entry_id": "10817",
+            "sheet": "1150929辭典匯出",
+            "row": 10831,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "甲": {
+        "definition": "armor, shell; fingernails; 1st heavenly stem",
+        "mandarin": "jiǎ",
+        "official_dictionary": [
+          {
+            "title": "甲",
+            "pinyin": "jiǎ",
+            "definition": "[名]\n1.天干的第一位。\n2.古代軍人穿的護身衣物。以皮革或金屬片製成。如：「盔甲」、「鎧甲」、「披甲」。《孟子．梁惠王上》：「兵刃既接，棄甲曳兵而走。」\n3.指軍人、兵士。《左傳．宣公二年》：「伏甲將攻之。」\n4.動物身上具有保護作用的硬殼。如：「龜甲」、「鱗甲」。\n5.手指、腳趾上的角質硬殼。如：「指甲」、「腳趾甲」。\n6.引申為圍護於物體外的堅硬保護殼。如：「裝甲車」。\n7.古代基層治安制度的戶口編制名稱。如：「保甲」。元．施惠《幽閨記》第六齣：「奉上司明文，遍張文榜，畫影圖形，十家為甲，排門粉壁，各處挨捕。」\n8.量詞。臺灣計算地積的單位。一甲有二千九百三十四坪，等於零點九七公頃。\n[形]\n等第最優的。如：「甲等」、「甲級」。\n[動]\n超出群眾、位居首位。如：「富甲天下」、「桂林山水甲天下」。\n[代]\n假定的代名詞。如：「某甲」、「甲地」。北齊．顏之推〈還魂志〉：「婢逐呼云：『某甲欲奸我！』濟即令人殺之。」",
+            "entry_id": "05512",
+            "sheet": "1150929辭典匯出",
+            "row": 5519,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "甲",
+            "pinyin": "jià",
+            "definition": "[名]\n動物名。指甲魚。脊椎動物亞門爬蟲綱龜鱉目。外形像龜，背甲呈灰黑色，有軟皮。腹部白色或淡黃色。頸部甚長，四肢粗短，有厚蹼。多棲息於湖沼等溫、熱帶水域。背甲圓形，邊緣柔軟，肉供食用，甲殼可入藥。也稱為「鱉」。",
+            "entry_id": "05524",
+            "sheet": "1150929辭典匯出",
+            "row": 5531,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "筤": {
+        "definition": "young bamboo",
+        "mandarin": "láng",
+        "official_dictionary": [
+          {
+            "title": "筤",
+            "pinyin": "láng",
+            "definition": "[名]\n1.車後用竹子編成的篷蓋。《廣韻．平聲．唐韻》：「筤，車籃。」\n2.初生的嫩竹。參見「蒼筤」條。",
+            "entry_id": "03359",
+            "sheet": "1150929辭典匯出",
+            "row": 3366,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "蒼筤",
+                "pinyin": "cāng láng",
+                "definition": "初生的竹。《易經．說卦》：「震為雷、為龍……為蒼筤竹。」唐．孔穎達．正義：「蒼筤竹，竹初生之時，色蒼筤，取其春生之美也。」",
+                "entry_id": "097960010",
+                "sheet": "1150929辭典匯出",
+                "row": 140072
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "听",
+            "pinyin": "yǐn",
+            "definition": "[副]\n笑的樣子。《文選．司馬相如．上林賦》：「亡是公听然而笑。」唐．劉禹錫〈說驥〉：「睹之周體，眙然視，听然笑，既而抃隨之。」",
+            "entry_id": "11104",
+            "sheet": "1150929辭典匯出",
+            "row": 11119,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "听",
+            "pinyin": null,
+            "definition": "「聽」的異體字。",
+            "entry_id": "02734-1",
+            "sheet": "1150929辭典匯出",
+            "row": 53128,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "official_dictionary": [
+          {
+            "title": "雨",
+            "pinyin": "yǔ",
+            "definition": "[名]\n1.空氣中的水蒸氣遇冷凝結而降落的小水滴。如：「春雨」、「梅雨」、「風雨交加」、「秋風秋雨愁煞人」。\n2.朋友。如：「舊雨新知」。唐．杜甫〈秋述〉：「秋，杜子臥病長安旅次，……，青苔及榻，常時車馬之客，舊雨來，今雨不來。」\n3.二一四部首之一。",
+            "entry_id": "11624",
+            "sheet": "1150929辭典匯出",
+            "row": 11638,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "雨",
+            "pinyin": "yù",
+            "definition": "[動]\n1.下雨。《詩經．小雅．大田》：「雨我公田，遂及我私。」《史記．卷六七．仲尼弟子傳．有若傳》：「他日，月宿畢，竟不雨。」\n2.降落、落下。如：「雨雪」、「雨雹」。《淮南子．本經》：「昔者蒼頡作書，而天雨粟，鬼夜哭。」宋．蘇軾〈喜雨亭記〉：「使天而雨珠，寒者不得以為襦；使天而雨玉，飢者不得以為粟。」\n3.滋潤、灌溉。唐．孟郊〈終南山下作〉詩：「山村不假陰，流水自雨田。」唐．鮑溶〈答客〉詩：「勞問圃人終歲事，桔槔聲裡雨春畦。」",
+            "entry_id": "11661",
+            "sheet": "1150929辭典匯出",
+            "row": 11675,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嫩": {
+        "definition": "soft, tender, delicate; young",
+        "mandarin": "nèn",
+        "official_dictionary": [
+          {
+            "title": "嫩",
+            "pinyin": "nèn",
+            "definition": "[形]\n1.初生柔弱的樣子。如：「嫩芽」、「嬌嫩」。唐．杜甫〈奉酬李都督表丈早春作〉詩：「紅入桃花嫩，青歸柳葉新。」《紅樓夢》第七七回：「就如同一盆纔抽出嫩箭來的蘭花，一送到豬窩裡去一般。」\n2.柔軟。如：「細皮嫩肉」、「杏仁上面包著一層嫩皮兒。」\n3.經驗少、不老練。如：「他太嫩了。」、「她臉皮嫩，不敢上場。」《醒世恆言．卷三．賣油郎獨占花魁》：「做小娘的不是個軟殼雞蛋，怎的這般嫩得緊？」\n4.指食物烹調時間短暫，易於咀嚼的。如：「青椒牛肉要炒得嫩才好吃。」\n[副]\n1.顏色輕淡。如：「嫩黃」、「嫩綠」。唐．白居易〈山石榴寄元九〉詩：「千房萬葉一時新，嫩紫殷紅鮮麴塵。」\n2.輕微、微薄。如：「嫩涼」。宋．辛棄疾〈念奴嬌．江南盡處〉詞：「還似籬落孤山，嫩寒清曉。」",
+            "entry_id": "02990",
+            "sheet": "1150929辭典匯出",
+            "row": 2997,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "翠": {
+        "definition": "color green; kingfisher",
+        "mandarin": "cuì",
+        "official_dictionary": [
+          {
+            "title": "翠",
+            "pinyin": "cuì",
+            "definition": "[名]\n1.翠鳥的簡稱。《文選．左思．蜀都賦》：「孔翠群翔，犀象競馳。」\n2.綠色的玉。參見「翡翠」條。如：「珠翠」。《文選．曹植．洛神賦》：「戴金翠之首飾，綴明珠以耀驅。」\n3.古代婦女用來畫眉的深青色顏料。唐．溫庭筠〈更漏子．玉爐香〉詞：「眉翠薄，鬢雲殘，夜長衾枕寒。」\n4.比喻美女、妓女。如：「倚翠偎紅」、「翠繞珠圍」。\n5.姓。如漢代有翠鴛鴦。\n[形]\n1.用翠羽裝飾的。如：「翠衾」、「翠旌」。《文選．司馬相如．子虛賦》：「張翠帷，建羽蓋。」\n2.青綠色的。如：「翠柏」、「翠樓」、「草木蒼翠」。",
+            "entry_id": "09884",
+            "sheet": "1150929辭典匯出",
+            "row": 9898,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "翡翠",
+                "pinyin": "fěi cuì",
+                "definition": "1.動物名。一種鳥。鳥綱佛法僧目。與魚狗同類，稍大，全體羽毛帶赤褐色，惟臀部中央與上尾間有白紋一條，又雜以青色斑紋，羽毛可作裝飾品。\n2.硬玉中含鉻而呈翠綠色者。主要成分為鈉鋁矽酸鹽，屬單斜晶系，光澤如脂，半透明，可作珍貴飾品。也稱為「翠玉」。",
+                "entry_id": "015690001",
+                "sheet": "1150929辭典匯出",
+                "row": 34163
+              },
+              {
+                "title": "珠翠",
+                "pinyin": "zhū cuì",
+                "definition": "1.珍珠及翠玉。指首飾或飾物。《文選．傅毅．舞賦》：「珠翠的皪而炤燿兮，華袿飛髾而雜纖羅。」\n2.借指盛飾的女子。唐．王維〈寓言詩〉二首之一：「曲陌車騎盛，高堂珠翠繁。」\n3.珍貴的食物。《文選．曹植．七啟》：「山鵽斥鷃，珠翠之珍。」",
+                "entry_id": "079420048",
+                "sheet": "1150929辭典匯出",
+                "row": 116409
+              },
+              {
+                "title": "倚翠偎紅",
+                "pinyin": "yǐ cuì wēi hóng",
+                "definition": "文學作品中指親近狎昵女性。比喻狎妓。元．王實甫《西廂記．第三本．第三折》：「晴乾了尤雲殢雨心，悔過了竊玉偷香膽，刪抹了倚翠偎紅話。」元．季子安〈粉蝶兒．這些時套〉：「想當初倚翠偎紅，我風流，他俊雅。」也作「偎紅倚翠」。",
+                "entry_id": "105640047",
+                "sheet": "1150929辭典匯出",
+                "row": 148818
+              },
+              {
+                "title": "翠繞珠圍",
+                "pinyin": "cuì rào zhū wéi",
+                "definition": "1.繞以翡翠，圍以珠玉。形容婦女華麗的裝飾。元．睢玄明〈耍孩兒．錢塘自古繁華地套．九煞〉：「騁豪富誇榮貴，恣豔冶王孫士女，逞風流翠繞珠圍。」\n2.比喻花木繁茂。元．梁曾〈木蘭花慢．問花花不語〉詞：「千古幕天席地，一春翠繞珠圍。」",
+                "entry_id": "098440028",
+                "sheet": "1150929辭典匯出",
+                "row": 140395
+              },
+              {
+                "title": "翠樓",
+                "pinyin": "cuì lóu",
+                "definition": "華麗的樓閣。多指女子的閨房。南朝梁．江淹〈山中楚辭〉六首之二：「日華粲於芳閣，月金披於翠樓。」唐．王昌齡〈閨怨〉詩：「閨中少婦不曾愁，春日凝妝上翠樓。」",
+                "entry_id": "098840012",
+                "sheet": "1150929辭典匯出",
+                "row": 140595
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "润": {
+        "definition": "soft, moist; sleek; freshen",
+        "mandarin": "rùn",
+        "related_characters": [
+          {
+            "character": "潤",
+            "relation": "kTraditionalVariant",
+            "definition": "soft, moist; sleek; freshen",
+            "mandarin": "rùn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "金盔",
+      "decision": "reject",
+      "reason": "“金盔”字义可理解为金制或金色头盔，文学用例也支持其本义，但组合直接指称具体护具，物象过于直白，品牌凝练度与辨识度不足。"
+    },
+    {
+      "name": "陶盔",
+      "decision": "uncertain",
+      "reason": "“盔”也有陶制盆盔一类器皿义，名称可理解为陶制器皿，但“陶盔”作为组合缺少明确、自然的常见语义，品牌意象不够确定。"
+    },
+    {
+      "name": "盔甲",
+      "decision": "reject",
+      "reason": "完整名称是“盔”与“甲”组成的护身战服通用名称，属于明确的通用物品类别词，不具备足够的品牌专属性。"
+    },
+    {
+      "name": "筤听雨",
+      "decision": "uncertain",
+      "reason": "“筤”确有初生嫩竹之义，但“筤听雨”将竹与听雨并置，语法关系和整体语义不够自然；不能仅凭古典意象推定其成立。"
+    },
+    {
+      "name": "筤川",
+      "decision": "keep",
+      "reason": "“筤”指初生嫩竹，“川”指河流，组合简洁，可形成嫩竹与流水的自然物象，语义清楚且不明显生硬。"
+    },
+    {
+      "name": "嫩筤",
+      "decision": "keep",
+      "reason": "“嫩”修饰初生竹的“筤”，构词自然，意象具体清楚，具备简洁的名称感；与相关候选“翠筤”并非仅换近义配字，意象关系有别。"
+    },
+    {
+      "name": "翠筤",
+      "decision": "keep",
+      "reason": "“翠”表青绿色，“筤”指初生嫩竹，组合可自然理解为青翠的嫩竹，简洁且物象明确；与“嫩筤”虽同指嫩竹，但修饰意义与意象侧重不同，不构成仅换近义字的重复。"
+    },
+    {
+      "name": "春雨润筤",
+      "decision": "reject",
+      "reason": "“春雨润筤”表达春雨滋润嫩竹的完整描述句，语义通顺但结构偏句子化、陈述化，品牌名凝练度不足；也与暂留候选“春雨润冈”共享“春雨润＋名词”的完整句式和近似滋润意象。"
+    }
+  ]
+}

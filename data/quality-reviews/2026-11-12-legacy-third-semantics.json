@@ -1,0 +1,878 @@
+{
+  "created_at": "2026-11-12T15:49:54+0800",
+  "status": "semantic_check_not_applied",
+  "input": {
+    "task": "核查指定中文品牌候选的整词本义、各字在完整名称中的具体语义角色和自然度；不得为了通过编造意义。",
+    "names": [
+      "暮云",
+      "云野",
+      "星野",
+      "竹影",
+      "秋水",
+      "风物",
+      "知远",
+      "远行",
+      "长行",
+      "轻行",
+      "清野",
+      "清越",
+      "昌明",
+      "明道",
+      "一木",
+      "乙木",
+      "风野",
+      "星儿",
+      "云儿",
+      "木儿",
+      "明核",
+      "予光",
+      "井木",
+      "比光"
+    ],
+    "rules": [
+      "文献只供参考，不要求出处，命中不等于成立。",
+      "每个不同字给出实际构词作用；仅作识别字、专名感、古雅或姓氏式识别不构成语义依据。真实完整人名或专名仍可核对。",
+      "先判断完整词语，再说明各字角色，不能望文生义。普通自然词语不因行业未知判错。",
+      "naturalness从1到5，低于4如实给分，不因任务目标强行提分。",
+      "不得把声调、部件、形似或同音字借为字义。",
+      "仅返回JSON names列表，每项name、meaning、character_roles、naturalness。"
+    ],
+    "dictionary": {
+      "暮": {
+        "definition": "evening, dusk, sunset; ending",
+        "mandarin": "mù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "竹": {
+        "definition": "bamboo; flute; Kangxi radical 118",
+        "mandarin": "zhú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "秋": {
+        "definition": "autumn, fall; year",
+        "mandarin": "qiū",
+        "related_characters": [
+          {
+            "character": "秋",
+            "relation": "kTraditionalVariant",
+            "definition": "autumn, fall; year",
+            "mandarin": "qiū"
+          },
+          {
+            "character": "鞦",
+            "relation": "kTraditionalVariant",
+            "definition": "leather stap; swing",
+            "mandarin": "qiū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "物": {
+        "definition": "thing, substance, creature",
+        "mandarin": "wù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "轻": {
+        "definition": "light; easy, simple; gentle",
+        "mandarin": "qīng",
+        "related_characters": [
+          {
+            "character": "輕",
+            "relation": "kTraditionalVariant",
+            "definition": "light; easy, simple; gentle",
+            "mandarin": "qīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "越": {
+        "definition": "exceed, go beyond; the more ...",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "昌": {
+        "definition": "light of sun; good, proper",
+        "mandarin": "chāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "道": {
+        "definition": "path, road, street; method, way",
+        "mandarin": "dào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "木": {
+        "definition": "tree; wood, lumber; wooden",
+        "mandarin": "mù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "乙": {
+        "definition": "second; 2nd heavenly stem",
+        "mandarin": "yǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "儿": {
+        "definition": "son, child; Kangxi radical 10",
+        "mandarin": "ér",
+        "related_characters": [
+          {
+            "character": "儿",
+            "relation": "kTraditionalVariant",
+            "definition": "son, child; Kangxi radical 10",
+            "mandarin": "ér"
+          },
+          {
+            "character": "兒",
+            "relation": "kTraditionalVariant",
+            "definition": "son, child, oneself; final part",
+            "mandarin": "ér"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "核": {
+        "definition": "seed, kernel, core, nut; atom",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "予": {
+        "definition": "I, me; to give",
+        "mandarin": "yǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "井": {
+        "definition": "well, mine shaft, pit; surname; 22nd lunar mansion, determinative star μ Geminorum (Tejat); hexagram ䷯",
+        "mandarin": "jǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "比": {
+        "definition": "to compare, liken; comparison; than; hexagram ䷇",
+        "mandarin": "bǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "dictionary_phrases": {
+      "暮云": [],
+      "云野": [],
+      "星野": [],
+      "竹影": [
+        {
+          "title": "竹影",
+          "pinyin": "zhú yǐng",
+          "definition": "光線投射在竹子上所產生的影子。如：「皓月當空，清風徐來，只見窗外竹影幢幢，別有一番韻致。」",
+          "entry_id": "0795801131",
+          "sheet": "1150929辭典匯出",
+          "row": 116607,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "秋水": [
+        {
+          "title": "秋水",
+          "pinyin": "qiū shuǐ",
+          "definition": "1.秋日江湖上的水。《文選．潘岳．秋興賦》：「澡秋水之涓涓兮，玩游鯈之潎潎。」唐．王勃〈滕王閣序〉：「落霞與孤鶩齊飛，秋水共長天一色。」\n2.比喻如湖水般清澈美麗的眼睛。唐．白居易〈箏〉詩：「雙眸剪秋水，十指剝春蔥。」清．孔尚任《桃花扇》第二三齣：「憑欄凝眺，把盈盈秋水，酸風凍了。」\n3.比喻清澈的神色。唐．杜甫〈徐卿二子歌〉：「大兒九齡色清澈，秋水為神玉為骨。」\n4.比喻光芒逼人的劍氣。唐．白居易〈李都尉古劍〉詩：「湛然玉匣中，秋水澄不流。」元．王實甫《西廂記．第一本．第一折》：「萬金寶劍藏秋水，滿馬春愁壓繡鞍。」\n5.莊子篇名。闡發〈齊物論〉的意旨，推論天地萬物的道理。",
+          "entry_id": "064020095",
+          "sheet": "1150929辭典匯出",
+          "row": 98821,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "风物": [],
+      "知远": [],
+      "远行": [],
+      "长行": [],
+      "轻行": [],
+      "清野": [],
+      "清越": [
+        {
+          "title": "清越",
+          "pinyin": "qīng yuè",
+          "definition": "1.形容聲音清脆悠揚。《禮記．聘義》：「叩之其聲清越以長，其終詘然樂也。」南朝宋．謝靈運〈石門岩上宿〉詩：「異音同至聽，殊響俱清越。」\n2.清超拔俗。《南史．卷五十四．梁元帝諸子傳．貞惠世子方諸傳》：「善談玄，風采清越。」《聊齋志異．卷三．黃九郎》：「婦約五十許，意致清越。」",
+          "entry_id": "065770327",
+          "sheet": "1150929辭典匯出",
+          "row": 100994,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "昌明": [
+        {
+          "title": "昌明",
+          "pinyin": "chāng míng",
+          "definition": "1.興盛。《紅樓夢》第一回：「恰近日這神瑛侍者凡心偶熾，乘此昌明太平朝世，意欲下凡，造歷幻緣。」\n2.發揚光大。《清史稿．卷八四．禮志三》：「五十一年，以朱子昌明聖學，升躋十哲，位次卜子。」《文明小史》第一七回：「他說八股不久一定要廢，翻譯之學一定要昌明。」\n3.一種茶。因產於四川省昌明縣，故稱為「昌明」。唐．白居易〈春盡日〉詩：「醉對數叢紅芍藥，渴嘗一碗綠昌明。」",
+          "entry_id": "084410006",
+          "sheet": "1150929辭典匯出",
+          "row": 121763,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "明道": [
+        {
+          "title": "明道",
+          "pinyin": "míng dào",
+          "definition": "1.大道。《老子》第四一章：「明道若昧，進道若退。」\n2.知曉道理。《漢書．卷五六．董仲舒傳》：「正其誼不牟其利，明其道不計其功。」\n3.北宋仁宗的年號（西元1032～1033）。",
+          "entry_id": "014770047",
+          "sheet": "1150929辭典匯出",
+          "row": 31990,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "一木": [],
+      "乙木": [],
+      "风野": [],
+      "星儿": [],
+      "云儿": [],
+      "木儿": [],
+      "明核": [],
+      "予光": [],
+      "井木": [],
+      "比光": []
+    },
+    "literature_examples": {
+      "暮云": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 974,
+          "context": "暮云成积雪，晓色开行殿。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 6814,
+          "context": "暮云空碛时驱马，秋日平原好射雕。"
+        }
+      ],
+      "云野": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 154456,
+          "context": "浮云野马归四裔，遥望星斗当中天。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 287328,
+          "context": "白云野寺凌晨磬，红树孤村遥夜砧。"
+        }
+      ],
+      "星野": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 135273,
+          "context": "星野涵辉，云峰环翠。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 85653,
+          "context": "还临二星野，催驾一封轺。"
+        }
+      ],
+      "竹影": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 352,
+          "context": "松阴背日转，竹影避风移。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 669,
+          "context": "珠光摇素月，竹影乱清风。"
+        }
+      ],
+      "秋水": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 7815,
+          "context": "阴风吹黄蒿，挽歌渡秋水。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 8136,
+          "context": "美人初起天未明，手拂银缾秋水冷。"
+        }
+      ],
+      "风物": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 22065,
+          "context": "东郊风物正熏馨，素浐凫鹥戏绿汀。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 23837,
+          "context": "风物动归思，烟林生远愁。"
+        }
+      ],
+      "知远": [
+        {
+          "book": "中庸",
+          "line": 39,
+          "context": "君子之道：淡而不厌，简而文，温而理，知远之近，知风之自，知微之显，可与入德矣。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 11894,
+          "context": "宁知远使问姓名，汉语泠泠传好音。"
+        }
+      ],
+      "远行": [
+        {
+          "book": "孟子",
+          "line": 178,
+          "context": "当在宋也，予将有远行。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 10682,
+          "context": "海客乘天风，将船远行役。"
+        }
+      ],
+      "长行": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 13031,
+          "context": "好胜耽长行，天明烛满楼。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 113777,
+          "context": "初第华严会，王家少长行。"
+        }
+      ],
+      "轻行": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 50472,
+          "context": "发白还更黑，身轻行若风。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 137793,
+          "context": "年少轻行乐，东城南陌头。"
+        }
+      ],
+      "清野": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 34934,
+          "context": "连兵屯北地，清野备东胡。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 81609,
+          "context": "近钟清野寺，远火点江村。"
+        }
+      ],
+      "清越": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 10169,
+          "context": "宫中彩女夜无事，学凤吹箫弄清越。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 20170,
+          "context": "腰劒动陆离，鸣玉和清越。"
+        }
+      ],
+      "昌明": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 204460,
+          "context": "醉对数丛红芍药，渴尝一盌绿昌明。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 371104,
+          "context": "【昌明里中谶】"
+        }
+      ],
+      "明道": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 52170,
+          "context": "明道俟良佐，惟贤初薄游。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 243602,
+          "context": "报德兼明道，长留识者知。"
+        }
+      ],
+      "一木": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 9238,
+          "context": "思填东海，彊衔一木。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 22884,
+          "context": "一木逢厦构，纤尘愿山益。"
+        }
+      ],
+      "乙木": [
+        {
+          "book": "封神演义",
+          "line": 2971,
+          "context": "行瘟使者降西岐，正是东方甲乙木。"
+        },
+        {
+          "book": "封神演义",
+          "line": 3555,
+          "context": "东边立二十五人，各穿青衣，手持青旗，按东方甲乙木；"
+        }
+      ],
+      "风野": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 95636,
+          "context": "苍苔浊酒林中静，碧水春风野外昏。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 111173,
+          "context": "蛮歌荳蔻北人愁，松雨蒲风野艇秋。"
+        }
+      ],
+      "星儿": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 122369,
+          "context": "早有点儿酸，诮没星儿苦。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 123949,
+          "context": "我也没、星儿恨你。"
+        }
+      ],
+      "云儿": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 780918,
+          "context": "白云儿是青山用，青山父是白云根。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 783235,
+          "context": "行尽韶山半月程，白云儿就青山父。"
+        }
+      ],
+      "木儿": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 228154,
+          "context": "【啄木儿】"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 206459,
+          "context": "【啄木儿】"
+        }
+      ],
+      "明核": [
+        {
+          "book": "文心雕龙",
+          "line": 367,
+          "context": "事以明核为美，不以环隐为奇：此纲领之大要也。"
+        }
+      ],
+      "予光": [],
+      "井木": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 16489,
+          "context": "角木蛟、井木犴是叔伯亲，斗木獬、奎木狼是舅姑哥。"
+        },
+        {
+          "book": "水浒传_七十回本",
+          "line": 3061,
+          "context": "当初他母亲梦井木犴投胎，因而有孕，后生此人，因此，人唤他做井木犴。"
+        }
+      ],
+      "比光": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 67126,
+          "context": "若无云间月，谁可比光辉。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 72573,
+          "context": "珊瑚映绿水，未足比光辉。"
+        }
+      ]
+    }
+  },
+  "output": {
+    "names": [
+      {
+        "name": "暮云",
+        "meaning": "傍晚的云，属于自然景象的偏正组合；可作诗意名称。",
+        "character_roles": {
+          "暮": "限定时间，表示傍晚",
+          "云": "中心名词，指云"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "云野",
+        "meaning": "不是常见固定词语；可理解为云与原野并置的意象，但组合关系不明确，整体偏造名。",
+        "character_roles": {
+          "云": "意象名词，指云",
+          "野": "意象名词，指原野；与“云”的关系未明确"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "星野",
+        "meaning": "可指星空与原野构成的景象；也可作为专名使用，但并非在此处必然表达某个固定词义。",
+        "character_roles": {
+          "星": "修饰或限定“野”，形成星空下原野的意象",
+          "野": "中心名词，指原野"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "竹影",
+        "meaning": "竹子的影子，是自然的偏正组合，也有明确的传统用法。",
+        "character_roles": {
+          "竹": "限定影子的来源，指竹子",
+          "影": "中心名词，指影子"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "秋水",
+        "meaning": "秋日的水；亦有清澈眼眸等传统比喻义。具体采用哪一义须看语境。",
+        "character_roles": {
+          "秋": "限定季节",
+          "水": "中心名词，指水"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "风物",
+        "meaning": "自然景物与地方景象的统称，是成立的常用词。",
+        "character_roles": {
+          "风": "与“物”结合，指风景、风貌等自然景象；不是单指风",
+          "物": "中心成分，泛指事物、景物"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "知远",
+        "meaning": "不是稳定的日常双音词；可作人名或品牌名，若解作知晓远方、远见，属于语境性理解，不是字面上已确立的固定义。",
+        "character_roles": {
+          "知": "动词，表示知道、认识",
+          "远": "可作“知”的对象或补充内容，指远方、长远；组合关系偏文言或造名"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "远行",
+        "meaning": "到远方去旅行或出行，是自然的动宾组合。",
+        "character_roles": {
+          "远": "修饰“行”，表示距离远",
+          "行": "中心动词，指行走、出行"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "长行",
+        "meaning": "普通话中不是“长久行走”的自然常用组合；“长行”在特定语境可指旧时的一种赌博游戏等，脱离语境含义不明。",
+        "character_roles": {
+          "长": "若按常见读音zhǎng，可指首领；若想表达长度或时间长，通常读cháng，不能据此直接确定此词义",
+          "行": "可指行列、行动或特定活动；在此组合中语义不明确"
+        },
+        "naturalness": 2
+      },
+      {
+        "name": "轻行",
+        "meaning": "不是现代汉语中常见的固定词；可在具体语境中表示轻快行走或轻装出行，但不能据名称本身确定是哪一种。",
+        "character_roles": {
+          "轻": "可能修饰动作，表示轻快或轻装；具体义未定",
+          "行": "动词，表示行走、出行"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "清野",
+        "meaning": "不是通常用于描述清澈原野的固定组合；“清野”可见于军事语境，指清除野外可资敌用的物资。作为品牌名也可只是造名。",
+        "character_roles": {
+          "清": "在军事用语中表示清除",
+          "野": "指野外地区；并非必然是“清澈”的野地"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "清越",
+        "meaning": "形容声音清脆悠扬，也可形容清超拔俗，是已有的词语。",
+        "character_roles": {
+          "清": "表示清亮、清脆或清超",
+          "越": "与“清”构成固定词，整体表清脆悠扬等义；不宜拆成独立的“超越”义"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "昌明",
+        "meaning": "可指兴盛、发扬光大，是已有词语；也有专名及特定物名用法。",
+        "character_roles": {
+          "昌": "表示兴盛、良好",
+          "明": "表示光明、显著；与“昌”共同构成整体词义"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "明道",
+        "meaning": "可指知晓道理或大道；也曾是年号。作为名称时须由语境确定所取义。",
+        "character_roles": {
+          "明": "作动词时表示明白、知晓；作修饰成分时可表明亮、清楚",
+          "道": "指道理、道路或道；与“明”的具体句法关系依所取词义而定"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "一木",
+        "meaning": "字面为一棵树或一块木材，作为短语成立；脱离语境通常只是数量加名词。",
+        "character_roles": {
+          "一": "数量词，表示一个",
+          "木": "名词，指树或木材"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "乙木",
+        "meaning": "主要见于干支、五行等术数语境，指乙所对应的木；普通语境不是自然常用词。",
+        "character_roles": {
+          "乙": "干支名称，在术数体系中作分类标记",
+          "木": "五行之一；与“乙”合用构成术数术语"
+        },
+        "naturalness": 2
+      },
+      {
+        "name": "风野",
+        "meaning": "不是自然稳定的现代汉语词语；可以把两字当作并置意象，但具体关系和整体意义不确定。",
+        "character_roles": {
+          "风": "意象名词，指风",
+          "野": "意象名词，指原野；与“风”的关系未明确"
+        },
+        "naturalness": 2
+      },
+      {
+        "name": "星儿",
+        "meaning": "可理解为星星的儿化称呼或昵称式表达；在普通话书写中并非“星”的常规儿化形式，容易显得口语、拟人或像人名。",
+        "character_roles": {
+          "星": "中心名词，指星星",
+          "儿": "昵称或儿化色彩的后缀，不宜按“儿子”解释"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "云儿",
+        "meaning": "可作对云的昵称式称呼或人名；“儿”主要带亲昵、口语色彩，不构成普通书面词的稳定词义。",
+        "character_roles": {
+          "云": "中心名词，指云",
+          "儿": "昵称式后缀；此处不表示“云的儿子”"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "木儿",
+        "meaning": "不是常见自然词语；可作昵称或专名，但单凭字面无法确定具体含义。",
+        "character_roles": {
+          "木": "可作名词，指树或木材",
+          "儿": "可能作昵称式后缀；作为普通构词成分不自然"
+        },
+        "naturalness": 2
+      },
+      {
+        "name": "明核",
+        "meaning": "不是常见固定词语。古文中“明核”可作“明察核实、明晰确实”一类的组合，但不能据此直接把它当作现代通用名词；品牌语境下含义不确定。",
+        "character_roles": {
+          "明": "表示明晰、清楚",
+          "核": "表示核实、审察时可作动词；若按“核心、种子”解则与“明”的组合关系不自然"
+        },
+        "naturalness": 2
+      },
+      {
+        "name": "予光",
+        "meaning": "不是常见固定词语；可按文言式动宾组合解作“给予光”，但若无语境，这一理解偏造名而非约定词义。",
+        "character_roles": {
+          "予": "动词，表示给予",
+          "光": "名词，指光；可作“予”的对象"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "井木",
+        "meaning": "单独使用不是常见一般词语；可见于星宿名称“井木犴”的组成部分，脱离该专名语境时含义不明确。",
+        "character_roles": {
+          "井": "在星宿名中属于名称成分，不表示水井",
+          "木": "在星宿体系名称中属分类或名称成分，不表示木材"
+        },
+        "naturalness": 2
+      },
+      {
+        "name": "比光",
+        "meaning": "不是常见固定词语；在句中可作“比拟、比较光辉”的动宾结构，但单独作为名称缺少明确对象或语境。",
+        "character_roles": {
+          "比": "动词，表示比较、比拟",
+          "光": "名词，指光或光辉，可作比较对象"
+        },
+        "naturalness": 2
+      }
+    ]
+  }
+}

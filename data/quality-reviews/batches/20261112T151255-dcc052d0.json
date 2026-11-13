@@ -1,0 +1,997 @@
+{
+  "review_id": "20261112T151255-dcc052d0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "矿晶",
+      "矿泉",
+      "矿源远",
+      "云伴矿山",
+      "矿藏成光",
+      "远山矿语",
+      "矿石记",
+      "富矿",
+      "矿物志",
+      "文化富矿",
+      "黝影生辉",
+      "黝石成金",
+      "黝夜星河",
+      "黝色山河",
+      "镆刃",
+      "镆剑无声",
+      "镆渡川",
+      "月照镆",
+      "风过镆",
+      "清光镆影"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "凉月照川",
+        "蒹月照川",
+        "茗川照月",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川"
+      ],
+      "月": [
+        "月照桹影",
+        "月照芭叶",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "月照绀海",
+        "蒹月照川",
+        "茗川照月",
+        "月照幽硔",
+        "月照酒盏",
+        "一川明月",
+        "一川风月"
+      ],
+      "色": [
+        "水天一色",
+        "着色",
+        "苔色",
+        "葭色",
+        "暮色",
+        "暮色临川",
+        "酡色",
+        "绀色流光",
+        "一勺春色",
+        "蔓织春色",
+        "蒹色入画",
+        "一川茗色"
+      ],
+      "山": [
+        "云开山峙",
+        "远山葶影",
+        "云山墅",
+        "远山芙蓉",
+        "远山近墟",
+        "瞰山河",
+        "麇行远山",
+        "涡映山河",
+        "榕山远望",
+        "山河入珐",
+        "珐映山河",
+        "酒伴山行"
+      ],
+      "风": [
+        "枣影清风",
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过蒹汀",
+        "风过埼",
+        "风过绉波",
+        "柘风过野",
+        "风过刃鸣",
+        "一川风月",
+        "一树春风",
+        "风褰云"
+      ],
+      "清": [
+        "枣影清风",
+        "清溪芹影",
+        "清江棹影",
+        "鹂羽清光",
+        "清溪鹂影",
+        "柘影清和",
+        "清光映刃",
+        "一庭清欢",
+        "清茗",
+        "清懿堂",
+        "清泚",
+        "清酎"
+      ],
+      "渡": [
+        "一苇渡江",
+        "青枫渡",
+        "渡口",
+        "广陵渡月"
+      ],
+      "成": [
+        "叠石成景",
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "星": [
+        "凉夜星河",
+        "棹星河",
+        "一箩星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河",
+        "广星河"
+      ],
+      "金": [
+        "金石錾刻",
+        "金乌",
+        "金镞",
+        "蹙金",
+        "金镯",
+        "金镳",
+        "钨金",
+        "金珀",
+        "寸金",
+        "金猊",
+        "金错刀",
+        "金铚"
+      ],
+      "夜": [
+        "凉夜星河",
+        "丙夜",
+        "乙夜",
+        "玉螭照夜",
+        "螭照长夜"
+      ],
+      "光": [
+        "鹂羽清光",
+        "摹影寻光",
+        "清光映刃",
+        "栎影流光",
+        "矿光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光"
+      ],
+      "云": [
+        "云开山峙",
+        "云山墅",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间"
+      ],
+      "远": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "榕山远望",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "云缠远岫"
+      ],
+      "黝": [
+        "黝川"
+      ],
+      "影": [
+        "枣影清风",
+        "月照桹影",
+        "远山葶影",
+        "清溪芹影",
+        "清江棹影",
+        "清溪鹂影",
+        "摹影寻光",
+        "柘影清和",
+        "栎影流光",
+        "篾影",
+        "伞影",
+        "墙影"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文",
+        "文椠",
+        "奇文",
+        "文牍"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "枫声入野",
+        "葭声",
+        "婳声",
+        "鹂声",
+        "鹂声入林",
+        "云外鹂声",
+        "铴声",
+        "镛声",
+        "涡声"
+      ],
+      "泉": [
+        "氿泉",
+        "峋石听泉",
+        "崟泉",
+        "渟泉",
+        "蒹林听泉",
+        "硔间清泉",
+        "涡泉",
+        "井泉",
+        "柘泉",
+        "柘下泉",
+        "涧泉",
+        "云梾听泉"
+      ],
+      "源": [
+        "矿源",
+        "泂源",
+        "淑源",
+        "酵源",
+        "楮源",
+        "凯源",
+        "瓷源",
+        "珀源",
+        "覃思源",
+        "义之源",
+        "茗源",
+        "硔源"
+      ],
+      "无": [
+        "无价",
+        "无讼堂",
+        "酷无界",
+        "无虞",
+        "无瑕"
+      ],
+      "石": [
+        "金石錾刻",
+        "叠石成景",
+        "砭石堂",
+        "玉石錾花",
+        "峋石听泉",
+        "峋石",
+        "石斋",
+        "苔石",
+        "叠石",
+        "石猊",
+        "石旁苔",
+        "枕石"
+      ],
+      "富": [
+        "富庶"
+      ],
+      "物": [
+        "庶物",
+        "风物成瓷",
+        "酷物",
+        "广陵风物",
+        "万物鲜",
+        "风物常鲜"
+      ],
+      "生": [
+        "梣木生辉",
+        "粗笔生春",
+        "凉生",
+        "春又生",
+        "蔓生",
+        "蔓生朝露",
+        "蔓生集",
+        "生态",
+        "广陵潮生",
+        "奇木生春"
+      ],
+      "辉": [
+        "梣木生辉",
+        "峥辉",
+        "清辉琥珀",
+        "二曜同辉"
+      ],
+      "照": [
+        "月照桹影",
+        "月照芭叶",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "月照绀海",
+        "蒹月照川",
+        "茗川照月",
+        "月照幽硔",
+        "星河照蕖",
+        "月照酒盏",
+        "榴花照影"
+      ],
+      "语": [
+        "兽语",
+        "哝语",
+        "林间哝语",
+        "哞语",
+        "瓷语",
+        "葭语",
+        "婳语",
+        "鹂语",
+        "松风鹂语",
+        "软语"
+      ],
+      "藏": [
+        "藏弆",
+        "藏镞",
+        "藏刃",
+        "山海藏刃",
+        "璞里藏珂"
+      ],
+      "记": [
+        "采芹记",
+        "钤记",
+        "寻瓷记",
+        "玉刀记",
+        "奇遇记"
+      ],
+      "过": [
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过蒹汀",
+        "风过埼",
+        "风过绉波",
+        "柘风过野",
+        "风过刃鸣",
+        "棹过春山",
+        "鹁过晴川",
+        "鹂影过桥",
+        "云过硔谷"
+      ],
+      "河": [
+        "凉夜星河",
+        "瞰山河",
+        "棹星河",
+        "一箩星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河"
+      ],
+      "化": [
+        "鲲化"
+      ],
+      "镆": [
+        "镆铘"
+      ],
+      "伴": [
+        "酒伴山行",
+        "旅伴",
+        "鹂伴月",
+        "鹂伴竹风",
+        "弓伴月"
+      ],
+      "刃": [
+        "清光映刃",
+        "星河淬刃",
+        "风过刃鸣",
+        "砺刃",
+        "刃光",
+        "游刃",
+        "藏刃",
+        "霜刃",
+        "玉刃",
+        "月刃",
+        "双刃",
+        "迎刃"
+      ],
+      "矿": [
+        "矿源",
+        "矿光",
+        "矿脉",
+        "矿中月"
+      ]
+    },
+    "literature_phrase_examples": {
+      "矿晶": [],
+      "矿泉": [],
+      "矿源远": [],
+      "云伴矿山": [],
+      "矿藏成光": [],
+      "远山矿语": [],
+      "矿石记": [],
+      "富矿": [],
+      "矿物志": [],
+      "文化富矿": [],
+      "黝影生辉": [],
+      "黝石成金": [],
+      "黝夜星河": [],
+      "黝色山河": [],
+      "镆刃": [],
+      "镆剑无声": [],
+      "镆渡川": [],
+      "月照镆": [],
+      "风过镆": [],
+      "清光镆影": []
+    },
+    "dictionary_phrase_entries": {
+      "矿晶": [],
+      "矿泉": [],
+      "矿源远": [],
+      "云伴矿山": [],
+      "矿藏成光": [],
+      "远山矿语": [],
+      "矿石记": [],
+      "富矿": [],
+      "矿物志": [],
+      "文化富矿": [],
+      "黝影生辉": [],
+      "黝石成金": [],
+      "黝夜星河": [],
+      "黝色山河": [],
+      "镆刃": [],
+      "镆剑无声": [],
+      "镆渡川": [],
+      "月照镆": [],
+      "风过镆": [],
+      "清光镆影": []
+    },
+    "direct_dictionary": {
+      "矿": {
+        "definition": "mine; mineral, ore",
+        "mandarin": "kuàng",
+        "related_characters": [
+          {
+            "character": "礦",
+            "relation": "kTraditionalVariant",
+            "definition": "mine; mineral, ore",
+            "mandarin": "kuàng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晶": {
+        "definition": "crystal; clear, bright; radiant",
+        "mandarin": "jīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "源": {
+        "definition": "spring; source, head; surname",
+        "mandarin": "yuán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "伴": {
+        "definition": "companion, comrade, partner; accompany",
+        "mandarin": "bàn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "藏": {
+        "definition": "hide, conceal; hoard, store up",
+        "mandarin": "cáng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "语": {
+        "definition": "language, words; saying, expression",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "語",
+            "relation": "kTraditionalVariant",
+            "definition": "language, words; saying, expression",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "石": {
+        "definition": "stone, rock, mineral; Kangxi radical 112",
+        "mandarin": "shí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "记": {
+        "definition": "record; keep in mind, remember",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "記",
+            "relation": "kTraditionalVariant",
+            "definition": "record; keep in mind, remember",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "富": {
+        "definition": "abundant, ample; rich, wealthy",
+        "mandarin": "fù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "物": {
+        "definition": "thing, substance, creature",
+        "mandarin": "wù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "化": {
+        "definition": "change, convert, reform; -ize",
+        "mandarin": "huà",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "黝": {
+        "definition": "black",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "生": {
+        "definition": "life, living, lifetime; birth",
+        "mandarin": "shēng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辉": {
+        "definition": "brightness, luster, brilliance",
+        "mandarin": "huī",
+        "related_characters": [
+          {
+            "character": "輝",
+            "relation": "kTraditionalVariant",
+            "definition": "brightness, luster, brilliance",
+            "mandarin": "huī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "金": {
+        "definition": "gold; metals in general; money; Kangxi radical 167",
+        "mandarin": "jīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "夜": {
+        "definition": "night, dark; in night; by night",
+        "mandarin": "yè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "色": {
+        "definition": "color, tint, hue, shade; form, body; beauty, desire for beauty; Kangxi radical 139",
+        "mandarin": "sè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "镆": {
+        "definition": "sword",
+        "mandarin": "mò",
+        "related_characters": [
+          {
+            "character": "鏌",
+            "relation": "kTraditionalVariant",
+            "definition": "sword",
+            "mandarin": "mò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "刃": {
+        "definition": "edged tool, cutlery, knife edge",
+        "mandarin": "rèn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "剑": {
+        "definition": "sword, dagger, saber",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "劍",
+            "relation": "kTraditionalVariant",
+            "definition": "sword, dagger, saber",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "无": {
+        "definition": "negative, no, not; Kangxi radical 71",
+        "mandarin": "wú",
+        "related_characters": [
+          {
+            "character": "无",
+            "relation": "kTraditionalVariant",
+            "definition": "negative, no, not; Kangxi radical 71",
+            "mandarin": "wú"
+          },
+          {
+            "character": "無",
+            "relation": "kTraditionalVariant",
+            "definition": "negative, no, not; lack, have no",
+            "mandarin": "wú"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "渡": {
+        "definition": "cross, ferry over; ferry",
+        "mandarin": "dù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "矿晶",
+      "decision": "keep",
+      "reason": "指矿物晶体，语义明确、简洁凝练，具有自然物象辨识度。"
+    },
+    {
+      "name": "矿泉",
+      "decision": "reject",
+      "reason": "完整名称是通用水源及饮用水类别词，品牌辨识度不足。"
+    },
+    {
+      "name": "矿源远",
+      "decision": "reject",
+      "reason": "“矿源”后接“远”语序生硬，整体语义关系不清。"
+    },
+    {
+      "name": "云伴矿山",
+      "decision": "uncertain",
+      "reason": "可理解为云相伴矿山的画面，但“伴”连接云与矿山略显牵强，品牌语义不够自然。"
+    },
+    {
+      "name": "矿藏成光",
+      "decision": "reject",
+      "reason": "将矿藏说成“成光”关系生硬，整体像刻意拼合的励志表达。"
+    },
+    {
+      "name": "远山矿语",
+      "decision": "keep",
+      "reason": "以远山与矿物意象构成自然、凝练的组合，“矿语”带有可识别的表达感。"
+    },
+    {
+      "name": "矿石记",
+      "decision": "keep",
+      "reason": "有记录矿石、矿物见闻的自然联想，结构简洁，具备品牌名的凝练感。"
+    },
+    {
+      "name": "富矿",
+      "decision": "reject",
+      "reason": "是对矿产资源丰富或资源优势的通用描述，单独作为品牌名辨识度有限。"
+    },
+    {
+      "name": "矿物志",
+      "decision": "reject",
+      "reason": "完整名称直接指向矿物类记录或知识读物，属于通用内容类别称谓。"
+    },
+    {
+      "name": "文化富矿",
+      "decision": "reject",
+      "reason": "常见的抽象资源比喻，整体是通用价值描述，缺少凝练的专属品牌感。"
+    },
+    {
+      "name": "黝影生辉",
+      "decision": "reject",
+      "reason": "“生辉”通常表达光彩显现，与“黝影”搭配语义牵强，且整体像修饰性句子。"
+    },
+    {
+      "name": "黝石成金",
+      "decision": "reject",
+      "reason": "明显借用“点石成金”的成语框架，将“黝石”替换嵌入，属于近似口号式表达。"
+    },
+    {
+      "name": "黝夜星河",
+      "decision": "keep",
+      "reason": "“黝”可指黑色，与夜色、星河构成清楚的暗夜景象，组合凝练且有辨识度。"
+    },
+    {
+      "name": "黝色山河",
+      "decision": "keep",
+      "reason": "可理解为黝暗色调的山河景象，语义通顺，具有鲜明的视觉意象。"
+    },
+    {
+      "name": "镆刃",
+      "decision": "keep",
+      "reason": "“镆”有剑义，与“刃”形成明确的兵刃意象，短促有力且可识别。"
+    },
+    {
+      "name": "镆剑无声",
+      "decision": "reject",
+      "reason": "“镆剑”与“无声”组合像完整修饰句，表达落点不明，整体近于口号或诗句片段。"
+    },
+    {
+      "name": "镆渡川",
+      "decision": "reject",
+      "reason": "“镆”指剑，与渡川之间没有自然语义或语法关系，像机械拼接。"
+    },
+    {
+      "name": "月照镆",
+      "decision": "uncertain",
+      "reason": "可理解为月光照在剑上，但“镆”是生僻的剑义用字，放在句末使表达略显滞涩，整体自然度存疑。"
+    },
+    {
+      "name": "风过镆",
+      "decision": "uncertain",
+      "reason": "可构成风掠过剑的画面，但以生僻剑义字“镆”直接收尾不够自然，语义辨识也较弱。"
+    },
+    {
+      "name": "清光镆影",
+      "decision": "reject",
+      "reason": "虽可拆解为清光与剑影，但“镆影”并非自然搭配，整体是意象词的堆叠。"
+    }
+  ]
+}

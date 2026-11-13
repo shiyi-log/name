@@ -1,0 +1,942 @@
+{
+  "review_id": "20261113T122152-050529ea",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "蕺菜",
+      "蕺菜集",
+      "蕺叶知秋",
+      "蕺草听雨",
+      "蕺知春",
+      "蕺青",
+      "松间庄",
+      "庄周之梦"
+    ],
+    "related_kept_candidates": {
+      "雨": [
+        "峤听雨",
+        "听雨斋",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅",
+        "涂听雨",
+        "柯听雨"
+      ],
+      "春": [
+        "乃知春",
+        "碳知春",
+        "鹒知春",
+        "獭知春",
+        "蛱蝶知春",
+        "柳知春",
+        "冬知春",
+        "杄木知春",
+        "一荑知春",
+        "蕾知春",
+        "布谷知春",
+        "筀知春"
+      ],
+      "之": [
+        "梦之岛",
+        "一念之间",
+        "焊之道",
+        "芙蓉之外",
+        "十亩之间",
+        "碳之桥",
+        "碳之本",
+        "义之源",
+        "义之光",
+        "茗之初",
+        "涡之源",
+        "涡之境"
+      ],
+      "间": [
+        "松间鼯",
+        "松间䴓",
+        "松间凉",
+        "松间有茗",
+        "松间麇鹿",
+        "松间酒",
+        "松间晚飧",
+        "松间侣",
+        "松楠间",
+        "松间麋",
+        "松间闻泉",
+        "松间瓢"
+      ],
+      "青": [
+        "青冈听雨",
+        "青圃听雨",
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋"
+      ],
+      "集": [
+        "山柰集",
+        "云斓集",
+        "芳蘅集",
+        "芳茝集",
+        "葑野集",
+        "峥嵘集",
+        "萱草集",
+        "春芭集",
+        "椋鸟集",
+        "鲲集",
+        "蔓生集",
+        "菥草集"
+      ],
+      "梦": [
+        "梦之岛",
+        "梦貘",
+        "人间梦",
+        "浮云入梦",
+        "梦乡",
+        "绮梦",
+        "栩梦",
+        "梦寐",
+        "蜻蜓入梦",
+        "清宵梦",
+        "宵梦",
+        "蛱蝶梦"
+      ],
+      "松": [
+        "松间鼯",
+        "松间䴓",
+        "松间凉",
+        "螭听松雨",
+        "松间有茗",
+        "松间麇鹿",
+        "松间酒",
+        "松间晚飧",
+        "松间侣",
+        "松楠间",
+        "松间麋",
+        "松间闻泉"
+      ],
+      "草": [
+        "蒨草听风",
+        "蕙草知春",
+        "莶草",
+        "草木葳蕤",
+        "萱草集",
+        "寸草",
+        "蔓草",
+        "广陵芳草",
+        "草木鲜",
+        "菥草集",
+        "草木窸窣",
+        "蔺草"
+      ],
+      "秋": [
+        "枫知秋",
+        "珺林知秋",
+        "獭知秋",
+        "苒知秋",
+        "桉下知秋",
+        "荑知秋",
+        "顾知秋",
+        "谭知秋",
+        "麦田知秋",
+        "兔知秋",
+        "苇知秋",
+        "羿知秋"
+      ],
+      "知": [
+        "乃知春",
+        "枫知秋",
+        "碳知春",
+        "珺林知秋",
+        "鹒知春",
+        "獭知春",
+        "獭知秋",
+        "蛱蝶知春",
+        "柳知春",
+        "苒知秋",
+        "冬知春",
+        "杄木知春"
+      ],
+      "叶": [
+        "秋叶随谿",
+        "茎叶",
+        "蒌叶",
+        "月照芭叶",
+        "芭叶映星",
+        "蔓叶",
+        "蕖叶承露",
+        "柘叶",
+        "梾叶",
+        "萚叶",
+        "枝叶蔽空",
+        "柯叶"
+      ],
+      "听": [
+        "峤听雨",
+        "听雨斋",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅",
+        "涂听雨",
+        "柯听雨"
+      ],
+      "菜": [
+        "荇菜",
+        "荠菜",
+        "菜里有光",
+        "人间菜事"
+      ],
+      "周": [
+        "周听雨",
+        "周遭",
+        "周游",
+        "周正",
+        "周全",
+        "周宁",
+        "周山海",
+        "周云开",
+        "周行远",
+        "周有光",
+        "周见微",
+        "周予安"
+      ],
+      "庄": [
+        "庄俨",
+        "矜庄"
+      ]
+    },
+    "literature_phrase_examples": {
+      "蕺菜": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 636852,
+          "context": "鉴湖清可啜，蕺菜柔堪饷。"
+        }
+      ],
+      "蕺菜集": [],
+      "蕺叶知秋": [],
+      "蕺草听雨": [],
+      "蕺知春": [],
+      "蕺青": [],
+      "松间庄": [],
+      "庄周之梦": []
+    },
+    "dictionary_phrase_entries": {
+      "蕺菜": [
+        {
+          "title": "蕺菜",
+          "pinyin": "jí cài",
+          "definition": "植物名。三白草科蕺菜屬，多年生草本。莖綠白色，葉互生，卵形。初夏開花，穗狀花序基部具白色總苞四至六枚，花小而密集。蒴果頂裂。全株有強烈的魚腥味。可入藥，有散熱、消腫等功效。多產於中國大陸、日本及喜馬拉雅山區等地。也稱為「魚腥草」。",
+          "entry_id": "053880002",
+          "sheet": "1150929辭典匯出",
+          "row": 87198,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "蕺菜集": [],
+      "蕺叶知秋": [],
+      "蕺草听雨": [],
+      "蕺知春": [],
+      "蕺青": [],
+      "松间庄": [],
+      "庄周之梦": []
+    },
+    "direct_dictionary": {
+      "蕺": {
+        "definition": "Houttuynia cordata, fish mint",
+        "mandarin": "jí",
+        "official_dictionary": [
+          {
+            "title": "蕺",
+            "pinyin": "jí",
+            "definition": "[名]\n植物名。三白草科蕺菜屬。「蕺菜」之簡稱，參見「蕺菜」條。",
+            "entry_id": "05388",
+            "sheet": "1150929辭典匯出",
+            "row": 5395,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "蕺菜",
+                "pinyin": "jí cài",
+                "definition": "植物名。三白草科蕺菜屬，多年生草本。莖綠白色，葉互生，卵形。初夏開花，穗狀花序基部具白色總苞四至六枚，花小而密集。蒴果頂裂。全株有強烈的魚腥味。可入藥，有散熱、消腫等功效。多產於中國大陸、日本及喜馬拉雅山區等地。也稱為「魚腥草」。",
+                "entry_id": "053880002",
+                "sheet": "1150929辭典匯出",
+                "row": 87198
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "菜": {
+        "definition": "vegetables; dish, order; food",
+        "mandarin": "cài",
+        "official_dictionary": [
+          {
+            "title": "菜",
+            "pinyin": "cài",
+            "definition": "[名]\n1.蔬類的總稱。如：「白菜」、「菠菜」。《禮記．月令》：「乃命有司，趣民收斂，務畜菜多積聚。」\n2.餚饌的總稱。如：「川菜」、「素菜」。《北史．卷三四．胡叟傳》：「飯菜精潔，醢醬調美。」\n[形]\n差勁、不出色。如：「菜鳥」、「這麼菜的成績，真是無顏見江東父老！」",
+            "entry_id": "09749",
+            "sheet": "1150929辭典匯出",
+            "row": 9763,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "集": {
+        "definition": "assemble, collect together",
+        "mandarin": "jí",
+        "official_dictionary": [
+          {
+            "title": "集",
+            "pinyin": "jí",
+            "definition": "[動]\n1.棲息。《詩經．唐風．鴇羽》：「肅肅鴇羽，集于苞栩。」南朝宋．鮑照〈贈傅都曹別詩〉：「輕鴻戲江潭，孤鴈集洲沚。」\n2.把散開的事物聚合在一起。如：「集合」、「聚集」、「籌集」、「集資」、「收集」。《文選．賈誼．過秦論》：「天下雲集響應，嬴糧而景從。」\n[名]\n1.市場、人口聚集舉行交易的地方。如：「市集」、「趕集」、「年集」。\n2.地名用字。如：「張家集」。《儒林外史》第二回：「話說山東兗州府汶上縣有個鄉村，叫做薛家集。」\n3.輯錄詩文等的書籍。如：「詩集」、「文集」。《文選．曹丕．與吳質書》：「頃撰其遺文，都為一集。」\n4.量詞。計算叢書或影劇集系列的單位。如：「這齣戲今天播出第三集。」\n5.中國傳統圖書四部分類的第四部，包括詩文等的作品稱為「集」。",
+            "entry_id": "05391",
+            "sheet": "1150929辭典匯出",
+            "row": 5398,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "叶": {
+        "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+        "mandarin": "yè",
+        "related_characters": [
+          {
+            "character": "叶",
+            "relation": "kTraditionalVariant",
+            "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+            "mandarin": "yè"
+          },
+          {
+            "character": "葉",
+            "relation": "kTraditionalVariant",
+            "definition": "leaf, petal; page of book; period",
+            "mandarin": "yè"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "叶",
+            "pinyin": null,
+            "definition": "「協」的異體字。",
+            "entry_id": "06927-1",
+            "sheet": "1150929辭典匯出",
+            "row": 104468,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "秋": {
+        "definition": "autumn, fall; year",
+        "mandarin": "qiū",
+        "related_characters": [
+          {
+            "character": "秋",
+            "relation": "kTraditionalVariant",
+            "definition": "autumn, fall; year",
+            "mandarin": "qiū"
+          },
+          {
+            "character": "鞦",
+            "relation": "kTraditionalVariant",
+            "definition": "leather stap; swing",
+            "mandarin": "qiū"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "秋",
+            "pinyin": "qiū",
+            "definition": "[名]\n1.一年四季中的第三季。農曆為七、八、九月，陽曆為九、十、十一月。如：「秋天」、「秋季」、「中秋」、「深秋」、「一葉知秋」。唐．杜甫〈登高〉詩：「萬里悲秋常作客，百年多病獨登臺。」\n2.年。古代年的長度以二次秋收為準，故以秋代表年。如：「千秋萬世」、「一日不見，如隔三秋。」唐．劉禹錫〈蜀先主廟〉詩：「天地英雄氣，千秋尚凜然。」\n3.時候。如：「多事之秋」。《文選．諸葛亮．出師表》：「此誠危急存亡之秋也。」\n4.姓。如清代有秋瑾。\n[形]\n喻衰老。宋．陸游〈南鄉子．早歲入皇州〉詞：「三十年來真一夢，堪愁。客路蕭蕭兩鬢秋。」",
+            "entry_id": "06402",
+            "sheet": "1150929辭典匯出",
+            "row": 6410,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "草": {
+        "definition": "grass, straw, thatch, herbs",
+        "mandarin": "cǎo",
+        "official_dictionary": [
+          {
+            "title": "草",
+            "pinyin": "cǎo",
+            "definition": "[名]\n1.草本植物的總稱。如：「草木」、「花草」、「碧草如茵」。唐．柳宗元〈段太尉逸事狀〉：「是歲大旱，野無草。」\n2.田野、荒野。如：「草澤」。《商君書．墾令》：「農不敗而有餘日，則草必墾矣。」\n3.一種書法字體。如：「狂草」、「行草」。\n4.底稿、文稿。如：「起草」、「擬草」。\n5.姓。如漢代有草中。\n[形]\n1.馬虎、粗率、不細膩。如：「潦草」。\n2.初步的、尚未決定的。如：「草案」、「草圖」、「草約」。\n3.用草編成的。如：「草蓆」、「草繩」、「草履」。\n4.用草搭蓋的。如：「草棚」、「草房」、「草菴」。\n[動]\n1.起稿、擬訂。《漢書．卷三〇．藝文志》：「蕭何草律，亦著其法。」《晉書．卷八三．江逌傳》：「冀以免咎，使太常博士草其制。」\n2.草寫。清．鄭板橋〈清季野聞〉：「板橋卻之不得，亦草『難得糊塗』，付之。」\n[副]\n草率。如：「草草了事」。清．孔尚任《桃花扇》第六齣：「草辦妝奩，粗陳筵席。」",
+            "entry_id": "09760",
+            "sheet": "1150929辭典匯出",
+            "row": 9774,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "听",
+            "pinyin": "yǐn",
+            "definition": "[副]\n笑的樣子。《文選．司馬相如．上林賦》：「亡是公听然而笑。」唐．劉禹錫〈說驥〉：「睹之周體，眙然視，听然笑，既而抃隨之。」",
+            "entry_id": "11104",
+            "sheet": "1150929辭典匯出",
+            "row": 11119,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "听",
+            "pinyin": null,
+            "definition": "「聽」的異體字。",
+            "entry_id": "02734-1",
+            "sheet": "1150929辭典匯出",
+            "row": 53128,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "official_dictionary": [
+          {
+            "title": "雨",
+            "pinyin": "yǔ",
+            "definition": "[名]\n1.空氣中的水蒸氣遇冷凝結而降落的小水滴。如：「春雨」、「梅雨」、「風雨交加」、「秋風秋雨愁煞人」。\n2.朋友。如：「舊雨新知」。唐．杜甫〈秋述〉：「秋，杜子臥病長安旅次，……，青苔及榻，常時車馬之客，舊雨來，今雨不來。」\n3.二一四部首之一。",
+            "entry_id": "11624",
+            "sheet": "1150929辭典匯出",
+            "row": 11638,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "雨",
+            "pinyin": "yù",
+            "definition": "[動]\n1.下雨。《詩經．小雅．大田》：「雨我公田，遂及我私。」《史記．卷六七．仲尼弟子傳．有若傳》：「他日，月宿畢，竟不雨。」\n2.降落、落下。如：「雨雪」、「雨雹」。《淮南子．本經》：「昔者蒼頡作書，而天雨粟，鬼夜哭。」宋．蘇軾〈喜雨亭記〉：「使天而雨珠，寒者不得以為襦；使天而雨玉，飢者不得以為粟。」\n3.滋潤、灌溉。唐．孟郊〈終南山下作〉詩：「山村不假陰，流水自雨田。」唐．鮑溶〈答客〉詩：「勞問圃人終歲事，桔槔聲裡雨春畦。」",
+            "entry_id": "11661",
+            "sheet": "1150929辭典匯出",
+            "row": 11675,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "青",
+            "pinyin": "jīng",
+            "definition": "參見「青青」(二)條。",
+            "entry_id": "05920",
+            "sheet": "1150929辭典匯出",
+            "row": 5928,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "青青",
+                "pinyin": "jīng jīng",
+                "definition": "草木茂盛的樣子。《詩經．衛風．淇奧》：「瞻彼淇奧，綠竹青青。」宋．范仲淹〈岳陽樓記〉：「岸芷汀蘭，郁郁青青。」也作「菁菁」。",
+                "entry_id": "059200001",
+                "sheet": "1150929辭典匯出",
+                "row": 94282
+              },
+              {
+                "title": "青青",
+                "pinyin": "qīng qīng",
+                "definition": "1.形容草木翠綠的顏色。《文選．古詩十九首．青青河邊草》：「青青河邊草，綿綿思遠道。」《三國演義》第九回：「千里草，何青青！十日卜，不得生！」\n2.形容鬢髮烏黑。宋．朱熹〈和秀野蘄簟之句〉詩：「史君兩鬢尚青青，學道仍拋後院笙。」",
+                "entry_id": "065760148",
+                "sheet": "1150929辭典匯出",
+                "row": 100674
+              }
+            ]
+          },
+          {
+            "title": "青",
+            "pinyin": "qīng",
+            "definition": "[名]\n1.顏色：(1)綠色。唐．劉禹錫〈陋室銘〉：「苔痕上階綠，草色入簾青。」(2)藍色。《荀子．勸學》：「青取之於藍，而青於藍。」(3)黑色。如：「玄青」。\n2.綠色的草木、山脈。如：「踏青」、「萬年青」、「青黃不接」。唐．柳宗元〈始得西山宴游記〉：「縈青繚白，外與天際。」\n3.竹皮。如：「汗青」。\n4.地名簡稱：(1)大陸地區青海省簡稱。如：「青藏鐵路」。(2)青島市簡稱。如：「青鹽鐵路」。\n5.二一四部首之一。\n[形]\n1.綠色的。如：「青山綠水」、「山青水秀」。\n2.藍色的。如：「青天白日」。\n3.黑色的。如：「青布」、「青衣」。唐．李白〈將進酒〉：「君不見高堂明鏡悲白髮，朝如青絲暮成雪。」\n4.年輕的。如：「青年」、「青春」。",
+            "entry_id": "06576",
+            "sheet": "1150929辭典匯出",
+            "row": 6585,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庄": {
+        "definition": "village, hamlet; villa, manor",
+        "mandarin": "zhuāng",
+        "related_characters": [
+          {
+            "character": "庄",
+            "relation": "kTraditionalVariant",
+            "definition": "village, hamlet; villa, manor",
+            "mandarin": "zhuāng"
+          },
+          {
+            "character": "莊",
+            "relation": "kTraditionalVariant",
+            "definition": "village, hamlet; villa; surname",
+            "mandarin": "zhuāng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "庄",
+            "pinyin": null,
+            "definition": "「莊」的異體字。",
+            "entry_id": "08119-1",
+            "sheet": "1150929辭典匯出",
+            "row": 117922,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "周": {
+        "definition": "Zhou dynasty; circumference",
+        "mandarin": "zhōu",
+        "official_dictionary": [
+          {
+            "title": "周",
+            "pinyin": "zhōu",
+            "definition": "[形]\n1.完密、嚴謹。如：「周密」、「周詳」。《左傳．昭公四年》：「其藏之也周。」《說文解字．口部》：「周，密也。」唐．劉知幾《史通．卷五．補註》：「范曄之刪後漢也，簡而且周，疏而不漏，蓋云備矣。」\n2.完備、充足。《左傳．文公三年》：「君子是以知秦穆公之為君也，舉人之周也。」《紅樓夢》第六四回：「後來不料遭了官司，敗落了家產，弄得衣食不周，那裡還娶得起媳婦呢？」\n3.全部、整個。清．紀昀《閱微草堂筆記．卷二．濼陽消夏錄》：「見數物似人似獸，周身麟皴，班駁如古松。」\n[名]\n1.朝代名：(1)參見「周朝」條。(2)參見「北周」條。(3)唐朝武則天稱帝，改國號為「周」。(4)參見「後周」條。\n2.環繞區域的外圍部分。如：「圓周」、「周圍」。北魏．酈道元《水經注．穀水注》：「池東西千步，南北千一百步，四周有塘。」\n3.量詞。計算環繞次數的單位。如：「環島一周」、「繞場兩周」。\n4.滿一年。通「週」。如：「周年」、「周歲」。\n5.一星期。如：「周末」。\n6.姓。如明代有周順昌。\n[動]\n1.環繞。如：「周而復始」。《楚辭．屈原．九歌．湘君》：「鳥次兮屋上，水周兮堂下。」\n2.救濟、援助。通「賙」。如：「周濟」。《三國志．卷五八．吳書．陸遜傳》：「夷王梅賾等並帥支黨來附遜，遜傾財帛，周贍經卹。」宋．吳自牧《夢粱錄．卷一八．恤貧濟老》：「富家沿門親察其孤苦艱難，遇夜以碎金銀或錢會插于門縫，以周其苦。」\n[副]\n普遍、全、都。如：「眾所周知」。《易經．繫辭上》：「知周乎萬物，而道濟天下。」宋．蘇軾〈上神宗皇帝書〉：「以古揆今，則似內重，共惟祖宗所以預圖而深計，固非小臣所能臆度而周知。」",
+            "entry_id": "07739",
+            "sheet": "1150929辭典匯出",
+            "row": 7750,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "周密",
+                "pinyin": "zhōu mì",
+                "definition": "1.周全細密。《荀子．儒效》：「其知慮多當矣，而未周密也。」《喻世明言．卷二一．臨安里錢婆留發跡》：「原來錢鏐已知此是吉讖，合應在自己身上，只恐聲揚於外，故意不信，乃見他心機周密處。」_x000D_\n2.人名。（西元1232～1298）字公謹，號草窗。生處宋末元初之際。山東濟南人，流寓吳興。工詩詞，作品風格纖細奇險，著有《癸辛雜識》、《齊東野語》、《武林舊事》、《草窗詞》、《草窗韻語》等書，嘗選南宋歌詞為《絕妙好詞》。",
+                "entry_id": "077390014",
+                "sheet": "1150929辭典匯出",
+                "row": 114127
+              },
+              {
+                "title": "周詳",
+                "pinyin": "zhōu xiáng",
+                "definition": "嚴密而詳盡。如：「敘述周詳」。《文明小史》第三一回：「等到條陳上了上去，立時請見，敘了一番舊，又痛贊他籌畫周詳，到底是個公事老手，竭力留他在署中辦事。」",
+                "entry_id": "077390082",
+                "sheet": "1150929辭典匯出",
+                "row": 114170
+              },
+              {
+                "title": "周朝",
+                "pinyin": "zhōu cháo",
+                "definition": "朝代名。(西元前1122～前256）周武王翦商至周赧王為秦所滅，共歷八百六十七年。前期都鎬京，自武王傳至幽王寵褒姒亡國，共傳十二君，歷三百五十二年，史稱為「西周」。自周平王東遷雒邑至周赧王滅國，共傳二十二君，歷五百一十五年，史稱為「東周」。",
+                "entry_id": "077390105",
+                "sheet": "1150929辭典匯出",
+                "row": 114186
+              },
+              {
+                "title": "北周",
+                "pinyin": "běi zhōu",
+                "definition": "朝代名。（西元557～581）北朝諸朝之一。鮮卑族宇文泰之子宇文覺廢西魏主自立，國號周，建都長安（今陝西西安市），史稱為「北周」。至武帝滅北齊，統一北方，傳至靜帝為楊堅所篡，共歷五帝、二十五年。也稱為「後周」。",
+                "entry_id": "001640155",
+                "sheet": "1150929辭典匯出",
+                "row": 14971
+              },
+              {
+                "title": "後周",
+                "pinyin": "hòu zhōu",
+                "definition": "朝代名：(1)（西元951～960）五代諸朝之一。郭威滅後漢所建，國號周，都開封。恭帝時，被大將趙匡胤逼迫讓位。史稱為「後周」。(2)北周的別名。參見「北周」條。",
+                "entry_id": "048350138",
+                "sheet": "1150929辭典匯出",
+                "row": 80465
+              },
+              {
+                "title": "圓周",
+                "pinyin": "yuán zhōu",
+                "definition": "平圓的圍線，稱為「圓周」。",
+                "entry_id": "117950075",
+                "sheet": "1150929辭典匯出",
+                "row": 162922
+              },
+              {
+                "title": "周圍",
+                "pinyin": "zhōu wéi",
+                "definition": "環繞在物體四周的部分。《三國演義》第九七回：「於是軍中起百乘雲梯，一乘可立十數人，周圍用木板遮護。」《紅樓夢》第六三回：「又命將周圍的短髮剃了去，露出青碧頭皮來。」",
+                "entry_id": "077390150",
+                "sheet": "1150929辭典匯出",
+                "row": 114213
+              },
+              {
+                "title": "週",
+                "pinyin": "zhōu",
+                "definition": "[名]\n1.滿一年。如：「週歲」。《野叟曝言》第一七回：「爹爹知恩報恩，寫下遺囑，昨日才過週年，你就翻爹爹的招嗎？」\n2.星期。如：「週末」。\n3.量詞。計算時間的單位。一週等於一星期。如：「歷時四週」。\n4.環繞區域的外圍部分。同「周」。《三國演義》第二〇回：「與天子獵於許田，軍士排開圍場，週廣二百餘里。」《初刻拍案驚奇》卷一五：「我如今添造房屋，修理得錦錦簇簇，週迴花木，栽植得整整齊齊。」\n[動]\n環繞循迴。通「周」。《紅樓夢》第一三回：「嬸嬸好痴也。否極泰來，榮辱自古週而復始，豈人力能可常保的。」\n[形]\n1.一星期一次的。如：「週刊」。\n2.全部、整個。通「周」。《兒女英雄傳》第四〇回：「一痛快，不覺收了眼淚，嗤的一笑，立刻頭就不暈了，心寬體胖，週身的衣裳也合了折兒了。」\n[副]\n普遍、全、都。通「周」。如：「眾所週知」。明．徐弘祖《徐霞客遊記．卷九上．滇遊日記十》：「嘉靖壬子，城外週鑿城隍，至正南迤東，竁地丈許，有絡石，工役斲截之。」",
+                "entry_id": "07741",
+                "sheet": "1150929辭典匯出",
+                "row": 7752
+              },
+              {
+                "title": "周年",
+                "pinyin": "zhōu nián",
+                "definition": "滿一年。《陳書．卷二六．徐陵傳》：「姚帝遷河，周年成邑。」《通俗常言疏證．死喪．周年》引《留青日札》：「周年即期年，唐明皇諱隆基，故改為周年。」也作「週年」。",
+                "entry_id": "077390033",
+                "sheet": "1150929辭典匯出",
+                "row": 114139
+              },
+              {
+                "title": "周歲",
+                "pinyin": "zhōu suì",
+                "definition": "1.周，滿、完整。「周歲」指滿一年、一整年。《舊唐書．卷三七．五行志》：「則天時，宗秦客以佞幸為內史，受命之日，無雲而雷聲震烈，未周歲而誅。」唐．白居易〈府酒五絕．變法〉詩：「自慚到府來周歲，惠愛威稜一事無。」也作「週歲」。_x000D_\n2.小孩出生滿一年。《宋史．卷二五八．列傳．曹彬》：「彬始生周歲，父母以百玩之具羅於席，觀其所取。」《幼學瓊林．卷二．老幼壽誕類》：「周歲試周，曰晬盤之期。」也作「週歲」。",
+                "entry_id": "077390134",
+                "sheet": "1150929辭典匯出",
+                "row": 163892
+              },
+              {
+                "title": "周而復始",
+                "pinyin": "zhōu ér fù shǐ",
+                "definition": "循環不斷。《晉書．卷七一．王鑒傳》：「賦斂搜奪，周而復始，卒散人流，相望於道。」《二刻拍案驚奇》卷二六：「高愚溪周而復始，住了兩巡。女兒們殷殷勤勤，東也不肯放，西也不肯放。」也作「終而復始」。",
+                "entry_id": "077390138",
+                "sheet": "1150929辭典匯出",
+                "row": 114205
+              },
+              {
+                "title": "賙",
+                "pinyin": "zhōu",
+                "definition": "[動]\n以財物濟助他人。《水滸傳》第一八回：「濟人貧苦，賙人之急。」",
+                "entry_id": "07744",
+                "sheet": "1150929辭典匯出",
+                "row": 7755
+              },
+              {
+                "title": "周濟",
+                "pinyin": "zhōu jì",
+                "definition": "1.對窮困的人給予接濟救助。《儒林外史》第八回：「周濟之情，不死當以厚報。」《紅樓夢》第六四回：「素日全虧賈珍周濟，此時又是賈珍作主替聘。」也作「賙濟」。\n2.人名。（西元1781～1839）字保緒，一字介存，晚號止庵，清江蘇荊溪人。嘉慶十年中進士，官淮安府學教授。為著名的詞人及詞論家，著有《味雋齋詞》、《詞辨》、《介存齋論詞雜著》，並編有《宋四家詞選》。",
+                "entry_id": "077390066",
+                "sheet": "1150929辭典匯出",
+                "row": 114163
+              },
+              {
+                "title": "眾所周知",
+                "pinyin": "zhòng suǒ zhōu zhī",
+                "definition": "大家都知道。如：「在地方上，他是眾所周知的大善人。」",
+                "entry_id": "081540075",
+                "sheet": "1150929辭典匯出",
+                "row": 118974
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "之",
+            "pinyin": "zhī",
+            "definition": "[介]\n1.的、底。《論語．公冶長》：「夫子之文章。」《左傳．襄公十四年》：「余弟死，而子來，是而子殺余之弟也。」\n2.於。《易經．比卦．象曰》：「比之匪人，不亦傷乎？」《禮記．大學》：「人之其所親愛而辟焉。」\n3.諸、之於。《孟子．滕文公上》：「禹疏九河，瀹濟、漯而注諸海；決汝、漢，排淮、泗而注之江。」\n[連]\n1.與、及。《書經．立政》：「文王罔攸兼于庶言、庶獄、庶慎，惟有司之牧夫。」《呂氏春秋．仲夏紀．適音》：「樂之弗樂者，心也。」\n2.而。《戰國策．秦策二》：「臣恐王為臣之投杼也。」\n3.若、如果。《書經．盤庚上》：「邦之臧，惟汝眾，邦之不臧，惟予一人有佚罰。」《論語．子張》：「我之大賢與，於人何所不容？我之不賢與，人將拒我，如之何其拒人也？」\n4.則。《左傳．僖公九年》：「東略之不知，西則否矣。」《呂氏春秋．仲春紀．功名》：「故民無常處，見利之聚，無之去。」\n[助]\n用於強調或補足語氣，無義。《書經．西伯戡黎》：「殷之即喪！指乃功，不無戮于爾邦？」《史記．卷四八．陳涉世家》：「悵恨久之。」\n[代]\n1.他、彼。《書經．皋陶謨》：「安民則惠，黎民懷之。」《論語．顏淵》：「愛之欲其生。」\n2.其、他的。《武王伐紂平話．卷中》：「紂王令推上法場，斬之老母。」清．王士禎《池北偶談．卷二四．談異五．女化男》：「乃以聘禮還之夫家。」\n3.此、這個。《詩經．邶風．日月》：「乃如之人兮，逝不古處。」《莊子．知北遊》：「知以之言也，問乎狂屈。」\n[動]\n1.往。如唐朝李白有〈黃鶴樓送孟浩然之廣陵〉詩。《詩經．鄘風．載馳》：「百爾所思，不如我所之。」\n2.至、到。《西京雜記》卷五：「此自少之多，自微至著也。」\n3.是、為。《公羊傳．宣公十五年》：「吾見子之君子也，是以告情于子也。」漢．揚雄《法言．吾子》：「羊質而虎皮，見草而說，見豺而戰，忘其皮之虎也。」\n4.取用。《戰國策．齊策三》：「故物舍其所長，之其所短，堯亦有所不及矣。」\n[名]\n姓。如漢代有之馬宇。",
+            "entry_id": "07464",
+            "sheet": "1150929辭典匯出",
+            "row": 7474,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "梦": {
+        "definition": "dream; visionary; wishful",
+        "mandarin": "mèng",
+        "related_characters": [
+          {
+            "character": "夢",
+            "relation": "kTraditionalVariant",
+            "definition": "dream; visionary; wishful",
+            "mandarin": "mèng"
+          },
+          {
+            "character": "梦",
+            "relation": "kTraditionalVariant",
+            "definition": "dream; visionary; wishful",
+            "mandarin": "mèng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "梦",
+            "pinyin": null,
+            "definition": "「夢」的異體字。",
+            "entry_id": "01334-1",
+            "sheet": "1150929辭典匯出",
+            "row": 30378,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "蕺菜",
+      "decision": "reject",
+      "reason": "真实植物名，完整名称直接等同于鱼腥草这一通用植物类别词，缺乏品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "蕺菜集",
+      "decision": "keep",
+      "reason": "以真实植物名“蕺菜”结合“集”（汇集、辑录），可自然理解为围绕蕺菜的汇集或系列名，结构简洁，具有一定识别度。"
+    },
+    {
+      "name": "蕺叶知秋",
+      "decision": "uncertain",
+      "reason": "“叶知秋”可联想到“一叶知秋”，但以生僻植物名“蕺”限定叶片后，整名的关系与表达意图不够自然，品牌语义存疑。"
+    },
+    {
+      "name": "蕺草听雨",
+      "decision": "uncertain",
+      "reason": "可理解为蕺草在雨中聆听的拟人意象，但“蕺草”与“听雨”的组合关系较牵强，整体略显拼接。"
+    },
+    {
+      "name": "蕺知春",
+      "decision": "uncertain",
+      "reason": "可勉强解作蕺草感知春意，但“蕺”作主体与“知春”的关系不够自然，组合语义存疑。"
+    },
+    {
+      "name": "蕺青",
+      "decision": "uncertain",
+      "reason": "“蕺”指蕺菜，“青”可指青绿，但两字关系未明确构成自然词语或清楚意象，品牌表达偏含混。"
+    },
+    {
+      "name": "松间庄",
+      "decision": "uncertain",
+      "reason": "可理解为松林间的庄园或村庄，但“松间”与“庄”的修饰关系不够顺畅，且缺乏明确的专名依据。"
+    },
+    {
+      "name": "庄周之梦",
+      "decision": "reject",
+      "reason": "完整名称直接指向庄周梦蝶这一熟知典故，属于典故化表达，品牌辨识度不足。"
+    }
+  ]
+}

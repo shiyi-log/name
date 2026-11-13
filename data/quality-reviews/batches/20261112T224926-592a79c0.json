@@ -1,0 +1,672 @@
+{
+  "review_id": "20261112T224926-592a79c0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "旅途",
+      "征途",
+      "山海之途",
+      "途径",
+      "途中",
+      "途信",
+      "途山海",
+      "妆点",
+      "红妆",
+      "山河妆",
+      "妆点山河"
+    ],
+    "related_kept_candidates": {
+      "之": [
+        "山海之扉",
+        "山海之遥",
+        "山海之侧",
+        "山之侧",
+        "一念之间",
+        "焊之道",
+        "芙蓉之外",
+        "十亩之间",
+        "碳之桥",
+        "碳之本",
+        "义之源",
+        "义之光"
+      ],
+      "山": [
+        "山海之扉",
+        "山海之遥",
+        "山海之侧",
+        "山海貘",
+        "山海酵香",
+        "瞰山河",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "邂逅山海",
+        "涡映山河",
+        "缱绻山海"
+      ],
+      "海": [
+        "山海之扉",
+        "山海之遥",
+        "山海之侧",
+        "山海貘",
+        "山海酵香",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "邂逅山海",
+        "缱绻山海",
+        "山海藏刃",
+        "资山海"
+      ],
+      "中": [
+        "壸中天",
+        "中庸",
+        "中庸致和",
+        "盅中月",
+        "云中酿",
+        "酸中趣",
+        "碟中月",
+        "云中帜",
+        "山中桫椤",
+        "箩中春",
+        "箩中月",
+        "杯中月"
+      ],
+      "妆": [
+        "云妆",
+        "妆成"
+      ],
+      "红": [
+        "红萼",
+        "榴红",
+        "酡红",
+        "棕红",
+        "茜红",
+        "红蓼",
+        "潭岸枫红",
+        "描红",
+        "嫩红"
+      ],
+      "信": [
+        "山海递信",
+        "榴花信",
+        "口信",
+        "瓶中信",
+        "义信",
+        "信牍",
+        "赫信",
+        "珂信",
+        "昭信",
+        "三枝春信",
+        "瑾信",
+        "鸾信"
+      ],
+      "河": [
+        "瞰山河",
+        "涡映山河",
+        "黝色山河",
+        "涂山河",
+        "山河浮光",
+        "璟映山河",
+        "览山河",
+        "山河入篇",
+        "笔下山河",
+        "皎色山河",
+        "山河一舟",
+        "暮色山河"
+      ],
+      "旅": [
+        "旅伴",
+        "行旅",
+        "羁旅",
+        "人间行旅"
+      ],
+      "途": [
+        "碳途",
+        "码途",
+        "辎途",
+        "通途",
+        "远途",
+        "前途",
+        "仙途",
+        "嵁途",
+        "探星途",
+        "归途"
+      ],
+      "径": [
+        "歧径",
+        "蹊径",
+        "三径",
+        "云开三径",
+        "麋归松径",
+        "篱径",
+        "篱石径",
+        "径直",
+        "径流",
+        "石径花开",
+        "松荫遮径",
+        "蒿香满径"
+      ],
+      "点": [
+        "支点",
+        "蜻点秋水",
+        "赛点"
+      ],
+      "征": [
+        "宵征",
+        "遄征",
+        "征轺",
+        "征象",
+        "启征"
+      ]
+    },
+    "literature_phrase_examples": {
+      "旅途": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 223881,
+          "context": "诚知两轴非珠玉，深愧三缣恤旅途。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 254584,
+          "context": "旅途少颜尽，明镜劝仙食。"
+        }
+      ],
+      "征途": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 11924,
+          "context": "征途未尽马蹄尽，不见行人边草黄。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 21346,
+          "context": "日落征途远，怅然临古城。"
+        }
+      ],
+      "山海之途": [],
+      "途径": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 69150,
+          "context": "早则是途径崎岖，恼行人痛伤情绪。"
+        },
+        {
+          "book": "太平广记",
+          "line": 177,
+          "context": "仰中土而慕道风薄金玉而厚灵物故搜竒蕴而索神香歩天林而请猛兽乗肥车而济弱水策骥足以度飞沙契濶途径艰苦蹊路于"
+        }
+      ],
+      "途中": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1063,
+          "context": "公子途中妨蹴踘，佳人马上废秋千。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 21352,
+          "context": "【途中述怀】"
+        }
+      ],
+      "途信": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 141702,
+          "context": "畏途信非一，离念纷难具。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1806367,
+          "context": "薄酒无多酌，穷途信少欢。"
+        }
+      ],
+      "途山海": [],
+      "妆点": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 180026,
+          "context": "晓日穿隙明，开帷理妆点。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 196415,
+          "context": "无妨却有他心眼，妆点亭台即不能。"
+        }
+      ],
+      "红妆": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 10327,
+          "context": "素手青条上，红妆白日鲜。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 13352,
+          "context": "绝世三五爱红妆，冶袖长裾兰麝香。"
+        }
+      ],
+      "山河妆": [],
+      "妆点山河": []
+    },
+    "dictionary_phrase_entries": {
+      "旅途": [
+        {
+          "title": "旅途",
+          "pinyin": "lǚ tú",
+          "definition": "1.旅行途中。如：「他將旅途的見聞一一記下，做為下一本小說的題材。」\n2.過程。如：「在人生的旅途中，難免會有失敗、挫折，但絕不可因此而自暴自棄。」",
+          "entry_id": "038850005",
+          "sheet": "1150929辭典匯出",
+          "row": 66773,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "征途": [
+        {
+          "title": "征途",
+          "pinyin": "zhēng tú",
+          "definition": "路途、行程。唐．杜甫〈玉華宮〉詩：「冉冉征途間，誰是長年者。」宋．柳永〈鵲橋仙．屆征途〉詞：「屆征途，攜書劍，迢迢匹馬東去。」",
+          "entry_id": "079100016",
+          "sheet": "1150929辭典匯出",
+          "row": 115639,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "山海之途": [],
+      "途径": [],
+      "途中": [
+        {
+          "title": "途中",
+          "pinyin": "tú zhōng",
+          "definition": "路上，路途之間。如：「妹妹在回家途中遺失了鑰匙和錢包。」",
+          "entry_id": "027720004",
+          "sheet": "1150929辭典匯出",
+          "row": 53478,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "途信": [],
+      "途山海": [],
+      "妆点": [],
+      "红妆": [],
+      "山河妆": [],
+      "妆点山河": []
+    },
+    "direct_dictionary": {
+      "旅": {
+        "definition": "trip, journey; travel; traveler; hexagram ䷷",
+        "mandarin": "lǚ",
+        "official_dictionary": [
+          {
+            "title": "旅",
+            "pinyin": "lǚ",
+            "definition": "[名]\n1.軍隊的編制單位。現代陸軍編制為師轄旅，旅轄營，亦有直屬軍團的獨立旅。\n2.軍隊。如：「軍旅」、「勁旅」。《書經．大禹謨》：「班師振旅。」《詩經．大雅．皇矣》：「斯怒，爰整其旅。」\n3.商賈。《禮記．月令》：「易關市，來商旅。」漢．鄭玄．注：「商旅，賈客也。」\n4.《易經》卦名。六十四卦之一。艮（☶）下離（☲）上，表羈旅之意。\n5.姓。如漢代有旅卿。\n[動]\n客居、寄居。如：「旅居」。《左傳．莊公二十二年》：「羈旅之臣，幸若獲宥。」\n[形]\n1.客居外地的。如：「旅情」、「旅夜」。《文選．謝朓．之宣城出新林浦向版橋詩》：「旅思倦搖搖，孤遊昔已屢。」\n2.供旅客所居的。如：「旅店」、「旅舍」。南朝宋．謝靈運〈遊南亭詩〉：「久痗昏墊苦，旅館眺郊歧。」",
+            "entry_id": "03885",
+            "sheet": "1150929辭典匯出",
+            "row": 3891,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "途": {
+        "definition": "way, road, path, journey; course",
+        "mandarin": "tú",
+        "official_dictionary": [
+          {
+            "title": "途",
+            "pinyin": "tú",
+            "definition": "[名]\n1.道路。如：「旅途」、「半途而廢」。《文選．陶淵明．歸去來辭》：「寔迷途其未遠，覺今是而昨非。」\n2.方面、範圍。如：「用途」。",
+            "entry_id": "02772",
+            "sheet": "1150929辭典匯出",
+            "row": 2777,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "征": {
+        "definition": "invade, attack, conquer",
+        "mandarin": "zhēng",
+        "related_characters": [
+          {
+            "character": "征",
+            "relation": "kTraditionalVariant",
+            "definition": "invade, attack, conquer",
+            "mandarin": "zhēng"
+          },
+          {
+            "character": "徵",
+            "relation": "kTraditionalVariant",
+            "definition": "summon, recruit; musical note",
+            "mandarin": "zhǐ zhēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "征",
+            "pinyin": "zhēng",
+            "definition": "[動]\n1.遠行。如：「長征」、「遠征」。《詩經．小雅．小明》：「我征徂西，至于艽野。」\n2.討伐。如：「征伐」、「征戍」、「南征北討」。《漢書．卷七．武帝紀》：「遣貳師將軍李廣利，發天下謫民西征大宛。」唐．王翰〈涼州詞〉二首之一：「醉臥沙場君莫笑，古來征戰幾人回。」\n3.課徵。如：「征稅」、「橫征暴斂」。\n4.強取、爭奪。《孟子．梁惠王上》：「上下交征利，而國危矣。」\n[名]\n1.賦稅。《孟子．盡心下》：「有布縷之征，粟米之征，力役之征。」\n2.姓。如宋代有征集。",
+            "entry_id": "07910",
+            "sheet": "1150929辭典匯出",
+            "row": 7922,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "official_dictionary": [
+          {
+            "title": "海",
+            "pinyin": "hǎi",
+            "definition": "[名]_x000D_\n1.地球上鄰接大陸而小於洋的水域。如：「南海」、「黃海」、「地中海」。《漢書．卷二八．地理志上》：「又北播為九河，同為逆河，入于海。」唐．顏師古．注：「海，即渤海是也。」_x000D_\n2.海水。《漢書．卷四九．爰盎鼂錯傳．鼂錯》：「吳王即山鑄錢，煮海為鹽。」漢．曹操〈與王脩書〉：「但恐旁人淺見，以蠡測海，為蛇畫足。」_x000D_\n3.內陸的大湖或人工湖。如：「青海」、「洱海」。_x000D_\n4.積聚眾多的人或同類事物。如：「棉海」、「人海」、「火海」。宋．陸游〈驛舍見故屏風畫海棠有感〉詩：「燕宮最盛號花海，霸國雄豪有遺跡。」《水滸傳》第八二回：「雖無炮龍烹鳳，端的是肉山酒海。當日盡皆大醉，各扶歸幕次裡安歇。」_x000D_\n5.領域、淵藪。如：「苦海無邊」、「學海無涯」。《廣弘明集．卷二八下．南朝陳．文帝．無礙會捨身懺文》：「又以世相泡影、有為露電，愛河奔迅，欲海飛騰。」宋．陸游〈休日感興〉詩：「宦海風波實飽經，久將人世寄郵亭。」_x000D_\n6.荒遠之地。《周禮．夏官司馬．校人》：「凡將事于四海山川，則飾黃駒。」漢．鄭玄．注：「四海，猶四方也。」_x000D_\n7.較寬大的器皿。如：「茶海」。《水滸傳》第七五回：「再將九瓶都打開，傾在酒海內，卻是一般的淡薄村醪。」《紅樓夢》第四一回：「妙玉執壺，只向海內斟了約有一杯。」_x000D_\n8.姓。如明代有海瑞。_x000D_\n[形]_x000D_\n巨大的。如：「海派」。唐．陳子昂〈我府君有周居士文林郎陳公墓誌銘〉：「公河目海口，鷰頷虎頭，性英雄而志尚元默。」《孤本元明雜劇．騙英布．第三折》：「俺主公豁達大度，海量寬洪，納諫如流，有堯舜禹湯之德。」_x000D_\n[副]_x000D_\n1.任意地、漫無目標地。如：「海選」。《紅樓夢》第七回：「他比不得咱們家的孩子們，胡打海摔的慣了。」《海上花列傳》第九回：「阿珠、阿金大都跟著海罵。蓮生氣得怔怔的，半晌說不出話。」_x000D_\n2.狠狠地、嚴重地。如：「海扁」、「海削」、「他嚴重怠工，所以被老闆海刮了一頓。」",
+            "entry_id": "04776",
+            "sheet": "1150929辭典匯出",
+            "row": 4782,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "之",
+            "pinyin": "zhī",
+            "definition": "[介]\n1.的、底。《論語．公冶長》：「夫子之文章。」《左傳．襄公十四年》：「余弟死，而子來，是而子殺余之弟也。」\n2.於。《易經．比卦．象曰》：「比之匪人，不亦傷乎？」《禮記．大學》：「人之其所親愛而辟焉。」\n3.諸、之於。《孟子．滕文公上》：「禹疏九河，瀹濟、漯而注諸海；決汝、漢，排淮、泗而注之江。」\n[連]\n1.與、及。《書經．立政》：「文王罔攸兼于庶言、庶獄、庶慎，惟有司之牧夫。」《呂氏春秋．仲夏紀．適音》：「樂之弗樂者，心也。」\n2.而。《戰國策．秦策二》：「臣恐王為臣之投杼也。」\n3.若、如果。《書經．盤庚上》：「邦之臧，惟汝眾，邦之不臧，惟予一人有佚罰。」《論語．子張》：「我之大賢與，於人何所不容？我之不賢與，人將拒我，如之何其拒人也？」\n4.則。《左傳．僖公九年》：「東略之不知，西則否矣。」《呂氏春秋．仲春紀．功名》：「故民無常處，見利之聚，無之去。」\n[助]\n用於強調或補足語氣，無義。《書經．西伯戡黎》：「殷之即喪！指乃功，不無戮于爾邦？」《史記．卷四八．陳涉世家》：「悵恨久之。」\n[代]\n1.他、彼。《書經．皋陶謨》：「安民則惠，黎民懷之。」《論語．顏淵》：「愛之欲其生。」\n2.其、他的。《武王伐紂平話．卷中》：「紂王令推上法場，斬之老母。」清．王士禎《池北偶談．卷二四．談異五．女化男》：「乃以聘禮還之夫家。」\n3.此、這個。《詩經．邶風．日月》：「乃如之人兮，逝不古處。」《莊子．知北遊》：「知以之言也，問乎狂屈。」\n[動]\n1.往。如唐朝李白有〈黃鶴樓送孟浩然之廣陵〉詩。《詩經．鄘風．載馳》：「百爾所思，不如我所之。」\n2.至、到。《西京雜記》卷五：「此自少之多，自微至著也。」\n3.是、為。《公羊傳．宣公十五年》：「吾見子之君子也，是以告情于子也。」漢．揚雄《法言．吾子》：「羊質而虎皮，見草而說，見豺而戰，忘其皮之虎也。」\n4.取用。《戰國策．齊策三》：「故物舍其所長，之其所短，堯亦有所不及矣。」\n[名]\n姓。如漢代有之馬宇。",
+            "entry_id": "07464",
+            "sheet": "1150929辭典匯出",
+            "row": 7474,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "径": {
+        "definition": "narrow path; diameter; direct",
+        "mandarin": "jìng",
+        "related_characters": [
+          {
+            "character": "徑",
+            "relation": "kTraditionalVariant",
+            "definition": "narrow path; diameter; direct",
+            "mandarin": "jìng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "official_dictionary": [
+          {
+            "title": "中",
+            "pinyin": "zhōng",
+            "definition": "[名]\n1.距離四方或兩端相等的部位。如：「居中」、「中央」、「日正當中」。\n2.內、裡面。如：「水中」、「夢中」、「心中」。\n3.泛指某一時期以內。如：「一年之中」、「晉太元中」。\n4.中國的簡稱。如：「古今中外」。\n5.姓。如漢代有中京。\n[形]\n1.居間介紹、連絡的。如：「中人」。\n2.居於高低、大小、好壞之間的。如：「中級」、「中型」、「中等」。\n3.半。如：「中夜」、「中途」。\n[副]\n1.正好。如：「適中」。\n2.表示動作正在進行。如：「事情正在交涉中。」",
+            "entry_id": "08130",
+            "sheet": "1150929辭典匯出",
+            "row": 8144,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "中",
+            "pinyin": "zhòng",
+            "definition": "[動]\n1.達到要點。《論語．子路》：「刑罰不中，則民無所錯手足。」《漢書．卷一〇．成帝紀》：「朕涉道日寡，舉錯不中。」\n2.合、正對上。如：「中規中矩」。《左傳．定公元年》：「未嘗不中吾志也。」《戰國策．西周策》：「去柳葉者百步而射之，百發百中。」\n3.遭受、感染。如：「中風」、「中毒」。\n4.得。如：「中獎」、「中籤」、「中選」。\n5.考取。如：「范進中舉」、「考中大學」。《儒林外史》第二回：「這王大老爺，就是前科新中的。」",
+            "entry_id": "08150",
+            "sheet": "1150929辭典匯出",
+            "row": 8164,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "official_dictionary": [
+          {
+            "title": "信",
+            "pinyin": "xìn",
+            "definition": "[名]\n1.誠實不欺。如：「講信修睦」。《論語．為政》：「人而無信，不知其可也。」\n2.書札、書簡。如：「書信」、「平信」、「掛號信」。\n3.消息、音訊。如：「音信」、「凶信」、「口信」。\n4.使者、送信件的人。南朝宋．劉義慶《世說新語．文學》：「司空鄭沖馳遣信就阮籍求文。」\n5.符契、憑證。如：「印信」。《後漢書．卷九〇．烏桓鮮卑傳》：「大人有所召呼，則刻木為信，雖無文字，而部眾不敢違犯。」\n6.姓。如宋代有信世昌。\n[動]\n1.聽從、不懷疑。如：「相信」、「深信不疑」、「不可置信」。\n2.敬仰、崇奉。如：「信奉」、「信教」。南朝梁．劉勰《文心雕龍．正緯》：「至於光武之世，篤信斯術。」\n3.知曉、知道。宋．晏殊〈漁家傲．畫鼓聲中昏又曉〉詞：「須信道，人間萬事何時了？」《聊齋志異．卷七．青蛾》：「我父母皆仙人，何可以貌信其年歲乎？」\n4.連宿兩晚。如：「信宿」。《左傳．襄公十八年》：「信于城下而還。」晉．杜預．注：「信，再宿也。」\n[副]\n1.確實、的確、果真。《孟子．公孫丑上》：「信能行此五者，則鄰國之民，仰之若父母矣。」唐．柳宗元〈遊石角過小嶺至長烏村〉詩：「為農信可樂，居寵真虛榮。」\n2.隨意、任憑。如：「信口開河」、「信手拈來」。唐．白居易〈琵琶行〉：「低眉信手續續彈，說盡心中無限事。」",
+            "entry_id": "07174",
+            "sheet": "1150929辭典匯出",
+            "row": 7183,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "信",
+            "pinyin": "shēn",
+            "definition": "[動]\n1.伸直、舒展。通「伸」。《易經．繫辭下》：「往者屈也，來者信也。」《漢書．卷六二．司馬遷傳》：「乃欲卬首信眉，論列是非。」\n2.陳述表白。通「申」。《穀梁傳．隱公元年》：「春秋貴義而不貴惠，信道而不信邪。」",
+            "entry_id": "08974",
+            "sheet": "1150929辭典匯出",
+            "row": 8989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "妆": {
+        "definition": "to adorn oneself, dress up, use make-up",
+        "mandarin": "zhuāng",
+        "related_characters": [
+          {
+            "character": "妝",
+            "relation": "kTraditionalVariant",
+            "definition": "to adorn oneself, dress up, use make-up",
+            "mandarin": "zhuāng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "点": {
+        "definition": "dot, speck, spot; point, degree",
+        "mandarin": "diǎn",
+        "related_characters": [
+          {
+            "character": "点",
+            "relation": "kTraditionalVariant",
+            "definition": "dot, speck, spot; point, degree",
+            "mandarin": "diǎn"
+          },
+          {
+            "character": "點",
+            "relation": "kTraditionalVariant",
+            "definition": "dot, speck, spot; point, degree",
+            "mandarin": "diǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "点",
+            "pinyin": null,
+            "definition": "「點」的異體字。",
+            "entry_id": "02231-2",
+            "sheet": "1150929辭典匯出",
+            "row": 45774,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "红": {
+        "definition": "red, vermillion; blush, flush",
+        "mandarin": "hóng",
+        "related_characters": [
+          {
+            "character": "紅",
+            "relation": "kTraditionalVariant",
+            "definition": "red, vermillion; blush, flush",
+            "mandarin": "hóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "河",
+            "pinyin": "hé",
+            "definition": "[名]\n1.水道的通稱。如：「河流」、「運河」。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n2.黃河的簡稱。如：「河套」。\n3.成河川狀的群體。如：「星河」、「銀河」。\n4.姓。如南北朝時有河禎。",
+            "entry_id": "04729",
+            "sheet": "1150929辭典匯出",
+            "row": 4736,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "旅途",
+      "decision": "uncertain",
+      "reason": "词义自然，可指旅行过程或人生历程，但属于常见通用词，作为品牌的辨识度偏弱，名称本身未形成更明确的品牌意象。"
+    },
+    {
+      "name": "征途",
+      "decision": "uncertain",
+      "reason": "词义明确自然，有行程、远行之意；但也是常见通用词，品牌辨识度有限，暂不宜直接保留。"
+    },
+    {
+      "name": "山海之途",
+      "decision": "keep",
+      "reason": "结构通顺，以山海构成辽阔自然意象，以途表达行进或历程，整体凝练且有品牌感；与既有“山海之……”候选虽共享结构和意象，但语义落点为行旅路径，并非其门、远方或侧面等近义替换。"
+    },
+    {
+      "name": "途径",
+      "decision": "reject",
+      "reason": "完整名称通常指方法、路径或通道，是通用概念词，品牌辨识度不足。"
+    },
+    {
+      "name": "途中",
+      "decision": "uncertain",
+      "reason": "词义自然，指路途之中，但主要是普通方位或情境表达，作为独立品牌名的凝练度与辨识度偏弱。"
+    },
+    {
+      "name": "途信",
+      "decision": "reject",
+      "reason": "两字关系不清，“途”与“信”难形成自然、明确的完整语义，组合显得生硬。"
+    },
+    {
+      "name": "途山海",
+      "decision": "reject",
+      "reason": "“途”与“山海”的修饰或语义关系不明，词序生硬，像是将意象字机械拼接。"
+    },
+    {
+      "name": "妆点",
+      "decision": "uncertain",
+      "reason": "可自然理解为装饰、点缀，但也是常用动宾词，品牌辨识度较弱；不能仅凭字面推定其行业适配性。"
+    },
+    {
+      "name": "红妆",
+      "decision": "uncertain",
+      "reason": "完整词语自然，指女子妆饰或盛妆形象，意象清楚；但词语常见且偏向特定传统女性意象，品牌辨识度有限。"
+    },
+    {
+      "name": "山河妆",
+      "decision": "reject",
+      "reason": "“妆”用于修饰“山河”虽可联想到装点山河，但该名词组搭配不自然，表达关系需要补足才能成立。"
+    },
+    {
+      "name": "妆点山河",
+      "decision": "reject",
+      "reason": "语义通顺，但完整名称是“装饰、点缀山河”的动作性陈述，呈现为口号或表达句，缺少凝练的品牌名形态。"
+    }
+  ]
+}

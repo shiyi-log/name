@@ -1,0 +1,602 @@
+{
+  "review_id": "20261112T152750-687bc555",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "菉林",
+      "菉庭",
+      "菉云生",
+      "菉影入窗",
+      "菉间风",
+      "一庭菉影",
+      "菉生",
+      "菉间光",
+      "长风过菉",
+      "菉信",
+      "菉达",
+      "菉成",
+      "菉正",
+      "菉以恒",
+      "菉合一"
+    ],
+    "related_kept_candidates": {
+      "一": [
+        "一庭清欢",
+        "一庭秋凉",
+        "一川明月",
+        "水天一色",
+        "一念之间",
+        "一见青山",
+        "一川风月",
+        "一树春风",
+        "一苇渡江",
+        "百川归一",
+        "一衣带水",
+        "一同"
+      ],
+      "间": [
+        "畈间风",
+        "垄间风",
+        "蔓间光",
+        "柘间风",
+        "梾间有光",
+        "萚间清风",
+        "菼间风",
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "山间邨"
+      ],
+      "风": [
+        "畈间风",
+        "垄间风",
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "螭起长风",
+        "风过蒹汀",
+        "风过埼",
+        "长风越埼",
+        "风过绉波",
+        "弓引长风",
+        "柘间风"
+      ],
+      "庭": [
+        "一庭清欢",
+        "一庭秋凉",
+        "榴庭",
+        "庭墅",
+        "庭前芹绿",
+        "萱庭",
+        "苔庭",
+        "庭陔",
+        "庭燎",
+        "茱庭",
+        "广庭",
+        "豪庭"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "林": [
+        "风过芭林",
+        "蔓影入林",
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林"
+      ],
+      "光": [
+        "蔓间光",
+        "梾间有光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光"
+      ],
+      "云": [
+        "鹁影入云",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间",
+        "烝云"
+      ],
+      "窗": [
+        "琐窗",
+        "晴窗斋",
+        "窗旁雨"
+      ],
+      "影": [
+        "棹影入江",
+        "崧影入川",
+        "鹁影入云",
+        "鹂影入松",
+        "蔓影入林",
+        "弓影入松",
+        "柘影入溪",
+        "梾影入山",
+        "篾影",
+        "伞影",
+        "墙影",
+        "枣影清风"
+      ],
+      "合": [
+        "合卺",
+        "亿合",
+        "竞合"
+      ],
+      "长": [
+        "螭起长风",
+        "长风越埼",
+        "弓引长风",
+        "长揖",
+        "瓷映长川",
+        "螭照长夜",
+        "长弓望月",
+        "酒映长天"
+      ],
+      "正": [
+        "板正",
+        "揆正"
+      ],
+      "生": [
+        "梣木生辉",
+        "粗笔生春",
+        "凉生",
+        "春又生",
+        "蔓生",
+        "蔓生朝露",
+        "蔓生集",
+        "生态",
+        "广陵潮生",
+        "奇木生春"
+      ],
+      "信": [
+        "榴花信",
+        "口信",
+        "鹂衔春信",
+        "瓶中信",
+        "义信",
+        "柘园春信",
+        "信牍",
+        "赫信",
+        "太和春信",
+        "珂信"
+      ],
+      "过": [
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过蒹汀",
+        "风过埼",
+        "风过绉波",
+        "柘风过野",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "棹过春山",
+        "鹁过晴川"
+      ],
+      "达": [
+        "臻达",
+        "酷达",
+        "旁达",
+        "亿达",
+        "义达",
+        "掞达",
+        "广达",
+        "赟达",
+        "珺达"
+      ],
+      "入": [
+        "棹影入江",
+        "崧影入川",
+        "鹁影入云",
+        "鹂影入松",
+        "蔓影入林",
+        "弓影入松",
+        "柘影入溪",
+        "梾影入山",
+        "凉风入松",
+        "山川入瓷",
+        "星河入暮",
+        "鹂声入林"
+      ]
+    },
+    "literature_phrase_examples": {
+      "菉林": [],
+      "菉庭": [],
+      "菉云生": [],
+      "菉影入窗": [],
+      "菉间风": [],
+      "一庭菉影": [],
+      "菉生": [],
+      "菉间光": [],
+      "长风过菉": [],
+      "菉信": [],
+      "菉达": [],
+      "菉成": [],
+      "菉正": [],
+      "菉以恒": [],
+      "菉合一": []
+    },
+    "dictionary_phrase_entries": {
+      "菉林": [],
+      "菉庭": [],
+      "菉云生": [],
+      "菉影入窗": [],
+      "菉间风": [],
+      "一庭菉影": [],
+      "菉生": [],
+      "菉间光": [],
+      "长风过菉": [],
+      "菉信": [],
+      "菉达": [],
+      "菉成": [],
+      "菉正": [],
+      "菉以恒": [],
+      "菉合一": []
+    },
+    "direct_dictionary": {
+      "菉": {
+        "definition": "the green bamboo; greenish bamboo",
+        "mandarin": "lù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庭": {
+        "definition": "courtyard; spacious hall or yard",
+        "mandarin": "tíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "生": {
+        "definition": "life, living, lifetime; birth",
+        "mandarin": "shēng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "入": {
+        "definition": "enter, come in(to), join",
+        "mandarin": "rù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窗": {
+        "definition": "window",
+        "mandarin": "chuāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "达": {
+        "definition": "arrive at, reach; intelligent; smooth, slippery",
+        "mandarin": "dá",
+        "related_characters": [
+          {
+            "character": "達",
+            "relation": "kTraditionalVariant",
+            "definition": "arrive at, reach; intelligent",
+            "mandarin": "dá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "正": {
+        "definition": "right, proper, correct",
+        "mandarin": "zhèng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "以": {
+        "definition": "by means of; thereby, therefore; consider as; in order to",
+        "mandarin": "yǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "恒": {
+        "definition": "constant, regular, persistent",
+        "mandarin": "héng",
+        "related_characters": [
+          {
+            "character": "恆",
+            "relation": "kTraditionalVariant",
+            "definition": "constant, regular, persistent; hexagram ䷟",
+            "mandarin": "héng"
+          },
+          {
+            "character": "恒",
+            "relation": "kTraditionalVariant",
+            "definition": "constant, regular, persistent",
+            "mandarin": "héng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "合": {
+        "definition": "combine, unite, join; gather",
+        "mandarin": "hé",
+        "related_characters": [
+          {
+            "character": "合",
+            "relation": "kTraditionalVariant",
+            "definition": "combine, unite, join; gather",
+            "mandarin": "hé"
+          },
+          {
+            "character": "閤",
+            "relation": "kTraditionalVariant",
+            "definition": "small side door; chamber",
+            "mandarin": "gé"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "菉林",
+      "decision": "keep",
+      "reason": "“菉”指绿色竹类，“菉林”可自然理解为竹林或青竹成林，意象明确凝练；与已保留的林类名称没有相同意象关系。"
+    },
+    {
+      "name": "菉庭",
+      "decision": "keep",
+      "reason": "可理解为庭院中的青竹或竹庭，构词自然，意象清楚，具有名称凝练感。"
+    },
+    {
+      "name": "菉云生",
+      "decision": "uncertain",
+      "reason": "可勉强理解为青竹间云气生起，但“菉云生”的修饰关系和语义指向不够清楚，组合自然度存疑。"
+    },
+    {
+      "name": "菉影入窗",
+      "decision": "reject",
+      "reason": "完整名称是“竹影进入窗内”的句子式描写，叙述性强、缺少品牌名的凝练感。"
+    },
+    {
+      "name": "菉间风",
+      "decision": "keep",
+      "reason": "可理解为青竹之间的风，语义自然且有具体物象；虽与多项“间风”名称结构相似，但意象并非仅靠换同义字形成重复。"
+    },
+    {
+      "name": "一庭菉影",
+      "decision": "keep",
+      "reason": "可理解为满庭青竹之影，结构自然、画面完整而凝练；与已保留的“一庭清欢”“一庭秋凉”共享“一庭”结构，但核心意象不同，不构成近似重复。"
+    },
+    {
+      "name": "菉生",
+      "decision": "uncertain",
+      "reason": "字面可理解为竹类生长或青竹生发，但“菉生”词义关系较含混，作为独立名称的自然度与辨识度不足以确认。"
+    },
+    {
+      "name": "菉间光",
+      "decision": "keep",
+      "reason": "可理解为青竹之间透出的光，语义连贯、意象清晰，具备简洁名称感；不与已保留的“间光”候选构成同一意象的近似变体。"
+    },
+    {
+      "name": "长风过菉",
+      "decision": "reject",
+      "reason": "可勉强解作长风掠过青竹，但“过菉”搭配生硬，且整体更像诗句片段，不够凝练自然。"
+    },
+    {
+      "name": "菉信",
+      "decision": "uncertain",
+      "reason": "“菉”与“信”之间缺乏清楚自然的语义关系，难以确认完整名称所表达的意象或概念。"
+    },
+    {
+      "name": "菉达",
+      "decision": "reject",
+      "reason": "“菉”与“达”机械拼接，语义关系不明，不能仅凭“达”的吉祥含义建立自然的品牌组合。"
+    },
+    {
+      "name": "菉成",
+      "decision": "reject",
+      "reason": "“菉成”语义关系不清，像把锚字与通用吉祥字直接拼接，完整名称不够自然。"
+    },
+    {
+      "name": "菉正",
+      "decision": "reject",
+      "reason": "“菉”与“正”缺乏自然的构词关系，组合呈机械拼字，含义无法明确成立。"
+    },
+    {
+      "name": "菉以恒",
+      "decision": "reject",
+      "reason": "“菉以恒”语序生硬，容易读成残缺句式，未形成自然凝练的名称。"
+    },
+    {
+      "name": "菉合一",
+      "decision": "reject",
+      "reason": "整体像“绿合一”的谐音借义；“菉”指绿色竹类，并非“绿”的同义替代，借其读音拼成“合一”属于字义不当。"
+    }
+  ]
+}

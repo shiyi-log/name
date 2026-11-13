@@ -175,13 +175,15 @@ class ProviderTests(unittest.TestCase):
             api_server.urllib.request, "urlopen", return_value=io.BytesIO(json.dumps(result).encode())
         ) as request:
             api_server.request_ai_names(
-                "云", 2, [2, 3], "chat", requested_counts={2: 1, 3: 1}, avoid_names=["云山"]
+                "云", 2, [2, 3], "chat", requested_counts={2: 1, 3: 1}, avoid_names=["云山"],
+                review_feedback=[{"name": "云中翱", "reason": "句子片段，品牌名称自然度不足"}],
             )
 
         body = json.loads(request.call_args.args[0].data)
         prompt = json.loads(body["messages"][1]["content"])
         self.assertEqual(prompt["requested_counts_per_length"], {"2": 1, "3": 1})
         self.assertEqual(prompt["avoid_existing_names"], ["云山"])
+        self.assertEqual(prompt["quality_review_feedback"], [{"name": "云中翱", "reason": "句子片段，品牌名称自然度不足"}])
         self.assertEqual(prompt["dictionary_definition_context"]["definition"], "say, speak; clouds")
         self.assertEqual(prompt["dictionary_definition_context"]["version"], "17.0.0")
         rules = " ".join(prompt["rules"])
@@ -192,6 +194,16 @@ class ProviderTests(unittest.TestCase):
         self.assertIn("语义", prompt["diversity_guidance"])
         self.assertTrue(any("硬塞" in rule for rule in prompt["rules"]))
         self.assertIn("模板", prompt["diversity_guidance"])
+
+    def test_generation_transport_keeps_all_known_names_for_deduplication(self):
+        self.create_providers()
+        known = ['云' + chr(0x4e00 + index) for index in range(620)]
+        result = {'choices': [{'message': {'content': json.dumps({'names': []})}}]}
+        with patch.object(api_server.urllib.request, 'urlopen',
+                          return_value=io.BytesIO(json.dumps(result).encode())) as request:
+            api_server.request_ai_names('云', 1, [2], 'chat', avoid_names=known)
+        prompt = json.loads(json.loads(request.call_args.args[0].data)['messages'][1]['content'])
+        self.assertEqual(prompt['avoid_existing_names'], known)
 
     def test_selected_provider_model_is_saved_with_generated_candidates(self):
         self.create_providers()

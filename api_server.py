@@ -98,7 +98,19 @@ def has_quality_evidence(item: dict, name: str | None = None) -> bool:
         role = roles[character]
         if not isinstance(role, str) or len(role.strip()) < 6:
             return False
-        if any(term in role for term in ("前缀", "后缀", "装饰", "硬加", "凑字")):
+        if any(term in role for term in ("前缀", "装饰", "硬加", "凑字")):
+            return False
+        # Identification alone supplies no word meaning or semantic relation.
+        if any(term in role for term in ("核心识别字", "姓氏式识别字")):
+            return False
+        if any(term in role for term in ("替代同音字", "替换同音字")):
+            return False
+        if re.search(r'(?<!不)(?<!未)(?:形成|产生|带来)[^，。；]{0,24}(?:同音|音韵)联想', role):
+            return False
+        # “然” has an actual grammatical role in state words such as 蘧然.
+        # A brand filler suffix remains insufficient semantic evidence.
+        suffix_description = role.replace("状态后缀", "") if character == "然" else role
+        if "后缀" in suffix_description:
             return False
         known = VERIFIED_CHARACTER_MEANINGS.get(character)
         if known and any(term in role for term in known['rejected_role_terms']):
@@ -836,6 +848,7 @@ def request_ai_names(
     character: str, count: int, lengths: list[int], provider_id: str | None = None,
     *, provider: dict | None = None, requested_counts: dict[int, int] | None = None,
     avoid_names: list[str] | None = None,
+    review_feedback: list[dict] | None = None,
 ) -> list[dict]:
     provider = provider if provider is not None else selected_ai_provider(provider_id)
     if provider is None:
@@ -861,7 +874,8 @@ def request_ai_names(
         "requested_count_per_length": count,
         "requested_counts_per_length": {str(length): requested_counts[length] for length in lengths}
         if requested_counts is not None else {str(length): count for length in lengths},
-        "avoid_existing_names": (avoid_names or [])[:300],
+        "avoid_existing_names": avoid_names or [],
+        "quality_review_feedback": (review_feedback or [])[:20],
         "diversity_guidance": (
             "在满足锚定字、长度和质量约束的前提下，让名称在整体意象、语义方向、"
             "用字组合和语感上彼此有辨识度；可自然探索山水、光影、时序、品格、"
@@ -878,6 +892,9 @@ def request_ai_names(
         "verified_character_meaning": VERIFIED_CHARACTER_MEANINGS.get(character),
         "dictionary_definition_context": character_definition_context(character),
         "rules": [
+            "official_dictionary 保留教育部修订本同形字的原始释义及读音，须按语境区分多音义项，不可混用；字典原文中的繁体不代表可以在候选中改用字库外字形",
+            "字典上下文中的 related_characters 是明确标注的关联字资料，不得把所有义项移给锚字；supplemental_dictionary 为有来源的第三方字典补充，须结合语境核对。缺少顶层 definition 不等于完全没有字义资料，但所有来源均不足时不得自行补造",
+            "quality_review_feedback 中是之前未通过或存疑的名称及具体问题，禁止重复名称或同类错误；反馈只用于改进，不得为了达标替旧名称强行辩解",
             "dictionary_definition_context 是 Unicode Unihan 的直接字义和读音记录，仅用于核查。不得把读音、部件或形近字的意义借给锚字；缺少 definition 时不可编造字义。文献意象也必须符合实际字义",
             "每个名称都必须恰好包含 anchor_character 一次或以上，且字符本身须参与自然语义；不能漏字或只在 meaning 中提到",
             "只用简体规范汉字；每个名称的字符数必须严格等于 allowed_lengths 中的一项，不得带标点、空格或数字",
@@ -975,8 +992,15 @@ def generate_for_character(payload: dict) -> dict:
     excluded = excluded_names()
     existing = load_existing_candidates(DB_PATH)
     existing_by_name = {item["name"]: item for item in existing}
+    review_feedback = [
+        {"name": item["name"], "reason": item.get("registryNote", "")}
+        for item in existing if character in item["name"]
+        and item.get("status") in {"质量复核未通过", "质量复核待定"}
+    ][-20:]
+    seen_letter_sets = {tuple(sorted(name)) for name in existing_by_name}
     accepted: dict[str, str] = {}
     accepted_evidence: dict[str, dict] = {}
+    attempted_names: dict[str, None] = {}
     requested_counts = None
     if total_count is not None:
         requested_counts = {length: total_count // len(lengths) for length in lengths}
@@ -1000,7 +1024,10 @@ def generate_for_character(payload: dict) -> dict:
             raw_names = request_ai_names(
                 character, max(batch_counts.values()), list(batch_counts), provider=provider,
                 requested_counts=batch_counts,
-                avoid_names=[name for name in existing_by_name if character in name][:200] + list(accepted),
+                avoid_names=list(dict.fromkeys(
+                    [name for name in existing_by_name if character in name] + list(attempted_names)
+                )),
+                review_feedback=review_feedback,
             )
         except (RuntimeError, OSError) as error:
             if not accepted:
@@ -1012,6 +1039,8 @@ def generate_for_character(payload: dict) -> dict:
         for item in raw_names:
             name = str(item.get("name", "")).strip()
             meaning = str(item.get("meaning", "")).strip()[:300]
+            if character in name and len(name) in lengths and is_character_name(name, characters_set):
+                attempted_names[name] = None
             if not has_quality_evidence(item, name):
                 continue
             if len(name) not in batch_counts or character not in name:
@@ -1020,9 +1049,13 @@ def generate_for_character(payload: dict) -> dict:
                 continue
             if name in excluded or len(set(name)) < 2 or name in existing_by_name or name in accepted:
                 continue
+            letter_set = tuple(sorted(name))
+            if letter_set in seen_letter_sets:
+                continue
             if requested_counts is not None and sum(1 for accepted_name in accepted if len(accepted_name) == len(name)) >= requested_counts[len(name)]:
                 continue
             accepted[name] = meaning or "由 AI 生成，待人工核对语义和品牌适配度。"
+            seen_letter_sets.add(letter_set)
             accepted_evidence[name] = {
                 "character_roles": item["character_roles"],
                 "naturalness": item["naturalness"],

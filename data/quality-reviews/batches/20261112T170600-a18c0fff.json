@@ -1,0 +1,898 @@
+{
+  "review_id": "20261112T170600-a18c0fff",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "麋游",
+      "麋序",
+      "麋辰",
+      "麋泽",
+      "麋园",
+      "松间麋",
+      "麋在山间",
+      "麋游林泉",
+      "麋卧青莎",
+      "麋听松涛",
+      "麋踪",
+      "林中麋"
+    ],
+    "related_kept_candidates": {
+      "园": [
+        "园丁",
+        "柰园",
+        "枳园",
+        "枣园",
+        "葚园",
+        "榴园",
+        "桫椤园",
+        "棣园",
+        "鹂园",
+        "憩园",
+        "柘园",
+        "柞园"
+      ],
+      "间": [
+        "松间鼯",
+        "山间邨",
+        "松间䴓",
+        "松间凉",
+        "松间有茗",
+        "山间麇影",
+        "松间麇鹿",
+        "松间酒",
+        "人间山海",
+        "松间晚飧",
+        "山间漻月",
+        "山间鳅"
+      ],
+      "山": [
+        "山间邨",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "林": [
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林",
+        "林间䴕鸣"
+      ],
+      "麋": [
+        "麋鹿"
+      ],
+      "松": [
+        "松间鼯",
+        "松间䴓",
+        "峤听松",
+        "听松问斋",
+        "崞岭听松",
+        "松间凉",
+        "崒岭听松",
+        "螭听松雨",
+        "卧听松风",
+        "枕松涛",
+        "松涛绕埼",
+        "松间有茗"
+      ],
+      "游": [
+        "鳝游春",
+        "壮游",
+        "翱游",
+        "鲲游",
+        "青螭游",
+        "游螭",
+        "螭游清境",
+        "卧游",
+        "游刃",
+        "鲳游",
+        "游侠",
+        "鲼游"
+      ],
+      "泉": [
+        "氿泉",
+        "峋石听泉",
+        "崟泉",
+        "渟泉",
+        "硔间清泉",
+        "涡泉",
+        "井泉",
+        "涧泉",
+        "云梾听泉",
+        "嶷泉",
+        "石罅泉",
+        "浴月听泉"
+      ],
+      "中": [
+        "壸中天",
+        "中庸",
+        "中庸致和",
+        "盅中月",
+        "云中酿",
+        "酸中趣",
+        "碟中月",
+        "云中帜",
+        "山中桫椤",
+        "箩中春",
+        "箩中月",
+        "杯中月"
+      ],
+      "听": [
+        "峤听松",
+        "听松问斋",
+        "崞岭听松",
+        "崒岭听松",
+        "螭听松雨",
+        "卧听松风",
+        "听松厅",
+        "云岭听松",
+        "踏月听松",
+        "峤听雨",
+        "峋岭听风",
+        "峋石听泉"
+      ],
+      "序": [
+        "晙序",
+        "瓷序",
+        "碳序",
+        "唐序",
+        "茗序",
+        "赫序",
+        "王序",
+        "人间序",
+        "蓓序",
+        "月序",
+        "四时递序",
+        "码序"
+      ],
+      "辰": [
+        "摘星辰",
+        "珂辰",
+        "锹与星辰",
+        "奎辰",
+        "奕辰"
+      ],
+      "泽": [
+        "凯泽",
+        "菼泽",
+        "畎泽"
+      ],
+      "卧": [
+        "卧听松风",
+        "卧云",
+        "卧游",
+        "卧云间",
+        "卧听风",
+        "卧看山",
+        "卧观云"
+      ],
+      "涛": [
+        "枕松涛",
+        "松涛绕埼",
+        "浴松涛",
+        "赑涛"
+      ],
+      "踪": [
+        "蹑踪",
+        "云踪",
+        "鸿踪",
+        "雁踪",
+        "寻踪",
+        "觅踪",
+        "探踪",
+        "云外留踪",
+        "云水留踪"
+      ],
+      "在": [
+        "涂在野",
+        "蜜在野"
+      ]
+    },
+    "literature_phrase_examples": {
+      "麋游": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 108765,
+          "context": "石桥虹霓断，驰道鹿麋游。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1649920,
+          "context": "麋游莫恨终亡国，谁把鸱夷载谏臣。"
+        }
+      ],
+      "麋序": [],
+      "麋辰": [],
+      "麋泽": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 12611,
+          "context": "(有隃麋泽有古城呉/山县亦汉榆麋县地)戎夏襁负随之者数万自称䕶𦍑校尉雍州刺史扶风公(夏户雅翻/雍于用翻)孝愍皇帝上(讳邺字彦旗武帝孙呉孝王晏"
+        }
+      ],
+      "麋园": [],
+      "松间麋": [],
+      "麋在山间": [],
+      "麋游林泉": [],
+      "麋卧青莎": [],
+      "麋听松涛": [],
+      "麋踪": [],
+      "林中麋": []
+    },
+    "dictionary_phrase_entries": {
+      "麋游": [],
+      "麋序": [],
+      "麋辰": [],
+      "麋泽": [],
+      "麋园": [],
+      "松间麋": [],
+      "麋在山间": [],
+      "麋游林泉": [],
+      "麋卧青莎": [],
+      "麋听松涛": [],
+      "麋踪": [],
+      "林中麋": []
+    },
+    "direct_dictionary": {
+      "麋": {
+        "definition": "Père David's deer, milu, elaphure (Elaphurus davidianus); surname",
+        "mandarin": "mí",
+        "official_dictionary": [
+          {
+            "title": "麋",
+            "pinyin": "mí",
+            "definition": "[名]\n1.動物名。脊椎動物哺乳綱偶蹄目。與鹿同類而稍大，雄麋青黑色，頭生枝角，雌麋呈褐色，體略小。\n2.眉毛。通「眉」。《荀子．非相》：「伊尹之狀，面無須麋。」\n3.水邊。通「湄」。《詩經．小雅．巧言》：「彼何人斯，居河之麋。」\n4.姓。如宋代有麋鍇。",
+            "entry_id": "01342",
+            "sheet": "1150929辭典匯出",
+            "row": 1347,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "游": {
+        "definition": "to swim; float, drift; wander, roam",
+        "mandarin": "yóu",
+        "official_dictionary": [
+          {
+            "title": "游",
+            "pinyin": "yóu",
+            "definition": "[動]\n1.在水中行動。如：「游泳」。《詩經．邶風．谷風》：「就其淺矣，泳之游之。」《淮南子．墬形》：「食水者善游能寒，食士者無心而慧。」\n2.遨遊。通「遊」。《墨子．貴義》：「子墨子南游於楚，見楚獻惠王。」\n3.交往。通「遊」。《左傳．隱公三年》：「其子厚與州吁游，禁之不可。」\n[形]\n飄蕩不定。如：「游民」、「游資」、「氣若游絲」。《新唐書．卷九五．竇威傳》：「周洛間，因隋亂，人不土著，軌下令諸縣，有游手末作者按之，由是威信大行，民皆趨本。」\n[名]\n1.河流、江河的段落。如：「上游」、「中游」、「下游」。《詩經．秦風．蒹葭》：「溯洄從之，道阻且長，溯游從之，宛在水中央。」《史記．卷七．項羽本紀》：「古之帝者地方千里，必居上游。」\n2.姓。如清代有游士鳳。",
+            "entry_id": "10891",
+            "sheet": "1150929辭典匯出",
+            "row": 10905,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "序": {
+        "definition": "series, serial order, sequence",
+        "mandarin": "xù",
+        "official_dictionary": [
+          {
+            "title": "序",
+            "pinyin": "xù",
+            "definition": "[名]\n1.廳堂的東西牆。《說文解字．广部》：「序，東西牆也。」《儀禮．士冠禮》：「主人玄端爵韠，立于阼階下，直東序西面。」\n2.古代的學校名稱。如：「鄉序」。《孟子．梁惠王上》：「謹庠序之教，申之以孝悌之義。」\n3.排列的次第。如：「順序」、「次序」。《儀禮．鄉飲酒禮》：「眾賓序升，即席。」《隋書．卷十三．音樂志上．序》：「樂失其序，則親疏亂。」\n4.文體名：(1)通常放在正文前，概說、評述作品內容。南朝梁．劉勰《文心雕龍．詮賦》：「序以建言，首引情本。」(2)通常臨別贈言的文章稱為「序」，創始於唐。如韓愈有〈送孟東野序〉、〈送李愿歸盤谷序〉等。唐．韓愈〈送水陸運使韓侍御歸所治序〉：「聞其歸，皆相勉為詩以推大之，而屬余為序。」\n5.季節。《文選．江淹．雜體詩．謝僕射》：「淒淒節序高，寥寥心悟永。」《紅樓夢》第八十七回：「（永）回憶海棠結社，序屬清秋。」\n[形]\n開頭的。如：「序曲」、「序幕」。",
+            "entry_id": "07303",
+            "sheet": "1150929辭典匯出",
+            "row": 7312,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辰": {
+        "definition": "early morning; fifth earthly branch; Kangxi radical 161",
+        "mandarin": "chén",
+        "official_dictionary": [
+          {
+            "title": "辰",
+            "pinyin": "chén",
+            "definition": "[名]\n1.地支的第五位。\n2.時辰名。約當上午七點到九點。\n3.時運。《詩經．大雅．桑柔》：「我生不辰，逢天僤怒。」漢．鄭玄．箋：「辰，時也。」\n4.時光、日子。如：「誕辰」、「忌辰」。漢．揚雄《法言．問明》：「辰乎辰，曷來之遲，去之速也！」明．湯顯祖《牡丹亭》第一〇齣：「良辰美景奈何天，賞心樂事誰家院！」\n5.日月星球的統稱。參見「星辰」條。\n6.姓。如清代有辰泰。\n7.二一四部首之一。",
+            "entry_id": "08416",
+            "sheet": "1150929辭典匯出",
+            "row": 8430,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "誕辰",
+                "pinyin": "dàn chén",
+                "definition": "生日。多用於偉人或尊敬的人。如：「每年的九月二十八日是孔子誕辰，政府明訂為教師節。」",
+                "entry_id": "020410005",
+                "sheet": "1150929辭典匯出",
+                "row": 43695
+              },
+              {
+                "title": "忌辰",
+                "pinyin": "jì chén",
+                "definition": "人去世的日子，舊俗在此日禁止娛樂行為，故稱為「忌辰」。明．高明《琵琶記．五娘尋夫上路》：「但過小祥忌辰，展開與他燒些香紙，奠些涼漿水飯，也是奴家心素。」《初刻拍案驚奇》卷一七：「過了兩日，卻是亡夫忌辰。」也稱為「忌日」。",
+                "entry_id": "054270009",
+                "sheet": "1150929辭典匯出",
+                "row": 87493
+              },
+              {
+                "title": "星辰",
+                "pinyin": "xīng chén",
+                "definition": "星的通稱。《淮南子．墬形》：「照之以日月，經之以星辰，紀之以四時，要之以太歲。」《三國演義》第六九回：「輅自幼便喜仰視星辰，夜不能寐。」",
+                "entry_id": "072250111",
+                "sheet": "1150929辭典匯出",
+                "row": 108953
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泽": {
+        "definition": "marsh, swamp; grace, brilliance",
+        "mandarin": "zé",
+        "related_characters": [
+          {
+            "character": "澤",
+            "relation": "kTraditionalVariant",
+            "definition": "marsh, swamp; grace, brilliance; damp, moist; fertile",
+            "mandarin": "zé"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "园": {
+        "definition": "garden; park, orchard",
+        "mandarin": "yuán",
+        "related_characters": [
+          {
+            "character": "园",
+            "relation": "kTraditionalVariant",
+            "definition": "garden; park, orchard",
+            "mandarin": "yuán"
+          },
+          {
+            "character": "園",
+            "relation": "kTraditionalVariant",
+            "definition": "garden; park, orchard",
+            "mandarin": "yuán"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "园",
+            "pinyin": null,
+            "definition": "「圓」的異體字。",
+            "entry_id": "11795-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162874,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "在": {
+        "definition": "be at, in, on; consist in, rest",
+        "mandarin": "zài",
+        "official_dictionary": [
+          {
+            "title": "在",
+            "pinyin": "zài",
+            "definition": "[動]\n1.存、存活。如：「健在」、「精神永在」。《論語．學而》：「父在，觀其志；父沒，觀其行。」\n2.居於、處於。如：「在任」、「在位」、「在職進修」。《易經．乾卦．九三》：「是故居上位而不驕，在下位而不憂。」\n3.決定、依靠。如：「事在人為」、「謀事在人，成事在天。」\n4.觀察。《書經．舜典》：「在璿璣玉衡，以齊七政。」《禮記．文王世子》：「食上必在視寒暖之節。」\n[副]\n表示動作正在進行。如：「我在聽音樂。」、「妹妹在唱歌。」\n[介]\n1.表示時間。如：「他喜歡在晚上看書。」\n2.表示處所、位置。如：「人生在世」、「他不在家」。\n3.表示範疇。如：「在心理學方面的研究，他是個傑出的專家。」\n[名]\n1.居所、處所。《漢書．卷六．武帝紀》：「舉獨行之君子，徵詣行在所。」《遼史．卷三一．營衛志上》：「無日不營，無在不衛。」\n2.姓。如晉代有在育。",
+            "entry_id": "09484",
+            "sheet": "1150929辭典匯出",
+            "row": 9498,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "official_dictionary": [
+          {
+            "title": "泉",
+            "pinyin": "quán",
+            "definition": "[名]\n1.水的源頭。《文選．曹冏．六代論》：「夫泉竭則流涸。」宋．歐陽修〈醉翁亭記〉：「峰回路轉，有亭翼然，臨於泉上者，醉翁亭也。」\n2.地下水。宋．蘇軾〈潮州韓文公廟碑〉：「譬如鑿井得泉，而曰水專在是，豈理也哉？」\n3.人死後所在的地方。如：「黃泉」、「九泉」。《文選．王粲．七哀詩二首之一》：「悟彼下泉人，喟然傷心肝。」唐．白居易〈夜遇微之於峽中〉詩：「往事渺茫都似夢，舊遊流落半歸泉。」\n4.古代的錢幣。錢的流行像泉水一樣，故稱為「泉」。如：「泉布」、「刀泉」、「貨泉」。《管子．輕重丁》：「凡稱貸之家，出泉參千萬，出粟參數千萬鍾。」\n5.姓。如唐代有泉男生。",
+            "entry_id": "06699",
+            "sheet": "1150929辭典匯出",
+            "row": 6708,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "卧": {
+        "definition": "lie down; crouch",
+        "mandarin": "wò",
+        "official_dictionary": [
+          {
+            "title": "卧",
+            "pinyin": null,
+            "definition": "「臥」的異體字。",
+            "entry_id": "11338-1",
+            "sheet": "1150929辭典匯出",
+            "row": 157988,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "青",
+            "pinyin": "jīng",
+            "definition": "參見「青青」(二)條。",
+            "entry_id": "05920",
+            "sheet": "1150929辭典匯出",
+            "row": 5928,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "青青",
+                "pinyin": "jīng jīng",
+                "definition": "草木茂盛的樣子。《詩經．衛風．淇奧》：「瞻彼淇奧，綠竹青青。」宋．范仲淹〈岳陽樓記〉：「岸芷汀蘭，郁郁青青。」也作「菁菁」。",
+                "entry_id": "059200001",
+                "sheet": "1150929辭典匯出",
+                "row": 94282
+              },
+              {
+                "title": "青青",
+                "pinyin": "qīng qīng",
+                "definition": "1.形容草木翠綠的顏色。《文選．古詩十九首．青青河邊草》：「青青河邊草，綿綿思遠道。」《三國演義》第九回：「千里草，何青青！十日卜，不得生！」\n2.形容鬢髮烏黑。宋．朱熹〈和秀野蘄簟之句〉詩：「史君兩鬢尚青青，學道仍拋後院笙。」",
+                "entry_id": "065760148",
+                "sheet": "1150929辭典匯出",
+                "row": 100674
+              }
+            ]
+          },
+          {
+            "title": "青",
+            "pinyin": "qīng",
+            "definition": "[名]\n1.顏色：(1)綠色。唐．劉禹錫〈陋室銘〉：「苔痕上階綠，草色入簾青。」(2)藍色。《荀子．勸學》：「青取之於藍，而青於藍。」(3)黑色。如：「玄青」。\n2.綠色的草木、山脈。如：「踏青」、「萬年青」、「青黃不接」。唐．柳宗元〈始得西山宴游記〉：「縈青繚白，外與天際。」\n3.竹皮。如：「汗青」。\n4.地名簡稱：(1)大陸地區青海省簡稱。如：「青藏鐵路」。(2)青島市簡稱。如：「青鹽鐵路」。\n5.二一四部首之一。\n[形]\n1.綠色的。如：「青山綠水」、「山青水秀」。\n2.藍色的。如：「青天白日」。\n3.黑色的。如：「青布」、「青衣」。唐．李白〈將進酒〉：「君不見高堂明鏡悲白髮，朝如青絲暮成雪。」\n4.年輕的。如：「青年」、「青春」。",
+            "entry_id": "06576",
+            "sheet": "1150929辭典匯出",
+            "row": 6585,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "莎": {
+        "definition": "kind of sedge grass, used anciently for raincoats",
+        "mandarin": "shā",
+        "official_dictionary": [
+          {
+            "title": "莎",
+            "pinyin": "shā",
+            "definition": "動物名。指莎雞。一種似蚱蜢的昆蟲，色黑，有數重翅膀。常在夏季的夜晚振翅作聲，鳴聲急促似紡絲。也稱為「絡緯」。",
+            "entry_id": "08789",
+            "sheet": "1150929辭典匯出",
+            "row": 8803,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "莎",
+            "pinyin": "suō",
+            "definition": "[名]\n參見「莎草」條。\n[形]\n生有莎草的。如：「莎州」、「莎岸」。",
+            "entry_id": "10123",
+            "sheet": "1150929辭典匯出",
+            "row": 10137,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "莎草",
+                "pinyin": "suō cǎo",
+                "definition": "植物名。莎草科莎草屬，多年生草本。莖高十至六十公分。葉細長，深綠色，夏日由莖頂分歧生開黃褐色花穗。地下塊根稱為「香附子」，可入藥，有健胃、理氣、調經等功能。也稱為「雷公頭」、「土香」。參見「土香」條。",
+                "entry_id": "101230002",
+                "sheet": "1150929辭典匯出",
+                "row": 143531
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "听",
+            "pinyin": "yǐn",
+            "definition": "[副]\n笑的樣子。《文選．司馬相如．上林賦》：「亡是公听然而笑。」唐．劉禹錫〈說驥〉：「睹之周體，眙然視，听然笑，既而抃隨之。」",
+            "entry_id": "11104",
+            "sheet": "1150929辭典匯出",
+            "row": 11119,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "听",
+            "pinyin": null,
+            "definition": "「聽」的異體字。",
+            "entry_id": "02734-1",
+            "sheet": "1150929辭典匯出",
+            "row": 53128,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "涛": {
+        "definition": "large waves",
+        "mandarin": "tāo",
+        "related_characters": [
+          {
+            "character": "涛",
+            "relation": "kTraditionalVariant",
+            "definition": "large waves",
+            "mandarin": "tāo"
+          },
+          {
+            "character": "濤",
+            "relation": "kTraditionalVariant",
+            "definition": "large waves",
+            "mandarin": "tāo"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "涛",
+            "pinyin": null,
+            "definition": "「濤」的異體字。",
+            "entry_id": "02495-1",
+            "sheet": "1150929辭典匯出",
+            "row": 49552,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "踪": {
+        "definition": "footprints, traces, tracks",
+        "mandarin": "zōng",
+        "related_characters": [
+          {
+            "character": "踪",
+            "relation": "kTraditionalVariant",
+            "definition": "footprints, traces, tracks",
+            "mandarin": "zōng"
+          },
+          {
+            "character": "蹤",
+            "relation": "kTraditionalVariant",
+            "definition": "footprints, traces, tracks",
+            "mandarin": "zōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "踪",
+            "pinyin": null,
+            "definition": "「蹤」的異體字。",
+            "entry_id": "09669-1",
+            "sheet": "1150929辭典匯出",
+            "row": 138337,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "official_dictionary": [
+          {
+            "title": "中",
+            "pinyin": "zhōng",
+            "definition": "[名]\n1.距離四方或兩端相等的部位。如：「居中」、「中央」、「日正當中」。\n2.內、裡面。如：「水中」、「夢中」、「心中」。\n3.泛指某一時期以內。如：「一年之中」、「晉太元中」。\n4.中國的簡稱。如：「古今中外」。\n5.姓。如漢代有中京。\n[形]\n1.居間介紹、連絡的。如：「中人」。\n2.居於高低、大小、好壞之間的。如：「中級」、「中型」、「中等」。\n3.半。如：「中夜」、「中途」。\n[副]\n1.正好。如：「適中」。\n2.表示動作正在進行。如：「事情正在交涉中。」",
+            "entry_id": "08130",
+            "sheet": "1150929辭典匯出",
+            "row": 8144,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "中",
+            "pinyin": "zhòng",
+            "definition": "[動]\n1.達到要點。《論語．子路》：「刑罰不中，則民無所錯手足。」《漢書．卷一〇．成帝紀》：「朕涉道日寡，舉錯不中。」\n2.合、正對上。如：「中規中矩」。《左傳．定公元年》：「未嘗不中吾志也。」《戰國策．西周策》：「去柳葉者百步而射之，百發百中。」\n3.遭受、感染。如：「中風」、「中毒」。\n4.得。如：「中獎」、「中籤」、「中選」。\n5.考取。如：「范進中舉」、「考中大學」。《儒林外史》第二回：「這王大老爺，就是前科新中的。」",
+            "entry_id": "08150",
+            "sheet": "1150929辭典匯出",
+            "row": 8164,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "麋游",
+      "decision": "keep",
+      "reason": "可理解为麋鹿自在游行，组合简洁自然，有具体动物意象；文学用例也支持其自然搭配。"
+    },
+    {
+      "name": "麋序",
+      "decision": "reject",
+      "reason": "“麋”与表示次第、序文的“序”缺乏自然语义关系，组合像机械拼接。"
+    },
+    {
+      "name": "麋辰",
+      "decision": "uncertain",
+      "reason": "可分别联想到麋鹿与时光、星辰，但两字关系不明，整体自然度和品牌辨识度存疑。"
+    },
+    {
+      "name": "麋泽",
+      "decision": "uncertain",
+      "reason": "“泽”可指沼泽或恩泽，虽能牵连湿地动物意象，但名称中的具体关系不清，语义略显牵强。"
+    },
+    {
+      "name": "麋园",
+      "decision": "uncertain",
+      "reason": "可理解为麋鹿园，但组合近于场所描述，是否形成凝练品牌名存疑。"
+    },
+    {
+      "name": "松间麋",
+      "decision": "keep",
+      "reason": "“松间”交代林间场景，“麋”构成清晰物象，语序自然，画面简洁可辨。"
+    },
+    {
+      "name": "麋在山间",
+      "decision": "reject",
+      "reason": "完整表达是“麋鹿在山间”的陈述句，描述性过强，不够凝练为品牌名。"
+    },
+    {
+      "name": "麋游林泉",
+      "decision": "reject",
+      "reason": "将游、林、泉等意象连续堆叠，整体近于写景短句，品牌凝练感不足。"
+    },
+    {
+      "name": "麋卧青莎",
+      "decision": "uncertain",
+      "reason": "可形成麋鹿卧于莎草中的古典画面，但“青莎”在此处的具体所指与搭配自然度不够明确，语义较生涩。"
+    },
+    {
+      "name": "麋听松涛",
+      "decision": "reject",
+      "reason": "把麋鹿、聆听和松涛串成完整写景句，句意明确但偏场景描写，不够像凝练品牌名。"
+    },
+    {
+      "name": "麋踪",
+      "decision": "keep",
+      "reason": "可理解为麋鹿留下的踪迹，构词自然简洁，具有明确动物意象与辨识度。"
+    },
+    {
+      "name": "林中麋",
+      "decision": "keep",
+      "reason": "结构自然，意为林中的麋鹿，物象清楚简洁；与“松间麋”共享麋鹿处于林间的核心意象，仅场景字词近似，依重复规则两者最多保留一个。"
+    }
+  ]
+}

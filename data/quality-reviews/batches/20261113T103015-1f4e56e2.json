@@ -1,0 +1,788 @@
+{
+  "review_id": "20261113T103015-1f4e56e2",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "物我",
+      "格物社",
+      "物我间",
+      "物与人",
+      "物色记",
+      "观物所",
+      "物间",
+      "物各有宜",
+      "观物知微",
+      "因物制宜"
+    ],
+    "related_kept_candidates": {
+      "色": [
+        "七色",
+        "水天一色",
+        "着色",
+        "葭色",
+        "暮色",
+        "酡色",
+        "绀色流光",
+        "一勺春色",
+        "蔓织春色",
+        "一川茗色",
+        "黝色山河",
+        "五色土"
+      ],
+      "间": [
+        "埴间造物",
+        "器物之间",
+        "茶间风物",
+        "苇间造物",
+        "物件之间",
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "山间邨",
+        "松间䴓",
+        "翃云间"
+      ],
+      "格": [
+        "自成一格",
+        "标格",
+        "格桑花",
+        "山海成格",
+        "破格"
+      ],
+      "社": [
+        "纂文社",
+        "馅饼社",
+        "仓颉社",
+        "烤社",
+        "铅椠社",
+        "黝岩社",
+        "涌泉社",
+        "鞠育社",
+        "蜻蜓社",
+        "什锦社",
+        "光饼社",
+        "穿云社"
+      ],
+      "观": [
+        "观星所",
+        "观云馆",
+        "观澜斋",
+        "观海云斋",
+        "观星斋",
+        "观徼",
+        "观瓷",
+        "卧观云",
+        "借酒观云",
+        "山海大观",
+        "观澜榭",
+        "观照"
+      ],
+      "知": [
+        "涂知微",
+        "敖知微",
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远"
+      ],
+      "物": [
+        "埴间造物",
+        "器物之间",
+        "茶间风物",
+        "圌中有物",
+        "苇间造物",
+        "篓中有物",
+        "万物有脉",
+        "物件之间",
+        "庶物",
+        "风物成瓷",
+        "酷物",
+        "广陵风物"
+      ],
+      "微": [
+        "涂知微",
+        "敖知微",
+        "微酵",
+        "微凉",
+        "琥珀微光",
+        "微酡",
+        "太微",
+        "几微",
+        "微涩",
+        "见微漪",
+        "云海微滟",
+        "微烫"
+      ],
+      "有": [
+        "圌中有物",
+        "篓中有物",
+        "各有其式",
+        "万物有脉",
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度",
+        "梾间有光",
+        "溪山有蹊",
+        "春山有蹊"
+      ],
+      "记": [
+        "采芹记",
+        "钤记",
+        "寻瓷记",
+        "玉刀记",
+        "奇遇记",
+        "矿石记",
+        "一枚印记",
+        "崞城记",
+        "札记",
+        "荞麦记",
+        "记忆",
+        "山河记忆"
+      ],
+      "与": [
+        "螭与山海",
+        "锹与山",
+        "锹与星辰",
+        "雯与远山",
+        "厂与城",
+        "鳅与石",
+        "鳅与春山",
+        "薇与风",
+        "蕊与山川",
+        "屿与山",
+        "埙与山",
+        "山月与埙"
+      ],
+      "人": [
+        "个中人",
+        "人本",
+        "知人",
+        "人境",
+        "人间春",
+        "人间清欢",
+        "人间行旅",
+        "人间万象",
+        "人间集",
+        "山中人",
+        "云上人",
+        "人间序"
+      ],
+      "所": [
+        "观星所",
+        "憩所",
+        "心所及",
+        "目所及",
+        "心念所及",
+        "有所凭",
+        "听风所",
+        "林泉所",
+        "归林之所",
+        "听泉之所",
+        "听松所",
+        "清言所"
+      ],
+      "因": [
+        "模因",
+        "因缘",
+        "因时而嬗"
+      ],
+      "宜": [
+        "偲宜",
+        "菊相宜",
+        "静宜",
+        "机宜",
+        "要眇宜修",
+        "尽得其宜",
+        "宜尔家",
+        "相宜",
+        "慎宜",
+        "温宜",
+        "宜行",
+        "宜远"
+      ],
+      "制": [
+        "制器",
+        "制序"
+      ],
+      "各": [
+        "各有其式"
+      ]
+    },
+    "literature_phrase_examples": {
+      "物我": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 18325,
+          "context": "已均朝野致，还欣物我齐。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 50781,
+          "context": "万物我何有，白云空自幽。"
+        }
+      ],
+      "格物社": [],
+      "物我间": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 328051,
+          "context": "箕踞一长啸，忘怀物我间。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 3900,
+          "context": "箕踞一长啸，忘怀物我间。"
+        }
+      ],
+      "物与人": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 199733,
+          "context": "且喜物与人，年年得相见。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 120823,
+          "context": "谿口相传地最灵，其间风物与人清。"
+        }
+      ],
+      "物色记": [],
+      "观物所": [
+        {
+          "book": "管子",
+          "line": 627,
+          "context": "(从事安然闲暇若无事然也/深能其事者必不求名然其)审量出入而观物所载(当观物载之/谓凡出命今)(量而出之也/所堪然后当)孰能法无法乎始无始乎终无终乎弱无弱乎(而忘之者也/凡北皆谓为)故曰美哉岪岪("
+        }
+      ],
+      "物间": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 103496,
+          "context": "且尤食物间，膻腥失调饪。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 281745,
+          "context": "方竹同吾操，端然直物间。"
+        }
+      ],
+      "物各有宜": [
+        {
+          "book": "淮南子",
+          "line": 171,
+          "context": "水火金木土谷异物而皆任，规矩权衡准绳异形而皆施，丹青胶漆不同而皆用，各有所适，物各有宜。"
+        }
+      ],
+      "观物知微": [],
+      "因物制宜": []
+    },
+    "dictionary_phrase_entries": {
+      "物我": [],
+      "格物社": [],
+      "物我间": [],
+      "物与人": [],
+      "物色记": [],
+      "观物所": [],
+      "物间": [],
+      "物各有宜": [],
+      "观物知微": [],
+      "因物制宜": []
+    },
+    "direct_dictionary": {
+      "物": {
+        "definition": "thing, substance, creature",
+        "mandarin": "wù",
+        "official_dictionary": [
+          {
+            "title": "物",
+            "pinyin": "wù",
+            "definition": "[名]\n1.存在於天地間一切人事物的通稱。如：「天生萬物」。《易經．繫辭上》：「方以類聚，物以群分，吉凶生矣。」《列子．黃帝》：「凡有貌像聲色者，皆物也。」\n2.指我以外的人、事、境界。相對於「我」而言。如：「物我兩忘」。《史記．卷二四．樂書》：「凡音之起，由人心生也。人心之動，物使之然也。」宋．范仲淹〈岳陽樓記〉：「不以物喜，不以己悲。」\n3.指作品或言談中的內容。如：「言之有物」。《文選．陸機．文賦》：「體有萬殊，物無一量。」\n4.典章制度。《左傳．哀公元年》：「復禹之績，祀夏配天，不失舊物。」《新唐書．卷九六．杜如晦傳》：「方為相時，天下新定，臺閣制度，憲物容典，率二人討裁。」\n5.特指人。南朝宋．劉義慶《世說新語．言語》：「羊權為黃門侍郎，侍簡文坐。帝問曰：『夏侯湛作羊秉敘絕可想。是卿何物？有後不？』」唐．柳宗元〈衡陽與夢得分路贈別〉詩：「直以慵疏招物議，休將文字占時名。」\n[動]\n1.選擇。《左傳．昭公三十二年》：「計丈數，揣高卑，度厚薄，仞溝洫，物土方，議遠邇。」《淮南子．繆稱》：「欲知天道察其數，欲知地道物其樹，欲知人道從其欲。」\n2.尋求。如：「物色」。",
+            "entry_id": "11282",
+            "sheet": "1150929辭典匯出",
+            "row": 11296,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "我": {
+        "definition": "our, us, i, me, my, we",
+        "mandarin": "wǒ",
+        "official_dictionary": [
+          {
+            "title": "我",
+            "pinyin": "ě",
+            "definition": "(一)之讀音。",
+            "entry_id": "10256",
+            "sheet": "1150929辭典匯出",
+            "row": 10270,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "我",
+            "pinyin": "wǒ",
+            "definition": "[代]\n1.自稱。《易經．中孚卦．九二》：「我有好爵，吾與爾靡之。」《詩經．小雅．采薇》：「昔我往矣，楊柳依依；今我來思，雨雪霏霏。」\n2.自稱己方。《左傳．莊公十年》：「春，齊師伐我。」《漢書．卷五四．李廣傳》：「我軍雖煩擾，虜亦不得犯我。」\n[形]\n表示親切之意的語詞。《論語．述而》：「述而不作，信而好古，竊比於我老彭。」漢．曹操〈步出夏門行〉：「經過至我碣石，心惆悵我東海。」\n[名]\n1.私心、私意。如：「大公無我」。《論語．子罕》：「毋意，毋必，毋固，毋我。」\n2.姓。如戰國時有我子。",
+            "entry_id": "11333",
+            "sheet": "1150929辭典匯出",
+            "row": 11347,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "格": {
+        "definition": "pattern, standard, form; style",
+        "mandarin": "gé",
+        "official_dictionary": [
+          {
+            "title": "格",
+            "pinyin": "gé",
+            "definition": "[名]\n1.長枝條。北周．庾信〈小園賦〉：「草樹溷淆，枝格相交。」\n2.方形的空框或用線條組成的四方形。如：「窗格」、「方格」。\n3.架子的分層。如：「這期的雜誌，就放在書架的第三格。」\n4.量詞。計算容器刻度的單位。如：「這感冒藥水每次喝一格的量，三餐飯後服用。」\n5.標準、法式。如：「資格」、「規格」、「合格」、「破格」。\n6.人品、氣量、風度、情操的泛稱。如：「人格」、「品格」。宋．蘇軾〈答陳履常〉二首之二：「不獨以見作者之格，且足以知風政之多瑕，而高躅之難繼也。」\n7.修辭的方法稱為「格」。如：「譬喻格」、「誇張格」。\n8.姓。如漢代有格班，隋代有格處仁。\n[動]\n1.匡正、改正。《書經．冏命》：「繩愆糾謬，格其非心。」《孟子．離婁上》：「惟大人能格君心之非。」\n2.匹敵、抵抗。《史記．卷七十．張儀傳》：「無以異於驅群羊而攻猛虎，虎之與羊不格明矣。」\n3.阻礙、阻止。《史記．卷六五．孫子吳起傳》：「批亢擣虛，形格勢禁，則自為解耳。」\n4.打鬥、擊殺。如：「格鬥」、「格殺」。《三國志．卷一九．魏書．任城威王彰傳》：「膂力過人，手格猛獸，不避險阻。」\n5.窮究。《禮記．大學》：「致知在格物，物格而后知至。」\n6.至、來。《書經．堯典》：「光被四表，格於上下。」宋．蘇軾〈賀時宰啟〉：「歡聲格於九天，乖氣消於萬彙。」\n7.感通。《書經．說命下》：「佑我烈祖，格於皇天。」南朝梁．裴子野．宋略樂志敘：「先王作樂崇德，以格神人。」",
+            "entry_id": "03935",
+            "sheet": "1150929辭典匯出",
+            "row": 3941,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "社": {
+        "definition": "god of the soil and altars to him; group of families; company, society",
+        "mandarin": "shè",
+        "official_dictionary": [
+          {
+            "title": "社",
+            "pinyin": "shè",
+            "definition": "[名]\n1.傳說中的土地神。《禮記．祭法》：「共工氏之霸九州也，其子曰后土，能平九州，故祀以為社。」\n2.祭土地神的地方。《左傳．昭公十七年》：「日有食之，天子不舉，伐鼓於社。」\n3.祭祀土地神的節日。如：「春社」、「秋社」。\n4.祭土地神的典禮。《左傳．莊公二十三年》：「公如齊觀社，非禮也。」\n5.為工作、生活或共同目標結合成的組織、團體。如：「報社」、「通訊社」、「合作社」、「學社」。\n6.姓。如元代有社佑。\n[動]\n祭祀土地神。《書經．召誥》：「戊午，乃社于新邑。牛一、羊一、豕一。」",
+            "entry_id": "08832",
+            "sheet": "1150929辭典匯出",
+            "row": 8846,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "official_dictionary": [
+          {
+            "title": "人",
+            "pinyin": "rén",
+            "definition": "[名]\n1.具有高度智慧和靈性，且能製造並使用工具以進行勞動的高等動物。如：「男人」、「女人」、「人類」。\n2.別人、他人。如：「己所不欲，勿施於人。」\n3.每人。如：「人盡皆知」、「人手一冊」。《後漢書．卷一八．吳漢傳》：「若能同心一力，人自為戰，大功可立。」\n4.某種類型、身分的人。如：「軍人」、「主持人」、「介紹人」、「臺北人」。\n5.人的品格和性情。如：「文如其人」。《孟子．萬章下》：「頌其詩，讀其書，不知其人，可乎？」宋．王安石〈祭歐陽文忠公文〉：「世之學者，無問乎識與不識，而讀其文，則其人可知。」\n6.姓。如明代有人杰。\n7.二一四部首之一。",
+            "entry_id": "09214",
+            "sheet": "1150929辭典匯出",
+            "row": 9228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "色": {
+        "definition": "color, tint, hue, shade; form, body; beauty, desire for beauty; Kangxi radical 139",
+        "mandarin": "sè",
+        "official_dictionary": [
+          {
+            "title": "色",
+            "pinyin": "shè",
+            "definition": "[名]_x000D_\n俗稱性慾衝動。",
+            "entry_id": "08831",
+            "sheet": "1150929辭典匯出",
+            "row": 8845,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "shǎi",
+            "definition": "(一)[名]1.之語音。",
+            "entry_id": "08852",
+            "sheet": "1150929辭典匯出",
+            "row": 8866,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "sè",
+            "definition": "[名]\n1.物體表面的色彩。如：「五顏六色」、「五光十色」、「花色鮮豔」。\n2.面容、神情。如：「不動聲色」、「和顏悅色」、「面不改色」、「察言觀色」。\n3.女色，容貌美麗的婦女。《論語．季氏》：「少之時，血氣未定，戒之在色。」唐．白居易〈長恨歌〉：「漢皇重色思傾國，御宇多年求不得。」\n4.景象。如：「暮色深沉」、「景色宜人」。\n5.種類、式樣。如：「貨色齊全」、「形形色色」、「花色繁多」。\n6.品質、成分。多指金銀而言。如：「成色」、「足色」。\n7.性慾、情慾。如：「色情」、「桃色糾紛」。《孟子．告子上》：「告子曰：『食、色，性也。』」\n8.二一四部首之一。\n[動]\n1.生氣發怒，改變臉色。《戰國策．韓策二》：「怒於室者色於市，今公叔怨齊，無奈何也。」\n2.訪求。如：「物色」。",
+            "entry_id": "09995",
+            "sheet": "1150929辭典匯出",
+            "row": 10008,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "记": {
+        "definition": "record; keep in mind, remember",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "記",
+            "relation": "kTraditionalVariant",
+            "definition": "record; keep in mind, remember",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "观": {
+        "definition": "see, observe, view; appearance",
+        "mandarin": "guān",
+        "related_characters": [
+          {
+            "character": "觀",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, view; appearance; hexagram ䷓",
+            "mandarin": "guān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "所": {
+        "definition": "place, location; numerary adjunct",
+        "mandarin": "suǒ",
+        "official_dictionary": [
+          {
+            "title": "所",
+            "pinyin": "suǒ",
+            "definition": "[名]\n1.地方、處所。《呂氏春秋．恃君覽．達鬱》：「厥之諫我也，必於無人之所。」\n2.恰當的位置。如：「死得其所」。《易經．繫辭下》：「交易而退，各得其所。」《文選．諸葛亮．出師表》：「必能使行陣和睦，優劣得所也。」\n3.量詞。計算建築物的單位。如：「一所房子」、「三所學校」。\n4.約略計算之詞。多置於數量、單位之後。《史記．卷五五．留侯世家》：「父去里所，復還。」《續漢書志．第一一．天文志中》：「彗星出天船北，長二尺所。」\n5.機關或機構的名稱。如：「區公所」、「派出所」、「研究所」。\n6.姓。如漢代有所忠、所輔。\n[代]\n1.表示指示。相當於「此」、「這」。《呂氏春秋．審應覽．審應》：「齊亡地而王加膳，所非兼愛之心也。」唐．杜甫〈示從孫濟〉詩：「所來為宗族，亦不為盤飧。」\n2.表示疑問。相當於「何」、「什麼」。《國語．魯語上》：「長勺之役，曹劌問所以戰於莊公。」\n[連]\n假設、如果。《詩經．鄘風．牆有茨》：「中冓之言，不可道也；所可道也，言之醜也。」《左傳．僖公二十四年》：「所不與舅氏同心者，有如白水。」\n[助]\n1.虛字。置在動詞前，暗示動作達到的事物。如：「前所未聞」。《論語．顏淵》：「己所不欲，勿施於人。」\n2.與「為」或「被」合用，表示被動的意思。如：「他的作品為一般青年人所喜愛。」\n[副]\n相當於「尚」、「還」。《樂府詩集．卷四六．清商曲辭三．無名氏．懊儂歌十四首之三》：「江陵去揚州，三千三百里。已行一千三，所有二千在。」",
+            "entry_id": "10135",
+            "sheet": "1150929辭典匯出",
+            "row": 10149,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "各": {
+        "definition": "each, individually, every, all",
+        "mandarin": "gè",
+        "official_dictionary": [
+          {
+            "title": "各",
+            "pinyin": "gè",
+            "definition": "[代]\n指代一定群體中的不同個體本身。如：「各自」。《論語．公冶長》：「盍各言爾志？」\n[形]\n每。如：「各個」。《史記．卷一二三．大宛傳》：「令外國客遍觀各倉庫府藏之積。」",
+            "entry_id": "03964",
+            "sheet": "1150929辭典匯出",
+            "row": 3970,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "有",
+            "pinyin": "yǒu",
+            "definition": "[動]\n表事實、狀況的正面存在，與「無」相對。如：「有困難」、「有利有弊」、「有學問」、「有錢」、「擁有」、「面有飢色」。\n[形]\n1.豐足、富裕。如：「他是個非常富有的人。」《詩經．大雅．公劉》：「止基迺理，爰眾爰有。」\n2.多，表示時間久或年齡大。如：「本店開設有年。」、「母親已有了年紀。」\n3.故意。如：「有心犯錯應嚴懲，無心疏忽可原諒。」\n[綴]\n置於名詞前，作音節的襯字。如：「有夏」、「有清」。《韓非子．五蠹》：「當舜之時，有苗不服，禹將伐之。」\n[代]\n某，表示不確定。如：「有一天晚上」、「有人說你做人很講義氣。」\n[名]\n姓。如漢代有有祿。",
+            "entry_id": "10905",
+            "sheet": "1150929辭典匯出",
+            "row": 10919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "有",
+            "pinyin": "yòu",
+            "definition": "[副]\n表示重複、反覆、連續。通「又」。唐．裴守真〈請重耕織表〉：「奸偽由此而生，黎庶緣斯而苦，此有國之大患也。」\n[連]\n用於整數與餘數之間，表示數目的附加。如：「七十有七人」。《論語．為政》：「吾十有五而志於學，三十而立。」",
+            "entry_id": "10922",
+            "sheet": "1150929辭典匯出",
+            "row": 10936,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宜": {
+        "definition": "suitable, right, fitting, proper",
+        "mandarin": "yí",
+        "official_dictionary": [
+          {
+            "title": "宜",
+            "pinyin": "yí",
+            "definition": "[動]\n1.相安、和順。《禮記．大學》：「宜兄宜弟，而后可以教國人。」\n2.適當。《呂氏春秋．不苟論．當賞》：「主之賞罰爵祿之所加者宜，則親疏遠近賢不肖，皆盡其力而以為用矣。」\n3.共享。《詩經．鄭風．女曰雞鳴》：「弋言加之，與子宜之。」\n[形]\n合適、相稱。如：「動靜皆宜」。宋．蘇軾〈飲湖上初晴後雨〉詩二首之二：「若把西湖比西子，淡妝濃抹總相宜。」\n[副]\n1.應該、應當。如：「不宜喧鬧」、「不宜妄自菲薄」。\n2.大概、似乎。《漢書．卷二一．律曆志上》：「今陰陽不調，宜更曆之過也。」\n[名]\n1.事宜。《禮記．月令》：「天子乃與公卿大夫共飭國典，論時令，以待來歲之宜。」\n2.姓。如元代有宜桂可。",
+            "entry_id": "10535",
+            "sheet": "1150929辭典匯出",
+            "row": 10548,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "微": {
+        "definition": "small, prefix micro-, trifling",
+        "mandarin": "wēi",
+        "official_dictionary": [
+          {
+            "title": "微",
+            "pinyin": "wēi",
+            "definition": "(一)之又音。",
+            "entry_id": "11369",
+            "sheet": "1150929辭典匯出",
+            "row": 11383,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "微",
+            "pinyin": "wéi",
+            "definition": "[動]\n1.隱匿。《說文解字．彳部》：「微，隱行也。」《左傳．哀公十六年》：「白公奔山而縊，其徒微之。」\n2.無、沒。《論語．憲問》：「微管仲，吾其被髮左衽矣。」《史記．卷八七．李斯傳》：「微趙君，幾為丞相所賣。」\n3.非、不是。《詩經．邶風．柏舟》：「微我無酒，以敖以遊。」《呂氏春秋．離俗覽．離俗》：「然而以理義斲削，神農黃帝猶有可非，微獨舜湯。」\n[形]\n1.精妙幽深。《書經．大禹謨》：「人心惟危，道心惟微，惟精惟一，允執厥中。」《禮記．學記》：「其言也，約而達，微而臧。」\n2.細小。如：「細微」、「具體而微」。\n3.卑賤。如：「人微言輕」、「出身寒微」。《史記．卷九．呂太后本紀》：「呂太后者，高祖微時妃也。」《聊齋志異．卷一〇．臙脂》：「而又念其出身微，且日登公堂，為千人所窺指。」\n4.衰落。如：「衰微」。《詩經．邶風．式微》：「式微式微，胡不歸？」《史記．卷三二．齊太公世家》：「是時周室微，唯齊、楚、秦、晉為彊。」\n5.少。《禮記．祭義》：「雖有奇邪而不治者，則微矣。」\n6.昏暗不明。《詩經．小雅．十月之交》：「彼月而微，此日而微。」《文選．謝靈運．石壁精舍還湖中作詩》：「出谷日尚早，入舟陽已微。」\n[副]\n1.暗中、祕密。如：「微行」。《漢書．卷四五．伍被傳》：「淮南王陰有邪謀，被數微諫。」唐．柳宗元〈童區寄傳〉：「童微伺其睡，以縳背刃，力上下得絕。」\n2.伺探。《史記．卷一二．孝武本紀》：「使人微得趙綰等姦利事，召案綰、臧，綰臧自殺。」《漢書．卷九二．游俠傳．郭解傳》：「解使人微知賊處。賊窘自歸，具以實告解。」\n3.稍、略。如：「稍微」、「略微」。《漢書．卷九九．王莽傳上》：「莽色厲而言方，欲有所為，微見風采，黨與承其指意而顯奏之。」《文選．宋玉．登徒子好色賦》：「含喜微笑，竊視流眄。」\n[名]\n姓。如春秋時魯國有微虎。",
+            "entry_id": "11390",
+            "sheet": "1150929辭典匯出",
+            "row": 11404,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "因": {
+        "definition": "cause, reason; by; because (of)",
+        "mandarin": "yīn",
+        "official_dictionary": [
+          {
+            "title": "因",
+            "pinyin": "yīn",
+            "definition": "[動]\n1.憑藉、依據、利用。如：「因地制宜」、「因陋就簡」。《金史．卷七七．宗弼傳》：「宗弼乃因老鸛河故道開三十里通秦淮，一日一夜而成。」\n2.承襲、沿襲。如：「因襲」。《論語．為政》：「殷因於夏禮，所損益，可知也。」\n3.增添、積累。《論語．先進》：「千乘之國，攝乎大國之間，加之以師旅，因之以饑饉，由也為之，比及三年，可使有勇且知方也。」《史記．卷三〇．平準書》：「太倉之粟陳陳相因，充溢露積於外，至腐敗不可食。」\n[名]\n原由、緣故。如：「起因」、「誘因」、「原因」、「成因」、「事出有因」、「前因後果」。\n[介]\n1.經由、透過。《史記．卷五八．梁孝王世家》：「梁王恐，乃使韓安國因長公主謝罪太后，然后得釋。」《後漢書．卷三五．鄭玄傳》：「以山東無足問者，乃西入關，因涿郡盧植，事扶風馬融。」\n2.由於。如：「因公出差」、「因事請假」。唐．李白〈崔秋浦柳少府〉詩：「因君樹桃李，此地忽芳菲。」\n3.乘、趁。《史記．卷七．項羽本紀》：「此天之亡楚之時也，不如因其機而遂取之。」\n[連]\n於是、從而。《史記．卷五五．留侯世家》：「良業為取履，因長跪履之。」《鏡花緣》第四八回：「惜湮沒無聞，而哀群芳之不傳，因筆志之。」\n[副]\n就、乃。《史記．卷七．項羽本紀》：「項王即日因留沛公與飲。」",
+            "entry_id": "11056",
+            "sheet": "1150929辭典匯出",
+            "row": 11071,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "制": {
+        "definition": "system; establish; overpower",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "制",
+            "relation": "kTraditionalVariant",
+            "definition": "system; establish; overpower",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "製",
+            "relation": "kTraditionalVariant",
+            "definition": "make, manufacture; produce",
+            "mandarin": "zhì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "制",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.法度、規定。如：「法制」、「制度」。《禮記．曲禮上》：「越國而問焉，必告之以其制。」\n2.父母喪事。如：「守制」、「父制」、「母制」。《紅樓夢》第一一四回：「因在制中，不便行禮。」\n[動]\n1.製造。同「製」。如：「制作」。《詩經．豳風．東山》：「制彼裳衣，勿士行枚。」\n2.訂定、規劃。如：「制禮作樂」、「因地制宜」。\n3.管束、阻止。如：「管制」、「限制」。《淮南子．脩務》：「夫馬之為草駒之時，跳躍揚蹄翹尾而走，人不能制。」\n4.決斷、裁決。如：「裁制」。《史記．卷六．秦始皇本紀》：「制曰：『可。』」\n5.切割。《淮南子．主術》：「賢主之用人也，猶巧工之制木也。」",
+            "entry_id": "07564",
+            "sheet": "1150929辭典匯出",
+            "row": 7575,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "物我",
+      "decision": "keep",
+      "reason": "“物我”指外物与自我，组合凝练，有哲思意味且具辨识度，可作品牌名。"
+    },
+    {
+      "name": "格物社",
+      "decision": "reject",
+      "reason": "“格物”是常见的求知、探究概念，“社”只是通用组织后缀，整体更像泛称的研习团体名称，品牌辨识度不足。"
+    },
+    {
+      "name": "物我间",
+      "decision": "keep",
+      "reason": "“物我间”表达外物与自我之间的关系，语义自然凝练，有明确意象；古诗用例也支持其词组自然度。"
+    },
+    {
+      "name": "物与人",
+      "decision": "reject",
+      "reason": "只是并列列举“物”和“人”，语义关系未形成，像宽泛主题或栏目标题，品牌名凝练度不足。"
+    },
+    {
+      "name": "物色记",
+      "decision": "keep",
+      "reason": "“物色”可指观察、访求或景物风貌，“记”带有记录意味，组合自然，形成观察与记录的品牌意象。"
+    },
+    {
+      "name": "观物所",
+      "decision": "uncertain",
+      "reason": "可理解为观察事物之所，但“观物”与“所”的结构关系不够明确，整体更像机构或场所的描述，作为品牌名自然度存疑。"
+    },
+    {
+      "name": "物间",
+      "decision": "uncertain",
+      "reason": "可理解为事物之间或物品所在之处，但组合语义过于省略，具体意象与关系不够清楚，辨识度有限。"
+    },
+    {
+      "name": "物各有宜",
+      "decision": "reject",
+      "reason": "完整表达“事物各有适宜之处”，是陈述判断句而非凝练品牌名；即使有古典语境依据，仍偏格言化。"
+    },
+    {
+      "name": "观物知微",
+      "decision": "reject",
+      "reason": "表达观察事物而洞察细微之处，结构完整但属于明确的认知主张或格言式句子，不符合凝练品牌名要求。"
+    },
+    {
+      "name": "因物制宜",
+      "decision": "reject",
+      "reason": "是常见成语，意为根据具体事物采取适当办法；属于通用原则表达，且生成要求已排除常见成语，不宜保留。"
+    }
+  ]
+}

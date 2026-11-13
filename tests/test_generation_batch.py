@@ -23,6 +23,30 @@ from scripts.generate_all_character_candidates import (
 
 
 class CandidateBatchTests(unittest.TestCase):
+    def test_prescreened_target_cannot_report_final_completion(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'state.json'
+            with patch.object(generation.api_server, 'load_json', return_value=list('云山')), patch.object(generation, 'load_character_names', return_value=['云山']):
+                result = generation.run(target=1, provider_id=None, limit=1, state_path=path, pause_seconds=0)
+            state = generation.load_state(path)
+        self.assertEqual(result, 2)
+        self.assertTrue(state['generation_target_reached'])
+        self.assertFalse(state['completed'])
+        self.assertEqual(state['phase'], 'awaiting_quality_acceptance')
+
+    def test_reordered_names_do_not_inflate_generation_progress(self):
+        roles = {'云': '云气形成自然意象', '山': '山岳形成自然意象'}
+        notes = json.dumps(['质量初筛：各字语义角色=' + json.dumps(roles, ensure_ascii=False)
+                            + '；自然度自评=5/5'], ensure_ascii=False)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'names.db'
+            with sqlite3.connect(path) as db:
+                db.execute("CREATE TABLE name_candidates (name TEXT, name_length INTEGER, source_type TEXT, registry_note TEXT, notes_json TEXT, status TEXT)")
+                db.executemany("INSERT INTO name_candidates VALUES (?,2,'ai','',?,'待核验')", [('云山', notes), ('山云', notes)])
+            with patch.object(generation.api_server, 'DB_PATH', path):
+                records = generation.load_character_names()
+        self.assertEqual(generation.count_names_for_character_set(records, list('云山')), {'云': 1, '山': 1})
+
     def test_generation_counts_exclude_legacy_and_incomplete_quality_evidence(self):
         roles = {'云': '云气形成自然意象', '山': '山岳形成自然意象'}
         def notes(character_roles, rating):
@@ -40,12 +64,14 @@ class CandidateBatchTests(unittest.TestCase):
                     ('云月', 'ai', '', notes({'云': '云气形成自然意象', '月': '月色形成自然意象'}, 2)),
                     ('云川', 'ai', '', json.dumps(['质量初筛：各字语义角色=' + json.dumps({'云': '云气形成自然意象', '川': '川流形成自然意象'})])),
                     ('山云', 'ai', '', notes(roles, 5)),
+                    ('云海', 'ai', '', notes({'云': '云气形成自然意象', '海': '海洋形成自然意象'}, 5)),
                 ])
                 db.execute("UPDATE name_candidates SET status='质量复核未通过' WHERE name='山云'")
+                db.execute("UPDATE name_candidates SET status='质量复核待定' WHERE name='云海'")
             with patch.object(generation.api_server, 'DB_PATH', path):
                 records = generation.load_character_names()
-        counts = generation.count_names_for_character_set(records, list('云山水禾月川'))
-        self.assertEqual(counts, {'云': 1, '山': 1, '水': 0, '禾': 0, '月': 0, '川': 0})
+        counts = generation.count_names_for_character_set(records, list('云山水禾月川海'))
+        self.assertEqual(counts, {'云': 1, '山': 1, '水': 0, '禾': 0, '月': 0, '川': 0, '海': 0})
 
     def test_restart_skips_zero_yield_character_until_retry_deadline(self):
         attempted = []
@@ -88,9 +114,65 @@ class CandidateBatchTests(unittest.TestCase):
             [("山", 500), ("水", 500)],
         )
 
+    def test_restart_continues_unfinished_cycle_instead_of_repeating_first_characters(self):
+        attempted = []
+
+        def generate(payload):
+            attempted.append(payload['character'])
+            return {'providerName': 'test', 'model': 'test', 'rejected': 0}
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'state.json'
+            with patch.object(generation.api_server, 'load_json', return_value=list('山水云')), patch.object(
+                generation, 'load_character_names', return_value=[]
+            ), patch.object(generation, 'request_with_retries', side_effect=generate), patch.object(
+                generation.time, 'sleep'
+            ):
+                generation.run(target=500, provider_id=None, limit=1, state_path=path, pause_seconds=0)
+                state = generation.load_state(path)
+                state['retry_after'] = {}  # Cooldown has expired by the time the worker restarts.
+                generation.save_state(path, state)
+                generation.run(target=500, provider_id=None, limit=1, state_path=path, pause_seconds=0)
+        self.assertEqual(attempted, ['山', '水'])
+
     def test_deferred_character_returns_after_cooldown(self):
         targets = [("丐", 1), ("山", 500)]
         self.assertEqual(targets_for_cycle(targets, {"丐": 200}, now=250), targets)
+
+    def test_worker_continues_after_checkpoint_write_fails_after_queue_advance(self):
+        attempted = []
+        failed_once = False
+        save_state = generation.save_state
+
+        def generate(payload):
+            attempted.append(payload['character'])
+            return {'providerName': 'test', 'model': 'test', 'rejected': 0}
+
+        def save_with_one_disk_error(path, state):
+            nonlocal failed_once
+            if (not failed_once and state.get('current_character') == '山'
+                    and state.get('cycle_remaining') == ['水']):
+                failed_once = True
+                raise OSError('transient checkpoint write failure')
+            save_state(path, state)
+
+        error = None
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'state.json'
+            with patch.object(generation.api_server, 'load_json', return_value=list('山水')), patch.object(
+                generation, 'load_character_names', return_value=[]
+            ), patch.object(generation, 'request_with_retries', side_effect=generate), patch.object(
+                generation, 'save_state', side_effect=save_with_one_disk_error
+            ), patch.object(generation.time, 'sleep'):
+                try:
+                    generation.run(target=500, provider_id=None, limit=2, state_path=path, pause_seconds=0)
+                except Exception as caught:
+                    error = caught
+            state = generation.load_state(path)
+        self.assertIsNone(error, f'checkpoint recovery crashed: {error}')
+        self.assertEqual(attempted, ['山', '水'])
+        self.assertIn('山: OSError: transient checkpoint write failure', state['errors'])
+        self.assertFalse(state['completed'])
 
     def test_zero_candidate_characters_are_present_in_full_character_counts(self):
         counts = count_names_for_character_set(["云山"], list("云山水"))

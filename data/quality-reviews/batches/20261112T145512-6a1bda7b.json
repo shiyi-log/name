@@ -1,0 +1,995 @@
+{
+  "review_id": "20261112T145512-6a1bda7b",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "烤出色",
+      "烤匠",
+      "烤道",
+      "烤社",
+      "烤家",
+      "烤晴日",
+      "烤成章",
+      "烤光而行",
+      "烤来好风",
+      "广源",
+      "广信",
+      "广宁",
+      "广济",
+      "广兴",
+      "广新",
+      "广济桥",
+      "广明堂",
+      "广春晖",
+      "广秋实",
+      "广星河",
+      "广竹韵",
+      "广言路",
+      "广陵",
+      "广厦同春"
+    ],
+    "related_kept_candidates": {
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "色": [
+        "水天一色",
+        "着色",
+        "苔色",
+        "葭色",
+        "暮色",
+        "暮色临川",
+        "酡色",
+        "绀色流光",
+        "一勺春色",
+        "蔓织春色"
+      ],
+      "风": [
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风",
+        "熏风"
+      ],
+      "春": [
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春",
+        "春酿"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "义成"
+      ],
+      "星": [
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "阎星野",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "星野斋",
+        "摘星",
+        "摘星辰",
+        "箕星"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "堂": [
+        "獬豸堂",
+        "嘉禧堂",
+        "明璨堂",
+        "清懿堂",
+        "瑾玤堂",
+        "耇德堂",
+        "秬鬯堂",
+        "砭石堂",
+        "负暄堂",
+        "无讼堂",
+        "世胄堂",
+        "胄子堂"
+      ],
+      "社": [
+        "纂文社",
+        "馅饼社",
+        "仓颉社"
+      ],
+      "言": [
+        "讱言",
+        "诤言"
+      ],
+      "源": [
+        "泂源",
+        "淑源",
+        "酵源",
+        "楮源",
+        "凯源",
+        "瓷源",
+        "珀源",
+        "义之源"
+      ],
+      "晖": [
+        "晖映",
+        "暾晖"
+      ],
+      "宁": [
+        "敉宁",
+        "欧宁",
+        "淑宁",
+        "晙宁",
+        "凯宁",
+        "珀宁",
+        "酷宁"
+      ],
+      "秋": [
+        "访秋",
+        "纫秋",
+        "秋蛩",
+        "榴映秋",
+        "楮墨春秋",
+        "秋凉",
+        "秋水凉",
+        "一庭秋凉",
+        "凉秋望远",
+        "枫知秋",
+        "秋枫里",
+        "秋葭"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "章": [
+        "仓颉新章",
+        "酷乐章"
+      ],
+      "桥": [
+        "板桥",
+        "枫桥月",
+        "鹂影过桥",
+        "碳之桥"
+      ],
+      "道": [
+        "焊之道"
+      ],
+      "晴": [
+        "万顷晴光",
+        "芹野初晴",
+        "晴窗斋",
+        "晴枫",
+        "暮晴",
+        "暮雨晴",
+        "鹁过晴川",
+        "唐雨初晴",
+        "蒹岸新晴"
+      ],
+      "日": [
+        "春日葳蕤",
+        "墟山映日",
+        "日映崧",
+        "日暮"
+      ],
+      "信": [
+        "榴花信",
+        "鹂衔春信",
+        "瓶中信",
+        "义信"
+      ],
+      "实": [
+        "榴实",
+        "楮实",
+        "荚实"
+      ],
+      "韵": [
+        "榴韵",
+        "芭韵",
+        "瓷韵",
+        "刀韵",
+        "鹂韵",
+        "唐韵"
+      ],
+      "竹": [
+        "竹影山墅",
+        "清溪竹墅",
+        "竹斋",
+        "鹂栖竹",
+        "竹间鹂羽",
+        "鹂伴竹风",
+        "蔓绕竹篱",
+        "竹篦"
+      ],
+      "匠": [
+        "钣匠",
+        "箩匠",
+        "刀匠"
+      ],
+      "河": [
+        "瞰山河",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "河垠",
+        "枕星河",
+        "碳映星河"
+      ]
+    },
+    "literature_phrase_examples": {
+      "烤出色": [],
+      "烤匠": [],
+      "烤道": [],
+      "烤社": [],
+      "烤家": [],
+      "烤晴日": [],
+      "烤成章": [],
+      "烤光而行": [],
+      "烤来好风": [],
+      "广源": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 309531,
+          "context": "邕管已闻图像祭，广源无复纳降旗。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1095672,
+          "context": "不知广源洞里侬智高，何似仇池顶上杨难敌。"
+        }
+      ],
+      "广信": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 281069,
+          "context": "【题广信寺】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 393040,
+          "context": "又《职方典》八六六《广信府部》）。"
+        }
+      ],
+      "广宁": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 398235,
+          "context": "【开元时谣（《杨妃外传》：开元十载上元日，杨家五宅夜游，与广宁公主骑从争西门市。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 933437,
+          "context": "【广宁桥怀韩有功】"
+        }
+      ],
+      "广济": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 4021,
+          "context": "神州阴祀，洪恩广济。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 357703,
+          "context": "【寄哭西川坛长广济大师】"
+        }
+      ],
+      "广兴": [
+        {
+          "book": "封神演义",
+          "line": 1209,
+          "context": "造鹿台广兴土木之工，致上大夫赵启坠楼而死。"
+        },
+        {
+          "book": "封神演义",
+          "line": 1283,
+          "context": "又见报，崇侯虎蛊惑圣聪，广兴土木，陷害大臣，荼毒万姓，潜通费、尤，内外交结，把持朝政，朋比为奸，肆行不道，钳制谏官。"
+        }
+      ],
+      "广新": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 759437,
+          "context": "髙人有余清，别墅广新筑。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 5227,
+          "context": "歩兵将军王邑为大司空隆新公是为三公太阿右拂大司空甄丰为更始将军广新公京兆王兴为卫将军奉新公轻车将军孙建为立国将军成新公京兆王盛为前将军崇新公是为四将凡十一公王兴者故城门令史(城门令史事城/门校尉掌"
+        }
+      ],
+      "广济桥": [],
+      "广明堂": [],
+      "广春晖": [],
+      "广秋实": [],
+      "广星河": [],
+      "广竹韵": [],
+      "广言路": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 28281,
+          "context": "公其直言无隐长孙无忌等皆曰陛下无失刘洎曰顷有上书不称㫖者陛下皆面加穷诘无不慙惧而退恐非所以广言路(洎其冀翻上时掌翻/称尺证翻诘去吉翻)马周曰陛下比来赏罚㣲以喜怒有所髙下此外不见其失上皆纳之上好文学而辩敏群臣言事者上引古今以折之"
+        }
+      ],
+      "广陵": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2468,
+          "context": "吴苑宫闱今冷落，广陵台殿已荒凉。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 11500,
+          "context": "孰与广陵比，意别鹤俦精而已。"
+        }
+      ],
+      "广厦同春": []
+    },
+    "dictionary_phrase_entries": {
+      "烤出色": [],
+      "烤匠": [],
+      "烤道": [],
+      "烤社": [],
+      "烤家": [],
+      "烤晴日": [],
+      "烤成章": [],
+      "烤光而行": [],
+      "烤来好风": [],
+      "广源": [],
+      "广信": [],
+      "广宁": [],
+      "广济": [],
+      "广兴": [],
+      "广新": [],
+      "广济桥": [],
+      "广明堂": [],
+      "广春晖": [],
+      "广秋实": [],
+      "广星河": [],
+      "广竹韵": [],
+      "广言路": [],
+      "广陵": [],
+      "广厦同春": []
+    },
+    "direct_dictionary": {
+      "烤": {
+        "definition": "bake, roast, toast, cook",
+        "mandarin": "kǎo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "出": {
+        "definition": "go out, send out; stand; produce",
+        "mandarin": "chū",
+        "related_characters": [
+          {
+            "character": "出",
+            "relation": "kTraditionalVariant",
+            "definition": "go out, send out; stand; produce",
+            "mandarin": "chū"
+          },
+          {
+            "character": "齣",
+            "relation": "kTraditionalVariant",
+            "definition": "act; stanza; time, occasion",
+            "mandarin": "chū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "色": {
+        "definition": "color, tint, hue, shade; form, body; beauty, desire for beauty; Kangxi radical 139",
+        "mandarin": "sè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "匠": {
+        "definition": "craftsman, artisan; workman",
+        "mandarin": "jiàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "道": {
+        "definition": "path, road, street; method, way",
+        "mandarin": "dào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "社": {
+        "definition": "god of the soil and altars to him; group of families; company, society",
+        "mandarin": "shè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "家": {
+        "definition": "house, home, residence; family",
+        "mandarin": "jiā",
+        "related_characters": [
+          {
+            "character": "傢",
+            "relation": "kTraditionalVariant",
+            "definition": "stubborn, obstinate, intransigent",
+            "mandarin": "jiā"
+          },
+          {
+            "character": "家",
+            "relation": "kTraditionalVariant",
+            "definition": "house, home, residence; family",
+            "mandarin": "jiā"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晴": {
+        "definition": "clear weather, fine weather",
+        "mandarin": "qíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "日": {
+        "definition": "sun; day; daytime",
+        "mandarin": "rì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "而": {
+        "definition": "and; and then; and yet; but; Kangxi radical 126",
+        "mandarin": "ér",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "来": {
+        "definition": "come, coming; return, returning",
+        "mandarin": "lái",
+        "related_characters": [
+          {
+            "character": "來",
+            "relation": "kTraditionalVariant",
+            "definition": "come, coming; return, returning",
+            "mandarin": "lái"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "好": {
+        "definition": "good, excellent, fine; well",
+        "mandarin": "hǎo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "广": {
+        "definition": "wide, extensive, broad; rad. 53",
+        "mandarin": "guǎng",
+        "related_characters": [
+          {
+            "character": "广",
+            "relation": "kTraditionalVariant",
+            "definition": "wide, extensive, broad; rad. 53",
+            "mandarin": "guǎng"
+          },
+          {
+            "character": "廣",
+            "relation": "kTraditionalVariant",
+            "definition": "broad, wide, extensive",
+            "mandarin": "guǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "源": {
+        "definition": "spring; source, head; surname",
+        "mandarin": "yuán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宁": {
+        "definition": "calm, peaceful, serene; healthy",
+        "mandarin": "níng",
+        "related_characters": [
+          {
+            "character": "宁",
+            "relation": "kTraditionalVariant",
+            "definition": "calm, peaceful, serene; healthy",
+            "mandarin": "níng"
+          },
+          {
+            "character": "寧",
+            "relation": "kTraditionalVariant",
+            "definition": "repose, serenity, peace; peaceful",
+            "mandarin": "níng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "济": {
+        "definition": "help, aid, relieve; ferry, cross",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "濟",
+            "relation": "kTraditionalVariant",
+            "definition": "to help, aid, relieve; to ferry, cross",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "兴": {
+        "definition": "thrive, prosper, flourish",
+        "mandarin": "xìng",
+        "related_characters": [
+          {
+            "character": "興",
+            "relation": "kTraditionalVariant",
+            "definition": "thrive, prosper, flourish",
+            "mandarin": "xìng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "桥": {
+        "definition": "bridge; beam, crosspiece",
+        "mandarin": "qiáo",
+        "related_characters": [
+          {
+            "character": "橋",
+            "relation": "kTraditionalVariant",
+            "definition": "bridge; beam, crosspiece",
+            "mandarin": "qiáo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "堂": {
+        "definition": "hall; government office",
+        "mandarin": "táng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晖": {
+        "definition": "sunshine; light, bright, radiant",
+        "mandarin": "huī",
+        "related_characters": [
+          {
+            "character": "暉",
+            "relation": "kTraditionalVariant",
+            "definition": "sunshine; light, bright, radiant",
+            "mandarin": "huī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "秋": {
+        "definition": "autumn, fall; year",
+        "mandarin": "qiū",
+        "related_characters": [
+          {
+            "character": "秋",
+            "relation": "kTraditionalVariant",
+            "definition": "autumn, fall; year",
+            "mandarin": "qiū"
+          },
+          {
+            "character": "鞦",
+            "relation": "kTraditionalVariant",
+            "definition": "leather stap; swing",
+            "mandarin": "qiū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "实": {
+        "definition": "real, true; honest, sincere",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "实",
+            "relation": "kTraditionalVariant",
+            "definition": "real, true; honest, sincere",
+            "mandarin": "shí"
+          },
+          {
+            "character": "實",
+            "relation": "kTraditionalVariant",
+            "definition": "real, true, solid, honest",
+            "mandarin": "shí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "竹": {
+        "definition": "bamboo; flute; Kangxi radical 118",
+        "mandarin": "zhú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "韵": {
+        "definition": "rhyme; vowel",
+        "mandarin": "yùn",
+        "related_characters": [
+          {
+            "character": "韵",
+            "relation": "kTraditionalVariant",
+            "definition": "rhyme; vowel",
+            "mandarin": "yùn"
+          },
+          {
+            "character": "韻",
+            "relation": "kTraditionalVariant",
+            "definition": "rhyme; vowel",
+            "mandarin": "yùn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "言": {
+        "definition": "words, speech; speak, say; Kangxi radical 149",
+        "mandarin": "yán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "路": {
+        "definition": "road, path, street; journey",
+        "mandarin": "lù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "陵": {
+        "definition": "hill, mound; mausoleum",
+        "mandarin": "líng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "厦": {
+        "definition": "big building, mansion",
+        "mandarin": "shà",
+        "related_characters": [
+          {
+            "character": "厦",
+            "relation": "kTraditionalVariant",
+            "definition": "big building, mansion",
+            "mandarin": "shà"
+          },
+          {
+            "character": "廈",
+            "relation": "kTraditionalVariant",
+            "definition": "big building, mansion",
+            "mandarin": "shà"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "烤出色",
+      "decision": "reject",
+      "reason": "“烤出色”像“烤出色泽”的省略或口号式表达，语法不完整，品牌凝练感不足。"
+    },
+    {
+      "name": "烤匠",
+      "decision": "keep",
+      "reason": "“烤”与“匠”组合自然，指向烤制技艺与匠心，简洁易记；未完整等同于通用产品类别。"
+    },
+    {
+      "name": "烤道",
+      "decision": "keep",
+      "reason": "可自然理解为烤制之道或烤制方法，简洁凝练，有品牌化表达空间。"
+    },
+    {
+      "name": "烤社",
+      "decision": "keep",
+      "reason": "可理解为围绕烤制的社群或品牌组织，构词简洁自然，不依赖特定行业设定。"
+    },
+    {
+      "name": "烤家",
+      "decision": "uncertain",
+      "reason": "可理解为烤制之家，但“烤家”也容易被读作烤制行业从业者的称谓，整体指向和自然度不够明确。"
+    },
+    {
+      "name": "烤晴日",
+      "decision": "uncertain",
+      "reason": "可联想到晴日烤制或烤物，但“烤”与“晴日”的语义关系不够自然，组合意象牵强。"
+    },
+    {
+      "name": "烤成章",
+      "decision": "reject",
+      "reason": "明显借用“出口成章”等表达框架，将“烤”硬嵌入，语义关系生硬。"
+    },
+    {
+      "name": "烤光而行",
+      "decision": "reject",
+      "reason": "句式完整而口号化，“烤光”与“而行”搭配缺少自然语义，整体不像凝练品牌名。"
+    },
+    {
+      "name": "烤来好风",
+      "decision": "reject",
+      "reason": "“烤来好风”像祈愿或宣传口号，句子化明显，且“烤来”与“好风”的关系牵强。"
+    },
+    {
+      "name": "广源",
+      "decision": "uncertain",
+      "reason": "字面可解作广阔的源头或广泛来源，但组合较常见、辨识度偏弱；例句中的用法涉及专名，不能据此确认品牌语义。"
+    },
+    {
+      "name": "广信",
+      "decision": "uncertain",
+      "reason": "可联想到广泛的信义或信誉，但组合含义较泛，亦可能被理解为专名，品牌指向不够清晰。"
+    },
+    {
+      "name": "广宁",
+      "decision": "keep",
+      "reason": "“广”与“宁”组合自然，可表达广阔安宁之意，简洁端正，具有名称感。"
+    },
+    {
+      "name": "广济",
+      "decision": "keep",
+      "reason": "可自然理解为广泛济助、普济，语义清楚且凝练；古籍用例也体现了相近的济助义。"
+    },
+    {
+      "name": "广兴",
+      "decision": "keep",
+      "reason": "可解作广泛兴盛或兴旺发展，组合顺畅，寓意明确，具备品牌名称的简洁感。"
+    },
+    {
+      "name": "广新",
+      "decision": "uncertain",
+      "reason": "可理解为广泛更新或开拓新意，但两字搭配关系较松散，整体语义和品牌辨识度不够明确。"
+    },
+    {
+      "name": "广济桥",
+      "decision": "uncertain",
+      "reason": "字面是宽广济助之桥，也容易被理解为具体桥梁名称；在缺乏地域或专名背景时，指向不明。"
+    },
+    {
+      "name": "广明堂",
+      "decision": "uncertain",
+      "reason": "“广明堂”可作堂号式名称，但“广明”与“堂”的关系及完整语义缺乏明确依据，专名感较强。"
+    },
+    {
+      "name": "广春晖",
+      "decision": "keep",
+      "reason": "可理解为广阔春日的光辉，意象明朗，搭配通顺，具有凝练的品牌名称感。"
+    },
+    {
+      "name": "广秋实",
+      "decision": "keep",
+      "reason": "可理解为秋日丰实或广有收获，语义自然，意象清晰，整体简洁。"
+    },
+    {
+      "name": "广星河",
+      "decision": "keep",
+      "reason": "可理解为辽阔星河，物象清楚，搭配自然，具有较好的名称辨识度。"
+    },
+    {
+      "name": "广竹韵",
+      "decision": "keep",
+      "reason": "可理解为广阔竹林的风韵或丰富的竹意，意象连贯、表达凝练。"
+    },
+    {
+      "name": "广言路",
+      "decision": "reject",
+      "reason": "完整组合容易落入“广开言路”这一治理倡议和口号式表达，作为独立品牌名缺乏凝练感。"
+    },
+    {
+      "name": "广陵",
+      "decision": "uncertain",
+      "reason": "是有明确历史地名及古称用法的名称，但在没有地域或文化关联背景时，直接采用会形成未经说明的专名指向。"
+    },
+    {
+      "name": "广厦同春",
+      "decision": "reject",
+      "reason": "整体像祝颂句或完整判断式表达，口号化明显，不符合凝练品牌名的要求。"
+    }
+  ]
+}

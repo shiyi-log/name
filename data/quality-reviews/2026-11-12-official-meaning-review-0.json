@@ -1,0 +1,833 @@
+{
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "自忞",
+      "忞德",
+      "忞远",
+      "忞新",
+      "笃忞",
+      "明忞",
+      "忞而立",
+      "忞以恒",
+      "忞于新",
+      "忞之道",
+      "以忞致远",
+      "惟忞与成",
+      "忞以成",
+      "忞若初",
+      "日忞月进",
+      "惟忞在勤",
+      "俍工",
+      "俍匠",
+      "俍艺",
+      "俍木",
+      "俍川",
+      "俍新",
+      "山俍见海",
+      "俍月同辉"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川",
+        "晙川"
+      ],
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "月": [
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月",
+        "月下伞",
+        "月笼纱",
+        "云衔月",
+        "盅中月",
+        "月照桹影"
+      ],
+      "之": [
+        "一念之间",
+        "焊之道",
+        "芙蓉之外",
+        "十亩之间",
+        "碳之桥",
+        "碳之本",
+        "义之源",
+        "义之光",
+        "涡之源",
+        "涡之境",
+        "榕之本"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "铘见山海",
+        "鹂见山",
+        "云开见硔",
+        "榕庭见月",
+        "榕光初见",
+        "柘见山",
+        "涧里见晴"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "久成",
+        "梾木成荫",
+        "珐成新境"
+      ],
+      "自": [
+        "自成一格",
+        "自豪"
+      ],
+      "艺": [
+        "艺林",
+        "艺囿",
+        "焊艺",
+        "酵艺",
+        "镘艺",
+        "烤艺",
+        "珐艺新章"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "海": [
+        "山海貘",
+        "海鳐",
+        "山海酵香",
+        "海峤",
+        "峥海",
+        "云海峥嵘",
+        "观海云斋",
+        "望海斋",
+        "瞰海",
+        "瞰山海",
+        "海徼",
+        "鲲海"
+      ],
+      "德": [
+        "耇德堂",
+        "淑德",
+        "德斋",
+        "畜德",
+        "德义"
+      ],
+      "木": [
+        "柃木",
+        "梾木",
+        "乔木",
+        "梣木",
+        "梣木成荫",
+        "梣木生辉",
+        "梌木",
+        "草木葳蕤",
+        "国有嘉木",
+        "楮木",
+        "析木",
+        "椐木"
+      ],
+      "致": [
+        "中庸致和"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "辉": [
+        "梣木生辉",
+        "峥辉",
+        "清辉琥珀",
+        "二曜同辉"
+      ],
+      "初": [
+        "霪雨初霁",
+        "初酵",
+        "万象初酿",
+        "芹野初晴",
+        "晙初",
+        "初凉",
+        "厥初",
+        "唐雨初晴",
+        "榕光初见",
+        "涧雨初晴"
+      ],
+      "道": [
+        "焊之道",
+        "烤道"
+      ],
+      "日": [
+        "春日葳蕤",
+        "墟山映日",
+        "日映崧",
+        "日暮",
+        "日照埼",
+        "旭日临埼",
+        "榕庭日暖",
+        "梾溪映日"
+      ],
+      "立": [
+        "峣立",
+        "峤立",
+        "碳立方",
+        "立义",
+        "立榕"
+      ],
+      "若": [
+        "若芙"
+      ],
+      "匠": [
+        "钣匠",
+        "箩匠",
+        "刀匠",
+        "烤匠"
+      ],
+      "与": [
+        "螭与山海"
+      ],
+      "工": [
+        "刀工"
+      ],
+      "进": [
+        "竞进"
+      ]
+    },
+    "literature_phrase_examples": {
+      "自忞": [],
+      "忞德": [],
+      "忞远": [],
+      "忞新": [],
+      "笃忞": [],
+      "明忞": [],
+      "忞而立": [],
+      "忞以恒": [],
+      "忞于新": [],
+      "忞之道": [],
+      "以忞致远": [],
+      "惟忞与成": [],
+      "忞以成": [],
+      "忞若初": [],
+      "日忞月进": [],
+      "惟忞在勤": [],
+      "俍工": [],
+      "俍匠": [],
+      "俍艺": [],
+      "俍木": [],
+      "俍川": [],
+      "俍新": [],
+      "山俍见海": [],
+      "俍月同辉": []
+    },
+    "dictionary_phrase_entries": {
+      "自忞": [],
+      "忞德": [],
+      "忞远": [],
+      "忞新": [],
+      "笃忞": [],
+      "明忞": [],
+      "忞而立": [],
+      "忞以恒": [],
+      "忞于新": [],
+      "忞之道": [],
+      "以忞致远": [],
+      "惟忞与成": [],
+      "忞以成": [],
+      "忞若初": [],
+      "日忞月进": [],
+      "惟忞在勤": [],
+      "俍工": [],
+      "俍匠": [],
+      "俍艺": [],
+      "俍木": [],
+      "俍川": [],
+      "俍新": [],
+      "山俍见海": [],
+      "俍月同辉": []
+    },
+    "direct_dictionary": {
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "忞": {
+        "mandarin": "mín",
+        "official_dictionary": [
+          {
+            "title": "忞",
+            "pinyin": "mín",
+            "definition": "[動]\n自我勉勵振奮。《說文解字．心部》：「忞，自勉彊也。」",
+            "entry_id": "01451",
+            "sheet": "1150929辭典匯出",
+            "row": 1457,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "德": {
+        "definition": "ethics, morality, virtue",
+        "mandarin": "dé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "笃": {
+        "definition": "deep, true, sincere, genuine",
+        "mandarin": "dǔ",
+        "related_characters": [
+          {
+            "character": "篤",
+            "relation": "kTraditionalVariant",
+            "definition": "deep, true, sincere, genuine",
+            "mandarin": "dǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "而": {
+        "definition": "and; and then; and yet; but; Kangxi radical 126",
+        "mandarin": "ér",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "立": {
+        "definition": "stand; let stand; establish, set",
+        "mandarin": "lì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "以": {
+        "definition": "by means of; thereby, therefore; consider as; in order to",
+        "mandarin": "yǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "恒": {
+        "definition": "constant, regular, persistent",
+        "mandarin": "héng",
+        "related_characters": [
+          {
+            "character": "恆",
+            "relation": "kTraditionalVariant",
+            "definition": "constant, regular, persistent; hexagram ䷟",
+            "mandarin": "héng"
+          },
+          {
+            "character": "恒",
+            "relation": "kTraditionalVariant",
+            "definition": "constant, regular, persistent",
+            "mandarin": "héng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "于": {
+        "definition": "in, on, at; go to; surname",
+        "mandarin": "yú",
+        "related_characters": [
+          {
+            "character": "于",
+            "relation": "kTraditionalVariant",
+            "definition": "in, on, at; go to; surname",
+            "mandarin": "yú"
+          },
+          {
+            "character": "於",
+            "relation": "kTraditionalVariant",
+            "definition": "in, at, on; interjection alas!",
+            "mandarin": "yú"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "道": {
+        "definition": "path, road, street; method, way",
+        "mandarin": "dào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "致": {
+        "definition": "send, deliver, present; cause",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "緻",
+            "relation": "kTraditionalVariant",
+            "definition": "delicate, fine; dense",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "致",
+            "relation": "kTraditionalVariant",
+            "definition": "send, deliver, present; cause",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "惟": {
+        "definition": "but, however, nevertheless; only",
+        "mandarin": "wéi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "若": {
+        "definition": "if, supposing, assuming; similar",
+        "mandarin": "ruò",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "初": {
+        "definition": "beginning, initial, primary",
+        "mandarin": "chū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "日": {
+        "definition": "sun; day; daytime",
+        "mandarin": "rì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "进": {
+        "definition": "advance, make progress, enter",
+        "mandarin": "jìn",
+        "related_characters": [
+          {
+            "character": "進",
+            "relation": "kTraditionalVariant",
+            "definition": "advance, make progress, enter",
+            "mandarin": "jìn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "在": {
+        "definition": "be at, in, on; consist in, rest",
+        "mandarin": "zài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "勤": {
+        "definition": "industrious, diligent, attentive",
+        "mandarin": "qín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "俍": {
+        "mandarin": "liáng",
+        "official_dictionary": [
+          {
+            "title": "俍",
+            "pinyin": "liáng",
+            "definition": "[名]\n良工。《集韻．平聲．陽韻》：「俍，良工也。」\n[形]\n好、善。《莊子．庚桑楚》：「夫工乎天而俍乎人者，唯全人能之。」",
+            "entry_id": "03655",
+            "sheet": "1150929辭典匯出",
+            "row": 3661,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "工": {
+        "definition": "labor, work; worker, laborer",
+        "mandarin": "gōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "匠": {
+        "definition": "craftsman, artisan; workman",
+        "mandarin": "jiàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "艺": {
+        "definition": "art; talent, ability; craft",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "藝",
+            "relation": "kTraditionalVariant",
+            "definition": "art; talent, ability; craft",
+            "mandarin": "yì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "木": {
+        "definition": "tree; wood, lumber; wooden",
+        "mandarin": "mù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辉": {
+        "definition": "brightness, luster, brilliance",
+        "mandarin": "huī",
+        "related_characters": [
+          {
+            "character": "輝",
+            "relation": "kTraditionalVariant",
+            "definition": "brightness, luster, brilliance",
+            "mandarin": "huī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "自忞",
+      "decision": "uncertain",
+      "reason": "“忞”有自我勉励之义，但“自忞”不成自然搭配，语义关系不清。"
+    },
+    {
+      "name": "忞德",
+      "decision": "uncertain",
+      "reason": "可勉强理解为以自勉修德，但组合关系不自然，品牌含义不够明确。"
+    },
+    {
+      "name": "忞远",
+      "decision": "uncertain",
+      "reason": "“忞”与“远”之间缺少清楚自然的语义关系，像将励志字义拼接。"
+    },
+    {
+      "name": "忞新",
+      "decision": "uncertain",
+      "reason": "可牵强解释为自勉求新，但搭配生硬，含义不够明确。"
+    },
+    {
+      "name": "笃忞",
+      "decision": "uncertain",
+      "reason": "“笃”与“忞”均可关联勤勉笃实，但组合不自然，语义关系含混。"
+    },
+    {
+      "name": "明忞",
+      "decision": "uncertain",
+      "reason": "“明”与“忞”缺乏自然搭配关系，整体含义难以稳定理解。"
+    },
+    {
+      "name": "忞而立",
+      "decision": "reject",
+      "reason": "近似“而立”的句式片段，搭配“忞”后语法和含义均不成立。"
+    },
+    {
+      "name": "忞以恒",
+      "decision": "reject",
+      "reason": "语序生硬，像把“以恒”与“忞”机械组合，无法形成自然完整的名称。"
+    },
+    {
+      "name": "忞于新",
+      "decision": "reject",
+      "reason": "“于新”在此处缺乏明确句法关系，整体像未完成的句子。"
+    },
+    {
+      "name": "忞之道",
+      "decision": "uncertain",
+      "reason": "可理解为自我勉励之道，但“忞”作修饰语不够自然，整体偏概念拼接。"
+    },
+    {
+      "name": "以忞致远",
+      "decision": "reject",
+      "reason": "完整表达励志因果的句子或口号，不具备凝练品牌名的形式。"
+    },
+    {
+      "name": "惟忞与成",
+      "decision": "reject",
+      "reason": "语法关系不清，近似“惟……与……”的未完成表达，整体生硬。"
+    },
+    {
+      "name": "忞以成",
+      "decision": "reject",
+      "reason": "“以成”在此处缺少明确语义承接，整体像被截断的句子。"
+    },
+    {
+      "name": "忞若初",
+      "decision": "uncertain",
+      "reason": "“若初”可表达如初，但与“忞”组合的语义关系牵强，整体不够自然。"
+    },
+    {
+      "name": "日忞月进",
+      "decision": "reject",
+      "reason": "仿照对偶励志句式表达日日自勉、月月进步，属于口号化表达。"
+    },
+    {
+      "name": "惟忞在勤",
+      "decision": "reject",
+      "reason": "是强调勤勉的判断式或格言式表达，完整名称口号化。"
+    },
+    {
+      "name": "俍工",
+      "decision": "reject",
+      "reason": "“俍”本身有良工之义，与“工”叠合后近于通用工种或类别称呼，品牌辨识度不足。"
+    },
+    {
+      "name": "俍匠",
+      "decision": "uncertain",
+      "reason": "“俍”有良工之义，与“匠”形成语义重复；虽可理解为良匠，整体略显赘复。"
+    },
+    {
+      "name": "俍艺",
+      "decision": "keep",
+      "reason": "可自然理解为良工之艺或精善技艺，简洁且有明确的工艺意象。"
+    },
+    {
+      "name": "俍木",
+      "decision": "uncertain",
+      "reason": "“俍”有善、良工之义，但与“木”的关系不明确，可能指木作却无名称本身依据。"
+    },
+    {
+      "name": "俍川",
+      "decision": "keep",
+      "reason": "以“俍”的善义与“川”的自然物象组合，简洁顺口，具有可识别的品牌感。"
+    },
+    {
+      "name": "俍新",
+      "decision": "uncertain",
+      "reason": "可牵强理解为精善创新，但“俍”与“新”的语义关系不够自然明确。"
+    },
+    {
+      "name": "山俍见海",
+      "decision": "reject",
+      "reason": "句式化景象描述，语法关系别扭，且整体更像口号或诗句片段。"
+    },
+    {
+      "name": "俍月同辉",
+      "decision": "reject",
+      "reason": "明显套用“日月同辉”的熟语结构，仅以“俍”替换“日”，属于近似改写且语义不通。"
+    }
+  ],
+  "model": "gpt-6.1-sol",
+  "created_at": "2026-11-12T15:04:16+0800",
+  "applied": false
+}

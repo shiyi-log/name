@@ -1,0 +1,753 @@
+{
+  "review_id": "20261112T221137-bcfe127e",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "锎元",
+      "锎时",
+      "锎芯",
+      "锎源",
+      "蓝珀",
+      "血珀",
+      "蜜珀",
+      "占云",
+      "占候",
+      "观天占候",
+      "占雨知时"
+    ],
+    "related_kept_candidates": {
+      "时": [
+        "唐时雨",
+        "时雨",
+        "时雨箭竹",
+        "祥禾知时",
+        "儿时",
+        "巳时",
+        "戌时",
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "四时清鲜"
+      ],
+      "雨": [
+        "唐时雨",
+        "时雨",
+        "时雨箭竹",
+        "一川烟雨",
+        "霪雨初霁",
+        "峤听雨",
+        "芹畦雨",
+        "听雨斋",
+        "雨润荒墟",
+        "楮林新雨",
+        "雨凉",
+        "暮雨"
+      ],
+      "天": [
+        "水天一色",
+        "掀天",
+        "壸中天",
+        "天圜",
+        "天翱",
+        "天资",
+        "江天又阔",
+        "天垓",
+        "天垠",
+        "绀天",
+        "瓶中天地",
+        "天女花"
+      ],
+      "云": [
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间",
+        "烝云",
+        "翀云间"
+      ],
+      "候": [
+        "斥候"
+      ],
+      "源": [
+        "泂源",
+        "淑源",
+        "酵源",
+        "楮源",
+        "凯源",
+        "瓷源",
+        "珀源",
+        "覃思源",
+        "义之源",
+        "茗源",
+        "硔源",
+        "镠源"
+      ],
+      "观": [
+        "观云馆",
+        "观澜斋",
+        "观海云斋",
+        "观星斋",
+        "观徼",
+        "观瓷",
+        "卧观云",
+        "借酒观云",
+        "山海大观",
+        "观澜榭",
+        "观照",
+        "澄观"
+      ],
+      "知": [
+        "祥禾知时",
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远"
+      ],
+      "珀": [
+        "琥珀",
+        "珀然",
+        "珀明",
+        "珀雅",
+        "珀安",
+        "珀源",
+        "珀宁",
+        "珀光",
+        "珀岳",
+        "珀岚",
+        "玉珀",
+        "金珀"
+      ],
+      "蓝": [
+        "绀蓝",
+        "黝蓝",
+        "瓦蓝",
+        "蓼蓝",
+        "孔雀蓝"
+      ],
+      "芯": [
+        "碳芯",
+        "梾芯",
+        "锂芯"
+      ],
+      "蜜": [
+        "蜜蜡",
+        "蜜语",
+        "蜜林",
+        "蜜泉",
+        "蜜光",
+        "蜜雨",
+        "蜜田",
+        "蜜园",
+        "蜜岛",
+        "蜜舟",
+        "蜜云",
+        "蜜星"
+      ],
+      "元": [
+        "本元",
+        "贞元",
+        "复元",
+        "茯元",
+        "堃元"
+      ],
+      "占": [
+        "占春"
+      ]
+    },
+    "literature_phrase_examples": {
+      "锎元": [],
+      "锎时": [],
+      "锎芯": [],
+      "锎源": [],
+      "蓝珀": [],
+      "血珀": [],
+      "蜜珀": [],
+      "占云": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 33781,
+          "context": "大易占云南山寿，𫎺𧽼共乐圣明时。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 292844,
+          "context": "地窄少留竹，空多剩占云。"
+        }
+      ],
+      "占候": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 419330,
+          "context": "更用一人高术士，精通占候要知言，凶吉预闻先。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 419741,
+          "context": "占候法，鸡羽作为车。"
+        }
+      ],
+      "观天占候": [],
+      "占雨知时": []
+    },
+    "dictionary_phrase_entries": {
+      "锎元": [],
+      "锎时": [],
+      "锎芯": [],
+      "锎源": [],
+      "蓝珀": [],
+      "血珀": [],
+      "蜜珀": [],
+      "占云": [],
+      "占候": [
+        {
+          "title": "占候",
+          "pinyin": "zhān hòu",
+          "definition": "以天象變化來附會人事，推測吉凶禍福。《後漢書．卷三〇下．郎顗傳》：「父宗，字仲綏，學京氏易，善風角、星算、六日七分，能望氣占候吉凶，常賣卜自奉。」晉．干寶《搜神記》卷一：「超皆能通其旨意，用之占候。」",
+          "entry_id": "077700010",
+          "sheet": "1150929辭典匯出",
+          "row": 114328,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "观天占候": [],
+      "占雨知时": []
+    },
+    "direct_dictionary": {
+      "锎": {
+        "definition": "caesium/cesium (element 55, Cs)",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "鐦",
+            "relation": "kTraditionalVariant",
+            "definition": "californium (element 98, Cf)",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "元": {
+        "definition": "first; dollar; origin; head",
+        "mandarin": "yuán",
+        "official_dictionary": [
+          {
+            "title": "元",
+            "pinyin": "yuán",
+            "definition": "[名]\n1.頭。《左傳．僖公三十三年》：「（先軫）免冑入狄師，死焉。狄人歸其元，面如生。」《孟子．滕文公下》：「志士不忘在溝壑，勇士不忘喪其元。」\n2.量詞。計算錢幣的單位。一元等於十角。通「圓」。如：「十元」、「五十元」。\n3.代數式中，表示未知數的文字稱為「元」。如：「一元一次方程式」。\n4.朝代名。參見「元朝」條。\n5.姓。如唐代有元稹。\n[形]\n1.為首的。如：「元兇」、「元首」。\n2.開始的、第一的。如：「元年」、「元旦」。\n3.大的。《書經．大禹謨》：「天之歷數在汝躬，汝終陟元后。」《三國志．卷二四．魏書．高柔傳》：「逮至漢初，蕭、曹之儔並以元勛代作心膂。」\n4.善的。《書經．舜典》：「柔遠能邇，惇德允元。」《後漢書．卷五九．張衡傳》：「抨巫咸以占夢兮，迺貞吉之元符。」\n5.基本的。如：「元素」。",
+            "entry_id": "11769",
+            "sheet": "1150929辭典匯出",
+            "row": 11782,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "圓",
+                "pinyin": "yuán",
+                "definition": "[形]\n1.不露稜角的、環形的。相對於「方」。如：「圓球」、「圓桌」。\n2.完整、周全、豐滿。《呂氏春秋．士容論．審時》：「疏穖而穗大，其粟圓而薄糠。」南朝梁．劉勰《文心雕龍．明詩》：「自商暨周，雅頌圓備。」\n3.婉轉、滑潤。唐．元稹〈善歌如貫珠賦〉：「吟斷章而離離若間，引妙囀而一一皆圓。」明．湯顯祖《牡丹亭》第一〇齣：「生生燕語明如翦，嚦嚦鶯歌溜的圓。」\n[名]\n1.從中心到周圍每一點的距離都相等的形體稱為「圓」。《墨子．法儀》：「百工為方以矩，為圓以規。」\n2.貨幣的名稱。如：「金圓」、「銀圓」、「日圓」。\n3.量詞。計算錢幣的單位。一圓等於十角。如：「拾圓」、「伍圓」。\n[動]\n完成、使完整。如：「圓謊」、「自圓其說」。《紅樓夢》第六八回：「暫且住著，等滿了服再圓房。」",
+                "entry_id": "11795",
+                "sheet": "1150929辭典匯出",
+                "row": 11808
+              },
+              {
+                "title": "元朝",
+                "pinyin": "yuán cháo",
+                "definition": "朝代名。（西元1279～1368）元世祖忽必烈滅宋後稱帝，建立元朝。版圖跨越亞、歐兩洲，是世界史上罕有的龐大帝國。",
+                "entry_id": "117690066",
+                "sheet": "1150929辭典匯出",
+                "row": 162598
+              },
+              {
+                "title": "元首",
+                "pinyin": "yuán shǒu",
+                "definition": "1.一國最高的首長。在君主國家有國王，多為世襲的君主；共和國家則稱總統、主席等，大致由直接或間接選舉產生。唐．魏徵〈論時政疏〉：「凡百元首，承天景命，莫不殷憂而道著，功成而德衰。」\n2.開始。《晉書．卷一七．律曆志中》：「弗復以正月朔旦立春為節也，更以十一月朔旦冬至為元首。」\n3.人頭。《抱朴子．外篇．詰鮑》：「遠取諸物，則天尊地卑，以著人倫之體。近取諸身，則元首股肱，以表君臣之序。」",
+                "entry_id": "117690078",
+                "sheet": "1150929辭典匯出",
+                "row": 162606
+              },
+              {
+                "title": "元年",
+                "pinyin": "yuán nián",
+                "definition": "1.中國舊日以人君即位的第一年、或改元的第一年為元年。《公羊傳．隱公元》：「元年者何？君之始年也。」\n2.以建國的第一年為元年。如：「民國元年」。\n3.因紀念教祖而定。如基督教以耶穌降生的那一年為元年，佛教以佛去世的那一年為元年，回教以穆罕默德出奔的那一年為元年。",
+                "entry_id": "117690023",
+                "sheet": "1150929辭典匯出",
+                "row": 162573
+              },
+              {
+                "title": "元旦",
+                "pinyin": "yuán dàn",
+                "definition": "一年的第一日，也稱為「元正」、「元朔」、「元日」。南朝梁．蕭子雲〈介雅〉詩三首之三：「四氣新元旦，萬壽初今朝。」《醒世恆言．卷一．兩縣令競義婚孤女》：「忽一年元旦，潘華和蕭雅不約而同到王奉家來拜年。」現稱國曆一月一日為「元旦」。",
+                "entry_id": "117690018",
+                "sheet": "1150929辭典匯出",
+                "row": 162569
+              },
+              {
+                "title": "元素",
+                "pinyin": "yuán sù",
+                "definition": "化學元素的簡稱。參見「化學元素」條。",
+                "entry_id": "117690101",
+                "sheet": "1150929辭典匯出",
+                "row": 162620
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "时",
+            "pinyin": null,
+            "definition": "「時」的異體字。",
+            "entry_id": "08715-1",
+            "sheet": "1150929辭典匯出",
+            "row": 126095,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "芯": {
+        "definition": "pith from rush (Juncus effusus)",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "芯",
+            "pinyin": "xīn",
+            "definition": "[名]\n燈心草莖中可用來點燈的莖髓。元．戴侗《六書故．卷一三．人》：「凡函畜于中者，皆謂之心，草木華葉之心，是也，（別作芯）。」",
+            "entry_id": "07154",
+            "sheet": "1150929辭典匯出",
+            "row": 7163,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "芯",
+            "pinyin": "xìn",
+            "definition": "[名]\n物體的中心部分。如：「蠟芯兒」、「芯子」。",
+            "entry_id": "07173",
+            "sheet": "1150929辭典匯出",
+            "row": 7182,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "源": {
+        "definition": "spring; source, head; surname",
+        "mandarin": "yuán",
+        "official_dictionary": [
+          {
+            "title": "源",
+            "pinyin": "yuán",
+            "definition": "[名]\n1.水流的出處。如：「水源」、「泉源」、「飲水思源」。《國語．晉語一》：「伐木不自其本，必復生；塞水不自其源，必復流。」唐．李嶠〈河〉詩：「源出崑崙中，長波接漢空。」\n2.根本、由來。《韓非子．主道》：「是以明君守始以知萬物之源，治紀以知善敗之端。」《文選．班固．東都賦》：「嗜欲之源滅，廉恥之心生。」\n3.姓。如唐代有源乾曜。",
+            "entry_id": "11789",
+            "sheet": "1150929辭典匯出",
+            "row": 11802,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蓝": {
+        "definition": "blue; indigo plant; surname",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "藍",
+            "relation": "kTraditionalVariant",
+            "definition": "blue; indigo plant; surname",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "珀": {
+        "definition": "amber",
+        "mandarin": "pò",
+        "official_dictionary": [
+          {
+            "title": "珀",
+            "pinyin": "pò",
+            "definition": "參見「琥珀」條。",
+            "entry_id": "00620",
+            "sheet": "1150929辭典匯出",
+            "row": 622,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "琥珀",
+                "pinyin": "hǔ pò",
+                "definition": "1.古代松柏等樹脂的化石。為淡黃色、褐色或赤褐色的半透明固體，光澤美麗，質脆，燃燒時有香氣。可製琥珀酸和各種漆，也可做飾物。也作「丹珀」、「丹魄」、「虎魄」。\n2.書名。由英國女作家溫索爾所作的歷史小說，以十七世紀的英國為背景，描寫復辟前後英國人的各種生活層面。書中女主角名琥珀，意謂如寶石琥珀般閃爍著懾人的光澤，故書名《琥珀》。",
+                "entry_id": "049770001",
+                "sheet": "1150929辭典匯出",
+                "row": 82037
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "血": {
+        "definition": "blood; Kangxi radical 143",
+        "mandarin": "xuè",
+        "official_dictionary": [
+          {
+            "title": "血",
+            "pinyin": "xiě",
+            "definition": "[名]\n1.動物循環系統的體液之一，可循流全身，輸送氧、養分及代謝物。英文為blood。\n2.眼淚。漢．李陵〈答蘇武書〉：「天地為陵震怒，戰士為陵飲血。」唐．顧況〈傷子〉詩：「老夫哭愛子，日暮千行血。」\n3.二一四部首之一。\n[動]\n用鮮血沾染。《荀子．議兵》：「兵不血刃，遠邇來服。」\n[形]\n1.有血緣關係的。如：「血統」、「血親」。\n2.剛強、熱烈。如：「血性男兒」、「血氣方剛」。《儒林外史》第一四回：「像你這樣血心為朋友，難道我們當差的心不是肉做的？」",
+            "entry_id": "06946",
+            "sheet": "1150929辭典匯出",
+            "row": 6955,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "血",
+            "pinyin": "xuè",
+            "definition": "(一)之讀音。",
+            "entry_id": "07344",
+            "sheet": "1150929辭典匯出",
+            "row": 7354,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蜜": {
+        "definition": "honey; sweet; nectar",
+        "mandarin": "mì",
+        "official_dictionary": [
+          {
+            "title": "蜜",
+            "pinyin": "mì",
+            "definition": "[名]\n蜜蜂採取花中甘液所釀成的甜汁。如：「蜂蜜」、「花蜜」。\n[形]\n甜美、動人的。如：「甜蜜」、「甜言蜜語」。",
+            "entry_id": "01382",
+            "sheet": "1150929辭典匯出",
+            "row": 1387,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "占": {
+        "definition": "divine; observe; versify",
+        "mandarin": "zhàn",
+        "official_dictionary": [
+          {
+            "title": "占",
+            "pinyin": "zhān",
+            "definition": "[動]\n1.根據徵兆以推知吉凶。《周禮．春官．占人》：「凡卜簭，君占體，大夫占色，史占墨，卜人占坼。」\n2.視察、配合。《後漢書．卷六五．段熲傳》：「臣動兵涉夏，連獲甘澍，歲時豐稔，人無疵疫，上占天心，不為災傷。」\n3.(二)之又音。",
+            "entry_id": "07770",
+            "sheet": "1150929辭典匯出",
+            "row": 7781,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "占",
+            "pinyin": "zhàn",
+            "definition": "[動]\n1.據有。通「佔」。唐．方干〈于秀才小池〉詩：「占地未過四五尺，浸天唯入兩三星。」\n2.有、具有。唐．韓愈〈進學解〉：「占小善者率以錄，名一藝者無不庸。」\n3.口傳。《後漢書．卷四十五．張俊傳》：「俊自獄中占獄吏上書自訟，書奏而俊獄已報。」《西遊記》第三六回：「對月懷歸，口占一首古風長篇。」",
+            "entry_id": "07800",
+            "sheet": "1150929辭典匯出",
+            "row": 7811,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "候": {
+        "definition": "wait; expect; visit; greet",
+        "mandarin": "hòu",
+        "official_dictionary": [
+          {
+            "title": "候",
+            "pinyin": "hòu",
+            "definition": "[動]\n1.偵察、探察。《說文解字．人部》：「候，司望也。」《呂氏春秋．慎大覽．貴因》：「武王使人候殷。反，報岐周曰：『殷其亂矣！』」漢．高誘．注：「候，視也。」《史記．卷一〇七．魏其武安侯傳》：「太后亦已使人候伺，具以告太后。」\n2.等待。如：「候車室」、「逾時不候」、「恭候大駕」、「稍候一會兒」。《文選．陶淵明．歸去來辭》：「僮僕歡迎，稚子候門。」\n3.探望。如：「問候」。《後漢書．卷二四．馬援傳》：「援嘗有疾，梁松來候之，獨拜床下，援不答。」《儒林外史》第一三回：「兩公子聽見，便同公孫去候姑丈。」\n4.服侍。如：「伺候」。《後漢書．卷二四．馬援傳》：「勃字叔陽，年十二能誦詩、書。常候援兄況。」《宋史．卷二四二．后妃傳上．孝章宋皇后傳》：「性柔順好禮，每帝視朝退，常具冠帔候接，佐御饌。」\n5.診察。《北齊書．卷四九．方伎傳．馬嗣明傳》：「刑邵子大寶患傷寒，嗣明為之診，候脈。」《黃帝素問靈樞經．卷九．衛氣失常》：「候病所在，骨之屬者。」\n6.占卜。《後漢書．卷三〇下．郎顗傳》：「能望氣占候吉凶，常賣卜自奉。」《新唐書．卷四六．百官志一》：「二十三曰占候醫卜，效驗多者，為方術之最。」\n7.北平方言。指支付、付清。如：「候帳」、「這桌酒菜，張先生已候過鈔了。」\n[名]\n1.時間、時令、時節。如：「天候已經不早了，快回去吧！」宋．李清照〈聲聲慢．尋尋覓覓〉詞：「乍暖還寒時候，最難將息。」明．徐弘祖《徐霞客遊記．卷一下．遊太和山日記》：「山谷川原，候同氣異。」\n2.事物的情況或徵兆。如：「症候」、「火候」、「徵候」。《列子．周穆王》：「覺有八徵，夢有六候。」《晉書．卷一二．天文志中》：「凡遊氣蔽天，日月失色，皆是風雨之候也。」\n3.用來瞭望、監視敵情的碉堡。通「堠」。《史記．卷二五．律書》：「願且堅邊設候，結和通使。」《後漢書．卷一．光武帝紀下》：「築亭候，修烽燧。」唐．章懷太子．注：「亭候，伺候望敵之所。」",
+            "entry_id": "04836",
+            "sheet": "1150929辭典匯出",
+            "row": 4842,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "观": {
+        "definition": "see, observe, view; appearance",
+        "mandarin": "guān",
+        "related_characters": [
+          {
+            "character": "觀",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, view; appearance; hexagram ䷓",
+            "mandarin": "guān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "official_dictionary": [
+          {
+            "title": "天",
+            "pinyin": "tiān",
+            "definition": "[名]\n1.日月星辰所羅列的空間，即天空。如：「碧海青天」、「頂天立地」。唐．韓愈〈原道〉：「坐井而觀天，曰天小者，非天小也。」\n2.一晝夜的時間。如：「昨天」、「今天」、「大後天」、「一天」。\n3.白天或一天中的某一段時間。如：「三天三夜」、「三更天」。宋．程顥〈春日偶成〉詩：「雲淡風輕近午天，傍花隨柳過前川。」\n4.時節、季節。如：「春天」、「三伏天」、「黃梅天」。\n5.氣候。如：「晴天」、「陰天」、「大熱天」、「下雨天」。\n6.自然。如：「人定勝天」、「樂天知命」。《莊子．天道》：「是故古之明大道者，先明天而道德次之。」\n7.指宇宙萬物的主宰。有時指大自然、有時指命運、有時指天神等。如：「生死有命，富貴在天。」、「謀事在人，成事在天。」、「不怨天，不尤人。」《書經．泰誓中》：「天視自我民視，天聽自我民聽。」\n8.指神靈所住的世界。如：「升天」、「歸天」。\n9.不可或缺或最重要的事物。如：「以夫為天」。《漢書．卷四十三．酈食其傳》：「王者以民為天，而民以食為天。」\n10. 量詞。計算時間的單位。一天有二十四小時。如：「這項工作限你三十天時間完成，不得拖延。」\n[形]\n1.自然的、天然的。如：「天才」、「天險」、「天籟」、「天性」。\n2.數目極大的。如：「天價」、「天量」、「天文數字」。\n3.騰空架設的、駕於空中的。如：「天橋」、「天窗」、「天棚」。\n[副]\n很、非常。如：「天大的好消息」、「天大的新聞」。",
+            "entry_id": "02701",
+            "sheet": "1150929辭典匯出",
+            "row": 2707,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "official_dictionary": [
+          {
+            "title": "雨",
+            "pinyin": "yǔ",
+            "definition": "[名]\n1.空氣中的水蒸氣遇冷凝結而降落的小水滴。如：「春雨」、「梅雨」、「風雨交加」、「秋風秋雨愁煞人」。\n2.朋友。如：「舊雨新知」。唐．杜甫〈秋述〉：「秋，杜子臥病長安旅次，……，青苔及榻，常時車馬之客，舊雨來，今雨不來。」\n3.二一四部首之一。",
+            "entry_id": "11624",
+            "sheet": "1150929辭典匯出",
+            "row": 11638,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "雨",
+            "pinyin": "yù",
+            "definition": "[動]\n1.下雨。《詩經．小雅．大田》：「雨我公田，遂及我私。」《史記．卷六七．仲尼弟子傳．有若傳》：「他日，月宿畢，竟不雨。」\n2.降落、落下。如：「雨雪」、「雨雹」。《淮南子．本經》：「昔者蒼頡作書，而天雨粟，鬼夜哭。」宋．蘇軾〈喜雨亭記〉：「使天而雨珠，寒者不得以為襦；使天而雨玉，飢者不得以為粟。」\n3.滋潤、灌溉。唐．孟郊〈終南山下作〉詩：「山村不假陰，流水自雨田。」唐．鮑溶〈答客〉詩：「勞問圃人終歲事，桔槔聲裡雨春畦。」",
+            "entry_id": "11661",
+            "sheet": "1150929辭典匯出",
+            "row": 11675,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "锎元",
+      "decision": "reject",
+      "reason": "“锎”按所给字典义指铯元素，与常见元素名称“铯”不符；将其与“元”组合也没有清晰自然的整体语义。"
+    },
+    {
+      "name": "锎时",
+      "decision": "reject",
+      "reason": "“锎”按所给字典义指铯元素，和“时”组合缺乏自然可辨的整体语义，呈机械拼接。"
+    },
+    {
+      "name": "锎芯",
+      "decision": "reject",
+      "reason": "“锎”按所给字典义指铯元素，“芯”指灯心草髓或物体中心；组合语义不清，且不能借其他元素名称或行业假设补足。"
+    },
+    {
+      "name": "锎源",
+      "decision": "reject",
+      "reason": "“锎”按所给字典义指铯元素，与“源”组合没有清楚自然的整体语义，呈机械拼接。"
+    },
+    {
+      "name": "蓝珀",
+      "decision": "keep",
+      "reason": "可自然理解为蓝色琥珀，意象具体凝练，整体顺口；虽是常见物象组合，仍有明确辨识度。"
+    },
+    {
+      "name": "血珀",
+      "decision": "keep",
+      "reason": "“血珀”是对深红色琥珀的自然称谓，颜色与材质关系清楚，整体简洁且有辨识度。"
+    },
+    {
+      "name": "蜜珀",
+      "decision": "keep",
+      "reason": "可理解为蜜色琥珀，颜色与材质的组合自然具体，凝练度适合作为品牌名。"
+    },
+    {
+      "name": "占云",
+      "decision": "uncertain",
+      "reason": "“占”可作占察或据有解，“云”可指云；虽有“空多剩占云”的连续用例，但语境未明确构成与此名相同的自然词义，整体关系仍不够确定。"
+    },
+    {
+      "name": "占候",
+      "decision": "uncertain",
+      "reason": "这是有明确词义的传统术语，指依据天象推测吉凶；但名称实际带有占卜、术数色彩，作为公司品牌的适配性和预期语境不明，暂不宜直接保留。"
+    },
+    {
+      "name": "观天占候",
+      "decision": "reject",
+      "reason": "完整名称是“观察天象并占候”的说明性短语，结构偏描述句，缺少品牌名应有的凝练感。"
+    },
+    {
+      "name": "占雨知时",
+      "decision": "reject",
+      "reason": "完整名称表达“占知雨情、预知时节”的判断或宣示，整体近似句子和功能性口号，不够凝练。"
+    }
+  ]
+}

@@ -73,6 +73,13 @@ class SecretCheckTests(unittest.TestCase):
         self.assertEqual(count, 2)
         self.assertEqual(findings, [])
 
+    def test_chunked_scan_finds_secret_split_across_chunk_boundary(self):
+        secret = b"sk-" + b"z" * 24
+        path = self.root / "large.bin"
+        path.write_bytes(b"x" * (1024 * 1024 - 8) + b" " + secret + b"y")
+        findings = check_secrets.scan_file(path, "large.bin")
+        self.assertEqual([(item.kind, item.count) for item in findings], [("OpenAI API 密钥", 1)])
+
 
 if __name__ == "__main__":
     unittest.main()

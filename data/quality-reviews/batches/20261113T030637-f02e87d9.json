@@ -1,0 +1,986 @@
+{
+  "review_id": "20261113T030637-f02e87d9",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "拔尘",
+      "拔城",
+      "拔新",
+      "拔身",
+      "不拔",
+      "拔地参天",
+      "拔剑行",
+      "斠订",
+      "斠平",
+      "斠书"
+    ],
+    "related_kept_candidates": {
+      "不": [
+        "不二",
+        "不烦",
+        "不朽",
+        "不羁",
+        "不忮",
+        "不已",
+        "不涩",
+        "烧不尽",
+        "不辍",
+        "不悔",
+        "不衒",
+        "心不为囚"
+      ],
+      "天": [
+        "参天地",
+        "瓶中天地",
+        "见天地",
+        "参天",
+        "帷中天地",
+        "凰游天地",
+        "天地间",
+        "圌中天地",
+        "天地谱",
+        "探天地",
+        "天地尽宽",
+        "享见天地"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "行义",
+        "麇行远山",
+        "鲜行",
+        "肯行",
+        "涧行"
+      ],
+      "尘": [
+        "涤尘",
+        "非尘",
+        "浮尘",
+        "尘寰",
+        "祛尘"
+      ],
+      "拔": [
+        "拔擢"
+      ],
+      "平": [
+        "昇平",
+        "砥平",
+        "平安帖",
+        "星落平塅",
+        "平塅",
+        "平沙无垠",
+        "鹬落平沙",
+        "日暖平塬",
+        "慎平",
+        "霞映平川"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "竞新",
+        "新荚",
+        "茗新",
+        "新貌",
+        "硔谷新绿"
+      ],
+      "书": [
+        "云间书斋",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "女书",
+        "书椠",
+        "佳书",
+        "书香递远",
+        "瑾书",
+        "书林",
+        "书衡",
+        "见书山"
+      ],
+      "地": [
+        "参天地",
+        "瓶中天地",
+        "见天地",
+        "帷中天地",
+        "凰游天地",
+        "天地间",
+        "圌中天地",
+        "天地谱",
+        "探天地",
+        "天地尽宽",
+        "享见天地",
+        "蓦见天地"
+      ],
+      "城": [
+        "干城",
+        "厂与城",
+        "城垣",
+        "崞城记",
+        "斗城",
+        "扞城",
+        "城隅",
+        "城南隅",
+        "鄢城",
+        "半城春"
+      ],
+      "参": [
+        "参天地",
+        "参天",
+        "参悟",
+        "参差",
+        "参昴",
+        "参昴相望"
+      ],
+      "剑": [
+        "砺剑",
+        "仗剑"
+      ],
+      "身": [
+        "絜身"
+      ]
+    },
+    "literature_phrase_examples": {
+      "拔尘": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 297812,
+          "context": "烦君试拔尘埃足，来伴元生漫浪游。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1346788,
+          "context": "一层高步武，千仞拔尘嚣。"
+        }
+      ],
+      "拔城": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 85668,
+          "context": "拔城阵云合，转斾胡星坠。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 153017,
+          "context": "城守鲁将军，拔城从此去。"
+        }
+      ],
+      "拔新": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 305555,
+          "context": "寒弓弯未试，秋剑拔新磨。"
+        },
+        {
+          "book": "史记",
+          "line": 505,
+          "context": "七年，拔新城。"
+        }
+      ],
+      "拔身": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 60741,
+          "context": "茂挺独先觉，拔身渡京虹。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 137153,
+          "context": "拔身泥滓底，飘迹云霞上。"
+        }
+      ],
+      "不拔": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 90566,
+          "context": "会看根不拔，莫计枝凋伤。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 319053,
+          "context": "不拔金钗赂汉臣，徒嗟玉艳委胡尘。"
+        }
+      ],
+      "拔地参天": [],
+      "拔剑行": [],
+      "斠订": [],
+      "斠平": [],
+      "斠书": []
+    },
+    "dictionary_phrase_entries": {
+      "拔尘": [],
+      "拔城": [],
+      "拔新": [],
+      "拔身": [
+        {
+          "title": "拔身",
+          "pinyin": "bá shēn",
+          "definition": "1.脫身。《資治通鑑．卷二八五．後晉紀六．齊王開運三年》：「延壽復書言：『久處異域，思歸中國。乞發大軍應接，拔身南去。』辭旨懇密。」\n2.拔擢，晉升。《晉書．卷五八．列傳．周訪》：「虓厲志貞亮，無愧古烈。未及拔身，奄隕厥命。」",
+          "entry_id": "000140063",
+          "sheet": "1150929辭典匯出",
+          "row": 12474,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "不拔": [
+        {
+          "title": "不拔",
+          "pinyin": "bù bá",
+          "definition": "堅固不能動搖。魏．曹冏〈六代論〉：「豈非深根固蔕，不拔之道乎？」《三國演義》第三〇回：「今若攻操營而不拔，瓊等見獲，吾屬皆被擒矣。」",
+          "entry_id": "005650001",
+          "sheet": "1150929辭典匯出",
+          "row": 19931,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "拔地参天": [],
+      "拔剑行": [],
+      "斠订": [],
+      "斠平": [],
+      "斠书": []
+    },
+    "direct_dictionary": {
+      "拔": {
+        "definition": "uproot, pull out",
+        "mandarin": "bá",
+        "official_dictionary": [
+          {
+            "title": "拔",
+            "pinyin": "bá",
+            "definition": "[動]\n1.拉出、抽出。如：「拔草」、「拔旗」、「拔劍」。《孟子．盡心上》：「楊子取為我，拔一毛而利天下不為也。」\n2.吸取。如：「拔毒」、「拔出膿來」。\n3.除去。如：「拔禍根」、「拔去眼中釘，肉中刺」。\n4.選出。如：「提拔」、「選拔」。《漢書．卷七五．李尋傳》：「閉絕私路，拔進英雋。」\n5.特出。《孟子．公孫丑上》：「出於其類，拔乎其萃。」《文選．孔稚珪．北山移文》：「夫以耿介拔俗之標，瀟灑出塵之想。」\n6.拉高。如：「拔起嗓門尖叫。」\n7.動搖、改變。如：「堅忍不拔」、「牢不可拔」。《易經．乾卦．文言》：「樂則行之，憂則違之，確乎其不可拔。」\n8.攻取、占領。如：「連拔五城」。《孫子．謀攻》：「殺士三分之一，而城不拔者，此攻之災也。」\n9.矯治。如：「用藥膏將扭傷的脖子拔直。」\n[名]\n括，箭的尾端。《詩經．秦風．駟驖》：「公曰：『左之。』舍拔則獲。」漢．毛亨．傳：「拔，矢末也。」\n[副]\n急速。《禮記．少禮》：「毋拔來，毋報往。」漢．鄭玄．注：「報讀為赴疾之赴，拔、赴皆疾也。」",
+            "entry_id": "00014",
+            "sheet": "1150929辭典匯出",
+            "row": 15,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "尘": {
+        "definition": "dust, dirt, ashes, cinders",
+        "mandarin": "chén",
+        "related_characters": [
+          {
+            "character": "塵",
+            "relation": "kTraditionalVariant",
+            "definition": "dust, dirt, ashes, cinders",
+            "mandarin": "chén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "城": {
+        "definition": "castle; city, town; municipality",
+        "mandarin": "chéng",
+        "official_dictionary": [
+          {
+            "title": "城",
+            "pinyin": "chéng",
+            "definition": "[名]\n1.古時環繞京師或圍繞某一區域以供防守的大圍牆。《廣韻．平聲．清韻》：「城，城郭。」《墨子．七患》：「城者，所以自守也。」唐．李白〈送友人〉詩：「青山橫北郭，白水遶東城。」\n2.都市。如：「京城」、「城市」。\n3.姓。如戰國時有城渾。\n[動]\n築城。《詩經．小雅．出車》：「天子命我，城彼朔方。」《明史．卷三．太祖本紀三》：「是月，城西寧。」",
+            "entry_id": "08494",
+            "sheet": "1150929辭典匯出",
+            "row": 8508,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "新",
+            "pinyin": "xīn",
+            "definition": "[形]\n1.沒有使用過的。與「舊」相對。如：「新辦法」、「新衣」、「新筆」。\n2.剛開始的、始出現的。如：「新芽」、「新生兒」、「新品種」。\n[名]\n1.泛指一切新的人、事、物、知識等。如：「履新」、「汰舊換新」、「溫故知新」。\n2.剛收成的農作物。《禮記．月令》：「是月也，農乃登穀，天子嘗新。」《新唐書．卷一一八．宋務光傳》：「家無接新之儲，國乏俟荒之蓄。」\n3.朝代名。參見「新莽」條。\n4.姓。如春秋時晉國有新穆子。\n[動]\n改進或使改變，而成為新的、好的。如：「改過自新」、「一新耳目」。《書經．胤征》：「舊染汙俗，咸與惟新。」《禮記．大學》：「苟日新、日日新、又日新。」\n[副]\n不久前、剛才。如：「新寫的字」、「新買的衣服」。《荀子．不苟》：「新浴者振其衣，新沐者彈其冠。」",
+            "entry_id": "07163",
+            "sheet": "1150929辭典匯出",
+            "row": 7172,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "舊",
+                "pinyin": "jiù",
+                "definition": "[形]\n不新的、古老的、從前的。如：「舊日」、「舊交」、「舊車」、「舊衣服」、「舊習慣」。《詩經．大雅．文王》：「周雖舊邦，其命維新。」唐．杜牧〈旅宿〉詩：「寒燈思舊事，斷雁警愁眠。」\n[名]\n交情、老朋友。如：「念舊」、「懷舊」、「親朋故舊」。《三國志．卷三八．蜀書．許靖傳》：「吳郡都尉許貢、會稽太守王朗素與靖有舊，故往保焉。」",
+                "entry_id": "05717",
+                "sheet": "1150929辭典匯出",
+                "row": 5724
+              },
+              {
+                "title": "新芽",
+                "pinyin": "xīn yá",
+                "definition": "新長出的嫩芽。如：「窗前的那盆玫瑰花，開始抽新芽了。」",
+                "entry_id": "071630304",
+                "sheet": "1150929辭典匯出",
+                "row": 107803
+              },
+              {
+                "title": "新生兒",
+                "pinyin": "xīn shēng ér",
+                "definition": "從剛出生到一個月大的嬰兒，都稱為「新生兒」。",
+                "entry_id": "071630270",
+                "sheet": "1150929辭典匯出",
+                "row": 107776
+              },
+              {
+                "title": "履新",
+                "pinyin": "lǚ xīn",
+                "definition": "1.時逢新的一年。《新唐書．卷一九．禮樂志九》：「在位者皆再拜，宣制曰：『履新之慶，與公等同之。』」\n2.官吏接任新職。《文明小史》第六回：「新委的是傅祝登傅大人，不日就來履新。」也作「履任」。",
+                "entry_id": "038930017",
+                "sheet": "1150929辭典匯出",
+                "row": 66851
+              },
+              {
+                "title": "汰舊換新",
+                "pinyin": "tài jiù huàn xīn",
+                "definition": "把舊的淘汰，更換成新的。如：「這些設備即將汰舊換新，以增加生產效率。」",
+                "entry_id": "024790001",
+                "sheet": "1150929辭典匯出",
+                "row": 49426
+              },
+              {
+                "title": "溫故知新",
+                "pinyin": "wēn gù zhī xīn",
+                "definition": "語本《論語．為政》：「子曰：『溫故而知新，可以為師矣。』」指溫習舊業，可增進新知。亦指複習學過的知識，而獲得新的知識、體會。《漢書．卷一〇．成帝紀》：「儒林之官，四海淵原，宜皆明於古今，溫故知新，通達國體，故謂之博士。」《文明小史》第二五回：「起先教他經書，不上一年，溫故知新，五經均已讀熟。」",
+                "entry_id": "114950028",
+                "sheet": "1150929辭典匯出",
+                "row": 159732
+              },
+              {
+                "title": "新莽",
+                "pinyin": "xīn mǎng",
+                "definition": "王莽篡漢自立，國號新（西元9～23），建都長安，史稱為「新莽」。",
+                "entry_id": "071630016",
+                "sheet": "1150929辭典匯出",
+                "row": 107600
+              },
+              {
+                "title": "改過自新",
+                "pinyin": "gǎi guò zì xīn",
+                "definition": "改正過失，重新做人。《漢書．卷二三．刑法志》：「刑者不可復屬，雖後欲改過自新，其道亡繇也。」唐．白居易〈議肉刑可廢不可用〉：「其欲廢之者，則曰：『刻膚革，斷肢體，人主忍而用之。則愷悌惻隱之心乖矣。』此緹縈所謂雖欲改過自新，其道亡繇者也。」也作「改過從新」。",
+                "entry_id": "039760028",
+                "sheet": "1150929辭典匯出",
+                "row": 67702
+              },
+              {
+                "title": "一新耳目",
+                "pinyin": "yī xīn ěr mù",
+                "definition": "所見所聞給人截然不同的新感受。如：「近來公司大刀闊斧的革新，令人一新耳目。」",
+                "entry_id": "104820877",
+                "sheet": "1150929辭典匯出",
+                "row": 147429
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "身": {
+        "definition": "body; trunk, hull; Kangxi radical 158",
+        "mandarin": "shēn",
+        "official_dictionary": [
+          {
+            "title": "身",
+            "pinyin": "juān",
+            "definition": "參見「身毒」條。",
+            "entry_id": "06126",
+            "sheet": "1150929辭典匯出",
+            "row": 6134,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "身毒",
+                "pinyin": "juān dú",
+                "definition": "印度的舊稱。參見「印度共和國」條。",
+                "entry_id": "061260001",
+                "sheet": "1150929辭典匯出",
+                "row": 96234
+              }
+            ]
+          },
+          {
+            "title": "身",
+            "pinyin": "shēn",
+            "definition": "[名]\n1.軀體的總稱，或專指軀幹。如：「搜身」、「翻身」、「隨身攜帶」、「身長七尺」。《孟子．告子下》：「餓其體膚，空乏其身。」《楚辭．屈原．九歌．國殤》：「首身離兮心不懲。」\n2.物體的中心或主要部分。如：「車身」、「船身」、「機身」。\n3.生命。如：「奮不顧身」、「捨身救人」。《石點頭．卷八．貪婪漢六院賣風流》：「五臟六腑，顯出在外，方才氣斷身絕。」\n4.自己。如：「以身作則」。《論語．學而》：「吾日三省吾身。」《戰國策．趙策四》：「此其近者禍及身，遠者及其子孫。」\n5.品格、修養。如：「修身齊家」。《晏子春秋．內篇．問上》：「稱身就位，計能受祿。」\n6.身分、地位。如：「出身寒微」、「身敗名裂」。《論語．微子》：「不降其志，不辱其身。」\n7.女子懷孕稱為「有身」。《詩經．大雅．大明》：「大任有身，生此文王。」《金瓶梅》第四〇回：「一腳躡滑了，把個六、七個月身扭吊了。」\n8.量詞。計算佛像數量的單位。如：「夾道兩旁有菩薩五百身。」\n9.二一四部首之一。\n[副]\n親自。如：「身臨其境」。《墨子．號令》：「伍有罪，若能身捕罪人，若告之吏，皆構之。」\n[代]\n第一人稱，相當於「我」。魏、晉朝人多自稱為「身」。《三國志．卷三六．蜀書．張飛傳》：「身是張益德也，可來共決死！」南朝宋．劉義慶《世說新語．文學》：「身今日當與君共談析理。」",
+            "entry_id": "08968",
+            "sheet": "1150929辭典匯出",
+            "row": 8983,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "不": {
+        "definition": "no, not; un-; negative prefix",
+        "mandarin": "bù",
+        "official_dictionary": [
+          {
+            "title": "不",
+            "pinyin": "bù",
+            "definition": "[副]\n1.否定詞。有不是、未、非等義。如：「不能」、「不法」、「不久」、「不容易」、「不好吃」、「拿不動」。\n2.與「就」連用，表示有所選擇的意思。如：「晚上回到家的消遣，不是看書，就是聽音樂。」\n[助]\n1.用於句末，表示疑問的語氣。如：「醫生，請問他的身體狀況好不？」\n2.用來加強語氣，往往與「好」字連用。如：「這齣戲好不精彩！」、「誤會澄清了，心情好不輕鬆！」\n3.置於句中，用來調整音節，沒有特殊含義。《詩經．小雅．車攻》：「徒御不驚，大庖不盈。」漢．毛亨．傳：「不驚，驚也；不盈，盈也。」《楚辭．宋玉．招魂》：「被文服纖，麗而不奇些。」漢．王逸．注：「不奇，奇也。」\n（「不」字在去聲字之前，變讀為陽平。）",
+            "entry_id": "00565",
+            "sheet": "1150929辭典匯出",
+            "row": 567,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "不",
+            "pinyin": "fōu",
+            "definition": "[名]\n姓。如晉朝有不準。",
+            "entry_id": "01591",
+            "sheet": "1150929辭典匯出",
+            "row": 1595,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "不",
+            "pinyin": "fǒu",
+            "definition": "[助]\n1.表示否定。同「否」。《史記．卷一〇一．袁盎鼂錯傳》：「上問曰：『道軍所來，聞鼂錯死，吳楚罷不？』」\n2.表示疑問、未定。同「否」。晉．陶淵明〈遊斜川〉詩：「未知從今去，當復如此不？」唐．李白〈秋浦歌〉一七首之一：「寄言向江水，汝意憶儂不？」",
+            "entry_id": "01597",
+            "sheet": "1150929辭典匯出",
+            "row": 1601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "不",
+            "pinyin": "fū",
+            "definition": "[名]\n花萼上的蒂。《詩經．小雅．常棣》：「常棣之華，鄂不韡韡。」",
+            "entry_id": "01759",
+            "sheet": "1150929辭典匯出",
+            "row": 1763,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "地": {
+        "definition": "earth; soil, ground; region",
+        "mandarin": "de dì",
+        "official_dictionary": [
+          {
+            "title": "地",
+            "pinyin": "de",
+            "definition": "[助]\n結構助詞。用在副詞之後。同「的」。如：「慢慢地吃」、「好好地玩」、「雨勢漸漸地小了。」",
+            "entry_id": "01919",
+            "sheet": "1150929辭典匯出",
+            "row": 1924,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "地",
+            "pinyin": "dì",
+            "definition": "[名]\n1.人類萬物棲息生長的場所。有時直接指地球。如：「大地」、「天地」、「地心」。《易經．繫辭下》：「仰則觀象於天，俯則觀法於地。」\n2.陸地。如：「高地」、「窪地」、「山地」、「地下水」。唐．李白〈靜夜思〉詩：「床前明月光，疑是地上霜。」\n3.田地、土地。如：「耕地」、「荒地」、「薄地」、「地盡其利」。\n4.場所。如：「發祥地」、「目的地」、「根據地」、「所在地」、「置之死地而後生。」\n5.區域。如：「本地」、「外地」、「腹地」、「殖民地」、「臺灣各地」。\n6.地位、位置。如：「留餘地」、「易地而處」。《晉書．卷八四．王恭傳》：「自負才地高華，恆有宰輔之望。」\n7.心意、意志的領域。如：「頗有見地。」《宋史．卷四三八．儒林傳．何基傳》：「榦告以必有真實心地、刻苦工夫而後可，基悚惕受命。」\n8.本質、質地、底子。南朝梁．劉勰《文心雕龍．定勢》：「譬五色之錦，各以本采為地矣。」\n9.路程。如：「這裡距離省城約有三十里地。」唐．李白〈妾薄命〉詩：「長門一步地，不肯暫迴車。」\n[助]\n1.用於副詞語尾。如：「忽地」、「驀地」。\n2.置於「立」、「坐」、「臥」等動詞之後。相當於「著」。元．王實甫《西廂記．第一本．第一折》：「山門下立地，看有甚麼人來？」",
+            "entry_id": "02134",
+            "sheet": "1150929辭典匯出",
+            "row": 2141,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "参": {
+        "definition": "take part in, intervene; ginseng; 21st lunar mansion, determinative star ζ Orionis (Alnitak)",
+        "mandarin": "cān",
+        "related_characters": [
+          {
+            "character": "参",
+            "relation": "kTraditionalVariant",
+            "definition": "take part in, intervene; ginseng; 21st lunar mansion, determinative star ζ Orionis (Alnitak)",
+            "mandarin": "cān"
+          },
+          {
+            "character": "參",
+            "relation": "kTraditionalVariant",
+            "definition": "take part in, intervene; ginseng",
+            "mandarin": "cān"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "参",
+            "pinyin": "sān",
+            "definition": "[名]\n三的大寫。",
+            "entry_id": "10055",
+            "sheet": "1150929辭典匯出",
+            "row": 10069,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "参",
+            "pinyin": null,
+            "definition": "「參」的異體字。",
+            "entry_id": "09773-1",
+            "sheet": "1150929辭典匯出",
+            "row": 139741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "official_dictionary": [
+          {
+            "title": "天",
+            "pinyin": "tiān",
+            "definition": "[名]\n1.日月星辰所羅列的空間，即天空。如：「碧海青天」、「頂天立地」。唐．韓愈〈原道〉：「坐井而觀天，曰天小者，非天小也。」\n2.一晝夜的時間。如：「昨天」、「今天」、「大後天」、「一天」。\n3.白天或一天中的某一段時間。如：「三天三夜」、「三更天」。宋．程顥〈春日偶成〉詩：「雲淡風輕近午天，傍花隨柳過前川。」\n4.時節、季節。如：「春天」、「三伏天」、「黃梅天」。\n5.氣候。如：「晴天」、「陰天」、「大熱天」、「下雨天」。\n6.自然。如：「人定勝天」、「樂天知命」。《莊子．天道》：「是故古之明大道者，先明天而道德次之。」\n7.指宇宙萬物的主宰。有時指大自然、有時指命運、有時指天神等。如：「生死有命，富貴在天。」、「謀事在人，成事在天。」、「不怨天，不尤人。」《書經．泰誓中》：「天視自我民視，天聽自我民聽。」\n8.指神靈所住的世界。如：「升天」、「歸天」。\n9.不可或缺或最重要的事物。如：「以夫為天」。《漢書．卷四十三．酈食其傳》：「王者以民為天，而民以食為天。」\n10. 量詞。計算時間的單位。一天有二十四小時。如：「這項工作限你三十天時間完成，不得拖延。」\n[形]\n1.自然的、天然的。如：「天才」、「天險」、「天籟」、「天性」。\n2.數目極大的。如：「天價」、「天量」、「天文數字」。\n3.騰空架設的、駕於空中的。如：「天橋」、「天窗」、「天棚」。\n[副]\n很、非常。如：「天大的好消息」、「天大的新聞」。",
+            "entry_id": "02701",
+            "sheet": "1150929辭典匯出",
+            "row": 2707,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "剑": {
+        "definition": "sword, dagger, saber",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "劍",
+            "relation": "kTraditionalVariant",
+            "definition": "sword, dagger, saber",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "official_dictionary": [
+          {
+            "title": "行",
+            "pinyin": "háng",
+            "definition": "[名]\n1.行列。直列為行，橫排為列。《左傳．成公二年》：「屬當戎行，無所逃隱。」唐．杜甫〈贈衛八處士〉詩：「昔別君未婚，兒女忽成行。」\n2.兄弟姐妹長幼的次序。如：「排行老三。」\n3.量詞。計算成排東西的單位。如：「一行樹」、「一目十行」。唐．杜甫〈絕句〉四首之三：「兩個黃鸝鳴翠柳，一行白鷺上青天。」\n4.營業交易的機構。如：「銀行」、「洋行」、「分行」、「商行」、「行庫」。\n5.職業。如：「各行各業」、「行行出狀元」、「三句話不離本行」。\n6.表處所，用於人稱之後。宋．周邦彥〈風流子．新綠小池塘〉詞：「最苦夢魂，今宵不到伊行。」《水滸傳》第一四回：「你這等賊心賊肝，我行須使不得！」",
+            "entry_id": "04903",
+            "sheet": "1150929辭典匯出",
+            "row": 4909,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "hàng",
+            "definition": "參見「行行」、「樹行子」等條。",
+            "entry_id": "04913",
+            "sheet": "1150929辭典匯出",
+            "row": 4919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "行行",
+                "pinyin": "háng háng",
+                "definition": "1.各個行業。如：「三百六十行，行行出狀元。」\n2.每一行。如：「隊伍行進時，動作必須劃一，行行都要對齊。」",
+                "entry_id": "0490300193",
+                "sheet": "1150929辭典匯出",
+                "row": 81202
+              },
+              {
+                "title": "行行",
+                "pinyin": "hàng hàng",
+                "definition": "剛強的樣子。《論語．先進》：「閔子侍側誾誾如也，子路行行如也。」",
+                "entry_id": "049130001",
+                "sheet": "1150929辭典匯出",
+                "row": 81289
+              },
+              {
+                "title": "行行",
+                "pinyin": "xíng xíng",
+                "definition": "1.慢步行走。通常形容走走停停，徘徊不進的樣子。《文選．古詩十九首．行行重行行》：「行行重行行，與君生別離。」\n2.施行、辦理。如：「行行好事」。",
+                "entry_id": "072400177",
+                "sheet": "1150929辭典匯出",
+                "row": 109350
+              },
+              {
+                "title": "樹行子",
+                "pinyin": "shù hàng zi",
+                "definition": "栽植整齊的樹林。",
+                "entry_id": "091020033",
+                "sheet": "1150929辭典匯出",
+                "row": 131842
+              }
+            ]
+          },
+          {
+            "title": "行",
+            "pinyin": "xíng",
+            "definition": "[動]_x000D_\n1.走、走路。如：「直行」、「寸步難行」、「錦衣夜行」。《論語．述而》：「三人行，必有我師焉？」唐．王維〈終南別業〉詩：「行到水窮處，坐看雲起時。」_x000D_\n2.往。《詩經．秦風．無衣》：「脩我甲兵，與子偕行。」唐．杜甫〈奉濟驛重送嚴公四韻〉：「幾時杯重把，昨夜月同行。」_x000D_\n3.移動、流動。如：「運行」。《易經．乾卦》：「《象》曰：『天行健，君子以自強不息。』」唐．杜甫〈夢李白〉詩二首之二：「浮雲終日行，遊子久不至。」_x000D_\n4.流通。如：「流行」、「風行一時」、「通行全國」、「發行報刊」。《左傳．襄公二十五年》：「言之無文，行而不遠。」_x000D_\n5.做、從事。如：「行醫」、「行善」。《左傳．隱公元年》：「多行不義必自斃。」_x000D_\n6.實施、實行。《易經．繫辭上》：「推而行之謂之通。」唐．孔穎達．正義：「因推此以可變而施行之，謂之通也。」《老子》第四一章：「上士聞道，勤而行之。」_x000D_\n7.同意、允許。多用於徵詢意見。如：「今天中午我想吃麵，行不行？」《小五義》第二一回：「蔣爺說：『咱們到底說下個時候。』柳爺說：『限你三晝夜的工夫，行不行？』」_x000D_\n8.經歷、經過。《管子．問》：「城粟軍糧，其可以行幾何年也？」唐．房玄齡．注：「行，由經也。」_x000D_\n9.出嫁。《詩經．邶風．泉水》：「女子有行，遠父母兄弟。」_x000D_\n[名]_x000D_\n1.道路。《詩經．小雅．小弁》：「行有死人，尚或墐之。」_x000D_\n2.路程。《老子》第六四章：「九層之臺，起於累土；千里之行，始於足下。」_x000D_\n3.行為。《荀子．不苟》：「庸言必信之，庸行必慎之。」《禮記．樂記》：「禮以道其志，樂以和其聲，政以一其行，刑以防其姦。」_x000D_\n4.行書的簡稱。如：「行草」、「行楷」。_x000D_\n5.一種樂府和古詩的體裁。如：〈短歌行〉、〈琵琶行〉、〈飲馬長城窟行〉。_x000D_\n6.量詞。計算酌酒奉客的單位。漢．揚雄《法言．修身》：「賓主百拜，而酒三行。」宋．司馬光〈訓儉示康〉：「客至未嘗不置酒，或三行五行，多不過七行。」_x000D_\n7.姓。如漢代有行宏。_x000D_\n8.二一四部首之一。_x000D_\n[形]_x000D_\n1.能幹、幹練。如：「你真行。」「他在這方面行得很。」_x000D_\n2.可以、恰當。如：「他這篇文章寫得還行。」「做事只要盡心盡力就行了。」《朱子語類．卷三三．論語一五．雍也篇四》：「如讀書，要理會得透徹；做事，亦要做得行。」_x000D_\n[副]_x000D_\n不久、將要。如：「行將就木」。唐．元稹〈遣悲懷〉詩三首之二：「衣裳已施行看盡，針線猶存未忍開。」_x000D_\n[連]_x000D_\n且、又。三國魏．曹丕〈與吳質書〉：「既痛逝者，行自念也。」",
+            "entry_id": "07240",
+            "sheet": "1150929辭典匯出",
+            "row": 7249,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "xìng",
+            "definition": "[名]\n行為舉止。如：「品行」、「操行」、「獸行」、「德行」。《論語．公冶長》：「聽其言而觀其行。」",
+            "entry_id": "07249",
+            "sheet": "1150929辭典匯出",
+            "row": 7258,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "斠": {
+        "definition": "measure",
+        "mandarin": "jiào",
+        "official_dictionary": [
+          {
+            "title": "斠",
+            "pinyin": "jiào",
+            "definition": "[動]\n1.古代量穀物時，用器具畫除過滿的載量，使穀物與斗斛平齊。《說文解字．斗部》：「斠，平斗斛量也。」如：「斠斛」。\n2.校訂、校正。如：「斠訂」、「斠補」。",
+            "entry_id": "05681",
+            "sheet": "1150929辭典匯出",
+            "row": 5688,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "订": {
+        "definition": "draw up agreement; arrange",
+        "mandarin": "dìng",
+        "related_characters": [
+          {
+            "character": "訂",
+            "relation": "kTraditionalVariant",
+            "definition": "draw up agreement; arrange",
+            "mandarin": "dìng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "平": {
+        "definition": "flat, level, even; peaceful",
+        "mandarin": "píng",
+        "official_dictionary": [
+          {
+            "title": "平",
+            "pinyin": "pián",
+            "definition": "[動]\n辨別。參見「平章百姓」條。",
+            "entry_id": "00918",
+            "sheet": "1150929辭典匯出",
+            "row": 920,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "平章百姓",
+                "pinyin": "pián zhāng bó xìng",
+                "definition": "百姓，百官。「平章百姓」指辨明各官員的職守。《書經．堯典》：「九族既睦，平章百姓。」《隋書．卷二五．刑法志》：「內以平章百姓，外以和協萬邦，寔曰輕平，稱為簡易。」",
+                "entry_id": "009180002",
+                "sheet": "1150929辭典匯出",
+                "row": 25155
+              }
+            ]
+          },
+          {
+            "title": "平",
+            "pinyin": "píng",
+            "definition": "[形]\n1.不高不低、不凸出的。如：「平地」、「平房」、「平沙」。唐．王維〈觀獵〉詩：「迴看射雕處，千里暮雲平。」宋．陸游〈初發夷陵〉詩：「山平水遠蒼茫外，地闢天開指顧中。」\n2.協調的。《左傳．襄公二十九年》：「五聲和，八風平。」\n3.均等的。如：「平均」、「平等」。\n4.安寧的。如：「心平氣和」、「風平浪靜」。唐．王灣〈次北固山下〉詩：「潮平兩岸闊，風正一帆懸。」\n5.沒有戰爭的。如：「和平」、「太平」。唐．韓愈〈爭臣論〉：「閔其時之不平，人之不乂。」\n6.尋常的。如：「平日」、「平時」、「平常」。\n7.不分勝負的。如：「平手」。\n8.缺少變化的。如：「聲音低平」。\n[副]\n1.公正的、無偏倚的。如：「平分」、「平反」。\n2.不高不低的。如：「平推」、「平剷」。\n[動]\n1.使安定、征服。如：「平亂」、「跨海平魔」。唐．李白〈子夜吳歌．秋歌〉：「何日平胡虜，良人罷遠征。」\n2.媾和、和好。《左傳．桓公八年》：「秋，隨及楚平，楚子將不許。」\n3.壓抑。如：「怨氣難平」。\n4.犁平、輾平、推平。如：「去將地平一平。」\n[名]\n1.平上去入四聲之一。參見「平聲」條。\n2.大陸地區北平市的簡稱。如：「王兄今日赴平公幹。」\n3.姓。如漢代有平當。",
+            "entry_id": "00956",
+            "sheet": "1150929辭典匯出",
+            "row": 958,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "平地",
+                "pinyin": "píng dì",
+                "definition": "1.平坦的土地。《大宋宣和遺事．元集》：「恃著強力，不用水向平地上推了舟船，共他徒黨在家為淫亂之行。」《老殘遊記》第一五回：「店後有個大坑塘，卻早凍得如平地了。」\n2.整平地面。《論語．子罕》：「譬如平地，雖覆一簣，進，吾往也。」\n3.忽然的，無緣無故的。如：「平地風波」。《永樂大典戲文三種．張協狀元．第三一出》：「跳過禹門三尺浪，俄然平地一聲雷。」",
+                "entry_id": "009560076",
+                "sheet": "1150929辭典匯出",
+                "row": 25568
+              },
+              {
+                "title": "平房",
+                "pinyin": "píng fáng",
+                "definition": "無樓的房子。如：「隨著居民經濟的好轉，原本隨處可見的平房，紛紛改建成高樓大廈。」",
+                "entry_id": "009560058",
+                "sheet": "1150929辭典匯出",
+                "row": 25546
+              },
+              {
+                "title": "平均",
+                "pinyin": "píng jūn",
+                "definition": "1.輕重相等，分量一致。《漢書．卷二一．律曆志上》：「鈞者，均也，陽施其氣，陰化其物，皆得其成就平均也。」\n2.均勻計算。如：「董事會決議，公司今年的盈餘平均分給員工。」《清史稿．卷一〇七．選舉志二》：「臨時試無定期，學期、年終、畢業考試分數與平日分數平均計算。」",
+                "entry_id": "009560177",
+                "sheet": "1150929辭典匯出",
+                "row": 25673
+              },
+              {
+                "title": "平等",
+                "pinyin": "píng děng",
+                "definition": "1.彼此同等、相等。《文明小史》第一八回：「無論他是什麼人，我等皆當平等相看，把他引而進之，豈宜疏而遠之？」\n2.縣名。在河南省洛陽縣西南，位於伊河之西。",
+                "entry_id": "009560069",
+                "sheet": "1150929辭典匯出",
+                "row": 25558
+              },
+              {
+                "title": "心平氣和",
+                "pinyin": "xīn píng qì hé",
+                "definition": "心氣平和，不急不怒。《宋史．卷四三四．儒林傳四．呂祖謙傳》：「心平氣和，不立崖異，一時英偉卓犖之士皆歸心焉。」《官場現形記》第三三回：「外國人瞧不起我們中國的官，也不自今日為始了。這件事我碰著了，倒還是心平氣和。」也作「心平靜氣」、「心平氣定」、「心和氣平」。",
+                "entry_id": "071530024",
+                "sheet": "1150929辭典匯出",
+                "row": 107142
+              },
+              {
+                "title": "風平浪靜",
+                "pinyin": "fēng píng làng jìng",
+                "definition": "無風無浪。比喻平靜或情勢穩定。《醒世恆言．卷四〇．馬當神風送滕王閣》：「須臾，霧散雲收，風平浪靜，滿船之人俱各無事，唯有王勃乃作神仙去矣！」《二十年目睹之怪現狀》第一七回：「我又帶上房門，到艙面上去看看，只見天水相連，茫茫無際；喜得風平浪靜，船也甚穩。」也作「平風靜浪」、「風靜浪平」。",
+                "entry_id": "017270020",
+                "sheet": "1150929辭典匯出",
+                "row": 36559
+              },
+              {
+                "title": "和平",
+                "pinyin": "hé píng",
+                "definition": "1.和洽安寧。《易經．咸卦》：「聖人感人心而天下和平，觀其所感而天地萬物之情可見矣。」\n2.沒有戰爭的狀態。如：「促進世界和平，是人類共同的目標。」\n3.溫和。如：「藥性和平」。",
+                "entry_id": "047210004",
+                "sheet": "1150929辭典匯出",
+                "row": 78242
+              },
+              {
+                "title": "太平",
+                "pinyin": "tài píng",
+                "definition": "1.極盛之世。《史記．卷二．夏本紀》：「天下於是太平治。」《文選．王康琚．反招隱詩》：「伯夷竄首陽，老聃伏柱史，昔在太平時，亦有巢居子。」也作「泰平」。\n2.安寧、平安無事。《警世通言．卷三四．王嬌鸞百年長恨》：「店主人見張客無事，偶話及此房內曾有婦人縊死，往往作怪，今番卻太平了。」也作「泰平」。\n3.南北朝梁敬帝的年號（西元556～557）。",
+                "entry_id": "024780013",
+                "sheet": "1150929辭典匯出",
+                "row": 49174
+              },
+              {
+                "title": "平日",
+                "pinyin": "píng rì",
+                "definition": "平時、平常。《後漢書．卷一〇．皇后紀上．和熹鄧皇后紀》：「太后以先帝左右，待之有恩，平日尚無惡言，今反若此，不合人情。」《文明小史》第三二回：「登時臉上發青，要待翻腔，卻因平日合他交情尚好……，只得忍住了。」",
+                "entry_id": "009560268",
+                "sheet": "1150929辭典匯出",
+                "row": 25765
+              },
+              {
+                "title": "平時",
+                "pinyin": "píng shí",
+                "definition": "平常、平日。《初刻拍案驚奇》卷一五：「你平時那一班同歡同賞，知音識趣的朋友，怎沒一個來偢睬。」《文明小史》第二一回：「這錢木仙雖然平時佩服他的，此時卻不以為然。」",
+                "entry_id": "009560248",
+                "sheet": "1150929辭典匯出",
+                "row": 25743
+              },
+              {
+                "title": "平常",
+                "pinyin": "píng cháng",
+                "definition": "1.平時、往常。《後漢書．卷一．光武帝紀上》：「未嘗自伐昆陽之功，又不敢為伯升服喪，飲食言笑如平常。」《老殘遊記》第六回：「因為天陰，所以比平常更黑得快。」\n2.普通、平凡，沒有特異之處。《文明小史》第三九回：「果然有這樣一個閨女，皮色呢倒也很白淨，只是招牙露齒的，相貌其實平常，配不上我這逢兒。」《紅樓夢》第五七回：「別人之父母皆年高有德之人，獨他父母偏是酒糟透之人，於女兒分中平常。」",
+                "entry_id": "009560242",
+                "sheet": "1150929辭典匯出",
+                "row": 25737
+              },
+              {
+                "title": "平手",
+                "pinyin": "píng shǒu",
+                "definition": "不分勝負的比賽結果。如：「今年大專盃籃球賽，本校與去年冠軍隊打成平手。」",
+                "entry_id": "009560254",
+                "sheet": "1150929辭典匯出",
+                "row": 25749
+              },
+              {
+                "title": "平分",
+                "pinyin": "píng fēn",
+                "definition": "平均分配。《史記．卷六四．司馬穰苴傳》：「悉取將軍之資糧享士卒，身與士卒平分糧食。」《儒林外史》第一三回：「老婆白白送你，還可以發得幾百銀子財！你須要大大的請我，將來銀子同我平分，我纔和你說。」",
+                "entry_id": "009560052",
+                "sheet": "1150929辭典匯出",
+                "row": 25540
+              },
+              {
+                "title": "平反",
+                "pinyin": "píng fān",
+                "definition": "推翻錯判，洗雪冤情。《漢書．卷三六．楚元王傳》：「每行京兆尹事，多所平反罪人。」《清史稿．卷二七三．郎廷佐列傳》：「擢江西贛州知府，平反冤獄，居官有聲。」",
+                "entry_id": "009560050",
+                "sheet": "1150929辭典匯出",
+                "row": 25538
+              },
+              {
+                "title": "平亂",
+                "pinyin": "píng luàn",
+                "definition": "平定叛亂。《後漢書．卷四八．楊李翟應霍爰徐列傳．楊終》：「高祖平亂，約法三章。太宗至仁，除去收孥。」《三國志．卷一一．魏書．袁張涼國田王邴管傳．袁渙》：「若夫兼愛天下而反之於正，雖以武平亂而濟之以德，誠百王不易之道也。」",
+                "entry_id": "009560134",
+                "sheet": "1150929辭典匯出",
+                "row": 25628
+              },
+              {
+                "title": "平聲",
+                "pinyin": "píng shēng",
+                "definition": "一種漢語調類。聲調平出而沒有高低的變化。今國音分化為陰平、陽平二類，即第一聲、第二聲。第二聲注音符號用「ˊ」來表示。",
+                "entry_id": "009560263",
+                "sheet": "1150929辭典匯出",
+                "row": 25760
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "拔尘",
+      "decision": "keep",
+      "reason": "“拔尘”可理解为超脱尘俗、拔出尘嚣，字义相合且凝练，有明确意象；虽非固定词，组合自然。"
+    },
+    {
+      "name": "拔城",
+      "decision": "reject",
+      "reason": "按字面是攻取城池，偏军事行动描述，整体缺少品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "拔新",
+      "decision": "uncertain",
+      "reason": "可联想到拔取、选出新事物，但两字关系不够明确，作为完整名称自然度存疑。"
+    },
+    {
+      "name": "拔身",
+      "decision": "uncertain",
+      "reason": "词义可指脱身或拔擢晋升，但两种意思差异较大，名称所指不明，语义辨识度不足。"
+    },
+    {
+      "name": "不拔",
+      "decision": "keep",
+      "reason": "有坚固不动摇之义，是凝练的状态表达，组合自然，适合作为抽象品牌名。"
+    },
+    {
+      "name": "拔地参天",
+      "decision": "reject",
+      "reason": "完整名称是形容事物高耸挺拔的成语式描述，整体偏句式化，不符合已排除常见成语的命名要求。"
+    },
+    {
+      "name": "拔剑行",
+      "decision": "reject",
+      "reason": "由拔剑与行组成，像动作叙述或武侠题材标题，整体语义不够连贯，品牌辨识度不足。"
+    },
+    {
+      "name": "斠订",
+      "decision": "keep",
+      "reason": "“斠”有校订、校正之义，“订”与之构成语义相近而通顺的校订之意；用字虽较生僻，含义可核实，整体简洁。"
+    },
+    {
+      "name": "斠平",
+      "decision": "keep",
+      "reason": "“斠”有使量器平齐、校正之义，“平”与之形成校准至平的自然关系；字义明确且组合凝练。"
+    },
+    {
+      "name": "斠书",
+      "decision": "uncertain",
+      "reason": "“斠”可指校订，但与“书”并列时究竟指校订书籍还是其他关系不够明确，组合自然度存疑。"
+    }
+  ]
+}

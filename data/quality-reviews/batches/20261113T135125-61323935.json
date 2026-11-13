@@ -1,0 +1,966 @@
+{
+  "review_id": "20261113T135125-61323935",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "啵声",
+      "啵然一笑",
+      "西成",
+      "西陆",
+      "西窗夜话",
+      "南枝",
+      "南山松",
+      "南归雁",
+      "白苎衣",
+      "苎萝"
+    ],
+    "related_kept_candidates": {
+      "一": [
+        "一程",
+        "一隅",
+        "一木",
+        "一念",
+        "抱一",
+        "如一",
+        "初一",
+        "一枕清风",
+        "一川烟雨",
+        "一枝春",
+        "太一",
+        "一脉"
+      ],
+      "枝": [
+        "一枝春",
+        "枝丫",
+        "枝桠",
+        "缠枝",
+        "缠枝纹",
+        "缠枝莲",
+        "茱枝映月",
+        "蔓枝",
+        "柘枝歌",
+        "梾枝映月",
+        "梾枝向远",
+        "梾枝"
+      ],
+      "山": [
+        "南山枸影",
+        "北山松",
+        "岐山松",
+        "岐山听松",
+        "岐山松月",
+        "冬山松风",
+        "南山薇",
+        "西窗见山",
+        "崂山松风",
+        "盘山松",
+        "高山松",
+        "邻山听松"
+      ],
+      "归": [
+        "百川归一",
+        "九九归一",
+        "归墅",
+        "归墟",
+        "归棹",
+        "棹月归",
+        "凉云归岫",
+        "椋鸟归林",
+        "暮归",
+        "归荑",
+        "远帆归埼",
+        "广陵归帆"
+      ],
+      "衣": [
+        "白苧衣",
+        "一衣带水",
+        "袗衣",
+        "绀衣",
+        "𫄨衣",
+        "骍衣",
+        "蝉衣",
+        "绉衣",
+        "麻衣巷",
+        "黻衣",
+        "蓑衣人",
+        "衲衣"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "夜": [
+        "丙夜",
+        "乙夜",
+        "凉夜星河",
+        "玉螭照夜",
+        "螭照长夜",
+        "黝夜星河",
+        "夜镫",
+        "夜雨窸窣",
+        "夏夜听螽",
+        "夜蝠",
+        "夜雨呢喃",
+        "夜鸺"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "蘧然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然"
+      ],
+      "南": [
+        "南山枸影",
+        "南山薇",
+        "雁南徙",
+        "迦南",
+        "南埼",
+        "南斗",
+        "城南隅",
+        "南岑有渰",
+        "南衡",
+        "司南",
+        "小南风",
+        "南溟"
+      ],
+      "窗": [
+        "西窗见山",
+        "西窗晓色",
+        "琐窗",
+        "晴窗斋",
+        "窗旁雨",
+        "萤窗",
+        "晴窗听鹒",
+        "午窗风",
+        "蜻过竹窗",
+        "竹影覆窗",
+        "榆影映窗",
+        "窄窗映月"
+      ],
+      "萝": [
+        "青萝",
+        "菠萝",
+        "女萝",
+        "莳萝",
+        "云萝",
+        "松萝",
+        "萝间月",
+        "松萝映月",
+        "云萝听泉",
+        "松萝含翠",
+        "月照云萝",
+        "风过松萝"
+      ],
+      "松": [
+        "北山松",
+        "岐山松",
+        "岐山听松",
+        "岐山松月",
+        "冬山松风",
+        "崂山松风",
+        "盘山松",
+        "高山松",
+        "邻山听松",
+        "商山松风",
+        "畔山听松",
+        "蟠松"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声",
+        "豪声",
+        "篥声",
+        "篪声",
+        "松月弓声"
+      ],
+      "陆": [
+        "着陆",
+        "陆离",
+        "商陆",
+        "商陆花",
+        "商陆青枝",
+        "商陆承露",
+        "陆衡",
+        "星陆"
+      ],
+      "白": [
+        "白苧衣",
+        "月白斋",
+        "楮白",
+        "白瓷",
+        "剖白",
+        "唐白",
+        "白麇",
+        "涡白",
+        "赫月白",
+        "三月白",
+        "白梣",
+        "白桦"
+      ],
+      "话": [
+        "悄悄话",
+        "话本"
+      ],
+      "雁": [
+        "雁南徙",
+        "雁踪",
+        "孤雁",
+        "霞飞雁阵",
+        "头雁"
+      ],
+      "笑": [
+        "笑脸",
+        "浅笑",
+        "笑靥",
+        "噙笑"
+      ],
+      "西": [
+        "西窗见山",
+        "西窗晓色",
+        "西望",
+        "西行",
+        "西风",
+        "西岭",
+        "西野",
+        "西原",
+        "西山晴",
+        "西岭春",
+        "西风暖",
+        "西山月"
+      ]
+    },
+    "literature_phrase_examples": {
+      "啵声": [],
+      "啵然一笑": [],
+      "西成": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 3388,
+          "context": "律应西成，气躔南吕。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 17859,
+          "context": "律应西成，气躔南吕。"
+        }
+      ],
+      "西陆": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 18645,
+          "context": "地游穷北际，云崖尽西陆。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 32952,
+          "context": "西陆蝉声唱，南冠客思侵。"
+        }
+      ],
+      "西窗夜话": [],
+      "南枝": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 7888,
+          "context": "翳翳陌上桑，南枝交北堂。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 16758,
+          "context": "春光解天意，偏发殿南枝。"
+        }
+      ],
+      "南山松": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 56021,
+          "context": "借问南山松叶意，何如北砌槿花新。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 64287,
+          "context": "讵知南山松，独立自萧𫗋。"
+        }
+      ],
+      "南归雁": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 86310,
+          "context": "远树应怜北地春，行人却羡南归雁。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 14662,
+          "context": "又见南归雁。"
+        }
+      ],
+      "白苎衣": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 277416,
+          "context": "尘土空缁白苎衣，秋来嬾上向吴亭。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1337967,
+          "context": "窗下亲裁白苎衣，日长花影上阶迟。"
+        }
+      ],
+      "苎萝": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 24620,
+          "context": "山薮半潜匿，苎萝更蒙遮。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 71521,
+          "context": "西施越溪女，出自苎萝山。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "啵声": [],
+      "啵然一笑": [],
+      "西成": [],
+      "西陆": [],
+      "西窗夜话": [],
+      "南枝": [],
+      "南山松": [],
+      "南归雁": [],
+      "白苎衣": [],
+      "苎萝": []
+    },
+    "direct_dictionary": {
+      "啵": {
+        "definition": "phonetic",
+        "mandarin": "bo bō",
+        "official_dictionary": [
+          {
+            "title": "啵",
+            "pinyin": "bō",
+            "definition": "[動]\n親吻。如：「啵一下臉頰」。\n[助]\n表示商榷或祈使的語尾助詞。如：「弟兄們，努力幹啵。」",
+            "entry_id": "00046",
+            "sheet": "1150929辭典匯出",
+            "row": 47,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "啵",
+            "pinyin": "bo",
+            "definition": "(一)之又音。",
+            "entry_id": "00129",
+            "sheet": "1150929辭典匯出",
+            "row": 130,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "声",
+            "pinyin": null,
+            "definition": "「聲」的異體字。",
+            "entry_id": "09031-1",
+            "sheet": "1150929辭典匯出",
+            "row": 130793,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "official_dictionary": [
+          {
+            "title": "然",
+            "pinyin": "rán",
+            "definition": "[動]\n1.燒。燃的本字。《孟子．公孫丑上》：「若火之始然，泉之始達。」\n2.贊同。《史記．卷八．高祖本紀》：「沛公然其計，從之。」《三國演義》第一回：「劉焉然其說，隨即出榜招募義兵。」\n[形]\n對、正確。如：「不以為然」。《論語．雍也》：「雍之言然。」\n[代]\n如此。《論語．憲問》：「子曰：『何必高宗，古之人皆然。』」唐．柳宗元〈桐葉封弟辯〉：「周公曰：『天子不可戲。』乃封小弱弟於唐。吾意不然。」\n[連]\n1.但是、可是。《左傳．僖公三十年》：「吾不能早用子，今急而求子，是寡人之過也。然鄭亡，子亦有不利焉。」\n2.雖。《董西廂》卷八：「師言然善，奈處凡浮，遭此屈辱，不能無恨。」\n3.然後。《隋書．卷七〇．李密傳》：「待士馬肥充，然可與人爭利。」\n[助]\n1.形容詞或副詞詞尾。如：「斐然」、「赫然」、「恍然」。《詩經．邶風．終風》：「終風且霾，惠然肯來。」\n2.用於句末，表肯定、斷定的語氣。《論語．憲問》：「羿善射，奡盪舟，俱不得其死然。」《禮記．檀弓下》：「穆公召縣子而問然。」\n3.表示比擬的語助詞。《呂氏春秋．孟秋紀．蕩兵》：「夫兵不可偃也，譬之若水火然，善用之則為福，不能用之則為禍。」\n[歎]\n唯，表應答。《論語．陽貨》：「子曰：『然！有是言也。』」《晏子春秋．內篇．雜下》：「公見其妻曰：『此子之內子邪？』晏子對曰：『然！是也。』」\n[名]\n姓。如漢代有然溫。",
+            "entry_id": "09207",
+            "sheet": "1150929辭典匯出",
+            "row": 9221,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "official_dictionary": [
+          {
+            "title": "一",
+            "pinyin": "yī",
+            "definition": "[名]_x000D_\n1.自然數的開始。如：「一、二、三……。」大寫作「壹」。阿拉伯數字作「1」。_x000D_\n2.姓。如明代有一炫宗。_x000D_\n3.二一四部首之一。_x000D_\n[形]_x000D_\n1.單個。如：「一人」、「一物兩用」。_x000D_\n2.相同、一致。如：「一模一樣」、「大小不一」。_x000D_\n3.專注的。如：「一心一意」、「專一不變」。_x000D_\n4.全、滿、整。如：「一身是汗」、「一屋子人」、「一身是膽」。_x000D_\n5.每、各。如：「一班五十人」、「一頁六百字」、「共派八隊，一隊二十人。」_x000D_\n6.一次。如：「一而再，再而三。」《禮記．中庸》：「人一能之，己百之。」_x000D_\n7.另外的。如：「蟬，一名知了。」、「番茄，一名西紅柿。」_x000D_\n[動]_x000D_\n統一。《孟子．梁惠王上》：「不嗜殺人者能一之。」_x000D_\n[副]_x000D_\n1.才、剛剛。如：「一聽就懂」、「天一亮，他就起來。」_x000D_\n2.偶然。如：「一不小心」、「一不留神」。_x000D_\n3.表示加強的動作或突然的現象。如：「把頭一扭」、「用手一摸」、「天氣一涼，就感冒了。」_x000D_\n4.概括。如：「一般來說」。_x000D_\n5.每每、每逢。如：「一想到那件事，她總是笑個不停。」_x000D_\n6.放在二疊字動詞之間，表行為是不費力或嘗試性的。如：「雙手動一動」、「問一問」、「隨便說一說」。_x000D_\n7.事物的某方面。如：「一則以喜，一則以憂。」、「一不沾親，二不帶故。」_x000D_\n8.竟、乃。表示事出意外。如：「一至於斯」。《史記．卷六八．商君傳》：「嗟乎，為法之敝一至此哉！」_x000D_\n9.皆。《荀子．勸學》：「端而言，蠕而動，一可以為法則。」_x000D_\n[助]_x000D_\n表示程度，加強語氣。《文選．古詩十九首．西北有高樓》：「上有絃歌聲，音響一何悲。」《戰國策．燕策一》：「因仰而弔齊王桉戈而郤曰：『此一何慶弔相隨之速也？』」_x000D_\n[連]_x000D_\n或。《莊子．應帝王》：「泰氏其臥徐徐，其覺于于，一以己為馬，一以己為牛。」_x000D_\n（「一」字單用或在一詞一句的末尾，念陰平聲；在去聲字前，念陽平聲；在陰平、陽平、上聲之前，念去聲。）",
+            "entry_id": "10482",
+            "sheet": "1150929辭典匯出",
+            "row": 10494,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "笑": {
+        "definition": "smile, laugh, giggle; snicker",
+        "mandarin": "xiào",
+        "official_dictionary": [
+          {
+            "title": "笑",
+            "pinyin": "xiào",
+            "definition": "[動]\n1.因欣喜而在臉上露出快樂表情，或發出喜悅的聲音。如：「玩笑」、「嬉笑」、「微笑」。《論語．憲問》：「樂然後笑，人不厭其笑。」\n2.譏笑、嘲笑。如：「見笑」、「恥笑」。《孟子．梁惠王上》：「以五十步笑百步，則何如？」唐．韓愈〈調張籍〉詩：「蚍蜉撼大樹，可笑不自量。」\n[副]\n致贈時，希望對方接受的敬辭。如：「笑納」。《水滸傳》第二回：「特地使小校送些薄禮，酬謝大郎不殺之恩，不要推卻，望乞笑留。」",
+            "entry_id": "07035",
+            "sheet": "1150929辭典匯出",
+            "row": 7044,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "西": {
+        "definition": "west(ern); westward; occident; Kangxi radical 146",
+        "mandarin": "xī",
+        "official_dictionary": [
+          {
+            "title": "西",
+            "pinyin": "xī",
+            "definition": "[名]\n1.方位名。為日落的一方，與「東」相對。如：「由西往東」。\n2.稱歐美西方國家。如：「中西合併」。\n3.西班牙的簡稱。\n4.姓。如明代有西鳴岐。\n[形]\n1.西邊的。如：「日落西山」。\n2.西方國家的、歐美國家的。如：「西服」、「西餐」、「西裝」、「西醫」。",
+            "entry_id": "06734",
+            "sheet": "1150929辭典匯出",
+            "row": 6743,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "official_dictionary": [
+          {
+            "title": "成",
+            "pinyin": "chéng",
+            "definition": "[動]\n1.做好事情。《說文解字．戊部》：「成，就也。」如：「完成」、「功成名就」、「大功告成」。\n2.變為。如：「點石成金」、「磨杵成針」。\n3.達到。如：「成千上萬」、「成雙成對」。\n4.促成。如：「成全」、「玉成其事」、「成人之美」。\n5.可以。如：「他想要耍賴是不成的。」\n[名]\n1.量詞。計算十等分概念的單位。如：「有八成希望。」\n2.古代十里平方的土地。《左傳．哀公元年》：「有田一成，有眾一旅。」\n3.現有的一切。如：「創業容易守成難。」唐．吳兢《貞觀政要．卷一．論君道》：「帝王之業，草創與守成孰難？」\n4.姓。如漢代有成瑨。\n[形]\n1.完整的。如：「成品」、「成天」。宋．陸游〈何君墓表〉：「不以字害其成句，不以句累其全篇。」\n2.現有的、舊有的。如：「成例」、「成規」、「成語」。\n3.構成整體的。如：「成分」、「成員」。",
+            "entry_id": "08492",
+            "sheet": "1150929辭典匯出",
+            "row": 8506,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "陆": {
+        "definition": "land, continental; army",
+        "mandarin": "lù",
+        "related_characters": [
+          {
+            "character": "陸",
+            "relation": "kTraditionalVariant",
+            "definition": "land, continental; army",
+            "mandarin": "lù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窗": {
+        "definition": "window",
+        "mandarin": "chuāng",
+        "official_dictionary": [
+          {
+            "title": "窗",
+            "pinyin": "chuāng",
+            "definition": "[名]\n房屋中用來透光通氣的洞孔。如：「窗戶」、「天窗」、「玻璃窗」。",
+            "entry_id": "08649",
+            "sheet": "1150929辭典匯出",
+            "row": 8663,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "夜": {
+        "definition": "night, dark; in night; by night",
+        "mandarin": "yè",
+        "official_dictionary": [
+          {
+            "title": "夜",
+            "pinyin": "yè",
+            "definition": "[名]\n1.從天黑到天亮之間的一段時間。如：「夜以繼日」、「夙興夜寐」。《左傳．莊公七年》：「夏四月辛卯夜，恆星不見。」\n2.姓。如漢代有夜龍。\n[形]\n昏暗的。漢．王符《潛夫論．讚學》：「是故索物於夜室者，莫良於火。」唐．盧照鄰〈同崔錄事哭鄭員外〉詩：「夜臺無曉箭，朝奠有虛尊。」\n[動]\n夜行。唐．蘇味道〈正月十五夜〉詩：「金吾不禁夜，玉漏莫相催。」",
+            "entry_id": "10758",
+            "sheet": "1150929辭典匯出",
+            "row": 10772,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "话": {
+        "definition": "speech, talk, language; dialect",
+        "mandarin": "huà",
+        "related_characters": [
+          {
+            "character": "話",
+            "relation": "kTraditionalVariant",
+            "definition": "speech, talk, language; dialect",
+            "mandarin": "huà"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "南": {
+        "definition": "south; southern part; southward",
+        "mandarin": "nán",
+        "official_dictionary": [
+          {
+            "title": "南",
+            "pinyin": "ná",
+            "definition": "參見「南無」條。",
+            "entry_id": "02917",
+            "sheet": "1150929辭典匯出",
+            "row": 2923,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "南無",
+                "pinyin": "ná mó",
+                "definition": "佛教用語。梵語Namas的音譯。為敬禮的意思。但在中國常被誤解為歸依的意思。《妙法蓮華經》卷一：「我聞聖師子，深淨微妙音，喜稱南無佛。」宋．蘇軾〈阿彌陀佛贊〉：「口誦南無阿彌陀，如日出地萬國曉。」",
+                "entry_id": "029170001",
+                "sheet": "1150929辭典匯出",
+                "row": 55467
+              }
+            ]
+          },
+          {
+            "title": "南",
+            "pinyin": "nán",
+            "definition": "[名]\n1.方位名。與「北」相對。如：「坐北朝南」、「大江南北」。《詩經．小雅．何人斯》：「胡不自南？」\n2.南方的樂曲。《禮記．文王世子》：「胥鼓南。」漢．鄭玄．注：「南，南夷之樂也。」\n3.姓。如唐代有南霽雲。\n[動]\n向南行、向南移動。《周禮．地官．大司徒》：「日南則景短，多暑。」《宋史．卷四二八．道學傳二．楊時傳》：「其歸也，顥目送之曰：『吾道南矣！』」\n[形]\n南邊的。如：「南岸」、「南極」。《陳書．卷二一．王固傳》：「魏人以南人嗜魚，大設罟網。」",
+            "entry_id": "02979",
+            "sheet": "1150929辭典匯出",
+            "row": 2986,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "枝": {
+        "definition": "branches, limbs; branch off",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "枝",
+            "pinyin": "qí",
+            "definition": "[名]\n多出的腳趾。同「跂」。如：「駢拇枝指」。《集韻．平聲．支韻》：「跂，《說文》：『足多指也。』或作枝。」",
+            "entry_id": "06241",
+            "sheet": "1150929辭典匯出",
+            "row": 6250,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "枝",
+            "pinyin": "zhī",
+            "definition": "[名]_x000D_\n1.樹幹從旁生出的枝條。《說文解字．木部》：「枝，木別生條也。」如：「枝幹」、「枯枝」、「嫩枝」。《莊子．逍遙遊》：「鷦鷯巢於深林，不過一枝；偃鼠飲河，不過滿腹。」_x000D_\n2.凡自同一本源而分出者。《左傳．莊公六年》：「《詩》云：『本枝百世。』」《荀子．儒效》：「故以枝代主而非越也。」_x000D_\n3.四肢。通「肢」。《莊子．大宗師》：「墮枝體，黜聰明，離形去知。」_x000D_\n4.量詞：（1）計算植物的單位。如：「一枝花」。唐．白居易〈長恨歌〉：「玉容寂寞淚闌干，梨花一枝春帶雨。」宋．葉紹翁〈遊園不值〉詩：「春色滿園關不住，一枝紅杏出牆來。」（2）計算細長物體的單位。如：「三枝毛筆」。元．鄭光祖《智勇定齊》第二折：「潑毛團帶著我一枝金鈚箭走了也。……眾人跟著某，務要趕上。」《水滸傳》第三回：「鬅鬆雲髻，插一枝青玉簪兒。」《蕩寇志》第一回：「左首將台上，豎著一枝沖霄拔地的黃漆旗竿，上有一面杏黃旗。」（3）計算隊伍的單位。《三寶太監西洋記通俗演義》第三七回：「元帥老爺吩咐旗牌官撥出一枝軍馬，跟隨鄭護衛出陣成功。」_x000D_\n5.姓。如漢代有枝百英。_x000D_\n[形]_x000D_\n不中肯的、不一致的。《易經．繫辭下》：「中心疑者，其辭枝。」",
+            "entry_id": "07467",
+            "sheet": "1150929辭典匯出",
+            "row": 7478,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "归": {
+        "definition": "return; return to, revert to",
+        "mandarin": "guī",
+        "related_characters": [
+          {
+            "character": "归",
+            "relation": "kTraditionalVariant",
+            "definition": "return; return to, revert to",
+            "mandarin": "guī"
+          },
+          {
+            "character": "歸",
+            "relation": "kTraditionalVariant",
+            "definition": "return; return to, revert to",
+            "mandarin": "guī"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "归",
+            "pinyin": null,
+            "definition": "「歸」的異體字。",
+            "entry_id": "04271-1",
+            "sheet": "1150929辭典匯出",
+            "row": 72145,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雁": {
+        "definition": "wild goose",
+        "mandarin": "yàn",
+        "official_dictionary": [
+          {
+            "title": "雁",
+            "pinyin": "yàn",
+            "definition": "[名]_x000D_\n動物名。一種鳥類。形狀似鵝，頸和翼較長，嘴長微黃，羽淡紫褐色，鳴聲嘹亮，飛時自成行列。每年春分後往北飛，秋分後往南飛，為一種季節性的候鳥。",
+            "entry_id": "11039",
+            "sheet": "1150929辭典匯出",
+            "row": 11054,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "白": {
+        "definition": "white; pure, unblemished; bright",
+        "mandarin": "bái",
+        "official_dictionary": [
+          {
+            "title": "白",
+            "pinyin": "bó",
+            "definition": "(一)之讀音。",
+            "entry_id": "00060",
+            "sheet": "1150929辭典匯出",
+            "row": 61,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "白",
+            "pinyin": "bái",
+            "definition": "[名]\n1.像雪或乳汁般素淨的顏色。\n2.代表五行中金的顏色。如天地四方的西方、一年四季的秋、五臟的肺等。《說文解字．白部》：「白，西方色也。」\n3.罰酒的杯子。也泛指一般酒杯。《漢書．卷一〇〇．敘傳上》：「及趙、李諸侍中皆引滿舉白，談笑大噱。」《文選．左思．吳都賦》：「飛觴舉白。」唐．李善．注：「白，罰爵名也。」\n4.戲劇裡的對話。如：「道白」、「對白」。\n5.姓。如唐代有白居易、白行簡，元代有白樸。\n6.二一四部首之一。\n[動]\n1.告訴。《樂府詩集．卷七三．雜曲歌辭十三．古辭．焦仲卿妻》：「便可白公姥，及時相遣歸。」\n2.在書信末署名下的敬語，用於平輩或晚輩。唐．韓愈〈答李翊書〉：「聊相為言之。愈白。」\n3.晨光初發，天明。宋．蘇軾〈赤壁賦〉：「相與枕藉乎舟中，不知東方之既白。」\n4.彰明、表明。如：「真相大白」、「含冤莫白」。\n5.揭穿，專指戳穿謊言。元．王曄《桃花女．楔子》：「我周公在卦鋪裡面，你自喚他出來，白他謊，討他銀子去。」\n6.表示輕視或不滿的動作。如：「白了他一眼。」\n[形]\n1.白色的。如：「白紙」、「白布」、「藍天白雲」。\n2.潔淨的。如：「潔白」。\n3.淺顯的。如：「白話」、「淺白」。\n4.率直、誠實。如：「坦白」。\n5.沒有添加任何東西的。如：「白飯」、「白開水」。\n6.錯誤的。如：「寫白字」。\n7.表示輕視或不滿的樣子。如：「白眼」。\n8.以合法掩護非法，以正當掩護不法的。與「黑」相對。如：「白道」。\n[副]\n1.徒然。如：「白跑一趟」、「白來」、「白費」。《紅樓夢》第六〇回：「沒的惹人笑話自己獃，白給人做粗活。」\n2.不付代價而得到好處。如：「白吃白喝」。\n3.就是、完全、實在。《金瓶梅》第一一回：「家中好不無人，只靠著我逐日出來供唱，……也要往宅裡看看姑娘，白不得個閒。」",
+            "entry_id": "00132",
+            "sheet": "1150929辭典匯出",
+            "row": 133,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "苎": {
+        "definition": "china grass, ramie",
+        "mandarin": "zhù",
+        "related_characters": [
+          {
+            "character": "苧",
+            "relation": "kTraditionalVariant",
+            "definition": "China grass, ramie (Boehmeria nivea)",
+            "mandarin": "níng zhù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "衣": {
+        "definition": "clothes, clothing; cover, skin; Kangxi radical 145",
+        "mandarin": "yī",
+        "official_dictionary": [
+          {
+            "title": "衣",
+            "pinyin": "yī",
+            "definition": "[名]\n1.用布帛、皮革或各種纖維材質等做成。穿著在身上，用以遮蔽身體、防熱禦寒。通常古多指上衣。《詩經．邶風．綠衣》：「綠兮衣兮，綠衣黃裳」漢．毛亨．傳：「上曰衣，下曰裳。」漢．揚雄《法言．修身》：「惜乎衣未成而轉為裳也。」今或泛指衣服。如：「毛衣」、「雨衣」、「成衣」、「衣不蔽體」。《詩經．豳風．七月》：「無衣無褐，何以卒歲？」\n2.包覆在物體外的東西。如：「書衣」、「胞衣」、「糖衣藥丸」。\n3.蔬菜、果實外的薄皮。也指表皮的霜粉。唐．李建勳〈宿友人山居寄司徒相公〉詩二首之一：「隔紙烘茶蕊，移鐺剝芋衣。」宋．莊綽《雞肋編》卷上：「京師賣生果，凡李子必摘其蒂，不敢觸其實，必留上衣，令勃勃然，人方以新而為好。至食者須雪去之。」\n4.特指苔蘚等延貼地面、岩石或樹皮上生長的隱花植物。如：「苔衣」、「地衣」。唐．白居易〈營閒事〉詩：「暖變牆衣色，晴催木筆花。」\n5.姓。如明代有衣守信。\n6.二一四部首之一。",
+            "entry_id": "10483",
+            "sheet": "1150929辭典匯出",
+            "row": 10495,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "衣",
+            "pinyin": "yì",
+            "definition": "[動]\n1.穿衣服。《論語．子罕》：「衣敝縕袍，與衣狐貉者立而不恥者，其由也與？」《史記．卷九二．淮陰侯列傳》：「漢王授我上將軍印，予我數萬眾，解衣衣我，推食食我。」\n2.覆蓋、裹紥。《易經．繫辭下》：「古之葬者，厚衣之以薪。」唐．柳宗元〈段太尉&f5fd4_.png;事狀〉：「太尉大泣曰：『乃我困汝！』即自取水洗去血，裂裳衣瘡，手注善藥，旦夕自哺農者，然後食。」\n3.倚靠。同「依」。元．關漢卿《雙赴夢》第四折：「衣的我奉玉甌，進御酒，一齊山壽。」清．孫星衍《尙書今古文注疏．卷一五．康誥》：「今民將在祇遹乃文考，紹聞衣德言。」疏：「釋詁云：……衣，同依。」",
+            "entry_id": "10594",
+            "sheet": "1150929辭典匯出",
+            "row": 10608,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "萝": {
+        "definition": "type of creeping plant; turnip",
+        "mandarin": "luó",
+        "related_characters": [
+          {
+            "character": "萝",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          },
+          {
+            "character": "蘿",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "萝",
+            "pinyin": null,
+            "definition": "「蘿」的異體字。",
+            "entry_id": "03797-1",
+            "sheet": "1150929辭典匯出",
+            "row": 65743,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "啵声",
+      "decision": "uncertain",
+      "reason": "“啵”可指亲吻或作语气助词，“啵声”可理解为亲吻声，但搭配不够自然，品牌语义与辨识度不明确。"
+    },
+    {
+      "name": "啵然一笑",
+      "decision": "reject",
+      "reason": "疑似借“莞然一笑”等熟语的结构，将“啵”作音效或亲吻义嵌入，语义关系生硬，呈现为俏皮句式而非凝练品牌名。"
+    },
+    {
+      "name": "西成",
+      "decision": "keep",
+      "reason": "古语中“西成”指秋收、收成，唐诗用例也支持此义；组合简短稳健，有成熟、丰收的联想。"
+    },
+    {
+      "name": "西陆",
+      "decision": "keep",
+      "reason": "“西陆”是传统天文、季节语汇，常指秋季或西方星区；有古典依据，结构凝练，具品牌辨识度。"
+    },
+    {
+      "name": "西窗夜话",
+      "decision": "reject",
+      "reason": "完整名称是“西窗下夜间谈话”的场景描述，近于栏目名或内容标题，缺少公司品牌名所需的凝练感。"
+    },
+    {
+      "name": "南枝",
+      "decision": "keep",
+      "reason": "指向朝南的枝条，也有古典诗歌中的春意联想；自然简洁，意象明确。与“枝”字旧候选虽共享单字，但不是同一完整意象或近似变体。"
+    },
+    {
+      "name": "南山松",
+      "decision": "uncertain",
+      "reason": "字面为南山上的松树，画面清楚但整体更像自然物的普通描述，作为品牌名的凝练度和独特性偏弱；不与“北山松”等仅换方位词的旧候选重复。"
+    },
+    {
+      "name": "南归雁",
+      "decision": "keep",
+      "reason": "指向南归的雁群，迁徙方向与季节意象明确，古诗用例佐证其自然表达；不是其他“归”字候选的近似变体。"
+    },
+    {
+      "name": "白苎衣",
+      "decision": "uncertain",
+      "reason": "“苎衣”是苎麻制成的衣物，“白苎衣”语义真实且有诗文用例，但整体是具体服饰名称，作为品牌名的辨识度与凝练感有限；与已保留同名候选完全重复。"
+    },
+    {
+      "name": "苎萝",
+      "decision": "uncertain",
+      "reason": "可指苎萝山，并因西施故事形成专名联想；但名称的专名来源及其适配性不够自明，需避免仅凭联想赋予品牌寓意。"
+    }
+  ]
+}

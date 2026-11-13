@@ -1,0 +1,654 @@
+{
+  "review_id": "2026-11-12-low-twentyfirst-independent-lasttail-0",
+  "model": "gpt-6.1-sol",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "潮生",
+      "新潮",
+      "潮汐",
+      "思潮",
+      "潮流",
+      "弄潮儿",
+      "观潮者"
+    ],
+    "related_kept_candidates": {
+      "儿": [
+        "儿时",
+        "门道儿",
+        "有谱儿"
+      ],
+      "潮": [
+        "广陵潮生",
+        "涨潮",
+        "潮汛",
+        "鲲听潮",
+        "暮潮",
+        "螭听潮",
+        "潮酷",
+        "潮涡",
+        "鲱潮",
+        "踏潮",
+        "旺潮",
+        "听潮港",
+        "潮涌",
+        "早潮",
+        "晚潮",
+        "獭听潮",
+        "海獭听潮",
+        "浪潮"
+      ],
+      "思": [
+        "杂思",
+        "覃思",
+        "覃思源",
+        "构思",
+        "思慕",
+        "歧思",
+        "奇思",
+        "疑思录",
+        "思齐",
+        "文思",
+        "思远",
+        "心思",
+        "思维",
+        "静思堂",
+        "行思录"
+      ],
+      "观": [
+        "观云馆",
+        "观澜斋",
+        "观海云斋",
+        "观星斋",
+        "观徼",
+        "观瓷",
+        "卧观云",
+        "借酒观云",
+        "山海大观",
+        "观澜榭",
+        "观照",
+        "澄观",
+        "观器堂"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "竞新",
+        "新荚",
+        "茗新",
+        "新貌",
+        "硔谷新绿",
+        "新奇",
+        "新蹊",
+        "玉珂新雨",
+        "枸木新声",
+        "人间新章",
+        "柯新雨",
+        "蓓新程",
+        "一枚新芽",
+        "奕新",
+        "乡山新雨",
+        "翊新",
+        "铄新",
+        "瑾新",
+        "古楸新枝",
+        "冈野新晴",
+        "榉木新芽",
+        "亦新",
+        "璟新"
+      ],
+      "生": [
+        "广陵潮生",
+        "梣木生辉",
+        "粗笔生春",
+        "凉生",
+        "春又生",
+        "蔓生",
+        "蔓生朝露",
+        "蔓生集",
+        "生态",
+        "奇木生春",
+        "葜生",
+        "蓓生",
+        "浮生",
+        "荇生",
+        "菂生",
+        "互生",
+        "化生",
+        "鹡鸰共生"
+      ],
+      "者": [
+        "疾行者"
+      ],
+      "流": [
+        "绀色流光",
+        "奔流",
+        "赫月流光",
+        "螳影流光",
+        "映珂流彩",
+        "流光浮影",
+        "鹪影流光",
+        "大江流",
+        "湘流",
+        "踏江流",
+        "扇影流光",
+        "蝠影流光",
+        "杉影流光",
+        "樟影流光",
+        "桧影流光",
+        "流曛",
+        "涌流",
+        "菼色流光"
+      ],
+      "汐": [
+        "汐声",
+        "汐岸"
+      ]
+    },
+    "literature_phrase_examples": {
+      "潮生": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 10464,
+          "context": "春江潮水连海平，海上明月共潮生。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 44674,
+          "context": "春江潮水连海平，海上明月共潮生。"
+        }
+      ],
+      "新潮": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 412341,
+          "context": "混混过新潮，峨峨起层浪。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 484085,
+          "context": "薄雨啼残雪，新潮蚀嫩沙。"
+        }
+      ],
+      "潮汐": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 41548,
+          "context": "旷哉潮汐池，大矣乾坤力。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 364000,
+          "context": "跻览何所见，茫茫潮汐驰。"
+        }
+      ],
+      "思潮": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 424956,
+          "context": "却思潮上西兴急，风遶山前万个松。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 42071,
+          "context": "熈欲图之乃盛饰声伎娱悦其意以成其恶(伎/巨)(绮/翻)汉主好手搏𢎞熈令指挥使陈道庠引力士刘思潮"
+        }
+      ],
+      "潮流": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 261964,
+          "context": "阴氛出海散，落月向潮流。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 95225,
+          "context": "夜阑天转寒，坐待潮流涨。"
+        }
+      ],
+      "弄潮儿": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 7670,
+          "context": "早知潮有信，嫁与弄潮儿。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 125133,
+          "context": "早知潮有信，嫁与弄潮儿。"
+        }
+      ],
+      "观潮者": []
+    },
+    "dictionary_phrase_entries": {
+      "潮生": [],
+      "新潮": [
+        {
+          "title": "新潮",
+          "pinyin": "xīn cháo",
+          "definition": "1.剛漲起的潮水。宋．孔平仲〈和常父望吳亭〉詩：「混混過新潮，峨峨起層浪。」\n2.比喻思想或行為走在時代尖端。如：「他的打扮一向都很新潮。」",
+          "entry_id": "071630231",
+          "sheet": "1150929辭典匯出",
+          "row": 107744,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "潮汐": [
+        {
+          "title": "潮汐",
+          "pinyin": "cháo xì",
+          "definition": "受日、月引力以及與地球互動形成的離心作用，地表海水發生週期性升降的現象。由於月球遠比太陽近，故月球的引潮力反而是太陽的兩倍多。",
+          "entry_id": "083040014",
+          "sheet": "1150929辭典匯出",
+          "row": 120731,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "思潮": [
+        {
+          "title": "思潮",
+          "pinyin": "sī cháo",
+          "definition": "1.一時代、一地方大眾思想的趨勢。\n2.起伏不定的思緒。",
+          "entry_id": "099350038",
+          "sheet": "1150929辭典匯出",
+          "row": 141214,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "潮流": [
+        {
+          "title": "潮流",
+          "pinyin": "cháo liú",
+          "definition": "1.由於潮汐漲落所產生的海水流動現象。\n2.時事、人情與社會風氣等的傾向。如：「追求自由、民主與人權是二十世紀的時代潮流。」",
+          "entry_id": "083040005",
+          "sheet": "1150929辭典匯出",
+          "row": 120726,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "弄潮儿": [],
+      "观潮者": []
+    },
+    "direct_dictionary": {
+      "潮": {
+        "definition": "tide; moist, wet, damp; flow",
+        "mandarin": "cháo",
+        "official_dictionary": [
+          {
+            "title": "潮",
+            "pinyin": "cháo",
+            "definition": "[名]\n1.海水受日月引力的影響而定時漲落的現象。如：「潮汐」、「潮起潮落」。\n2.像潮水般洶湧起伏的形勢。如：「思潮」、「學潮」。\n[形]\n1.微溼。《紅樓夢》第三五回：「大清早起，在這個潮地方站了半日，也該回去歇息歇息了。」\n2.技藝不高或物質的成色低劣。如：「他的手藝潮。」《紅樓夢》第一〇五回：「潮銀五千二百兩。赤金五十兩。」",
+            "entry_id": "08304",
+            "sheet": "1150929辭典匯出",
+            "row": 8318,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "生": {
+        "definition": "life, living, lifetime; birth",
+        "mandarin": "shēng",
+        "official_dictionary": [
+          {
+            "title": "生",
+            "pinyin": "shēng",
+            "definition": "[動]\n1.長出、生長。如：「生出一對角。」《詩經．大雅．卷阿》：「梧桐生矣，于彼朝陽。」\n2.生產、生育。《詩經．大雅．生民》：「不康禋祀，居然生子。」唐．白居易〈長恨歌〉：「遂令天下父母心，不重生男重生女。」\n3.發生、產生。如：「生病」、「生效」、「橫生枝節」。《左傳．成公二年》：「義以生利，利以平民。」唐．杜甫〈愁〉詩：「江草日日喚愁生，巫峽泠泠非世情。」\n4.生存、活存。如：「置之死地而後生」。\n5.製造、新創。如：「惹事生非」、「你又生出新花樣來了。」\n[名]\n1.生存、生活。如：「起死回生」、「忍辱偷生」。《論語．顏淵》：「死生有命，富貴在天。」\n2.量詞。計算一輩子的單位。如：「三生三世」、「緣定三生」、「三生姻緣」。\n3.生命。如：「輕生」、「餘生」。\n4.泛指生物。如：「眾生」、「群生」、「放生」。\n5.生計。如：「謀生」、「無以為生」。\n6.讀書人稱為「生」。如：「書生」、「儒生」。\n7.學習者、門徒。如：「生徒」、「門生」、「師生」、「學生」。\n8.戲劇裡的角色名稱。如：「小生」、「老生」、「武生」。\n9.姓。如明代有生用和。\n10. 二一四部首之一。\n[形]\n1.果實尚未成熟。如：「這個番石榴太生了，不能吃。」\n2.沒有煮熟的。如：「生肉」、「生飯」。\n3.罕見、不熟悉。如：「生人」、「面生」、「生手」、「生字」。\n4.沒有加工或鍛鍊過的。如：「生鐵」。\n[副]\n1.很、甚。如：「生怕」、「生恐」。唐．劉采春〈囉嗊曲〉六首之一：「不喜秦淮水，生憎江上船。」\n2.強迫。如：「生拉硬扯」。元．關漢卿《蝴蝶夢》第二折：「把三個未發跡小秀士，生扭做吃勘問死囚徒。」\n[助]\n語助詞，無義。《儒林外史》第七回：「況我看見你不喜我這煩劇的事，怎生是好？」",
+            "entry_id": "09024",
+            "sheet": "1150929辭典匯出",
+            "row": 9039,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "新",
+            "pinyin": "xīn",
+            "definition": "[形]\n1.沒有使用過的。與「舊」相對。如：「新辦法」、「新衣」、「新筆」。\n2.剛開始的、始出現的。如：「新芽」、「新生兒」、「新品種」。\n[名]\n1.泛指一切新的人、事、物、知識等。如：「履新」、「汰舊換新」、「溫故知新」。\n2.剛收成的農作物。《禮記．月令》：「是月也，農乃登穀，天子嘗新。」《新唐書．卷一一八．宋務光傳》：「家無接新之儲，國乏俟荒之蓄。」\n3.朝代名。參見「新莽」條。\n4.姓。如春秋時晉國有新穆子。\n[動]\n改進或使改變，而成為新的、好的。如：「改過自新」、「一新耳目」。《書經．胤征》：「舊染汙俗，咸與惟新。」《禮記．大學》：「苟日新、日日新、又日新。」\n[副]\n不久前、剛才。如：「新寫的字」、「新買的衣服」。《荀子．不苟》：「新浴者振其衣，新沐者彈其冠。」",
+            "entry_id": "07163",
+            "sheet": "1150929辭典匯出",
+            "row": 7172,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "舊",
+                "pinyin": "jiù",
+                "definition": "[形]\n不新的、古老的、從前的。如：「舊日」、「舊交」、「舊車」、「舊衣服」、「舊習慣」。《詩經．大雅．文王》：「周雖舊邦，其命維新。」唐．杜牧〈旅宿〉詩：「寒燈思舊事，斷雁警愁眠。」\n[名]\n交情、老朋友。如：「念舊」、「懷舊」、「親朋故舊」。《三國志．卷三八．蜀書．許靖傳》：「吳郡都尉許貢、會稽太守王朗素與靖有舊，故往保焉。」",
+                "entry_id": "05717",
+                "sheet": "1150929辭典匯出",
+                "row": 5724
+              },
+              {
+                "title": "新芽",
+                "pinyin": "xīn yá",
+                "definition": "新長出的嫩芽。如：「窗前的那盆玫瑰花，開始抽新芽了。」",
+                "entry_id": "071630304",
+                "sheet": "1150929辭典匯出",
+                "row": 107803
+              },
+              {
+                "title": "新生兒",
+                "pinyin": "xīn shēng ér",
+                "definition": "從剛出生到一個月大的嬰兒，都稱為「新生兒」。",
+                "entry_id": "071630270",
+                "sheet": "1150929辭典匯出",
+                "row": 107776
+              },
+              {
+                "title": "履新",
+                "pinyin": "lǚ xīn",
+                "definition": "1.時逢新的一年。《新唐書．卷一九．禮樂志九》：「在位者皆再拜，宣制曰：『履新之慶，與公等同之。』」\n2.官吏接任新職。《文明小史》第六回：「新委的是傅祝登傅大人，不日就來履新。」也作「履任」。",
+                "entry_id": "038930017",
+                "sheet": "1150929辭典匯出",
+                "row": 66851
+              },
+              {
+                "title": "汰舊換新",
+                "pinyin": "tài jiù huàn xīn",
+                "definition": "把舊的淘汰，更換成新的。如：「這些設備即將汰舊換新，以增加生產效率。」",
+                "entry_id": "024790001",
+                "sheet": "1150929辭典匯出",
+                "row": 49426
+              },
+              {
+                "title": "溫故知新",
+                "pinyin": "wēn gù zhī xīn",
+                "definition": "語本《論語．為政》：「子曰：『溫故而知新，可以為師矣。』」指溫習舊業，可增進新知。亦指複習學過的知識，而獲得新的知識、體會。《漢書．卷一〇．成帝紀》：「儒林之官，四海淵原，宜皆明於古今，溫故知新，通達國體，故謂之博士。」《文明小史》第二五回：「起先教他經書，不上一年，溫故知新，五經均已讀熟。」",
+                "entry_id": "114950028",
+                "sheet": "1150929辭典匯出",
+                "row": 159732
+              },
+              {
+                "title": "新莽",
+                "pinyin": "xīn mǎng",
+                "definition": "王莽篡漢自立，國號新（西元9～23），建都長安，史稱為「新莽」。",
+                "entry_id": "071630016",
+                "sheet": "1150929辭典匯出",
+                "row": 107600
+              },
+              {
+                "title": "改過自新",
+                "pinyin": "gǎi guò zì xīn",
+                "definition": "改正過失，重新做人。《漢書．卷二三．刑法志》：「刑者不可復屬，雖後欲改過自新，其道亡繇也。」唐．白居易〈議肉刑可廢不可用〉：「其欲廢之者，則曰：『刻膚革，斷肢體，人主忍而用之。則愷悌惻隱之心乖矣。』此緹縈所謂雖欲改過自新，其道亡繇者也。」也作「改過從新」。",
+                "entry_id": "039760028",
+                "sheet": "1150929辭典匯出",
+                "row": 67702
+              },
+              {
+                "title": "一新耳目",
+                "pinyin": "yī xīn ěr mù",
+                "definition": "所見所聞給人截然不同的新感受。如：「近來公司大刀闊斧的革新，令人一新耳目。」",
+                "entry_id": "104820877",
+                "sheet": "1150929辭典匯出",
+                "row": 147429
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "汐": {
+        "definition": "night tides, evening ebb tide",
+        "mandarin": "xī",
+        "official_dictionary": [
+          {
+            "title": "汐",
+            "pinyin": "xì",
+            "definition": "[名]\n夜間海水面漲起的現象。早潮稱為「潮」，晚潮稱為「汐」。",
+            "entry_id": "06844",
+            "sheet": "1150929辭典匯出",
+            "row": 6853,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "思": {
+        "definition": "think, consider, ponder; final particle",
+        "mandarin": "sī",
+        "official_dictionary": [
+          {
+            "title": "思",
+            "pinyin": "sī",
+            "definition": "[動]\n1.考慮。如：「深思熟慮」、「三思而後行」。《論語．為政》：「學而不思則罔，思而不學則殆。」\n2.想念、懷念。如：「思親」、「思家」。唐．李白〈靜夜思〉詩：「舉頭望明月，低頭思故鄉。」\n3.悲悼。《文選．張華．勵志詩》：「吉士思秋，寔感物化。」\n[名]\n1.心緒、心情。如：「情思」、「愁思」。唐．李白〈宣州謝朓樓餞別校書叔雲〉詩：「俱懷逸興壯思飛，欲上青天覽日月。」\n2.想法、意念。如：「心思」、「文思」。南朝梁．劉勰《文心雕龍．雜文》：「唯士衡運思，理新文敏。」\n3.姓。如明代有思志道。\n[助]\n1.用於句首，無義。《詩經．魯頌．泮水》：「思樂泮水，薄采其芹。」\n2.用於句中，無義。《詩經．大雅．文王有聲》：「無思不服，皇王烝哉。」\n3.用於句末，相當於「啊」。《詩經．周南．漢廣》：「漢有游女，不可求思。」",
+            "entry_id": "09935",
+            "sheet": "1150929辭典匯出",
+            "row": 9949,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "思",
+            "pinyin": "sì",
+            "definition": "(一)[名]1.之讀音。",
+            "entry_id": "09970",
+            "sheet": "1150929辭典匯出",
+            "row": 9983,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "思",
+            "pinyin": "sāi",
+            "definition": "[形]\n䯱思：鬍鬚多的樣子。《集韻．平聲．咍韻》：「䰄，䯱䰄，多鬚貌。或作思。」",
+            "entry_id": "10008",
+            "sheet": "1150929辭典匯出",
+            "row": 10021,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "流": {
+        "definition": "flow, circulate, drift; class",
+        "mandarin": "liú",
+        "official_dictionary": [
+          {
+            "title": "流",
+            "pinyin": "liú",
+            "definition": "[名]\n1.水的通稱。《史記．卷四．周本紀》：「武王渡河，中流，白魚躍入王舟中，武王俯取以祭。」唐．李白〈望廬山瀑布水〉詩二首之二：「飛流直下三千尺，疑是銀河落九天。」\n2.像水流的東西。如：「氣流」、「暖流」、「電流」、「車流」。\n3.派別。如：「九流十家」。《漢書．卷一〇〇．敘傳下》：「群言紛亂，諸子相騰。秦人是滅，漢修其缺，劉向司籍，九流以別。」\n4.品類、等級。如：「上流」、「名流」、「第一流」。\n[動]\n1.移動。如：「人口外流」。《易經．乾卦．九五》：「水流溼，火就燥。」唐．李白〈黃鶴樓送孟浩然之廣陵〉詩：「孤帆遠影碧山盡，唯見長江天際流。」\n2.留傳、散布。如：「流芳萬世」。《孟子．公孫丑上》：「德之流行，速於置郵而傳命。」\n3.趨向。如：「流於形式」。《文選．曹丕．典論論文》：「貧賤則懾於飢寒，富貴則流於逸樂。」\n4.放逐。《國語．周語上》：「王不聽，於是國莫敢出言，三年，乃流王於彘。」南朝宋．劉義慶《世說新語．任誕》：「宜流之海外，以正風教。」\n5.放縱。《國語．晉語一》：「肆侈不違，流志而行，無所不疚，是以及亡而不獲追鑒。」\n[形]\n1.往來不定的。如：「流雲」、「流民」。\n2.快速通過的、運轉不停的。如：「流星」、「流年」。宋．蔣捷〈一翦梅．一片春愁待酒澆〉詞：「流光容易把人拋，紅了櫻桃，綠了芭蕉。」\n3.意外的、不明來處的。如：「流矢」、「流彈」。\n4.沒有根據的。如：「流言」、「流譽」。",
+            "entry_id": "03553",
+            "sheet": "1150929辭典匯出",
+            "row": 3560,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "弄": {
+        "definition": "do, play or fiddle with; alley",
+        "mandarin": "nòng",
+        "official_dictionary": [
+          {
+            "title": "弄",
+            "pinyin": "nòng",
+            "definition": "[動]_x000D_\n1.把玩、玩賞。《詩經．小雅．斯干》：「乃生男子，載寢之床，載衣之裳，載弄之璋。」唐．李白〈別山僧〉詩：「何處名僧到水西？乘舟弄月宿涇溪。」_x000D_\n2.遊戲、耍弄。《左傳．定公三年》：「君以弄馬之故，隱君身，棄國家。」唐．李白〈長干行〉二首之一：「郎騎竹馬來，遶床弄青梅。」宋．上官融《友會談叢》卷上：「京師貨藥者多假弄獅子、猢孫為戲，聚集市人。」_x000D_\n3.做、從事。《官話指南．卷二．官商吐屬》：「然後就叫店家打洗臉水、沏茶、弄飯吃。」《兒女英雄傳》第一四回：「你莫管，照我的話弄去就是了。」_x000D_\n4.處理、探察、追究。如：「這件事一定要弄清楚才行！」《紅樓夢》第九九回：「不知道怎麼部裡沒有弄明白。如今就是鬧破了，也是官官相護的。」《文明小史》第一二回：「總是你們沒有弄清，快去查明了來。」_x000D_\n5.尋求、取得。《兒女英雄傳》第四〇回：「我因為今年是你師母正壽，所以又弄了倆人，合上個八旬慶壽的意思。」《紅樓夢》第五九回：「只是要你們齊心打夥兒弄幾個錢回家受用，若不隨我，我也不管了。」《文明小史》第四八回：「其時已在上燈時分，房間都被人家佔了去了，好容易等了一會，才弄到一個小房間。」_x000D_\n6.搖動、攪動。如：「這消息把大家弄得人心惶惶。」元．白樸《牆頭馬上》第二折：「怕露驚宿鳥，風弄庭槐。」《官場現形記》第五回：「不該應要錢的心太狠了，直弄得民怨沸騰，有無數商人，來省上控。」_x000D_\n7.與人淫亂、姦汙。晉．干寶《搜神記》卷七：「元康中，貴游子弟相與為散髮裸身之飲，對弄婢妾。」《南史．卷五五．列傳．曹景宗》：「本以為戲，而部下多剽輕，因弄人婦女，奪人財貨。帝頗知之，景宗懼乃止。」《紅樓夢》第六七回：「鳳姐兒道：『你二爺在外頭弄了人，你知道不知道？』」_x000D_\n8.演奏樂器。如：「弄笛」、「弄簫」。唐．李白〈邯鄲南亭觀妓〉詩：「歌鼓燕趙兒，魏姝弄鳴絲。」唐．王涯〈秋夜曲〉：「銀箏夜久殷勤弄，心怯空房不忍歸。」_x000D_\n9.妝飾、修飾。晉．趙至〈與嵇茂齊書〉：「翱翔倫黨之間，弄姿帷房之裡。」唐．溫庭筠〈菩薩蠻．小山重疊金明滅〉詞：「懶起畫娥眉，弄妝梳洗遲。」_x000D_\n[名]_x000D_\n樂曲。如：「江南弄」、「梅花三弄」。《韓非子．難三》：「且中期之所官，琴瑟也。絃不調，弄不明，中期之任也。」三國魏．嵇康〈琴賦〉：「改韻易調，奇弄乃發。」_x000D_\n[量]_x000D_\n計算樂曲或演奏次數的單位。《晉書．卷八一．列傳．桓宣》：「帝命伊吹笛。伊神色無迕，即吹為一弄。」元．戴表元〈次韻和蔚師鑑師春懷〉：「愁是雲陰喜是晴，春遊何處不關情？黃雞亭館琴三弄，青果杯盤酒數行。」明．何景明〈岳陽城中聞笛〉詩：「何處笛聲三四弄，坐聽疑隔楚江濆。」",
+            "entry_id": "03158",
+            "sheet": "1150929辭典匯出",
+            "row": 3165,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "弄",
+            "pinyin": "lòng",
+            "definition": "[名]\n小巷。如：「巷弄」。《南史．卷五．齊廢帝鬱林王本紀》：「出西弄，遇弒。」",
+            "entry_id": "03873",
+            "sheet": "1150929辭典匯出",
+            "row": 3879,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "儿": {
+        "definition": "son, child; Kangxi radical 10",
+        "mandarin": "ér",
+        "related_characters": [
+          {
+            "character": "儿",
+            "relation": "kTraditionalVariant",
+            "definition": "son, child; Kangxi radical 10",
+            "mandarin": "ér"
+          },
+          {
+            "character": "兒",
+            "relation": "kTraditionalVariant",
+            "definition": "son, child, oneself; final part",
+            "mandarin": "ér"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "儿",
+            "pinyin": "rén",
+            "definition": "[名]\n1.同「人」。《說文解字．儿部》：「儿，古文奇字人也。」元．戴侗《六書故．卷八．人》：「按人、儿非二字，特因所合而稍變其勢。合於左者，若『伯』若『仲』，則不變其本文而為人；合於下者，若『兒』若『見』則微變其本文為儿。」\n2.二一四部首之一。",
+            "entry_id": "09215",
+            "sheet": "1150929辭典匯出",
+            "row": 9229,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "观": {
+        "definition": "see, observe, view; appearance",
+        "mandarin": "guān",
+        "related_characters": [
+          {
+            "character": "觀",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, view; appearance; hexagram ䷓",
+            "mandarin": "guān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "者": {
+        "definition": "that which; he who; those who",
+        "mandarin": "zhě",
+        "official_dictionary": [
+          {
+            "title": "者",
+            "pinyin": "zhě",
+            "definition": "[代]_x000D_\n人或事物的代稱。如：「記者」、「作者」。《論語．雍也》：「知者樂水，仁者樂山。」《楚辭．屈原．漁父》：「新沐者必彈冠，新浴者必振衣。」_x000D_\n[形]_x000D_\n指示形容詞。同「這」。多用於古詩詞中。宋．晏幾道〈少年游．離多最是〉詞：「細想從來，斷腸多處，不與者番同。」_x000D_\n[助]_x000D_\n1.用於句中，表示停頓。《論語．學而》：「孝弟也者，其為仁之本與。」_x000D_\n2.用於句末，表示語氣結束。《孟子．離婁下》：「大人者，不失其赤子之心者也。」_x000D_\n3.表比擬。相當於「的樣子」。《史記．卷八六．刺客列傳．荊軻》：「已而相泣，旁若無人者。」",
+            "entry_id": "07675",
+            "sheet": "1150929辭典匯出",
+            "row": 7686,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "潮生",
+      "decision": "keep",
+      "reason": "“潮生”可理解为潮水涌生，语义凝练自然；古诗“海上明月共潮生”也强化了水潮与生发的意象。虽与已暂留的“广陵潮生”共享完整组合意象，但本名是其直接缩短形式，属于近似变体，不宜重复保留。"
+    },
+    {
+      "name": "新潮",
+      "decision": "reject",
+      "reason": "词义清楚，但作为名称直接指新兴潮流或时尚风格，语义较通用，品牌辨识度不足；与已暂留的“潮酷”都以潮流、新颖为核心意象，近似度较高。"
+    },
+    {
+      "name": "潮汐",
+      "decision": "keep",
+      "reason": "完整词语，指海水周期性涨落，词义明确、自然，具有鲜明的自然物象和节律感；与暂留的“潮汛”等虽同属潮水意象，但并非仅换近义字的组合。"
+    },
+    {
+      "name": "思潮",
+      "decision": "reject",
+      "reason": "完整词语，主要指一时代或一地方的思想趋势，也可指起伏的思绪；作为品牌名更像通用社会或思想类别词，辨识度和凝练的专属感不足。"
+    },
+    {
+      "name": "潮流",
+      "decision": "reject",
+      "reason": "完整常用词，既指潮汐形成的海水流动，也泛指社会风气与趋势；用于名称容易直接落在通用趋势概念上，且与已暂留的“浪潮”意象接近。"
+    },
+    {
+      "name": "弄潮儿",
+      "decision": "reject",
+      "reason": "“弄潮儿”是指搏击潮水或走在时代前列的人，词义自然，但完整名称是对一类人的称呼，人物类别感强，品牌名辨识度不足；与暂留的“踏潮”同有涉潮动作意象，但并非仅换近义配字。"
+    },
+    {
+      "name": "观潮者",
+      "decision": "reject",
+      "reason": "语法可解为观看潮水的人，但整体是直白的人物描述，结构显得像临时组合，缺少品牌名所需的凝练感；与“弄潮儿”同属以潮水和人物身份构成的描述式名称。"
+    }
+  ]
+}

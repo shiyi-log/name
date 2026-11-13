@@ -1,0 +1,910 @@
+{
+  "review_id": "20261113T023931-2a0d72d0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "晚山月",
+      "晚来春",
+      "晚有光",
+      "晚林深",
+      "晚云低",
+      "晚潮声",
+      "晚照归山",
+      "应龙",
+      "环境",
+      "胜境"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "梾间有光",
+        "柯间有光",
+        "器中有光",
+        "砂砾有光",
+        "硅间有光",
+        "菊间有光",
+        "荞田有光",
+        "嵝间有光",
+        "杄间有光",
+        "桉有光",
+        "蔼然有光",
+        "栌庭有光"
+      ],
+      "月": [
+        "崞山见月",
+        "一杯山月",
+        "山麇见月",
+        "蕖山月",
+        "山月酿酒",
+        "月照山罅",
+        "山月厅",
+        "黛山见月",
+        "诸山映月",
+        "山间漻月",
+        "远山漻月",
+        "山月映筠"
+      ],
+      "春": [
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春"
+      ],
+      "山": [
+        "崞山见月",
+        "一杯山月",
+        "夕照山",
+        "山麇见月",
+        "蕖山月",
+        "山月酿酒",
+        "月照山罅",
+        "山月厅",
+        "黛山见月",
+        "诸山映月",
+        "山间漻月",
+        "远山漻月"
+      ],
+      "归": [
+        "晚照归帆",
+        "芋山归云",
+        "山海归湾",
+        "晚云归岫",
+        "百川归一",
+        "九九归一",
+        "归墅",
+        "归墟",
+        "归棹",
+        "棹月归",
+        "凉云归岫",
+        "椋鸟归林"
+      ],
+      "林": [
+        "林深藏嶂",
+        "林深见浔",
+        "林深见冈",
+        "林深有迳",
+        "林深鹀鸣",
+        "林深鸧鸣",
+        "林深翠",
+        "林深有岚",
+        "晚林",
+        "艺林",
+        "柘林",
+        "懋林"
+      ],
+      "云": [
+        "晚云舒",
+        "芋山归云",
+        "晚云开",
+        "晚云舒卷",
+        "晚云映水",
+        "晚云归岫",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光"
+      ],
+      "潮": [
+        "晚潮",
+        "苇听潮声",
+        "涨潮",
+        "潮汛",
+        "鲲听潮",
+        "暮潮",
+        "螭听潮",
+        "潮酷",
+        "广陵潮生",
+        "潮涡",
+        "鲱潮",
+        "踏潮"
+      ],
+      "龙": [
+        "鼍龙",
+        "龙虺",
+        "蛰龙",
+        "龙脊",
+        "螭龙",
+        "蟠龙",
+        "蛟龙",
+        "六龙行远",
+        "龙湫",
+        "乘龙扆云"
+      ],
+      "声": [
+        "山月笛声",
+        "苇听潮声",
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声",
+        "豪声",
+        "篥声"
+      ],
+      "境": [
+        "祕境",
+        "臻境",
+        "螭游清境",
+        "婳境",
+        "摹境",
+        "非凡境",
+        "涡之境",
+        "酒境",
+        "砗磲之境",
+        "人境",
+        "漻境",
+        "画境"
+      ],
+      "照": [
+        "晚照归帆",
+        "夕照山",
+        "月照山罅",
+        "山海互照",
+        "山月照橼",
+        "山月照菊",
+        "山月照舲",
+        "月照岐山",
+        "蒹汀晚照",
+        "烺照山",
+        "冬山远照",
+        "山光照汭"
+      ],
+      "有": [
+        "梾间有光",
+        "柯间有光",
+        "器中有光",
+        "砂砾有光",
+        "硅间有光",
+        "菊间有光",
+        "荞田有光",
+        "嵝间有光",
+        "杄间有光",
+        "桉有光",
+        "蔼然有光",
+        "栌庭有光"
+      ],
+      "晚": [
+        "晚照归帆",
+        "晚潮",
+        "晚云舒",
+        "蒹汀晚照",
+        "晚月",
+        "晚林",
+        "晚山",
+        "晚云开",
+        "晚山青",
+        "晚来晴",
+        "晚山远黛",
+        "晚云舒卷"
+      ],
+      "深": [
+        "林深藏嶂",
+        "林深见浔",
+        "林深见冈",
+        "林深有迳",
+        "林深鹀鸣",
+        "林深鸧鸣",
+        "林深翠",
+        "林深有岚",
+        "莿野春深",
+        "深诣",
+        "深海鲼",
+        "巨野春深"
+      ],
+      "应": [
+        "蝴蝶效应",
+        "策应",
+        "喁喁相应",
+        "𫍯心相应",
+        "响应"
+      ],
+      "来": [
+        "晚来晴",
+        "晚来清露",
+        "晚来香",
+        "朋来",
+        "桧风来",
+        "由来",
+        "远岸来船",
+        "顾风来",
+        "日往月来",
+        "繇来",
+        "来电",
+        "缐引未来"
+      ],
+      "环": [
+        "环视",
+        "环宇"
+      ],
+      "低": [
+        "低喃"
+      ],
+      "胜": [
+        "胜算"
+      ]
+    },
+    "literature_phrase_examples": {
+      "晚山月": [],
+      "晚来春": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 191940,
+          "context": "晚来春澹澹，天气似京都。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 292853,
+          "context": "晚来春醉熟，香饵任浮沈。"
+        }
+      ],
+      "晚有光": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1085932,
+          "context": "峡水冬无险，河图晚有光。"
+        }
+      ],
+      "晚林深": [],
+      "晚云低": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 63120,
+          "context": "天开斜景遍，山出晚云低。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 68505,
+          "context": "仙阙归心春桨快，石城离思晚云低。"
+        }
+      ],
+      "晚潮声": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1071676,
+          "context": "万里长江一线横，好风时送晚潮声。"
+        }
+      ],
+      "晚照归山": [],
+      "应龙": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 11594,
+          "context": "归乎归乎，无与石鬬兮无应龙求。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 34837,
+          "context": "应龙已不见，牧马空黄埃。"
+        }
+      ],
+      "环境": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 697974,
+          "context": "纷然群盗起，环境暗锋镝。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1474780,
+          "context": "租符环境少，花判入人深。"
+        }
+      ],
+      "胜境": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2715,
+          "context": "寻真游胜境，巡礼到阳平。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 32854,
+          "context": "灵峰标胜境，神府枕通川。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "晚山月": [],
+      "晚来春": [],
+      "晚有光": [],
+      "晚林深": [],
+      "晚云低": [],
+      "晚潮声": [],
+      "晚照归山": [],
+      "应龙": [],
+      "环境": [],
+      "胜境": []
+    },
+    "direct_dictionary": {
+      "晚": {
+        "definition": "night, evening; late",
+        "mandarin": "wǎn",
+        "official_dictionary": [
+          {
+            "title": "晚",
+            "pinyin": "wǎn",
+            "definition": "[名]\n1.黃昏、日落時分。《說文解字．日部》：「晚，莫也。」清．段玉裁．注：「莫者，日且冥也。」\n2.夜間。如：「晚間」、「昨晚」。《水滸傳》第一〇回：「李小二夫妻兩個，捏著兩把汗，當晚無事。」\n3.對長輩的自稱。如：「學晚」。《儒林外史》第三四回：「極蒙臺愛，恕治晚不能躬送了。」\n[形]\n1.將盡的。宋．陳師道〈除夜對酒贈少章〉詩：「歲晚身何託，燈前客未空。」\n2.繼任的、後來的。如：「晚娘」。《淮南子．本經》：「晚世學者，不知道之所一體，德之所總要。」\n[副]\n遲。如：「相見恨晚」。《孔子家語．卷三．弟子行》：「慮不先定，臨事而謀，不亦晚乎。」",
+            "entry_id": "11479",
+            "sheet": "1150929辭典匯出",
+            "row": 11493,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "来": {
+        "definition": "come, coming; return, returning",
+        "mandarin": "lái",
+        "related_characters": [
+          {
+            "character": "來",
+            "relation": "kTraditionalVariant",
+            "definition": "come, coming; return, returning",
+            "mandarin": "lái"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "有",
+            "pinyin": "yǒu",
+            "definition": "[動]\n表事實、狀況的正面存在，與「無」相對。如：「有困難」、「有利有弊」、「有學問」、「有錢」、「擁有」、「面有飢色」。\n[形]\n1.豐足、富裕。如：「他是個非常富有的人。」《詩經．大雅．公劉》：「止基迺理，爰眾爰有。」\n2.多，表示時間久或年齡大。如：「本店開設有年。」、「母親已有了年紀。」\n3.故意。如：「有心犯錯應嚴懲，無心疏忽可原諒。」\n[綴]\n置於名詞前，作音節的襯字。如：「有夏」、「有清」。《韓非子．五蠹》：「當舜之時，有苗不服，禹將伐之。」\n[代]\n某，表示不確定。如：「有一天晚上」、「有人說你做人很講義氣。」\n[名]\n姓。如漢代有有祿。",
+            "entry_id": "10905",
+            "sheet": "1150929辭典匯出",
+            "row": 10919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "有",
+            "pinyin": "yòu",
+            "definition": "[副]\n表示重複、反覆、連續。通「又」。唐．裴守真〈請重耕織表〉：「奸偽由此而生，黎庶緣斯而苦，此有國之大患也。」\n[連]\n用於整數與餘數之間，表示數目的附加。如：「七十有七人」。《論語．為政》：「吾十有五而志於學，三十而立。」",
+            "entry_id": "10922",
+            "sheet": "1150929辭典匯出",
+            "row": 10936,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "深": {
+        "definition": "deep; depth; far; very, extreme",
+        "mandarin": "shēn",
+        "official_dictionary": [
+          {
+            "title": "深",
+            "pinyin": "shēn",
+            "definition": "[形]\n1.從高到下，從表面到底部的距離很大。與「淺」相反。如：「深海」、「深淵」。\n2.高奧、精微。如：「他這句話的用意很深。」\n3.濃厚。如：「一往情深」、「深藍色」。\n4.形容時間的久、晚。如：「年深日久」。\n5.茂盛。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n[副]\n很、非常。如：「深得人緣」、「深加讚美」。",
+            "entry_id": "08977",
+            "sheet": "1150929辭典匯出",
+            "row": 8992,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "低": {
+        "definition": "low; to lower, hang, bend, bow",
+        "mandarin": "dī",
+        "official_dictionary": [
+          {
+            "title": "低",
+            "pinyin": "dī",
+            "definition": "[形]\n1.上下距離小，或離地面近。與「高」相對。如：「低處」、「低空飛過」。《文選．謝朓．敬亭山詩》：「交藤荒且蔓，樛枝聳復低。」宋．文天祥〈正氣歌．序〉：「單扉低小，白間短窄。」\n2.低下。指身分、能力、程度等而言。唐．李白〈登黃山凌歊臺送族弟溧陽尉濟充泛舟赴華陰〉詩：「空手無壯士，窮居使人低。」\n3.價較便宜的。宋．蘇軾〈和文與可洋川園池三十首．金橙徑〉詩：「金橙縱復里人知，不見鱸魚價自低。」\n4.形容興趣不高或情緒不好。如：「只要下雨天，我出門的興致就低了。」、「自從落榜後，他的情緒一直很低。」\n5.形容聲音很小。如：「你說話的聲音太低了，別人可能聽不清楚。」\n[動]\n1.俯、向下彎。如：「低身」、「低頭不語」。\n2.放低、垂落。《文選．謝惠連．雪賦》：「願低帷以昵帎，念解珮而褫紳。」唐．李端〈代棄婦答賈客〉詩：「鳴環動珮恩無盡，掩袖低巾淚不流。」\n[副]\n1.低矮的。如：「夜幕低垂」、「黃昏時，太陽低懸在海平面上。」\n2.輕聲的。宋．姜夔〈過垂虹〉詩：「自作新詞韻最嬌，小紅低唱我吹簫。」",
+            "entry_id": "02089",
+            "sheet": "1150929辭典匯出",
+            "row": 2096,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "潮": {
+        "definition": "tide; moist, wet, damp; flow",
+        "mandarin": "cháo",
+        "official_dictionary": [
+          {
+            "title": "潮",
+            "pinyin": "cháo",
+            "definition": "[名]\n1.海水受日月引力的影響而定時漲落的現象。如：「潮汐」、「潮起潮落」。\n2.像潮水般洶湧起伏的形勢。如：「思潮」、「學潮」。\n[形]\n1.微溼。《紅樓夢》第三五回：「大清早起，在這個潮地方站了半日，也該回去歇息歇息了。」\n2.技藝不高或物質的成色低劣。如：「他的手藝潮。」《紅樓夢》第一〇五回：「潮銀五千二百兩。赤金五十兩。」",
+            "entry_id": "08304",
+            "sheet": "1150929辭典匯出",
+            "row": 8318,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "声",
+            "pinyin": null,
+            "definition": "「聲」的異體字。",
+            "entry_id": "09031-1",
+            "sheet": "1150929辭典匯出",
+            "row": 130793,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "official_dictionary": [
+          {
+            "title": "照",
+            "pinyin": "zhào",
+            "definition": "[動]\n1.映射。如：「照耀」、「陽光照在窗戶上。」\n2.投映。如：「照鏡子」。\n3.比擬、依據。如：「仿照」、「照貓畫虎」、「比照辦理」、「照本宣科」。\n4.比對、核對。如：「對照」。\n5.通知。如：「照會」、「關照」。\n6.向著、對著。如：「照頭一棍」、「照著敵人開槍」。\n7.看、顧。如：「照顧」、「照應」、「照料」。\n8.知曉。如：「心照不宣」。《三國志．卷一九．魏書．陳思王植傳》：「臣聞騏驥長鳴，則伯樂照其能；盧狗悲號，則韓國知其才。」\n9.攝取影像。如：「照相」、「這張像片是新照的。」\n[名]\n1.日光。如：「夕照」、「殘照」。\n2.像片。如：「近照」、「玉照」。\n3.憑證。如：「執照」、「護照」。《喻世明言．卷三三．張古老種瓜娶文女》：「申公道：『錢卻有，何以為照？』」",
+            "entry_id": "07719",
+            "sheet": "1150929辭典匯出",
+            "row": 7730,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "归": {
+        "definition": "return; return to, revert to",
+        "mandarin": "guī",
+        "related_characters": [
+          {
+            "character": "归",
+            "relation": "kTraditionalVariant",
+            "definition": "return; return to, revert to",
+            "mandarin": "guī"
+          },
+          {
+            "character": "歸",
+            "relation": "kTraditionalVariant",
+            "definition": "return; return to, revert to",
+            "mandarin": "guī"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "归",
+            "pinyin": null,
+            "definition": "「歸」的異體字。",
+            "entry_id": "04271-1",
+            "sheet": "1150929辭典匯出",
+            "row": 72145,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "应": {
+        "definition": "should, ought to, must",
+        "mandarin": "yīng",
+        "related_characters": [
+          {
+            "character": "应",
+            "relation": "kTraditionalVariant",
+            "definition": "should, ought to, must",
+            "mandarin": "yīng"
+          },
+          {
+            "character": "應",
+            "relation": "kTraditionalVariant",
+            "definition": "should, ought to, must",
+            "mandarin": "yīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "应",
+            "pinyin": null,
+            "definition": "「應」的異體字。",
+            "entry_id": "11174-1",
+            "sheet": "1150929辭典匯出",
+            "row": 155712,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "龙": {
+        "definition": "dragon; symbolic of emperor",
+        "mandarin": "lóng",
+        "related_characters": [
+          {
+            "character": "龍",
+            "relation": "kTraditionalVariant",
+            "definition": "dragon; Kangxi radical 212",
+            "mandarin": "lóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "环": {
+        "definition": "jade ring or bracelet; ring",
+        "mandarin": "huán",
+        "related_characters": [
+          {
+            "character": "环",
+            "relation": "kTraditionalVariant",
+            "definition": "jade ring or bracelet; ring",
+            "mandarin": "huán"
+          },
+          {
+            "character": "環",
+            "relation": "kTraditionalVariant",
+            "definition": "jade ring or bracelet; ring",
+            "mandarin": "huán"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "环",
+            "pinyin": null,
+            "definition": "「環」的異體字。",
+            "entry_id": "05167-1",
+            "sheet": "1150929辭典匯出",
+            "row": 84553,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "境": {
+        "definition": "boundary, frontier; area, region",
+        "mandarin": "jìng",
+        "official_dictionary": [
+          {
+            "title": "境",
+            "pinyin": "jìng",
+            "definition": "[名]\n1.疆界。如：「邊境」、「國境」。《孟子．梁惠王下》：「臣始至於境，問國之大禁，然後敢入。」唐．韓愈〈朝散大夫越州刺史薛公墓誌銘〉：「四境之內，竟歲無一事。」\n2.地方、區域。如：「仙境」、「勝境」。晉．陶淵明〈飲酒詩〉二〇首之五：「結廬在人境，而無車馬喧。」\n3.情況、光景。如：「順境」、「逆境」、「家境」。南朝宋．劉義慶《世說新語．排調》：「顧長康啖甘蔗，先食尾。問所以，云：『漸至佳境。』」宋．陸游〈懷昔〉詩：「豈知墮老境，槁木蒙霜菅。」\n4.程度、地步。如：「學無止境」、「已臻化境」。",
+            "entry_id": "05961",
+            "sheet": "1150929辭典匯出",
+            "row": 5969,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "胜": {
+        "definition": "victory; excel, be better than",
+        "mandarin": "shèng",
+        "related_characters": [
+          {
+            "character": "勝",
+            "relation": "kTraditionalVariant",
+            "definition": "victory; excel, be better than",
+            "mandarin": "shèng"
+          },
+          {
+            "character": "胜",
+            "relation": "kTraditionalVariant",
+            "definition": "victory; excel, be better than",
+            "mandarin": "shèng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "胜",
+            "pinyin": "shēng",
+            "definition": "參見「胜鍵」、「雙胜類」等條。",
+            "entry_id": "09027",
+            "sheet": "1150929辭典匯出",
+            "row": 9042,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "胜鍵",
+                "pinyin": "shēng jiàn",
+                "definition": "組成多肽鏈的胺基酸之間，乃藉前一個胺基酸的羧基與後一個胺基酸的胺基脫水，而形成一種共價鍵，並連結起來，這種鍵稱為「胜肽鍵」。也稱為「肽鍵」。",
+                "entry_id": "090270001",
+                "sheet": "1150929辭典匯出",
+                "row": 130781
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "晚山月",
+      "decision": "keep",
+      "reason": "晚景、山色与月亮组合清楚自然，凝练成景，有辨识度；与暂留的“蕖山月”等共享“山月”意象，但搭配关系不同，并非仅换近义字的重复组合。"
+    },
+    {
+      "name": "晚来春",
+      "decision": "keep",
+      "reason": "可自然理解为春意晚来，语序通顺且有季节转换的画面感；诗句用例也支持该组合自然，但并非据此直接判定适合品牌。"
+    },
+    {
+      "name": "晚有光",
+      "decision": "reject",
+      "reason": "完整表达是“晚间有光”的陈述句，句子感明显，作为品牌名不够凝练；与暂留候选中多组“有光”名称意象重复，未形成足够不同的组合。"
+    },
+    {
+      "name": "晚林深",
+      "decision": "uncertain",
+      "reason": "可理解为夜色渐深、林木幽深，但“晚林深”的修饰关系和停顿不明确，读作“晚、林深”或“晚林、深”均略显生硬，语义自然度存疑。"
+    },
+    {
+      "name": "晚云低",
+      "decision": "keep",
+      "reason": "“晚云低”是自然的景物描写，指傍晚云层低垂，画面明确且简洁；有诗句连续用例，组合本身也具品牌辨识度。"
+    },
+    {
+      "name": "晚潮声",
+      "decision": "keep",
+      "reason": "指傍晚潮水之声，中心意象清楚、组合自然且有听觉画面；与暂留的“晚潮”及其他潮声名称虽有单字交集，完整意象和关系并非近义换字式重复。"
+    },
+    {
+      "name": "晚照归山",
+      "decision": "uncertain",
+      "reason": "可理解为夕照归向山间，但“照归山”的主谓关系不够明确，可能被读成夕阳归山或光照归山，表达略显压缩，语义关系存疑。"
+    },
+    {
+      "name": "应龙",
+      "decision": "keep",
+      "reason": "“应龙”是传统神话中的龙名，作为完整专名简洁有力；专名本身有明确文化指向，不是借“应”的单字释义机械拼接。"
+    },
+    {
+      "name": "环境",
+      "decision": "reject",
+      "reason": "“环境”是通用概念词，完整名称直接等同于普通类别概念，缺少品牌名所需的凝练专属性。"
+    },
+    {
+      "name": "胜境",
+      "decision": "keep",
+      "reason": "意为优美的地方或佳境，是自然完整的词语，有明确正向意象与凝练感；虽属常见词，但并非仅因行业未知即可否决的通用产品或服务类别词。"
+    }
+  ]
+}

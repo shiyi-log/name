@@ -1,0 +1,925 @@
+{
+  "review_id": "20261112T153621-520759e2",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "浴火",
+      "浴日",
+      "浴月听泉",
+      "星河浴梦",
+      "山海浴光",
+      "浴光成林",
+      "浴兰迎新",
+      "浴月听澜",
+      "浴风含章",
+      "浴日扬帆",
+      "浴山临水",
+      "浴春风",
+      "浴霞",
+      "浴雨",
+      "浴朝阳",
+      "浴松涛",
+      "浴秋月",
+      "浴长空"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "七月",
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月",
+        "月下伞",
+        "月笼纱",
+        "云衔月",
+        "盅中月"
+      ],
+      "水": [
+        "山水清斋",
+        "山水茗心",
+        "菉水照山",
+        "黛山映水",
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水"
+      ],
+      "山": [
+        "山海貘",
+        "山海酵香",
+        "山水清斋",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "铘见山海",
+        "邂逅山海",
+        "山水茗心",
+        "缱绻山海",
+        "山海藏刃",
+        "菉水照山"
+      ],
+      "风": [
+        "一树春风",
+        "春风拂楮",
+        "春风软",
+        "一川风月",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒"
+      ],
+      "春": [
+        "一树春风",
+        "春风拂楮",
+        "春风软",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤"
+      ],
+      "成": [
+        "碳成林",
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "星": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河",
+        "广星河"
+      ],
+      "林": [
+        "碳成林",
+        "蒹林听泉",
+        "柘光入林",
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林"
+      ],
+      "光": [
+        "柘光入林",
+        "赫光入海",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光"
+      ],
+      "兰": [
+        "芝兰",
+        "兰荪",
+        "茝兰",
+        "芙兰雅",
+        "兰熏",
+        "兰斋",
+        "兰棹",
+        "兰陔",
+        "兰婷",
+        "馨兰"
+      ],
+      "火": [
+        "篝火",
+        "镫火",
+        "榴火",
+        "钨火"
+      ],
+      "梦": [
+        "梦貘",
+        "枕中梦",
+        "枕梦"
+      ],
+      "海": [
+        "山海貘",
+        "山海酵香",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "铘见山海",
+        "邂逅山海",
+        "缱绻山海",
+        "山海藏刃",
+        "赫光入海",
+        "海鳐",
+        "海峤"
+      ],
+      "松": [
+        "枕松涛",
+        "松涛绕埼",
+        "蟠松",
+        "松间鼯",
+        "松间䴓",
+        "坝畔松",
+        "松峙",
+        "松风峒",
+        "松峤",
+        "峤听松",
+        "峥松",
+        "松斋"
+      ],
+      "泉": [
+        "峋石听泉",
+        "蒹林听泉",
+        "云梾听泉",
+        "黛听泉",
+        "氿泉",
+        "崟泉",
+        "渟泉",
+        "硔间清泉",
+        "涡泉",
+        "井泉",
+        "柘泉",
+        "柘下泉"
+      ],
+      "秋": [
+        "访秋",
+        "纫秋",
+        "秋蛩",
+        "榴映秋",
+        "楮墨春秋",
+        "秋凉",
+        "秋水凉",
+        "一庭秋凉",
+        "凉秋望远",
+        "枫知秋",
+        "秋枫里",
+        "秋葭"
+      ],
+      "长": [
+        "长揖",
+        "瓷映长川",
+        "螭照长夜",
+        "螭起长风",
+        "长风越埼",
+        "长弓望月",
+        "弓引长风",
+        "酒映长天",
+        "菉色长新",
+        "消长",
+        "长川远黛"
+      ],
+      "听": [
+        "峋石听泉",
+        "蒹林听泉",
+        "云梾听泉",
+        "黛听泉",
+        "阎听雨",
+        "峤听松",
+        "峤听雨",
+        "峋岭听风",
+        "听雨斋",
+        "听松问斋",
+        "听风斋",
+        "崞岭听松"
+      ],
+      "雨": [
+        "阎听雨",
+        "霪雨初霁",
+        "峤听雨",
+        "芹畦雨",
+        "听雨斋",
+        "雨润荒墟",
+        "楮林新雨",
+        "雨凉",
+        "暮雨",
+        "暮雨晴",
+        "螭听松雨",
+        "铘听雨"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "章": [
+        "仓颉新章",
+        "酷乐章",
+        "珐艺新章",
+        "太和新章"
+      ],
+      "阳": [
+        "梣向阳",
+        "蔓向阳",
+        "柘阳",
+        "梾木向阳",
+        "太阳雨"
+      ],
+      "扬": [
+        "抑扬"
+      ],
+      "日": [
+        "春日葳蕤",
+        "墟山映日",
+        "日映崧",
+        "日暮",
+        "日照埼",
+        "旭日临埼",
+        "梾溪映日",
+        "日暖生菉"
+      ],
+      "含": [
+        "含萼",
+        "荚含春",
+        "硔石含光",
+        "蕴含",
+        "山含黛",
+        "水含黛色"
+      ],
+      "澜": [
+        "观澜斋",
+        "枕风观澜"
+      ],
+      "河": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河",
+        "广星河"
+      ],
+      "朝": [
+        "朝暾",
+        "蔓生朝露"
+      ],
+      "空": [
+        "翱空"
+      ],
+      "帆": [
+        "鲲帆",
+        "暮云归帆",
+        "竞帆",
+        "唐远帆",
+        "远帆归埼",
+        "广陵归帆",
+        "褰帆",
+        "涧帆",
+        "赫远帆",
+        "烛帆",
+        "历千帆",
+        "撑帆"
+      ],
+      "临": [
+        "星临暮野",
+        "暮色临川",
+        "蒹月临川",
+        "清风临埼",
+        "旭日临埼",
+        "镆临风",
+        "竹影临簖"
+      ],
+      "涛": [
+        "枕松涛",
+        "松涛绕埼",
+        "赑涛"
+      ],
+      "霞": [
+        "绀霞",
+        "粉霞",
+        "粉霞映月",
+        "雯霞"
+      ],
+      "迎": [
+        "柘叶迎风",
+        "迎刃"
+      ]
+    },
+    "literature_phrase_examples": {
+      "浴火": [],
+      "浴日": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 4304,
+          "context": "灵沼萦回邸第前，浴日涵天写曙天。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 22943,
+          "context": "浴日温泉复在兹，群仙洞府那相及。"
+        }
+      ],
+      "浴月听泉": [],
+      "星河浴梦": [],
+      "山海浴光": [],
+      "浴光成林": [],
+      "浴兰迎新": [],
+      "浴月听澜": [],
+      "浴风含章": [],
+      "浴日扬帆": [],
+      "浴山临水": [],
+      "浴春风": [],
+      "浴霞": [],
+      "浴雨": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 783716,
+          "context": "【夏安居日过实上人东轩时新竹浴雨因作句歌之】"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1022871,
+          "context": "沐浴雨露私，草木尽葱蒨。"
+        }
+      ],
+      "浴朝阳": [],
+      "浴松涛": [],
+      "浴秋月": [],
+      "浴长空": []
+    },
+    "dictionary_phrase_entries": {
+      "浴火": [],
+      "浴日": [
+        {
+          "title": "浴日",
+          "pinyin": "yù rì",
+          "definition": "1.太陽倒映水中，同波上下，如浴水中。唐．楊巨源〈寄昭應王丞〉詩：「光動泉水初浴日，氣蒸山腹總成春。」\n2.比喻特殊的功勛。《宋史．卷三六〇．趙鼎傳》：「浚有補天浴日之功，陛下有礪山帶河之誓，君臣相信，古今無二。」\n3.古時以日借指天子。故浴日指皇帝沐浴。唐．陳鴻《長恨傳》：「浴日餘波，賜以湯沐。」",
+          "entry_id": "116540021",
+          "sheet": "1150929辭典匯出",
+          "row": 161802,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "浴月听泉": [],
+      "星河浴梦": [],
+      "山海浴光": [],
+      "浴光成林": [],
+      "浴兰迎新": [],
+      "浴月听澜": [],
+      "浴风含章": [],
+      "浴日扬帆": [],
+      "浴山临水": [],
+      "浴春风": [],
+      "浴霞": [],
+      "浴雨": [],
+      "浴朝阳": [],
+      "浴松涛": [],
+      "浴秋月": [],
+      "浴长空": []
+    },
+    "direct_dictionary": {
+      "浴": {
+        "definition": "bathe, wash; bath",
+        "mandarin": "yù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "火": {
+        "definition": "fire, flame; burn; anger, rage",
+        "mandarin": "huǒ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "日": {
+        "definition": "sun; day; daytime",
+        "mandarin": "rì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "梦": {
+        "definition": "dream; visionary; wishful",
+        "mandarin": "mèng",
+        "related_characters": [
+          {
+            "character": "夢",
+            "relation": "kTraditionalVariant",
+            "definition": "dream; visionary; wishful",
+            "mandarin": "mèng"
+          },
+          {
+            "character": "梦",
+            "relation": "kTraditionalVariant",
+            "definition": "dream; visionary; wishful",
+            "mandarin": "mèng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "兰": {
+        "definition": "orchid; elegant, graceful",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "蘭",
+            "relation": "kTraditionalVariant",
+            "definition": "orchid; elegant, graceful",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "迎": {
+        "definition": "receive, welcome, greet",
+        "mandarin": "yíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "澜": {
+        "definition": "overflowing; waves, ripples",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "瀾",
+            "relation": "kTraditionalVariant",
+            "definition": "overflowing; waves, ripples",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "含": {
+        "definition": "hold in mouth; cherish; contain",
+        "mandarin": "hán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "扬": {
+        "definition": "scatter, spread; praise",
+        "mandarin": "yáng",
+        "related_characters": [
+          {
+            "character": "揚",
+            "relation": "kTraditionalVariant",
+            "definition": "scatter, spread; praise",
+            "mandarin": "yáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "帆": {
+        "definition": "sail; boat",
+        "mandarin": "fān fán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "临": {
+        "definition": "draw near, approach; descend",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "臨",
+            "relation": "kTraditionalVariant",
+            "definition": "draw near, approach; descend; hexagram ䷒",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "霞": {
+        "definition": "rosy clouds",
+        "mandarin": "xiá",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朝": {
+        "definition": "dynasty; morning",
+        "mandarin": "cháo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "阳": {
+        "definition": "'male' principle; light; sun",
+        "mandarin": "yáng",
+        "related_characters": [
+          {
+            "character": "陽",
+            "relation": "kTraditionalVariant",
+            "definition": "the active, male principle in Chinese philosophy (yang); light; sun",
+            "mandarin": "yáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "涛": {
+        "definition": "large waves",
+        "mandarin": "tāo",
+        "related_characters": [
+          {
+            "character": "涛",
+            "relation": "kTraditionalVariant",
+            "definition": "large waves",
+            "mandarin": "tāo"
+          },
+          {
+            "character": "濤",
+            "relation": "kTraditionalVariant",
+            "definition": "large waves",
+            "mandarin": "tāo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "秋": {
+        "definition": "autumn, fall; year",
+        "mandarin": "qiū",
+        "related_characters": [
+          {
+            "character": "秋",
+            "relation": "kTraditionalVariant",
+            "definition": "autumn, fall; year",
+            "mandarin": "qiū"
+          },
+          {
+            "character": "鞦",
+            "relation": "kTraditionalVariant",
+            "definition": "leather stap; swing",
+            "mandarin": "qiū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "空": {
+        "definition": "empty, hollow, bare, deserted",
+        "mandarin": "kōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "浴火",
+      "decision": "uncertain",
+      "reason": "可理解为沐浴火焰或经历烈火，但单独成名的语义关系不够明确，品牌意象存疑。"
+    },
+    {
+      "name": "浴日",
+      "decision": "keep",
+      "reason": "古典词语，既可指日影映水，也有特殊功勋等义；完整词形凝练，意象明确，适合作为品牌名继续复核。"
+    },
+    {
+      "name": "浴月听泉",
+      "decision": "keep",
+      "reason": "沐月、听泉构成连贯的山水感官意象，组合自然且有辨识度。"
+    },
+    {
+      "name": "星河浴梦",
+      "decision": "reject",
+      "reason": "“星河”与“浴梦”的搭配关系牵强，整体更像拼接的诗性口号，语义不够凝练。"
+    },
+    {
+      "name": "山海浴光",
+      "decision": "uncertain",
+      "reason": "可理解为山海沐浴在光中，但“浴光”在此用法生硬，整体意象关系尚不稳定。"
+    },
+    {
+      "name": "浴光成林",
+      "decision": "reject",
+      "reason": "“浴光成林”将沐浴光照与形成森林强行连接，句式像寓意口号而非凝练品牌名。"
+    },
+    {
+      "name": "浴兰迎新",
+      "decision": "uncertain",
+      "reason": "可理解为沐浴兰香、迎接新意，但“浴兰”与“迎新”的关系偏仪式化，整体自然度存疑。"
+    },
+    {
+      "name": "浴月听澜",
+      "decision": "keep",
+      "reason": "沐月与听澜构成连贯的夜间水景意象，表达凝练且有品牌辨识度。"
+    },
+    {
+      "name": "浴风含章",
+      "decision": "uncertain",
+      "reason": "“浴风”可形成沐风意象，“含章”有内蕴文采之义，但两部分衔接偏抽象，整体语义关系不够清楚。"
+    },
+    {
+      "name": "浴日扬帆",
+      "decision": "reject",
+      "reason": "“浴日”与“扬帆”拼成完整的励志航行画面，整体接近宣传口号，且不够凝练。"
+    },
+    {
+      "name": "浴山临水",
+      "decision": "uncertain",
+      "reason": "“临水”自然，但“浴山”搭配不常见，整体关系可作诗性解读却略显生硬。"
+    },
+    {
+      "name": "浴春风",
+      "decision": "uncertain",
+      "reason": "可理解为沐浴春风，画面自然，但完整词组偏普通描述，品牌辨识度有限。"
+    },
+    {
+      "name": "浴霞",
+      "decision": "keep",
+      "reason": "可直接理解为沐浴在霞光之中，短而有清晰自然意象，作为品牌名具备凝练感。"
+    },
+    {
+      "name": "浴雨",
+      "decision": "keep",
+      "reason": "可理解为沐浴雨中，简洁自然；诗词用例也体现了雨润草木的语境，适合作为品牌名继续复核。"
+    },
+    {
+      "name": "浴朝阳",
+      "decision": "keep",
+      "reason": "“浴”与朝阳构成沐浴晨光的自然意象，语义清楚，表达简洁。"
+    },
+    {
+      "name": "浴松涛",
+      "decision": "keep",
+      "reason": "可理解为置身松涛之中、沐受松间气息，意象连贯且凝练。"
+    },
+    {
+      "name": "浴秋月",
+      "decision": "keep",
+      "reason": "可理解为沐浴秋月清辉，语义自然，具有鲜明而简洁的季节意象。"
+    },
+    {
+      "name": "浴长空",
+      "decision": "uncertain",
+      "reason": "可解作沐浴长空之中，但“浴长空”的搭配略显抽象，作为完整名称自然度存疑。"
+    }
+  ]
+}

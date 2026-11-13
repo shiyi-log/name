@@ -1,0 +1,652 @@
+{
+  "review_id": "20261112T200344-6d3eb35b",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "娱山",
+      "娱真",
+      "娱艺",
+      "山间娱",
+      "𫘧驰",
+      "𫘧千里",
+      "𫘧风",
+      "乘𫘧逐光",
+      "𫘧跃",
+      "逸𫘧"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "鸥逐晴光",
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光"
+      ],
+      "风": [
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风"
+      ],
+      "跃": [
+        "一跃",
+        "羚跃",
+        "鲲跃",
+        "螭跃",
+        "猊跃",
+        "虎跃",
+        "螳跃",
+        "灵螳跃",
+        "貅跃",
+        "鲮跃",
+        "鲳跃",
+        "鲵跃"
+      ],
+      "间": [
+        "山间邨",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "山间铃",
+        "山间蛱",
+        "山间菊色"
+      ],
+      "山": [
+        "山间邨",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "山间铃",
+        "山间蛱",
+        "山间菊色"
+      ],
+      "艺": [
+        "艺林",
+        "艺囿",
+        "焊艺",
+        "酵艺",
+        "镘艺",
+        "烤艺",
+        "俍艺",
+        "篾艺",
+        "演艺",
+        "模艺",
+        "码艺",
+        "修艺"
+      ],
+      "逸": [
+        "逸骏",
+        "逸墅",
+        "逸翮"
+      ],
+      "千": [
+        "千里骃",
+        "跞千里",
+        "千顷月",
+        "千峤",
+        "螭越千峰",
+        "千丈峰",
+        "千丈飞瀑",
+        "蔓越千峰",
+        "珂越千峰",
+        "历千帆",
+        "历千秋",
+        "千嶂"
+      ],
+      "里": [
+        "千里骃",
+        "跞千里",
+        "壳里乾坤",
+        "葶花里",
+        "墅里",
+        "芙光里",
+        "熏风里",
+        "芭蕉里",
+        "墟里",
+        "墟里烟",
+        "秋枫里",
+        "清葭里"
+      ],
+      "真": [
+        "臻本真",
+        "义守真",
+        "真诠",
+        "真切",
+        "诠本真",
+        "履真",
+        "真𫍯"
+      ],
+      "驰": [
+        "疾驰",
+        "骏驰",
+        "贲驰",
+        "猄驰"
+      ],
+      "逐": [
+        "鸥逐晴光",
+        "竞逐",
+        "逐浪艟",
+        "猄逐风",
+        "鸥逐浪",
+        "鸥逐春潮"
+      ],
+      "乘": [
+        "乘风艟",
+        "鸥乘月色",
+        "乘槎"
+      ],
+      "娱": [
+        "娱林"
+      ],
+      "𫘧": [
+        "𫘧影"
+      ]
+    },
+    "literature_phrase_examples": {
+      "娱山": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 272016,
+          "context": "及此娱山水，翻知喜简书。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1252178,
+          "context": "【娱山亭】"
+        }
+      ],
+      "娱真": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 578539,
+          "context": "朝野欢娱真有象，壶中要看四时春。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1107046,
+          "context": "盼目娱真际，不喜亦不忧。"
+        }
+      ],
+      "娱艺": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 877959,
+          "context": "先生读书常闭户，卒岁优游娱艺圃。"
+        }
+      ],
+      "山间娱": [],
+      "𫘧驰": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1136815,
+          "context": "纷纷过眼甚螽斯，胆掉惊逢骥𫘧驰。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1141144,
+          "context": "别乘修程骥𫘧驰，书来犹肯记衰迟。"
+        }
+      ],
+      "𫘧千里": [],
+      "𫘧风": [],
+      "乘𫘧逐光": [],
+      "𫘧跃": [],
+      "逸𫘧": []
+    },
+    "dictionary_phrase_entries": {
+      "娱山": [],
+      "娱真": [],
+      "娱艺": [],
+      "山间娱": [],
+      "𫘧驰": [],
+      "𫘧千里": [],
+      "𫘧风": [],
+      "乘𫘧逐光": [],
+      "𫘧跃": [],
+      "逸𫘧": []
+    },
+    "direct_dictionary": {
+      "娱": {
+        "definition": "pleasure, enjoyment, amusement",
+        "mandarin": "yú",
+        "related_characters": [
+          {
+            "character": "娛",
+            "relation": "kTraditionalVariant",
+            "definition": "pleasure, enjoyment, amusement",
+            "mandarin": "yú"
+          },
+          {
+            "character": "娱",
+            "relation": "kTraditionalVariant",
+            "definition": "pleasure, enjoyment, amusement",
+            "mandarin": "yú"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "娱",
+            "pinyin": null,
+            "definition": "「娛」的異體字。",
+            "entry_id": "11615-1",
+            "sheet": "1150929辭典匯出",
+            "row": 161066,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "真": {
+        "definition": "real, actual, true, genuine",
+        "mandarin": "zhēn",
+        "official_dictionary": [
+          {
+            "title": "真",
+            "pinyin": "zhēn",
+            "definition": "[形]\n純正的、不虛假的。如：「真面目」、「真心誠意」。《莊子．田子方》：「其為人也真。」\n[副]\n的確、實在。如：「真好」、「真棒」。《漢書．卷九四．匈奴傳下》：「唯北狄為不然，真中國之堅敵也。」\n[名]\n1.道家稱得道成仙的人。如：「太乙真人」、「真人不露相」。《紅樓夢．第二五回》：「魘魔法叔嫂逢五鬼，紅樓夢通靈遇雙真。」\n2.自然、本性。如：「天真」。《莊子．秋水》：「謹守而勿失，是謂反其真。」\n3.肖像、畫像。如：「寫真」、「留真」。\n4.實授的官職。《漢書．卷一二．平帝紀》：「吏在位二百石以上，一切滿秩如真。」\n5.姓。如漢代有真玄菟。",
+            "entry_id": "07824",
+            "sheet": "1150929辭典匯出",
+            "row": 7835,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "艺": {
+        "definition": "art; talent, ability; craft",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "藝",
+            "relation": "kTraditionalVariant",
+            "definition": "art; talent, ability; craft",
+            "mandarin": "yì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "𫘧": {
+        "definition": "name of a legendary swift horse",
+        "mandarin": "lù",
+        "related_characters": [
+          {
+            "character": "騄",
+            "relation": "kTraditionalVariant",
+            "definition": "name of a legendary swift horse",
+            "mandarin": "lù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "驰": {
+        "definition": "go quickly or swiftly; hurry",
+        "mandarin": "chí",
+        "related_characters": [
+          {
+            "character": "馳",
+            "relation": "kTraditionalVariant",
+            "definition": "go quickly or swiftly; hurry",
+            "mandarin": "chí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "千": {
+        "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+        "mandarin": "qiān",
+        "related_characters": [
+          {
+            "character": "千",
+            "relation": "kTraditionalVariant",
+            "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+            "mandarin": "qiān"
+          },
+          {
+            "character": "韆",
+            "relation": "kTraditionalVariant",
+            "definition": "swing",
+            "mandarin": "qiān"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "千",
+            "pinyin": "qiān",
+            "definition": "[名]\n1.數目字。十的百倍。《說文解字．十部》：「千，十百也。」大寫作「仟」。\n2.姓。如漢代有千獻。\n[形]\n眾多。如：「千方百計」、「千山萬水」。《老子》第六四章：「千里之行，始於足下。」唐．李白〈將進酒〉：「天生我材必有用，千金散盡還復來。」",
+            "entry_id": "06437",
+            "sheet": "1150929辭典匯出",
+            "row": 6445,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "里",
+            "pinyin": "lǐ",
+            "definition": "[名]\n1.居所、居處。《詩經．鄭風．將仲子》：「將仲子兮，無踰我里。」《孟子．離婁下》：「去三年不反，然後收其田里。」\n2.街坊、巷弄。《後漢書．卷五四．楊震列傳》：「連里竟街，雕修繕飾，窮極巧技。」唐．韓愈〈柳子厚墓誌銘〉：「今夫平居里巷相慕悅，酒食游戲相徵逐。」\n3.故鄉。如：「故里」。南朝梁．江淹〈別賦〉：「割慈忍愛，離邦去里。」\n4.今地方政府行政區域之一。在鎮之下，鄰之上，與村平行。\n5.量詞。古代用於表示長度的單位。不同年代有不同的定義方式，例如在漢代，以三百六十步為一里。\n6.內部。通「裡」。元．馬致遠〈四塊玉．佐國心〉曲：「命里無時莫剛求，隨時過遣休生受。」\n7.二一四部首之一。",
+            "entry_id": "03419",
+            "sheet": "1150929辭典匯出",
+            "row": 3426,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "乘": {
+        "definition": "ride, ascend; avail oneself of; numerary adjunct for vehicles",
+        "mandarin": "chéng",
+        "official_dictionary": [
+          {
+            "title": "乘",
+            "pinyin": "chéng",
+            "definition": "[動]\n1.登、升。《史記．卷八二．田單傳》：「令甲卒皆伏，使老弱女子乘城。」\n2.駕馭、駕騎。《易經．繫辭下》：「服牛乘馬，引重致遠。」《墨子．親士》：「良馬難乘，然可以任重致遠。」\n3.搭坐，用某種交通工具代步。如：「乘車」、「乘飛機」。\n4.順應、趁、藉著。如：「乘人之危」、「乘風破浪」、「乘勝追擊」。\n5.追逐、進攻。《史記．卷八．高祖本紀》：「楚兵不利，淮陰侯復乘之，大敗垓下。」《漢書．卷七〇．陳湯傳》：「平明，四面火起，吏士喜，大呼乘之，鉦鼓聲動地。」\n6.在數與數之間進行乘法運算。如：「三乘二等於六。」\n[名]\n1.數學上的運算方法之一。即乘法。如：「加減乘除四則運算方法。」\n2.姓。如漢代有乘弘。",
+            "entry_id": "08509",
+            "sheet": "1150929辭典匯出",
+            "row": 8523,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "乘",
+            "pinyin": "shèng",
+            "definition": "[名]\n1.量詞。古代計算車輛的單位。如：「萬乘之國」、「百乘之家」。\n2.史書。如：「史乘」。《孟子．離婁下》：「晉之乘，楚之檮杌，魯之春秋，一也。」\n3.佛教用語。本是車乘之意，用來譬喻教法，以其能載修行者到達解脫的境界。如：「大乘」、「小乘」。",
+            "entry_id": "09039",
+            "sheet": "1150929辭典匯出",
+            "row": 9054,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "逐": {
+        "definition": "chase, expel; one by one",
+        "mandarin": "zhú",
+        "official_dictionary": [
+          {
+            "title": "逐",
+            "pinyin": "zhú",
+            "definition": "[動]_x000D_\n1.追趕。如：「追逐」。《後漢書．卷七三．劉虞公孫瓚陶謙列傳．公孫瓚》：「每聞有警，瓚輒厲色憤怒，如赴讎敵，望塵奔逐，或繼之以夜戰。」唐．盧綸〈和張僕射塞下曲〉六首之三：「欲將輕騎逐，大雪滿弓刀。」_x000D_\n2.驅走。如：「逐客令」、「驅逐出境」。《史記．卷七．項羽本紀》：「及羽背關懷楚，放逐義帝而自立，怨王侯叛己，難矣。」《喻世明言．卷四〇．沈小霞相會出師表》：「原來文書上有『奉旨抄沒』的話，本府已差縣尉封鎖了家私，將人口盡皆逐出。」_x000D_\n3.追求、追尋。《國語．晉語四》：「饜邇逐遠，遠人入服，不為郵矣。」《漢書．卷九六．西域傳上．西夜國》：「西夜與胡異，其種類羌、氐行國，隨畜逐水草往來。」唐．李白〈經亂離後天恩流夜郎憶舊遊書懷贈江夏韋太守良宰〉詩：「誤逐世間樂，頗窮理亂情。」_x000D_\n4.競爭、爭奪。如：「角逐」。《後漢書．卷一七．馮岑賈列傳．馮異》：「當兵革始起，擾攘之時，豪傑競逐，迷惑千數。」宋．邵雍〈題四皓廟〉詩四首之一：「正是英雄較逐時，未知鹿入何人手。」_x000D_\n5.跟隨。如：「隨波逐流」。唐．楊發〈殘花〉詩：「暖芳隨日薄，殘片逐風迴。」《西遊記》第九三回：「常言：『嫁雞逐雞，嫁犬逐犬。』女有誓願在先，結了這毬，告奏天地神明，撞天婚拋打。」_x000D_\n6.依次、按照順序。如：「逐年增加」、「逐條說明」。唐．白居易〈首夏〉詩：「料錢隨月用，生計逐日營。」《五代史平話．周史．卷上》：「郭威從那應募李繼韜軍下攻取澤州，被董璋占了功賞，殺人逃走，來到此間，逐一細說與知遠聽了。」",
+            "entry_id": "07964",
+            "sheet": "1150929辭典匯出",
+            "row": 7976,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "跃": {
+        "definition": "skip, jump, frolic",
+        "mandarin": "yuè",
+        "related_characters": [
+          {
+            "character": "躍",
+            "relation": "kTraditionalVariant",
+            "definition": "skip, jump, frolic",
+            "mandarin": "yuè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "逸": {
+        "definition": "flee, escape, break loose",
+        "mandarin": "yì",
+        "official_dictionary": [
+          {
+            "title": "逸",
+            "pinyin": "yì",
+            "definition": "[動]\n1.逃亡、逃跑。《說文解字．兔部》：「逸，失也，兔謾訑善逃也。」《左傳．桓公八年》：「隨師敗績，隨侯逸。」《北史．卷六．齊高祖神武帝本紀》：「見一赤兔，每搏輒逸。」\n2.奔跑。《國語．晉語五》：「馬逸不能止，三軍從之。」三國吳．韋昭．注：「逸，奔也。」\n3.散失。《書經．胤征》：「天吏逸德，烈于猛火。」\n4.釋放。《左傳．成公十六年》：「明日復戰，乃逸楚囚。」\n[形]\n1.放蕩的。《戰國策．楚策四》：「專淫逸侈靡，不顧國政，郢都必危矣。」\n2.隱逸的。如：「逸老」。《漢書．卷一〇．成帝紀》：「故官無廢事，下無逸民。」\n3.超群的、超絕的。如：「逸才」。《老殘遊記》第一〇回：「六七八段，間以曼衍，愈轉愈清，其調愈逸。」\n4.快速的。《後漢書．卷五二．崔駰傳》：「故英人乘斯時也，猶逸禽之赴深林。」\n5.舒適、安樂。《詩經．小雅．十月之交》：「民莫不逸，我獨不敢休。」\n[名]\n1.隱士。《北史．卷三一．高允傳》：「帝乃虛求，搜賢採逸，巖隱投竿，異人並出。」唐．李白〈夜泊黃山聞殷十四吳吟〉：「朝來果是滄洲逸，酤酒提盤飯霜栗。」\n2.過失。《書經．盤庚上》：「予亦拙謀，作乃逸。」漢．孔安國．傳：「逸，過也。」",
+            "entry_id": "10648",
+            "sheet": "1150929辭典匯出",
+            "row": 10662,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "娱山",
+      "decision": "keep",
+      "reason": "可理解为以山水之乐为意，语序凝练自然；宋诗用例亦显示“娱山水”语境，作为品牌名有清晰意象。"
+    },
+    {
+      "name": "娱真",
+      "decision": "uncertain",
+      "reason": "“娱”与“真”的组合含义不够明确，可能指以真实为乐，也可能是语义拼合；现有用例不足以确认整名的自然读法。"
+    },
+    {
+      "name": "娱艺",
+      "decision": "keep",
+      "reason": "可自然理解为以艺术为乐或艺术娱乐，简洁易读；诗文中亦有“娱艺圃”的用例，整体具备品牌名的凝练感。"
+    },
+    {
+      "name": "山间娱",
+      "decision": "reject",
+      "reason": "“山间”后接“娱”搭配生硬，像地点与抽象活动的机械拼接，完整名称缺乏自然语义关系。"
+    },
+    {
+      "name": "𫘧驰",
+      "decision": "keep",
+      "reason": "𫘧指传说中的骏马，“𫘧驰”可直接理解为骏马奔驰，语义连贯、动感明确；生僻字不影响其字义成立。"
+    },
+    {
+      "name": "𫘧千里",
+      "decision": "keep",
+      "reason": "可理解为骏马行千里，借用“千里”表达骏马的速度与远行意象，构词自然且辨识度较强。"
+    },
+    {
+      "name": "𫘧风",
+      "decision": "uncertain",
+      "reason": "可联想到骏马疾驰如风，但名称本身没有明确表达这一关系，也可能只是两个意象并置，语义连接略显不足。"
+    },
+    {
+      "name": "乘𫘧逐光",
+      "decision": "reject",
+      "reason": "整体呈现乘马追光的完整行动句式，接近口号或宣传语，不够凝练为品牌名称。"
+    },
+    {
+      "name": "𫘧跃",
+      "decision": "keep",
+      "reason": "可理解为骏马腾跃，动作关系清楚，短促有力，具有自然的品牌辨识度。"
+    },
+    {
+      "name": "逸𫘧",
+      "decision": "uncertain",
+      "reason": "“逸”可指超群、快速或安逸，“逸𫘧”可能指神骏之马，但修饰关系和完整含义不够确定，读感也较生僻。"
+    }
+  ]
+}

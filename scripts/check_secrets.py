@@ -12,6 +12,7 @@ import re
 import sqlite3
 import subprocess
 import tempfile
+from urllib.parse import quote
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,6 +41,22 @@ def scan_bytes(path: str, location: str, body: bytes) -> list[Finding]:
     ]
 
 
+def scan_file(path: Path, relative: str, location: str = "文件内容") -> list[Finding]:
+    """Scan large files in chunks without loading them all into memory."""
+    findings = []
+    tail = b""
+    counts = Counter()
+    with path.open("rb") as stream:
+        while chunk := stream.read(1024 * 1024):
+            body = tail + chunk
+            for kind, pattern in PATTERNS.items():
+                matches = list(pattern.finditer(body))
+                counts[kind] += sum(match.start() + len(match.group()) > len(tail) for match in matches)
+            tail = body[-128:]
+    findings.extend(Finding(relative, location, kind, count) for kind, count in counts.items() if count)
+    return findings
+
+
 def forbidden_path(path: Path) -> bool:
     name = path.name.lower()
     return (
@@ -53,8 +70,7 @@ def forbidden_path(path: Path) -> bool:
 def scan_database(path: Path, relative: str) -> list[Finding]:
     """只读检查数据库的文本字段，结果不包含字段内容。"""
     findings = []
-    uri = path.resolve().as_uri() + "?mode=ro"
-    with closing(sqlite3.connect(uri, uri=True)) as connection:
+    with closing(sqlite3.connect(path.resolve().as_uri() + "?mode=ro&immutable=1", uri=True)) as connection:
         tables = connection.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
         for (table,) in tables:
             quoted = '"' + table.replace('"', '""') + '"'
@@ -91,18 +107,21 @@ def check_repository(root: Path) -> tuple[int, list[Finding]]:
         try:
             if path.exists():
                 # 同时扫描数据库原始字节，避免已删除记录的残留密钥随文件上传。
-                findings.extend(scan_bytes(relative, "文件内容", path.read_bytes()))
+                findings.extend(scan_file(path, relative))
                 if path.suffix.lower() in {".db", ".sqlite", ".sqlite3"}:
                     findings.extend(scan_database(path, relative))
             if relative in changed:
                 # 部分暂存时，索引才是将被提交的版本，不能仅检查工作区。
-                staged = subprocess.check_output(["git", "-C", str(root), "show", ":" + relative])
-                findings.extend(scan_bytes(relative, "暂存内容", staged))
                 if path.suffix.lower() in {".db", ".sqlite", ".sqlite3"}:
                     with tempfile.TemporaryDirectory(prefix="name-secret-index-") as directory:
                         snapshot = Path(directory) / "staged.db"
-                        snapshot.write_bytes(staged)
+                        with snapshot.open("wb") as output:
+                            subprocess.run(["git", "-C", str(root), "show", ":" + relative], stdout=output, check=True)
+                        findings.extend(scan_file(snapshot, relative, "暂存内容"))
                         findings.extend(scan_database(snapshot, relative))
+                else:
+                    staged = subprocess.check_output(["git", "-C", str(root), "show", ":" + relative])
+                    findings.extend(scan_bytes(relative, "暂存内容", staged))
         except (OSError, sqlite3.Error, subprocess.CalledProcessError):
             findings.append(Finding(relative, "文件读取", "无法完成密钥检查"))
     return len(files), findings

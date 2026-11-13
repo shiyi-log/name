@@ -1,0 +1,1063 @@
+{
+  "created_at": "2026-11-12T15:21:00+0800",
+  "status": "model_review_not_applied",
+  "model": "gpt-6.1-sol",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "灿然",
+      "星灿",
+      "灿行",
+      "灿云川",
+      "星河灿",
+      "灿而新",
+      "昭然",
+      "昭华",
+      "昭融",
+      "光昭",
+      "昭云开",
+      "山河昭",
+      "德音孔昭",
+      "莹润",
+      "晶莹",
+      "莹然",
+      "冰莹",
+      "莹心",
+      "莹川",
+      "星莹",
+      "莹和",
+      "山莹水秀",
+      "隽永",
+      "清隽",
+      "隽秀",
+      "隽才",
+      "隽思堂",
+      "文辞隽永"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "暮云映川",
+        "赫云川",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月"
+      ],
+      "水": [
+        "山水清斋",
+        "山水茗心",
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水",
+        "秋水凉",
+        "水螭"
+      ],
+      "山": [
+        "云开山峙",
+        "山水清斋",
+        "瞰山河",
+        "山水茗心",
+        "涡映山河",
+        "山河入珐",
+        "珐映山河",
+        "黝色山河",
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集"
+      ],
+      "清": [
+        "山水清斋",
+        "一庭清欢",
+        "清茗",
+        "清懿堂",
+        "清泚",
+        "清酎",
+        "枣影清风",
+        "淑清",
+        "酿清欢",
+        "清葩",
+        "清溪竹墅",
+        "清水芙蓉"
+      ],
+      "星": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河",
+        "广星河"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义",
+        "麇行远山",
+        "鲜行",
+        "肯行"
+      ],
+      "心": [
+        "山水茗心",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心",
+        "心所及"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "云": [
+        "云开山峙",
+        "崧云开",
+        "暮云映川",
+        "云开见硔",
+        "赫云川",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然",
+        "浡然"
+      ],
+      "和": [
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和",
+        "珺和",
+        "中庸致和",
+        "均和",
+        "淑和",
+        "和斋",
+        "臻和"
+      ],
+      "秀": [
+        "娟秀",
+        "竞秀",
+        "婷秀"
+      ],
+      "堂": [
+        "獬豸堂",
+        "嘉禧堂",
+        "明璨堂",
+        "清懿堂",
+        "瑾玤堂",
+        "耇德堂",
+        "秬鬯堂",
+        "砭石堂",
+        "负暄堂",
+        "无讼堂",
+        "世胄堂",
+        "胄子堂"
+      ],
+      "华": [
+        "馥华",
+        "岁华",
+        "华胄",
+        "华萼",
+        "岁华新酿",
+        "华葩",
+        "芙华",
+        "华珑",
+        "棣华",
+        "葭华",
+        "华裳",
+        "昌华"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文",
+        "文椠",
+        "奇文",
+        "文牍",
+        "珂文",
+        "文斐"
+      ],
+      "音": [
+        "籁音",
+        "铴音",
+        "软音",
+        "镛音",
+        "珂音"
+      ],
+      "德": [
+        "耇德堂",
+        "淑德",
+        "德斋",
+        "畜德",
+        "德义",
+        "德赟",
+        "懋德",
+        "德馨"
+      ],
+      "辞": [
+        "彖辞"
+      ],
+      "思": [
+        "杂思",
+        "覃思",
+        "覃思源",
+        "构思",
+        "思慕",
+        "歧思",
+        "奇思"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "润": [
+        "淑润",
+        "雨润荒墟",
+        "凉润",
+        "广润",
+        "鲜润"
+      ],
+      "开": [
+        "云开山峙",
+        "崧云开",
+        "云开见硔",
+        "开口"
+      ],
+      "河": [
+        "瞰山河",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "邂逅星河"
+      ],
+      "融": [
+        "圜融"
+      ],
+      "晶": [
+        "矿晶"
+      ]
+    },
+    "literature_phrase_examples": {
+      "灿然": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 99122,
+          "context": "寒城无伴，灿然还自奇绝。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 109737,
+          "context": "花花蕊蕊，灿然满树。"
+        }
+      ],
+      "星灿": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 407462,
+          "context": "一步一登，挥手攀毛，七星灿烂光斑斑。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 155119,
+          "context": "望珠星灿烂，紫微深窈。"
+        }
+      ],
+      "灿行": [],
+      "灿云川": [],
+      "星河灿": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 31920,
+          "context": "宵迥星河灿，风微羽卫扬。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 417674,
+          "context": "心渴望天南，星河灿垂地。"
+        }
+      ],
+      "灿而新": [],
+      "昭然": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 97283,
+          "context": "复进出矛戟，昭然开鼎彝。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 150802,
+          "context": "心知慷慨日昭然，前程心在青云里。"
+        }
+      ],
+      "昭华": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 230616,
+          "context": "闲吹玉殿昭华管，醉折梨园缥蔕花。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 239519,
+          "context": "莫验昭华琯，虚传甲帐神。"
+        }
+      ],
+      "昭融": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1440,
+          "context": "存贞期历试，佐贰伫昭融。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1799,
+          "context": "微诚讵幽感，景命忽昭融。"
+        }
+      ],
+      "光昭": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 429889,
+          "context": "五行尊暗曜，九土见光昭。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 457840,
+          "context": "已见神光昭感格，鹤书恩下万邦沾。"
+        }
+      ],
+      "昭云开": [],
+      "山河昭": [],
+      "德音孔昭": [
+        {
+          "book": "诗经",
+          "line": 836,
+          "context": "我有嘉宾，德音孔昭。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 886194,
+          "context": "微言既彰，德音孔昭。"
+        }
+      ],
+      "莹润": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 130517,
+          "context": "玉光莹润锦斓斑，霜雪经多节愈坚。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 308204,
+          "context": "莹润无与比，玩爱何可论。"
+        }
+      ],
+      "晶莹": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 118607,
+          "context": "歘然风生波出没，瀖濩晶莹无定物。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 429155,
+          "context": "晶莹三尺剑，决烈一生心。"
+        }
+      ],
+      "莹然": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 78232,
+          "context": "肥羊甘醴心闷闷，饮此莹然何所思。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 122244,
+          "context": "掷地金声信有之，莹然冰玉见清词。"
+        }
+      ],
+      "冰莹": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 172957,
+          "context": "珠玉照乘光，冰莹环坐热。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 174937,
+          "context": "我投冰莹眼，君报水怜鱼。"
+        }
+      ],
+      "莹心": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 60706,
+          "context": "琼浆驻容发，甘露莹心灵。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 79363,
+          "context": "了然莹心身，洁念乐空寂。"
+        }
+      ],
+      "莹川": [],
+      "星莹": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 65091,
+          "context": "羽帔云轻苍佩响，宝冠星莹绀纱笼。"
+        }
+      ],
+      "莹和": [],
+      "山莹水秀": [],
+      "隽永": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 161659,
+          "context": "茶瓯隽永。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 380886,
+          "context": "兄诗有味剧隽永，和者仅同如画影。"
+        }
+      ],
+      "清隽": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 226462,
+          "context": "地胜岷峨秀，时清隽乂生。"
+        }
+      ],
+      "隽秀": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 606388,
+          "context": "委蛇处州巷，颇以隽秀闻。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 841268,
+          "context": "天派发源公隽秀，客情催老我蹒跚。"
+        }
+      ],
+      "隽才": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 204621,
+          "context": "衣冠多隽才，继踵公与侯。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 756924,
+          "context": "假馆连墙数见过，宗英年少隽才多。"
+        }
+      ],
+      "隽思堂": [],
+      "文辞隽永": []
+    },
+    "dictionary_phrase_entries": {
+      "灿然": [],
+      "星灿": [],
+      "灿行": [],
+      "灿云川": [],
+      "星河灿": [],
+      "灿而新": [],
+      "昭然": [
+        {
+          "title": "昭然",
+          "pinyin": "zhāo rán",
+          "definition": "明顯的樣子。《文選．孔安國．尚書序》：「序所以為作者之意，昭然義見，宜相附近。」《文選．李康．運命論》：「權乎禍福之門，終乎榮辱之筭，其昭然矣！」",
+          "entry_id": "077070035",
+          "sheet": "1150929辭典匯出",
+          "row": 113759,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "昭华": [],
+      "昭融": [],
+      "光昭": [
+        {
+          "title": "光昭",
+          "pinyin": "guāng zhāo",
+          "definition": "1.照耀。漢．曹操〈秋胡行〉：「明明日月光，何所不光昭。」《文選．謝靈運．從游京口北固應昭詩》：「皇心美陽澤，萬象咸光昭。」\n2.彰明顯揚，發揚光大。《左傳．隱公三年》：「光昭先君之令德，可不務乎？」《文選．陸機．弔魏武帝文》：「雖光昭於曩載，將稅駕於此年。」",
+          "entry_id": "043540182",
+          "sheet": "1150929辭典匯出",
+          "row": 73618,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "昭云开": [],
+      "山河昭": [],
+      "德音孔昭": [],
+      "莹润": [],
+      "晶莹": [],
+      "莹然": [],
+      "冰莹": [],
+      "莹心": [],
+      "莹川": [],
+      "星莹": [],
+      "莹和": [],
+      "山莹水秀": [],
+      "隽永": [],
+      "清隽": [],
+      "隽秀": [],
+      "隽才": [],
+      "隽思堂": [],
+      "文辞隽永": []
+    },
+    "direct_dictionary": {
+      "灿": {
+        "definition": "vivid, illuminating; bright",
+        "mandarin": "càn",
+        "related_characters": [
+          {
+            "character": "燦",
+            "relation": "kTraditionalVariant",
+            "definition": "vivid, illuminating; bright",
+            "mandarin": "càn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "而": {
+        "definition": "and; and then; and yet; but; Kangxi radical 126",
+        "mandarin": "ér",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "昭": {
+        "definition": "bright, luminous; illustrious",
+        "mandarin": "zhāo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "华": {
+        "definition": "flowery; illustrious; Chinese",
+        "mandarin": "huá",
+        "related_characters": [
+          {
+            "character": "華",
+            "relation": "kTraditionalVariant",
+            "definition": "flowery; illustrious; Chinese",
+            "mandarin": "huá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "融": {
+        "definition": "melt, fuse; blend, harmonize",
+        "mandarin": "róng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "德": {
+        "definition": "ethics, morality, virtue",
+        "mandarin": "dé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "音": {
+        "definition": "sound, tone, pitch, pronunciation; Kangxi radical 180",
+        "mandarin": "yīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "孔": {
+        "definition": "opening, hole, orifice; great",
+        "mandarin": "kǒng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "莹": {
+        "definition": "luster of gems; bright, lustrous",
+        "mandarin": "yíng",
+        "related_characters": [
+          {
+            "character": "瑩",
+            "relation": "kTraditionalVariant",
+            "definition": "lustre of gems; bright, lustrous",
+            "mandarin": "yíng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "润": {
+        "definition": "soft, moist; sleek; freshen",
+        "mandarin": "rùn",
+        "related_characters": [
+          {
+            "character": "潤",
+            "relation": "kTraditionalVariant",
+            "definition": "soft, moist; sleek; freshen",
+            "mandarin": "rùn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晶": {
+        "definition": "crystal; clear, bright; radiant",
+        "mandarin": "jīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "冰": {
+        "definition": "ice; ice-cold",
+        "mandarin": "bīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "秀": {
+        "definition": "ear of grain; flowering, luxuriant; refined, elegant, graceful",
+        "mandarin": "xiù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "隽": {
+        "definition": "superior, outstanding, talented",
+        "mandarin": "juàn",
+        "related_characters": [
+          {
+            "character": "隽",
+            "relation": "kTraditionalVariant",
+            "definition": "superior, outstanding, talented",
+            "mandarin": "juàn"
+          },
+          {
+            "character": "雋",
+            "relation": "kTraditionalVariant",
+            "definition": "superior, outstanding, talented",
+            "mandarin": "juàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "永": {
+        "definition": "long, perpetual, eternal, forever",
+        "mandarin": "yǒng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "才": {
+        "definition": "talent, ability; just, only",
+        "mandarin": "cái",
+        "related_characters": [
+          {
+            "character": "才",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          },
+          {
+            "character": "纔",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "思": {
+        "definition": "think, consider, ponder; final particle",
+        "mandarin": "sī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "堂": {
+        "definition": "hall; government office",
+        "mandarin": "táng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辞": {
+        "definition": "words, speech, expression, phrase",
+        "mandarin": "cí",
+        "related_characters": [
+          {
+            "character": "辞",
+            "relation": "kTraditionalVariant",
+            "definition": "words, speech, expression, phrase",
+            "mandarin": "cí"
+          },
+          {
+            "character": "辭",
+            "relation": "kTraditionalVariant",
+            "definition": "words, speech, expression, phrase",
+            "mandarin": "cí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "灿然",
+      "decision": "keep",
+      "reason": "明亮鲜明的状态表达自然凝练，词义清楚，具备名称感。"
+    },
+    {
+      "name": "星灿",
+      "decision": "keep",
+      "reason": "以星光璀璨构成简洁意象，语序自然，有清晰辨识度。"
+    },
+    {
+      "name": "灿行",
+      "decision": "uncertain",
+      "reason": "可理解为光明地前行，但“灿”与“行”的组合关系不够自然，语义略显勉强。"
+    },
+    {
+      "name": "灿云川",
+      "decision": "uncertain",
+      "reason": "字面可联想到明亮云川，但三字意象的组合关系不清，整体凝练度不足。"
+    },
+    {
+      "name": "星河灿",
+      "decision": "reject",
+      "reason": "“星河灿”语序生硬，通常说“星河灿烂”或“星河璀璨”，此处像截短的句式。"
+    },
+    {
+      "name": "灿而新",
+      "decision": "reject",
+      "reason": "连接词“而”使名称呈现判断或口号式表达，整体不够凝练自然。"
+    },
+    {
+      "name": "昭然",
+      "decision": "keep",
+      "reason": "意为显明、明白，词义确定且简洁，作为名称自然清楚。"
+    },
+    {
+      "name": "昭华",
+      "decision": "keep",
+      "reason": "可理解为光华显耀，组合顺畅、意象明确，有名称辨识度。"
+    },
+    {
+      "name": "昭融",
+      "decision": "keep",
+      "reason": "可表达光明显著、融和通达，语义连贯，组合自然。"
+    },
+    {
+      "name": "光昭",
+      "decision": "keep",
+      "reason": "有照耀、彰明之义，属于自然凝练的词语组合，寓意清晰。"
+    },
+    {
+      "name": "昭云开",
+      "decision": "uncertain",
+      "reason": "可联想到云开见明，但语序和省略关系不够明确，整体略像截取的景象句。"
+    },
+    {
+      "name": "山河昭",
+      "decision": "uncertain",
+      "reason": "可理解为山河明朗，但修饰关系倒置感较强，作为完整名称自然度存疑。"
+    },
+    {
+      "name": "德音孔昭",
+      "decision": "reject",
+      "reason": "这是完整的古典陈述语句，表达德行声誉显著，属于句式化赞语，不符合名称的凝练感。"
+    },
+    {
+      "name": "莹润",
+      "decision": "keep",
+      "reason": "形容光泽温润，完整词义自然，字面清雅且具品牌辨识度。"
+    },
+    {
+      "name": "晶莹",
+      "decision": "keep",
+      "reason": "常见自然词语，形容明亮透澈，语义完整，适合作为简洁名称。"
+    },
+    {
+      "name": "莹然",
+      "decision": "keep",
+      "reason": "表示明净有光泽的状态，构词自然，含义清楚。"
+    },
+    {
+      "name": "冰莹",
+      "decision": "keep",
+      "reason": "冰洁莹亮的意象明确，组合顺畅，具有简洁的名称感。"
+    },
+    {
+      "name": "莹心",
+      "decision": "keep",
+      "reason": "可理解为澄澈明净之心，语义关联自然，表达凝练。"
+    },
+    {
+      "name": "莹川",
+      "decision": "keep",
+      "reason": "可形成晶莹水川的自然物象，虽非固定词语，但组合简洁且意象清楚。"
+    },
+    {
+      "name": "星莹",
+      "decision": "keep",
+      "reason": "星光晶莹的意象自然明晰，简洁且有辨识度。"
+    },
+    {
+      "name": "莹和",
+      "decision": "uncertain",
+      "reason": "字面可解作莹洁和谐，但两个词素之间的语义关系不够明确，组合略显生硬。"
+    },
+    {
+      "name": "山莹水秀",
+      "decision": "reject",
+      "reason": "明显仿套“山清水秀”的熟语结构，将“莹”硬替入“清”，搭配不自然。"
+    },
+    {
+      "name": "隽永",
+      "decision": "keep",
+      "reason": "词语本身意为意味深长、耐人寻味，义项明确且凝练，有名称感。"
+    },
+    {
+      "name": "清隽",
+      "decision": "keep",
+      "reason": "可形容清雅俊秀，组合自然，语义清楚。"
+    },
+    {
+      "name": "隽秀",
+      "decision": "keep",
+      "reason": "意为俊秀出众，词义连贯自然，具备简洁名称感。"
+    },
+    {
+      "name": "隽才",
+      "decision": "keep",
+      "reason": "意为出众的人才，语义明确、搭配自然，整体凝练。"
+    },
+    {
+      "name": "隽思堂",
+      "decision": "keep",
+      "reason": "“隽思”指隽永深刻的思致，“堂”作名称后缀自然，整体完整且有辨识度。"
+    },
+    {
+      "name": "文辞隽永",
+      "decision": "reject",
+      "reason": "完整表达文辞意味深长的判断句式，描述性过强，不够凝练为品牌名称。"
+    }
+  ]
+}

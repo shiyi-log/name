@@ -1,0 +1,928 @@
+{
+  "review_id": "20261112T191456-d6a6ff53",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "大有为",
+      "化为新生",
+      "以人为本",
+      "见义勇为",
+      "淜渡",
+      "淜声远",
+      "喙鸣",
+      "百喙"
+    ],
+    "related_kept_candidates": {
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "云开见硔",
+        "山麇见月",
+        "藏酒见山",
+        "矿中见海",
+        "罅见晴",
+        "涂见远",
+        "黛山见月"
+      ],
+      "渡": [
+        "一苇渡江",
+        "青枫渡",
+        "渡口",
+        "广陵渡月",
+        "横渡",
+        "杭渡",
+        "青牛渡",
+        "青牛渡海",
+        "摆渡",
+        "渡人",
+        "共渡",
+        "渡川"
+      ],
+      "百": [
+        "百川归一",
+        "百丈崖",
+        "百昌",
+        "百工厅"
+      ],
+      "义": [
+        "义方",
+        "慕义",
+        "义和",
+        "义信",
+        "义诚",
+        "义达",
+        "义远",
+        "义安",
+        "义成",
+        "义理",
+        "义度",
+        "弘义"
+      ],
+      "鸣": [
+        "鸣镝",
+        "螽鸣",
+        "鹳鸣",
+        "䴓鸣",
+        "争鸣",
+        "蛩鸣",
+        "鸣桹",
+        "蛰鸣",
+        "兽鸣",
+        "䴕鸣",
+        "林间䴕鸣",
+        "诤鸣"
+      ],
+      "远": [
+        "鼙声远",
+        "迈远",
+        "远星团",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声",
+        "豪声",
+        "篥声",
+        "篪声",
+        "松月弓声"
+      ],
+      "新": [
+        "瑕玉新生",
+        "蒹生新绿",
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "竞新",
+        "新荚",
+        "茗新"
+      ],
+      "生": [
+        "化生",
+        "瑕玉新生",
+        "蒹生新绿",
+        "梣木生辉",
+        "粗笔生春",
+        "凉生",
+        "春又生",
+        "蔓生",
+        "蔓生朝露",
+        "蔓生集",
+        "生态",
+        "广陵潮生"
+      ],
+      "有": [
+        "大有",
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度",
+        "梾间有光",
+        "溪山有蹊",
+        "春山有蹊",
+        "有斐",
+        "柯间有光",
+        "有谱儿"
+      ],
+      "本": [
+        "人本",
+        "臻本真",
+        "碳之本",
+        "椠本",
+        "本柢",
+        "揆本",
+        "本愿",
+        "蜜之本",
+        "本元",
+        "码本",
+        "见本色",
+        "话本"
+      ],
+      "化": [
+        "化生",
+        "鲲化",
+        "化简",
+        "化开",
+        "化境",
+        "化光",
+        "山海化境",
+        "化雨",
+        "化育",
+        "化成"
+      ],
+      "人": [
+        "人本",
+        "个中人",
+        "知人",
+        "人境",
+        "人间春",
+        "人间清欢",
+        "人间行旅",
+        "人间万象",
+        "人间集",
+        "山中人",
+        "云上人",
+        "人间序"
+      ],
+      "大": [
+        "大有",
+        "大唐春",
+        "大川",
+        "大方",
+        "大任",
+        "大河",
+        "大江流",
+        "山海大观"
+      ],
+      "以": [
+        "以宁",
+        "可以"
+      ],
+      "为": [
+        "可为",
+        "心不为囚"
+      ],
+      "勇": [
+        "悍勇",
+        "彪勇"
+      ]
+    },
+    "literature_phrase_examples": {
+      "大有为": [
+        {
+          "book": "孟子",
+          "line": 176,
+          "context": "故将大有为之君，必有所不召之臣。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 175591,
+          "context": "脱俗殊常调，潜工大有为。"
+        }
+      ],
+      "化为新生": [],
+      "以人为本": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 343159,
+          "context": "国以人为本，犹如树因地。"
+        },
+        {
+          "book": "三国演义",
+          "line": 2557,
+          "context": "」玄德泣曰：「举大事者必以人为本。"
+        }
+      ],
+      "见义勇为": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1606703,
+          "context": "径山诸公见义勇为，灵隠师伯拔剑相助。"
+        }
+      ],
+      "淜渡": [],
+      "淜声远": [],
+      "喙鸣": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 56114,
+          "context": "饥狖连臂喜跳掷，渴鸟引喙鸣钩辀。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 233695,
+          "context": "悗乎忘言喙鸣合，窅尔自静鲵桓潘。"
+        }
+      ],
+      "百喙": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1207588,
+          "context": "百喙吟春不暂停，长疑春意未丁宁。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1611024,
+          "context": "喧啾百喙忽奏雅，尽洗盈耳筝竽音。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "大有为": [],
+      "化为新生": [],
+      "以人为本": [],
+      "见义勇为": [],
+      "淜渡": [],
+      "淜声远": [],
+      "喙鸣": [],
+      "百喙": []
+    },
+    "direct_dictionary": {
+      "大": {
+        "definition": "big, great, vast, large, high",
+        "mandarin": "dà",
+        "official_dictionary": [
+          {
+            "title": "大",
+            "pinyin": "dà",
+            "definition": "[形]\n1.在體積、面積、容量、數量、強度、深度、力量等方面超過一般，或超過比較的對象。與「小」相對而言。如：「大山」、「大河」、「大雨」、「眼睛大」、「力氣大」、「雷聲大，雨點小。」\n2.最年長的、排行第一的。如：「大哥」、「大伯」、「大媽」。\n3.表示尊敬之詞。如：「拜讀大作」、「尊姓大名」。\n4.不平常、重要的、偉大的。《文選．石崇．思歸引序》：「余少有大志，夸邁流俗。」《文選．袁宏．三國名臣序贊》：「雖大旨同歸，所託或乖。」\n5.時間上更前或更後，有強調的意味。如：「大前天」、「大後天」、「大年初一」。\n[副]\n1.表程度深。如：「大吃一驚」、「大快人心」、「大搞活動」、「天已大亮」、「大有出息」。\n2.與「不」字連用，表次數少或程度淺。如：「她不大出門見人的。」、「他不大愛抽菸。」、「小侄兒還不大會講話。」\n3.很、非常。《漢書．卷六八．霍光傳》：「長公主大以是怨光。」\n4.差不多、不很精確。如：「大約」、「大概」、「大略」。\n[名]\n1.與「小」相對之詞。《孟子．梁惠王上》：「小國不可以敵大。」\n2.年紀較大的人。如：「你們一家大小都要來吃喜酒喔！」\n3.姓。如唐代有大明，金代有大興國。\n4.二一四部首之一。\n[動]\n誇耀、自以為是。如：「誇大」。《禮記．表記》：「是故君子不自大其事，不自尚其功。」",
+            "entry_id": "01913",
+            "sheet": "1150929辭典匯出",
+            "row": 1918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "大",
+            "pinyin": "dài",
+            "definition": "參見「大夫」條。",
+            "entry_id": "01930",
+            "sheet": "1150929辭典匯出",
+            "row": 1935,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "大夫",
+                "pinyin": "dà fū",
+                "definition": "1.職官名。歷代沿用，多係中央要職和顧問。如御史大夫、光祿大夫、大中大夫等。\n2.宋朝對有特殊技藝者的尊稱。《警世通言．卷八．崔待詔生死冤家》：「啟請婆婆，過對門裱褙鋪裡請璩大夫來說話。」\n3.複姓。如漢代有大夫但。",
+                "entry_id": "019130205",
+                "sheet": "1150929辭典匯出",
+                "row": 40255
+              },
+              {
+                "title": "大夫",
+                "pinyin": "dài fu",
+                "definition": "醫生。《紅樓夢》第五一回：「我叫人請了大夫，悄悄的從後門進來瞧瞧就是了。」",
+                "entry_id": "019300001",
+                "sheet": "1150929辭典匯出",
+                "row": 41831
+              }
+            ]
+          },
+          {
+            "title": "大",
+            "pinyin": "tài",
+            "definition": "[形]\n至高無上的。通「太」、「泰」。清．江沅《說文釋例．卷上．釋字例．大》：「古兄作『大』，不作『太』、『泰』。《易》之『大極』，《春秋》之『大子』、『大上』，《尚書》之『大誓』、『大王王季』，《史》、《漢》之『大上皇』、『大后』，後人皆讀為太。或徑改本書，作『太』及『泰』。」",
+            "entry_id": "02476",
+            "sheet": "1150929辭典匯出",
+            "row": 2484,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "有",
+            "pinyin": "yǒu",
+            "definition": "[動]\n表事實、狀況的正面存在，與「無」相對。如：「有困難」、「有利有弊」、「有學問」、「有錢」、「擁有」、「面有飢色」。\n[形]\n1.豐足、富裕。如：「他是個非常富有的人。」《詩經．大雅．公劉》：「止基迺理，爰眾爰有。」\n2.多，表示時間久或年齡大。如：「本店開設有年。」、「母親已有了年紀。」\n3.故意。如：「有心犯錯應嚴懲，無心疏忽可原諒。」\n[綴]\n置於名詞前，作音節的襯字。如：「有夏」、「有清」。《韓非子．五蠹》：「當舜之時，有苗不服，禹將伐之。」\n[代]\n某，表示不確定。如：「有一天晚上」、「有人說你做人很講義氣。」\n[名]\n姓。如漢代有有祿。",
+            "entry_id": "10905",
+            "sheet": "1150929辭典匯出",
+            "row": 10919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "有",
+            "pinyin": "yòu",
+            "definition": "[副]\n表示重複、反覆、連續。通「又」。唐．裴守真〈請重耕織表〉：「奸偽由此而生，黎庶緣斯而苦，此有國之大患也。」\n[連]\n用於整數與餘數之間，表示數目的附加。如：「七十有七人」。《論語．為政》：「吾十有五而志於學，三十而立。」",
+            "entry_id": "10922",
+            "sheet": "1150929辭典匯出",
+            "row": 10936,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "为": {
+        "definition": "do, handle, govern, act; be",
+        "mandarin": "wèi",
+        "related_characters": [
+          {
+            "character": "為",
+            "relation": "kTraditionalVariant",
+            "definition": "do, handle, govern, act; be",
+            "mandarin": "wèi"
+          },
+          {
+            "character": "爲",
+            "relation": "kTraditionalVariant",
+            "definition": "do, handle, govern, act; be",
+            "mandarin": "wèi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "化": {
+        "definition": "change, convert, reform; -ize",
+        "mandarin": "huà",
+        "official_dictionary": [
+          {
+            "title": "化",
+            "pinyin": "huā",
+            "definition": "參見「化子」條。",
+            "entry_id": "05004",
+            "sheet": "1150929辭典匯出",
+            "row": 5011,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "化子",
+                "pinyin": "huā zi",
+                "definition": "以乞討為生的人。《醒世恆言．卷二七．李玉英獄中訟寃》：「這個小化子，一日倒討得許多錢。」《平妖傳》第一一回：「剩下的飯，大籮裝著憑這起黃胖道人、癩皮化子隨意大碗價吃飽，到明日又是如此。」也稱為「叫花子」。",
+                "entry_id": "050040002",
+                "sheet": "1150929辭典匯出",
+                "row": 82219
+              }
+            ]
+          },
+          {
+            "title": "化",
+            "pinyin": "huà",
+            "definition": "[動]\n1.改變。如：「千變萬化」、「潛移默化」。《易經．恆卦．彖曰》：「日月得天而能久照；四時變化而能久成。」《淮南子．氾論》：「故聖人法與時變，禮與俗化。」\n2.天地生成萬物。如：「造化」、「化育」。\n3.轉移民俗使歸淳厚。《孟子．盡心上》：「夫君子所過者化，所存者神。」《文選．鄒陽．獄中上書自明》：「是以聖王制世御俗，獨化於陶鈞之上。」\n4.死。如：「物化」、「羽化」。《孟子．公孫丑下》：「且比化者，無使土親膚，於人心獨無恔乎？」唐．劉禹錫〈祭柳員外文〉：「惟君平昔，聰明絕人，今雖化去，夫豈無物！」\n5.物體消融、改變形性。如：「溶化」、「消化」。《韓非子．五蠹》：「有聖人作，鑽燧取火，以化腥臊，而民說之。」\n6.燒毀。如：「火化」、「焚化」。《西遊記》第一三回：「獻過了種種香火，化了眾神紙馬，燒了薦亡文疏，佛事已畢，又各安寢。」\n7.求乞、乞討。如：「化緣」、「募化」。《儒林外史》第一回：「也有坐在地上就化錢的。」\n8.置於名詞或形容詞之後，表示轉變成某種狀態或性質。如：「美化」、「綠化」、「惡化」、「電氣化」、「科學化」、「現代化」。\n[名]\n1.教化。《文選．李密．陳情表》：「逮奉聖朝，沐浴清化。」唐．柳宗元〈封建論〉：「孟舒、魏尚之術，莫得而施；黃霸、汲黯之化，莫得而行。」\n2.化學的簡稱。如：「理化」、「化工」。",
+            "entry_id": "05019",
+            "sheet": "1150929辭典匯出",
+            "row": 5026,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "新",
+            "pinyin": "xīn",
+            "definition": "[形]\n1.沒有使用過的。與「舊」相對。如：「新辦法」、「新衣」、「新筆」。\n2.剛開始的、始出現的。如：「新芽」、「新生兒」、「新品種」。\n[名]\n1.泛指一切新的人、事、物、知識等。如：「履新」、「汰舊換新」、「溫故知新」。\n2.剛收成的農作物。《禮記．月令》：「是月也，農乃登穀，天子嘗新。」《新唐書．卷一一八．宋務光傳》：「家無接新之儲，國乏俟荒之蓄。」\n3.朝代名。參見「新莽」條。\n4.姓。如春秋時晉國有新穆子。\n[動]\n改進或使改變，而成為新的、好的。如：「改過自新」、「一新耳目」。《書經．胤征》：「舊染汙俗，咸與惟新。」《禮記．大學》：「苟日新、日日新、又日新。」\n[副]\n不久前、剛才。如：「新寫的字」、「新買的衣服」。《荀子．不苟》：「新浴者振其衣，新沐者彈其冠。」",
+            "entry_id": "07163",
+            "sheet": "1150929辭典匯出",
+            "row": 7172,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "舊",
+                "pinyin": "jiù",
+                "definition": "[形]\n不新的、古老的、從前的。如：「舊日」、「舊交」、「舊車」、「舊衣服」、「舊習慣」。《詩經．大雅．文王》：「周雖舊邦，其命維新。」唐．杜牧〈旅宿〉詩：「寒燈思舊事，斷雁警愁眠。」\n[名]\n交情、老朋友。如：「念舊」、「懷舊」、「親朋故舊」。《三國志．卷三八．蜀書．許靖傳》：「吳郡都尉許貢、會稽太守王朗素與靖有舊，故往保焉。」",
+                "entry_id": "05717",
+                "sheet": "1150929辭典匯出",
+                "row": 5724
+              },
+              {
+                "title": "新芽",
+                "pinyin": "xīn yá",
+                "definition": "新長出的嫩芽。如：「窗前的那盆玫瑰花，開始抽新芽了。」",
+                "entry_id": "071630304",
+                "sheet": "1150929辭典匯出",
+                "row": 107803
+              },
+              {
+                "title": "新生兒",
+                "pinyin": "xīn shēng ér",
+                "definition": "從剛出生到一個月大的嬰兒，都稱為「新生兒」。",
+                "entry_id": "071630270",
+                "sheet": "1150929辭典匯出",
+                "row": 107776
+              },
+              {
+                "title": "履新",
+                "pinyin": "lǚ xīn",
+                "definition": "1.時逢新的一年。《新唐書．卷一九．禮樂志九》：「在位者皆再拜，宣制曰：『履新之慶，與公等同之。』」\n2.官吏接任新職。《文明小史》第六回：「新委的是傅祝登傅大人，不日就來履新。」也作「履任」。",
+                "entry_id": "038930017",
+                "sheet": "1150929辭典匯出",
+                "row": 66851
+              },
+              {
+                "title": "汰舊換新",
+                "pinyin": "tài jiù huàn xīn",
+                "definition": "把舊的淘汰，更換成新的。如：「這些設備即將汰舊換新，以增加生產效率。」",
+                "entry_id": "024790001",
+                "sheet": "1150929辭典匯出",
+                "row": 49426
+              },
+              {
+                "title": "溫故知新",
+                "pinyin": "wēn gù zhī xīn",
+                "definition": "語本《論語．為政》：「子曰：『溫故而知新，可以為師矣。』」指溫習舊業，可增進新知。亦指複習學過的知識，而獲得新的知識、體會。《漢書．卷一〇．成帝紀》：「儒林之官，四海淵原，宜皆明於古今，溫故知新，通達國體，故謂之博士。」《文明小史》第二五回：「起先教他經書，不上一年，溫故知新，五經均已讀熟。」",
+                "entry_id": "114950028",
+                "sheet": "1150929辭典匯出",
+                "row": 159732
+              },
+              {
+                "title": "新莽",
+                "pinyin": "xīn mǎng",
+                "definition": "王莽篡漢自立，國號新（西元9～23），建都長安，史稱為「新莽」。",
+                "entry_id": "071630016",
+                "sheet": "1150929辭典匯出",
+                "row": 107600
+              },
+              {
+                "title": "改過自新",
+                "pinyin": "gǎi guò zì xīn",
+                "definition": "改正過失，重新做人。《漢書．卷二三．刑法志》：「刑者不可復屬，雖後欲改過自新，其道亡繇也。」唐．白居易〈議肉刑可廢不可用〉：「其欲廢之者，則曰：『刻膚革，斷肢體，人主忍而用之。則愷悌惻隱之心乖矣。』此緹縈所謂雖欲改過自新，其道亡繇者也。」也作「改過從新」。",
+                "entry_id": "039760028",
+                "sheet": "1150929辭典匯出",
+                "row": 67702
+              },
+              {
+                "title": "一新耳目",
+                "pinyin": "yī xīn ěr mù",
+                "definition": "所見所聞給人截然不同的新感受。如：「近來公司大刀闊斧的革新，令人一新耳目。」",
+                "entry_id": "104820877",
+                "sheet": "1150929辭典匯出",
+                "row": 147429
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "生": {
+        "definition": "life, living, lifetime; birth",
+        "mandarin": "shēng",
+        "official_dictionary": [
+          {
+            "title": "生",
+            "pinyin": "shēng",
+            "definition": "[動]\n1.長出、生長。如：「生出一對角。」《詩經．大雅．卷阿》：「梧桐生矣，于彼朝陽。」\n2.生產、生育。《詩經．大雅．生民》：「不康禋祀，居然生子。」唐．白居易〈長恨歌〉：「遂令天下父母心，不重生男重生女。」\n3.發生、產生。如：「生病」、「生效」、「橫生枝節」。《左傳．成公二年》：「義以生利，利以平民。」唐．杜甫〈愁〉詩：「江草日日喚愁生，巫峽泠泠非世情。」\n4.生存、活存。如：「置之死地而後生」。\n5.製造、新創。如：「惹事生非」、「你又生出新花樣來了。」\n[名]\n1.生存、生活。如：「起死回生」、「忍辱偷生」。《論語．顏淵》：「死生有命，富貴在天。」\n2.量詞。計算一輩子的單位。如：「三生三世」、「緣定三生」、「三生姻緣」。\n3.生命。如：「輕生」、「餘生」。\n4.泛指生物。如：「眾生」、「群生」、「放生」。\n5.生計。如：「謀生」、「無以為生」。\n6.讀書人稱為「生」。如：「書生」、「儒生」。\n7.學習者、門徒。如：「生徒」、「門生」、「師生」、「學生」。\n8.戲劇裡的角色名稱。如：「小生」、「老生」、「武生」。\n9.姓。如明代有生用和。\n10. 二一四部首之一。\n[形]\n1.果實尚未成熟。如：「這個番石榴太生了，不能吃。」\n2.沒有煮熟的。如：「生肉」、「生飯」。\n3.罕見、不熟悉。如：「生人」、「面生」、「生手」、「生字」。\n4.沒有加工或鍛鍊過的。如：「生鐵」。\n[副]\n1.很、甚。如：「生怕」、「生恐」。唐．劉采春〈囉嗊曲〉六首之一：「不喜秦淮水，生憎江上船。」\n2.強迫。如：「生拉硬扯」。元．關漢卿《蝴蝶夢》第二折：「把三個未發跡小秀士，生扭做吃勘問死囚徒。」\n[助]\n語助詞，無義。《儒林外史》第七回：「況我看見你不喜我這煩劇的事，怎生是好？」",
+            "entry_id": "09024",
+            "sheet": "1150929辭典匯出",
+            "row": 9039,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "以": {
+        "definition": "by means of; thereby, therefore; consider as; in order to",
+        "mandarin": "yǐ",
+        "official_dictionary": [
+          {
+            "title": "以",
+            "pinyin": "yǐ",
+            "definition": "[動]_x000D_\n1.用。《左傳．襄公十年》：「我辭禮矣，彼則以之。」漢．王充《論衡．程材》：「洗洿泥者以水，燔腥者用火。」_x000D_\n2.仰賴、憑藉。《韓非子．五蠹》：「富國以農，距敵恃卒。」漢．王充《論衡．卜筮》：「欲知天，以人事。」_x000D_\n3.認為、以為。《左傳．昭公二十五年》：「告臧孫，臧孫以難；告郈孫，郈孫以可勸。」唐．柳宗元〈為裴中丞上裴相賀破東平狀〉：「竊以自古中興之主，必有命代之臣。」_x000D_\n4.可、能夠。《詩經．齊風．猗嗟》：「四矢反兮，以禦亂兮。」《孟子．滕文公下》：「大則以王，小則以霸。」_x000D_\n5.令、使。《孟子．公孫丑上》：「管仲以其君霸，晏子以其君顯。管仲、晏子猶不足為與？」《戰國策．秦策一》：「向欲以齊事王，使攻宋也。」_x000D_\n6.帶領、率領。《左傳．成公十六年》：「欒、范以其族夾公行，陷于淖。」《史記．卷一〇七．魏其武安侯列傳》：「吳楚反時，潁陰侯灌何為將軍，屬太尉，請灌孟為校尉。夫以千人與父俱。」_x000D_\n7.延及。《易經．小畜．九五》：「有孚攣如，富以其鄰。」《論語．堯曰》：「朕躬有罪，無以萬方。」_x000D_\n[介]_x000D_\n1.表示行為的憑藉。相當於「用」。如：「以身作則」、「徐噴以煙」。《論語．為政》：「生，事之以禮；死，葬之以禮、祭之以禮。」《左傳．文公二年》：「晉襄公縛秦囚，使萊駒以戈斬之。」《史記．卷一一七．司馬相如列傳》：「是時卓王孫有女文君新寡，好音，故相如繆與令相重，而以琴心挑之。」_x000D_\n2.因為、由於。《論語．衛靈公》：「君子不以言舉人，不以人廢言。」《韓非子．喻老》：「千丈之隄，以蟻螻之穴潰。」_x000D_\n3.按、依。《孟子．梁惠王上》：「斧斤以時入山林，材木不可勝用也。」《商君書．更法》：「禮法以時而定，制令各順其宜。」_x000D_\n4.在、於。《左傳．桓公二年》：「其弟以千畝之戰生，命之曰成師。」唐．柳宗元〈斷刑論〉：「賞以春夏而刑以秋冬。」_x000D_\n5.表時空、方位、程度等的界限，通常加在前、後、左、右、上、下、往、來、東、西、南、北等字之前。如：「亙古以來」、「中人以上」、「長安東路以西」、「價格在一千元以下」。_x000D_\n[連]_x000D_\n1.而、且。《詩經．邶風．燕燕》：「瞻望弗及，佇立以泣。」《禮記．樂記》：「亡國之音哀以思，其民困。」_x000D_\n2.因而。《漢書．卷二九．溝洫志》：「於是關中為沃野，無凶年，秦以富彊。」三國蜀．諸葛亮〈出師表〉：「不宜妄自菲薄，引喻失義，以塞忠諫之路也。」_x000D_\n3.目的在於。如：「以免」、「以致於」。《書經．泰誓下》：「郊社不修，宗廟不享。作奇技淫巧以悅婦人。」_x000D_\n4.與、和。《儀禮．鄉射禮》：「各以其耦進，反于射位。」_x000D_\n[助]_x000D_\n置動詞後，無義。如：「得以」、「能以」。《論語．泰伯》：「可以託六尺之孤，可以寄百里之命。」_x000D_\n[副]_x000D_\n1.太、甚。《孟子．滕文公下》：「三月無君則弔，不以急乎？」《史記．卷六六．伍子胥列傳》：「子之報仇，其以甚乎？」_x000D_\n2.既、已經。通「已」。《三國志．卷二三．魏書．和常楊杜趙裴傳．杜襲》：「吾計以定，卿勿復言。」_x000D_\n3.更加。《呂氏春秋．恃君覽．觀表》：「魏日以削，秦日益大。」《史記．卷五．秦本紀》：「及其後世，日以驕淫。」_x000D_\n[名]_x000D_\n1.緣故、理由。《詩經．邶風．旄丘》：「何其久也，必有以也。」《列子．周穆王》：「宋人執而問其以，華子曰：『曩吾忘也。』」唐．李白〈春夜宴從弟桃花園序〉：「古人秉燭夜遊，良有以也。」_x000D_\n2.以色列的簡稱。如：「以阿戰爭」。_x000D_\n3.姓。如漢代有以彤。",
+            "entry_id": "10557",
+            "sheet": "1150929辭典匯出",
+            "row": 10570,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "official_dictionary": [
+          {
+            "title": "人",
+            "pinyin": "rén",
+            "definition": "[名]\n1.具有高度智慧和靈性，且能製造並使用工具以進行勞動的高等動物。如：「男人」、「女人」、「人類」。\n2.別人、他人。如：「己所不欲，勿施於人。」\n3.每人。如：「人盡皆知」、「人手一冊」。《後漢書．卷一八．吳漢傳》：「若能同心一力，人自為戰，大功可立。」\n4.某種類型、身分的人。如：「軍人」、「主持人」、「介紹人」、「臺北人」。\n5.人的品格和性情。如：「文如其人」。《孟子．萬章下》：「頌其詩，讀其書，不知其人，可乎？」宋．王安石〈祭歐陽文忠公文〉：「世之學者，無問乎識與不識，而讀其文，則其人可知。」\n6.姓。如明代有人杰。\n7.二一四部首之一。",
+            "entry_id": "09214",
+            "sheet": "1150929辭典匯出",
+            "row": 9228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "本": {
+        "definition": "root, origin, source; basis",
+        "mandarin": "běn",
+        "official_dictionary": [
+          {
+            "title": "本",
+            "pinyin": "běn",
+            "definition": "[名]\n1.草木的根幹。《說文解字．木部》：「木下曰本。」《呂氏春秋．士容論．辯士》：「是以畝廣以平，則不喪本。」漢．高誘．注：「本，根也。」\n2.事物的本原、根源。如：「本末倒置」、「變本加厲」。《論語．學而》：「君子務本，本立而道生。」\n3.母金、資金。如：「成本」、「股本」、「夠本」、「賠本」、「將本圖利」、「一本萬利」。\n4.書籍、字畫、碑帖等。如：「讀本」、「版本」、「刻本」、「拓本」、「手抄本」、「精裝本」。\n5.演出的底本。如：「腳本」、「話本」、「劇本」。\n6.古代奏達皇帝的文書。如：「奏本」、「修本」。\n7.量詞：(1)計算書籍、簿冊等的單位。如：「五本書」、「三本帳簿」。(2)計算戲曲分段的單位。如：「西廂記第四本」。(3)計算影片攝製成的膠卷的單位。如：「這部影片長達八大本。」\n8.姓。如明代有本高。\n[動]\n根據、依憑。如：「一本初衷」。唐．柳宗元〈答韋中立論師道書〉：「本之春秋以求其斷。」\n[形]\n1.主要的、中心的。如：「本體」、「本位」、「校本部」。\n2.起初的、原來的。如：「本能」、「本名」、「江山易改，本性難移」。\n3.現在的、目前的。如：「本月」、「本年度」。\n[副]\n本來、原來。《史記．卷八．高祖本紀》：「本定天下，諸將及（項）籍也。」《文選．李密．陳情表》：「本圖宦達，不矜名節。」\n[代]\n稱自己或自己這方。如：「本人」、「本庭」、「本籍」、「本報訊」。《淮南子．氾論》：「立之于本朝之上，倚之于三公之位。」",
+            "entry_id": "00269",
+            "sheet": "1150929辭典匯出",
+            "row": 270,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "义": {
+        "definition": "right conduct, righteousness",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "义",
+            "relation": "kTraditionalVariant",
+            "definition": "right conduct, righteousness",
+            "mandarin": "yì"
+          },
+          {
+            "character": "義",
+            "relation": "kTraditionalVariant",
+            "definition": "right conduct, righteousness",
+            "mandarin": "yì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "义",
+            "pinyin": null,
+            "definition": "「義」的異體字。",
+            "entry_id": "10649-1",
+            "sheet": "1150929辭典匯出",
+            "row": 149312,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "勇": {
+        "definition": "brave, courageous, fierce",
+        "mandarin": "yǒng",
+        "official_dictionary": [
+          {
+            "title": "勇",
+            "pinyin": "yǒng",
+            "definition": "[形]\n有膽量的、力氣大的。如：「英勇」、「勇氣」、「勇士」。《論語．憲問》：「仁者不憂，知者不惑，勇者不懼。」\n[副]\n敢作敢當、肯負責的。如：「勇於負責」、「勇於改過」。\n[名]\n士兵。清朝軍制稱官府於軍隊編制外另行招募的士兵為「勇」。如：「鄉勇」、「淮勇」。",
+            "entry_id": "11894",
+            "sheet": "1150929辭典匯出",
+            "row": 11907,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "淜": {
+        "definition": "roar of dashing waves",
+        "mandarin": "péng",
+        "official_dictionary": [
+          {
+            "title": "淜",
+            "pinyin": "pēng",
+            "definition": "[動]\n涉水過河。《說文解字．水部》：「淜，無舟渡河也。」\n[擬]\n參見「淜滂」條。",
+            "entry_id": "00771",
+            "sheet": "1150929辭典匯出",
+            "row": 773,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "淜滂",
+                "pinyin": "pēng pāng",
+                "definition": "擬聲詞。多用以形容水聲、風擊物聲。《文選．宋玉．風賦》：「飄忽淜滂，激颺熛怒。」唐．李善．注：「淜滂，風擊物聲。」",
+                "entry_id": "007710001",
+                "sheet": "1150929辭典匯出",
+                "row": 23969
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "渡": {
+        "definition": "cross, ferry over; ferry",
+        "mandarin": "dù",
+        "official_dictionary": [
+          {
+            "title": "渡",
+            "pinyin": "dù",
+            "definition": "[動]\n1.過河、由此岸到彼岸。如：「渡河」、「渡海」。唐．李華〈弔古戰場文〉：「萬里奔走，連年暴露。沙草晨牧，河冰夜渡。」\n2.通過、跨越。如：「渡過難關」。《史記．卷八．高祖本紀》：「淮陰已受命東，未渡平原。」宋．蘇軾〈梅花〉詩二首之一：「一夜東風吹石裂，半隨飛雪渡關山。」\n3.交付、轉手。如：「引渡」、「讓渡」。\n[名]\n坐船過河的地方。《晉書．卷三四．杜預傳》：「預又以孟津渡險，有覆沒之患，請建河橋于富平津。」唐．王維〈歸嵩山作〉詩：「荒城臨古渡，落日滿秋山。」",
+            "entry_id": "02303",
+            "sheet": "1150929辭典匯出",
+            "row": 2310,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "声",
+            "pinyin": null,
+            "definition": "「聲」的異體字。",
+            "entry_id": "09031-1",
+            "sheet": "1150929辭典匯出",
+            "row": 130793,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "喙": {
+        "definition": "beak, bill, snout; pant",
+        "mandarin": "huì",
+        "official_dictionary": [
+          {
+            "title": "喙",
+            "pinyin": "huì",
+            "definition": "[名]\n1.鳥獸動物等尖長形的嘴。《漢書．卷九四．匈奴傳下》：「是以忍百萬之師以摧餓虎之喙，運府庫之財填盧山之壑而不悔也。」唐．柳宗元〈行路難〉三首之三：「蟠龍吐耀虎喙張，熊蹲豹擲爭低昂。」\n2.泛指人的嘴。如：「百喙莫辯」、「不容置喙」。《莊子．秋水》：「今吾無所開吾喙，敢問其方。」《南史．卷六二．鮑泉傳》：「面如冠玉，還疑木偶；鬚似蝟毛，徒勞繞喙。」",
+            "entry_id": "05131",
+            "sheet": "1150929辭典匯出",
+            "row": 5138,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鸣": {
+        "definition": "cry of bird or animal; make sound",
+        "mandarin": "míng",
+        "related_characters": [
+          {
+            "character": "鳴",
+            "relation": "kTraditionalVariant",
+            "definition": "cry of bird or animal; make sound",
+            "mandarin": "míng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "百": {
+        "definition": "one hundred; numerous, many",
+        "mandarin": "bǎi",
+        "official_dictionary": [
+          {
+            "title": "百",
+            "pinyin": "bó",
+            "definition": "參見「百色縣」條。",
+            "entry_id": "00061",
+            "sheet": "1150929辭典匯出",
+            "row": 62,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "百色縣",
+                "pinyin": "bó sè xiàn",
+                "definition": "縣名。在廣西西部，今為百色市右江區。位於澄碧河入右江之口。陸路北通貴州，西通雲南，為三省區交通要衝。",
+                "entry_id": "000610001",
+                "sheet": "1150929辭典匯出",
+                "row": 12942
+              }
+            ]
+          },
+          {
+            "title": "百",
+            "pinyin": "bǎi",
+            "definition": "[名]\n1.數目字。十的十倍。《說文解字．白部》：「百，十十也，从一白。數十十為一百。」大寫為「佰」。\n2.姓。如古時有百倏，戰國時有百丰。\n[形]\n1.眾多。如：「百病不侵」。\n2.總指一切所有的詞。《詩經．邶風．雄雉》：「百爾君子，不知德行。」",
+            "entry_id": "00133",
+            "sheet": "1150929辭典匯出",
+            "row": 134,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "大有为",
+      "decision": "reject",
+      "reason": "完整名称是“大有作为”的截短式表达，带有明显的宏大志向或价值宣言色彩，属于口号化判断，不符合本批要求的凝练品牌名标准。"
+    },
+    {
+      "name": "化为新生",
+      "decision": "reject",
+      "reason": "语法通顺，表达转变而获得新生，但完整组合是带有明确结果和方向的句式，口号感较强，品牌凝练度不足。"
+    },
+    {
+      "name": "以人为本",
+      "decision": "reject",
+      "reason": "完整名称是通用理念和价值主张，直接表达经营原则，属于空泛宣言而非有辨识度的品牌名。"
+    },
+    {
+      "name": "见义勇为",
+      "decision": "reject",
+      "reason": "这是完整的道德行为规范和熟悉成语，名称直接等同于价值宣言；不能仅因其构词自然或有古籍用例而作为品牌名保留。"
+    },
+    {
+      "name": "淜渡",
+      "decision": "keep",
+      "reason": "“淜”有涉水渡河义，“渡”也指过河或跨越，组合可自然理解为渡水、渡越之意；简洁且具有明确意象，不是机械拼字。"
+    },
+    {
+      "name": "淜声远",
+      "decision": "uncertain",
+      "reason": "“淜”可指涉水过河，也见于水声、风声的拟声词，但与“声远”组合时关系不明确，容易在渡越、声响等理解间游移，完整语义和自然度存疑。"
+    },
+    {
+      "name": "喙鸣",
+      "decision": "uncertain",
+      "reason": "字义可理解为鸟兽以喙发声，宋诗中也有相邻字形用例；但现代汉语中组合较生硬，整体易显得像对嘴部发声的直白描述，品牌语义不够自然明确。"
+    },
+    {
+      "name": "百喙",
+      "decision": "uncertain",
+      "reason": "“百喙”有众多嘴、众人发言之义，古典用例支持其词义；但名称容易联想到众口纷杂或争辩，作为独立品牌名的意象取向和适配自然度不够明确。"
+    }
+  ]
+}

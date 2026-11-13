@@ -1,0 +1,969 @@
+{
+  "review_id": "20261112T145853-4fe4e9ee",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "涡月",
+      "涡田",
+      "歧光",
+      "歧路有光",
+      "歧路",
+      "已然",
+      "不已",
+      "诲人不已",
+      "摭拾",
+      "采摭",
+      "摭录",
+      "澶然",
+      "豪情",
+      "自豪",
+      "豪迈行",
+      "豪情在",
+      "豪远",
+      "豪春信",
+      "豪简成",
+      "青云豪志",
+      "云开见豪",
+      "辊筒",
+      "辊印",
+      "辊轮"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月",
+        "月下伞",
+        "月笼纱",
+        "云衔月",
+        "盅中月",
+        "月照桹影"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "铘见山海",
+        "鹂见山",
+        "云开见硔"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "春": [
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春",
+        "春酿"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "义成",
+        "一镘成形"
+      ],
+      "自": [
+        "自成一格"
+      ],
+      "印": [
+        "爪印",
+        "烙印",
+        "摹印",
+        "虎印"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义",
+        "麇行远山"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "不": [
+        "不烦",
+        "不朽",
+        "不羁",
+        "不忮"
+      ],
+      "云": [
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间",
+        "烝云",
+        "翀云间"
+      ],
+      "涡": [
+        "涡旋",
+        "云涡",
+        "风涡",
+        "海涡",
+        "潮涡",
+        "涡眼",
+        "涡湾",
+        "涡之境",
+        "涡光",
+        "涡声",
+        "涡野",
+        "涡歌"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然",
+        "浡然"
+      ],
+      "迈": [
+        "迈远"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "澶": [
+        "澶渊"
+      ],
+      "采": [
+        "采蘩",
+        "采芹堂",
+        "采芹记"
+      ],
+      "田": [
+        "蔗田",
+        "垄田",
+        "田墅",
+        "芹田望月",
+        "十亩田",
+        "憩心田",
+        "荚田"
+      ],
+      "信": [
+        "榴花信",
+        "口信",
+        "鹂衔春信",
+        "瓶中信",
+        "义信"
+      ],
+      "开": [
+        "云开山峙",
+        "崧云开",
+        "开口",
+        "云开见硔"
+      ],
+      "有": [
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度"
+      ],
+      "拾": [
+        "拾光斋"
+      ],
+      "简": [
+        "酷简"
+      ],
+      "人": [
+        "个中人"
+      ],
+      "轮": [
+        "年轮",
+        "轮回",
+        "轮转"
+      ],
+      "歧": [
+        "歧川",
+        "歧径"
+      ]
+    },
+    "literature_phrase_examples": {
+      "涡月": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 363654,
+          "context": "明月妙高台，盘涡月照开。"
+        }
+      ],
+      "涡田": [],
+      "歧光": [],
+      "歧路有光": [],
+      "歧路": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 36984,
+          "context": "握手与君别，歧路赠一言。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 56450,
+          "context": "猨愁歧路晚，梅作异方春。"
+        }
+      ],
+      "已然": [
+        {
+          "book": "古文观止",
+          "line": 693,
+          "context": "夫礼禁未然之前，法施已然之后；"
+        },
+        {
+          "book": "古文观止",
+          "line": 766,
+          "context": "故疏者必危，亲者必乱，已然之效也。"
+        }
+      ],
+      "不已": [
+        {
+          "book": "中庸",
+          "line": 32,
+          "context": "《诗》云：「维天之命，於穆不已！"
+        },
+        {
+          "book": "中庸",
+          "line": 32,
+          "context": "」盖曰文王之所以为文也，纯亦不已。"
+        }
+      ],
+      "诲人不已": [],
+      "摭拾": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 388938,
+          "context": "乃《宣州开元寺赠惟直上人一首》与《茅山题徐校书隐居一首》明载于真迹中者，即为《全唐》摭拾所不及。"
+        },
+        {
+          "book": "聊斋志异",
+          "line": 2851,
+          "context": "”既归，贫无业，乃摭拾海上方，即市廛中除地作肆，设鱼牙蜂房，谋升斗于口舌之间，而人亦未之奇也。"
+        }
+      ],
+      "采摭": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 408005,
+          "context": "劳《考》卷十复自群书采摭补遗，有杨于陵贞元八年后曾任此职，其时已较后。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 440943,
+          "context": "》本《大还丹照鉴》）（按：《大还丹照鉴》编者不详，卷首有后蜀广政二十五年序，称「偶因闲暇，采摭仙经，重删先圣格言，留为后人轨范，名曰《照鉴登仙集》，总成一卷，分作三十三篇」。"
+        }
+      ],
+      "摭录": [],
+      "澶然": [],
+      "豪情": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 26433,
+          "context": "邵子豪情，乐天狂态，六十六年才觉非。"
+        }
+      ],
+      "自豪": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 72181,
+          "context": "人马本无意，飞驰自豪雄。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 135204,
+          "context": "爵位功名可自豪，青云志士岂而曹。"
+        }
+      ],
+      "豪迈行": [],
+      "豪情在": [],
+      "豪远": [],
+      "豪春信": [],
+      "豪简成": [],
+      "青云豪志": [],
+      "云开见豪": [],
+      "辊筒": [],
+      "辊印": [],
+      "辊轮": []
+    },
+    "dictionary_phrase_entries": {
+      "涡月": [],
+      "涡田": [],
+      "歧光": [],
+      "歧路有光": [],
+      "歧路": [
+        {
+          "title": "歧路",
+          "pinyin": "qí lù",
+          "definition": "1.自大道上分歧出去的小路。《文選．曹植．美女篇》：「美女妖且閑，采桑歧路間。」晉．陸機〈長安有狹邪行〉：「伊洛有歧路，歧路交朱輪。」也作「岐路」。\n2.比喻偏頗錯誤的道途。如：「他因交友不慎而誤入歧路。」也作「岐路」。",
+          "entry_id": "062420006",
+          "sheet": "1150929辭典匯出",
+          "row": 97160,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "已然": [
+        {
+          "title": "已然",
+          "pinyin": "yǐ rán",
+          "definition": "已經發生，成為事實者。《漢書．卷四八．賈誼傳》：「凡人之智，能見已然，不能見將然。」南朝梁．劉勰《文心雕龍．檄移》：「標蓍龜于前驗，懸鞶鑒于已然。」",
+          "entry_id": "105560013",
+          "sheet": "1150929辭典匯出",
+          "row": 148594,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "不已": [
+        {
+          "title": "不已",
+          "pinyin": "bù yǐ",
+          "definition": "不絕、不停止。《詩經．鄭風．風雨》：「風雨如晦，雞鳴不已。」《文選．江淹．恨賦》：「僕本恨人，心驚不已。」",
+          "entry_id": "005651513",
+          "sheet": "1150929辭典匯出",
+          "row": 21678,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "诲人不已": [],
+      "摭拾": [
+        {
+          "title": "摭拾",
+          "pinyin": "zhí shí",
+          "definition": "1.拾取收集。唐．柳宗元〈裴瑾崇豐二陵集禮後序〉：「由是累聖山陵，皆摭拾殘缺，附比倫類，已乃斥去，其後莫能徵。」《二刻拍案驚奇》卷一九：「國中二三新進小臣，逆料公主必危，寄華勢焰將敗，摭拾前過，糾彈一本。」\n2.收拾。《明史．卷二四六．侯震暘傳》：「如不然，則督其條晰陳奏，以聽吏議，摭拾殘局，專任化貞。」",
+          "entry_id": "075040003",
+          "sheet": "1150929辭典匯出",
+          "row": 112100,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "采摭": [],
+      "摭录": [],
+      "澶然": [],
+      "豪情": [
+        {
+          "title": "豪情",
+          "pinyin": "háo qíng",
+          "definition": "豪邁奔放的感情。如：「剛入社會時，年輕人大都滿懷理想，豪情萬丈。」",
+          "entry_id": "0479200301",
+          "sheet": "1150929辭典匯出",
+          "row": 79787,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "自豪": [
+        {
+          "title": "自豪",
+          "pinyin": "zì háo",
+          "definition": "極其自負、自得。如：「他積極投入環保活動並引以自豪。」",
+          "entry_id": "094210141",
+          "sheet": "1150929辭典匯出",
+          "row": 135864,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "豪迈行": [],
+      "豪情在": [],
+      "豪远": [],
+      "豪春信": [],
+      "豪简成": [],
+      "青云豪志": [],
+      "云开见豪": [],
+      "辊筒": [],
+      "辊印": [],
+      "辊轮": []
+    },
+    "direct_dictionary": {
+      "涡": {
+        "definition": "swirl, whirlpool, eddy",
+        "mandarin": "wō",
+        "related_characters": [
+          {
+            "character": "渦",
+            "relation": "kTraditionalVariant",
+            "definition": "swirl, whirlpool, eddy",
+            "mandarin": "wō"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "田": {
+        "definition": "field, arable land, cultivated",
+        "mandarin": "tián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "歧": {
+        "definition": "fork of road; branching off",
+        "mandarin": "qí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "路": {
+        "definition": "road, path, street; journey",
+        "mandarin": "lù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "已": {
+        "definition": "already; finished; stop",
+        "mandarin": "yǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "不": {
+        "definition": "no, not; un-; negative prefix",
+        "mandarin": "bù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "诲": {
+        "definition": "teach, instruct; encourage, urge",
+        "mandarin": "huì",
+        "related_characters": [
+          {
+            "character": "誨",
+            "relation": "kTraditionalVariant",
+            "definition": "teach, instruct; encourage, urge",
+            "mandarin": "huì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "摭": {
+        "definition": "pick up, gather",
+        "mandarin": "zhí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "拾": {
+        "definition": "pick up, collect, tidy up; accounting form of the numeral ten",
+        "mandarin": "shí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "采": {
+        "definition": "collect, gather; pick, pluck",
+        "mandarin": "cǎi",
+        "related_characters": [
+          {
+            "character": "埰",
+            "relation": "kTraditionalVariant",
+            "definition": "fief",
+            "mandarin": "cài"
+          },
+          {
+            "character": "採",
+            "relation": "kTraditionalVariant",
+            "definition": "gather, collect; pick, select",
+            "mandarin": "cǎi"
+          },
+          {
+            "character": "采",
+            "relation": "kTraditionalVariant",
+            "definition": "collect, gather; pick, pluck",
+            "mandarin": "cǎi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "录": {
+        "definition": "copy, write down, record",
+        "mandarin": "lù",
+        "related_characters": [
+          {
+            "character": "錄",
+            "relation": "kTraditionalVariant",
+            "definition": "copy, write down, record",
+            "mandarin": "lù"
+          },
+          {
+            "character": "録",
+            "relation": "kTraditionalVariant",
+            "definition": "copy",
+            "mandarin": "lù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "澶": {
+        "definition": "still water, placid, tranquil",
+        "mandarin": "chán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "豪": {
+        "definition": "brave, heroic, chivalrous",
+        "mandarin": "háo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "情": {
+        "definition": "feeling, sentiment, emotion",
+        "mandarin": "qíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "迈": {
+        "definition": "take a big stride; pass by",
+        "mandarin": "mài",
+        "related_characters": [
+          {
+            "character": "邁",
+            "relation": "kTraditionalVariant",
+            "definition": "take a big stride; pass by",
+            "mandarin": "mài"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "在": {
+        "definition": "be at, in, on; consist in, rest",
+        "mandarin": "zài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "简": {
+        "definition": "simple, terse, succinct, a letter",
+        "mandarin": "jiǎn",
+        "related_characters": [
+          {
+            "character": "簡",
+            "relation": "kTraditionalVariant",
+            "definition": "simple, terse, succinct; letter",
+            "mandarin": "jiǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辊": {
+        "definition": "turn round, revolve; roller",
+        "mandarin": "gǔn",
+        "related_characters": [
+          {
+            "character": "輥",
+            "relation": "kTraditionalVariant",
+            "definition": "turn round, revolve; roller",
+            "mandarin": "gǔn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "筒": {
+        "definition": "thick piece of bamboo; pipe",
+        "mandarin": "tǒng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "印": {
+        "definition": "print, seal, stamp, chop, mark",
+        "mandarin": "yìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "轮": {
+        "definition": "wheel; revolve, turn; recur",
+        "mandarin": "lún",
+        "related_characters": [
+          {
+            "character": "輪",
+            "relation": "kTraditionalVariant",
+            "definition": "wheel; revolve, turn; recur",
+            "mandarin": "lún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "涡月",
+      "decision": "keep",
+      "reason": "以涡旋映月构成清楚、凝练的自然意象，语义可辨且有品牌感；书库用例也呈现水涡与月光的组合。"
+    },
+    {
+      "name": "涡田",
+      "decision": "uncertain",
+      "reason": "字义可理解为涡旋与田地，但两者的关系不明确，组合意象和自然度存疑。"
+    },
+    {
+      "name": "歧光",
+      "decision": "uncertain",
+      "reason": "可理解为岔路之光，字义成立，但两字关系偏抽象，完整意象不够自然明确。"
+    },
+    {
+      "name": "歧路有光",
+      "decision": "reject",
+      "reason": "完整表达为判断句或励志口号，不符合凝练品牌名的要求。"
+    },
+    {
+      "name": "歧路",
+      "decision": "uncertain",
+      "reason": "是自然词语，指岔路，也可喻偏误道路；负面联想较直接，作为品牌名的适配性存疑。"
+    },
+    {
+      "name": "已然",
+      "decision": "keep",
+      "reason": "完整词语意为已经发生、成为事实，简洁自然，具有抽象品牌名的凝练感。"
+    },
+    {
+      "name": "不已",
+      "decision": "keep",
+      "reason": "完整词语意为不停、不绝，表达清楚且简洁，有持续向前的品牌联想。"
+    },
+    {
+      "name": "诲人不已",
+      "decision": "reject",
+      "reason": "意为不断教导他人，是完整的描述性短语而非凝练品牌名，且明确指向教学行为。"
+    },
+    {
+      "name": "摭拾",
+      "decision": "uncertain",
+      "reason": "真实词语，意为拾取收集或收拾；语义可核，但词感偏书面且带有零散搜集、整理之意，品牌自然度存疑。"
+    },
+    {
+      "name": "采摭",
+      "decision": "uncertain",
+      "reason": "可理解为采集、搜集，但组合较生硬，整体词感偏文献整理用语，品牌自然度不足以确认。"
+    },
+    {
+      "name": "摭录",
+      "decision": "uncertain",
+      "reason": "可理解为拾取并记录，语义基本可通，但组合偏生造，完整词语的自然度存疑。"
+    },
+    {
+      "name": "澶然",
+      "decision": "uncertain",
+      "reason": "澶有水静、安然之义，“然”可作状态后缀；组合可作宁静之态理解，但完整词语较少见，品牌语义仍不够明确。"
+    },
+    {
+      "name": "豪情",
+      "decision": "keep",
+      "reason": "完整词语意为豪迈奔放的感情，语义明确、简洁自然，具备品牌识别度。"
+    },
+    {
+      "name": "自豪",
+      "decision": "keep",
+      "reason": "常用完整词语，表达自得与自信，语义清楚自然，作为品牌名可成立。"
+    },
+    {
+      "name": "豪迈行",
+      "decision": "uncertain",
+      "reason": "豪迈与行动之意可以联结，但词序和结构不够自然，读来像临时拼接的表达。"
+    },
+    {
+      "name": "豪情在",
+      "decision": "reject",
+      "reason": "语序像不完整句子或口号，完整名称的构词不自然。"
+    },
+    {
+      "name": "豪远",
+      "decision": "uncertain",
+      "reason": "可联想到豪迈与远志，但两字关系不明确，语义组合显得生硬。"
+    },
+    {
+      "name": "豪春信",
+      "decision": "uncertain",
+      "reason": "豪、春、信各自可辨，但三字之间缺乏自然语法或稳定意象联系，疑似机械组合。"
+    },
+    {
+      "name": "豪简成",
+      "decision": "reject",
+      "reason": "字义关系和语序均不自然，无法形成连贯、明确的名称语义。"
+    },
+    {
+      "name": "青云豪志",
+      "decision": "reject",
+      "reason": "由青云与豪志等常见志向表达拼合，整体近于励志宣言，缺乏凝练品牌名的语感。"
+    },
+    {
+      "name": "云开见豪",
+      "decision": "reject",
+      "reason": "整体仿照“云开见……”的句式，却以豪承接，语义不成立，构词生硬。"
+    },
+    {
+      "name": "辊筒",
+      "decision": "reject",
+      "reason": "完整名称直接指辊筒这一通用器件类别，属于通用产品类别词。"
+    },
+    {
+      "name": "辊印",
+      "decision": "uncertain",
+      "reason": "可理解为辊压形成的印痕，但语义关系不够稳定，也容易被读作工艺描述，品牌自然度存疑。"
+    },
+    {
+      "name": "辊轮",
+      "decision": "reject",
+      "reason": "两个字义近似叠加，整体直接指辊类轮件，语义重复且偏通用器件名称。"
+    }
+  ]
+}

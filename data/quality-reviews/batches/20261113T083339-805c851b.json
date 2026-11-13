@@ -1,0 +1,686 @@
+{
+  "review_id": "20261113T083339-805c851b",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "嘡响",
+      "友邻",
+      "邻川",
+      "邻水岸",
+      "邻春风",
+      "邻里见山",
+      "邻海逐光"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "赫光入海",
+        "鎏光入海",
+        "琨光入海",
+        "鸥逐晴光",
+        "鳀鱼逐光",
+        "鱼逐光",
+        "逐光旗",
+        "苇海寻光",
+        "神光越海",
+        "晨光对海",
+        "麂逐晨光",
+        "山海琉光"
+      ],
+      "风": [
+        "一树春风",
+        "春风拂楮",
+        "春风软",
+        "柯上春风",
+        "春风到",
+        "递春风",
+        "春风过砚",
+        "柳舞春风",
+        "崖畔春风",
+        "春风入户",
+        "春风邨",
+        "堧上春风"
+      ],
+      "川": [
+        "山川见璨",
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月"
+      ],
+      "春": [
+        "一树春风",
+        "春风拂楮",
+        "春风软",
+        "柯上春风",
+        "春风到",
+        "递春风",
+        "春风过砚",
+        "春山见鸼",
+        "柳舞春风",
+        "崖畔春风",
+        "春风入户",
+        "春风邨"
+      ],
+      "水": [
+        "渟水见山",
+        "湟水见山",
+        "水岸蔈花",
+        "温山见水",
+        "溱水见山",
+        "水岸成弧",
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉"
+      ],
+      "山": [
+        "邨里见山",
+        "墨里见山",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "山麇见月",
+        "藏酒见山",
+        "黛山见月",
+        "柯见山",
+        "埙中见山",
+        "渟水见山",
+        "亦见山"
+      ],
+      "见": [
+        "邨里见山",
+        "墨里见山",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "山麇见月",
+        "藏酒见山",
+        "黛山见月",
+        "柯见山",
+        "埙中见山",
+        "渟水见山",
+        "亦见山"
+      ],
+      "友": [
+        "诤友",
+        "票友",
+        "戚友",
+        "咖友",
+        "聚友",
+        "密友",
+        "偲友",
+        "鼹友",
+        "啤友会",
+        "毽友",
+        "会友",
+        "弈友"
+      ],
+      "海": [
+        "赫光入海",
+        "蟠山见海",
+        "鎏光入海",
+        "琨光入海",
+        "邨山见海",
+        "玤山见海",
+        "山海见翠",
+        "聪见山海",
+        "苇海寻光",
+        "醉见山海",
+        "神光越海",
+        "晨光对海"
+      ],
+      "里": [
+        "邨里见山",
+        "墨里见山",
+        "山菊里",
+        "肴里春风",
+        "墨里春风",
+        "觥里春风",
+        "笛里春山",
+        "山村里",
+        "千里骃",
+        "壳里乾坤",
+        "葶花里",
+        "墅里"
+      ],
+      "邻": [
+        "毗邻",
+        "乡邻",
+        "近邻"
+      ],
+      "岸": [
+        "水岸蔈花",
+        "水岸成弧",
+        "葭岸",
+        "憩岸",
+        "蒹岸",
+        "埼岸",
+        "涡岸",
+        "蕖岸",
+        "菼岸",
+        "清风踏岸",
+        "麋岸",
+        "桥与岸"
+      ],
+      "逐": [
+        "鸥逐晴光",
+        "鳀鱼逐光",
+        "鱼逐光",
+        "逐光旗",
+        "麂逐晨光",
+        "䴘逐晨光",
+        "鹟逐光",
+        "鲸逐光",
+        "骝逐流光",
+        "翡逐光",
+        "鹰逐光",
+        "竞逐"
+      ],
+      "响": [
+        "轰响",
+        "窣响",
+        "巨响",
+        "冬山清响",
+        "畦间清响",
+        "楮间清响",
+        "眉间清响",
+        "山河回响",
+        "桠间清响",
+        "叮响",
+        "窗前叮响",
+        "脆响"
+      ]
+    },
+    "literature_phrase_examples": {
+      "嘡响": [],
+      "友邻": [],
+      "邻川": [],
+      "邻水岸": [],
+      "邻春风": [],
+      "邻里见山": [],
+      "邻海逐光": []
+    },
+    "dictionary_phrase_entries": {
+      "嘡响": [],
+      "友邻": [],
+      "邻川": [],
+      "邻水岸": [],
+      "邻春风": [],
+      "邻里见山": [],
+      "邻海逐光": []
+    },
+    "direct_dictionary": {
+      "嘡": {
+        "definition": "onomatopoeic: clang, bang",
+        "mandarin": "tāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "响": {
+        "definition": "make sound, make noise; sound",
+        "mandarin": "xiǎng",
+        "related_characters": [
+          {
+            "character": "响",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          },
+          {
+            "character": "響",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "响",
+            "pinyin": null,
+            "definition": "「響」的異體字。",
+            "entry_id": "07207-1",
+            "sheet": "1150929辭典匯出",
+            "row": 108596,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "友": {
+        "definition": "friend, companion; fraternity",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "友",
+            "pinyin": "yǒu",
+            "definition": "[名]\n意氣相投、情誼互通的人。如：「好友」、「益友」、「至友」。《詩經．小雅．常棣》：「雖有兄弟，不如友生。」唐．柳宗元〈師友箴〉：「為人友者，不以道而以利，舉世無友。」\n[動]\n1.兄弟相親相愛。《書經．康誥》：「兄亦不念鞠子哀，大不友于弟。」《南史．卷六〇．傅昭傳》：「昭弟映，字徽遠，三歲而孤。兄弟友睦，修身勵行，非禮不動。」\n2.結交。《史記．卷三七．衛康叔世家》：「鄭伯弟段攻其兄，不勝，亡，而州吁求與之友。」\n3.親愛。《詩經．周南．關雎》：「窈窕淑女，琴瑟友之。」\n[形]\n有友好關係的。如：「友軍」、「友邦」。",
+            "entry_id": "10904",
+            "sheet": "1150929辭典匯出",
+            "row": 10918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "邻": {
+        "definition": "neighbor; neighborhood",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "鄰",
+            "relation": "kTraditionalVariant",
+            "definition": "neighbor; neighborhood",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "official_dictionary": [
+          {
+            "title": "水",
+            "pinyin": "shuǐ",
+            "definition": "[名]\n1.無色無臭的液體。由氫氣與氧氣化合而成。\n2.汁、液。如：「墨水」、「藥水」、「橘子水」、「檸檬水」。\n3.海、河、江、湖的總稱。如：「漢水」。《書經．微子》：「今殷其淪喪，若涉大水，其無津涯。」\n4.五行之一。參見「五行」條。\n5.水星的簡稱。參見「水星」條。\n6.額外的收入、費用。如：「撈油水」。《鄰女語》第二回：「你一路上發的水還不彀麼？還要到這地方來想方麼？」\n7.量詞。計算衣物刷洗次數的單位。如：「這件衣服洗兩水就走樣了。」\n8.姓。如明代有水甦民。\n9.二一四部首之一。\n[形]\n瓜果等多汁而不脆甜。如：「這梨吃起來水水的，不脆。」",
+            "entry_id": "09141",
+            "sheet": "1150929辭典匯出",
+            "row": 9156,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "墨水",
+                "pinyin": "mò shuǐ",
+                "definition": "1.寫字用的各種顏色的水汁。如：「紅墨水」、「藍墨水」。唐．杜佑《通典．卷一四．選舉二．歷代制中》：「北齊選舉多沿後魏之制，……書有濫劣者，飲墨水一升」《孽海花》第二五回：「家人送上一枝蘸滿墨水的筆，珏齋提筆，在紙上揮灑自如的寫了一百多字。」\n2.比喻學問、才識。如：「看不出他肚子裡還真有點兒墨水。」《鏡花緣》第二二回：「可惜你枉自生得白淨。腹中也少墨水，就是出來貿易，也該略認幾字。」",
+                "entry_id": "010970053",
+                "sheet": "1150929辭典匯出",
+                "row": 27647
+              },
+              {
+                "title": "藥水",
+                "pinyin": "yào shuǐ",
+                "definition": "泛指藥物的溶液，一般為含藥水溶液。",
+                "entry_id": "108550077",
+                "sheet": "1150929辭典匯出",
+                "row": 151285
+              },
+              {
+                "title": "漢水",
+                "pinyin": "hàn shuǐ",
+                "definition": "河川名。發源於陝西省寧羌縣北嶓冢山，至湖北省漢口與漢陽之間流入長江。是長江最長的支流，亦是漢中盆地的命脈。也稱為「漢江」。",
+                "entry_id": "048890049",
+                "sheet": "1150929辭典匯出",
+                "row": 81095
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "水星",
+                "pinyin": "shuǐ xīng",
+                "definition": "行星名。距離太陽最近的行星，也是太陽系中體積最小的行星，只比月球略大。屬於類地行星，地表多隕石坑。幾乎沒有大氣，晝夜溫差極大。也稱為「辰勾」、「辰星」。",
+                "entry_id": "091410306",
+                "sheet": "1150929辭典匯出",
+                "row": 132590
+              },
+              {
+                "title": "撈油水",
+                "pinyin": "lāo yóu shui",
+                "definition": "吳語。指用不當的手段取得錢財。",
+                "entry_id": "032580021",
+                "sheet": "1150929辭典匯出",
+                "row": 59264
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岸": {
+        "definition": "bank, shore; beach, coast",
+        "mandarin": "àn",
+        "official_dictionary": [
+          {
+            "title": "岸",
+            "pinyin": "àn",
+            "definition": "[名]\n1.水邊高地。《說文解字．屵部》：「岸，水厓而高者。」如：「河岸」、「海岸」。《詩經．衛風．氓》：「淇則有岸，隰則有泮。」\n2.參見「岸獄」條。\n[形]\n1.雄傑、高峻的樣子。《漢書．卷四五．江充傳》：「充為人魁岸，容貌甚狀。」\n2.高傲、莊嚴的樣子。如：「道貌岸然」。宋．黃庭堅〈定風波．萬里黔中一漏天〉詞：「鬼門關外蜀江前，莫笑老翁氣猶岸。」",
+            "entry_id": "10433",
+            "sheet": "1150929辭典匯出",
+            "row": 10446,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "河岸",
+                "pinyin": "hé àn",
+                "definition": "河流的岸邊。《儒林外史》第二回：「將近河岸，看時，中艙坐著一個人。」",
+                "entry_id": "047290113",
+                "sheet": "1150929辭典匯出",
+                "row": 78745
+              },
+              {
+                "title": "海岸",
+                "pinyin": "hǎi àn",
+                "definition": "銜接海洋邊緣的陸地。《三國志．卷三〇．魏書．東夷傳》：「從郡至倭，循海岸水行，歷韓國，乍南乍東，到其北岸狗邪韓國，七千餘里。」",
+                "entry_id": "047760305",
+                "sheet": "1150929辭典匯出",
+                "row": 79379
+              },
+              {
+                "title": "岸獄",
+                "pinyin": "àn yù",
+                "definition": "牢獄。語本《詩經．小雅．小宛》：「哀我填寡，宜岸宜獄。」也作「犴獄」。",
+                "entry_id": "104330009",
+                "sheet": "1150929辭典匯出",
+                "row": 145923
+              },
+              {
+                "title": "道貌岸然",
+                "pinyin": "dào mào àn rán",
+                "definition": "學道的人，容貌莊嚴肅穆。亦指外表莊重肅穆。後多形容故作正經，而心中實不如此。如：「看他一臉道貌岸然的樣子，誰敢開他玩笑。」《二十年目睹之怪現狀》第一〇四回：「因看見端甫道貌岸然，不敢造次，所以只打聽忌吃什麼？」也作「道貌凜然」、「岸然道貌」。",
+                "entry_id": "019700022",
+                "sheet": "1150929辭典匯出",
+                "row": 42624
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "里",
+            "pinyin": "lǐ",
+            "definition": "[名]\n1.居所、居處。《詩經．鄭風．將仲子》：「將仲子兮，無踰我里。」《孟子．離婁下》：「去三年不反，然後收其田里。」\n2.街坊、巷弄。《後漢書．卷五四．楊震列傳》：「連里竟街，雕修繕飾，窮極巧技。」唐．韓愈〈柳子厚墓誌銘〉：「今夫平居里巷相慕悅，酒食游戲相徵逐。」\n3.故鄉。如：「故里」。南朝梁．江淹〈別賦〉：「割慈忍愛，離邦去里。」\n4.今地方政府行政區域之一。在鎮之下，鄰之上，與村平行。\n5.量詞。古代用於表示長度的單位。不同年代有不同的定義方式，例如在漢代，以三百六十步為一里。\n6.內部。通「裡」。元．馬致遠〈四塊玉．佐國心〉曲：「命里無時莫剛求，隨時過遣休生受。」\n7.二一四部首之一。",
+            "entry_id": "03419",
+            "sheet": "1150929辭典匯出",
+            "row": 3426,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "official_dictionary": [
+          {
+            "title": "海",
+            "pinyin": "hǎi",
+            "definition": "[名]_x000D_\n1.地球上鄰接大陸而小於洋的水域。如：「南海」、「黃海」、「地中海」。《漢書．卷二八．地理志上》：「又北播為九河，同為逆河，入于海。」唐．顏師古．注：「海，即渤海是也。」_x000D_\n2.海水。《漢書．卷四九．爰盎鼂錯傳．鼂錯》：「吳王即山鑄錢，煮海為鹽。」漢．曹操〈與王脩書〉：「但恐旁人淺見，以蠡測海，為蛇畫足。」_x000D_\n3.內陸的大湖或人工湖。如：「青海」、「洱海」。_x000D_\n4.積聚眾多的人或同類事物。如：「棉海」、「人海」、「火海」。宋．陸游〈驛舍見故屏風畫海棠有感〉詩：「燕宮最盛號花海，霸國雄豪有遺跡。」《水滸傳》第八二回：「雖無炮龍烹鳳，端的是肉山酒海。當日盡皆大醉，各扶歸幕次裡安歇。」_x000D_\n5.領域、淵藪。如：「苦海無邊」、「學海無涯」。《廣弘明集．卷二八下．南朝陳．文帝．無礙會捨身懺文》：「又以世相泡影、有為露電，愛河奔迅，欲海飛騰。」宋．陸游〈休日感興〉詩：「宦海風波實飽經，久將人世寄郵亭。」_x000D_\n6.荒遠之地。《周禮．夏官司馬．校人》：「凡將事于四海山川，則飾黃駒。」漢．鄭玄．注：「四海，猶四方也。」_x000D_\n7.較寬大的器皿。如：「茶海」。《水滸傳》第七五回：「再將九瓶都打開，傾在酒海內，卻是一般的淡薄村醪。」《紅樓夢》第四一回：「妙玉執壺，只向海內斟了約有一杯。」_x000D_\n8.姓。如明代有海瑞。_x000D_\n[形]_x000D_\n巨大的。如：「海派」。唐．陳子昂〈我府君有周居士文林郎陳公墓誌銘〉：「公河目海口，鷰頷虎頭，性英雄而志尚元默。」《孤本元明雜劇．騙英布．第三折》：「俺主公豁達大度，海量寬洪，納諫如流，有堯舜禹湯之德。」_x000D_\n[副]_x000D_\n1.任意地、漫無目標地。如：「海選」。《紅樓夢》第七回：「他比不得咱們家的孩子們，胡打海摔的慣了。」《海上花列傳》第九回：「阿珠、阿金大都跟著海罵。蓮生氣得怔怔的，半晌說不出話。」_x000D_\n2.狠狠地、嚴重地。如：「海扁」、「海削」、「他嚴重怠工，所以被老闆海刮了一頓。」",
+            "entry_id": "04776",
+            "sheet": "1150929辭典匯出",
+            "row": 4782,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "逐": {
+        "definition": "chase, expel; one by one",
+        "mandarin": "zhú",
+        "official_dictionary": [
+          {
+            "title": "逐",
+            "pinyin": "zhú",
+            "definition": "[動]_x000D_\n1.追趕。如：「追逐」。《後漢書．卷七三．劉虞公孫瓚陶謙列傳．公孫瓚》：「每聞有警，瓚輒厲色憤怒，如赴讎敵，望塵奔逐，或繼之以夜戰。」唐．盧綸〈和張僕射塞下曲〉六首之三：「欲將輕騎逐，大雪滿弓刀。」_x000D_\n2.驅走。如：「逐客令」、「驅逐出境」。《史記．卷七．項羽本紀》：「及羽背關懷楚，放逐義帝而自立，怨王侯叛己，難矣。」《喻世明言．卷四〇．沈小霞相會出師表》：「原來文書上有『奉旨抄沒』的話，本府已差縣尉封鎖了家私，將人口盡皆逐出。」_x000D_\n3.追求、追尋。《國語．晉語四》：「饜邇逐遠，遠人入服，不為郵矣。」《漢書．卷九六．西域傳上．西夜國》：「西夜與胡異，其種類羌、氐行國，隨畜逐水草往來。」唐．李白〈經亂離後天恩流夜郎憶舊遊書懷贈江夏韋太守良宰〉詩：「誤逐世間樂，頗窮理亂情。」_x000D_\n4.競爭、爭奪。如：「角逐」。《後漢書．卷一七．馮岑賈列傳．馮異》：「當兵革始起，擾攘之時，豪傑競逐，迷惑千數。」宋．邵雍〈題四皓廟〉詩四首之一：「正是英雄較逐時，未知鹿入何人手。」_x000D_\n5.跟隨。如：「隨波逐流」。唐．楊發〈殘花〉詩：「暖芳隨日薄，殘片逐風迴。」《西遊記》第九三回：「常言：『嫁雞逐雞，嫁犬逐犬。』女有誓願在先，結了這毬，告奏天地神明，撞天婚拋打。」_x000D_\n6.依次、按照順序。如：「逐年增加」、「逐條說明」。唐．白居易〈首夏〉詩：「料錢隨月用，生計逐日營。」《五代史平話．周史．卷上》：「郭威從那應募李繼韜軍下攻取澤州，被董璋占了功賞，殺人逃走，來到此間，逐一細說與知遠聽了。」",
+            "entry_id": "07964",
+            "sheet": "1150929辭典匯出",
+            "row": 7976,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "嘡响",
+      "decision": "uncertain",
+      "reason": "“嘡”有撞击声义，“响”也指声音，组合可理解为一声撞响，但近于拟声描述而非自然凝练的品牌名；“响”为异体字资料，实际字形规范性也需进一步核实。"
+    },
+    {
+      "name": "友邻",
+      "decision": "keep",
+      "reason": "“友邻”可自然理解为友好的邻里或邻居，语义清楚、简洁，有关系感与品牌辨识度；与“乡邻”“近邻”等并非仅换近义配字的重复组合。"
+    },
+    {
+      "name": "邻川",
+      "decision": "keep",
+      "reason": "可自然理解为邻近河川，画面简洁，有地理意象和品牌感；不是通用产品类别，也不与所列含“川”候选构成近似重复。"
+    },
+    {
+      "name": "邻水岸",
+      "decision": "reject",
+      "reason": "“邻”与“水岸”直接拼接，关系表达生硬，整体像地点描述而非凝练品牌名。"
+    },
+    {
+      "name": "邻春风",
+      "decision": "uncertain",
+      "reason": "可勉强理解为与春风相邻或亲近春风，但“邻”与“春风”的语义关系不够自然，组合意图不清；与已有“春风”候选也共享核心意象，虽非同义配字变体，仍需谨慎。"
+    },
+    {
+      "name": "邻里见山",
+      "decision": "reject",
+      "reason": "整体像“邻里见山”的场景句或表达，不是凝练的品牌名；与“邨里见山”“墨里见山”等暂留候选构成相同意象和句式的近似组合。"
+    },
+    {
+      "name": "邻海逐光",
+      "decision": "reject",
+      "reason": "“邻海”与“逐光”连接成口号式意象表达，整体更像句子而非品牌名；与“鸥逐晴光”“鳀鱼逐光”“苇海寻光”等候选共享追逐光与海的核心意象，近似度较高。"
+    }
+  ]
+}

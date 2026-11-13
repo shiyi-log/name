@@ -1,0 +1,872 @@
+{
+  "review_id": "20261113T001112-b9803d94",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "登临",
+      "鸿禧",
+      "永禧",
+      "丰禧",
+      "泰禧",
+      "颐禧",
+      "元禧",
+      "明禧",
+      "禧听雨",
+      "禧与时进"
+    ],
+    "related_kept_candidates": {
+      "明": [
+        "昌明",
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明"
+      ],
+      "时": [
+        "儿时",
+        "巳时",
+        "戌时",
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "唐时雨",
+        "四时清鲜",
+        "四时常鲜",
+        "需时",
+        "四时花厅"
+      ],
+      "雨": [
+        "峤听雨",
+        "听雨斋",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅",
+        "涂听雨",
+        "柯听雨"
+      ],
+      "丰": [
+        "丰年",
+        "丰穰",
+        "丰垄",
+        "臻丰",
+        "穑丰",
+        "资丰",
+        "奕丰",
+        "瑾丰",
+        "稼丰",
+        "崧丰",
+        "稆丰",
+        "丰廪"
+      ],
+      "禧": [
+        "禧年",
+        "嘉禧堂"
+      ],
+      "听": [
+        "峤听雨",
+        "听雨斋",
+        "螭听松雨",
+        "荃溪听雨",
+        "茗山听雨",
+        "梾林听雨",
+        "矿山听雨",
+        "鹡听雨",
+        "簖听雨",
+        "听雨厅",
+        "涂听雨",
+        "柯听雨"
+      ],
+      "与": [
+        "螭与山海",
+        "锹与山",
+        "锹与星辰",
+        "雯与远山",
+        "厂与城",
+        "鳅与石",
+        "鳅与春山",
+        "薇与风",
+        "蕊与山川",
+        "屿与山",
+        "埙与山",
+        "山月与埙"
+      ],
+      "进": [
+        "竞进",
+        "策进",
+        "遄进",
+        "迭进",
+        "锐进",
+        "进取",
+        "进言",
+        "进山"
+      ],
+      "登": [
+        "登埼",
+        "登冈",
+        "登峣望远"
+      ],
+      "临": [
+        "清风临埼",
+        "旭日临埼",
+        "竹影临簖",
+        "月色临榻",
+        "临洺",
+        "麋临碧水",
+        "皎月临川",
+        "皎月临风",
+        "骏临风",
+        "鎏月临川",
+        "临池",
+        "霭临川"
+      ],
+      "永": [
+        "隽永",
+        "永固",
+        "永清",
+        "山海永宁",
+        "永辉",
+        "永熙"
+      ],
+      "元": [
+        "本元",
+        "贞元",
+        "复元",
+        "茯元",
+        "堃元"
+      ],
+      "鸿": [
+        "鸿踪",
+        "雪泥鸿爪",
+        "宾鸿",
+        "鸿展",
+        "鸿鹄",
+        "惊鸿",
+        "惊鸿照影",
+        "鸿业",
+        "鸿翀"
+      ],
+      "泰": [
+        "崧泰",
+        "庆泰",
+        "交泰"
+      ]
+    },
+    "literature_phrase_examples": {
+      "登临": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2250,
+          "context": "岩壑恣登临，莹目复怡心。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 18529,
+          "context": "登临日将晚，兰桂起香风。"
+        }
+      ],
+      "鸿禧": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 161996,
+          "context": "鸿禧主人，一闲半年，未尝厌闲。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 209679,
+          "context": "受鸿禧。"
+        }
+      ],
+      "永禧": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 432593,
+          "context": "（见光绪卅二年郑永禧纂《烂柯山志》卷十一《历朝金石考》录《唐杨明残诗碑》。"
+        }
+      ],
+      "丰禧": [],
+      "泰禧": [],
+      "颐禧": [],
+      "元禧": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 29807,
+          "context": "五百级获二禆将而还(还音旋/又如音)司府少卿杨元亨(光宅元年改大/府寺为司府寺)尚食奉御杨元禧皆𢎞武之子也(杨𢎞武见二百一/卷髙宗干封二年)元禧尝忤张易之(忤五/故翻)易之言于太后元禧杨素之族素父子隋之逆臣子孙不应供奉太后从"
+        }
+      ],
+      "明禧": [
+        {
+          "book": "夷坚志_四库五十卷本",
+          "line": 2055,
+          "context": "刹凡在籍童行令悉趂四月十五立夏日集于报恩光孝寺秀州行者善鉴颇欲巡礼丛林自江隂济江过石荘投宿明禧禅院两脚忽重膇如石不能前彼盖不知邦君有施也寺僧与之言"
+        },
+        {
+          "book": "夷坚志_四库五十卷本",
+          "line": 2067,
+          "context": "公乎蔡为人质重亷恪乡里称其贤故遭罹大难而蒙神力以免其后秩满果调泰州通判闽僧如本如臯县石荘镇明禧禅院僧如本者福州人㳺方至彼遂留不去绍兴辛巳金兵暴淮甸本收瘗遗骸三百得官给僧牒绍熈元年为监寺偕众僧往黄华港石总首家修设佛供唯留一老者"
+        }
+      ],
+      "禧听雨": [],
+      "禧与时进": []
+    },
+    "dictionary_phrase_entries": {
+      "登临": [],
+      "鸿禧": [],
+      "永禧": [],
+      "丰禧": [],
+      "泰禧": [],
+      "颐禧": [],
+      "元禧": [],
+      "明禧": [],
+      "禧听雨": [],
+      "禧与时进": []
+    },
+    "direct_dictionary": {
+      "登": {
+        "definition": "rise, mount, board, climb",
+        "mandarin": "dēng",
+        "official_dictionary": [
+          {
+            "title": "登",
+            "pinyin": "dēng",
+            "definition": "[動]\n1.上、升。由低處到高處。如：「登山」、「登峰造極」、「一步登天」、「捷足先登」。《禮記．中庸》：「君子之道，辟如行遠必自邇，辟如登高必自卑。」宋．陳與義〈臨江仙．憶昔午橋橋上飲〉詞：「閒登小閣看新晴。古今多少事，漁唱起三更。」\n2.進用、提拔。《管子．小匡》：「退而察問其鄉里，以觀其所能，而無大過，登以為上卿之佐。」唐．韓愈〈八月十五夜贈張功曹〉詩：「昨者州前搥大鼓，嗣皇繼聖登夔皋。」\n3.成熟。《孟子．滕文公上》：「五穀不登，禽獸偪人。」宋．蘇軾〈荔支歎〉：「雨順風調百穀登，民不飢寒為上瑞。」\n4.記錄、刊載。如：「登記」、「登報」、「登帳」、「刊登」。\n5.科舉考試合格被錄取。唐．鄭谷〈贈劉神童〉詩：「還家雖解喜，登第未知榮。」《新唐書．卷一六八．劉禹錫傳》：「登博學弘詞科，工文章。」\n6.收取別人物品時的敬詞。如：「拜登厚賜」。\n7.北方方言。指穿。如：「腳登長筒靴」。《文明小史》第四九回：「上面套著棗紅鐵線紗夾馬褂，底下登著緞靴。」\n[名]\n姓。如三國時蜀國有登定。",
+            "entry_id": "02070",
+            "sheet": "1150929辭典匯出",
+            "row": 2076,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "临": {
+        "definition": "draw near, approach; descend",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "臨",
+            "relation": "kTraditionalVariant",
+            "definition": "draw near, approach; descend; hexagram ䷒",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鸿": {
+        "definition": "species of wild swan; vast",
+        "mandarin": "hóng",
+        "related_characters": [
+          {
+            "character": "鴻",
+            "relation": "kTraditionalVariant",
+            "definition": "species of wild swan; vast",
+            "mandarin": "hóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禧": {
+        "definition": "happiness; congratulations",
+        "mandarin": "xǐ",
+        "official_dictionary": [
+          {
+            "title": "禧",
+            "pinyin": "xī",
+            "definition": "[名]\n福祉、吉祥。《廣韻．平聲．之韻》：「禧，福也，吉也。」如：「鴻禧」、「恭賀新禧」。",
+            "entry_id": "06786",
+            "sheet": "1150929辭典匯出",
+            "row": 6795,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "禧",
+            "pinyin": "xǐ",
+            "definition": "(一)之又音。",
+            "entry_id": "06835",
+            "sheet": "1150929辭典匯出",
+            "row": 6844,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "永": {
+        "definition": "long, perpetual, eternal, forever",
+        "mandarin": "yǒng",
+        "official_dictionary": [
+          {
+            "title": "永",
+            "pinyin": "yǒng",
+            "definition": "[形]\n深長的、久遠的。三國魏．阮籍〈詠懷〉詩八二首之一七：「出門臨永路，不見行車馬。」宋．蘇軾〈和錢安道寄惠建茶〉詩：「雪花雨腳何足道，啜過始知真味永。」\n[副]\n恆久、久遠。如：「永垂不朽」。《論語．堯曰》：「四海困窮，天祿永終。」《史記．卷一一七．司馬相如傳》：「精罔閬而飛揚兮，拾九天而永逝。」",
+            "entry_id": "11889",
+            "sheet": "1150929辭典匯出",
+            "row": 11902,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "丰": {
+        "definition": "abundant, lush, bountiful, plenty",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "丰",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "豐",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty; hexagram ䷶",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "丰",
+            "pinyin": "fēng",
+            "definition": "[形]\n1.草木茂盛的樣子。《說文解字．生部》：「丰，艸盛丰丰也。」\n2.容貌美好或豐滿的樣子。《詩經．鄭風．丰》：「子之丰兮，俟我乎巷兮。」\n[名]\n1.神態、風韻。通「風」。如：「丰姿」、「丰采」、「丰儀」。\n2.《詩經．鄭風》的篇名。共四章。根據〈詩序〉：「〈丰〉，刺亂也。」或亦指女子初不欲嫁其人，既乃悔而從之之詩。首章三句為：「子之丰兮，俟我乎巷兮；悔予不送兮。」",
+            "entry_id": "01723",
+            "sheet": "1150929辭典匯出",
+            "row": 1727,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "丰",
+            "pinyin": null,
+            "definition": "「豐」的異體字。",
+            "entry_id": "01735-1",
+            "sheet": "1150929辭典匯出",
+            "row": 37072,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泰": {
+        "definition": "great, exalted, superior; big; hexagram ䷊",
+        "mandarin": "tài",
+        "official_dictionary": [
+          {
+            "title": "泰",
+            "pinyin": "tài",
+            "definition": "[形]\n1.順適如意、命運亨通。如：「泰運」。\n2.舒適、安樂。如：「福體康泰」、「國泰民安」。\n3.奢侈。如：「驕泰」、「奢泰」。\n4.暢通。如：「天地交泰」。\n5.極。如：「泰西」。\n[副]\n甚。通「太」。如：「泰過」。\n[名]\n1.《易經》卦名。六十四卦之一。乾（☰）下坤（☷）上。為天地交而二氣通之象。\n2.泰國的簡稱。",
+            "entry_id": "02482",
+            "sheet": "1150929辭典匯出",
+            "row": 2490,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "颐": {
+        "definition": "cheeks; jaw; chin; rear; to nourish",
+        "mandarin": "yí",
+        "related_characters": [
+          {
+            "character": "頤",
+            "relation": "kTraditionalVariant",
+            "definition": "cheeks; jaw; chin; rear; to nourish; hexagram ䷚",
+            "mandarin": "yí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "元": {
+        "definition": "first; dollar; origin; head",
+        "mandarin": "yuán",
+        "official_dictionary": [
+          {
+            "title": "元",
+            "pinyin": "yuán",
+            "definition": "[名]\n1.頭。《左傳．僖公三十三年》：「（先軫）免冑入狄師，死焉。狄人歸其元，面如生。」《孟子．滕文公下》：「志士不忘在溝壑，勇士不忘喪其元。」\n2.量詞。計算錢幣的單位。一元等於十角。通「圓」。如：「十元」、「五十元」。\n3.代數式中，表示未知數的文字稱為「元」。如：「一元一次方程式」。\n4.朝代名。參見「元朝」條。\n5.姓。如唐代有元稹。\n[形]\n1.為首的。如：「元兇」、「元首」。\n2.開始的、第一的。如：「元年」、「元旦」。\n3.大的。《書經．大禹謨》：「天之歷數在汝躬，汝終陟元后。」《三國志．卷二四．魏書．高柔傳》：「逮至漢初，蕭、曹之儔並以元勛代作心膂。」\n4.善的。《書經．舜典》：「柔遠能邇，惇德允元。」《後漢書．卷五九．張衡傳》：「抨巫咸以占夢兮，迺貞吉之元符。」\n5.基本的。如：「元素」。",
+            "entry_id": "11769",
+            "sheet": "1150929辭典匯出",
+            "row": 11782,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "圓",
+                "pinyin": "yuán",
+                "definition": "[形]\n1.不露稜角的、環形的。相對於「方」。如：「圓球」、「圓桌」。\n2.完整、周全、豐滿。《呂氏春秋．士容論．審時》：「疏穖而穗大，其粟圓而薄糠。」南朝梁．劉勰《文心雕龍．明詩》：「自商暨周，雅頌圓備。」\n3.婉轉、滑潤。唐．元稹〈善歌如貫珠賦〉：「吟斷章而離離若間，引妙囀而一一皆圓。」明．湯顯祖《牡丹亭》第一〇齣：「生生燕語明如翦，嚦嚦鶯歌溜的圓。」\n[名]\n1.從中心到周圍每一點的距離都相等的形體稱為「圓」。《墨子．法儀》：「百工為方以矩，為圓以規。」\n2.貨幣的名稱。如：「金圓」、「銀圓」、「日圓」。\n3.量詞。計算錢幣的單位。一圓等於十角。如：「拾圓」、「伍圓」。\n[動]\n完成、使完整。如：「圓謊」、「自圓其說」。《紅樓夢》第六八回：「暫且住著，等滿了服再圓房。」",
+                "entry_id": "11795",
+                "sheet": "1150929辭典匯出",
+                "row": 11808
+              },
+              {
+                "title": "元朝",
+                "pinyin": "yuán cháo",
+                "definition": "朝代名。（西元1279～1368）元世祖忽必烈滅宋後稱帝，建立元朝。版圖跨越亞、歐兩洲，是世界史上罕有的龐大帝國。",
+                "entry_id": "117690066",
+                "sheet": "1150929辭典匯出",
+                "row": 162598
+              },
+              {
+                "title": "元首",
+                "pinyin": "yuán shǒu",
+                "definition": "1.一國最高的首長。在君主國家有國王，多為世襲的君主；共和國家則稱總統、主席等，大致由直接或間接選舉產生。唐．魏徵〈論時政疏〉：「凡百元首，承天景命，莫不殷憂而道著，功成而德衰。」\n2.開始。《晉書．卷一七．律曆志中》：「弗復以正月朔旦立春為節也，更以十一月朔旦冬至為元首。」\n3.人頭。《抱朴子．外篇．詰鮑》：「遠取諸物，則天尊地卑，以著人倫之體。近取諸身，則元首股肱，以表君臣之序。」",
+                "entry_id": "117690078",
+                "sheet": "1150929辭典匯出",
+                "row": 162606
+              },
+              {
+                "title": "元年",
+                "pinyin": "yuán nián",
+                "definition": "1.中國舊日以人君即位的第一年、或改元的第一年為元年。《公羊傳．隱公元》：「元年者何？君之始年也。」\n2.以建國的第一年為元年。如：「民國元年」。\n3.因紀念教祖而定。如基督教以耶穌降生的那一年為元年，佛教以佛去世的那一年為元年，回教以穆罕默德出奔的那一年為元年。",
+                "entry_id": "117690023",
+                "sheet": "1150929辭典匯出",
+                "row": 162573
+              },
+              {
+                "title": "元旦",
+                "pinyin": "yuán dàn",
+                "definition": "一年的第一日，也稱為「元正」、「元朔」、「元日」。南朝梁．蕭子雲〈介雅〉詩三首之三：「四氣新元旦，萬壽初今朝。」《醒世恆言．卷一．兩縣令競義婚孤女》：「忽一年元旦，潘華和蕭雅不約而同到王奉家來拜年。」現稱國曆一月一日為「元旦」。",
+                "entry_id": "117690018",
+                "sheet": "1150929辭典匯出",
+                "row": 162569
+              },
+              {
+                "title": "元素",
+                "pinyin": "yuán sù",
+                "definition": "化學元素的簡稱。參見「化學元素」條。",
+                "entry_id": "117690101",
+                "sheet": "1150929辭典匯出",
+                "row": 162620
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "official_dictionary": [
+          {
+            "title": "明",
+            "pinyin": "míng",
+            "definition": "[動]\n1.通曉。如：「明瞭」、「明白」、「他是個深明大義的人。」\n2.使通曉。《左傳．僖公二十二年》：「明恥教戰，求殺敵也。」\n3.昭示、彰顯。《禮記．郊特牲》：「天垂象，聖人則之郊，所以明天道也。」\n4.發亮。《詩經．齊風．雞鳴》：「東方明矣，朝既昌矣。」\n[形]\n1.光亮的。如：「明月」、「明亮」。《文選．謝惠連．秋懷詩》：「皎皎天月明。」\n2.清晰的。《漢書．卷五二．韓安國傳》：「清水明鏡，不可以形逃。」\n3.聰慧、悟性很高。如：「聰明」、「明智」。《文選．陳琳．檄吳將校部曲文》：「夫見機而作，不處凶危，上聖之明也。」\n4.公開的、顯露的。如：「明槍易躲，暗箭難防。」\n5.才德高顯的。如：「明主」、「明君」。\n6.磊落的。如：「明人不做暗事」。\n7.乾淨、整潔。如：「窗明几淨」。\n8.顯著的。如：「明顯」、「明效」。\n9.時序在後的。如：「明天」、「明年」。\n[名]\n1.視覺、目力。《禮記．檀弓上》：「子夏喪其子而喪其明。」三國魏．王粲〈贈文叔良〉詩：「視明聽聰，靡事不惟。」\n2.陽。相對於「陰」。《史記．卷一．五帝本紀》：「順天地之紀，幽明之占，死生之說，存亡之難。」\n3.神靈。如：「神明」。\n4.朝代名。參見「明朝」條。\n5.姓。如清代有明耀光。",
+            "entry_id": "01477",
+            "sheet": "1150929辭典匯出",
+            "row": 1483,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "明瞭",
+                "pinyin": "míng liǎo",
+                "definition": "可以清楚望見。引申為了解、清晰。宋．郭熙〈山水訓〉：「高遠者明瞭，深遠者細碎。」宋．周紫芝〈蠟梅一首〉：「誰憐傲霜枝？照眼自明瞭。」",
+                "entry_id": "014770075",
+                "sheet": "1150929辭典匯出",
+                "row": 32018
+              },
+              {
+                "title": "明白",
+                "pinyin": "míng bai",
+                "definition": "1.清晰、清楚。《三國演義》第一〇二回：「吾今先將造木牛流馬之法，尺寸方員，長短闊狹，開寫明白，汝等視之。」《初刻拍案驚奇》卷二：「姚乙把言語支吾，不說明白。」_x000D_\n2.了解、知道。《初刻拍案驚奇》卷二〇：「你聽著一面之詞，離異了我。我生前無分辨處，做鬼也要明白此事！」《文明小史》第六〇回：「可憐軍機處各大臣，都是耳聾目花的了，要想看看新書，明白點時事，也來不及了。」_x000D_\n3.清醒。《儒林外史》第一七回：「太公淹淹在床，一日昏聵的狠，一日又覺得明白些。」《彭公案》第二一回：「他這個薰香，加添藥味，其味甚香，須要冷水解藥，等六個時辰方能明白，他那解藥乃是獨門。」_x000D_\n4.聰明、明理。《紅樓夢》第六二回：「平兒是個明白人，我前兒也告訴了他。」《醒世姻緣傳》第四三回：「晁鳳，你是個明白的人！別說我不肯養漢，我處心待與咱晁家爭口氣。」_x000D_\n5.確實、確定。《史記．卷一一八．淮南衡山列傳．淮南厲王》：「淮南王安甚大逆無道，謀反明白，當伏誅。」《元史．卷一〇二．刑法志一》：「諸職官但犯贓私，有罪狀明白者，停職聽斷。」_x000D_\n6.清白、清廉。《後漢書．卷八四．列女傳．序》：「若夫賢妃助國君之政，哲婦隆家人之道，高士弘清淳之風，貞女亮明白之節，則其徽美未殊也。」《北史．卷四三．列傳．郭祚》：「人生有運，非可避也。但當明白當官，何所顧畏。」_x000D_\n7.公然、顯然。《金史．卷八五．世宗諸子列傳．永功》：「璹奉朝請四十年，日以講誦吟詠為事，時時潛與士大夫唱酬，然不敢明白往來。」",
+                "entry_id": "0147700051",
+                "sheet": "1150929辭典匯出",
+                "row": 31951
+              },
+              {
+                "title": "明月",
+                "pinyin": "míng yuè",
+                "definition": "1.明朗的月亮。東周戰國．宋玉〈神女賦〉：「皎若明月舒其光，須臾之間，美貌橫生。」晉．陸機〈擬明月何皎皎〉詩：「安寢北堂上，明月入我牖。」_x000D_\n2.指明珠。漢．司馬相如〈上林賦〉：「明月珠子，的皪江靡。」漢．班固〈西都賦〉：「隨侯明月，錯落其間。」",
+                "entry_id": "014770263",
+                "sheet": "1150929辭典匯出",
+                "row": 32203
+              },
+              {
+                "title": "明亮",
+                "pinyin": "míng liàng",
+                "definition": "1.光亮、光線充足。《儒林外史》第四一回：「到天色晚了，每船兩盞明角燈，一來一往，映著河裡，上下明亮。」\n2.發亮。《儒林外史》第三回：「舞了半日，漸漸喘息過來，眼睛明亮，不瘋了。」\n3.明白清楚。如：「聽過老師這番解說，心裡明亮多了，也就沒有什麼疑問。」\n4.清晰響亮。如：「她的聲音明亮如山泉。」",
+                "entry_id": "014770078",
+                "sheet": "1150929辭典匯出",
+                "row": 32021
+              },
+              {
+                "title": "聰明",
+                "pinyin": "cōng míng",
+                "definition": "1.耳目敏捷。如：「那老翁年逾七旬，仍是耳目聰明，真是令人羨慕。」\n2.天資靈敏，理解力高，心思細巧。《三國演義》第三回：「今上雖幼，聰明仁智，並無分毫過失。」《紅樓夢》第五回：「惟嫡孫寶玉一人，秉性乖張，生情怪譎，雖聰明靈慧，略可望成。」",
+                "entry_id": "099160002",
+                "sheet": "1150929辭典匯出",
+                "row": 140904
+              },
+              {
+                "title": "明智",
+                "pinyin": "míng zhì",
+                "definition": "有智識、有遠見。《文選．王襃．四子講德論》：「故有聖賢之君，必有明智之臣。」《文選．顏延年．陶徵士誄》：「孰云與仁，實疑明智。」",
+                "entry_id": "014770172",
+                "sheet": "1150929辭典匯出",
+                "row": 32114
+              },
+              {
+                "title": "明主",
+                "pinyin": "míng zhǔ",
+                "definition": "賢明的君主。《左傳．襄公二十九年》：「美哉！渢渢乎！大而婉，險而易行，以德輔此，則明主也！」《史記．卷一一二．主父偃傳》：「臣聞明主不惡切諫以博觀，忠臣不敢避重誅以直諫。」",
+                "entry_id": "014770191",
+                "sheet": "1150929辭典匯出",
+                "row": 32133
+              },
+              {
+                "title": "明君",
+                "pinyin": "míng jūn",
+                "definition": "1.賢能英明的君王。《文選．曹植．上責躬應詔詩表》：「舍罪責功者，明君之舉也。」《文選．袁宏．三國名臣序贊》：「夫百姓不能自治，故立君以治之；明加不能治，則為臣以佐之。」\n2.漢元帝宮人王嬙。參見「王嬙」條。《文選．石崇．王明君詞序》：「王明君者，本是王昭君，以觸文帝（司馬昭）諱，改焉。」《文選．潘岳．笙賦》：「子喬輕舉、明君懷歸。」",
+                "entry_id": "014770127",
+                "sheet": "1150929辭典匯出",
+                "row": 32072
+              },
+              {
+                "title": "明人不做暗事",
+                "pinyin": "míng rén bù zuò àn shì",
+                "definition": "（諺語）心地光明的人不在暗地裡做見不得人的事。指為人處事光明正大。《西遊記》第八四回：「我不是夜耗子成精。明人不做暗事。吾乃齊天大聖臨凡，保唐僧往西天取經。」《喻世明言．卷二八．李秀卿義結黃貞女》：「自古明人不做暗事，何不帶頂髻兒？還好看相。」",
+                "entry_id": "014770232",
+                "sheet": "1150929辭典匯出",
+                "row": 32172
+              },
+              {
+                "title": "窗明几淨",
+                "pinyin": "chuāng míng jǐ jìng",
+                "definition": "窗子明亮，茶几乾淨。形容居室明亮潔淨。如：「雖然陳設簡單，但窗明几淨，清爽舒適。」也作「明窗淨几」。",
+                "entry_id": "086490001",
+                "sheet": "1150929辭典匯出",
+                "row": 124684
+              },
+              {
+                "title": "明顯",
+                "pinyin": "míng xiǎn",
+                "definition": "明白顯露。《後漢書．卷八八．西域傳．論曰》：「神跡詭怪，則理絕人區，感驗明顯，則事出天外。」",
+                "entry_id": "014770152",
+                "sheet": "1150929辭典匯出",
+                "row": 32093
+              },
+              {
+                "title": "明天",
+                "pinyin": "míng tiān",
+                "definition": "1.今天的下一天。《老殘遊記》第七回：「我這裡有個族弟，明天就到的，可以讓他去一趟。」《文明小史》第三九回：「我本來就要出洋的，只請東翁借我一千銀子的學費，我明天就動身。」也作「明日」。\n2.不遠的未來。如：「讓我們共同期待明天會更好。」",
+                "entry_id": "014770064",
+                "sheet": "1150929辭典匯出",
+                "row": 32007
+              },
+              {
+                "title": "明年",
+                "pinyin": "míng nián",
+                "definition": "今年的下一年。《儒林外史》第二回：「他便念道：『獃，秀才，喫長齋，鬍鬚滿腮，經書不揭開，紙筆自己安排，明年不請我自來。』」",
+                "entry_id": "014770067",
+                "sheet": "1150929辭典匯出",
+                "row": 32010
+              },
+              {
+                "title": "陰",
+                "pinyin": "ān",
+                "definition": "同「闇」(二)。",
+                "entry_id": "10419",
+                "sheet": "1150929辭典匯出",
+                "row": 10432
+              },
+              {
+                "title": "陰",
+                "pinyin": "yīn",
+                "definition": "[名]_x000D_\n1.山的北面或水的南面。《說文解字．阜部》：「陰，水之南、山之北也。」如：「山陰」、「淮陰」。三國魏．曹丕〈善哉行〉四首之四：「朝遊高臺觀，夕宴華池陰。」_x000D_\n2.陽光照不到的地方。如：「樹陰」。漢．枚乘〈上書諫吳王〉：「不如就陰而止，影滅跡絕。」宋．周邦彥〈蘭陵王．柳陰直〉詞：「柳陰直，煙裡絲絲弄碧。」_x000D_\n3.泛指背面。如：「碑陰」。南朝梁．丘遲〈為范雲謝示毛龜啟〉：「翱翔卷耳之陰，浮遊蓮葉之上。」宋．蘇軾〈四菩薩閣記〉：「長安有故藏經龕，唐明皇帝所建，其門四達，八版，皆吳道子畫。陽為菩薩，陰為天王。凡十有六軀。」_x000D_\n4.日影。常用指時間。如：「惜陰」、「寸金難買寸光陰」。《晉書．卷六六．列傳．陶侃》：「大禹聖者，乃惜寸陰，至於眾人，當惜分陰，豈可逸遊荒醉。」_x000D_\n5.月亮。如：「太陰」。漢．桓寬《鹽鐵論．非鞅》：「故利於彼者，必耗於此，猶陰陽之不並曜，晝夜之有長短也。」_x000D_\n6.人的生殖器官。如：「外陰」、「陰部」。_x000D_\n7.古人用指對立事物中的一方。與「陽」相對。如天、男為陽，地、女為陰。_x000D_\n8.姓。如隋代有陰世師。_x000D_\n[形]_x000D_\n1.昏暗的。與「晴」相對。如：「陰天」、「陰雨」。_x000D_\n2.祕密的、不光明的。如：「陰計」、「陰謀」。《韓非子．孤憤》：「智術之士，明察聽用，且燭重人之陰情。」_x000D_\n3.險詐、狡猾。如：「陰險狠毒」、「陰狠可怕」。_x000D_\n4.帶負電的。與「正」、「陽」相對。如：「陰離子」、「陰電」。_x000D_\n5.柔性的、雌性的、女性的。如：「陰柔」、「陰性」。_x000D_\n6.有關死人或鬼魂的。如：「陰間」、「陰曹地府」。晉．木華〈海賦〉：「陽冰不冶，陰火潛然。」《紅樓夢》第一五回：「你是素日知道我的，從來不信什麼是陰司地獄報應的。」_x000D_\n[副]_x000D_\n暗地的、偷偷的。《戰國策．秦策二》：「張儀反秦，使人使齊，齊、秦之交陰合。」《三國志．卷七．魏書．呂布臧洪傳．呂布》：「（卓）嘗小失意，拔手戟擲布。布拳捷避之，為卓顧謝，卓意亦解。由是陰怨卓。」",
+                "entry_id": "11076",
+                "sheet": "1150929辭典匯出",
+                "row": 11091
+              },
+              {
+                "title": "陰",
+                "pinyin": "yìn",
+                "definition": "[動]\n1.覆蔭、遮蔽。通「蔭」。《詩經．大雅．桑柔》：「既之陰女，反予來赫。」\n2.埋藏。《禮記．祭義》：「骨肉斃於下，陰為野土。」",
+                "entry_id": "11119",
+                "sheet": "1150929辭典匯出",
+                "row": 11134
+              },
+              {
+                "title": "神明",
+                "pinyin": "shén míng",
+                "definition": "1.一切神的通稱。《易經．說卦》：「昔者聖人之作易也，幽贊於神明而生蓍。」\n2.精神。《莊子．齊物論》：「勞神明為一，而不知其同也。」\n3.如神般的通曉、明白。《漢書．卷一〇〇．敘傳上》：「及它隱伏，旬日數得。郡中震栗，咸稱神明。」",
+                "entry_id": "089850015",
+                "sheet": "1150929辭典匯出",
+                "row": 129558
+              },
+              {
+                "title": "明朝",
+                "pinyin": "míng zhāo",
+                "definition": "1.明天早晨。晉．左思〈嬌女〉詩：「明朝弄梳臺，黛眉類掃跡。」唐．杜甫〈春宿左省〉詩：「明朝有封事，試問夜如何？」也作「明旦」、「明曙」。\n2.明日、隔天。如：「今日相聚，明朝又將各自天涯。」也作「明旦」、「明曙」。",
+                "entry_id": "014770178",
+                "sheet": "1150929辭典匯出",
+                "row": 32120
+              },
+              {
+                "title": "明朝",
+                "pinyin": "míng cháo",
+                "definition": "朝代名。（西元1368～1644）朱元璋代元，國號明，十六帝。原都應天府（南京），成祖政變成功後移都順天府（北京），屢受北方蒙古人及東南沿海日寇海盜的騷擾，最後亡於滿清。",
+                "entry_id": "0147701991",
+                "sheet": "1150929辭典匯出",
+                "row": 32141
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "听",
+            "pinyin": "yǐn",
+            "definition": "[副]\n笑的樣子。《文選．司馬相如．上林賦》：「亡是公听然而笑。」唐．劉禹錫〈說驥〉：「睹之周體，眙然視，听然笑，既而抃隨之。」",
+            "entry_id": "11104",
+            "sheet": "1150929辭典匯出",
+            "row": 11119,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "听",
+            "pinyin": null,
+            "definition": "「聽」的異體字。",
+            "entry_id": "02734-1",
+            "sheet": "1150929辭典匯出",
+            "row": 53128,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "official_dictionary": [
+          {
+            "title": "雨",
+            "pinyin": "yǔ",
+            "definition": "[名]\n1.空氣中的水蒸氣遇冷凝結而降落的小水滴。如：「春雨」、「梅雨」、「風雨交加」、「秋風秋雨愁煞人」。\n2.朋友。如：「舊雨新知」。唐．杜甫〈秋述〉：「秋，杜子臥病長安旅次，……，青苔及榻，常時車馬之客，舊雨來，今雨不來。」\n3.二一四部首之一。",
+            "entry_id": "11624",
+            "sheet": "1150929辭典匯出",
+            "row": 11638,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "雨",
+            "pinyin": "yù",
+            "definition": "[動]\n1.下雨。《詩經．小雅．大田》：「雨我公田，遂及我私。」《史記．卷六七．仲尼弟子傳．有若傳》：「他日，月宿畢，竟不雨。」\n2.降落、落下。如：「雨雪」、「雨雹」。《淮南子．本經》：「昔者蒼頡作書，而天雨粟，鬼夜哭。」宋．蘇軾〈喜雨亭記〉：「使天而雨珠，寒者不得以為襦；使天而雨玉，飢者不得以為粟。」\n3.滋潤、灌溉。唐．孟郊〈終南山下作〉詩：「山村不假陰，流水自雨田。」唐．鮑溶〈答客〉詩：「勞問圃人終歲事，桔槔聲裡雨春畦。」",
+            "entry_id": "11661",
+            "sheet": "1150929辭典匯出",
+            "row": 11675,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "时",
+            "pinyin": null,
+            "definition": "「時」的異體字。",
+            "entry_id": "08715-1",
+            "sheet": "1150929辭典匯出",
+            "row": 126095,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "进": {
+        "definition": "advance, make progress, enter",
+        "mandarin": "jìn",
+        "related_characters": [
+          {
+            "character": "進",
+            "relation": "kTraditionalVariant",
+            "definition": "advance, make progress, enter",
+            "mandarin": "jìn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "登临",
+      "decision": "keep",
+      "reason": "“登临”是自然凝练的动作词，指登高临望，有古典用例支撑，语义清楚且具景象感；与暂留候选“登埼”等意象并不相同。"
+    },
+    {
+      "name": "鸿禧",
+      "decision": "keep",
+      "reason": "意为大福、吉祥，完整词语自然且有文献用例，寓意明确，具有传统品牌命名的凝练感。"
+    },
+    {
+      "name": "永禧",
+      "decision": "uncertain",
+      "reason": "可理解为长久吉祥，但组合不如“鸿禧”等常见自然，表达关系略显生造；文献例仅是人名，不能支撑此处的整词搭配。"
+    },
+    {
+      "name": "丰禧",
+      "decision": "uncertain",
+      "reason": "可勉强理解为丰盛福祉，但“丰”与“禧”的组合关系不够自然，整词缺少清晰稳定的语义。"
+    },
+    {
+      "name": "泰禧",
+      "decision": "uncertain",
+      "reason": "意图表达安泰吉祥可以辨认，但两字组合较生硬，未形成自然完整的词义。"
+    },
+    {
+      "name": "颐禧",
+      "decision": "uncertain",
+      "reason": "“颐”可指颐养，“禧”指福祉，但连用关系不清，无法确认是自然词组还是为取吉祥字而拼合。"
+    },
+    {
+      "name": "元禧",
+      "decision": "uncertain",
+      "reason": "“元”与“禧”各自含义可辨，但组合语义不明确；现有用例中的元禧是人名，不能据此确认品牌词组自然。"
+    },
+    {
+      "name": "明禧",
+      "decision": "uncertain",
+      "reason": "可联想到光明吉祥，但搭配关系不够自然；文献中的“明禧”是禅院名，无法据此支持通用整词义。"
+    },
+    {
+      "name": "禧听雨",
+      "decision": "reject",
+      "reason": "“禧”与“听雨”语义衔接生硬，像将吉祥字与意境短语机械拼接，未形成自然完整的品牌表达。"
+    },
+    {
+      "name": "禧与时进",
+      "decision": "reject",
+      "reason": "整体像“与时俱进”的仿改句式，加入“禧”后语法和语义均不顺，且保留了口号式表达。"
+    }
+  ]
+}

@@ -1,0 +1,965 @@
+{
+  "review_id": "20261113T064029-d15f2475",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "伏龙",
+      "伏藏",
+      "纼引",
+      "纼航",
+      "凤舞龙璈",
+      "云璈清响",
+      "清璈",
+      "风向舵"
+    ],
+    "related_kept_candidates": {
+      "清": [
+        "云山清宴",
+        "冬山清响",
+        "畦间清响",
+        "楮间清响",
+        "眉间清响",
+        "桠间清响",
+        "麦田清响",
+        "清瑝玉响",
+        "前庭清响",
+        "楹间清响",
+        "清泉琤响",
+        "云影清浅"
+      ],
+      "风": [
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风"
+      ],
+      "凤": [
+        "凤仪",
+        "凤凰",
+        "凤翮",
+        "凤箫",
+        "凤箫声动",
+        "凤翱",
+        "凤珥"
+      ],
+      "云": [
+        "云山清宴",
+        "云影清浅",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间"
+      ],
+      "龙": [
+        "鼍龙",
+        "龙虺",
+        "蛰龙",
+        "龙脊",
+        "螭龙",
+        "蟠龙",
+        "蛟龙",
+        "六龙行远",
+        "龙湫",
+        "乘龙扆云",
+        "应龙",
+        "矫若游龙"
+      ],
+      "向": [
+        "梣向阳",
+        "螭向远",
+        "蔓向阳",
+        "梾木向阳",
+        "梾枝向远",
+        "梾枝向晨",
+        "牛向千峰",
+        "澄川向海",
+        "向晨",
+        "茶田向晚",
+        "山海向北",
+        "柑向阳"
+      ],
+      "藏": [
+        "藏弆",
+        "藏镞",
+        "藏刃",
+        "山海藏刃",
+        "藏酒见山",
+        "璞里藏珂",
+        "林深藏嶂",
+        "蕊藏春",
+        "山川藏瑾",
+        "山海藏璟",
+        "镯藏光",
+        "封藏"
+      ],
+      "舞": [
+        "舞踊",
+        "鹡舞",
+        "舞跹",
+        "蜻舞松风",
+        "蜻舞",
+        "蛱舞",
+        "柳舞春风",
+        "袖舞",
+        "仙鹤舞",
+        "凰舞",
+        "毽舞",
+        "毽舞坊"
+      ],
+      "伏": [
+        "伏羲",
+        "伏猊"
+      ],
+      "引": [
+        "蔓引清风",
+        "弓引长风",
+        "鹒引清风",
+        "鸥引归舟",
+        "缐引未来",
+        "箫引清风",
+        "墨引清流",
+        "飔引光",
+        "萤引路",
+        "笛引春潮",
+        "笛引春",
+        "引力"
+      ],
+      "响": [
+        "冬山清响",
+        "畦间清响",
+        "楮间清响",
+        "眉间清响",
+        "桠间清响",
+        "麦田清响",
+        "清瑝玉响",
+        "前庭清响",
+        "楹间清响",
+        "清泉琤响",
+        "一砧清响",
+        "梅间清响"
+      ],
+      "航": [
+        "歧航",
+        "航行",
+        "续航",
+        "远航",
+        "云航",
+        "星航",
+        "宵航",
+        "峥航",
+        "祕航",
+        "磊航",
+        "震航",
+        "济航"
+      ]
+    },
+    "literature_phrase_examples": {
+      "伏龙": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 202241,
+          "context": "珠应哂鱼目，铅未伏龙泉。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 323910,
+          "context": "伏龙山横洲渚地，人如白苹自生死。"
+        }
+      ],
+      "伏藏": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 420862,
+          "context": "若也伏藏休动作，逆行逆战亦均平，顺则最宜行。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 422729,
+          "context": "九地伏藏宜密事，逃潜六合避凶星，隐伏喜忻情。"
+        }
+      ],
+      "纼引": [],
+      "纼航": [],
+      "凤舞龙璈": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 363677,
+          "context": "凤舞龙璈奏，虬轩殊未回。"
+        }
+      ],
+      "云璈清响": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 743291,
+          "context": "金鲸夭矫写霞浆，云璈清响何琅琅。"
+        }
+      ],
+      "清璈": [],
+      "风向舵": []
+    },
+    "dictionary_phrase_entries": {
+      "伏龙": [],
+      "伏藏": [
+        {
+          "title": "伏藏",
+          "pinyin": "fú cáng",
+          "definition": "隱藏、匿藏。《墨子．雜守》：「可以跡知往來者少多，即所伏藏之處。」《宋史．卷四一七．列傳．趙葵》：「但得密賜指授，范一切伏藏不動。」",
+          "entry_id": "017900079",
+          "sheet": "1150929辭典匯出",
+          "row": 37706,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "纼引": [],
+      "纼航": [],
+      "凤舞龙璈": [],
+      "云璈清响": [],
+      "清璈": [],
+      "风向舵": []
+    },
+    "direct_dictionary": {
+      "伏": {
+        "definition": "crouch, crawl, lie hidden, conceal",
+        "mandarin": "fú",
+        "official_dictionary": [
+          {
+            "title": "伏",
+            "pinyin": "fú",
+            "definition": "[動]\n1.趴，身體向前傾靠在物體上。如：「倒伏」、「伏案」。《禮記．曲禮上》：「坐毋箕，寢毋伏。」\n2.隱藏、隱匿。如：「蟄伏」、「危機四伏」、「晝伏夜出」。《老子》第五八章：「禍兮福之所倚，福兮禍之所伏。」\n3.降服、使屈服。如：「降龍伏虎」、「制伏」。\n4.低落下去。如：「伏地挺身」、「此起彼伏」。\n5.承認、承受。如：「伏罪」、「伏法」。《文選．班彪．王命論》：「遇折足之凶，伏斧鉞之誅。」\n6.佩服、信服。同「服」。唐．白居易〈琵琶行〉：「曲罷曾教善才伏，妝成每被秋娘妒。」\n[形]\n隱藏不露的。《文選．左思．蜀都賦》：「漏江伏流潰其阿。」\n[名]\n參見「伏日」條。\n[副]\n對尊長自謙的敬辭。《文選．枚乘．七發》：「伏聞太子玉體不安，亦少閒乎？」《漢書．卷四．文帝紀》：「臣伏計之，大王奉高祖宗廟最宜稱。」",
+            "entry_id": "01790",
+            "sheet": "1150929辭典匯出",
+            "row": 1794,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "倒伏",
+                "pinyin": "dǎo fú",
+                "definition": "農作物的莖柔弱、或受強風暴雨的侵襲而偃倒在地上，稱為「倒伏」。",
+                "entry_id": "0196000192",
+                "sheet": "1150929辭典匯出",
+                "row": 42241
+              },
+              {
+                "title": "伏案",
+                "pinyin": "fú àn",
+                "definition": "上身靠在桌子上。指讀書及辦理文書等事。元．關漢卿《蝴蝶夢》第二折：「包做伏案睡做夢科云，老夫公事操心，那裡睡的到眼裡，待老夫閒步游玩咱。」",
+                "entry_id": "017900083",
+                "sheet": "1150929辭典匯出",
+                "row": 37710
+              },
+              {
+                "title": "蟄伏",
+                "pinyin": "zhí fú",
+                "definition": "動物藏伏在土中不食不動。《淮南子．天文》：「百蟲蟄伏，靜居閉戶。」",
+                "entry_id": "075010001",
+                "sheet": "1150929辭典匯出",
+                "row": 112087
+              },
+              {
+                "title": "危機四伏",
+                "pinyin": "wéi jī sì fú",
+                "definition": "到處隱藏著危險。如：「戰場上雖危機四伏，但將士們仍無所畏懼，勇往直前。」清．徐珂《清稗類鈔．迷信類．宣統年號之讖》：「今之天下，危機四伏，窺竊神器者，所在皆有。」",
+                "entry_id": "113720009",
+                "sheet": "1150929辭典匯出",
+                "row": 158442
+              },
+              {
+                "title": "晝伏夜出",
+                "pinyin": "zhòu fú yè chū",
+                "definition": "白天時潛伏休息，晚上才出來活動。如：「那人每天晝伏夜出，形蹤詭祕，實在令人好奇。」《明史．卷二四四．魏大中列傳》：「既抵都，邏卒四布，變姓名匿旅舍，晝伏夜出，稱貸以完父贓。」",
+                "entry_id": "0776100041",
+                "sheet": "1150929辭典匯出",
+                "row": 114289
+              },
+              {
+                "title": "降龍伏虎",
+                "pinyin": "xiáng lóng fú hǔ",
+                "definition": "比喻有極大的本領，能克服重大困難或惡勢力。元．馬致遠《黃粱夢》第一折：「出家人長生不老，煉藥修真，降龍伏虎，到大來悠哉也呵。」《西遊記》第八〇回：「你莫是魍魎、妖邪？我不是尋常之人。我是大唐來的，我手下有降龍伏虎的徒弟！」也作「伏虎降龍」。",
+                "entry_id": "072010007",
+                "sheet": "1150929辭典匯出",
+                "row": 108540
+              },
+              {
+                "title": "制伏",
+                "pinyin": "zhì fú",
+                "definition": "用強力壓伏、征服。《紅樓夢》第九回：「如今何不用計制伏，又息口聲，又不傷臉面。」《老殘遊記》第一六回：「白子壽的人品學問，為眾所推服，他還不敢藐視。舍此更無能制伏他的人了。」",
+                "entry_id": "075640008",
+                "sheet": "1150929辭典匯出",
+                "row": 112785
+              },
+              {
+                "title": "伏地挺身",
+                "pinyin": "fú dì tǐng shēn",
+                "definition": "一種鍛鍊體力的運動。其姿勢是身體與地面平行，以手掌心和腳尖著地，利用手臂的屈伸，使全身上下起伏，以身體重量鍛鍊臂力。如：「在下水前，先做五十個伏地挺身熱身一下。」也稱為「俯臥撐」。",
+                "entry_id": "017900014",
+                "sheet": "1150929辭典匯出",
+                "row": 37641
+              },
+              {
+                "title": "此起彼伏",
+                "pinyin": "cǐ qǐ bǐ fú",
+                "definition": "這裡起來，那裡落下。形容連續不斷。如：「工廠中，多人一間房的宿舍裡，此起彼伏的鼾聲，實在難以入睡。」也作「此起彼落」。",
+                "entry_id": "097060014",
+                "sheet": "1150929辭典匯出",
+                "row": 138796
+              },
+              {
+                "title": "伏罪",
+                "pinyin": "fú zuì",
+                "definition": "1.承認自己的罪。《後漢書．卷三三．馮魴傳》：「汝知悔過伏罪，今一切相赦，聽各反農桑，為令作耳目。」\n2.犯罪處了死刑。《史記．卷四三．趙世家》：「晉國有法，始亂者死。夫二子已伏罪而安于獨在。」\n3.隱伏未發的罪。《漢書．卷九八．元后傳》：「是歲，新都侯莽告長伏罪與紅陽侯立相連，長下獄死，立就國，語在長傳。」",
+                "entry_id": "017900077",
+                "sheet": "1150929辭典匯出",
+                "row": 37704
+              },
+              {
+                "title": "伏法",
+                "pinyin": "fú fǎ",
+                "definition": "犯罪受到制裁，處了死刑。《漢書．卷六二．司馬遷傳》：「假令僕伏法受誅，若九牛亡一毛，與螻螘何異？」",
+                "entry_id": "017900008",
+                "sheet": "1150929辭典匯出",
+                "row": 37636
+              },
+              {
+                "title": "服",
+                "pinyin": "fú",
+                "definition": "[名]\n1.衣裝、衣裳的總稱。如：「制服」、「禮服」、「便服」。\n2.喪衣。如古代居喪的服制，以斬衰、齊衰、大功、小功、緦麻為五服。《魏書．卷八七．節義傳．石文德傳》：「文德祖父苗以家財殯葬，持服三年，奉養宣妻二十餘載。」\n3.喪事、居喪期間。《史記．卷一〇七．魏其武安侯傳》：「吾欲與仲孺過魏其侯，會仲孺有服。」《紅樓夢》第九六回：「若說服裡娶親，當真使不得。」\n4.量詞。計算中藥服用劑量的單位。如：「他吃了三服藥，病全好了。」\n5.姓。如漢代有服徹。\n[動]\n1.穿著、穿戴。《漢書．卷九九．王莽傳上》：「周公服天子之冕，南面而朝群臣。」\n2.吃、進食。《禮記．曲禮下》：「醫不三世，不服其藥。」《史記．卷一〇五．扁鵲倉公傳》：「即令更服丸藥，出入六日，病已。」\n3.欽佩、順從。如：「佩服」、「心服口服」。《論語．為政》：「舉直錯諸枉，則民服。」\n4.使折服、使降服。如：「以德服人」。\n5.擔任、從事、承擔。如：「服役」、「服刑」。《論語．為政》：「有事，弟子服其勞，有酒食，先生饌。」\n6.習慣、適應。如：「水土不服」。《楚辭．屈原．九章．思美人》：「固朕形之不服兮，然容與而狐疑。」",
+                "entry_id": "01814",
+                "sheet": "1150929辭典匯出",
+                "row": 1819
+              },
+              {
+                "title": "伏日",
+                "pinyin": "fú rì",
+                "definition": "三伏之日。自夏至後第三庚日起，每十日為一伏，有三伏，共三十日，稱為「伏日」，為一年中最熱的時期。《漢書．卷六五．東方朔傳》：「久之，伏日，詔賜從官肉。」也作「伏天」、「三伏天」。",
+                "entry_id": "017900075",
+                "sheet": "1150929辭典匯出",
+                "row": 37702
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "龙": {
+        "definition": "dragon; symbolic of emperor",
+        "mandarin": "lóng",
+        "related_characters": [
+          {
+            "character": "龍",
+            "relation": "kTraditionalVariant",
+            "definition": "dragon; Kangxi radical 212",
+            "mandarin": "lóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "藏": {
+        "definition": "hide, conceal; hoard, store up",
+        "mandarin": "cáng",
+        "official_dictionary": [
+          {
+            "title": "藏",
+            "pinyin": "zàng",
+            "definition": "[名]\n1.儲存東西的地方。如：「寶藏」。《禮記．月令》：「命百官，謹蓋藏。」《史記．卷三〇．平準書》：「山海，天地之藏也。」\n2.內臟。通「臟」。《淮南子．原道》：「夫心者，五藏之主也。」唐．李白〈東海有勇婦〉詩：「斬首掉國門，蹴踏五藏行。」\n3.西藏的簡稱。如：「蒙藏一帶」。\n4.邊疆民族。舊稱為「吐蕃」。\n5.佛教、道教經典的總稱。如：「道藏」、「藏經」。明．徐弘祖《徐霞客遊記．卷八上．滇遊日記八》：「寶臺大寺，為立禪師所建，三年前立師東遊請藏，久離此山。」",
+            "entry_id": "09570",
+            "sheet": "1150929辭典匯出",
+            "row": 9584,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "藏",
+            "pinyin": "cáng",
+            "definition": "[動]\n1.儲存。如：「收藏」、「儲藏」。《荀子．王制》：「春耕、夏耘、秋收、冬藏，四者不失時。」\n2.隱匿。如：「躲藏」、「藏拙」、「藏汙納垢」。《論語．述而》：「用之則行，舍之則藏。」唐．李白〈答湖州迦葉司馬問白是何人〉詩：「青蓮居士謫仙人，酒肆藏名三十春。」\n3.懷抱。《易經．繫辭下》：「君子藏器於身，待時而動。」《莊子．應帝王》：「有虞氏其猶藏仁以要人，亦得人矣，而未始出於非人。」\n[名]\n姓。如南朝宋有藏凝之。",
+            "entry_id": "09799",
+            "sheet": "1150929辭典匯出",
+            "row": 9813,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "纼": {
+        "definition": "a rope for leading cattle or horse",
+        "mandarin": "zhèn",
+        "related_characters": [
+          {
+            "character": "紖",
+            "relation": "kTraditionalVariant",
+            "definition": "a rope for leading cattle or horse",
+            "mandarin": "zhèn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "引": {
+        "definition": "to pull, draw out, attract; to stretch",
+        "mandarin": "yǐn",
+        "official_dictionary": [
+          {
+            "title": "引",
+            "pinyin": "yǐn",
+            "definition": "[動]\n1.開弓。《莊子．田子方》：「列禦寇為伯昏無人射，引之盈貫。」《孟子．盡心上》：「羿不為拙射變其彀率，君子引而不發，躍如也。」\n2.拉。《韓非子．人主》：「夫馬之所以能任重引車致遠道者，以筋力也。」《聊齋志異．卷一．尸變》：「客大懼，恐將及己，潛引被覆首，閉息忍咽以聽之。」\n3.伸長、延長。《左傳．成公十三年》：「我君景公，引領西望。」唐．韓愈〈進學解〉：「忘己量之所稱，指前人之瑕疵，是所謂詰匠氏之不以杙為楹，而訾醫師以昌陽引年，欲進其豨苓也。」\n4.領導、帶領。《史記．卷七．項羽本紀》：「項羽引兵西屠咸陽，殺秦降王子嬰。」《紅樓夢》第一回：「適因小女啼哭，引他出來作耍。」\n5.招致、招惹。如：「拋磚引玉」。唐．白居易〈初授祕監并賜金紫閑吟小酌偶寫所懷〉詩：「酒引眼前興，詩留身後名。」清．洪昇《長生殿》第三八齣：「無端唱出興亡恨，引得傍人也淚流。」\n6.推薦、選拔。《後漢書．卷一三．隗囂傳》：「王莽國師劉歆引囂為士。」唐．錢起〈樂遊原晴望上中書李侍郎〉詩：「遙想青雲丞相府，何時開閤引書生。」\n7.援用。漢．何休〈公羊傳解詁序〉：「援引他經，失其句讀。」南朝梁．劉勰《文心雕龍．事類》：「雖引古事，而莫取舊辭。」\n8.退避、退出。《禮記．玉藻》：「侍坐則必退席，不退，則必引而去君之黨。」宋．蘇軾〈與辯才禪師〉詩：「得此閑郡，雖未能超然遠引，亦退老之漸也。」\n9.承受。《新唐書．卷八〇．太宗諸子傳．庶人佑傳》：「誠能飭躬引咎，萬紀請入朝言之，上意宜解。」《三國演義》第九九回：「街亭之役，咎由馬謖，而君引愆，深自貶抑。」\n[名]\n1.量詞。計算長度的單位。公制一引等於一百公尺。也稱為「公引」。\n2.紙幣。宋．陸游《老學庵筆記》卷六：「胡子遠之父，唐安人，家饒財，常委僕權錢，得錢引五千緡，皆偽也。」\n3.通行證。如：「路引」。《西遊記》第五四回：「請投館驛註名上簿，待下官執名奏駕，驗引放行。」《警世通言．卷二八．白娘子永鎮雷峰塔》：「見了大尹，給引還鄉。」\n4.拉柩車的繩索。《禮記．檀弓下》：「弔於葬者必執引，若從柩及壙皆執紼。」\n5.文體名。相當於「序」，而較序短。唐．王勃〈滕王閣序〉：「敢竭鄙懷，恭疏短引。」宋．陸游《老學庵筆記》卷六：「蘇東坡祖名字，故為人作序皆用敘序，又以未安，遂改作引。」\n6.一種樂府詩體。如：「思歸引」、「箜篌引」。唐．元稹〈樂府古題序〉：「賦、頌、引、謠、……、詞、調，皆詩人六義之餘，而作者之旨。」",
+            "entry_id": "11101",
+            "sheet": "1150929辭典匯出",
+            "row": 11116,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "航": {
+        "definition": "sail; navigate; ship, boat",
+        "mandarin": "háng",
+        "official_dictionary": [
+          {
+            "title": "航",
+            "pinyin": "háng",
+            "definition": "[名]\n1.舟、船。《文選．左思．吳都賦》：「於是乎長鯨吞航，修鯢吐浪。」元．馬致遠〈壽陽曲．遠浦帆歸〉曲：「夕陽下，酒旆閑，兩三航未曾著岸。」\n2.連舟而成的浮橋。《淮南子．氾論》：「古者大川名谷，衝絕道路，不通往來也，乃為窬木方版以為舟航。」\n[動]\n船、飛機等的行走。如：「領航」、「巡航」、「導航」。唐．韓愈〈答張徹〉詩：「疊雪走商嶺，飛波航洞庭。」",
+            "entry_id": "04911",
+            "sheet": "1150929辭典匯出",
+            "row": 4917,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凤": {
+        "definition": "male phoenix; symbol of joy",
+        "mandarin": "fèng",
+        "related_characters": [
+          {
+            "character": "凤",
+            "relation": "kTraditionalVariant",
+            "definition": "male phoenix; symbol of joy",
+            "mandarin": "fèng"
+          },
+          {
+            "character": "鳳",
+            "relation": "kTraditionalVariant",
+            "definition": "male phoenix; symbol of joy",
+            "mandarin": "fèng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "凤",
+            "pinyin": null,
+            "definition": "「鳳」的異體字。",
+            "entry_id": "01750-1",
+            "sheet": "1150929辭典匯出",
+            "row": 37316,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舞": {
+        "definition": "dance, posture, prance; brandish",
+        "mandarin": "wǔ",
+        "official_dictionary": [
+          {
+            "title": "舞",
+            "pinyin": "wǔ",
+            "definition": "[名]\n一種配合音樂節奏移動身體，表演各種姿態的藝術。如：「芭蕾舞」、「華爾滋舞」、「交際舞」。《周禮．春官．樂師》：「凡舞，有帗舞，有羽舞，有皇舞，有旄舞，有干舞，有人舞。」\n[動]\n1.表演舞蹈。南朝宋．劉義慶《世說新語．品藻》：「劉尹、王長史同坐，長史酒酣起舞。」\n2.耍動、揮動。如：「舞劍」、「手舞足蹈」。《禮記．樂記》：「嗟嘆之不足，故不知手之舞之足之蹈之也。」\n3.飛揚、飛翔。如：「飛舞」、「眉飛色舞」、「龍飛鳳舞」。\n4.賣弄、玩弄。如：「舞文弄墨」。《史記．卷一二〇．汲黯傳》：「好興事，舞文法，內懷詐以御主心，外挾賊吏以為威重。」\n5.搞、弄、忙。《儒林外史》第三回：「鄰居一起上前，替他抹胸口，捶背心，舞了半日，漸漸喘息過來。」",
+            "entry_id": "11266",
+            "sheet": "1150929辭典匯出",
+            "row": 11280,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "璈": {
+        "definition": "ancient musical instrument",
+        "mandarin": "áo",
+        "official_dictionary": [
+          {
+            "title": "璈",
+            "pinyin": "áo",
+            "definition": "[名]\n古代的一種樂器。《集韻．平聲．豪韻》：「璈，樂器。」唐．吳筠〈遊仙〉詩二四首之一五：「鳳舞龍璈奏，虯軒殊未迴。」",
+            "entry_id": "10356",
+            "sheet": "1150929辭典匯出",
+            "row": 10369,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "清",
+            "pinyin": "qīng",
+            "definition": "[形]\n1.澄淨、純潔。與「濁」相對。如：「清潔」、「清澈」。《詩經．魏風．伐檀》：「河水清且漣猗。」\n2.高潔、廉潔。如：「清望」、「清廉」、「清士」。元．鄭廷玉《冤家債主》第四折：「法正天須順，官清民自安。」\n3.寂靜。如：「冷清」、「清靜」。\n4.秀美。如：「眉清目秀」。唐．杜甫〈戲為六絕句〉六首之五：「不薄今人愛古人，清詞麗句必為鄰。」\n5.安定、太平。如：「清平盛世」。《文選．曹植．送應氏詩二首之一》：「清時難屢得，嘉會不可常。」\n[副]\n1.單純的。如：「清一色」、「清唱」。\n2.淨盡、一點也不留。如：「債還清了。」、「書款付清了。」\n3.詳細、明白。如：「點清數目」、「查清戶口」、「謄清作文」。\n[動]\n1.使乾淨、使整齊。如：「清洗」、「清理」、「清除」。\n2.整頓。如：「清黨」、「肅清」。\n3.結帳。如：「清帳」、「清算」、「結清餘欠」。\n4.點檢（清楚）。如：「清點」、「清倉」。《儒林外史》第六回：「你們各人管的田房、利息帳目，都連夜攢造清完，先送與我逐細看過。」\n[名]\n1.朝代名。參見「清朝」條。\n2.參見「血清」條。\n3.姓。如宋代有清賢。",
+            "entry_id": "06577",
+            "sheet": "1150929辭典匯出",
+            "row": 6586,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "濁",
+                "pinyin": "zhuó",
+                "definition": "[形]\n1.骯髒、不清潔。如：「汙濁」、「混濁不清」。\n2.昏亂、混亂。《楚辭．屈原．漁父》：「舉世皆濁我獨清，眾人皆醉我獨醒。」《史記．卷七六．平原君虞卿傳．太史公曰》：「平原君，翩翩濁世之佳公子也，然未睹大體。」\n3.平凡、庸俗。元．馬致遠《黃粱夢》第四折：「你不是凡胎濁骨，迷本性人間受苦。」清．洪昇《長生殿》第一一齣：「想我濁質凡姿，今夕得到月府，好僥倖也！」\n4.低沉粗重。如：「濁聲濁氣」、「聲音重濁」。《遼史．卷五四．樂志》：「皆從濁至清，迭更其聲，下益濁，上益清。」\n[名]\n1.畢星的別名。《爾雅．釋天》：「濁謂之畢。」《史記．卷二五．律書》：「北至於濁。濁者，觸也，言萬物皆觸死也，故曰濁。」\n2.姓。如漢代有濁賢。",
+                "entry_id": "08056",
+                "sheet": "1150929辭典匯出",
+                "row": 8070
+              },
+              {
+                "title": "清潔",
+                "pinyin": "qīng jié",
+                "definition": "1.潔淨不受汙染。三國．魏．阮籍〈清思賦〉：「沐洧淵以淑密兮，體清潔而靡譏。」《紅樓夢》第六十八回：「俏麗若三春之桃，清潔若九秋之菊。」\n2.廉潔。《韓非．外儲說左下》：「辯察於辭，清潔於貨，習人情，夷吾不如弦商。」《南史．卷二十四．王鎮之傳》：「在官清潔，妻子無以自反，乃棄家致喪還上虞舊基。」\n3.明白清楚。《醒世恆言．卷十六．陸五漢硬留合色鞋》：「壽兒被太守句句道著心事，不覺面上一回紅，一回白，口內如吃子一般，半個字也說不清潔。」",
+                "entry_id": "065770152",
+                "sheet": "1150929辭典匯出",
+                "row": 100848
+              },
+              {
+                "title": "清澈",
+                "pinyin": "qīng chè",
+                "definition": "1.乾淨澄澈。如：「聲音清澈」、「河水清澈見底。」\n2.形容清靈脫俗。《南齊書．卷四一．列傳．張融》：「融形貌短醜，精神清澈。」唐．杜甫〈徐卿二子歌〉：「大兒九齡色清澈，秋水為神玉為骨。」",
+                "entry_id": "065770238",
+                "sheet": "1150929辭典匯出",
+                "row": 100917
+              },
+              {
+                "title": "清望",
+                "pinyin": "qīng wàng",
+                "definition": "1.清高的聲望。《南史．卷三十一．張裕傳》：「緒少有清望，誠美選也。」唐．皮日休〈七愛詩．白太傅〉：「清望逸內署，直聲驚諫垣。」\n2.具有清高名望的人或家族。《晉書．卷四十．楊駿傳》：「帝重兵官，多授貴戚清望。」《資治通鑑．卷一四〇．齊紀六．齊明帝建武三年》：「當朝貴重，所結姻㜕，莫非清望。」",
+                "entry_id": "065770326",
+                "sheet": "1150929辭典匯出",
+                "row": 100992
+              },
+              {
+                "title": "清廉",
+                "pinyin": "qīng lián",
+                "definition": "清正廉潔不貪汙。《初刻拍案驚奇》卷十三：「那知縣姓張名晉，為人清廉正直。」《文明小史》第十三回：「這位制軍實在清廉得很，有的是公款，無論那裡撥萬把銀子送進去，不就結了嗎？」",
+                "entry_id": "065770095",
+                "sheet": "1150929辭典匯出",
+                "row": 100805
+              },
+              {
+                "title": "清士",
+                "pinyin": "qīng shì",
+                "definition": "清廉耿介的人。《史記．卷六十一．伯夷傳》：「舉世混濁，清士乃見。」",
+                "entry_id": "065770257",
+                "sheet": "1150929辭典匯出",
+                "row": 100934
+              },
+              {
+                "title": "冷清",
+                "pinyin": "lěng qīng",
+                "definition": "1.形容景物蕭條、寂靜。如：「到了晚上，這一帶就更加冷清了。」《鏡花緣》第六五回：「我們今日莫到凝翠館去，那邊太覺遼闊冷清，此刻桂花又不開，雖說松陰可愛須交四五月方好頑哩。」\n2.冷落、寂寞。《初刻拍案驚奇》卷六：「又見大娘孤單在家，未免冷清。」《紅樓夢》第九回：「難道怪我上學去，丟的你們冷清了不成？」",
+                "entry_id": "033780098",
+                "sheet": "1150929辭典匯出",
+                "row": 60804
+              },
+              {
+                "title": "清靜",
+                "pinyin": "qīng jìng",
+                "definition": "1.寧靜不煩擾。《老子》第四十五章：「躁勝寒，靜勝熱，清靜為天下正。」\n2.安靜不吵雜。《文選．王襃．洞簫賦》：「惟詳察其素體兮，宜清靜而弗諠。」\n3.天氣明朗。《史記．卷一二八．褚少孫補龜策傳》：「新雨已，天清靜無風。」《隋書．卷二十一．天文志下》：「若天氣清靜，無諸遊氣，日月不明，乃為失色。」\n4.安靜無事。《漢書．卷六十．杜周傳》：「延年乃選用良吏，捕擊豪強，郡中清靜。」",
+                "entry_id": "065770171",
+                "sheet": "1150929辭典匯出",
+                "row": 100863
+              },
+              {
+                "title": "眉清目秀",
+                "pinyin": "méi qīng mù xiù",
+                "definition": "形容面貌清明俊秀，長相美麗。元．無名氏《合同文字》第一折：「有個孩兒喚做安住，今年三歲，生的眉清目秀，是好一個孩兒也。」《三國演義》第一四回：「只見那人眉清目秀，精神充足。」也作「眉目明秀」、「眉目清明」、「眉目清秀」、「眉清目朗」。",
+                "entry_id": "011240050",
+                "sheet": "1150929辭典匯出",
+                "row": 28553
+              },
+              {
+                "title": "清一色",
+                "pinyin": "qīng yī sè",
+                "definition": "1.打麻將時由同樣花色組成的一副牌。《官場現形記》第二九回：「又歡喜做『清一色』，所以同賭的人更拿他當財神看待。」\n2.比喻組成分子純一不雜。如：「這次招聘的新進同仁，清一色是應屆大學畢業生。」",
+                "entry_id": "065770300",
+                "sheet": "1150929辭典匯出",
+                "row": 100972
+              },
+              {
+                "title": "清唱",
+                "pinyin": "qīng chàng",
+                "definition": "1.嘹亮的歌唱。晉．陸機〈櫂歌行〉：「名謳激清唱，榜人縱櫂歌。」唐．李白〈蘇臺覽古〉詩：「舊苑荒臺楊柳新，菱歌清唱不勝春。」\n2.一種戲曲的演唱形式。不穿戲服、不化妝，只唱曲而省去賓白。通常由一人獨唱片段。《初刻拍案驚奇》卷十五：「清唱的，時供新調；修癢的，百般騰那。」《醒世姻緣傳》第一回：「況有一班女戲常遠包在家中，投充來清唱龍陽，不離門內。」\n3.沒音樂伴奏的演唱稱為「清唱」。",
+                "entry_id": "065770244",
+                "sheet": "1150929辭典匯出",
+                "row": 100924
+              },
+              {
+                "title": "清洗",
+                "pinyin": "qīng xǐ",
+                "definition": "清除洗刷。如：「他將杯子放在水龍頭底下清洗乾淨。」",
+                "entry_id": "065770195",
+                "sheet": "1150929辭典匯出",
+                "row": 100882
+              },
+              {
+                "title": "清理",
+                "pinyin": "qīng lǐ",
+                "definition": "1.平治、平定。《史記．卷六．秦始皇本紀》：「聖法初興，清理疆內，外誅暴彊。」\n2.整理、處理。《文明小史》第四十二回：「但是這些書一齊出在上海，總得請制憲下個公事給上海道，叫他幫著清理清理才好。」《二十年目睹之怪現狀》第九十五回：「不料當到第三年上，忽然來了個九省欽差，是奉旨到九省地方清理財賦。」\n3.明白事理。《三國志．卷二十二．魏書．桓階等傳．評曰》：「臻毓規鑒清理，咸不忝厥職云。」《陳書．卷二十四．周弘正傳》：「觀汝神情穎晤，清理警發，後世知名，當出吾右。」",
+                "entry_id": "065770085",
+                "sheet": "1150929辭典匯出",
+                "row": 100798
+              },
+              {
+                "title": "清除",
+                "pinyin": "qīng chú",
+                "definition": "全部清理掃除。《三國志．卷十五．魏書．司馬朗傳》：「清除群穢，廣舉賢士。」",
+                "entry_id": "065770249",
+                "sheet": "1150929辭典匯出",
+                "row": 100928
+              },
+              {
+                "title": "清黨",
+                "pinyin": "qīng dǎng",
+                "definition": "政黨為求內部團結，鞏固力量，而肅清黨內一切敗劣分子的行動。",
+                "entry_id": "065770056",
+                "sheet": "1150929辭典匯出",
+                "row": 100781
+              },
+              {
+                "title": "肅清",
+                "pinyin": "sù qīng",
+                "definition": "1.削平亂事，整飭綱紀。《文選．陸機．漢高祖功臣頌》：「二州肅清，四邦咸舉。」《後漢書．卷六七．黨錮傳．岑晊傳》：「襃善糾違，肅清朝府。」\n2.冷靜寂寞。《文選．嵇康．琴賦》：「冬夜肅清，朗月垂光。」",
+                "entry_id": "101100012",
+                "sheet": "1150929辭典匯出",
+                "row": 143481
+              },
+              {
+                "title": "清帳",
+                "pinyin": "qīng zhàng",
+                "definition": "1.結清帳目。如：「本店月底清帳，暫停營業。」也作「清賬」。\n2.整理清楚的詳細帳目。《儒林外史》第二十一回：「到晚，牛浦回家，問著他，總歸不出一個清帳。」也作「清賬」。",
+                "entry_id": "065770223",
+                "sheet": "1150929辭典匯出",
+                "row": 100905
+              },
+              {
+                "title": "清算",
+                "pinyin": "qīng suàn",
+                "definition": "1.澈底整理計算。《二十年目睹之怪現狀》第九十六回：「這筆款子等你的爸爸死了，就本利一律清算歸還。」\n2.泛稱一切事結束時所作的最後總評。如：「這些年來我受的委屈，也該好好清算了。」",
+                "entry_id": "065770296",
+                "sheet": "1150929辭典匯出",
+                "row": 100969
+              },
+              {
+                "title": "清點",
+                "pinyin": "qīng diǎn",
+                "definition": "清理查點。如：「清點人數」。",
+                "entry_id": "065770061",
+                "sheet": "1150929辭典匯出",
+                "row": 100783
+              },
+              {
+                "title": "清倉",
+                "pinyin": "qīng cāng",
+                "definition": "1.清理倉庫。\n2.出清倉庫中的存貨。如：「清倉大拍賣」。",
+                "entry_id": "0657702901",
+                "sheet": "1150929辭典匯出",
+                "row": 100964
+              },
+              {
+                "title": "清朝",
+                "pinyin": "qīng zhāo",
+                "definition": "清早、清晨。三國．魏．阮籍〈詠懷詩〉八十二首之七十九：「清朝飲醴泉，日夕棲山岡。」南朝宋．謝惠連〈泛湖歸出樓中翫月〉詩：「悟言不知罷，從夕至清朝。」",
+                "entry_id": "065770216",
+                "sheet": "1150929辭典匯出",
+                "row": 100898
+              },
+              {
+                "title": "清朝",
+                "pinyin": "qīng cháo",
+                "definition": "1.清明的朝政。《後漢書．卷八十四．列女傳．曹世叔妻傳》：「吾性疏頑，教道無素，恆恐子穀負辱清朝。」宋．蘇軾〈故李承之待制六丈挽詞〉：「清朝竟不用，白首仍憂時。」\n2.朝代名。（西元1644～1911）滿族愛新覺羅氏所建。為中國最後一個王朝，亡於辛亥革命。",
+                "entry_id": "065770239",
+                "sheet": "1150929辭典匯出",
+                "row": 100918
+              },
+              {
+                "title": "血清",
+                "pinyin": "xiě qīng",
+                "definition": "血液分層後，去除下層凝固的血球及凝血因子後得到之上層澄清液體。帶抗體的血清可用於疾病的防治、診斷，如：「破傷風血清」、「用於治療毒蛇咬傷之毒蛇血清」。",
+                "entry_id": "069460075",
+                "sheet": "1150929辭典匯出",
+                "row": 104676
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "响": {
+        "definition": "make sound, make noise; sound",
+        "mandarin": "xiǎng",
+        "related_characters": [
+          {
+            "character": "响",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          },
+          {
+            "character": "響",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "响",
+            "pinyin": null,
+            "definition": "「響」的異體字。",
+            "entry_id": "07207-1",
+            "sheet": "1150929辭典匯出",
+            "row": 108596,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "向": {
+        "definition": "toward, direction, trend",
+        "mandarin": "xiàng",
+        "related_characters": [
+          {
+            "character": "向",
+            "relation": "kTraditionalVariant",
+            "definition": "toward, direction, trend",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "嚮",
+            "relation": "kTraditionalVariant",
+            "definition": "guide, direct; incline to, favor",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "曏",
+            "relation": "kTraditionalVariant",
+            "definition": "once upon time; period of time",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "向",
+            "pinyin": "xiàng",
+            "definition": "[名]\n1.北面的窗戶。《說文解字．宀部》：「向，北出牖也。」《詩經．豳風．七月》：「穹窒熏鼠，塞向墐戶。」\n2.方位。如：「方向」、「暈頭轉向」。明．徐弘祖《徐霞客遊記．卷四下．黔遊日記》：「南北向皆有脊中亙。」\n3.意志之歸趨。如：「志向」、「意向」。\n4.國名。周代諸侯國之一。故址約在今大陸地區山東省莒縣南。\n5.姓。如晉代有向秀。\n[動]\n1.對著、朝著。如：「向陽」、「相向」。唐．劉長卿〈餞別王十一南遊〉詩：「飛鳥沒何處，青山空向人。」\n2.崇尚、景仰。如：「人心向背」。《史記．卷一二〇．汲黯傳》：「上方向儒術，尊公孫弘。」《新唐書．卷一九七．循吏傳．賈敦頤傳》：「咸亨初，敦實為洛州長史，亦寬惠，人心懷向。」\n3.偏袒、偏愛。如：「爸爸總是向著小妹。」\n4.臨近、接近。如：「向晚」。唐．白居易〈東坡種花〉詩二首之二：「東坡春向暮，樹木今何如？」\n[形]\n昔日、從前。晉．陶淵明〈桃花源記〉：「既出，得其船，便扶向路，處處誌之。」唐．白居易〈琵琶行〉：「淒淒不似向前聲。」\n[副]\n1.一直以來、從來。如：「向來」、「向有研究」。《三國演義》第一四回：「臣向蒙國恩，刻思圖報。」\n2.方才、剛才。《金史．卷八五．世宗諸子傳．永功傳》：「向見年少婦人自水邊小徑去矣。」\n[介]\n表動作的方向、對象。如：「向前看」、「向人請教」。",
+            "entry_id": "07210",
+            "sheet": "1150929辭典匯出",
+            "row": 7219,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舵": {
+        "definition": "rudder, helm",
+        "mandarin": "duò",
+        "official_dictionary": [
+          {
+            "title": "舵",
+            "pinyin": "duò",
+            "definition": "[名]\n1.泛指交通工具上控制方向的設備。如：「升降舵」、「方向舵」。《老殘遊記》第一回：「樓下四人專管轉舵的事。」\n2.比喻奮鬥的方針或憑藉。如：「把握住你人生之舵。」",
+            "entry_id": "02341",
+            "sheet": "1150929辭典匯出",
+            "row": 2348,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "伏龙",
+      "decision": "uncertain",
+      "reason": "可理解为潜伏之龙或降伏龙，语义方向不明；虽有传统意象，但与常见“伏龙”专名及典故关联较强，品牌含义和辨识度不足以确认。"
+    },
+    {
+      "name": "伏藏",
+      "decision": "uncertain",
+      "reason": "完整词义为隐藏、匿藏，字义成立，但作为品牌名称容易直接传达隐匿、收藏之意，缺少明确而自然的品牌指向。"
+    },
+    {
+      "name": "纼引",
+      "decision": "reject",
+      "reason": "“纼”是牵引牲畜的绳索，“引”又有拉、带领之义，组合近于重复解释牵引动作，构词生硬。"
+    },
+    {
+      "name": "纼航",
+      "decision": "uncertain",
+      "reason": "“纼”指牵引牲畜的绳索，“航”指舟船或行进；两字缺乏自然的语义关系，难以确认完整名称的明确含义。"
+    },
+    {
+      "name": "凤舞龙璈",
+      "decision": "uncertain",
+      "reason": "四字意象可理解为凤舞、龙奏古乐器，且有古典用例；但组合像铺陈性的诗句而非凝练品牌名，名称整体较繁复。"
+    },
+    {
+      "name": "云璈清响",
+      "decision": "keep",
+      "reason": "可自然理解为云间古乐器发出的清越声响，语义连贯、意象鲜明，具有凝练的古典品牌辨识度。"
+    },
+    {
+      "name": "清璈",
+      "decision": "keep",
+      "reason": "“清”表达澄澈、清越，“璈”是古代乐器，组合简洁自然，可形成清雅的音乐意象，字义有据。"
+    },
+    {
+      "name": "风向舵",
+      "decision": "reject",
+      "reason": "完整名称直接等同于船舶上的风向舵这一通用器物名称，属于通用产品类别词，缺少品牌名所需的独立性。"
+    }
+  ]
+}

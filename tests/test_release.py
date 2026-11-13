@@ -1,4 +1,5 @@
 from contextlib import closing
+import gzip
 import json
 from pathlib import Path
 import sqlite3
@@ -77,6 +78,27 @@ class ReleasePackageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "快照不一致"):
             package_release.package_release("v0.1.0", "HEAD", self.output)
         self.assertFalse(self.output.exists())
+
+    def test_compressed_repository_data_is_restored_at_standard_archive_paths(self):
+        for name in ("data/names.db", "data/candidates.json"):
+            path = self.root / name
+            with path.open("rb") as source, gzip.open(path.with_suffix(path.suffix + ".gz"), "wb") as destination:
+                destination.writelines(source)
+            path.unlink()
+        (self.root / "参考文献/字义数据/moe/entries.json").parent.mkdir(parents=True)
+        (self.root / "参考文献/字义数据/moe/entries.json").write_text("fixture entries\n")
+        with (self.root / "参考文献/字义数据/moe/entries.json").open("rb") as source, gzip.open(self.root / "参考文献/字义数据/moe/entries.json.gz", "wb") as destination:
+            destination.writelines(source)
+        (self.root / "参考文献/字义数据/moe/entries.json").unlink()
+        self.commit()
+        artifact = package_release.package_release("v0.1.0", "HEAD", self.output)
+        with tarfile.open(artifact) as archive:
+            self.assertIn("name-v0.1.0/data/names.db", archive.getnames())
+            self.assertIn("name-v0.1.0/data/candidates.json", archive.getnames())
+            self.assertNotIn("name-v0.1.0/data/names.db.gz", archive.getnames())
+            self.assertIn("name-v0.1.0/参考文献/字义数据/moe/entries.json", archive.getnames())
+            self.assertEqual(archive.extractfile("name-v0.1.0/data/candidates.json").read(),
+                             json.dumps([{"name": "云山", "id": "candidate-1", "score": 80.5}]).encode())
 
 
 if __name__ == "__main__":

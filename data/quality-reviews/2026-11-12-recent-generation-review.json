@@ -1,0 +1,548 @@
+{
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "拳拳之心",
+      "拳心相印",
+      "拳以载道",
+      "太极拳",
+      "拳心",
+      "拳锋",
+      "拳志",
+      "拳意",
+      "拳风",
+      "拳艺",
+      "拳道",
+      "婷姿",
+      "婷好时光",
+      "婷好",
+      "妍婷",
+      "俏婷",
+      "婷禾",
+      "婷远",
+      "婷光",
+      "婷韵",
+      "婷宁",
+      "婷和",
+      "婷华",
+      "婷月"
+    ],
+    "literature_phrase_examples": {
+      "拳拳之心": [],
+      "拳心相印": [],
+      "拳以载道": [],
+      "太极拳": [],
+      "拳心": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 174758,
+          "context": "鼇钓气方壮，鹘拳心颇尊。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 204672,
+          "context": "嗟子岂不谬，拳拳心不移。"
+        }
+      ],
+      "拳锋": [],
+      "拳志": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 209073,
+          "context": "业广因功苦，拳拳志士心。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 311502,
+          "context": "傥非拳拳志，谅复何所求。"
+        }
+      ],
+      "拳意": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 144345,
+          "context": "杯深莫拒勤拳意，去路音辉日日赊。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 872933,
+          "context": "傥能谅此拳拳意，胜似心颜相对开。"
+        }
+      ],
+      "拳风": [],
+      "拳艺": [],
+      "拳道": [],
+      "婷姿": [],
+      "婷好时光": [],
+      "婷好": [],
+      "妍婷": [],
+      "俏婷": [],
+      "婷禾": [],
+      "婷远": [],
+      "婷光": [],
+      "婷韵": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 33249,
+          "context": "小立背秋千，空怅望、娉婷韵度。"
+        }
+      ],
+      "婷宁": [],
+      "婷和": [],
+      "婷华": [],
+      "婷月": []
+    },
+    "direct_dictionary": {
+      "拳": {
+        "definition": "fist; various forms of boxing",
+        "mandarin": "quán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "之": {
+        "definition": "marks preceding phrase as modifier of following phrase; it, him her, them; go to",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "相": {
+        "definition": "mutual, reciprocal, each other",
+        "mandarin": "xiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "印": {
+        "definition": "print, seal, stamp, chop, mark",
+        "mandarin": "yìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "以": {
+        "definition": "by means of; thereby, therefore; consider as; in order to",
+        "mandarin": "yǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "载": {
+        "definition": "load; carry; transport, convey",
+        "mandarin": "zài",
+        "related_characters": [
+          {
+            "character": "載",
+            "relation": "kTraditionalVariant",
+            "definition": "load; carry; transport, convey",
+            "mandarin": "zài"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "道": {
+        "definition": "path, road, street; method, way",
+        "mandarin": "dào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "太": {
+        "definition": "very, too, much; big; extreme",
+        "mandarin": "tài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "极": {
+        "definition": "extreme, utmost, furthest, final",
+        "mandarin": "jí",
+        "related_characters": [
+          {
+            "character": "极",
+            "relation": "kTraditionalVariant",
+            "definition": "extreme, utmost, furthest, final",
+            "mandarin": "jí"
+          },
+          {
+            "character": "極",
+            "relation": "kTraditionalVariant",
+            "definition": "extreme, utmost, furthest, final",
+            "mandarin": "jí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "锋": {
+        "definition": "point of spear, sharp point",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "鋒",
+            "relation": "kTraditionalVariant",
+            "definition": "point of spear, sharp point",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "意": {
+        "definition": "thought, idea, opinion; think",
+        "mandarin": "yì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "艺": {
+        "definition": "art; talent, ability; craft",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "藝",
+            "relation": "kTraditionalVariant",
+            "definition": "art; talent, ability; craft",
+            "mandarin": "yì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "婷": {
+        "definition": "pretty; attractive; graceful",
+        "mandarin": "tíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "姿": {
+        "definition": "one's manner, carriage, bearing",
+        "mandarin": "zī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "好": {
+        "definition": "good, excellent, fine; well",
+        "mandarin": "hǎo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "妍": {
+        "definition": "beautiful, handsome; seductive",
+        "mandarin": "yán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "俏": {
+        "definition": "like, similar; resemble; pretty",
+        "mandarin": "qiào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "韵": {
+        "definition": "rhyme; vowel",
+        "mandarin": "yùn",
+        "related_characters": [
+          {
+            "character": "韵",
+            "relation": "kTraditionalVariant",
+            "definition": "rhyme; vowel",
+            "mandarin": "yùn"
+          },
+          {
+            "character": "韻",
+            "relation": "kTraditionalVariant",
+            "definition": "rhyme; vowel",
+            "mandarin": "yùn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宁": {
+        "definition": "calm, peaceful, serene; healthy",
+        "mandarin": "níng",
+        "related_characters": [
+          {
+            "character": "宁",
+            "relation": "kTraditionalVariant",
+            "definition": "calm, peaceful, serene; healthy",
+            "mandarin": "níng"
+          },
+          {
+            "character": "寧",
+            "relation": "kTraditionalVariant",
+            "definition": "repose, serenity, peace; peaceful",
+            "mandarin": "níng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "华": {
+        "definition": "flowery; illustrious; Chinese",
+        "mandarin": "huá",
+        "related_characters": [
+          {
+            "character": "華",
+            "relation": "kTraditionalVariant",
+            "definition": "flowery; illustrious; Chinese",
+            "mandarin": "huá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "拳拳之心",
+      "decision": "reject",
+      "reason": "完整表达是常见的“拳拳之心”成语，指恳切真挚的心意；属于已有的情感判断表达，品牌辨识度不足。"
+    },
+    {
+      "name": "拳心相印",
+      "decision": "reject",
+      "reason": "仿“心心相印”改字造词，语义可猜为拳术或拳友间心意相通，但搭配不自然，依赖谐仿成语。"
+    },
+    {
+      "name": "拳以载道",
+      "decision": "uncertain",
+      "reason": "借“文以载道”的句式，将拳术解释为承载道理；语义可理解，但更像理念口号，作为完整品牌名凝练度不足。"
+    },
+    {
+      "name": "太极拳",
+      "decision": "reject",
+      "reason": "通用拳术类别名称，直接指太极拳，不具备独立品牌辨识度。"
+    },
+    {
+      "name": "拳心",
+      "decision": "uncertain",
+      "reason": "可理解为拳术之心、拳法的核心，也可联想到拳拳之心；组合简短但关系不明确，现有诗句中的“拳心”亦不构成稳定的品牌词义。"
+    },
+    {
+      "name": "拳锋",
+      "decision": "keep",
+      "reason": "“拳”与“锋”自然组合，可表达拳势锐利、锋芒毕露，语义清晰且有力量感。"
+    },
+    {
+      "name": "拳志",
+      "decision": "uncertain",
+      "reason": "可解释为习拳之志或拳术志向，但词组搭配不够自然，品牌语义需要额外背景支撑。"
+    },
+    {
+      "name": "拳意",
+      "decision": "keep",
+      "reason": "可自然理解为拳法中的意念、拳术意境，简洁且与拳术相关；古诗用例中的“拳拳意”也说明其相关语义有传统用法基础。"
+    },
+    {
+      "name": "拳风",
+      "decision": "keep",
+      "reason": "可指拳术风格、拳势气象，构词自然，含义明确且适合作为短品牌名。"
+    },
+    {
+      "name": "拳艺",
+      "decision": "keep",
+      "reason": "自然表示拳术技艺，简洁清楚，具备作为拳术相关品牌名称的辨识度。"
+    },
+    {
+      "name": "拳道",
+      "decision": "uncertain",
+      "reason": "可理解为拳术之道或拳法体系，但也可能泛指拳术类别，语义较宽，独立品牌辨识度有限。"
+    },
+    {
+      "name": "婷姿",
+      "decision": "keep",
+      "reason": "以“婷”形容秀美优雅的姿态，组合自然、语义清楚，具有女性化品牌气质。"
+    },
+    {
+      "name": "婷好时光",
+      "decision": "reject",
+      "reason": "借“美好时光”替换成“婷好时光”，像宣传语或主题句，完整名称不够凝练。"
+    },
+    {
+      "name": "婷好",
+      "decision": "uncertain",
+      "reason": "可读作“婷”与“好”的组合，也有“挺好”的谐音联想；语义依赖近音替换，独立含义不够稳定。"
+    },
+    {
+      "name": "妍婷",
+      "decision": "keep",
+      "reason": "“妍”与“婷”均表秀美，组合自然，可理解为美丽优雅，具有女性品牌名的简洁感。"
+    },
+    {
+      "name": "俏婷",
+      "decision": "keep",
+      "reason": "“俏”修饰“婷”，可自然表达俏丽优雅，语义明确，读感简洁。"
+    },
+    {
+      "name": "婷禾",
+      "decision": "uncertain",
+      "reason": "“婷”与“禾”分别指秀美与禾谷，二字之间缺少自然的语义关系，组合较像机械拼接。"
+    },
+    {
+      "name": "婷远",
+      "decision": "uncertain",
+      "reason": "可以勉强解释为优雅而志向深远，但“婷”通常形容人的姿态，与“远”搭配关系不自然。"
+    },
+    {
+      "name": "婷光",
+      "decision": "uncertain",
+      "reason": "可联想为优雅光彩，但“婷”与“光”的组合关系较松散，语义需额外解释。"
+    },
+    {
+      "name": "婷韵",
+      "decision": "keep",
+      "reason": "可自然理解为优雅的风韵、韵致，语义清楚且具有品牌名称所需的凝练感。"
+    },
+    {
+      "name": "婷宁",
+      "decision": "uncertain",
+      "reason": "可分别联想到秀美与安宁，但两字组合缺乏明确的惯常语义关系，整体自然度不足。"
+    },
+    {
+      "name": "婷和",
+      "decision": "uncertain",
+      "reason": "可解释为优雅和谐，但“婷”和“和”的搭配较生硬，语义联系不够明确。"
+    },
+    {
+      "name": "婷华",
+      "decision": "uncertain",
+      "reason": "可分别理解为秀美与光彩、华美，但组合关系不清，容易显得是字义堆叠。"
+    },
+    {
+      "name": "婷月",
+      "decision": "uncertain",
+      "reason": "可作秀美如月的诗意联想，但名称本身未表达这一关系，组合略显拼接，语义辨识度有限。"
+    }
+  ],
+  "status": "awaiting_agent_adjudication"
+}

@@ -1,0 +1,992 @@
+{
+  "review_id": "20261112T160147-dbc7c473",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "窸声",
+      "草木窸窣",
+      "璆新",
+      "长风过璆",
+      "门庭",
+      "门廊",
+      "山海门",
+      "门映山河",
+      "山门",
+      "风入门",
+      "门迎客",
+      "门有光",
+      "门前柳",
+      "门外春",
+      "门外云",
+      "门连山海",
+      "门纳清风",
+      "门外青山",
+      "云开见门",
+      "门派",
+      "南门"
+    ],
+    "related_kept_candidates": {
+      "木": [
+        "草木葳蕤",
+        "草木鲜",
+        "一木",
+        "柃木",
+        "梾木",
+        "乔木",
+        "梣木",
+        "梣木成荫",
+        "梣木生辉",
+        "梌木",
+        "国有嘉木",
+        "楮木"
+      ],
+      "山": [
+        "涡映山河",
+        "一见青山",
+        "山海貘",
+        "山海酵香",
+        "云开山峙",
+        "芭影映山",
+        "墟山映日",
+        "瞰山河",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "邂逅山海"
+      ],
+      "见": [
+        "云开见硔",
+        "一见青山",
+        "凉云见月",
+        "横山见海",
+        "浮云见山",
+        "浮云见月",
+        "见山斋",
+        "崞山见月",
+        "见崧",
+        "山麇见月",
+        "藏酒见山",
+        "矿中见海"
+      ],
+      "青": [
+        "一见青山",
+        "云外青嶂",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青"
+      ],
+      "风": [
+        "枣影清风",
+        "风过芭林",
+        "凉风入松",
+        "崧风过岭",
+        "茅风过岭",
+        "螭起长风",
+        "蔓引清风",
+        "风过埼",
+        "清风临埼",
+        "长风越埼",
+        "弓引长风",
+        "梾下清风"
+      ],
+      "春": [
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春",
+        "春酿"
+      ],
+      "庭": [
+        "一庭清欢",
+        "榴庭",
+        "庭墅",
+        "庭前芹绿",
+        "萱庭",
+        "苔庭",
+        "一庭秋凉",
+        "庭陔",
+        "庭燎",
+        "茱庭",
+        "广庭",
+        "豪庭"
+      ],
+      "清": [
+        "枣影清风",
+        "蔓引清风",
+        "清风临埼",
+        "梾下清风",
+        "萚间清风",
+        "清风入酒",
+        "鹡伴清风",
+        "清风厅",
+        "清风浮月",
+        "一庭清欢",
+        "清茗",
+        "清懿堂"
+      ],
+      "光": [
+        "梾间有光",
+        "柯间有光",
+        "山河浮光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光"
+      ],
+      "云": [
+        "云开见硔",
+        "云开山峙",
+        "凉云见月",
+        "崧云开",
+        "螭栖云外",
+        "五云开",
+        "涂云开",
+        "云外青嶂",
+        "云开三径",
+        "蓓云开",
+        "浮云见山",
+        "浮云见月"
+      ],
+      "南": [
+        "迦南",
+        "南埼",
+        "南山枸影"
+      ],
+      "海": [
+        "山海貘",
+        "山海酵香",
+        "瞰山海",
+        "琥珀山海",
+        "螭与山海",
+        "邂逅山海",
+        "缱绻山海",
+        "山海藏刃",
+        "横山见海",
+        "资山海",
+        "人间山海",
+        "于山海"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "葭声",
+        "婳声",
+        "铴声",
+        "镛声",
+        "涡声",
+        "豪声",
+        "篥声",
+        "篪声",
+        "松月弓声"
+      ],
+      "草": [
+        "草木葳蕤",
+        "草木鲜",
+        "莶草",
+        "萱草集",
+        "寸草",
+        "蔓草",
+        "广陵芳草",
+        "菥草集"
+      ],
+      "映": [
+        "涡映山河",
+        "芭影映山",
+        "墟山映日",
+        "碳映星河",
+        "星河映埼",
+        "弓映星河",
+        "赫山映川",
+        "烛映山",
+        "烛映星河",
+        "星河映嶂",
+        "诸山映月",
+        "蓓映山"
+      ],
+      "窣": [
+        "窸窣",
+        "林间窸窣",
+        "窣响",
+        "松风窣叶"
+      ],
+      "窸": [
+        "窸窣",
+        "林间窸窣"
+      ],
+      "长": [
+        "螭起长风",
+        "长风越埼",
+        "弓引长风",
+        "长风漻月",
+        "长揖",
+        "瓷映长川",
+        "螭照长夜",
+        "长弓望月",
+        "酒映长天",
+        "消长"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "竞新",
+        "新荚",
+        "茗新",
+        "新貌",
+        "硔谷新绿"
+      ],
+      "开": [
+        "云开见硔",
+        "云开山峙",
+        "崧云开",
+        "五云开",
+        "涂云开",
+        "云开三径",
+        "蓓云开",
+        "开口"
+      ],
+      "有": [
+        "梾间有光",
+        "柯间有光",
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度",
+        "溪山有蹊",
+        "春山有蹊",
+        "有斐"
+      ],
+      "外": [
+        "螭栖云外",
+        "云外青嶂",
+        "芙蓉之外",
+        "槛外",
+        "嶂外天",
+        "嶂外路"
+      ],
+      "前": [
+        "庭前芹绿"
+      ],
+      "过": [
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "棹过春山",
+        "云过硔谷",
+        "柯云过岭"
+      ],
+      "河": [
+        "涡映山河",
+        "瞰山河",
+        "碳映星河",
+        "星河映埼",
+        "弓映星河",
+        "烛映星河",
+        "黝色山河",
+        "涂山河",
+        "星河映嶂",
+        "山河浮光",
+        "棹星河",
+        "一箩星河"
+      ],
+      "纳": [
+        "纳诤"
+      ],
+      "入": [
+        "凉风入松",
+        "松风入蹊",
+        "清风入酒",
+        "棹影入江",
+        "崧影入川",
+        "山川入瓷",
+        "蔓影入林",
+        "蔓入春山",
+        "弓影入松",
+        "梾影入山",
+        "赫光入海",
+        "柯影入溪"
+      ],
+      "派": [
+        "酷一派"
+      ],
+      "客": [
+        "镖客",
+        "蒿间客"
+      ],
+      "迎": [
+        "迎刃",
+        "蓓迎风"
+      ],
+      "璆": [
+        "璆琳",
+        "璆锵",
+        "鸣璆",
+        "璆玉",
+        "璆月",
+        "璆明",
+        "璆川"
+      ],
+      "连": [
+        "连柯"
+      ]
+    },
+    "literature_phrase_examples": {
+      "窸声": [],
+      "草木窸窣": [],
+      "璆新": [],
+      "长风过璆": [],
+      "门庭": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 28013,
+          "context": "握管门庭侧，含毫山水隈。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 38552,
+          "context": "门庭寒变色，棨戟日生光。"
+        }
+      ],
+      "门廊": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 198612,
+          "context": "八月凉风吹白幕，寝门廊下哭微之。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 15040,
+          "context": "金门廊庑龙尾道，贺雪千官趁朝早。"
+        }
+      ],
+      "山海门": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1204055,
+          "context": "【题潮山海门图】"
+        }
+      ],
+      "门映山河": [],
+      "山门": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 19541,
+          "context": "结衣寻野路，负杖入山门。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 26237,
+          "context": "今日山门树，何处有将军。"
+        }
+      ],
+      "风入门": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 55082,
+          "context": "扶吾病起，古风入门。"
+        }
+      ],
+      "门迎客": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 273615,
+          "context": "开门迎客车结辙，而此三士相周旋。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1428720,
+          "context": "开门迎客着山袍，井畔猕猴一树桃。"
+        }
+      ],
+      "门有光": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 79234,
+          "context": "到家拜亲时，入门有光荣。"
+        }
+      ],
+      "门前柳": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 13626,
+          "context": "君不见门前柳，荣曜暂时萧索久。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 16035,
+          "context": "苏小门前柳万条，毵毵金线拂平桥。"
+        }
+      ],
+      "门外春": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 105599,
+          "context": "故城门外春日斜，故城门里无人家。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 229110,
+          "context": "落花门外春将尽，飞絮庭前日欲高。"
+        }
+      ],
+      "门外云": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 229524,
+          "context": "上阳门外云连草，车马遥遥往来道。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 391049,
+          "context": "门外云潮去复回，山头宫殿鏁苍苔。"
+        }
+      ],
+      "门连山海": [],
+      "门纳清风": [],
+      "门外青山": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 51383,
+          "context": "窓前绿竹生空地，门外青山如旧时。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 219507,
+          "context": "门外青山路，因循自不归。"
+        }
+      ],
+      "云开见门": [],
+      "门派": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 767019,
+          "context": "廓圆通门，续云门派。"
+        }
+      ],
+      "南门": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 56441,
+          "context": "盛府南门寄，前程积水中。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 76506,
+          "context": "行出国南门，南望郁苍苍。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "窸声": [],
+      "草木窸窣": [],
+      "璆新": [],
+      "长风过璆": [],
+      "门庭": [],
+      "门廊": [],
+      "山海门": [],
+      "门映山河": [],
+      "山门": [],
+      "风入门": [],
+      "门迎客": [],
+      "门有光": [],
+      "门前柳": [],
+      "门外春": [],
+      "门外云": [],
+      "门连山海": [],
+      "门纳清风": [],
+      "门外青山": [],
+      "云开见门": [],
+      "门派": [],
+      "南门": []
+    },
+    "direct_dictionary": {
+      "窸": {
+        "definition": "faint sound, whisper",
+        "mandarin": "xī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "草": {
+        "definition": "grass, straw, thatch, herbs",
+        "mandarin": "cǎo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "木": {
+        "definition": "tree; wood, lumber; wooden",
+        "mandarin": "mù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窣": {
+        "definition": "to rush out of a den; rustling, whispering",
+        "mandarin": "sū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "璆": {
+        "definition": "beautiful jade; tinkle",
+        "mandarin": "qiú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "门": {
+        "definition": "gate, door, entrance, opening",
+        "mandarin": "mén",
+        "related_characters": [
+          {
+            "character": "門",
+            "relation": "kTraditionalVariant",
+            "definition": "gate, door, entrance, opening; Kangxi radical 169",
+            "mandarin": "mén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庭": {
+        "definition": "courtyard; spacious hall or yard",
+        "mandarin": "tíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "廊": {
+        "definition": "corridor, porch, veranda",
+        "mandarin": "láng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "入": {
+        "definition": "enter, come in(to), join",
+        "mandarin": "rù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "迎": {
+        "definition": "receive, welcome, greet",
+        "mandarin": "yíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "客": {
+        "definition": "guest, traveller; customer",
+        "mandarin": "kè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "前": {
+        "definition": "in front, forward; preceding",
+        "mandarin": "qián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "柳": {
+        "definition": "willow tree; pleasure; 24th lunar mansion, determinative star δ Hydrae",
+        "mandarin": "liǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "外": {
+        "definition": "out, outside, external; foreign",
+        "mandarin": "wài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "连": {
+        "definition": "join, connect; continuous; even",
+        "mandarin": "lián",
+        "related_characters": [
+          {
+            "character": "連",
+            "relation": "kTraditionalVariant",
+            "definition": "join, connect; continuous; even",
+            "mandarin": "lián"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "纳": {
+        "definition": "admit, take, receive, accept",
+        "mandarin": "nà",
+        "related_characters": [
+          {
+            "character": "納",
+            "relation": "kTraditionalVariant",
+            "definition": "admit, take, receive, accept",
+            "mandarin": "nà"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "派": {
+        "definition": "school of thought, sect, branch",
+        "mandarin": "pài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "南": {
+        "definition": "south; southern part; southward",
+        "mandarin": "nán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "窸声",
+      "decision": "keep",
+      "reason": "“窸”有细微声响之义，与“声”构成自然、简洁的听觉意象，组合可辨识。"
+    },
+    {
+      "name": "草木窸窣",
+      "decision": "keep",
+      "reason": "“草木”与“窸窣”搭配自然，描绘草木间细微声响，意象具体且有辨识度。"
+    },
+    {
+      "name": "璆新",
+      "decision": "uncertain",
+      "reason": "“璆”指美玉或玉声，“新”虽义明确，但两字关系不清，组合语义和自然度存疑。"
+    },
+    {
+      "name": "长风过璆",
+      "decision": "uncertain",
+      "reason": "“长风过”构成自然动作，但“璆”作被风经过的对象关系难以确认，整体意象牵强。"
+    },
+    {
+      "name": "门庭",
+      "decision": "reject",
+      "reason": "“门庭”是常见的门与庭院或家门称谓，作为完整名称通用性强，品牌辨识度不足。"
+    },
+    {
+      "name": "门廊",
+      "decision": "reject",
+      "reason": "完整名称直接指门廊这一通用空间类别，缺乏品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "山海门",
+      "decision": "uncertain",
+      "reason": "可理解为山海之间的门或专名，但三字关系未形成清楚、自然的固定意象，语义存疑。"
+    },
+    {
+      "name": "门映山河",
+      "decision": "reject",
+      "reason": "可理解为门映照山河，但整体更像景物描写或宣传性短句，缺少凝练的品牌名形态。"
+    },
+    {
+      "name": "山门",
+      "decision": "reject",
+      "reason": "“山门”是寺院或山间入口的通用称谓，完整名称直接落入通用类别，辨识度不足。"
+    },
+    {
+      "name": "风入门",
+      "decision": "uncertain",
+      "reason": "“风入门”可按字面理解为风进入门内，但表达略生硬，作为品牌组合的语义关系不够明确。"
+    },
+    {
+      "name": "门迎客",
+      "decision": "reject",
+      "reason": "表达开门迎客的完整动作或服务口号，句式感明显，不适合作为凝练品牌名。"
+    },
+    {
+      "name": "门有光",
+      "decision": "reject",
+      "reason": "是完整的存在判断句，表达“门处有光”，口号化而非凝练品牌名。"
+    },
+    {
+      "name": "门前柳",
+      "decision": "keep",
+      "reason": "自然表达门前的柳树，意象具体、简洁，具有可辨识的景物感。"
+    },
+    {
+      "name": "门外春",
+      "decision": "keep",
+      "reason": "以门外之春构成简洁自然的季节意象，语义清楚且有品牌辨识度。"
+    },
+    {
+      "name": "门外云",
+      "decision": "keep",
+      "reason": "“门外”与“云”组合自然，形成简洁开阔的景物意象，未呈现生硬拼接。"
+    },
+    {
+      "name": "门连山海",
+      "decision": "reject",
+      "reason": "表达门连接山海，语义虽可解，但整体像宏大宣传语，句式化且不够凝练。"
+    },
+    {
+      "name": "门纳清风",
+      "decision": "reject",
+      "reason": "“纳清风”与“门”构成拟人化的宣传式表达，整体更像口号，品牌辨识度不足。"
+    },
+    {
+      "name": "门外青山",
+      "decision": "keep",
+      "reason": "是自然清楚的景物短语，门外青山意象完整；与“门外春”“门外云”共享“门外”结构但并非仅换近义配字，意象各异。"
+    },
+    {
+      "name": "云开见门",
+      "decision": "uncertain",
+      "reason": "可理解为云散后看见门，但“门”作为显现对象缺乏语境支撑，整体意象关系存疑。"
+    },
+    {
+      "name": "门派",
+      "decision": "reject",
+      "reason": "“门派”是现成通用词，通常指学术、宗教或技艺的派别，作为品牌名缺少独立辨识度。"
+    },
+    {
+      "name": "南门",
+      "decision": "reject",
+      "reason": "“南门”是通用方位门名，也常作地名或入口称谓，完整名称辨识度不足。"
+    }
+  ]
+}

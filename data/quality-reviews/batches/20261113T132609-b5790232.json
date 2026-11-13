@@ -1,0 +1,896 @@
+{
+  "review_id": "20261113T132609-b5790232",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "峰鸣",
+      "峰与川",
+      "峰间月",
+      "峰前路",
+      "峰上见",
+      "峰起云开",
+      "峰与长风",
+      "峰外有天",
+      "山峰",
+      "峰远"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "椤间月",
+        "茅间月",
+        "榕间月",
+        "栎间月",
+        "蒿间月",
+        "菼间月",
+        "嶂间月",
+        "山间漻月",
+        "长风漻月",
+        "乡间月",
+        "篁间月",
+        "梧间月"
+      ],
+      "风": [
+        "凰与长风",
+        "鹮与长风",
+        "岚与长风",
+        "觥与长风",
+        "长风与笛",
+        "侠与长风",
+        "蜩与长风",
+        "柊与长风",
+        "粿与长风",
+        "芍与长风",
+        "螭起长风",
+        "长风越埼"
+      ],
+      "川": [
+        "蕊与山川",
+        "瑗与山川",
+        "菊与川",
+        "岑与川",
+        "桉与川",
+        "雯与川",
+        "谭与山川",
+        "塬与川",
+        "蒯与山川",
+        "嵴与川",
+        "麝与川",
+        "笙与山川"
+      ],
+      "天": [
+        "嶂外天",
+        "云外天",
+        "天柱峰",
+        "伞外天",
+        "峃外天",
+        "幔外天",
+        "水天一色",
+        "掀天",
+        "壸中天",
+        "天圜",
+        "天翱",
+        "天资"
+      ],
+      "间": [
+        "椤间月",
+        "茅间月",
+        "榕间月",
+        "栎间月",
+        "蒿间月",
+        "菼间月",
+        "嶂间月",
+        "山间漻月",
+        "乡间月",
+        "篁间月",
+        "梧间月",
+        "榛间月"
+      ],
+      "山": [
+        "云开山峙",
+        "山间漻月",
+        "蕊与山川",
+        "瑗与山川",
+        "云起北山",
+        "谭与山川",
+        "山嶅云起",
+        "黟山云起",
+        "洮山云起",
+        "蒯与山川",
+        "前山云起",
+        "歌起云山"
+      ],
+      "见": [
+        "云开见硔",
+        "巨峰见日",
+        "云开见岩",
+        "螺峰见海",
+        "云开见璧",
+        "云开见玥",
+        "邨间见月",
+        "云开见船",
+        "云开见瀑",
+        "峰回见海",
+        "云开见昴",
+        "云开见奥"
+      ],
+      "云": [
+        "云起巉峰",
+        "霜峰云起",
+        "云开山峙",
+        "云绕崟峰",
+        "崧云开",
+        "云开见硔",
+        "珂云起",
+        "五云开",
+        "涂云开",
+        "云开三径",
+        "蓓云开",
+        "蔡云起"
+      ],
+      "鸣": [
+        "鸣镝",
+        "螽鸣",
+        "鹳鸣",
+        "䴓鸣",
+        "争鸣",
+        "蛩鸣",
+        "鸣桹",
+        "蛰鸣",
+        "兽鸣",
+        "䴕鸣",
+        "林间䴕鸣",
+        "诤鸣"
+      ],
+      "远": [
+        "奇峰望远",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远"
+      ],
+      "峰": [
+        "云起巉峰",
+        "霜峰云起",
+        "云绕崟峰",
+        "奇峰望远",
+        "云卷千峰",
+        "巨峰见日",
+        "螺峰见海",
+        "云掠峰",
+        "云峰",
+        "峰与海",
+        "崴峰映月",
+        "云绕嵬峰"
+      ],
+      "长": [
+        "凰与长风",
+        "鹮与长风",
+        "岚与长风",
+        "觥与长风",
+        "长风与笛",
+        "侠与长风",
+        "蜩与长风",
+        "柊与长风",
+        "粿与长风",
+        "芍与长风",
+        "螭起长风",
+        "长风越埼"
+      ],
+      "上": [
+        "眉上云开",
+        "礁上云开",
+        "畈上春",
+        "塄上春",
+        "垄上",
+        "涧上春山",
+        "矿上春",
+        "江上菼",
+        "云上人",
+        "柯上春风",
+        "江上滟光",
+        "冈上春"
+      ],
+      "开": [
+        "云开山峙",
+        "崧云开",
+        "云开见硔",
+        "五云开",
+        "涂云开",
+        "云开三径",
+        "蓓云开",
+        "云开",
+        "岳云开",
+        "云开见岩",
+        "篱畔云开",
+        "云开霭散"
+      ],
+      "有": [
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度",
+        "梾间有光",
+        "溪山有蹊",
+        "春山有蹊",
+        "有斐",
+        "柯间有光",
+        "大有",
+        "有谱儿"
+      ],
+      "外": [
+        "嶂外天",
+        "云外天",
+        "伞外天",
+        "峃外天",
+        "幔外天",
+        "芙蓉之外",
+        "螭栖云外",
+        "槛外",
+        "云外青嶂",
+        "嶂外路",
+        "门外春",
+        "门外山"
+      ],
+      "前": [
+        "前山云起",
+        "庭前芹绿",
+        "门前柳",
+        "前途",
+        "崖前海",
+        "瀑前听雨",
+        "庭前枳",
+        "超前",
+        "灯前花飐",
+        "凳前月",
+        "窗前叮响",
+        "墩前流水"
+      ],
+      "与": [
+        "凰与长风",
+        "鹮与长风",
+        "岚与长风",
+        "觥与长风",
+        "长风与笛",
+        "侠与长风",
+        "蜩与长风",
+        "柊与长风",
+        "粿与长风",
+        "芍与长风",
+        "薇与风",
+        "蕊与山川"
+      ],
+      "起": [
+        "云起巉峰",
+        "霜峰云起",
+        "螭起长风",
+        "珂云起",
+        "蔡云起",
+        "云起时",
+        "云起林霏",
+        "云起北山",
+        "陶云起",
+        "修云起",
+        "雯起千峰",
+        "峦起云间"
+      ],
+      "路": [
+        "叉路",
+        "嶂外路",
+        "路宽",
+        "长路鎏金",
+        "茶路",
+        "鸥同路",
+        "丝路馕",
+        "仝路",
+        "榃路",
+        "山榃路",
+        "獾循星路",
+        "山间小路"
+      ]
+    },
+    "literature_phrase_examples": {
+      "峰鸣": [],
+      "峰与川": [],
+      "峰间月": [],
+      "峰前路": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 149385,
+          "context": "回雁峰前路，烟树正苍苍。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 51943,
+          "context": "鹤唳峰前路，行行世虑消。"
+        }
+      ],
+      "峰上见": [],
+      "峰起云开": [],
+      "峰与长风": [],
+      "峰外有天": [],
+      "山峰": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 6181,
+          "context": "巫山峰十二，环合隐昭回。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 15525,
+          "context": "梦水河边秋草合，黑山峰外阵云开。"
+        }
+      ],
+      "峰远": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 51987,
+          "context": "清晨登仙峰，峰远行未极。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 143259,
+          "context": "花屿高如浪，云峰远似天。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "峰鸣": [],
+      "峰与川": [],
+      "峰间月": [],
+      "峰前路": [],
+      "峰上见": [],
+      "峰起云开": [],
+      "峰与长风": [],
+      "峰外有天": [],
+      "山峰": [
+        {
+          "title": "山峰",
+          "pinyin": "shān fēng",
+          "definition": "山的頂端。唐．元稹〈開元觀閒居酬吳士矩侍御三十韻〉：「松笠新偏翠，山峰遠更尖。」",
+          "entry_id": "089050029",
+          "sheet": "1150929辭典匯出",
+          "row": 128829,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "峰远": []
+    },
+    "direct_dictionary": {
+      "峰": {
+        "definition": "peak, summit; hump of camel",
+        "mandarin": "fēng",
+        "official_dictionary": [
+          {
+            "title": "峰",
+            "pinyin": "fēng",
+            "definition": "[名]\n1.高而尖的山頭。如：「頂峰」、「高峰」、「顛峰」。宋．蘇軾〈題西林壁〉詩：「橫看成嶺側成峰，遠近高低總不同。」\n2.形似山頭高起的部分。如：「駝峰」、「波峰」。",
+            "entry_id": "01731",
+            "sheet": "1150929辭典匯出",
+            "row": 1735,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鸣": {
+        "definition": "cry of bird or animal; make sound",
+        "mandarin": "míng",
+        "related_characters": [
+          {
+            "character": "鳴",
+            "relation": "kTraditionalVariant",
+            "definition": "cry of bird or animal; make sound",
+            "mandarin": "míng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "前": {
+        "definition": "in front, forward; preceding",
+        "mandarin": "qián",
+        "official_dictionary": [
+          {
+            "title": "前",
+            "pinyin": "qián",
+            "definition": "[形]\n1.在正面的、臉所向的一面。與「後」相對。如：「前門」、「前方」、「面前」。《論語．子罕》：「瞻之在前，忽焉在後。」唐．李白〈靜夜思〉詩：「床前明月光，疑是地上霜。」\n2.次序在先的。如：「前三名」、「請大家坐到前排來。」\n3.過去的、較早的。與「後」相對。如：「前天」、「前人種樹，後人乘涼。」《史記．卷六．秦始皇本紀》云：「前事之不忘，後事之師也。」\n4.已成歷史的。如：「前清」、「前蘇聯」。\n5.前任的簡稱。如：「前妻」、「前總理」。\n6.未來的。如：「前程」、「前途」、「前景看好」。\n[動]\n向前走。如：「勇往直前」、「畏縮不前」。唐．韓愈〈左遷至藍關示姪孫湘〉詩：「雲橫秦嶺家何在？雪擁藍關馬不前。」",
+            "entry_id": "06470",
+            "sheet": "1150929辭典匯出",
+            "row": 6478,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "路": {
+        "definition": "road, path, street; journey",
+        "mandarin": "lù",
+        "official_dictionary": [
+          {
+            "title": "路",
+            "pinyin": "lù",
+            "definition": "[名]\n1.道路，供人馬舟車等行走的途徑。如：「陸路」、「水路」、「高速公路」。宋．岳飛〈滿江紅．怒髮衝冠〉詞：「三十功名塵與土，八千里路雲和月。」\n2.條理、紋理。如：「思路」、「紋路」。南朝梁．沈約〈瑞石像銘〉：「心路照通，有感斯順。」\n3.方法、途徑。如：「生路」、「活路」。唐．王勃〈滕王閣序〉：「無路請纓，等終軍之弱冠。」\n4.種類。如：「他們是那一路人？」《西遊記》第五一回：「這一路拳，走得似錦上添花。」\n5.地區、區域。《三國演義》第一五回：「自是東路皆平，令叔孫靜守之。」《儒林外史》第四一回：「這一日燒香回來，人見他是下路打扮，跟了他後面走的就有百十人。」\n6.路線。如：「五路公車」。《水滸傳》第五〇回：「今日宋江分兵做四路，來打本莊。」\n7.姓。如漢代有路溫舒。",
+            "entry_id": "03777",
+            "sheet": "1150929辭典匯出",
+            "row": 3783,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "上": {
+        "definition": "top; superior, highest; go up, send up",
+        "mandarin": "shàng",
+        "official_dictionary": [
+          {
+            "title": "上",
+            "pinyin": "shǎng",
+            "definition": "參見「上聲」條。",
+            "entry_id": "09015",
+            "sheet": "1150929辭典匯出",
+            "row": 9030,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "上聲",
+                "pinyin": "shǎng shēng",
+                "definition": "漢語聲調種類之一。不同時期的古音和不同地區的漢語方言，上聲實際調值不同。現代國音為第三聲降升調，以五度制調值標記法調值為214。國語注音符號用「ˇ」表示。",
+                "entry_id": "090150001",
+                "sheet": "1150929辭典匯出",
+                "row": 130043
+              }
+            ]
+          },
+          {
+            "title": "上",
+            "pinyin": "shàng",
+            "definition": "[名]_x000D_\n1.表方向或位置，與「下」相對。如：「上有天堂，下有蘇杭。」、「上頂天，下貼地」。《莊子．讓王》：「原憲居魯，環堵之室，茨以生草，蓬戶不完。桑以為樞而甕牖二室，褐以為塞，上漏下溼，匡坐而弦。」《何典》第九回：「上無片瓦遮身，下無立錐之地。」《兒女英雄傳》第二四回：「鄧九公朝上把那匣子一舉，又把身子往旁邊一閃。」_x000D_\n2.物體的表面、上面。如：「門上」、「臉上」、「桌上」。唐．張若虛〈春江花月夜〉詩：「春江潮水連海平，海上明月共潮生。」元．錢惟善〈和季文山齋早春〉詩其二：「落梅風細小窗寒，石上餘香點點斑。」《老殘遊記》第九回：「抬頭看見北牆上挂著四幅大屏，草書寫得龍飛鳳舞。」_x000D_\n3.邊側，旁邊。《論語．子罕》：「子在川上，曰：『逝者如斯夫，不舍晝夜。』」《史記．卷四七．孔子世家》：「唯子贛廬於冢上，凡六年，然後去。」唐．司馬貞．索隱：「蓋『上』者，亦是邊側之義。」_x000D_\n4.君主、皇帝。如：「上諭」。《史記．卷八．高祖本紀》：「上問左右，左右爭欲擊之。」《後漢書．卷三〇下．郎顗襄楷列傳．郎顗》：「今三公皆令色足恭，外厲內荏，以虛事上，無佐國之實。」《三國演義》第一〇〇回：「汝可回成都布散流言，說孔明有怨上之意，早晚欲稱為帝。」_x000D_\n5.高位、尊位。《書經．伊訓》：「居上克明，為下克忠。」唐．韓愈〈送董邵南序〉：「明天子在上，可以出而仕矣。」_x000D_\n6.尊長或職位在上的人。《禮記．王制》：「樂事勸功，尊君親上，然後興學。」《孝經．士章》：「忠順不失，以事其上。」_x000D_\n7.第一席位。《禮記．曲禮上》：「席：南鄉北鄉，以西方為上。」_x000D_\n8.表示範圍或某方面。如：「路上」、「文學上」。《禮記．喪大記》：「大夫內子、士妻、特拜命婦，氾拜眾賓於堂上。」《三國演義》第一回：「安得快人如翼德，盡誅世上負心人。」《英烈傳》第五四回：「吾豈不愛將軍雄杰，但天理人情上，難以相疑。」_x000D_\n9.表時間，相當於「時候」。《儒林外史》第一回：「這人姓王名冕，在諸暨縣鄉村裡住，七歲上死了父親。」《二十年目睹之怪現狀》第九五回：「不料當到第三年上，忽然來了個九省欽差，是奉旨到九省地方清理財賦的。」_x000D_\n[動]_x000D_\n1.升、由低處往高處。如：「上樓」、「上山」。漢．枚乘〈上書諫吳王〉：「必若所欲為，危如累卵，難於上天。」唐．王之渙〈登鸛雀樓〉詩：「欲窮千里目，更上一層樓。」_x000D_\n2.向上級進呈、獻納。如：「上奏」。《戰國策．齊策一》：「上書諫寡人者，受中賞。」《史記．卷九．呂太后本紀》：「王誠以一郡上太后，為公主湯沐邑，太后必喜，王必無憂。」《京本通俗小說．拗相公》：「文彥博、韓琦許多名臣，先誇佳說好的，到此也自悔失言，一個個上表爭論，不聽，辭官而去。」_x000D_\n3.去、到。若為城市間移動，多用於由南到北、鄉間到都市。如：「上街」、「北上」、「上臺北」、「上廁所」。《警世通言．卷一八．老門生三世報恩》：「蒯公愈加懶散，上京會試，只照常規，全無作興加厚之意。」《二十年目睹之怪現狀》第四六回：「這就難了！不比館子裡跑堂的，還可以去上館子，假以辭色，問他底細。」《孽海花》第三〇回：「小油嘴兒，你怎麼知道我要上那兒去呢？」_x000D_\n4.向前、前進。《戰國策．秦策二》：「甘茂攻宜陽，三鼓之而卒不上。」元．無名氏《小尉遲》第三折：「劉無敵跚馬兒領番卒上。」_x000D_\n5.就職、赴任。唐．韓愈〈國子監論新注學官牒〉：「其新受官，上日必加研試，然後放行。」宋．范成大〈後催租行〉詩：「自從鄉官新上來，黃紙放盡白紙催。」_x000D_\n6.出場、登臺。如：「上場比賽」、「上臺領獎」。元．張國賓《合汗衫》第三折：「正末同卜兒薄藍上云：『叫化咱！叫化咱！可憐見俺許來大家私，被一場天火燒的光光蕩蕩。』」元．孟漢卿《魔合羅．楔子》：「正末扮李德昌同旦、倈上云：『自家李德昌是也。』」_x000D_\n7.被登載在。如：「上報」、「他上了全國優良教師名單。」《南齊書．卷九．禮志上》：「孫毓議稱京兆列在正廟，臣下應諱，而不上榜。」《三寶太監西洋記通俗演義》第三四回：「只見左右先鋒解將夜來拿的番兵上帳紀功。」《說岳全傳》第八〇回：「岳雷也命上了功勞簿，擇日渡江。」_x000D_\n8.指按規定時間工作或教習。如：「上班」、「上學」、「上宿」、「上夜」。清．孔尚任《桃花扇》第二齣：「楊老爺不是外人，取出曲本快快溫習。待你師父對過，好上新腔。」《紅樓夢》第九回：「可巧這日代儒有事，早已回家去了，只留下一句七言對聯命學生對了，明日再來上書。」《文明小史》第四一回：「大家都約定了今天不上課，直至府署探病。」_x000D_\n9.繳交、交出。《漢書．卷一二．平帝紀》：「哀帝崩，太皇太后詔曰：『大司馬賢年少，不合眾心，其上印綬，罷。』賢即日自殺。」《儒林外史》第三回：「金有餘將著銀子，上了藩庫，討出庫收來。」_x000D_\n10.欺凌、霸凌。《左傳．桓公五年》：「君子不欲多上人，況敢陵天子乎？」《國語．周語中》：「民可近也，而不可上也。」三國吳．韋昭．注：「上，陵也。」_x000D_\n11.遭受、落入。如：「上圈套」。《儒林外史》第五一回：「鳳四老爹猛然大悟，指著絲客人道：『是了！你這客人想是少年不老成，如今上了當了！』」《老殘遊記二編》第四回：「眼前我只要略為撩撥他們下子，一定上鉤。」_x000D_\n12.施用、添加。如：「惹禍上身」、「齒輪該上油了。」、「這鋪子總不上新貨。」《禮記．曲禮上》：「禮不下庶人，刑不上大夫。」《老殘遊記》第一七回：「你上他這手銬腳鐐是甚麼意思？難道怕他越獄走了嗎？」_x000D_\n13.安裝。如：「上刺刀」。元．無名氏《爭報恩》第三折：「上了板搭，關了門戶，打掃街道。」《鏡花緣》第三七回：「鏤窗上鎖，不能開放。」_x000D_\n14.旋緊、繃緊。如：「上發條」。《水滸傳》第九五回：「當下宋兵深栽鹿角，牢豎柵寨，弓上弦，刀出鞘，帶甲枕戈，提鈴喝號。」_x000D_\n15.塗抹。如：「上漆」、「上藥」、「上顏色」。《兒女英雄傳》第二七回：「舅太太打發送禮的男女家人去後，便叫人鋪水挖單，放梳頭匣兒，催姑娘上妝。」清．徐珂《清稗類鈔．鑒賞類．畢秋帆賞古磚》：「僕遽將其主人如何覓舊本摹仿，如何在某處定造，如何上色，如何使之剝落，如何使之生苔蘚之術，一一言之，不稍諱。」_x000D_\n16.點燃。《儒林外史》第六回：「直到上燈時候，連四斗子也不見回來。」《二十年目睹之怪現狀》第五七回：「吃過了晩飯，已是上火時候。」_x000D_\n17.達到，指夠一定數量或程度。如：「上了歲數」、「成千上萬」。《儒林外史》第七回：「王員外共借了上千兩的銀子與荀家。」《紅樓夢》第九九回：「現在打聽節度衙門這幾天有生日，別的府道老爺都上千上萬的送了，我們到底送多少呢？」_x000D_\n18.表動作的趨向。如：「爬上去」。《儒林外史》第八回：「幾十個兵卒跳上船來，走進中艙，把王道臺反剪了手，捉上大船。」《文明小史》第五五回：「秦鳳梧下午方才出來，見了湘蘭，疾忙跳上馬車。」_x000D_\n19.表示動作發生且有結果。如：「考上大學」、「關上大門」。《三國演義》第二六回：「文醜回頭見二將趕上，遂按住鐵鎗，拈弓搭箭，正射張遼。」《儒林外史》第二四回：「向知縣取了和尚口供，叫上那鄰居來問。」《文明小史》第三七回：「學上三年，英國話居然也能夠說幾句將就的，文法也懂得些。」_x000D_\n20.強調動作開始並能持續。如：「迷上武俠小說」、「玉山早已飄上雪花。」《紅樓夢》第三八回：「你知道，你璉二爺愛上了你，要和老太太討了你作小老婆呢。」《兒女英雄傳》第二一回：「只因安老爺生恐這裡話沒定規，親家太太來了，再鬧上一陣，不防頭的怯話兒，給弄糟了。」_x000D_\n[形]_x000D_\n1.次序或時間在前的。如：「上篇」、「上卷」、「上半年」、「上半場」、「上一位」、「上上星期」。《商君書．開塞》：「上不及虞夏之時，而下不修湯武。」《鏡花緣》第九〇回：「大約上句說的是諸位姐姐美玉無瑕，下句是我醜態百出了。」《紅樓夢》第七二回：「只從上月行了經之後，這一個月竟瀝瀝淅淅的沒有止住。」_x000D_\n2.地位高的、尊貴的。如：「上級」、「上流社會」。漢．劉向《新序．卷一．雜事》：「秦使者至，昭奚恤曰：『君，客也，請就上位。』」《景德傳燈錄．卷二二．泉州萬安清運禪師》：「僧曰：『忽遇上客來，將何祗待？』」《三國演義》第六五回：「玄德親自接入，待以上賓之禮。」_x000D_\n3.最好的、優等的。如：「走為上策」、「列為上品」。《管子．國蓄》：「以珠玉為上幣，以黃金為中幣，以刀布為下幣。」《戰國策．西周策》：「趙之上計，莫如令秦、魏復戰。」《紅樓夢》第四八回：「如今聽你一說，原來這些格調規矩竟是末事，只要詞句新奇為上。」_x000D_\n4.軍制中某一軍階最高級的。如：「上將」、「上校」、「上尉」。《水滸傳》第六三回：「若以禮幣請他，拜為上將，可以掃清水寨，殄滅狂徒，保國安民。」",
+            "entry_id": "09018",
+            "sheet": "1150929辭典匯出",
+            "row": 9033,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "起": {
+        "definition": "rise, stand up; go up; begin",
+        "mandarin": "qǐ",
+        "official_dictionary": [
+          {
+            "title": "起",
+            "pinyin": "qǐ",
+            "definition": "[動]_x000D_\n1.站立、坐起。如：「起立」、「起來」。《禮記．曲禮上》：「請業則起，請益則起。」唐．白居易〈與元微之書〉：「垂死病中驚坐起，闇風吹雨入寒窗。」_x000D_\n2.起床、離開床鋪。如：「早睡早起」。《孟子．盡心上》：「雞鳴而起，孳孳為善者，舜之徒也。」《禮記．內則》：「孺子蚤寢晏起，唯所欲食無時。」_x000D_\n3.始、開始。如：「起迄點」、「起筆」、「從今起」、「萬事起頭難」。《漢書．卷一〇〇．敘傳下》：「以述《漢書》，起元高祖。」_x000D_\n4.發動、產生。如：「起疑」、「起風」、「肅然起敬」。《呂氏春秋．貴直論．直諫》：「百邪悉起。」漢．高祖〈大風歌〉：「大風起兮雲飛揚，威加海內兮歸故鄉。」_x000D_\n5.復甦、痊癒、好轉。如：「起死回生」、「一病不起」。《國語．吳語》：「君王之於越也，繄起死人而肉白骨也。」_x000D_\n6.取出。如：「起貨」、「起贓」、「起出凶刀一把。」_x000D_\n7.出仕、舉用。如：「起用」、「東山再起」。《戰國策．秦策二》：「召公孫顯於韓，起樗里子於國。」宋．辛棄疾〈水龍吟．老來曾識淵明〉詞：「甚東山何事，當時也道，為蒼生起。」_x000D_\n8.擬訂。如：「起草章程」、「起個大綱」。_x000D_\n9.出身。《漢書．卷三九．蕭何曹參傳．曹參》：「蕭何、曹參皆起秦刀筆吏，當時錄錄未有奇節。」_x000D_\n10.建築、建立。如：「白手起家」、「平地起高樓」。《三國志．卷四七．吳書．吳主權傳》：「治城郭，起譙樓。」_x000D_\n[名]_x000D_\n1.詩文首句、首聯或首段。《通俗編．文學》引范德機〈詩法〉：「作詩有四法，起要平直，承宜舂容，轉要變化，合要淵永。」_x000D_\n2.量詞：(1)計算分批的人的單位。相當於「群」。如：「店裡來了兩起客人。」《紅樓夢》第四四回：「且平兒又是個極聰明極清俊的上等女孩兒，比不得那起俗蠢拙物。」(2)計算事件發生的單位。如：「高速公路上發生了數起連環車禍。」「警方最近偵破了一起擄人勒索案。」_x000D_\n[助]_x000D_\n1.置於動詞之後，表示及、到的意思。如：「想起往事，真是不勝感慨！」「只要談起女友，他便眉開眼笑。」_x000D_\n2.置於動詞之後，表示足夠或不夠的意思。如：「經得起現實的考驗。」「承受不起輿論壓力。」",
+            "entry_id": "06284",
+            "sheet": "1150929辭典匯出",
+            "row": 6293,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "开",
+            "pinyin": null,
+            "definition": "「幵」的異體字。",
+            "entry_id": "05728-1",
+            "sheet": "1150929辭典匯出",
+            "row": 91419,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "外": {
+        "definition": "out, outside, external; foreign",
+        "mandarin": "wài",
+        "official_dictionary": [
+          {
+            "title": "外",
+            "pinyin": "wài",
+            "definition": "[名]_x000D_\n1.不屬於某一定的範圍內均稱為「外」。相對於「內」而言。如：「內外」、「門外」、「屋外」。_x000D_\n2.特指外國。如：「古今中外」、「對外貿易」。_x000D_\n3.戲曲中的角色名稱，多扮演老年男子。清．孔尚任《桃花扇》第二五齣：「外扮沈公憲，淨扮張燕筑，小旦扮寇白門，丑扮鄭妥娘同上。」也稱為「老外」。_x000D_\n[形]_x000D_\n1.非自己所在或所屬的。如：「外幣」、「外地」、「外族」。_x000D_\n2.稱母親、妻子、姊妹及女兒方面的親戚。如：「外家」、「外戚」、「外甥」。_x000D_\n3.別的、其他的。如：「外一章」、「外一首」。《孟子．滕文公下》：「外人皆稱夫子好辯，敢問何也？」漢．王充《論衡．案書》：「國語，左氏之外傳也。」_x000D_\n4.不是正式的。如：「外號」、「外史」。_x000D_\n[動]_x000D_\n1.疏遠。《易經．否卦》：「《彖》曰：內小人而外君子，小人道長，君子道消也。」《荀子．王霸》：「人主則外賢而偏舉，人臣則爭職而妒賢。」_x000D_\n2.處於……之外。《國語．晉語六》：「今吾刑外乎大人，而忍於小民，將誰行武？」_x000D_\n3.背叛。《管子．版法》：「驟令不行，民心乃外。」",
+            "entry_id": "11353",
+            "sheet": "1150929辭典匯出",
+            "row": 11367,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "有",
+            "pinyin": "yǒu",
+            "definition": "[動]\n表事實、狀況的正面存在，與「無」相對。如：「有困難」、「有利有弊」、「有學問」、「有錢」、「擁有」、「面有飢色」。\n[形]\n1.豐足、富裕。如：「他是個非常富有的人。」《詩經．大雅．公劉》：「止基迺理，爰眾爰有。」\n2.多，表示時間久或年齡大。如：「本店開設有年。」、「母親已有了年紀。」\n3.故意。如：「有心犯錯應嚴懲，無心疏忽可原諒。」\n[綴]\n置於名詞前，作音節的襯字。如：「有夏」、「有清」。《韓非子．五蠹》：「當舜之時，有苗不服，禹將伐之。」\n[代]\n某，表示不確定。如：「有一天晚上」、「有人說你做人很講義氣。」\n[名]\n姓。如漢代有有祿。",
+            "entry_id": "10905",
+            "sheet": "1150929辭典匯出",
+            "row": 10919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "有",
+            "pinyin": "yòu",
+            "definition": "[副]\n表示重複、反覆、連續。通「又」。唐．裴守真〈請重耕織表〉：「奸偽由此而生，黎庶緣斯而苦，此有國之大患也。」\n[連]\n用於整數與餘數之間，表示數目的附加。如：「七十有七人」。《論語．為政》：「吾十有五而志於學，三十而立。」",
+            "entry_id": "10922",
+            "sheet": "1150929辭典匯出",
+            "row": 10936,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "official_dictionary": [
+          {
+            "title": "天",
+            "pinyin": "tiān",
+            "definition": "[名]\n1.日月星辰所羅列的空間，即天空。如：「碧海青天」、「頂天立地」。唐．韓愈〈原道〉：「坐井而觀天，曰天小者，非天小也。」\n2.一晝夜的時間。如：「昨天」、「今天」、「大後天」、「一天」。\n3.白天或一天中的某一段時間。如：「三天三夜」、「三更天」。宋．程顥〈春日偶成〉詩：「雲淡風輕近午天，傍花隨柳過前川。」\n4.時節、季節。如：「春天」、「三伏天」、「黃梅天」。\n5.氣候。如：「晴天」、「陰天」、「大熱天」、「下雨天」。\n6.自然。如：「人定勝天」、「樂天知命」。《莊子．天道》：「是故古之明大道者，先明天而道德次之。」\n7.指宇宙萬物的主宰。有時指大自然、有時指命運、有時指天神等。如：「生死有命，富貴在天。」、「謀事在人，成事在天。」、「不怨天，不尤人。」《書經．泰誓中》：「天視自我民視，天聽自我民聽。」\n8.指神靈所住的世界。如：「升天」、「歸天」。\n9.不可或缺或最重要的事物。如：「以夫為天」。《漢書．卷四十三．酈食其傳》：「王者以民為天，而民以食為天。」\n10. 量詞。計算時間的單位。一天有二十四小時。如：「這項工作限你三十天時間完成，不得拖延。」\n[形]\n1.自然的、天然的。如：「天才」、「天險」、「天籟」、「天性」。\n2.數目極大的。如：「天價」、「天量」、「天文數字」。\n3.騰空架設的、駕於空中的。如：「天橋」、「天窗」、「天棚」。\n[副]\n很、非常。如：「天大的好消息」、「天大的新聞」。",
+            "entry_id": "02701",
+            "sheet": "1150929辭典匯出",
+            "row": 2707,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "峰鸣",
+      "decision": "keep",
+      "reason": "可理解为山峰发出声响，字义直接，组合简洁，有自然意象与辨识度。"
+    },
+    {
+      "name": "峰与川",
+      "decision": "keep",
+      "reason": "以“与”连接山峰与河川，构成简洁的自然意象，语义清楚；不与仅共享“与”或“川”的候选构成近似重复。"
+    },
+    {
+      "name": "峰间月",
+      "decision": "keep",
+      "reason": "意为峰峦之间的月亮，表达凝练且画面明确；与已有“某间月”候选相比，“峰”并非只替换近义配字，意象关系有实际差异。"
+    },
+    {
+      "name": "峰前路",
+      "decision": "keep",
+      "reason": "指山峰之前的道路，语序自然，意象清楚；有连续字形用例佐证其表达自然，且不与“嶂外路”等候选构成近似组合。"
+    },
+    {
+      "name": "峰上见",
+      "decision": "reject",
+      "reason": "更像省略宾语的口语句子或提示语，完整名称缺少凝练、稳定的品牌构词关系。"
+    },
+    {
+      "name": "峰起云开",
+      "decision": "reject",
+      "reason": "近似“云开雾散”式的景象叙述和吉祥口号，偏完整句式，不具备本批要求的品牌名凝练感。"
+    },
+    {
+      "name": "峰与长风",
+      "decision": "keep",
+      "reason": "“峰”与“长风”并置形成清楚的自然意象，结构通顺；虽与既有“某与长风”候选同结构，但峰与风并非仅以近义字替换构成的同一意象组合。"
+    },
+    {
+      "name": "峰外有天",
+      "decision": "reject",
+      "reason": "构成完整判断句，表达超越、开拓的常见口号式寓意，属于名称要求已排除的句子化表达。"
+    },
+    {
+      "name": "山峰",
+      "decision": "reject",
+      "reason": "是山的顶端这一通用自然地物名称，完整名称直接等同于普通类别词，品牌辨识度不足。"
+    },
+    {
+      "name": "峰远",
+      "decision": "keep",
+      "reason": "可理解为峰峦遥远，语义自然、简洁，具有空间意象；虽较普通，但不生硬，也不是通用产品或服务类别词。"
+    }
+  ]
+}

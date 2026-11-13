@@ -1,0 +1,911 @@
+{
+  "review_id": "20261112T182550-682653c9",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "手巧",
+      "巧生辉",
+      "巧借力",
+      "葡萄藤",
+      "秋萄",
+      "岁月镀光",
+      "镀月",
+      "星光镀夜",
+      "怀璋",
+      "弄璋",
+      "如圭如璋",
+      "圭璋特达"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "酿月光",
+        "赫月流光",
+        "漻光映月",
+        "鎏光岁序",
+        "星野鎏光",
+        "璧月流光",
+        "葡萄时光",
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光"
+      ],
+      "如": [
+        "如一",
+        "如瓷",
+        "瓷如玉",
+        "酒如歌",
+        "站如松",
+        "专注如常",
+        "雯如锦",
+        "涂如初",
+        "如愿",
+        "娟如玉",
+        "菼如雪",
+        "如菼"
+      ],
+      "月": [
+        "酿月光",
+        "岁月琥珀",
+        "赫月流光",
+        "漻光映月",
+        "璧月流光",
+        "七月",
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月"
+      ],
+      "星": [
+        "凉夜星河",
+        "黝夜星河",
+        "星野鎏光",
+        "星夜鸺鸣",
+        "葡萄星球",
+        "七星",
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "塄畔星",
+        "芭叶映星"
+      ],
+      "夜": [
+        "凉夜星河",
+        "黝夜星河",
+        "星夜鸺鸣",
+        "丙夜",
+        "乙夜",
+        "玉螭照夜",
+        "螭照长夜",
+        "夜镫",
+        "夜雨窸窣",
+        "夏夜听螽",
+        "夜蝠",
+        "夜雨呢喃"
+      ],
+      "萄": [
+        "葡萄",
+        "葡萄时光",
+        "葡萄星球",
+        "青萄"
+      ],
+      "葡": [
+        "葡萄",
+        "葡萄时光",
+        "葡萄星球"
+      ],
+      "璋": [
+        "珪璋",
+        "牙璋",
+        "瑗璋",
+        "琬璋"
+      ],
+      "岁": [
+        "岁月琥珀",
+        "鎏光岁序",
+        "岁华",
+        "岁华新酿",
+        "岁时图"
+      ],
+      "怀": [
+        "轸怀",
+        "述怀",
+        "怀义",
+        "怀珵",
+        "怀珏堂",
+        "涂怀远",
+        "崡关怀古",
+        "怀璆",
+        "宽怀",
+        "纾怀",
+        "放怀",
+        "柠风入怀"
+      ],
+      "秋": [
+        "访秋",
+        "纫秋",
+        "秋蛩",
+        "榴映秋",
+        "楮墨春秋",
+        "秋凉",
+        "秋水凉",
+        "一庭秋凉",
+        "凉秋望远",
+        "枫知秋",
+        "秋枫里",
+        "秋葭"
+      ],
+      "生": [
+        "梣木生辉",
+        "粗笔生春",
+        "凉生",
+        "春又生",
+        "蔓生",
+        "蔓生朝露",
+        "蔓生集",
+        "生态",
+        "广陵潮生",
+        "奇木生春",
+        "葜生",
+        "蓓生"
+      ],
+      "辉": [
+        "梣木生辉",
+        "峥辉",
+        "清辉琥珀",
+        "二曜同辉",
+        "鎏辉",
+        "琨玉同辉",
+        "清辉映璧",
+        "瑕玉同辉"
+      ],
+      "力": [
+        "扭力",
+        "赑力",
+        "力穑",
+        "愿力",
+        "码力"
+      ],
+      "达": [
+        "臻达",
+        "酷达",
+        "旁达",
+        "亿达",
+        "义达",
+        "掞达",
+        "广达",
+        "赟达",
+        "珺达",
+        "资达",
+        "奕达",
+        "瑾达"
+      ],
+      "巧": [
+        "乞巧",
+        "巧思",
+        "天巧",
+        "巧遇",
+        "巧云",
+        "巧禾",
+        "巧岚",
+        "巧宁",
+        "巧然",
+        "巧行",
+        "巧劲",
+        "机巧"
+      ],
+      "借": [
+        "借酒观云"
+      ],
+      "手": [
+        "手札",
+        "手书",
+        "手信",
+        "手泽",
+        "挥手"
+      ],
+      "圭": [
+        "琬圭"
+      ],
+      "弄": [
+        "弄潮儿"
+      ]
+    },
+    "literature_phrase_examples": {
+      "手巧": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 82127,
+          "context": "低眉信手巧工夫。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1203867,
+          "context": "三年妙手巧制锦，借甚治声闻九重。"
+        }
+      ],
+      "巧生辉": [],
+      "巧借力": [],
+      "葡萄藤": [],
+      "秋萄": [],
+      "岁月镀光": [],
+      "镀月": [],
+      "星光镀夜": [],
+      "怀璋": [],
+      "弄璋": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 195970,
+          "context": "弄璋诗句多才思，愁杀无儿老邓攸。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 199095,
+          "context": "相看鬓似丝，始作弄璋诗。"
+        }
+      ],
+      "如圭如璋": [
+        {
+          "book": "诗经",
+          "line": 1554,
+          "context": "颙颙卬卬，如圭如璋，令闻令望。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 284171,
+          "context": "使于四方，如圭如璋。"
+        }
+      ],
+      "圭璋特达": [
+        {
+          "book": "礼记",
+          "line": 1305,
+          "context": "圭璋特达，德也。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "手巧": [],
+      "巧生辉": [],
+      "巧借力": [],
+      "葡萄藤": [],
+      "秋萄": [],
+      "岁月镀光": [],
+      "镀月": [],
+      "星光镀夜": [],
+      "怀璋": [],
+      "弄璋": [
+        {
+          "title": "弄璋",
+          "pinyin": "nòng zhāng",
+          "definition": "璋，玉器。古時拿玉給男孩玩，期望將來有如玉一般的品德。語本《詩經．小雅．斯干》：「乃生男子，載寢之床，載衣之裳，載弄之璋。」後指生男孩為弄璋。唐．白居易〈崔侍御以孩子三日示其所生詩見示因以二絕和之〉詩：「弄璋詩句多才思，愁殺無兒老鄧攸。」",
+          "entry_id": "031580070",
+          "sheet": "1150929辭典匯出",
+          "row": 58139,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "如圭如璋": [],
+      "圭璋特达": []
+    },
+    "direct_dictionary": {
+      "手": {
+        "definition": "hand",
+        "mandarin": "shǒu",
+        "official_dictionary": [
+          {
+            "title": "手",
+            "pinyin": "shǒu",
+            "definition": "[名]\n1.人體的上肢。如：「右手」、「手腦並用」。\n2.從事某種事情或擅長某種技藝的人。如：「水手」、「選手」、「國手」、「高手」。\n3.做事的人。如：「助手」、「幫手」、「人手不足」。\n4.技能、本領。如：「在運動方面，他真有一手。」\n5.作法。如：「眼高手低」、「心狠手辣」。\n6.二一四部首之一。\n[形]\n1.親手寫的。如：「手諭」、「手書」、「手抄」。\n2.與手有關的。如：「手杖」、「手榴彈」。\n3.小巧的、便於攜帶的。如：「手冊」。",
+            "entry_id": "08891",
+            "sheet": "1150929辭典匯出",
+            "row": 8905,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "巧": {
+        "definition": "skillful, ingenious, clever",
+        "mandarin": "qiǎo",
+        "official_dictionary": [
+          {
+            "title": "巧",
+            "pinyin": "qiǎo",
+            "definition": "[形]\n1.高妙、靈活、聰慧。如：「靈巧」、「巧思」、「巧婦難為無米之炊」。\n2.美好。《詩經．衛風．碩人》：「巧笑倩兮，美目盼兮。」\n3.技藝精妙。如：「巧手」、「巧工」。漢．王充《論衡．自紀》：「大簡必有大好，良工必有不巧。」唐．秦韜玉〈貧女〉詩：「敢將十指誇偏巧，不把雙眉鬥畫長。」\n4.虛偽不實。如：「花言巧語」。《論語．學而》：「巧言令色，鮮矣仁。」唐．白居易〈新樂府．天可度〉：「但見丹誠赤如血，誰知偽言巧似簧。」\n[名]\n精妙的技能、才藝。如：「乞巧」。《孟子．離婁上》：「離婁之明，公輸子之巧，不以規矩，不能成方員。」\n[副]\n1.恰好。如：「湊巧」、「碰巧」、「巧遇」。\n2.狡詐、虛偽。如：「巧辯」、「巧立名目」。唐．韓愈〈答劉秀才論史書〉：「巧造語言，鑿空構立。」",
+            "entry_id": "06380",
+            "sheet": "1150929辭典匯出",
+            "row": 6388,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "生": {
+        "definition": "life, living, lifetime; birth",
+        "mandarin": "shēng",
+        "official_dictionary": [
+          {
+            "title": "生",
+            "pinyin": "shēng",
+            "definition": "[動]\n1.長出、生長。如：「生出一對角。」《詩經．大雅．卷阿》：「梧桐生矣，于彼朝陽。」\n2.生產、生育。《詩經．大雅．生民》：「不康禋祀，居然生子。」唐．白居易〈長恨歌〉：「遂令天下父母心，不重生男重生女。」\n3.發生、產生。如：「生病」、「生效」、「橫生枝節」。《左傳．成公二年》：「義以生利，利以平民。」唐．杜甫〈愁〉詩：「江草日日喚愁生，巫峽泠泠非世情。」\n4.生存、活存。如：「置之死地而後生」。\n5.製造、新創。如：「惹事生非」、「你又生出新花樣來了。」\n[名]\n1.生存、生活。如：「起死回生」、「忍辱偷生」。《論語．顏淵》：「死生有命，富貴在天。」\n2.量詞。計算一輩子的單位。如：「三生三世」、「緣定三生」、「三生姻緣」。\n3.生命。如：「輕生」、「餘生」。\n4.泛指生物。如：「眾生」、「群生」、「放生」。\n5.生計。如：「謀生」、「無以為生」。\n6.讀書人稱為「生」。如：「書生」、「儒生」。\n7.學習者、門徒。如：「生徒」、「門生」、「師生」、「學生」。\n8.戲劇裡的角色名稱。如：「小生」、「老生」、「武生」。\n9.姓。如明代有生用和。\n10. 二一四部首之一。\n[形]\n1.果實尚未成熟。如：「這個番石榴太生了，不能吃。」\n2.沒有煮熟的。如：「生肉」、「生飯」。\n3.罕見、不熟悉。如：「生人」、「面生」、「生手」、「生字」。\n4.沒有加工或鍛鍊過的。如：「生鐵」。\n[副]\n1.很、甚。如：「生怕」、「生恐」。唐．劉采春〈囉嗊曲〉六首之一：「不喜秦淮水，生憎江上船。」\n2.強迫。如：「生拉硬扯」。元．關漢卿《蝴蝶夢》第二折：「把三個未發跡小秀士，生扭做吃勘問死囚徒。」\n[助]\n語助詞，無義。《儒林外史》第七回：「況我看見你不喜我這煩劇的事，怎生是好？」",
+            "entry_id": "09024",
+            "sheet": "1150929辭典匯出",
+            "row": 9039,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辉": {
+        "definition": "brightness, luster, brilliance",
+        "mandarin": "huī",
+        "related_characters": [
+          {
+            "character": "輝",
+            "relation": "kTraditionalVariant",
+            "definition": "brightness, luster, brilliance",
+            "mandarin": "huī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "借": {
+        "definition": "borrow; lend; make pretext of",
+        "mandarin": "jiè",
+        "related_characters": [
+          {
+            "character": "借",
+            "relation": "kTraditionalVariant",
+            "definition": "borrow; lend; make pretext of",
+            "mandarin": "jiè"
+          },
+          {
+            "character": "藉",
+            "relation": "kTraditionalVariant",
+            "definition": "mat, pad; rely on; pretext",
+            "mandarin": "jí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "借",
+            "pinyin": "jiè",
+            "definition": "[動]\n1.暫時向人告貸財物。如：「有借有還，再借不難。」《左傳．定公九年》：「盡借邑人之車。」北齊．顏之推《顏氏家訓．治家》：「借人典籍，皆須愛護。」\n2.把財物暫時給他人使用。如：「這支筆借你用一下。」《論語．衛靈公》：「有馬者借人乘之。」\n3.讚許。《隋書．卷二五．刑法志》：「武帝敦睦九族，優借朝士。」《文選．鄒陽．獄中上書自明》：「慈仁殷勤，誠嘉於心，此不可以虛辭借也。」\n4.假託、利用。如：「借刀殺人」、「借題發揮」。\n5.幫助。《漢書．卷六七．朱雲傳》：「少時通輕俠，借客報仇。」\n6.倚靠、憑藉。如：「借重」、「借助」。\n[副]\n假使、假設。唐．元稹〈遣病〉詩：「借如今日死，亦足了一生；借使到百年，不知何所成？」",
+            "entry_id": "05609",
+            "sheet": "1150929辭典匯出",
+            "row": 5616,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "力": {
+        "definition": "power, capability, influence; Kangxi radical 19",
+        "mandarin": "lì",
+        "official_dictionary": [
+          {
+            "title": "力",
+            "pinyin": "lì",
+            "definition": "[名]\n1.改變物體運動狀態（靜止或運行速度）的效能稱為「力」，計算單位為「牛頓」。如：「動力」、「向心力」、「離心力」、「地心引力」。\n2.人和動物體內筋肉運動所產生的效能。如：「臂力」、「體力」。《詩經．邶風．簡兮》：「有力如虎，執轡如組。」\n3.一切事物所具有的效能或作用。如：「火力」、「風力」、「水力」。\n4.才能、能力。如：「智力」、「實力」、「理解力」、「量力而為」。\n5.權勢。如：「權力」。《孟子．公孫丑上》：「以力服人者，非心服也。」\n6.以力氣供人役使的僮僕。如：「苦力」。\n7.姓。如宋代有力起。\n8.二一四部首之一。\n[副]\n盡力、拚命。如：「力爭上游」。《漢書．卷九五．南粵傳》：「樓船力攻燒敵。」",
+            "entry_id": "03436",
+            "sheet": "1150929辭典匯出",
+            "row": 3443,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "葡": {
+        "definition": "grapes",
+        "mandarin": "pú",
+        "official_dictionary": [
+          {
+            "title": "葡",
+            "pinyin": "pú",
+            "definition": "參見「葡萄」條。",
+            "entry_id": "00991",
+            "sheet": "1150929辭典匯出",
+            "row": 993,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "葡萄",
+                "pinyin": "pú táo",
+                "definition": "植物名。葡萄科葡萄屬，落葉大藤本，卷鬚分叉。葉掌狀三至五深裂或中裂，具長柄，互生，心狀圓形。圓錐花序，花瓣呈帽狀合生，黃綠色。果實也稱為「葡萄」，球形或橢圓形，呈紫或淡綠色，酸甜多汁，是常見水果，可釀酒。也稱為「蒲桃」、「蒲萄」、「蒲陶」。",
+                "entry_id": "009910001",
+                "sheet": "1150929辭典匯出",
+                "row": 26164
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "萄": {
+        "definition": "grapes",
+        "mandarin": "táo",
+        "official_dictionary": [
+          {
+            "title": "萄",
+            "pinyin": "táo",
+            "definition": "參見「葡萄」條。",
+            "entry_id": "02501",
+            "sheet": "1150929辭典匯出",
+            "row": 2509,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "葡萄",
+                "pinyin": "pú táo",
+                "definition": "植物名。葡萄科葡萄屬，落葉大藤本，卷鬚分叉。葉掌狀三至五深裂或中裂，具長柄，互生，心狀圓形。圓錐花序，花瓣呈帽狀合生，黃綠色。果實也稱為「葡萄」，球形或橢圓形，呈紫或淡綠色，酸甜多汁，是常見水果，可釀酒。也稱為「蒲桃」、「蒲萄」、「蒲陶」。",
+                "entry_id": "009910001",
+                "sheet": "1150929辭典匯出",
+                "row": 26164
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "藤": {
+        "definition": "rattan, cane; creeper plant",
+        "mandarin": "téng",
+        "official_dictionary": [
+          {
+            "title": "藤",
+            "pinyin": "téng",
+            "definition": "[名]\n1.植物名。棕櫚科黃藤屬，「白藤」、「黃藤」之俗稱，參見「白藤」條。\n2.蔓生植物的卷鬚或莖。如：「葡萄藤」、「南瓜藤」。\n3.姓。如明代有藤文澤。",
+            "entry_id": "02618",
+            "sheet": "1150929辭典匯出",
+            "row": 2625,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "白藤",
+                "pinyin": "bái téng",
+                "definition": "植物名。棕櫚科黃藤屬，藤本。莖長可達六公尺，徑約達二公分。葉羽狀全裂，裂片線形或披針形，葉鞘刺散生，罕無刺，葉總梗上部特別延長，具逆刺，藉以攀緣上升。花為黃綠色而具異臭，果近球形，外被十八至二十縱列之鱗片，熟時黃色，種子一顆。藤莖可製多種器物。",
+                "entry_id": "001320139",
+                "sheet": "1150929辭典匯出",
+                "row": 13588
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "秋": {
+        "definition": "autumn, fall; year",
+        "mandarin": "qiū",
+        "related_characters": [
+          {
+            "character": "秋",
+            "relation": "kTraditionalVariant",
+            "definition": "autumn, fall; year",
+            "mandarin": "qiū"
+          },
+          {
+            "character": "鞦",
+            "relation": "kTraditionalVariant",
+            "definition": "leather stap; swing",
+            "mandarin": "qiū"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "秋",
+            "pinyin": "qiū",
+            "definition": "[名]\n1.一年四季中的第三季。農曆為七、八、九月，陽曆為九、十、十一月。如：「秋天」、「秋季」、「中秋」、「深秋」、「一葉知秋」。唐．杜甫〈登高〉詩：「萬里悲秋常作客，百年多病獨登臺。」\n2.年。古代年的長度以二次秋收為準，故以秋代表年。如：「千秋萬世」、「一日不見，如隔三秋。」唐．劉禹錫〈蜀先主廟〉詩：「天地英雄氣，千秋尚凜然。」\n3.時候。如：「多事之秋」。《文選．諸葛亮．出師表》：「此誠危急存亡之秋也。」\n4.姓。如清代有秋瑾。\n[形]\n喻衰老。宋．陸游〈南鄉子．早歲入皇州〉詞：「三十年來真一夢，堪愁。客路蕭蕭兩鬢秋。」",
+            "entry_id": "06402",
+            "sheet": "1150929辭典匯出",
+            "row": 6410,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岁": {
+        "definition": "year; age; harvest",
+        "mandarin": "suì",
+        "related_characters": [
+          {
+            "character": "岁",
+            "relation": "kTraditionalVariant",
+            "definition": "year; age; harvest",
+            "mandarin": "suì"
+          },
+          {
+            "character": "歲",
+            "relation": "kTraditionalVariant",
+            "definition": "year; age; harvest",
+            "mandarin": "suì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "岁",
+            "pinyin": null,
+            "definition": "「歲」的異體字。",
+            "entry_id": "10171-1",
+            "sheet": "1150929辭典匯出",
+            "row": 143887,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "镀": {
+        "definition": "plate, coat, gild",
+        "mandarin": "dù",
+        "related_characters": [
+          {
+            "character": "鍍",
+            "relation": "kTraditionalVariant",
+            "definition": "plate, coat, gild",
+            "mandarin": "dù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "夜": {
+        "definition": "night, dark; in night; by night",
+        "mandarin": "yè",
+        "official_dictionary": [
+          {
+            "title": "夜",
+            "pinyin": "yè",
+            "definition": "[名]\n1.從天黑到天亮之間的一段時間。如：「夜以繼日」、「夙興夜寐」。《左傳．莊公七年》：「夏四月辛卯夜，恆星不見。」\n2.姓。如漢代有夜龍。\n[形]\n昏暗的。漢．王符《潛夫論．讚學》：「是故索物於夜室者，莫良於火。」唐．盧照鄰〈同崔錄事哭鄭員外〉詩：「夜臺無曉箭，朝奠有虛尊。」\n[動]\n夜行。唐．蘇味道〈正月十五夜〉詩：「金吾不禁夜，玉漏莫相催。」",
+            "entry_id": "10758",
+            "sheet": "1150929辭典匯出",
+            "row": 10772,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "怀": {
+        "definition": "bosom, breast; carry in bosom",
+        "mandarin": "huái",
+        "related_characters": [
+          {
+            "character": "怀",
+            "relation": "kTraditionalVariant",
+            "definition": "bosom, breast; carry in bosom",
+            "mandarin": "huái"
+          },
+          {
+            "character": "懷",
+            "relation": "kTraditionalVariant",
+            "definition": "bosom, breast; carry in bosom",
+            "mandarin": "huái"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "怀",
+            "pinyin": null,
+            "definition": "「懷」的異體字。",
+            "entry_id": "05077-1",
+            "sheet": "1150929辭典匯出",
+            "row": 83616,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "璋": {
+        "definition": "jade plaything; jade ornament",
+        "mandarin": "zhāng",
+        "official_dictionary": [
+          {
+            "title": "璋",
+            "pinyin": "zhāng",
+            "definition": "[名]\n玉器，形如半圭。《詩經．小雅．斯干》：「乃生男子，……，載弄之璋。」《周禮．春官．大宗伯》：「以赤璋禮南方。」",
+            "entry_id": "07883",
+            "sheet": "1150929辭典匯出",
+            "row": 7895,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "弄": {
+        "definition": "do, play or fiddle with; alley",
+        "mandarin": "nòng",
+        "official_dictionary": [
+          {
+            "title": "弄",
+            "pinyin": "nòng",
+            "definition": "[動]_x000D_\n1.把玩、玩賞。《詩經．小雅．斯干》：「乃生男子，載寢之床，載衣之裳，載弄之璋。」唐．李白〈別山僧〉詩：「何處名僧到水西？乘舟弄月宿涇溪。」_x000D_\n2.遊戲、耍弄。《左傳．定公三年》：「君以弄馬之故，隱君身，棄國家。」唐．李白〈長干行〉二首之一：「郎騎竹馬來，遶床弄青梅。」宋．上官融《友會談叢》卷上：「京師貨藥者多假弄獅子、猢孫為戲，聚集市人。」_x000D_\n3.做、從事。《官話指南．卷二．官商吐屬》：「然後就叫店家打洗臉水、沏茶、弄飯吃。」《兒女英雄傳》第一四回：「你莫管，照我的話弄去就是了。」_x000D_\n4.處理、探察、追究。如：「這件事一定要弄清楚才行！」《紅樓夢》第九九回：「不知道怎麼部裡沒有弄明白。如今就是鬧破了，也是官官相護的。」《文明小史》第一二回：「總是你們沒有弄清，快去查明了來。」_x000D_\n5.尋求、取得。《兒女英雄傳》第四〇回：「我因為今年是你師母正壽，所以又弄了倆人，合上個八旬慶壽的意思。」《紅樓夢》第五九回：「只是要你們齊心打夥兒弄幾個錢回家受用，若不隨我，我也不管了。」《文明小史》第四八回：「其時已在上燈時分，房間都被人家佔了去了，好容易等了一會，才弄到一個小房間。」_x000D_\n6.搖動、攪動。如：「這消息把大家弄得人心惶惶。」元．白樸《牆頭馬上》第二折：「怕露驚宿鳥，風弄庭槐。」《官場現形記》第五回：「不該應要錢的心太狠了，直弄得民怨沸騰，有無數商人，來省上控。」_x000D_\n7.與人淫亂、姦汙。晉．干寶《搜神記》卷七：「元康中，貴游子弟相與為散髮裸身之飲，對弄婢妾。」《南史．卷五五．列傳．曹景宗》：「本以為戲，而部下多剽輕，因弄人婦女，奪人財貨。帝頗知之，景宗懼乃止。」《紅樓夢》第六七回：「鳳姐兒道：『你二爺在外頭弄了人，你知道不知道？』」_x000D_\n8.演奏樂器。如：「弄笛」、「弄簫」。唐．李白〈邯鄲南亭觀妓〉詩：「歌鼓燕趙兒，魏姝弄鳴絲。」唐．王涯〈秋夜曲〉：「銀箏夜久殷勤弄，心怯空房不忍歸。」_x000D_\n9.妝飾、修飾。晉．趙至〈與嵇茂齊書〉：「翱翔倫黨之間，弄姿帷房之裡。」唐．溫庭筠〈菩薩蠻．小山重疊金明滅〉詞：「懶起畫娥眉，弄妝梳洗遲。」_x000D_\n[名]_x000D_\n樂曲。如：「江南弄」、「梅花三弄」。《韓非子．難三》：「且中期之所官，琴瑟也。絃不調，弄不明，中期之任也。」三國魏．嵇康〈琴賦〉：「改韻易調，奇弄乃發。」_x000D_\n[量]_x000D_\n計算樂曲或演奏次數的單位。《晉書．卷八一．列傳．桓宣》：「帝命伊吹笛。伊神色無迕，即吹為一弄。」元．戴表元〈次韻和蔚師鑑師春懷〉：「愁是雲陰喜是晴，春遊何處不關情？黃雞亭館琴三弄，青果杯盤酒數行。」明．何景明〈岳陽城中聞笛〉詩：「何處笛聲三四弄，坐聽疑隔楚江濆。」",
+            "entry_id": "03158",
+            "sheet": "1150929辭典匯出",
+            "row": 3165,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "弄",
+            "pinyin": "lòng",
+            "definition": "[名]\n小巷。如：「巷弄」。《南史．卷五．齊廢帝鬱林王本紀》：「出西弄，遇弒。」",
+            "entry_id": "03873",
+            "sheet": "1150929辭典匯出",
+            "row": 3879,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "如": {
+        "definition": "if, supposing; as if; like, as",
+        "mandarin": "rú",
+        "official_dictionary": [
+          {
+            "title": "如",
+            "pinyin": "rú",
+            "definition": "[動]\n1.順從、依照。如：「如約」、「如命」。《左傳．宣公十二年》：「有律以如己也。」晉．杜預．注：「如，從也。」\n2.如同、好像。如：「愛人如己」、「數十年如一日」。唐．白居易〈琵琶行〉：「大絃嘈嘈如急雨，小絃切切如私語。」\n3.往、至。如：「如廁」。《左傳．隱公五年》：「公將如棠觀魚者。」\n4.及、比得上。如：「遠親不如近鄰」。《史記．卷七．項羽本紀》：「夫被堅執銳，義不如公；坐而運策，公不如義。」\n5.表示舉例。如：「例如」、「譬如」。\n[介]\n於，表示比較。《呂氏春秋．仲秋紀．愛士》：「人之困窮，甚如饑寒。」\n[連]\n1.假若。《論語．述而》：「如不可求，從吾所好。」《鏡花緣》第四回：「姑且施恩，再限兩個時辰。如再無花，就怨不得朕了。」\n2.或者。《論語．先進》：「安見方六七十，如五六十，而非邦也者。」\n[助]\n形容詞詞尾。相當於「然」，表情形或狀況。如：「突如其來」。《論語．述而》：「子之燕居，申申如也，夭夭如也。」\n[名]\n姓。如三國時魏國有如淳。",
+            "entry_id": "09270",
+            "sheet": "1150929辭典匯出",
+            "row": 9284,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "圭": {
+        "definition": "jade pointed at top",
+        "mandarin": "guī",
+        "official_dictionary": [
+          {
+            "title": "圭",
+            "pinyin": "guī",
+            "definition": "[名]\n1.古代諸侯在大典時所持的一種玉器。《說文解字．土部》：「圭，瑞玉也，上圜下方。」清．段玉裁．注：「圭之制，上不正圜。以對下方言之，故曰上圜。」《史記．卷三三．魯周公世家》：「周公北面立，戴璧秉圭，告于太王、王季、文王。」\n2.古代測日影的器具。如：「日圭」、「圭表」、「圭臬」。\n3.姓。如春秋時鄭國有圭媯。",
+            "entry_id": "04255",
+            "sheet": "1150929辭典匯出",
+            "row": 4261,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "特": {
+        "definition": "special, unique, distinguished",
+        "mandarin": "tè",
+        "official_dictionary": [
+          {
+            "title": "特",
+            "pinyin": "tè",
+            "definition": "[形]\n1.與眾不同的、超出一般的。如：「獨特」、「特等」、「奇特」。\n2.雄性的。如：「特牛」、「特牲」。\n[副]\n1.特別。如：「特地」、「特意」。《文選．李密．陳情表》：「況臣孤苦，特為尤甚！」\n2.只、但。如：「不特」、「非特」。\n[名]\n1.配偶。《詩經．鄘風．柏舟》：「髧彼兩髦，實維我特。」\n2.特務。如：「匪特」、「敵特」。",
+            "entry_id": "02456",
+            "sheet": "1150929辭典匯出",
+            "row": 2464,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "达": {
+        "definition": "arrive at, reach; intelligent; smooth, slippery",
+        "mandarin": "dá",
+        "related_characters": [
+          {
+            "character": "達",
+            "relation": "kTraditionalVariant",
+            "definition": "arrive at, reach; intelligent",
+            "mandarin": "dá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "手巧",
+      "decision": "uncertain",
+      "reason": "词义自然，指手艺灵巧，但整体是常见描述性词语，品牌辨识度较弱，作为公司品牌名的凝练感不足。"
+    },
+    {
+      "name": "巧生辉",
+      "decision": "reject",
+      "reason": "可勉强理解为“巧妙地焕发光彩”，但语序和搭配生硬，像把“巧”与“生辉”拼接，关系不够清楚。"
+    },
+    {
+      "name": "巧借力",
+      "decision": "reject",
+      "reason": "像“巧妙借力”的动作描述或宣传语，语义依赖省略成分，缺少独立品牌名的凝练感。"
+    },
+    {
+      "name": "葡萄藤",
+      "decision": "keep",
+      "reason": "自然、具体的植物意象，词义明确且完整，不是通用产品或服务类别词；虽与其他含“葡萄”的候选共享意象，但并非其近似变体。"
+    },
+    {
+      "name": "秋萄",
+      "decision": "uncertain",
+      "reason": "“秋”与“萄”可组成秋季葡萄的意象，但“秋萄”不是自然常见的组合，语义关系略显生造，品牌含义需依赖额外解释。"
+    },
+    {
+      "name": "岁月镀光",
+      "decision": "reject",
+      "reason": "“岁月镀光”像完整的抒情句或宣传表达，带有明显修辞叙述感，作为品牌名不够凝练。"
+    },
+    {
+      "name": "镀月",
+      "decision": "keep",
+      "reason": "简洁的动作与自然意象组合，可理解为给月色镀上一层光泽，语义通顺且有辨识度；不因不是固定词而否决。"
+    },
+    {
+      "name": "星光镀夜",
+      "decision": "reject",
+      "reason": "可理解为星光装点夜色，但“星光镀夜”搭配生硬，且更像修辞句而非凝练名称。"
+    },
+    {
+      "name": "怀璋",
+      "decision": "keep",
+      "reason": "可理解为怀抱玉璋或心怀美玉，字义有据，组合简洁，具有古典意象和品牌辨识度；与其他含“璋”名称并非同一完整意象关系的近似替换。"
+    },
+    {
+      "name": "弄璋",
+      "decision": "reject",
+      "reason": "这是已有固定词语，专指生男孩；名称本义明确但语义范围过窄且带有传统生育指涉，不宜仅凭玉器字面转作品牌寓意。"
+    },
+    {
+      "name": "如圭如璋",
+      "decision": "reject",
+      "reason": "虽有《诗经》出处且原义为品德端正美好，但完整名称是带比较结构的赞语，接近人物品评或价值宣言，不符合品牌名的凝练要求。"
+    },
+    {
+      "name": "圭璋特达",
+      "decision": "reject",
+      "reason": "典故原义明确，指圭璋不经雕琢而显达、喻德行；但完整组合是典雅的德性判断语，整体像赞语而非简洁品牌名。"
+    }
+  ]
+}

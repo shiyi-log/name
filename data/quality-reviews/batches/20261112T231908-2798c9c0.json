@@ -1,0 +1,723 @@
+{
+  "review_id": "20261112T231908-2798c9c0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "撞见",
+      "撞见春",
+      "撞见光",
+      "撞见星",
+      "撞向远方",
+      "撞出火花",
+      "一念惺然"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "鼹见光",
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光"
+      ],
+      "一": [
+        "一念",
+        "一念之间",
+        "一程",
+        "一隅",
+        "一木",
+        "抱一",
+        "如一",
+        "初一",
+        "一枕清风",
+        "一川烟雨",
+        "一枝春",
+        "太一"
+      ],
+      "念": [
+        "一念",
+        "一念之间",
+        "心念所及",
+        "轸念",
+        "止念",
+        "念川",
+        "顾念"
+      ],
+      "方": [
+        "十方",
+        "义方",
+        "方圜",
+        "碳立方",
+        "孢子方舟",
+        "端方",
+        "大方",
+        "诸方",
+        "一方砚",
+        "一方庼",
+        "省方",
+        "方隅"
+      ],
+      "星": [
+        "七星",
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "摘星",
+        "摘星辰",
+        "箕星",
+        "棹星河"
+      ],
+      "春": [
+        "春溪见獭",
+        "春山见鸼",
+        "冬原见春",
+        "冬见春",
+        "春山见桠",
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春"
+      ],
+      "见": [
+        "春溪见獭",
+        "春山见鸼",
+        "鼹见光",
+        "冬原见春",
+        "冬见春",
+        "春山见桠",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "云开见硔"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "蘧然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然"
+      ],
+      "火": [
+        "篝火",
+        "镫火",
+        "榴火",
+        "钨火",
+        "萤火",
+        "铄火成金",
+        "焙火",
+        "丙火流光",
+        "燧火",
+        "松间饼火",
+        "星火寨",
+        "电火"
+      ],
+      "远": [
+        "螭向远",
+        "梾枝向远",
+        "鸥向远",
+        "邨山向远",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉"
+      ],
+      "花": [
+        "六出飞花",
+        "砑花笺",
+        "玉石錾花",
+        "枣花香",
+        "花萼",
+        "花萼联芳",
+        "榴花",
+        "榴花信",
+        "榴花照影",
+        "一树榴花",
+        "花酿",
+        "碱蓬花"
+      ],
+      "向": [
+        "螭向远",
+        "梾枝向远",
+        "鸥向远",
+        "邨山向远",
+        "梣向阳",
+        "蔓向阳",
+        "梾木向阳",
+        "梾枝向晨",
+        "牛向千峰",
+        "澄川向海",
+        "向晨",
+        "茶田向晚"
+      ],
+      "出": [
+        "六出飞花",
+        "出奇",
+        "奇云出岫",
+        "飞鸟出嶂",
+        "迥出",
+        "云霭出岫",
+        "迭出",
+        "云出壑"
+      ]
+    },
+    "literature_phrase_examples": {
+      "撞见": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 719411,
+          "context": "夜来撞见吕秀才，有一丹诀犹奇哉。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 794825,
+          "context": "归堂撞见圣僧，几乎当面蹉过。"
+        }
+      ],
+      "撞见春": [],
+      "撞见光": [],
+      "撞见星": [],
+      "撞向远方": [],
+      "撞出火花": [],
+      "一念惺然": []
+    },
+    "dictionary_phrase_entries": {
+      "撞见": [],
+      "撞见春": [],
+      "撞见光": [],
+      "撞见星": [],
+      "撞向远方": [],
+      "撞出火花": [],
+      "一念惺然": []
+    },
+    "direct_dictionary": {
+      "撞": {
+        "definition": "knock against, bump into, collide",
+        "mandarin": "zhuàng",
+        "official_dictionary": [
+          {
+            "title": "撞",
+            "pinyin": "zhuàng",
+            "definition": "[動]\n1.敲打。如：「撞鐘」。\n2.碰擊。如：「撞車」、「撞傷」、「相撞」。\n3.爭執、起衝突。如：「那兩人一言不和，便衝撞起來了。」\n4.碰巧遇到。如：「撞見」、「擇期不如撞期」。元．喬吉《金錢記》第二折：「我待要趕時，不想撞著哥哥賀知章。」",
+            "entry_id": "08127",
+            "sheet": "1150929辭典匯出",
+            "row": 8141,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "撞",
+            "pinyin": "chuáng",
+            "definition": "(一)之讀音。",
+            "entry_id": "08655",
+            "sheet": "1150929辭典匯出",
+            "row": 8669,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "向": {
+        "definition": "toward, direction, trend",
+        "mandarin": "xiàng",
+        "related_characters": [
+          {
+            "character": "向",
+            "relation": "kTraditionalVariant",
+            "definition": "toward, direction, trend",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "嚮",
+            "relation": "kTraditionalVariant",
+            "definition": "guide, direct; incline to, favor",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "曏",
+            "relation": "kTraditionalVariant",
+            "definition": "once upon time; period of time",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "向",
+            "pinyin": "xiàng",
+            "definition": "[名]\n1.北面的窗戶。《說文解字．宀部》：「向，北出牖也。」《詩經．豳風．七月》：「穹窒熏鼠，塞向墐戶。」\n2.方位。如：「方向」、「暈頭轉向」。明．徐弘祖《徐霞客遊記．卷四下．黔遊日記》：「南北向皆有脊中亙。」\n3.意志之歸趨。如：「志向」、「意向」。\n4.國名。周代諸侯國之一。故址約在今大陸地區山東省莒縣南。\n5.姓。如晉代有向秀。\n[動]\n1.對著、朝著。如：「向陽」、「相向」。唐．劉長卿〈餞別王十一南遊〉詩：「飛鳥沒何處，青山空向人。」\n2.崇尚、景仰。如：「人心向背」。《史記．卷一二〇．汲黯傳》：「上方向儒術，尊公孫弘。」《新唐書．卷一九七．循吏傳．賈敦頤傳》：「咸亨初，敦實為洛州長史，亦寬惠，人心懷向。」\n3.偏袒、偏愛。如：「爸爸總是向著小妹。」\n4.臨近、接近。如：「向晚」。唐．白居易〈東坡種花〉詩二首之二：「東坡春向暮，樹木今何如？」\n[形]\n昔日、從前。晉．陶淵明〈桃花源記〉：「既出，得其船，便扶向路，處處誌之。」唐．白居易〈琵琶行〉：「淒淒不似向前聲。」\n[副]\n1.一直以來、從來。如：「向來」、「向有研究」。《三國演義》第一四回：「臣向蒙國恩，刻思圖報。」\n2.方才、剛才。《金史．卷八五．世宗諸子傳．永功傳》：「向見年少婦人自水邊小徑去矣。」\n[介]\n表動作的方向、對象。如：「向前看」、「向人請教」。",
+            "entry_id": "07210",
+            "sheet": "1150929辭典匯出",
+            "row": 7219,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "方": {
+        "definition": "a square, rectangle; a region; local",
+        "mandarin": "fāng",
+        "official_dictionary": [
+          {
+            "title": "方",
+            "pinyin": "fāng",
+            "definition": "[名]\n1.四個角都是九十度的四邊形。如：「正方形」、「長方形」。\n2.區域。如：「地方」、「遠方」。\n3.古代稱地為「方」。《淮南子．本經》：「戴圓履方，抱表懷繩。」漢．高誘．注：「圓，天也；方，地也。」\n4.位置、地位的一邊或一面。如：「東方」、「四面八方」、「對方」、「我方」、「雙方」。\n5.法子、辦法。如：「方法」、「千方百計」、「教導有方」。\n6.治病的藥單、配藥的單子。如：「藥方」、「偏方」、「祕方」、「處方」。《鏡花緣》第二九回：「此跌打損傷第一奇方。」\n7.數學上的乘方。如：「平方」、「立方」。\n8.量詞。計算方形物品的單位。相當於「塊」、「個」。如：「匾額一方」、「一方手帕」、「三方圖章」。\n9.姓。如明代有方孝孺。\n10. 二一四部首之一。\n[形]\n1.方形的。如：「方桌」、「方陣」。\n2.某一地的。如：「方音」、「方言」、「方志」。\n3.正直。如：「品行方正」。《老子》第五八章：「是以聖人方而不割，廉而不劌。」《漢書．卷五六．董仲舒傳》：「悼王道之不昭，故舉賢良方正之士。」\n[副]\n1.才、始。如：「書到用時方恨少」、「如夢方醒」。《紅樓夢》第四回：「今年方四十上下，只有薛蟠一子。」\n2.正、適。如：「來日方長」、「方興未艾」。《論語．季氏》：「及其壯也，血氣方剛，戒之在鬥。」\n3.將。《後漢書．卷一七．馮異傳》：「璽書勞異曰：『方論功賞，以答大勛。』」《資治通鑑．卷六五．漢紀五十七．獻帝建安十三年》：「今治水軍八十萬眾，方與將軍會獵於吳。」\n[介]\n當、在。《莊子．人間世》：「方今之時，僅免刑焉。」《漢書．卷六六．楊敞傳》：「惲家方隆盛時，乘朱輪者十人。」",
+            "entry_id": "01698",
+            "sheet": "1150929辭典匯出",
+            "row": 1702,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "出": {
+        "definition": "go out, send out; stand; produce",
+        "mandarin": "chū",
+        "related_characters": [
+          {
+            "character": "出",
+            "relation": "kTraditionalVariant",
+            "definition": "go out, send out; stand; produce",
+            "mandarin": "chū"
+          },
+          {
+            "character": "齣",
+            "relation": "kTraditionalVariant",
+            "definition": "act; stanza; time, occasion",
+            "mandarin": "chū"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "出",
+            "pinyin": "chū",
+            "definition": "[動]\n1.自內至外。與「入」相對。如：「足不出戶」。《詩經．鄭風．出其東門》：「出其東門，有女如雲。」\n2.產生、發生。如：「出汗」、「出水痘」、「出紕漏」。《易經．說卦》：「萬物出乎震，震東方也。」\n3.脫離、離開。如：「出家」、「出軌」。《詩經．小雅．賓之初筵》：「既醉而出，並受其福；醉而不出，是謂伐德。」\n4.給予、支付。如：「出錢」、「出納」、「支出」。\n5.做官、出任其事。《易經．繫辭上》：「君子之道，或出或處。」《宋書．卷六七．謝靈運傳》：「出為永嘉太守。」\n6.表現、顯露。如：「水落石出」。《莊子．天地》：「至言不出，俗言勝也。」\n7.發洩。如：「出怨氣」、「出悶氣」。\n8.超越。如：「出眾」、「出人頭地」。唐．韓愈〈師說〉：「古之聖人，其出人也遠矣。」\n9.到。如：「出席」、「出場」。\n10. 策劃。如：「出奇謀」、「出題目」。\n[名]\n1.外部、外面。《孟子．告子下》：「入則無法家拂士，出則無敵國外患者，國恆亡。」\n2.量詞。古代計算表演段落的單位。《景德傳燈錄．卷十四．潭州雲巖曇晟禪師》：「藥山乃又問：『聞汝解弄師子，是否？』師曰：『是。』曰：『弄得幾出。』師曰：『弄得六出。』」\n[副]\n放在動詞之後，表示動作趨向或效果完成。如：「拿出」、「看出」、「做出好成績」、「練出一副好身材」。",
+            "entry_id": "08526",
+            "sheet": "1150929辭典匯出",
+            "row": 8540,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "火": {
+        "definition": "fire, flame; burn; anger, rage",
+        "mandarin": "huǒ",
+        "official_dictionary": [
+          {
+            "title": "火",
+            "pinyin": "huǒ",
+            "definition": "[名]\n1.物體燃燒時產生的光和熱。可燃物、燃點和氧氣是火的三要件。《書經．盤庚上》：「若火之燎于原，不可嚮邇，其猶可撲滅？」《水滸傳》第四六回：「便去灶前尋了把草，灶裡點個火……那火頃刻開天也似般大。」\n2.中醫指病理變化過程中，機能亢進的現象。如：「肝火」、「上火」、「退火」。\n3.槍炮彈藥等武器稱為「火」。如：「軍火」、「火藥」。\n4.五行之一。參見「五行」條。\n5.姓。如明代有火源潔。\n6.二一四部首之一。\n[形]\n赤紅色的。如：「火紅」、「火狐狸」。唐．李白〈送程劉二侍郎兼獨孤判官赴安西幕府〉詩：「天外飛霜下蔥海，火旗雲馬生光彩。」\n[動]\n1.燃燒。《禮記．王制》：「昆蟲未蟄，不以火田。」《新唐書．卷九三．李靖傳》：「（李靖）軍次伏俟城，吐谷渾盡火其莽，退保大非川。」\n2.動怒。如：「他一火，大家都不敢說話了。」\n[副]\n急速、緊急。如：「火速赴約」、「十萬火急」。《莊子．天地》：「彼且乘人而無天，方且本身而異形，方且尊知而火馳。」",
+            "entry_id": "05035",
+            "sheet": "1150929辭典匯出",
+            "row": 5042,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "肝火",
+                "pinyin": "gān huǒ",
+                "definition": "1.中醫上指肝氣鬱結，化火上逆，所呈現的症狀。有頭痛暈眩、眼紅、面赤、口苦易躁等徵狀。\n2.怒火。《紅樓夢》第二九回：「若是別人跟前，斷不能動這肝火。」",
+                "entry_id": "040470018",
+                "sheet": "1150929辭典匯出",
+                "row": 68896
+              },
+              {
+                "title": "上火",
+                "pinyin": "shàng huǒ",
+                "definition": "1.點燃燈火。《官場現形記》第一三回：「等到上火之後，船家果然把他們兩隻坐船，撐到對岸停泊。」\n2.生氣、發怒。如：「面對他無中生有的指責，她上火了！」\n3.中醫指大便乾燥、口舌生瘡、鼻腔和口腔等發炎的症狀。",
+                "entry_id": "090180154",
+                "sheet": "1150929辭典匯出",
+                "row": 130218
+              },
+              {
+                "title": "退火",
+                "pinyin": "tuì huǒ",
+                "definition": "1.一種金屬熱處理方法。將金屬材料加熱至適當溫度後，緩緩冷卻，可增加金屬的韌性。\n2.中醫上指消除病理上口乾舌燥等現象，稱為「退火」。",
+                "entry_id": "028490023",
+                "sheet": "1150929辭典匯出",
+                "row": 54480
+              },
+              {
+                "title": "軍火",
+                "pinyin": "jūn huǒ",
+                "definition": "軍用槍炮、彈藥等的統稱。《老殘遊記》第四回：「那有良民敢置軍火的道理！你家一定是強盜！」",
+                "entry_id": "061600047",
+                "sheet": "1150929辭典匯出",
+                "row": 96567
+              },
+              {
+                "title": "火藥",
+                "pinyin": "huǒ yào",
+                "definition": "受衝擊或受熱，即起劇烈化學變化而產生高熱及大量氣體的化合物或混合物。最早用於辟邪、驅鬼和娛樂，宋朝時始用於軍事。是中國三大發明之一。",
+                "entry_id": "050350239",
+                "sheet": "1150929辭典匯出",
+                "row": 83340
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "火紅",
+                "pinyin": "huǒ hóng",
+                "definition": "顏色像火一樣紅。如：「她穿了一件火紅的洋裝，相當搶眼。」《老殘遊記》第二回：「紅的火紅，白的雪白。」",
+                "entry_id": "0503501131",
+                "sheet": "1150929辭典匯出",
+                "row": 83216
+              },
+              {
+                "title": "十萬火急",
+                "pinyin": "shí wàn huǒ jí",
+                "definition": "形容非常緊急。如：「看主管剛才的模樣，公司那邊的情況似乎已十萬火急！」也作「十萬火速」。",
+                "entry_id": "087060283",
+                "sheet": "1150929辭典匯出",
+                "row": 125776
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "花": {
+        "definition": "flower; blossoms",
+        "mandarin": "huā",
+        "official_dictionary": [
+          {
+            "title": "花",
+            "pinyin": "huā",
+            "definition": "[名]_x000D_\n1.被子植物的生殖器官，由許多變形的葉集生而成。包括花托、花萼、花冠、雄蕊群與雌蕊或心皮群。可供人觀賞。如：「菊花」、「梅花」、「玫瑰花」。唐．崔護〈題都城南莊〉詩：「去年今日此門中，人面桃花相映紅。」_x000D_\n2.形狀像花的物體。如：「雪花」、「水花」、「浪花」、「爆米花」。_x000D_\n3.比喻美女。如：「姊妹花」、「解語花」。唐．白居易〈霓裳羽衣歌〉：「嬌花巧笑久寂寥，娃館苧蘿空處所。」_x000D_\n4.姓。如唐代有花敬定。_x000D_\n[形]_x000D_\n1.有花的。如：「花季」。_x000D_\n2.有花紋的、雜色的。如：「花布」、「花貓」、「花邊」。_x000D_\n3.式樣、種類繁多的。如：「花式游泳」。_x000D_\n4.虛假的、巧妙的。如：「耍花招」、「花言巧語」。_x000D_\n5.模糊不清。如：「眼睛都花了。」_x000D_\n6.人心性不定、好玩樂稱為「花」。如：「花心大少」、「這個人很花，你最好不要和他交往。」_x000D_\n[動]_x000D_\n1.開花。唐．杜甫〈偪仄行〉：「辛夷始花亦已落，況我與子非壯年。」_x000D_\n2.耗費。如：「花錢」、「花時間」、「這些錢夠他花的了。」",
+            "entry_id": "05005",
+            "sheet": "1150929辭典匯出",
+            "row": 5012,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "official_dictionary": [
+          {
+            "title": "一",
+            "pinyin": "yī",
+            "definition": "[名]_x000D_\n1.自然數的開始。如：「一、二、三……。」大寫作「壹」。阿拉伯數字作「1」。_x000D_\n2.姓。如明代有一炫宗。_x000D_\n3.二一四部首之一。_x000D_\n[形]_x000D_\n1.單個。如：「一人」、「一物兩用」。_x000D_\n2.相同、一致。如：「一模一樣」、「大小不一」。_x000D_\n3.專注的。如：「一心一意」、「專一不變」。_x000D_\n4.全、滿、整。如：「一身是汗」、「一屋子人」、「一身是膽」。_x000D_\n5.每、各。如：「一班五十人」、「一頁六百字」、「共派八隊，一隊二十人。」_x000D_\n6.一次。如：「一而再，再而三。」《禮記．中庸》：「人一能之，己百之。」_x000D_\n7.另外的。如：「蟬，一名知了。」、「番茄，一名西紅柿。」_x000D_\n[動]_x000D_\n統一。《孟子．梁惠王上》：「不嗜殺人者能一之。」_x000D_\n[副]_x000D_\n1.才、剛剛。如：「一聽就懂」、「天一亮，他就起來。」_x000D_\n2.偶然。如：「一不小心」、「一不留神」。_x000D_\n3.表示加強的動作或突然的現象。如：「把頭一扭」、「用手一摸」、「天氣一涼，就感冒了。」_x000D_\n4.概括。如：「一般來說」。_x000D_\n5.每每、每逢。如：「一想到那件事，她總是笑個不停。」_x000D_\n6.放在二疊字動詞之間，表行為是不費力或嘗試性的。如：「雙手動一動」、「問一問」、「隨便說一說」。_x000D_\n7.事物的某方面。如：「一則以喜，一則以憂。」、「一不沾親，二不帶故。」_x000D_\n8.竟、乃。表示事出意外。如：「一至於斯」。《史記．卷六八．商君傳》：「嗟乎，為法之敝一至此哉！」_x000D_\n9.皆。《荀子．勸學》：「端而言，蠕而動，一可以為法則。」_x000D_\n[助]_x000D_\n表示程度，加強語氣。《文選．古詩十九首．西北有高樓》：「上有絃歌聲，音響一何悲。」《戰國策．燕策一》：「因仰而弔齊王桉戈而郤曰：『此一何慶弔相隨之速也？』」_x000D_\n[連]_x000D_\n或。《莊子．應帝王》：「泰氏其臥徐徐，其覺于于，一以己為馬，一以己為牛。」_x000D_\n（「一」字單用或在一詞一句的末尾，念陰平聲；在去聲字前，念陽平聲；在陰平、陽平、上聲之前，念去聲。）",
+            "entry_id": "10482",
+            "sheet": "1150929辭典匯出",
+            "row": 10494,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "念": {
+        "definition": "think of, recall, study",
+        "mandarin": "niàn",
+        "official_dictionary": [
+          {
+            "title": "念",
+            "pinyin": "niàn",
+            "definition": "[動]\n1.惦記。如：「思念」、「掛念」、「想念」。唐．白居易〈傷遠行賦〉：「但母念子之心，心可測而可量。」\n2.憶念。佛教指將心清楚放在對象上而不忘失。如：「念佛」、「念施」。《大安般守意經．卷下》：「念出入息。」\n3.吟誦、誦讀。通「唸」。如：「念書」、「念經」、「念咒」。《紅樓夢》第一四回：「說著，便吩咐彩明念花名冊，按名一個一個喚進來看視。」\n4.讀、研習。如：「你現在念幾年級？」「他一念完中學，就開始工作了。」\n5.反反覆覆述說著。如：「念叨」、「念念有詞」、「她嘴巴一直念個不停。」\n6.記住。《論語．公冶長》：「伯夷、叔齊，不念舊惡，怨是用希。」\n7.憐愛。唐．李賀〈勉愛行二首送小季之盧山〉詩二首之二：「江干幼客真可念，郊原晚吹悲號號。」宋．李清照〈鳳凰臺上憶吹簫．香冷金猊〉詞：「記取樓前綠水，應念我終日凝眸。」\n[名]\n1.極短的時間。如：「一念頃」、「念念分明」。《阿毘達磨俱舍釋論》卷一六：「偈曰：『一念。』釋曰：『此上品忍但一剎那，無長時。』」\n2.念頭、想法。如：「雜念」、「一念之仁」。《紅樓夢》第四回：「這馮公子，空喜一場，一念未遂，反花了錢，送了命。」\n3.二十。通「廿」。明．湯顯祖《牡丹亭》第三九齣：「湊著個韶陽小道姑，年方念八，頗有風情。」\n4.姓。如北周有念賢。",
+            "entry_id": "03097",
+            "sheet": "1150929辭典匯出",
+            "row": 3104,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "惺": {
+        "definition": "intelligent, clever, astute",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "惺",
+            "pinyin": "xīng",
+            "definition": "參見「惺惺」、「惺忪」等條。",
+            "entry_id": "07226",
+            "sheet": "1150929辭典匯出",
+            "row": 7235,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "惺惺",
+                "pinyin": "xīng xīng",
+                "definition": "1.聰明、伶俐。《董西廂》卷一：「秦樓謝館鴛鴦幄，風流稍是有聲價，教惺惺浪兒每都伏咱。」《西遊記》第二七回：「今日昧著惺惺使糊塗，只教我回去。」_x000D_\n2.清醒。宋．陸游〈不寐〉詩：「困睫日中常欲閉，夜闌枕上卻惺惺。」_x000D_\n3.形容聲音婉轉動聽。宋．陸游〈初夏道中〉詩：「桑間葚熟麥齊腰，鶯語惺惺野雉驕。」《董西廂》卷四：「何處調琴，惺惺地把醉魂呼醒？」_x000D_\n4.虛情假意，扭捏作態。如：「假惺惺」。宋．劉克莊〈臨江仙．玉笛鈿車當日事〉詞：「等閒曲子壓和凝。縱遊非草草，已醉強惺惺。」",
+                "entry_id": "072260001",
+                "sheet": "1150929辭典匯出",
+                "row": 108982
+              },
+              {
+                "title": "惺忪",
+                "pinyin": "xīng sōng",
+                "definition": "1.清醒、睡醒。宋．潘汾〈玉蝴蝶．睡起日高鶯囀〉詞：「醉眼羞抬，嬌困猶自未惺忪。」明．湯顯祖《牡丹亭》第二〇齣：「不隄防你後花園閒夢銃，不分明再不惺忪，睡臨侵打不起頭梢重。」也作「惺鬆」。\n2.形容聲音輕快悅耳。宋．晏幾道〈醜奴兒．日高庭院楊花轉〉詞：「鶯語惺忪，似笑金屏昨夜空。」也作「惺鬆」。",
+                "entry_id": "072260011",
+                "sheet": "1150929辭典匯出",
+                "row": 108988
+              }
+            ]
+          },
+          {
+            "title": "惺",
+            "pinyin": "xǐng",
+            "definition": "[動]\n覺悟、清醒。《廣韻．上聲．靜韻》：「惺，惺悟。」《抱朴子．內篇．極言》：「始皇惺悟，信世間之必有仙道。」",
+            "entry_id": "07246",
+            "sheet": "1150929辭典匯出",
+            "row": 7255,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "official_dictionary": [
+          {
+            "title": "然",
+            "pinyin": "rán",
+            "definition": "[動]\n1.燒。燃的本字。《孟子．公孫丑上》：「若火之始然，泉之始達。」\n2.贊同。《史記．卷八．高祖本紀》：「沛公然其計，從之。」《三國演義》第一回：「劉焉然其說，隨即出榜招募義兵。」\n[形]\n對、正確。如：「不以為然」。《論語．雍也》：「雍之言然。」\n[代]\n如此。《論語．憲問》：「子曰：『何必高宗，古之人皆然。』」唐．柳宗元〈桐葉封弟辯〉：「周公曰：『天子不可戲。』乃封小弱弟於唐。吾意不然。」\n[連]\n1.但是、可是。《左傳．僖公三十年》：「吾不能早用子，今急而求子，是寡人之過也。然鄭亡，子亦有不利焉。」\n2.雖。《董西廂》卷八：「師言然善，奈處凡浮，遭此屈辱，不能無恨。」\n3.然後。《隋書．卷七〇．李密傳》：「待士馬肥充，然可與人爭利。」\n[助]\n1.形容詞或副詞詞尾。如：「斐然」、「赫然」、「恍然」。《詩經．邶風．終風》：「終風且霾，惠然肯來。」\n2.用於句末，表肯定、斷定的語氣。《論語．憲問》：「羿善射，奡盪舟，俱不得其死然。」《禮記．檀弓下》：「穆公召縣子而問然。」\n3.表示比擬的語助詞。《呂氏春秋．孟秋紀．蕩兵》：「夫兵不可偃也，譬之若水火然，善用之則為福，不能用之則為禍。」\n[歎]\n唯，表應答。《論語．陽貨》：「子曰：『然！有是言也。』」《晏子春秋．內篇．雜下》：「公見其妻曰：『此子之內子邪？』晏子對曰：『然！是也。』」\n[名]\n姓。如漢代有然溫。",
+            "entry_id": "09207",
+            "sheet": "1150929辭典匯出",
+            "row": 9221,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "撞见",
+      "decision": "keep",
+      "reason": "“撞见”是自然常用的动作词，意为偶然遇见，简洁易记且有偶遇、发现的意象，具备品牌名的凝练感。"
+    },
+    {
+      "name": "撞见春",
+      "decision": "uncertain",
+      "reason": "可理解为偶然遇见春天，意象清楚，但“撞见”接季节名的组合略显刻意，整体自然度与品牌辨识度存疑。"
+    },
+    {
+      "name": "撞见光",
+      "decision": "keep",
+      "reason": "可自然理解为偶然遇见光亮或希望，动词与具体意象组合简洁，有画面感；与暂留名“鼹见光”仅共享“见光”字面，意象关系不同，不构成近似变体。"
+    },
+    {
+      "name": "撞见星",
+      "decision": "uncertain",
+      "reason": "可理解为偶然看见星辰，但“撞见星”的搭配略显突兀，完整组合的自然度存疑。"
+    },
+    {
+      "name": "撞向远方",
+      "decision": "reject",
+      "reason": "完整名称是“朝远方撞去”的行动号召式表达，句子感和口号感明显，不够凝练为品牌名。"
+    },
+    {
+      "name": "撞出火花",
+      "decision": "reject",
+      "reason": "这是常见固定表达，通常指碰撞产生火花或人际间擦出火花，完整名称偏成语化口号，缺乏品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "一念惺然",
+      "decision": "uncertain",
+      "reason": "“惺然”可依据“惺”的觉悟、清醒义理解为醒悟的状态，但“一念惺然”的关系与表达不够自然，具体语义不易稳定确认。"
+    }
+  ]
+}

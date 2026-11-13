@@ -1,0 +1,819 @@
+{
+  "review_id": "20261113T013338-009654e4",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "豪兴",
+      "豪士",
+      "豪才济世",
+      "智豪",
+      "志豪",
+      "豪信",
+      "豪新",
+      "豪丰",
+      "豪宁",
+      "豪立",
+      "逸豪"
+    ],
+    "related_kept_candidates": {
+      "才": [
+        "专才",
+        "隽才",
+        "才杰",
+        "擢才",
+        "才具",
+        "才掞",
+        "硕才",
+        "才谞",
+        "将才",
+        "才颖"
+      ],
+      "丰": [
+        "丰年",
+        "丰穰",
+        "丰垄",
+        "臻丰",
+        "穑丰",
+        "资丰",
+        "奕丰",
+        "瑾丰",
+        "稼丰",
+        "崧丰",
+        "稆丰",
+        "丰廪"
+      ],
+      "逸": [
+        "逸骏",
+        "逸墅",
+        "逸翮",
+        "隽逸",
+        "潇逸",
+        "逸翎",
+        "超逸",
+        "遒逸",
+        "骜逸",
+        "飘逸"
+      ],
+      "宁": [
+        "敉宁",
+        "欧宁",
+        "淑宁",
+        "晙宁",
+        "凯宁",
+        "珀宁",
+        "酷宁",
+        "婳宁",
+        "广宁",
+        "赟宁",
+        "赫宁",
+        "太宁"
+      ],
+      "世": [
+        "世胄堂",
+        "涉世",
+        "世杰",
+        "世事",
+        "传世",
+        "砭世",
+        "阅世"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "竞新",
+        "新荚",
+        "茗新",
+        "新貌",
+        "硔谷新绿"
+      ],
+      "信": [
+        "榴花信",
+        "口信",
+        "瓶中信",
+        "义信",
+        "信牍",
+        "赫信",
+        "珂信",
+        "昭信",
+        "三枝春信",
+        "山海递信",
+        "瑾信",
+        "鸾信"
+      ],
+      "立": [
+        "峣立",
+        "峤立",
+        "碳立方",
+        "立义",
+        "嶂立",
+        "壁立",
+        "璧立千峰",
+        "鸥立潮头",
+        "岑立",
+        "鹳立",
+        "鹳立晴川",
+        "立矩"
+      ],
+      "济": [
+        "广济",
+        "兼济堂",
+        "互济",
+        "赒济"
+      ],
+      "兴": [
+        "广兴",
+        "缤兴",
+        "代兴",
+        "迭兴",
+        "肇兴",
+        "兴致",
+        "晔兴",
+        "尽兴"
+      ],
+      "豪": [
+        "豪情",
+        "豪爽",
+        "豪壮",
+        "自豪",
+        "豪雅",
+        "豪庭",
+        "豪声",
+        "豪侠"
+      ],
+      "士": [
+        "士风",
+        "士心",
+        "虓士",
+        "謇士"
+      ],
+      "志": [
+        "器物志",
+        "厉志",
+        "夙志",
+        "犟志",
+        "婞志",
+        "宿志",
+        "货物志",
+        "翀志",
+        "遐志",
+        "竑志"
+      ],
+      "智": [
+        "机智"
+      ]
+    },
+    "literature_phrase_examples": {
+      "豪兴": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 140782,
+          "context": "射圃夹群芳，角妙资豪兴。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 584269,
+          "context": "去年钟山今夕晴，二豪兴发来扣扃。"
+        }
+      ],
+      "豪士": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 65949,
+          "context": "【扶风豪士歌】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 65955,
+          "context": "梧桐杨柳拂金井，来醉扶风豪士家。"
+        }
+      ],
+      "豪才济世": [],
+      "智豪": [],
+      "志豪": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 174467,
+          "context": "矍铄前谋大，澄清此志豪。"
+        }
+      ],
+      "豪信": [],
+      "豪新": [],
+      "豪丰": [],
+      "豪宁": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 532590,
+          "context": "盛德不应无隐者，大豪宁复有屠儿。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 863197,
+          "context": "圣主忧勤躬万务，英豪宁许山林住。"
+        }
+      ],
+      "豪立": [],
+      "逸豪": []
+    },
+    "dictionary_phrase_entries": {
+      "豪兴": [],
+      "豪士": [
+        {
+          "title": "豪士",
+          "pinyin": "háo shì",
+          "definition": "1.才能膽識過人的豪傑。《呂氏春秋．季夏紀．制樂》：「於是謹其禮秩，皮革以交諸侯，飾其辭令，幣帛以禮豪士。」《史記．卷一二四．游俠列傳．朱家》：「魯人皆以儒教，而朱家用俠聞，所藏活豪士以百數，其餘庸人不可勝言。」\n2.豪強霸道的人。唐．皇甫氏〈吳堪〉：「時縣宰豪士，聞堪美妻，因欲圖之。」",
+          "entry_id": "047920042",
+          "sheet": "1150929辭典匯出",
+          "row": 79800,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "豪才济世": [],
+      "智豪": [],
+      "志豪": [],
+      "豪信": [],
+      "豪新": [],
+      "豪丰": [],
+      "豪宁": [],
+      "豪立": [],
+      "逸豪": []
+    },
+    "direct_dictionary": {
+      "豪": {
+        "definition": "brave, heroic, chivalrous",
+        "mandarin": "háo",
+        "official_dictionary": [
+          {
+            "title": "豪",
+            "pinyin": "háo",
+            "definition": "[名]\n1.參見「豪豬」條。\n2.才德智能出眾的人。如：「英豪」、「文豪」。《三國志．卷七．魏書．呂布傳》：「君以千里之眾，當四戰之地，撫劍顧眄，亦足以為人豪。」\n3.統帥、魁首。《後漢書．卷八七．西羌傳．羌無弋爰劍傳》：「諸羌見爰劍被焚不死，怪其神，共畏事之，推以為豪。」\n4.有錢有勢或仗勢橫行的人。如：「富豪」、「土豪劣紳」。\n5.細長的毛。通「毫」。《商君書．弱民》：「今離婁見秋豪之末，不能以明目易人。」\n6.姓。如宋代有豪彥。\n[形]\n1.爽快、沒有拘束的。如：「豪邁」、「豪放」。《史記．卷七七．魏公子傳》：「平原君之游，徒豪舉耳，不求士也。」\n2.勢大而量多的。如：「豪雨」。宋．陸游〈雪夜〉詩：「三更天地闇，雪急風愈豪。」\n3.奢華。如：「豪華」。\n[副]\n強橫、橫暴。《漢書．卷二四．食貨志下》：「故大賈畜家不得豪奪吾民矣。」",
+            "entry_id": "04792",
+            "sheet": "1150929辭典匯出",
+            "row": 4798,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "豪豬",
+                "pinyin": "háo zhū",
+                "definition": "動物名。哺乳綱齧齒目豪豬科。全身黑而生棘毛，尖銳如針，遇敵時常蜷曲其身而豎立硬毛，作為抵禦。食動物腐肉及植物，產於廣西及印度、非洲等處。也稱為「箭豬」。",
+                "entry_id": "047920038",
+                "sheet": "1150929辭典匯出",
+                "row": 79796
+              },
+              {
+                "title": "英豪",
+                "pinyin": "yīng háo",
+                "definition": "英雄豪傑。《三國志．卷一四．魏書．郭嘉傳》：「策新并江東，所誅皆英豪雄傑，能得人死力者也。」《儒林外史》第三三回：「遲先生道：『是少卿先生？是海內英豪，千秋快士！』」",
+                "entry_id": "111670040",
+                "sheet": "1150929辭典匯出",
+                "row": 155637
+              },
+              {
+                "title": "文豪",
+                "pinyin": "wén háo",
+                "definition": "有卓越成就的文學家。如：「蘇東坡是宋代的大文豪。」也稱為「文雄」。",
+                "entry_id": "115000079",
+                "sheet": "1150929辭典匯出",
+                "row": 159850
+              },
+              {
+                "title": "富豪",
+                "pinyin": "fù háo",
+                "definition": "有錢有勢的人。《史記．卷八二．田單傳》：「田單又收民金，得千溢，令即墨富豪遺燕將。」《三國演義》第一一回：「此人家世富豪，嘗往洛陽買賣。」",
+                "entry_id": "018860039",
+                "sheet": "1150929辭典匯出",
+                "row": 38989
+              },
+              {
+                "title": "土豪劣紳",
+                "pinyin": "tǔ háo liè shēn",
+                "definition": "地方上的豪強與卑汙的人。泛指橫行鄉里、仗勢欺人的惡勢力。如：「土豪劣紳常仗恃自己的勢力，在地方上橫行霸道，為非作歹。」",
+                "entry_id": "027860104",
+                "sheet": "1150929辭典匯出",
+                "row": 53737
+              },
+              {
+                "title": "毫",
+                "pinyin": "háo",
+                "definition": "[名]\n1.細而尖的毛。《孟子．梁惠王上》：「明足以察秋毫之末，而不見輿薪。」\n2.毛筆。如：「狼毫」。《紅樓夢》第八七回：「便叫雪雁將外邊桌上筆硯拿來，濡墨揮毫，賦成四疊。」\n3.公制中表示度、量、衡等單位的千分之一。如：「毫米」、「毫克」、「毫安培」。\n4.秤或戥子桿上的提繩。為秤鉤或秤盤與秤錘間的支點。分頭毫、二毫、三毫。\n5.俗稱輔幣一角為「一毫」。\n6.姓。如漢代有毫康。\n[形]\n極小、極細微。漢．王充《論衡．案書》：「采毫毛之善，貶纖芥之惡。」\n[副]\n一點點。如：「毫不在意」、「毫無頭緒」、「毫不相干」。",
+                "entry_id": "04791",
+                "sheet": "1150929辭典匯出",
+                "row": 4797
+              },
+              {
+                "title": "豪邁",
+                "pinyin": "háo mài",
+                "definition": "氣度寬廣、性情豪放。唐．元稹〈唐故工部員外郎杜君墓係銘〉：「詞氣豪邁而風調清深，屬對律切而脫棄凡近。」《宋史．卷四二八．道學傳二．李侗傳》：「姿稟勁特，氣節豪邁。」",
+                "entry_id": "047920001",
+                "sheet": "1150929辭典匯出",
+                "row": 79759
+              },
+              {
+                "title": "豪放",
+                "pinyin": "háo fàng",
+                "definition": "豪邁奔放。亦指舉止狂放而不拘小節。《北史．卷四三．列傳．張彝》：「彝少而豪放，出入殿庭，步眄高上，無所顧忌。」《宋史．卷四四二．文苑傳四．蘇舜欽傳》：「益讀書，時發憤懣於歌詩，其體豪放，往往驚人。」也作「豪誕」。",
+                "entry_id": "047920005",
+                "sheet": "1150929辭典匯出",
+                "row": 79763
+              },
+              {
+                "title": "豪華",
+                "pinyin": "háo huá",
+                "definition": "1.奢侈。《宋史．卷四一八．文天祥傳》：「天祥性豪華，平生自奉甚厚，聲伎滿前。」\n2.富麗堂皇。《紅樓夢》第一七、一八回：「按此時之景，即作一賦一讚也不能形容得盡其妙；即不作賦讚，其豪華富麗，觀者諸公亦可想而知矣。」\n3.富貴人家。《舊唐書．卷九二．韋安石傳》：「陟門地豪華，早踐清列，侍兒閹閽，列侍左右者十數。」",
+                "entry_id": "047920021",
+                "sheet": "1150929辭典匯出",
+                "row": 79778
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "兴": {
+        "definition": "thrive, prosper, flourish",
+        "mandarin": "xìng",
+        "related_characters": [
+          {
+            "character": "興",
+            "relation": "kTraditionalVariant",
+            "definition": "thrive, prosper, flourish",
+            "mandarin": "xìng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "士": {
+        "definition": "scholar, gentleman; soldier",
+        "mandarin": "shì",
+        "official_dictionary": [
+          {
+            "title": "士",
+            "pinyin": "shì",
+            "definition": "[名]\n1.未婚的男子。《易經．歸妹卦．上六》：「女承筐，無實；士刲羊，無血、無攸利。」《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」\n2.男子的美稱。《詩經．鄭風．女曰雞鳴》：「女曰：『雞鳴』，士曰：『昧旦』。」\n3.四民之一。指讀書人、知識分子。如：「士農工商」。漢．王充《論衡．實知》：「故智能之士，不學不成，不問不知。」\n4.古代社會階層的等級之一，為貴族中等級最低者。如：「天子、諸侯、大夫、士、庶人。」\n5.泛稱居官受祿的人。《禮記．中庸》：「忠信重祿，所以勸士也。」\n6.對品德好、有睿智或特殊技藝的人的美稱。如：「明士」、「勇士」、「護士」、「博士」、「碩士」。\n7.對人的美稱。如：「男士」、「女士」、「地方人士」。\n8.兵卒。如：「士兵」、「士卒」。\n9.現今軍中的階級名稱，在尉級以下。如：「上士」、「中士」、「下士」。\n10. 職業、工作。《論語．述而》：「富而可求也，雖執鞭之士，吾亦為之。」\n11. 姓。如戰國時晉國有士蒍。\n12. 二一四部首之一。",
+            "entry_id": "08734",
+            "sheet": "1150929辭典匯出",
+            "row": 8748,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "才": {
+        "definition": "talent, ability; just, only",
+        "mandarin": "cái",
+        "related_characters": [
+          {
+            "character": "才",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          },
+          {
+            "character": "纔",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "才",
+            "pinyin": "cái",
+            "definition": "[名]_x000D_\n1.天賦的能力、稟性。《孟子．告子上》：「富歲子弟多賴，凶歲子弟多暴，非天之降才爾殊也。」_x000D_\n2.力量、智慧。通「材」。《詩經．魯頌．駉》：「思無期，思馬斯才。」漢．王充《論衡．實知》：「人才有高下，知物由學，學之乃知，不問不識。」_x000D_\n3.有才能、智慧的人。如：「天才」、「英才」、「幹才」。《孟子．離婁下》：「中也養不中，才也養不才。」《禮記．文王世子》：「凡語于郊者，必取賢斂才焉。」_x000D_\n4.諷稱某類的人。如：「蠢才」、「奴才」。_x000D_\n5.姓。如明代有才寬。_x000D_\n[副]_x000D_\n1.方、始。如：「剛才」、「方才」、「戲才開鑼」、「呆了半晌，我才會意過來。」《晉書．卷七九．列傳．謝安》：「才小富貴，便豫人家事。」_x000D_\n2.僅。如：「他今年才五歲。」「我身上才帶五塊錢。」_x000D_\n3.表示強調的語氣。如：「我才不幹呢！」「他哪有累？我才累呢！」_x000D_\n[量]_x000D_\n1.臺灣地區用於計算木材體積的單位。一才為一台寸寬×一台寸厚×十台尺長。也作「材」。_x000D_\n2.臺灣地區用於計算物體面積的單位。可見於紙張、玻璃、石材、窗簾等的計算，一才為一尺（三十公分）見方。也作「材」。",
+            "entry_id": "09734",
+            "sheet": "1150929辭典匯出",
+            "row": 9748,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "济": {
+        "definition": "help, aid, relieve; ferry, cross",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "濟",
+            "relation": "kTraditionalVariant",
+            "definition": "to help, aid, relieve; to ferry, cross",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "世": {
+        "definition": "generation; world; era",
+        "mandarin": "shì",
+        "official_dictionary": [
+          {
+            "title": "世",
+            "pinyin": "shì",
+            "definition": "[名]_x000D_\n1.三十年稱為「一世」。《說文解字．十部》：「世，三十年為一世。」《論語．子路》：「如有王者，必世而後仁。」_x000D_\n2.父子相繼稱為「一世」，即一代。《字彙．一部》：「世，父子相代為一世。」如：「五世其昌」、「秦二世」。《詩經．大雅．文王》：「文王孫子，本支百世。」《三國演義》第五回：「袁本初四世三公，門多故吏，漢朝名相之裔，可為盟主。」_x000D_\n3.朝代。《詩經．大雅．蕩》：「殷鑒不遠，在夏后之世。」晉．陶淵明〈桃花源記〉：「問今是何世，乃不知有漢，無論魏、晉。」南朝梁．劉勰《文心雕龍．詮賦》：「秦世不文，頗有雜賦。」_x000D_\n4.時代。《易經．繫辭下》：「易之興也，其當殷之末世。」漢．王充《論衡．逢遇》：「伯夷，帝者之佐也，出於王者之世。」_x000D_\n5.年、歲。《禮記．曲禮下》：「去國三世，爵祿有列於朝，出入有詔於國。」_x000D_\n7.世界、世間、世人。如：「傳世」、「避世」、「世外桃源」。《莊子．天地》：「千歲厭世，去而上僊；乘彼白雲，至於帝鄉。」《楚辭．屈原．漁父》：「舉世皆濁我獨清，眾人皆醉我獨醒。」_x000D_\n8.姓。如戰國時秦國有世鈞。_x000D_\n[量]_x000D_\n計算一生、一輩子的單位。如：「七世夫妻」、「三生三世」。《紅樓夢》第三回：「凡有外姓親友之人，一概不見，方可平安了此一世。」_x000D_\n[形]_x000D_\n1.與先輩有交誼的。如：「世姪」。《儒林外史》第三回：「貴房師高要縣湯公，就是先祖的門生，我和你是親切的世弟兄。」_x000D_\n2.世間的、世俗的。如：「世局」、「人情世故」。宋．黃機〈木蘭花慢．問功名何處〉詞：「世事翻雲覆雨，滿懷何止離憂。」《聊齋志異．卷八．夏雪》：「世風之變也，下者益諂，上者益驕。」_x000D_\n3.累代的。如：「世交」、「世仇」。《官場現形記》第二九回：「他自從到省之後，同寅當中不多幾日，居然很結識得幾個人，不是世誼，便是鄉誼，就是一無瓜葛的人，到了此時，一經拉攏，彼此亦就要好起來。所謂『臭味相投』，正是這個道理。」",
+            "entry_id": "08743",
+            "sheet": "1150929辭典匯出",
+            "row": 8757,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "智": {
+        "definition": "wisdom, knowledge, intelligence",
+        "mandarin": "zhì",
+        "official_dictionary": [
+          {
+            "title": "智",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.聰明、識略。如：「才智」、「足智多謀」、「大智若愚」。《孟子．公孫丑上》：「是非之心，智之端也。」《史記．卷七．項羽本紀》：「吾寧鬥智，不能鬥力。」\n2.姓。如宋代有智浹。\n[形]\n聰明的、深明事理的。如：「智者千慮，必有一失。」",
+            "entry_id": "07568",
+            "sheet": "1150929辭典匯出",
+            "row": 7579,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "志",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.意向、抱負、決心。如：「意志」、「志同道合」。《論語．公冶長》：「盍各言爾志。」\n2.記錄事物的書。如：「府志」、「三國志」。《周禮．春官．小史》：「小史掌邦國之志。」\n3.姓。如元代有志能。\n[動]\n1.記載、記錄。通「誌」。《周禮．春官．保章氏》：「掌天星，以志日月星辰之變動。」\n2.牢記。如：「永志不忘」。《荀子．子道》：「孔子曰：『由志之，吾語汝。』」",
+            "entry_id": "07554",
+            "sheet": "1150929辭典匯出",
+            "row": 7565,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "official_dictionary": [
+          {
+            "title": "信",
+            "pinyin": "xìn",
+            "definition": "[名]\n1.誠實不欺。如：「講信修睦」。《論語．為政》：「人而無信，不知其可也。」\n2.書札、書簡。如：「書信」、「平信」、「掛號信」。\n3.消息、音訊。如：「音信」、「凶信」、「口信」。\n4.使者、送信件的人。南朝宋．劉義慶《世說新語．文學》：「司空鄭沖馳遣信就阮籍求文。」\n5.符契、憑證。如：「印信」。《後漢書．卷九〇．烏桓鮮卑傳》：「大人有所召呼，則刻木為信，雖無文字，而部眾不敢違犯。」\n6.姓。如宋代有信世昌。\n[動]\n1.聽從、不懷疑。如：「相信」、「深信不疑」、「不可置信」。\n2.敬仰、崇奉。如：「信奉」、「信教」。南朝梁．劉勰《文心雕龍．正緯》：「至於光武之世，篤信斯術。」\n3.知曉、知道。宋．晏殊〈漁家傲．畫鼓聲中昏又曉〉詞：「須信道，人間萬事何時了？」《聊齋志異．卷七．青蛾》：「我父母皆仙人，何可以貌信其年歲乎？」\n4.連宿兩晚。如：「信宿」。《左傳．襄公十八年》：「信于城下而還。」晉．杜預．注：「信，再宿也。」\n[副]\n1.確實、的確、果真。《孟子．公孫丑上》：「信能行此五者，則鄰國之民，仰之若父母矣。」唐．柳宗元〈遊石角過小嶺至長烏村〉詩：「為農信可樂，居寵真虛榮。」\n2.隨意、任憑。如：「信口開河」、「信手拈來」。唐．白居易〈琵琶行〉：「低眉信手續續彈，說盡心中無限事。」",
+            "entry_id": "07174",
+            "sheet": "1150929辭典匯出",
+            "row": 7183,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "信",
+            "pinyin": "shēn",
+            "definition": "[動]\n1.伸直、舒展。通「伸」。《易經．繫辭下》：「往者屈也，來者信也。」《漢書．卷六二．司馬遷傳》：「乃欲卬首信眉，論列是非。」\n2.陳述表白。通「申」。《穀梁傳．隱公元年》：「春秋貴義而不貴惠，信道而不信邪。」",
+            "entry_id": "08974",
+            "sheet": "1150929辭典匯出",
+            "row": 8989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "新",
+            "pinyin": "xīn",
+            "definition": "[形]\n1.沒有使用過的。與「舊」相對。如：「新辦法」、「新衣」、「新筆」。\n2.剛開始的、始出現的。如：「新芽」、「新生兒」、「新品種」。\n[名]\n1.泛指一切新的人、事、物、知識等。如：「履新」、「汰舊換新」、「溫故知新」。\n2.剛收成的農作物。《禮記．月令》：「是月也，農乃登穀，天子嘗新。」《新唐書．卷一一八．宋務光傳》：「家無接新之儲，國乏俟荒之蓄。」\n3.朝代名。參見「新莽」條。\n4.姓。如春秋時晉國有新穆子。\n[動]\n改進或使改變，而成為新的、好的。如：「改過自新」、「一新耳目」。《書經．胤征》：「舊染汙俗，咸與惟新。」《禮記．大學》：「苟日新、日日新、又日新。」\n[副]\n不久前、剛才。如：「新寫的字」、「新買的衣服」。《荀子．不苟》：「新浴者振其衣，新沐者彈其冠。」",
+            "entry_id": "07163",
+            "sheet": "1150929辭典匯出",
+            "row": 7172,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "舊",
+                "pinyin": "jiù",
+                "definition": "[形]\n不新的、古老的、從前的。如：「舊日」、「舊交」、「舊車」、「舊衣服」、「舊習慣」。《詩經．大雅．文王》：「周雖舊邦，其命維新。」唐．杜牧〈旅宿〉詩：「寒燈思舊事，斷雁警愁眠。」\n[名]\n交情、老朋友。如：「念舊」、「懷舊」、「親朋故舊」。《三國志．卷三八．蜀書．許靖傳》：「吳郡都尉許貢、會稽太守王朗素與靖有舊，故往保焉。」",
+                "entry_id": "05717",
+                "sheet": "1150929辭典匯出",
+                "row": 5724
+              },
+              {
+                "title": "新芽",
+                "pinyin": "xīn yá",
+                "definition": "新長出的嫩芽。如：「窗前的那盆玫瑰花，開始抽新芽了。」",
+                "entry_id": "071630304",
+                "sheet": "1150929辭典匯出",
+                "row": 107803
+              },
+              {
+                "title": "新生兒",
+                "pinyin": "xīn shēng ér",
+                "definition": "從剛出生到一個月大的嬰兒，都稱為「新生兒」。",
+                "entry_id": "071630270",
+                "sheet": "1150929辭典匯出",
+                "row": 107776
+              },
+              {
+                "title": "履新",
+                "pinyin": "lǚ xīn",
+                "definition": "1.時逢新的一年。《新唐書．卷一九．禮樂志九》：「在位者皆再拜，宣制曰：『履新之慶，與公等同之。』」\n2.官吏接任新職。《文明小史》第六回：「新委的是傅祝登傅大人，不日就來履新。」也作「履任」。",
+                "entry_id": "038930017",
+                "sheet": "1150929辭典匯出",
+                "row": 66851
+              },
+              {
+                "title": "汰舊換新",
+                "pinyin": "tài jiù huàn xīn",
+                "definition": "把舊的淘汰，更換成新的。如：「這些設備即將汰舊換新，以增加生產效率。」",
+                "entry_id": "024790001",
+                "sheet": "1150929辭典匯出",
+                "row": 49426
+              },
+              {
+                "title": "溫故知新",
+                "pinyin": "wēn gù zhī xīn",
+                "definition": "語本《論語．為政》：「子曰：『溫故而知新，可以為師矣。』」指溫習舊業，可增進新知。亦指複習學過的知識，而獲得新的知識、體會。《漢書．卷一〇．成帝紀》：「儒林之官，四海淵原，宜皆明於古今，溫故知新，通達國體，故謂之博士。」《文明小史》第二五回：「起先教他經書，不上一年，溫故知新，五經均已讀熟。」",
+                "entry_id": "114950028",
+                "sheet": "1150929辭典匯出",
+                "row": 159732
+              },
+              {
+                "title": "新莽",
+                "pinyin": "xīn mǎng",
+                "definition": "王莽篡漢自立，國號新（西元9～23），建都長安，史稱為「新莽」。",
+                "entry_id": "071630016",
+                "sheet": "1150929辭典匯出",
+                "row": 107600
+              },
+              {
+                "title": "改過自新",
+                "pinyin": "gǎi guò zì xīn",
+                "definition": "改正過失，重新做人。《漢書．卷二三．刑法志》：「刑者不可復屬，雖後欲改過自新，其道亡繇也。」唐．白居易〈議肉刑可廢不可用〉：「其欲廢之者，則曰：『刻膚革，斷肢體，人主忍而用之。則愷悌惻隱之心乖矣。』此緹縈所謂雖欲改過自新，其道亡繇者也。」也作「改過從新」。",
+                "entry_id": "039760028",
+                "sheet": "1150929辭典匯出",
+                "row": 67702
+              },
+              {
+                "title": "一新耳目",
+                "pinyin": "yī xīn ěr mù",
+                "definition": "所見所聞給人截然不同的新感受。如：「近來公司大刀闊斧的革新，令人一新耳目。」",
+                "entry_id": "104820877",
+                "sheet": "1150929辭典匯出",
+                "row": 147429
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "丰": {
+        "definition": "abundant, lush, bountiful, plenty",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "丰",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "豐",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty; hexagram ䷶",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "丰",
+            "pinyin": "fēng",
+            "definition": "[形]\n1.草木茂盛的樣子。《說文解字．生部》：「丰，艸盛丰丰也。」\n2.容貌美好或豐滿的樣子。《詩經．鄭風．丰》：「子之丰兮，俟我乎巷兮。」\n[名]\n1.神態、風韻。通「風」。如：「丰姿」、「丰采」、「丰儀」。\n2.《詩經．鄭風》的篇名。共四章。根據〈詩序〉：「〈丰〉，刺亂也。」或亦指女子初不欲嫁其人，既乃悔而從之之詩。首章三句為：「子之丰兮，俟我乎巷兮；悔予不送兮。」",
+            "entry_id": "01723",
+            "sheet": "1150929辭典匯出",
+            "row": 1727,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "丰",
+            "pinyin": null,
+            "definition": "「豐」的異體字。",
+            "entry_id": "01735-1",
+            "sheet": "1150929辭典匯出",
+            "row": 37072,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宁": {
+        "definition": "calm, peaceful, serene; healthy",
+        "mandarin": "níng",
+        "related_characters": [
+          {
+            "character": "宁",
+            "relation": "kTraditionalVariant",
+            "definition": "calm, peaceful, serene; healthy",
+            "mandarin": "níng"
+          },
+          {
+            "character": "寧",
+            "relation": "kTraditionalVariant",
+            "definition": "repose, serenity, peace; peaceful",
+            "mandarin": "níng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "宁",
+            "pinyin": "zhù",
+            "definition": "[名]\n大門與屏風之間。《爾雅．釋宮》：「門屏之間謂之宁。」",
+            "entry_id": "07986",
+            "sheet": "1150929辭典匯出",
+            "row": 7998,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "立": {
+        "definition": "stand; let stand; establish, set",
+        "mandarin": "lì",
+        "official_dictionary": [
+          {
+            "title": "立",
+            "pinyin": "lì",
+            "definition": "[動]_x000D_\n1.直身站著。如：「站立」、「立正」。《孟子．梁惠王上》：「王立於沼上。」_x000D_\n2.豎起。如：「豎立」、「立竿見影」。《水滸傳》第三一回：「又將兩扇門立在牆邊，先去吹滅了燈火。」_x000D_\n3.設置。如：「立廟」、「私立小學」。《書經．周官》：「立太師、太傅、太保。」_x000D_\n4.制定、訂定。如：「立法」、「立案」、「立憲」。_x000D_\n5.建樹、成就。如：「立威」、「三十而立」。《左傳．襄公二十四年》：「大上有立德，其次有立功，其次有立言。」_x000D_\n6.存在。如：「獨立」、「誓不兩立」。_x000D_\n[副]_x000D_\n即刻。如：「立刻」。《史記．卷八六．刺客列傳．荊軻》：「劍堅，故不可立拔。」_x000D_\n[名]_x000D_\n1.姓。如春秋時魯國有立如子。_x000D_\n2.二一四部首之一。",
+            "entry_id": "03439",
+            "sheet": "1150929辭典匯出",
+            "row": 3446,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "逸": {
+        "definition": "flee, escape, break loose",
+        "mandarin": "yì",
+        "official_dictionary": [
+          {
+            "title": "逸",
+            "pinyin": "yì",
+            "definition": "[動]\n1.逃亡、逃跑。《說文解字．兔部》：「逸，失也，兔謾訑善逃也。」《左傳．桓公八年》：「隨師敗績，隨侯逸。」《北史．卷六．齊高祖神武帝本紀》：「見一赤兔，每搏輒逸。」\n2.奔跑。《國語．晉語五》：「馬逸不能止，三軍從之。」三國吳．韋昭．注：「逸，奔也。」\n3.散失。《書經．胤征》：「天吏逸德，烈于猛火。」\n4.釋放。《左傳．成公十六年》：「明日復戰，乃逸楚囚。」\n[形]\n1.放蕩的。《戰國策．楚策四》：「專淫逸侈靡，不顧國政，郢都必危矣。」\n2.隱逸的。如：「逸老」。《漢書．卷一〇．成帝紀》：「故官無廢事，下無逸民。」\n3.超群的、超絕的。如：「逸才」。《老殘遊記》第一〇回：「六七八段，間以曼衍，愈轉愈清，其調愈逸。」\n4.快速的。《後漢書．卷五二．崔駰傳》：「故英人乘斯時也，猶逸禽之赴深林。」\n5.舒適、安樂。《詩經．小雅．十月之交》：「民莫不逸，我獨不敢休。」\n[名]\n1.隱士。《北史．卷三一．高允傳》：「帝乃虛求，搜賢採逸，巖隱投竿，異人並出。」唐．李白〈夜泊黃山聞殷十四吳吟〉：「朝來果是滄洲逸，酤酒提盤飯霜栗。」\n2.過失。《書經．盤庚上》：「予亦拙謀，作乃逸。」漢．孔安國．傳：「逸，過也。」",
+            "entry_id": "10648",
+            "sheet": "1150929辭典匯出",
+            "row": 10662,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "豪兴",
+      "decision": "keep",
+      "reason": "“豪兴”指豪迈的兴致，词义自然完整，简洁有记忆点；虽偏文雅且并非固定品牌词，仍具品牌名凝练感。"
+    },
+    {
+      "name": "豪士",
+      "decision": "keep",
+      "reason": "完整词语指才能胆识过人的豪杰，语义明确、组合自然，具人物气概；也有“豪强霸道者”的旧义，但不妨碍其作为待复核品牌名。"
+    },
+    {
+      "name": "豪才济世",
+      "decision": "reject",
+      "reason": "整体是“凭豪才济世”的功业宣言，句式口号化且近于完整判断语，不具品牌名应有的凝练感。"
+    },
+    {
+      "name": "智豪",
+      "decision": "keep",
+      "reason": "可自然理解为智慧与豪气的凝练组合，语义清楚，构词紧凑，有辨识度；与“志豪”并非仅换同义字的同一意象。"
+    },
+    {
+      "name": "志豪",
+      "decision": "keep",
+      "reason": "可理解为志向豪迈，组合通顺，语义积极而凝练；与“智豪”的“智慧与豪气”意象不同，不构成近似重复。"
+    },
+    {
+      "name": "豪信",
+      "decision": "uncertain",
+      "reason": "可分别联想到豪迈与诚信，但两字之间关系不够明确，整体语义略显拼合，品牌自然度存疑。"
+    },
+    {
+      "name": "豪新",
+      "decision": "uncertain",
+      "reason": "“新”可表示新颖、更新，但与“豪”组合后的具体语义关系不清，像直接叠加褒义字，辨识度有限。"
+    },
+    {
+      "name": "豪丰",
+      "decision": "uncertain",
+      "reason": "“豪”与丰盛、丰茂的“丰”可作正向联想，但整体缺少自然明确的词义关系，组合略显堆字。"
+    },
+    {
+      "name": "豪宁",
+      "decision": "uncertain",
+      "reason": "若按简体字常用读音理解，“宁”有安宁义；与“豪”并置的关系不清，且“宁”字典所列直接义项为异读的宫门屏风间义，不宜据繁体“寧”的释义直接为此组合背书。"
+    },
+    {
+      "name": "豪立",
+      "decision": "uncertain",
+      "reason": "“立”可表示建立、树立或站立，但与“豪”的搭配关系不明确，整体更像字义拼接，语义自然度不足以确认。"
+    },
+    {
+      "name": "逸豪",
+      "decision": "keep",
+      "reason": "可自然理解为超逸、俊逸而豪迈，语义凝练且有气度；与“豪逸”式的常见性格意象相近，但本批没有该换序候选。"
+    }
+  ]
+}

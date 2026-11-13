@@ -1,0 +1,950 @@
+{
+  "review_id": "20261112T151350-4a45d3d4",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "酒和光",
+      "酒问道",
+      "酒自得",
+      "酒成章",
+      "太和远志",
+      "太和新章",
+      "太和春信",
+      "太清见山",
+      "太和映川",
+      "清和太远",
+      "山川太和",
+      "万象太新",
+      "光明太和",
+      "太岳",
+      "太学",
+      "星太远",
+      "云太白",
+      "太美",
+      "太宁",
+      "太有光",
+      "太清朗",
+      "太见山",
+      "太映川",
+      "太行有序"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "郁川映月",
+        "崧川映月",
+        "瓷映长川",
+        "山川入瓷",
+        "葭映川",
+        "暮云映川",
+        "螭映川",
+        "山川清鲜",
+        "珏映川",
+        "赫山映川",
+        "烛映川",
+        "一川明月"
+      ],
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "山": [
+        "一见青山",
+        "山水清斋",
+        "见山斋",
+        "崞山见月",
+        "山川入瓷",
+        "铘见山海",
+        "鹂见山",
+        "山麇见月",
+        "山川清鲜",
+        "柘见山",
+        "赫山映川",
+        "栎见山"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "铘见山海",
+        "鹂见山",
+        "山麇见月",
+        "柘见山",
+        "栎见山",
+        "藏酒见山",
+        "凉云见月",
+        "见崧",
+        "云开见硔"
+      ],
+      "春": [
+        "羲和春",
+        "鹂衔春信",
+        "榕庭春信",
+        "柘园春信",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光"
+      ],
+      "清": [
+        "太和清风",
+        "山水清斋",
+        "臻清和",
+        "山川清鲜",
+        "柘影清和",
+        "一庭清欢",
+        "清茗",
+        "清懿堂",
+        "清泚",
+        "清酎",
+        "枣影清风",
+        "淑清"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "自": [
+        "自成一格",
+        "自豪",
+        "自忞"
+      ],
+      "星": [
+        "远星团",
+        "卫星",
+        "星轺",
+        "奎星",
+        "阎星野",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "星野斋",
+        "摘星",
+        "摘星辰",
+        "箕星"
+      ],
+      "行": [
+        "太行云",
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义",
+        "麇行远山",
+        "鲜行"
+      ],
+      "光": [
+        "柘有光",
+        "涧有光",
+        "梾间有光",
+        "珐有光",
+        "栎间有光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光"
+      ],
+      "云": [
+        "暮云映川",
+        "白云深涧",
+        "太行云",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间"
+      ],
+      "和": [
+        "太和清风",
+        "臻清和",
+        "羲和春",
+        "柘影清和",
+        "太和",
+        "太和风",
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和"
+      ],
+      "问": [
+        "叩问",
+        "听松问斋",
+        "肯问"
+      ],
+      "远": [
+        "远星团",
+        "迈远",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "映": [
+        "郁川映月",
+        "崧川映月",
+        "瓷映长川",
+        "葭映川",
+        "暮云映川",
+        "螭映川",
+        "珏映川",
+        "赫山映川",
+        "烛映川",
+        "晖映",
+        "榴映秋",
+        "映芙"
+      ],
+      "宁": [
+        "敉宁",
+        "欧宁",
+        "淑宁",
+        "晙宁",
+        "凯宁",
+        "珀宁",
+        "酷宁",
+        "婳宁",
+        "广宁",
+        "赟宁",
+        "赫宁",
+        "珂宁"
+      ],
+      "新": [
+        "仓颉新章",
+        "珐艺新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚"
+      ],
+      "章": [
+        "仓颉新章",
+        "珐艺新章",
+        "酷乐章"
+      ],
+      "酒": [
+        "藏酒见山",
+        "酒盅",
+        "酒歌",
+        "酒旗",
+        "酒韵",
+        "酒礼",
+        "酒境",
+        "酒意",
+        "松间酒",
+        "酒逢春",
+        "酒如歌",
+        "酒伴山行"
+      ],
+      "道": [
+        "焊之道",
+        "烤道"
+      ],
+      "万": [
+        "万象初酿",
+        "万象常鲜",
+        "万象之柢",
+        "珐彩万象",
+        "万顷晴光",
+        "万物鲜"
+      ],
+      "信": [
+        "鹂衔春信",
+        "榕庭春信",
+        "柘园春信",
+        "榴花信",
+        "口信",
+        "瓶中信",
+        "义信",
+        "榕风有信",
+        "信牍",
+        "赫信",
+        "珂信"
+      ],
+      "象": [
+        "万象初酿",
+        "万象常鲜",
+        "万象之柢",
+        "珐彩万象",
+        "具象"
+      ],
+      "岳": [
+        "岳峙",
+        "峋岳",
+        "峥岳",
+        "崟岳",
+        "崧岳",
+        "珀岳",
+        "螭岳",
+        "嶷岳"
+      ],
+      "有": [
+        "柘有光",
+        "涧有光",
+        "梾间有光",
+        "珐有光",
+        "栎间有光",
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度",
+        "榕风有信",
+        "溪山有蹊"
+      ],
+      "序": [
+        "晙序",
+        "瓷序",
+        "暮光序",
+        "碳序",
+        "唐序",
+        "茗序",
+        "赫序",
+        "王序"
+      ],
+      "白": [
+        "白云深涧",
+        "月白斋",
+        "楮白",
+        "白瓷",
+        "剖白",
+        "暮山白",
+        "白鹂",
+        "唐白",
+        "白麇",
+        "涡白",
+        "涧白",
+        "赫月白"
+      ],
+      "朗": [
+        "崧朗",
+        "酷朗",
+        "鲜朗",
+        "朗榕",
+        "珺朗"
+      ],
+      "得": [
+        "了得"
+      ],
+      "美": [
+        "珵美",
+        "赟美"
+      ],
+      "学": [
+        "肯学"
+      ],
+      "太": [
+        "太和清风",
+        "太和",
+        "太和风",
+        "太行云",
+        "太古",
+        "太素",
+        "太微",
+        "太阳雨"
+      ]
+    },
+    "literature_phrase_examples": {
+      "酒和光": [],
+      "酒问道": [],
+      "酒自得": [],
+      "酒成章": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 521827,
+          "context": "【立秋之夕对酒成章粗遣清景以招佳咏】"
+        }
+      ],
+      "太和远志": [],
+      "太和新章": [],
+      "太和春信": [],
+      "太清见山": [],
+      "太和映川": [],
+      "清和太远": [],
+      "山川太和": [],
+      "万象太新": [],
+      "光明太和": [],
+      "太岳": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 31987,
+          "context": "骊龙暴双骨，太岳摧孤仞。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 53804,
+          "context": "圣君封太岳，十月建行旃。"
+        }
+      ],
+      "太学": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 52952,
+          "context": "厥初游太学，相与极周旋。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 53393,
+          "context": "伯鸾游太学，中夜一相望。"
+        }
+      ],
+      "星太远": [],
+      "云太白": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1250081,
+          "context": "方朔人传是岁星，又云太白本长庚。"
+        }
+      ],
+      "太美": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 581051,
+          "context": "生女禁太美，阴山嫁胡儿。"
+        }
+      ],
+      "太宁": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 364175,
+          "context": "三光入无穷，寂默返太宁。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 73927,
+          "context": "帝业资寅亮，鸿钧翊太宁。"
+        }
+      ],
+      "太有光": [],
+      "太清朗": [],
+      "太见山": [],
+      "太映川": [],
+      "太行有序": []
+    },
+    "dictionary_phrase_entries": {
+      "酒和光": [],
+      "酒问道": [],
+      "酒自得": [],
+      "酒成章": [],
+      "太和远志": [],
+      "太和新章": [],
+      "太和春信": [],
+      "太清见山": [],
+      "太和映川": [],
+      "清和太远": [],
+      "山川太和": [],
+      "万象太新": [],
+      "光明太和": [],
+      "太岳": [],
+      "太学": [],
+      "星太远": [],
+      "云太白": [],
+      "太美": [],
+      "太宁": [],
+      "太有光": [],
+      "太清朗": [],
+      "太见山": [],
+      "太映川": [],
+      "太行有序": []
+    },
+    "direct_dictionary": {
+      "酒": {
+        "definition": "wine, spirits, liquor, alcoholic beverage",
+        "mandarin": "jiǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "问": {
+        "definition": "ask about, inquire after",
+        "mandarin": "wèn",
+        "related_characters": [
+          {
+            "character": "問",
+            "relation": "kTraditionalVariant",
+            "definition": "ask (about), inquire after",
+            "mandarin": "wèn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "道": {
+        "definition": "path, road, street; method, way",
+        "mandarin": "dào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "得": {
+        "definition": "obtain, get, gain, acquire",
+        "mandarin": "dé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "太": {
+        "definition": "very, too, much; big; extreme",
+        "mandarin": "tài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "万": {
+        "definition": "ten thousand; innumerable",
+        "mandarin": "wàn mò",
+        "related_characters": [
+          {
+            "character": "万",
+            "relation": "kTraditionalVariant",
+            "definition": "ten thousand; innumerable",
+            "mandarin": "wàn mò"
+          },
+          {
+            "character": "萬",
+            "relation": "kTraditionalVariant",
+            "definition": "ten thousand; innumerable",
+            "mandarin": "wàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "象": {
+        "definition": "elephant; ivory; figure, image",
+        "mandarin": "xiàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岳": {
+        "definition": "mountain peak; surname",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "学": {
+        "definition": "learning, knowledge; school",
+        "mandarin": "xué",
+        "related_characters": [
+          {
+            "character": "學",
+            "relation": "kTraditionalVariant",
+            "definition": "learning, knowledge; school",
+            "mandarin": "xué"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "白": {
+        "definition": "white; pure, unblemished; bright",
+        "mandarin": "bái",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "美": {
+        "definition": "beautiful, pretty; pleasing",
+        "mandarin": "měi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宁": {
+        "definition": "calm, peaceful, serene; healthy",
+        "mandarin": "níng",
+        "related_characters": [
+          {
+            "character": "宁",
+            "relation": "kTraditionalVariant",
+            "definition": "calm, peaceful, serene; healthy",
+            "mandarin": "níng"
+          },
+          {
+            "character": "寧",
+            "relation": "kTraditionalVariant",
+            "definition": "repose, serenity, peace; peaceful",
+            "mandarin": "níng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朗": {
+        "definition": "clear, bright; distinct",
+        "mandarin": "lǎng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "序": {
+        "definition": "series, serial order, sequence",
+        "mandarin": "xù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "酒和光",
+      "decision": "uncertain",
+      "reason": "可理解为酒与光明或酒中之光，但“和光”与“酒”的关系不够清楚，整体搭配略显生硬。"
+    },
+    {
+      "name": "酒问道",
+      "decision": "reject",
+      "reason": "“酒问道”像省略成分的句子或口号，酒与问道之间关系突兀，缺少凝练自然的品牌构词。"
+    },
+    {
+      "name": "酒自得",
+      "decision": "uncertain",
+      "reason": "可联想到饮酒自得，但“酒自得”语法关系含混，须补入省略成分才能顺读，自然度不足。"
+    },
+    {
+      "name": "酒成章",
+      "decision": "uncertain",
+      "reason": "可理解为酒兴成诗文，且有“对酒成章”的连续用例；但名称本身省略了“对”等关系成分，读来略显截短，品牌适配度存疑。"
+    },
+    {
+      "name": "太和远志",
+      "decision": "uncertain",
+      "reason": "“太和”与“远志”各自可解，但组合关系不明；“远志”也可指具体药材，整体语义指向不够确定。"
+    },
+    {
+      "name": "太和新章",
+      "decision": "keep",
+      "reason": "“太和”传达和谐安定，“新章”有开启新篇之意，组合自然、寓意清楚，具备品牌名的凝练感。"
+    },
+    {
+      "name": "太和春信",
+      "decision": "keep",
+      "reason": "“春信”指春天将至的消息，与“太和”组合形成和暖、更新的意象，简洁自然且有辨识度。"
+    },
+    {
+      "name": "太清见山",
+      "decision": "uncertain",
+      "reason": "可读作清明之境中见山，但“太清”与“见山”的语义衔接较松，整体意象关系不够明确。"
+    },
+    {
+      "name": "太和映川",
+      "decision": "keep",
+      "reason": "可形成和融之境映照山川的自然画面，语序通顺，意象清晰，适合作为凝练的品牌名称。"
+    },
+    {
+      "name": "清和太远",
+      "decision": "reject",
+      "reason": "“太远”通常表示距离或程度过远，与“清和”并置缺少自然关系，整体像未完成的描述而非凝练名称。"
+    },
+    {
+      "name": "山川太和",
+      "decision": "uncertain",
+      "reason": "可理解为山川呈现和谐安宁，但“太和”置于句末略像判断或评价，结构与语义关系不够凝练。"
+    },
+    {
+      "name": "万象太新",
+      "decision": "reject",
+      "reason": "整体近似“万物都太新”的评价句，“太新”表达程度过甚，组合口号化且不够自然。"
+    },
+    {
+      "name": "光明太和",
+      "decision": "uncertain",
+      "reason": "“光明”与“太和”均为正向抽象词，但并置后关系松散，较像概念叠加，品牌辨识度不足。"
+    },
+    {
+      "name": "太岳",
+      "decision": "keep",
+      "reason": "“太岳”可指高大山岳或名山，二字组合简洁有力，意象明确；不是通用产品类别词。"
+    },
+    {
+      "name": "太学",
+      "decision": "reject",
+      "reason": "“太学”是传统最高学府的通用名称，完整名称直接指向教育机构类别，品牌独特性不足。"
+    },
+    {
+      "name": "星太远",
+      "decision": "reject",
+      "reason": "通常语序应为“星太远”所表达的“星星太远”判断句，整名像一句感叹或描述，不够凝练。"
+    },
+    {
+      "name": "云太白",
+      "decision": "uncertain",
+      "reason": "可读作云色太白，也可能被理解为“云、太白”的并列；语义关系不清，且易联想到专名李太白而缺乏明确依据。"
+    },
+    {
+      "name": "太美",
+      "decision": "uncertain",
+      "reason": "可作“非常美”的日常评价语，语义清楚但过于通用、赞美口号感较强，品牌辨识度有限。"
+    },
+    {
+      "name": "太宁",
+      "decision": "keep",
+      "reason": "可理解为安宁、至宁之境，语义简洁正向；作为抽象品牌名自然，不因常见用字而否决。"
+    },
+    {
+      "name": "太有光",
+      "decision": "reject",
+      "reason": "“太有光”是程度副词加判断性短语，像口号或评价句，不符合凝练品牌名的形式。"
+    },
+    {
+      "name": "太清朗",
+      "decision": "uncertain",
+      "reason": "可理解为格外清朗，但“太”作为程度副词使其更像对天气或状态的描述句，名称感偏弱。"
+    },
+    {
+      "name": "太见山",
+      "decision": "reject",
+      "reason": "“太见山”缺少自然的语法关系；若意在表达见山，前置“太”无法形成清楚且顺畅的语义。"
+    },
+    {
+      "name": "太映川",
+      "decision": "uncertain",
+      "reason": "“映川”可形成映照河川的意象，但“太”在此处既难作自然修饰，也未建立明确关系，整体略生硬。"
+    },
+    {
+      "name": "太行有序",
+      "decision": "reject",
+      "reason": "“太行”会自然指向太行山，“有序”构成对其状态的判断，整体像完整陈述而非凝练品牌名；也易被误读为“太行有序”的地域宣传语。"
+    }
+  ]
+}

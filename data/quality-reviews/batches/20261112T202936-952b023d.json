@@ -1,0 +1,830 @@
+{
+  "review_id": "20261112T202936-952b023d",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "山塅",
+      "河塅",
+      "青禾塅",
+      "望远塅",
+      "晴塅",
+      "塅野",
+      "云磴",
+      "石磴",
+      "山间石磴",
+      "青云磴",
+      "凌云磴",
+      "危崖飞磴",
+      "磴上青云",
+      "山高磴远"
+    ],
+    "related_kept_candidates": {
+      "望": [
+        "凉秋望远",
+        "奇峰望远",
+        "登峣望远",
+        "桉林远望",
+        "一望",
+        "硕望",
+        "芹田望月",
+        "望海斋",
+        "灵猊望月",
+        "望海埼",
+        "望埼",
+        "长弓望月"
+      ],
+      "间": [
+        "山间邨",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "山间铃",
+        "石砾间",
+        "山间蛱"
+      ],
+      "山": [
+        "山间邨",
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "山中琎石",
+        "麇行远山",
+        "山间麇影",
+        "远山矿语",
+        "雯与远山",
+        "人间山海",
+        "三山远",
+        "山间漻月"
+      ],
+      "青": [
+        "青禾斋",
+        "唐青禾",
+        "云外青嶂",
+        "三尺青云",
+        "青云",
+        "青云冈",
+        "纸上青",
+        "黄土青禾",
+        "云裹青山",
+        "青禾邨",
+        "青云幄",
+        "一见青山"
+      ],
+      "云": [
+        "云外青嶂",
+        "云上人",
+        "三尺青云",
+        "凌云",
+        "青云",
+        "青云冈",
+        "崖上云",
+        "云裹青山",
+        "青云幄",
+        "云上船",
+        "烧云",
+        "云斓集"
+      ],
+      "远": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "凉秋望远",
+        "麇行远山",
+        "奇峰望远",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "踏远山"
+      ],
+      "高": [
+        "高躅",
+        "高瞰",
+        "崧高",
+        "高柯",
+        "高冈",
+        "高廪"
+      ],
+      "野": [
+        "山野鳟",
+        "岍野",
+        "骉野",
+        "葑野",
+        "葑野集",
+        "垄野",
+        "顷野",
+        "榴野",
+        "野墅",
+        "芹野初晴",
+        "晙野",
+        "崧野"
+      ],
+      "禾": [
+        "青禾斋",
+        "唐青禾",
+        "黄土青禾",
+        "青禾邨",
+        "苠禾",
+        "欧禾",
+        "芙禾",
+        "晙禾",
+        "暮禾",
+        "夕禾",
+        "碳禾",
+        "唐禾"
+      ],
+      "飞": [
+        "佽飞",
+        "奋飞",
+        "飞碟",
+        "千丈飞瀑",
+        "飞镞",
+        "飞奔",
+        "鹡飞",
+        "飞鸟出嶂",
+        "飞翮",
+        "飞鳐",
+        "蜻飞",
+        "蛱飞"
+      ],
+      "石": [
+        "山中琎石",
+        "山石",
+        "山石松风",
+        "石砾间",
+        "燧石间",
+        "石间濑",
+        "山海锆石",
+        "砭石堂",
+        "金石錾刻",
+        "玉石錾花",
+        "峋石听泉",
+        "峋石"
+      ],
+      "上": [
+        "云上人",
+        "纸上青",
+        "崖上云",
+        "云上船",
+        "畈上春",
+        "塄上春",
+        "垄上",
+        "涧上春山",
+        "矿上春",
+        "江上菼",
+        "柯上春风",
+        "江上滟光"
+      ],
+      "晴": [
+        "万顷晴光",
+        "芹野初晴",
+        "晴窗斋",
+        "晴枫",
+        "唐雨初晴",
+        "涝转晴",
+        "罅见晴",
+        "晴暄",
+        "晴嶂",
+        "晴川远嶂",
+        "蜜色晴川",
+        "晴滟"
+      ],
+      "河": [
+        "瞰山河",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "河垠",
+        "枕星河",
+        "碳映星河",
+        "星河映埼",
+        "邂逅星河",
+        "广星河",
+        "广厦星河",
+        "涡映山河"
+      ],
+      "崖": [
+        "崖上云",
+        "百丈崖",
+        "巉崖映月",
+        "云崖",
+        "海崖",
+        "崖谷",
+        "云过崖",
+        "崖间月",
+        "崖边松",
+        "崖畔风",
+        "崖前海",
+        "崖下泉"
+      ],
+      "凌": [
+        "凌云",
+        "杭凌波",
+        "芰叶凌波"
+      ]
+    },
+    "literature_phrase_examples": {
+      "山塅": [],
+      "河塅": [],
+      "青禾塅": [],
+      "望远塅": [],
+      "晴塅": [],
+      "塅野": [],
+      "云磴": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 271432,
+          "context": "松膏背日凝云磴，丹粉经年染石床。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 273941,
+          "context": "纵调为野吟，徐徐下云磴。"
+        }
+      ],
+      "石磴": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 26789,
+          "context": "披襟乘石磴，列籍俯春泉。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 28708,
+          "context": "石磴平黄陆，烟楼半紫虚。"
+        }
+      ],
+      "山间石磴": [],
+      "青云磴": [],
+      "凌云磴": [],
+      "危崖飞磴": [],
+      "磴上青云": [],
+      "山高磴远": []
+    },
+    "dictionary_phrase_entries": {
+      "山塅": [],
+      "河塅": [],
+      "青禾塅": [],
+      "望远塅": [],
+      "晴塅": [],
+      "塅野": [],
+      "云磴": [],
+      "石磴": [
+        {
+          "title": "石磴",
+          "pinyin": "shí dèng",
+          "definition": "以石頭鋪砌成的臺階。《初刻拍案驚奇》卷四：「約有十數里，方得石磴，磴有百來級，級盡方是平地。」《儒林外史》第一四回：「過了一個小石橋，照著那極窄的石磴走上去，又是一座大廟。」",
+          "entry_id": "087080052",
+          "sheet": "1150929辭典匯出",
+          "row": 125823,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "山间石磴": [],
+      "青云磴": [],
+      "凌云磴": [],
+      "危崖飞磴": [],
+      "磴上青云": [],
+      "山高磴远": []
+    },
+    "direct_dictionary": {
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "塅": {
+        "definition": "a large flat area, usually used in place names",
+        "mandarin": "duàn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "河",
+            "pinyin": "hé",
+            "definition": "[名]\n1.水道的通稱。如：「河流」、「運河」。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n2.黃河的簡稱。如：「河套」。\n3.成河川狀的群體。如：「星河」、「銀河」。\n4.姓。如南北朝時有河禎。",
+            "entry_id": "04729",
+            "sheet": "1150929辭典匯出",
+            "row": 4736,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "official_dictionary": [
+          {
+            "title": "青",
+            "pinyin": "jīng",
+            "definition": "參見「青青」(二)條。",
+            "entry_id": "05920",
+            "sheet": "1150929辭典匯出",
+            "row": 5928,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "青青",
+                "pinyin": "jīng jīng",
+                "definition": "草木茂盛的樣子。《詩經．衛風．淇奧》：「瞻彼淇奧，綠竹青青。」宋．范仲淹〈岳陽樓記〉：「岸芷汀蘭，郁郁青青。」也作「菁菁」。",
+                "entry_id": "059200001",
+                "sheet": "1150929辭典匯出",
+                "row": 94282
+              },
+              {
+                "title": "青青",
+                "pinyin": "qīng qīng",
+                "definition": "1.形容草木翠綠的顏色。《文選．古詩十九首．青青河邊草》：「青青河邊草，綿綿思遠道。」《三國演義》第九回：「千里草，何青青！十日卜，不得生！」\n2.形容鬢髮烏黑。宋．朱熹〈和秀野蘄簟之句〉詩：「史君兩鬢尚青青，學道仍拋後院笙。」",
+                "entry_id": "065760148",
+                "sheet": "1150929辭典匯出",
+                "row": 100674
+              }
+            ]
+          },
+          {
+            "title": "青",
+            "pinyin": "qīng",
+            "definition": "[名]\n1.顏色：(1)綠色。唐．劉禹錫〈陋室銘〉：「苔痕上階綠，草色入簾青。」(2)藍色。《荀子．勸學》：「青取之於藍，而青於藍。」(3)黑色。如：「玄青」。\n2.綠色的草木、山脈。如：「踏青」、「萬年青」、「青黃不接」。唐．柳宗元〈始得西山宴游記〉：「縈青繚白，外與天際。」\n3.竹皮。如：「汗青」。\n4.地名簡稱：(1)大陸地區青海省簡稱。如：「青藏鐵路」。(2)青島市簡稱。如：「青鹽鐵路」。\n5.二一四部首之一。\n[形]\n1.綠色的。如：「青山綠水」、「山青水秀」。\n2.藍色的。如：「青天白日」。\n3.黑色的。如：「青布」、「青衣」。唐．李白〈將進酒〉：「君不見高堂明鏡悲白髮，朝如青絲暮成雪。」\n4.年輕的。如：「青年」、「青春」。",
+            "entry_id": "06576",
+            "sheet": "1150929辭典匯出",
+            "row": 6585,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "禾",
+            "pinyin": "hé",
+            "definition": "[名]\n1.穀類植物的總稱。《詩經．豳風．七月》：「十月納禾稼。」唐．李紳〈古風〉詩二首之二：「鋤禾日當午，汗滴禾下土。」\n2.姓。如宋代有禾實。\n3.二一四部首之一。",
+            "entry_id": "04720",
+            "sheet": "1150929辭典匯出",
+            "row": 4727,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "official_dictionary": [
+          {
+            "title": "望",
+            "pinyin": "wàng",
+            "definition": "[動]\n1.向遠處或高處看。如：「登高望遠」、「一望無際」。唐．李白〈靜夜思〉詩：「舉頭望明月，低頭思故鄉。」宋．汪元量〈潮州歌〉：「北望燕雲不盡頭，大江東去水悠悠。」\n2.希冀、期盼。如：「盼望」、「期望」、「渴望」。《孟子．梁惠王上》：「王如知此，則無望民之多於鄰國也。」\n3.拜訪、慰問。如：「拜望」、「探望」。\n4.怨恨、責備。《史記．卷八九．張耳陳餘傳》：「不意君之望臣深也！豈以臣為重去將哉？」《文選．司馬遷．報任少卿書》：「若望僕不相師，而用流俗人之言，僕非敢如此。」\n5.將近、接近。唐．韓愈〈祭竇司業文〉：「逾七望八，年孰非翁。」《兒女英雄傳》第一回：「你那我雖然不至於老邁不堪，也是望五的人了。」\n[名]\n1.志願、心願。如：「願望」、「絕望」。\n2.名譽、名聲。如：「名望」、「聲望」、「德高望重」。《三國演義》第八三回：「陸遜年幼望輕，恐諸公不服。」\n3.農曆每月十五日，地球上所看見的滿月月相，後指農曆的每月十五日。《文選．枚乘．七發》：「將以八月之望，與諸侯遠方交游兄弟，並往觀濤乎廣陵之曲江。」宋．蘇軾〈後赤壁賦〉：「是歲十月之望，步自雪堂，將歸于臨皋。」\n[介]\n向、朝。如：「望後退」、「望前看」、「望我點點頭」。",
+            "entry_id": "11541",
+            "sheet": "1150929辭典匯出",
+            "row": 11555,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晴": {
+        "definition": "clear weather, fine weather",
+        "mandarin": "qíng",
+        "official_dictionary": [
+          {
+            "title": "晴",
+            "pinyin": "qíng",
+            "definition": "[動]\n雨雪停止。《文選．潘岳．閑居賦》：「微雨新晴，六合清朗。」元．張可久〈人月圓．梅花渾似真真面〉曲：「雪晴天氣，松腰玉瘦，泉眼冰寒。」\n[名]\n清朗無雲的天氣。如：「秋晴」、「陰晴」。唐．劉禹錫〈竹枝詞〉二首之一：「東邊日出西邊雨，道是無晴卻有晴。」\n[形]\n晴朗的。如：「晴天霹靂」、「晴空萬里」。唐．李白〈秋登宣城謝朓北樓〉詩：「江城如畫裡，山曉望晴空。」唐．賈島〈送人適越〉詩：「晴湖勝鏡碧，寒柳似金黃。」",
+            "entry_id": "06592",
+            "sheet": "1150929辭典匯出",
+            "row": 6601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "official_dictionary": [
+          {
+            "title": "野",
+            "pinyin": "yě",
+            "definition": "[名]\n1.郊外。《書經．武成》：「歸馬于華山之陽，放牛于桃林之野。」唐．柳宗元〈捕蛇者說〉：「永州之野產異蛇，黑質而白章。」\n2.廣平的地方。《呂氏春秋．季秋紀．審己》：「稼生於野而藏於倉，稼非有欲也。」《三國志．卷三五．蜀書．諸葛亮傳》：「益州險塞，沃野千里。」\n3.界限、地域。如：「分野」、「視野」。《淮南子．原道》：「上游於霄雿之野，下出於無垠之門。」\n4.民間。《書經．大禹謨》：「君子在野，小人在位。」《三國志．卷四二．蜀書．郤正傳》：「故君臣協美於朝，黎庶欣戴於野。」\n[形]\n1.質樸。《論語．雍也》：「質勝文則野，文勝質則史。」唐．柳宗元〈柳宗直西漢文類序〉：「首紀殷周之前，其文簡而野。」\n2.粗鄙無禮、放縱不馴。如：「粗野」、「撒野」。《左傳．宣公四年》：「諺曰：『狼子野心。』是乃狼也，其可畜乎？」《禮記．仲尼燕居》：「敬而不中禮謂之野，恭而不中禮謂之給。」\n3.野生而未經人工栽培或馴養的。如：「野菜」、「野菊」、「野牛」、「野馬」。\n4.非正式的。如：「野錄」、「野乘」、「野史」。\n[副]\n非常、很。如：「朔風野大」。",
+            "entry_id": "10755",
+            "sheet": "1150929辭典匯出",
+            "row": 10769,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "磴": {
+        "definition": "steps on ledge, cliff, or hill",
+        "mandarin": "dèng",
+        "official_dictionary": [
+          {
+            "title": "磴",
+            "pinyin": "dèng",
+            "definition": "[名]\n石階。宋．蘇軾〈徑山道中次韻答周長官兼贈蘇寺丞〉詩：「南望功臣山，雲外盤飛磴。」清．蔣士銓《冬青樹》第二九齣：「都認做鬼門關程途幽渺，哪知是俺上青雲梯磴逍遙。」",
+            "entry_id": "02084",
+            "sheet": "1150929辭典匯出",
+            "row": 2091,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "石": {
+        "definition": "stone, rock, mineral; Kangxi radical 112",
+        "mandarin": "shí",
+        "official_dictionary": [
+          {
+            "title": "石",
+            "pinyin": "dàn",
+            "definition": "[名]_x000D_\n量詞：(1)計算容量的單位。公制一石等於十斗。也稱為「公石」。(2)古代計算重量的單位。漢．鼂錯〈論貴粟疏〉：「數石之重，中人弗勝，不為奸邪所利，一日弗得而飢寒至，是故明君貴五穀而賤金玉。」《戰國策．齊策四》：「大王據千乘之地，而建千石鍾，萬石虡。」",
+            "entry_id": "02020",
+            "sheet": "1150929辭典匯出",
+            "row": 2025,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "石",
+            "pinyin": "shí",
+            "definition": "[名]\n1.由礦物集結而成的堅硬塊狀物，是構成地殼的物質。如：「岩石」、「礦石」、「花岡石」。\n2.碑、碣。《呂氏春秋．慎行論．求人》：「故功績銘乎金石，著於盤盂。」《史記．卷六．秦始皇本紀》：「乃遂上泰山，立石。」\n3.藥石。《左傳．襄公二十三年》：「季孫之愛我，疾疢也；孟孫之惡我，藥石也，美疢不如惡石。」唐．孔穎達．正義：「治病藥分用石。《本草》云：『鍾乳、礬、磁石之類多矣。』」\n4.姓。如宋代有石延年。\n5.二一四部首之一。\n6.中國古代樂器「八音」分類法之一，通常以製作材質來分，此處泛指石類樂器，如磬之屬一類的敲擊樂器。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」",
+            "entry_id": "08708",
+            "sheet": "1150929辭典匯出",
+            "row": 8722,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凌": {
+        "definition": "pure; virtuous; insult; maltreat",
+        "mandarin": "líng",
+        "official_dictionary": [
+          {
+            "title": "凌",
+            "pinyin": "líng",
+            "definition": "[名]\n1.積冰。《文選．張衡．思玄賦》：「魚矜鱗而并凌兮，鳥登木而失條。」唐．李善．注：「凌，冰也。」\n2.姓。如唐代有凌準。\n[動]\n1.登、升。唐．李白〈書情題蔡舍人雄〉詩：「凌山採芳蓀，愧無橫草功。」\n2.駕、乘。《文選．張衡．思玄賦》：「凌驚雷之砊礚兮，弄狂電之淫裔。」唐．李善．注：「凌，乘也。」宋．蘇軾〈赤壁賦〉：「縱一葦之所如，凌萬頃之茫然。」\n3.踰越、超過。通「陵」。《呂氏春秋．仲秋紀．論威》：「雖有江河之險則凌之，雖有大山之塞則陷之。」北齊．顏之推〈古意〉詩二首之一：「作賦凌屈原，讀書誇左史。」\n4.逼近、壓倒。《文選．曹植．白馬篇》：「長驅蹈匈奴，左顧凌鮮卑。」\n5.欺侮、侵犯。《楚辭．屈原．九歌．國殤》：「凌余陣兮躐余行，左驂殪兮右刃傷。」漢．王逸．注：「凌，犯也。」唐．柳宗元〈駁復仇議〉：「讎天子之法，而戕奉法之吏，是悖驁而凌上也。」",
+            "entry_id": "03701",
+            "sheet": "1150929辭典匯出",
+            "row": 3707,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "危": {
+        "definition": "dangerous, precarious; high; 12th lunar mansion, determinative star α Aquarii (Sadalmelik)",
+        "mandarin": "wēi",
+        "official_dictionary": [
+          {
+            "title": "危",
+            "pinyin": "wéi",
+            "definition": "[形]\n1.不安全。如：「危險」。《左傳．昭公十八年》：「小國忘守則危，況有災乎？」唐．韓愈〈後十九日復上書〉：「以蹈於窮餓之水火，其既危且亟矣。」\n2.病重。如：「病危」、「垂危」。《隋書．卷六三．元壽傳》：「又命其子捨危惙之母，為聚斂之行。」《聊齋志異．卷二．耿十八》：「新城耿十八，病危篤，自知不起。」\n3.高聳的。《莊子．盜跖》：「使子路去其危冠，解其長劍，而受教於子。」宋．陸游〈送七兄赴揚州帥幕〉詩：「急雪打窗心共碎，危樓望遠涕俱流。」\n4.正直的。如：「危言」、「危行」。\n5.不正的、偏頗的。《荀子．榮辱》：「故薄薄之地，不得履之，非地不安也，危足無所履者，凡在言也。」\n6.艱困。《史記．卷六．秦始皇本紀》：「是以陳涉不用湯武之賢，不藉公侯之尊，奮臂於大澤而天下響應者，其民危也。」\n[動]\n1.恐懼、不安。《戰國策．西周策》：「夫本末更盛，虛實有時，竊為君危之。」\n2.傷害。《左傳．昭公三十一年》：「若艱難其身，以險危大人，而有名章徹，攻難之士將奔走之。」漢．王充《論衡．答佞》：「讒以口害人，佞以事危人。」\n[名]\n1.屋脊。《史記．卷四四．魏世家》：「痤因上屋騎危，謂使者曰：『與其以死痤市，不如以生痤市。』」宋．蘇軾〈凌虛臺記〉：「使工鑿其前為方池，以其土築高出於屋之危而止。」\n2.姓。如宋代有危祜。",
+            "entry_id": "11372",
+            "sheet": "1150929辭典匯出",
+            "row": 11386,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "崖": {
+        "definition": "cliff, precipice; precipitous",
+        "mandarin": "yá",
+        "official_dictionary": [
+          {
+            "title": "崖",
+            "pinyin": "yái",
+            "definition": "[名]\n1.山邊或高地陡峭的邊沿。唐．韋應物〈至西峰蘭若受田婦饋〉詩：「攀崖復緣澗，遂造幽人居。」明．徐弘祖《徐霞客遊記．卷四上．粵西遊日記三》：「四眺重崖，皆懸絕無徑，而西崖尤為峻峭。」\n2.邊際。《莊子．山木》：「君其涉於江而又浮於海，望之而不見其崖。」",
+            "entry_id": "10786",
+            "sheet": "1150929辭典匯出",
+            "row": 10800,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "飞": {
+        "definition": "fly; go quickly; dart; high",
+        "mandarin": "fēi",
+        "related_characters": [
+          {
+            "character": "飛",
+            "relation": "kTraditionalVariant",
+            "definition": "fly; go quickly; dart; high; Kangxi radical 183",
+            "mandarin": "fēi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "上": {
+        "definition": "top; superior, highest; go up, send up",
+        "mandarin": "shàng",
+        "official_dictionary": [
+          {
+            "title": "上",
+            "pinyin": "shǎng",
+            "definition": "參見「上聲」條。",
+            "entry_id": "09015",
+            "sheet": "1150929辭典匯出",
+            "row": 9030,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "上聲",
+                "pinyin": "shǎng shēng",
+                "definition": "漢語聲調種類之一。不同時期的古音和不同地區的漢語方言，上聲實際調值不同。現代國音為第三聲降升調，以五度制調值標記法調值為214。國語注音符號用「ˇ」表示。",
+                "entry_id": "090150001",
+                "sheet": "1150929辭典匯出",
+                "row": 130043
+              }
+            ]
+          },
+          {
+            "title": "上",
+            "pinyin": "shàng",
+            "definition": "[名]_x000D_\n1.表方向或位置，與「下」相對。如：「上有天堂，下有蘇杭。」、「上頂天，下貼地」。《莊子．讓王》：「原憲居魯，環堵之室，茨以生草，蓬戶不完。桑以為樞而甕牖二室，褐以為塞，上漏下溼，匡坐而弦。」《何典》第九回：「上無片瓦遮身，下無立錐之地。」《兒女英雄傳》第二四回：「鄧九公朝上把那匣子一舉，又把身子往旁邊一閃。」_x000D_\n2.物體的表面、上面。如：「門上」、「臉上」、「桌上」。唐．張若虛〈春江花月夜〉詩：「春江潮水連海平，海上明月共潮生。」元．錢惟善〈和季文山齋早春〉詩其二：「落梅風細小窗寒，石上餘香點點斑。」《老殘遊記》第九回：「抬頭看見北牆上挂著四幅大屏，草書寫得龍飛鳳舞。」_x000D_\n3.邊側，旁邊。《論語．子罕》：「子在川上，曰：『逝者如斯夫，不舍晝夜。』」《史記．卷四七．孔子世家》：「唯子贛廬於冢上，凡六年，然後去。」唐．司馬貞．索隱：「蓋『上』者，亦是邊側之義。」_x000D_\n4.君主、皇帝。如：「上諭」。《史記．卷八．高祖本紀》：「上問左右，左右爭欲擊之。」《後漢書．卷三〇下．郎顗襄楷列傳．郎顗》：「今三公皆令色足恭，外厲內荏，以虛事上，無佐國之實。」《三國演義》第一〇〇回：「汝可回成都布散流言，說孔明有怨上之意，早晚欲稱為帝。」_x000D_\n5.高位、尊位。《書經．伊訓》：「居上克明，為下克忠。」唐．韓愈〈送董邵南序〉：「明天子在上，可以出而仕矣。」_x000D_\n6.尊長或職位在上的人。《禮記．王制》：「樂事勸功，尊君親上，然後興學。」《孝經．士章》：「忠順不失，以事其上。」_x000D_\n7.第一席位。《禮記．曲禮上》：「席：南鄉北鄉，以西方為上。」_x000D_\n8.表示範圍或某方面。如：「路上」、「文學上」。《禮記．喪大記》：「大夫內子、士妻、特拜命婦，氾拜眾賓於堂上。」《三國演義》第一回：「安得快人如翼德，盡誅世上負心人。」《英烈傳》第五四回：「吾豈不愛將軍雄杰，但天理人情上，難以相疑。」_x000D_\n9.表時間，相當於「時候」。《儒林外史》第一回：「這人姓王名冕，在諸暨縣鄉村裡住，七歲上死了父親。」《二十年目睹之怪現狀》第九五回：「不料當到第三年上，忽然來了個九省欽差，是奉旨到九省地方清理財賦的。」_x000D_\n[動]_x000D_\n1.升、由低處往高處。如：「上樓」、「上山」。漢．枚乘〈上書諫吳王〉：「必若所欲為，危如累卵，難於上天。」唐．王之渙〈登鸛雀樓〉詩：「欲窮千里目，更上一層樓。」_x000D_\n2.向上級進呈、獻納。如：「上奏」。《戰國策．齊策一》：「上書諫寡人者，受中賞。」《史記．卷九．呂太后本紀》：「王誠以一郡上太后，為公主湯沐邑，太后必喜，王必無憂。」《京本通俗小說．拗相公》：「文彥博、韓琦許多名臣，先誇佳說好的，到此也自悔失言，一個個上表爭論，不聽，辭官而去。」_x000D_\n3.去、到。若為城市間移動，多用於由南到北、鄉間到都市。如：「上街」、「北上」、「上臺北」、「上廁所」。《警世通言．卷一八．老門生三世報恩》：「蒯公愈加懶散，上京會試，只照常規，全無作興加厚之意。」《二十年目睹之怪現狀》第四六回：「這就難了！不比館子裡跑堂的，還可以去上館子，假以辭色，問他底細。」《孽海花》第三〇回：「小油嘴兒，你怎麼知道我要上那兒去呢？」_x000D_\n4.向前、前進。《戰國策．秦策二》：「甘茂攻宜陽，三鼓之而卒不上。」元．無名氏《小尉遲》第三折：「劉無敵跚馬兒領番卒上。」_x000D_\n5.就職、赴任。唐．韓愈〈國子監論新注學官牒〉：「其新受官，上日必加研試，然後放行。」宋．范成大〈後催租行〉詩：「自從鄉官新上來，黃紙放盡白紙催。」_x000D_\n6.出場、登臺。如：「上場比賽」、「上臺領獎」。元．張國賓《合汗衫》第三折：「正末同卜兒薄藍上云：『叫化咱！叫化咱！可憐見俺許來大家私，被一場天火燒的光光蕩蕩。』」元．孟漢卿《魔合羅．楔子》：「正末扮李德昌同旦、倈上云：『自家李德昌是也。』」_x000D_\n7.被登載在。如：「上報」、「他上了全國優良教師名單。」《南齊書．卷九．禮志上》：「孫毓議稱京兆列在正廟，臣下應諱，而不上榜。」《三寶太監西洋記通俗演義》第三四回：「只見左右先鋒解將夜來拿的番兵上帳紀功。」《說岳全傳》第八〇回：「岳雷也命上了功勞簿，擇日渡江。」_x000D_\n8.指按規定時間工作或教習。如：「上班」、「上學」、「上宿」、「上夜」。清．孔尚任《桃花扇》第二齣：「楊老爺不是外人，取出曲本快快溫習。待你師父對過，好上新腔。」《紅樓夢》第九回：「可巧這日代儒有事，早已回家去了，只留下一句七言對聯命學生對了，明日再來上書。」《文明小史》第四一回：「大家都約定了今天不上課，直至府署探病。」_x000D_\n9.繳交、交出。《漢書．卷一二．平帝紀》：「哀帝崩，太皇太后詔曰：『大司馬賢年少，不合眾心，其上印綬，罷。』賢即日自殺。」《儒林外史》第三回：「金有餘將著銀子，上了藩庫，討出庫收來。」_x000D_\n10.欺凌、霸凌。《左傳．桓公五年》：「君子不欲多上人，況敢陵天子乎？」《國語．周語中》：「民可近也，而不可上也。」三國吳．韋昭．注：「上，陵也。」_x000D_\n11.遭受、落入。如：「上圈套」。《儒林外史》第五一回：「鳳四老爹猛然大悟，指著絲客人道：『是了！你這客人想是少年不老成，如今上了當了！』」《老殘遊記二編》第四回：「眼前我只要略為撩撥他們下子，一定上鉤。」_x000D_\n12.施用、添加。如：「惹禍上身」、「齒輪該上油了。」、「這鋪子總不上新貨。」《禮記．曲禮上》：「禮不下庶人，刑不上大夫。」《老殘遊記》第一七回：「你上他這手銬腳鐐是甚麼意思？難道怕他越獄走了嗎？」_x000D_\n13.安裝。如：「上刺刀」。元．無名氏《爭報恩》第三折：「上了板搭，關了門戶，打掃街道。」《鏡花緣》第三七回：「鏤窗上鎖，不能開放。」_x000D_\n14.旋緊、繃緊。如：「上發條」。《水滸傳》第九五回：「當下宋兵深栽鹿角，牢豎柵寨，弓上弦，刀出鞘，帶甲枕戈，提鈴喝號。」_x000D_\n15.塗抹。如：「上漆」、「上藥」、「上顏色」。《兒女英雄傳》第二七回：「舅太太打發送禮的男女家人去後，便叫人鋪水挖單，放梳頭匣兒，催姑娘上妝。」清．徐珂《清稗類鈔．鑒賞類．畢秋帆賞古磚》：「僕遽將其主人如何覓舊本摹仿，如何在某處定造，如何上色，如何使之剝落，如何使之生苔蘚之術，一一言之，不稍諱。」_x000D_\n16.點燃。《儒林外史》第六回：「直到上燈時候，連四斗子也不見回來。」《二十年目睹之怪現狀》第五七回：「吃過了晩飯，已是上火時候。」_x000D_\n17.達到，指夠一定數量或程度。如：「上了歲數」、「成千上萬」。《儒林外史》第七回：「王員外共借了上千兩的銀子與荀家。」《紅樓夢》第九九回：「現在打聽節度衙門這幾天有生日，別的府道老爺都上千上萬的送了，我們到底送多少呢？」_x000D_\n18.表動作的趨向。如：「爬上去」。《儒林外史》第八回：「幾十個兵卒跳上船來，走進中艙，把王道臺反剪了手，捉上大船。」《文明小史》第五五回：「秦鳳梧下午方才出來，見了湘蘭，疾忙跳上馬車。」_x000D_\n19.表示動作發生且有結果。如：「考上大學」、「關上大門」。《三國演義》第二六回：「文醜回頭見二將趕上，遂按住鐵鎗，拈弓搭箭，正射張遼。」《儒林外史》第二四回：「向知縣取了和尚口供，叫上那鄰居來問。」《文明小史》第三七回：「學上三年，英國話居然也能夠說幾句將就的，文法也懂得些。」_x000D_\n20.強調動作開始並能持續。如：「迷上武俠小說」、「玉山早已飄上雪花。」《紅樓夢》第三八回：「你知道，你璉二爺愛上了你，要和老太太討了你作小老婆呢。」《兒女英雄傳》第二一回：「只因安老爺生恐這裡話沒定規，親家太太來了，再鬧上一陣，不防頭的怯話兒，給弄糟了。」_x000D_\n[形]_x000D_\n1.次序或時間在前的。如：「上篇」、「上卷」、「上半年」、「上半場」、「上一位」、「上上星期」。《商君書．開塞》：「上不及虞夏之時，而下不修湯武。」《鏡花緣》第九〇回：「大約上句說的是諸位姐姐美玉無瑕，下句是我醜態百出了。」《紅樓夢》第七二回：「只從上月行了經之後，這一個月竟瀝瀝淅淅的沒有止住。」_x000D_\n2.地位高的、尊貴的。如：「上級」、「上流社會」。漢．劉向《新序．卷一．雜事》：「秦使者至，昭奚恤曰：『君，客也，請就上位。』」《景德傳燈錄．卷二二．泉州萬安清運禪師》：「僧曰：『忽遇上客來，將何祗待？』」《三國演義》第六五回：「玄德親自接入，待以上賓之禮。」_x000D_\n3.最好的、優等的。如：「走為上策」、「列為上品」。《管子．國蓄》：「以珠玉為上幣，以黃金為中幣，以刀布為下幣。」《戰國策．西周策》：「趙之上計，莫如令秦、魏復戰。」《紅樓夢》第四八回：「如今聽你一說，原來這些格調規矩竟是末事，只要詞句新奇為上。」_x000D_\n4.軍制中某一軍階最高級的。如：「上將」、「上校」、「上尉」。《水滸傳》第六三回：「若以禮幣請他，拜為上將，可以掃清水寨，殄滅狂徒，保國安民。」",
+            "entry_id": "09018",
+            "sheet": "1150929辭典匯出",
+            "row": 9033,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "高": {
+        "definition": "high, tall; lofty, elevated; Kangxi radical 189",
+        "mandarin": "gāo",
+        "official_dictionary": [
+          {
+            "title": "高",
+            "pinyin": "gāo",
+            "definition": "[形]\n1.上下距離遠的。與「低」相對。如：「山高水深」、「高樓大廈」。\n2.超越一般水準的、等級在上的。如：「高等教育」、「高級」、「高手」。\n3.優良。如：「高材生」。\n4.價格貴的。如：「高價」。\n5.年紀老的。如：「高齡」。\n6.聲音尖銳激昂的。如：「高歌」。\n[名]\n1.物體直立時上下的長度。如：「身高」。\n2.高的地方。如：「居高臨下」、「登高望遠」。\n3.姓。如唐代有高適。\n4.二一四部首之一。\n[動]\n尊崇、敬重。《韓非子．五蠹》：「以其不收也外之，而高其輕世也。」",
+            "entry_id": "03989",
+            "sheet": "1150929辭典匯出",
+            "row": 3995,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "山塅",
+      "decision": "uncertain",
+      "reason": "“塅”指大块平地，常用于地名；“山塅”可理解为山地间的平地或地名式组合，但语义关系不够明确，缺少语境难以确认其自然度。"
+    },
+    {
+      "name": "河塅",
+      "decision": "uncertain",
+      "reason": "“塅”指大块平地，常用于地名；“河塅”可能指河边平地或地名，但完整组合的具体含义与自然度无法仅凭名称确认。"
+    },
+    {
+      "name": "青禾塅",
+      "decision": "uncertain",
+      "reason": "“青禾”与“塅”可形成田野意象，但三字组合缺少清晰稳定的语义关系，更像未经明确组织的景物词拼合。"
+    },
+    {
+      "name": "望远塅",
+      "decision": "reject",
+      "reason": "“望远”是常见动作或愿景表达，“塅”是地貌词；两者组合关系生硬，难以形成自然、凝练的完整名称。"
+    },
+    {
+      "name": "晴塅",
+      "decision": "uncertain",
+      "reason": "可理解为晴日里的平地或地名式名称，但“晴”与“塅”的组合语义较弱，具体意象关系不明确。"
+    },
+    {
+      "name": "塅野",
+      "decision": "uncertain",
+      "reason": "“塅”指平地，“野”指郊野或原野，含义相近但组合关系不清，读作地名或景物词尚可，品牌语义辨识度有限。"
+    },
+    {
+      "name": "云磴",
+      "decision": "keep",
+      "reason": "“磴”确指山间石阶，“云磴”可自然形成高处石阶延入云间的凝练景象；古诗用例也支持这一意象，不依赖牵强引申。"
+    },
+    {
+      "name": "石磴",
+      "decision": "keep",
+      "reason": "词义明确，指石砌台阶，完整词语自然简洁；虽是普通景物名词，仍具有可识别的具象品牌意象。"
+    },
+    {
+      "name": "山间石磴",
+      "decision": "reject",
+      "reason": "是对山间石阶的直接描述，属于完整景物短语，表达过于说明性，品牌名的凝练感不足。"
+    },
+    {
+      "name": "青云磴",
+      "decision": "keep",
+      "reason": "以“磴”作山路石阶解，“青云”与之组合可形成通向高处的山阶意象，语义清楚且较凝练；不是仅凭“青云”的抽象寓意硬接。"
+    },
+    {
+      "name": "凌云磴",
+      "decision": "keep",
+      "reason": "“凌云”表达升至高处，“磴”是石阶，组合可理解为通向云上的石阶，意象连贯，整体简洁。"
+    },
+    {
+      "name": "危崖飞磴",
+      "decision": "reject",
+      "reason": "意为陡峭崖壁间的飞悬石阶，语义虽可理解，但完整组合是描摹景物的描述短语，结构偏铺陈，品牌凝练度不足。"
+    },
+    {
+      "name": "磴上青云",
+      "decision": "reject",
+      "reason": "构成“石阶之上是青云”的完整景象句，带有明确的画面陈述和上升寓意，整体更像诗句或口号而非凝练品牌名。"
+    },
+    {
+      "name": "山高磴远",
+      "decision": "reject",
+      "reason": "以“山高、磴远”铺陈景象并暗示路途遥远，整体是对偶式判断或格言表达，口号化且不够像品牌名。"
+    }
+  ]
+}

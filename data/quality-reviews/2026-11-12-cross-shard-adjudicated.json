@@ -1,0 +1,418 @@
+{
+  "method": "co-review related names across independent shards",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "羚风",
+      "羚越",
+      "羚跃",
+      "羚川",
+      "羚岚",
+      "羚星",
+      "羚光",
+      "羚野",
+      "林间羚",
+      "墙间风",
+      "孝安",
+      "云盖",
+      "均和"
+    ],
+    "literature_phrase_examples": {
+      "羚风": [],
+      "羚越": [],
+      "羚跃": [],
+      "羚川": [],
+      "羚岚": [],
+      "羚星": [],
+      "羚光": [],
+      "羚野": [],
+      "林间羚": [],
+      "墙间风": [],
+      "孝安": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1834361,
+          "context": "【皇祐亲享明堂六首 酌献用《孝安》。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1834495,
+          "context": "【大观宗祀明堂五首 酌献用《孝安》。"
+        }
+      ],
+      "云盖": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 14979,
+          "context": "黄云盖地雪作山，不惜黄金买衣服。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 19957,
+          "context": "岭云盖道转，岩花映绶开。"
+        }
+      ],
+      "均和": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 58894,
+          "context": "台司金印护诸侯，冲气均和耐素秋。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 59080,
+          "context": "均和玉烛成冬夕，畴圣珍符纪瑞年。"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "羚": {
+        "definition": "species of antelope",
+        "mandarin": "líng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "越": {
+        "definition": "exceed, go beyond; the more ...",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "跃": {
+        "definition": "skip, jump, frolic",
+        "mandarin": "yuè",
+        "related_characters": [
+          {
+            "character": "躍",
+            "relation": "kTraditionalVariant",
+            "definition": "skip, jump, frolic",
+            "mandarin": "yuè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岚": {
+        "definition": "mountain mist, mountain haze",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "嵐",
+            "relation": "kTraditionalVariant",
+            "definition": "mountain mist, mountain haze",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "墙": {
+        "definition": "wall",
+        "mandarin": "qiáng",
+        "related_characters": [
+          {
+            "character": "墻",
+            "relation": "kTraditionalVariant",
+            "definition": "wall",
+            "mandarin": "qiáng"
+          },
+          {
+            "character": "牆",
+            "relation": "kTraditionalVariant",
+            "definition": "wall",
+            "mandarin": "qiáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "孝": {
+        "definition": "filial piety, obedience; mourning",
+        "mandarin": "xiào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "安": {
+        "definition": "peaceful, tranquil, quiet",
+        "mandarin": "ān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "盖": {
+        "definition": "cover, hide, protect",
+        "mandarin": "gài",
+        "related_characters": [
+          {
+            "character": "盖",
+            "relation": "kTraditionalVariant",
+            "definition": "cover, hide, protect",
+            "mandarin": "gài"
+          },
+          {
+            "character": "蓋",
+            "relation": "kTraditionalVariant",
+            "definition": "cover, hide, protect",
+            "mandarin": "gài"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "均": {
+        "definition": "equal, even, fair; all, also",
+        "mandarin": "jūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "羚风",
+      "decision": "uncertain",
+      "reason": "可理解为羚羊与风的意象组合，但两字缺少自然、明确的构词关系，品牌语义较不确定。"
+    },
+    {
+      "name": "羚越",
+      "decision": "reject",
+      "reason": "与羚跃读音相同且同指羚羊跃越动作，组内仅保留语义更直接的羚跃，避免以近音替字充数。"
+    },
+    {
+      "name": "羚跃",
+      "decision": "keep",
+      "reason": "羚羊跳跃为清楚的主谓动态意象，简洁自然。组内保留这一候选；不因自然物象本身就否决品牌可能性。"
+    },
+    {
+      "name": "羚川",
+      "decision": "uncertain",
+      "reason": "羚羊与河川可构成自然景象，但组合关系不够明确，缺乏稳定的整体语义。"
+    },
+    {
+      "name": "羚岚",
+      "decision": "uncertain",
+      "reason": "羚羊与山岚的画面可以想象，但属于较松散的景物拼合，整体含义不够清楚。"
+    },
+    {
+      "name": "羚星",
+      "decision": "uncertain",
+      "reason": "可联想到星空中的羚羊或明星意象，但两字之间没有自然明确的语义关系。"
+    },
+    {
+      "name": "羚光",
+      "decision": "uncertain",
+      "reason": "可理解为羚羊与光，但组合关系松散，整体语义依赖主观联想。"
+    },
+    {
+      "name": "羚野",
+      "decision": "uncertain",
+      "reason": "可联想到野外羚羊，但更像动物与栖息环境的描述，作为品牌名整体语义和辨识度偏弱。"
+    },
+    {
+      "name": "林间羚",
+      "decision": "uncertain",
+      "reason": "语法上可作“林间的羚羊”理解，但更像具体场景或物象描述，作为公司品牌名凝练度不足。"
+    },
+    {
+      "name": "墙间风",
+      "decision": "uncertain",
+      "reason": "墙间之风的场景关系可以理解，但整名语感与品牌凝练度仍需复核；仅因描写场景不足以直接否决。"
+    },
+    {
+      "name": "孝安",
+      "decision": "uncertain",
+      "reason": "组合可表达孝顺与安宁，也见于宗庙乐章名，但作为公司品牌名容易显得像伦理祝愿或仪式用语，适配性不明。"
+    },
+    {
+      "name": "云盖",
+      "decision": "keep",
+      "reason": "云盖为完整的云如伞盖意象，词义及构词自然；意象词可以作为品牌待复核，不要求预先指定行业。"
+    },
+    {
+      "name": "均和",
+      "decision": "keep",
+      "reason": "可自然理解为均衡、和谐，语义清楚简练，具有完整的品牌名质感；不依赖特定行业或背景解释。"
+    }
+  ],
+  "status": "agent_adjudicated_not_final_acceptance",
+  "review_id": "20261112-cross-shard-adjudicated",
+  "before": [
+    {
+      "name": "羚风",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "羚越",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "羚跃",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "羚川",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "羚岚",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "羚星",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "羚光",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "羚野",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "林间羚",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "墙间风",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "孝安",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "云盖",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    },
+    {
+      "name": "均和",
+      "status": "待核验",
+      "registry_note": "AI 生成候选；已通过各字语义角色及自然度初筛；仍需人工核对，并自行完成工商、商标和域名检索。"
+    }
+  ]
+}

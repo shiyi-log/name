@@ -1,0 +1,805 @@
+{
+  "review_id": "20261112T223607-1fd593f8",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "雪肌",
+      "健肌",
+      "肌研",
+      "强肌",
+      "柔肌",
+      "舾艺",
+      "峿岚",
+      "峿山和",
+      "峿山知",
+      "峿山同",
+      "峿山通",
+      "峿山远志"
+    ],
+    "related_kept_candidates": {
+      "山": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "踏远山",
+        "远山连冈",
+        "远山带霭"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉",
+        "酒同频",
+        "同欣",
+        "同翊",
+        "橼果同枝",
+        "同寅",
+        "皎月同舟",
+        "鹡鸰同心",
+        "镯同心",
+        "琨玉同辉",
+        "瑕玉同辉"
+      ],
+      "艺": [
+        "艺林",
+        "艺囿",
+        "焊艺",
+        "酵艺",
+        "镘艺",
+        "烤艺",
+        "俍艺",
+        "篾艺",
+        "演艺",
+        "模艺",
+        "码艺",
+        "修艺"
+      ],
+      "和": [
+        "岐山清和",
+        "山隅清和",
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和",
+        "珺和",
+        "中庸致和",
+        "均和",
+        "淑和"
+      ],
+      "柔": [
+        "柔荑",
+        "柔软",
+        "娉柔",
+        "荏染柔木"
+      ],
+      "远": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "踏远山",
+        "远山连冈",
+        "远山带霭"
+      ],
+      "峿": [
+        "峿川"
+      ],
+      "健": [
+        "刚健",
+        "矫健",
+        "行健",
+        "稳健",
+        "遒健"
+      ],
+      "肌": [
+        "玉肌"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远",
+        "涂知微"
+      ],
+      "岚": [
+        "欧岚",
+        "峒岚",
+        "芙岚",
+        "岚峤",
+        "崧岚",
+        "崌岚",
+        "珀岚",
+        "枫岚",
+        "麇岚",
+        "柘岚",
+        "嶷岚",
+        "岚嶂"
+      ],
+      "研": [
+        "酵研",
+        "镝研",
+        "碳研",
+        "研习",
+        "研绎",
+        "锆研",
+        "锇研"
+      ],
+      "雪": [
+        "暮雪",
+        "雱雪",
+        "二月雪",
+        "雪消",
+        "雪屑",
+        "雪晞",
+        "雪泥鸿爪",
+        "皎雪初晴",
+        "霏雪",
+        "雪原",
+        "雪松",
+        "雪峰"
+      ],
+      "通": [
+        "旁通",
+        "互通",
+        "通途",
+        "迳通"
+      ],
+      "志": [
+        "器物志",
+        "厉志",
+        "夙志",
+        "犟志",
+        "婞志",
+        "宿志",
+        "货物志"
+      ]
+    },
+    "literature_phrase_examples": {
+      "雪肌": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 193959,
+          "context": "不闻姑射上，千岁冰雪肌。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 330219,
+          "context": "冰雪肌肤力不胜，落花飞絮遶风亭。"
+        }
+      ],
+      "健肌": [],
+      "肌研": [],
+      "强肌": [],
+      "柔肌": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 173451,
+          "context": "那知缘暗隙，忽被囓柔肌。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 4534,
+          "context": "□玉透柔肌。"
+        }
+      ],
+      "舾艺": [],
+      "峿岚": [],
+      "峿山和": [],
+      "峿山知": [],
+      "峿山同": [],
+      "峿山通": [],
+      "峿山远志": []
+    },
+    "dictionary_phrase_entries": {
+      "雪肌": [],
+      "健肌": [],
+      "肌研": [],
+      "强肌": [],
+      "柔肌": [],
+      "舾艺": [],
+      "峿岚": [],
+      "峿山和": [],
+      "峿山知": [],
+      "峿山同": [],
+      "峿山通": [],
+      "峿山远志": []
+    },
+    "direct_dictionary": {
+      "雪": {
+        "definition": "snow; wipe away shame, avenge",
+        "mandarin": "xuě",
+        "official_dictionary": [
+          {
+            "title": "雪",
+            "pinyin": "xuě",
+            "definition": "[名]_x000D_\n水汽在零度以下所凝結成的六角形白色晶體。如：「白雪」、「冰雪」、「下雪」、「積雪」。_x000D_\n[動]_x000D_\n1.下雪、降雪。南朝宋．劉義慶《世說新語．文學》：「于時始雪，五處俱賀。」唐．白居易〈問劉十九〉詩：「晚來天欲雪，能飲一杯無？」_x000D_\n2.擦拭。《呂氏春秋．恃君覽．觀表》：「吳起雪泣而應之曰：『子弗識也。』」唐．杜甫〈陪諸貴公子丈八溝攜妓納涼晚際遇雨〉詩二首之一：「公子調冰水，佳人雪藕絲。」_x000D_\n3.洗刷、洗清、清除。如：「雪恥」、「昭雪」、「洗雪冤情」。《呂氏春秋．不苟論．不苟》：「繆公能令人臣時立其正義，故雪殽之恥，而西至河雍也。」唐．李白〈獨漉篇〉：「國恥未雪，何由成名。」_x000D_\n[形]_x000D_\n如雪般白色的。如：「雪白」。隋．盧思道〈孤鴻賦〉：「振雪羽而臨風，掩霜毛而候旭。」",
+            "entry_id": "07340",
+            "sheet": "1150929辭典匯出",
+            "row": 7350,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "雪",
+            "pinyin": "xuè",
+            "definition": "「雪白」的「雪」的又音。",
+            "entry_id": "07348",
+            "sheet": "1150929辭典匯出",
+            "row": 7358,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "肌": {
+        "definition": "muscle tissue; meat on bones",
+        "mandarin": "jī",
+        "official_dictionary": [
+          {
+            "title": "肌",
+            "pinyin": "jī",
+            "definition": "[名]\n1.肉。如：「面黃肌瘦」。《漢書．卷七四．丙吉傳》：「介之推割肌以存君。」\n2.皮膚。《文選．宋玉．登徒子好色賦》：「肌如白雪。」《西遊記》第七二回：「佳人洗處冰肌滑，滌蕩塵煩玉體新。」\n3.參見「肌肉」條。",
+            "entry_id": "05293",
+            "sheet": "1150929辭典匯出",
+            "row": 5300,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "面黃肌瘦",
+                "pinyin": "miàn huáng jī shòu",
+                "definition": "形容人消瘦、營養不良的樣子。《水滸傳》第六回：「尋到廚房後面一間小屋，見幾個老和尚坐地，一個個面黃肌瘦。」《儒林外史》第一回：「也有挑著鍋的，也有籮擔內挑著孩子的，一個個面黃肌瘦，衣裳襤褸。」",
+                "entry_id": "014430069",
+                "sheet": "1150929辭典匯出",
+                "row": 31329
+              },
+              {
+                "title": "肌肉",
+                "pinyin": "jī ròu",
+                "definition": "1.高等動物皮膚下，由成束的肌纖維與結締組織結合而成的紅色柔軟的組織。為身體、四肢的運動和體內消化、呼吸、循環、排泄等生理過程的動力來源。可分成平滑肌、骨骼肌、心肌等三種。也作「筋肉」。\n2.泛指皮膚與筋肉。《後漢書．卷八一．獨行列傳．陸續》：「唯續、宏、勛掠考五毒，肌肉消爛，終無異辭。」《老殘遊記》第七回：「筋骨強壯，肌肉堅固，便可以忍耐凍餓。」",
+                "entry_id": "052930017",
+                "sheet": "1150929辭典匯出",
+                "row": 86072
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "健": {
+        "definition": "strong, robust, healthy; strength",
+        "mandarin": "jiàn",
+        "official_dictionary": [
+          {
+            "title": "健",
+            "pinyin": "jiàn",
+            "definition": "[形]\n1.強而有力。《易經．乾卦．象曰》：「天行健，君子以自強不息。」《晉書．卷七二．郭璞傳》：「得健夫二三十人，皆持長竿。」\n2.形容人生理、心理情況良好。如：「健康」。《三國志．卷二九．魏書．方技傳．華佗傳》：「一月可小起，好自將愛，一年便健。」唐．白居易〈同友人尋澗花〉詩：「且作來歲期，不知身健否？」\n[副]\n擅長、善於。如：「健談」。唐．白居易〈偶作寄朗之〉詩：「老來多健忘。」\n[名]\n姓。如宋代有健武。",
+            "entry_id": "05801",
+            "sheet": "1150929辭典匯出",
+            "row": 5808,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "研": {
+        "definition": "grind, rub; study, research",
+        "mandarin": "yán",
+        "official_dictionary": [
+          {
+            "title": "研",
+            "pinyin": "yán",
+            "definition": "[動]\n1.磨細、碾碎。如：「研墨」、「研成粉末」。《紅樓夢》第三四回：「晚上把這藥用酒研開，替他敷上。」\n2.深入探究。如：「研究」、「研讀功課」。《晉書．卷六九．戴若思傳》：「思理足以研幽，才鑒足以辯物。」",
+            "entry_id": "10956",
+            "sheet": "1150929辭典匯出",
+            "row": 10970,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "研",
+            "pinyin": "yàn",
+            "definition": "[名]\n1.滑石。《文選．郭璞．江賦》：「紫菜熒曄以叢被，綠苔鬖髿乎研上。」\n2.磨墨的用具。同「硯」。《後漢書．卷四七．班超傳》：「大丈夫無它志略，猶當效傅介子、張騫立功異域，以取封侯，安能久事筆研閒乎？」宋．陸游〈村居〉詩：「自今焚筆研，有手但扶犁。」",
+            "entry_id": "11022",
+            "sheet": "1150929辭典匯出",
+            "row": 11037,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "强": {
+        "definition": "strong, powerful, energetic",
+        "mandarin": "qiáng",
+        "related_characters": [
+          {
+            "character": "強",
+            "relation": "kTraditionalVariant",
+            "definition": "strong, powerful, energetic",
+            "mandarin": "qiáng"
+          },
+          {
+            "character": "强",
+            "relation": "kTraditionalVariant",
+            "definition": "strong, powerful, energetic",
+            "mandarin": "qiáng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "强",
+            "pinyin": null,
+            "definition": "「強」的異體字。",
+            "entry_id": "05912-1",
+            "sheet": "1150929辭典匯出",
+            "row": 94175,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "柔": {
+        "definition": "soft; gentle, pliant",
+        "mandarin": "róu",
+        "official_dictionary": [
+          {
+            "title": "柔",
+            "pinyin": "róu",
+            "definition": "[形]\n1.軟弱。如：「柔弱」、「柔能克剛」。\n2.溫和、和順。《管子．四時》：「解怨赦罪，通四方，然則柔風甘雨乃至。」《後漢書．卷四四．胡廣傳》：「柔而不犯，文而有禮。」\n3.草木新生，莖葉幼嫩的樣子。《詩經．小雅．采薇》：「采薇采薇，薇亦柔止。」《文選．曹植．美女篇》：「柔條紛冉冉，葉落何翩翩。」\n[動]\n安撫。《禮記．中庸》：「送往迎來，嘉善而矜不能，所以柔遠人也。」《金史．卷八六．李石傳》：「北俗無定居，出沒不常，惟當以德柔之。」",
+            "entry_id": "09195",
+            "sheet": "1150929辭典匯出",
+            "row": 9210,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舾": {
+        "definition": "(Cant.) equipment on a ship",
+        "mandarin": "xī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "艺": {
+        "definition": "art; talent, ability; craft",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "藝",
+            "relation": "kTraditionalVariant",
+            "definition": "art; talent, ability; craft",
+            "mandarin": "yì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "峿": {
+        "definition": "mountain",
+        "mandarin": "wú",
+        "official_dictionary": [
+          {
+            "title": "峿",
+            "pinyin": "wú",
+            "definition": "參見「峿山」條。",
+            "entry_id": "11240",
+            "sheet": "1150929辭典匯出",
+            "row": 11255,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "峿山",
+                "pinyin": "wú shān",
+                "definition": "山名。在山東省濰坊市轄安丘市西南，膠西丘陵的東北側。",
+                "entry_id": "112400001",
+                "sheet": "1150929辭典匯出",
+                "row": 156570
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "岚": {
+        "definition": "mountain mist, mountain haze",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "嵐",
+            "relation": "kTraditionalVariant",
+            "definition": "mountain mist, mountain haze",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "和",
+            "pinyin": "hé",
+            "definition": "[名]\n1.各數相加的總數。如：「總和」、「二加三的和是五。」\n2.適中、恰到好處、剛柔並濟的常道。《論語．學而》：「禮之用，和為貴。」《禮記．中庸》：「和也者，天下之達道也。」\n3.和平、停戰。如：「講和」、「議和」。《孫子．行軍》：「無約而請和者，謀也。」《戰國策．趙策三》：「故不若亟割地求和，以疑天下慰秦心。」\n4.日本的別名。如：「大和民族」。\n5.姓。如漢代有和武、晉代有和嶠。\n[動]\n1.敦睦、調諧。如：「和好如初」。《左傳．隱公四年》：「臣聞以德和民，不聞以亂。」\n2.連同。如：「和衣而眠」。\n[形]\n1.溫順的、安詳的。如：「和藹」、「心平氣和」、「和顏悅色」。南朝陳．徐陵〈晉陵太守王勵德政碑〉：「風神雅淡，識量寬和。」唐．張說〈岳陽早霽南樓〉詩：「心阻意徒馳，神和生自足。」\n2.溫暖的。如：「和煦」、「風和日麗」。唐．白居易〈首夏病間〉詩：「清和好時節，微風吹裌衣。」\n[介]\n對、向。如：「你和尊長講話的態度要恭敬。」《紅樓夢》第八回：「好幾處都有，都稱贊得了不得，還和我們尋呢！」\n[連]\n與、跟。如：「我和他是好朋友。」宋．岳飛〈滿江紅．怒髮衝冠〉詞：「三十功名塵與土，八千里路雲和月。」",
+            "entry_id": "04721",
+            "sheet": "1150929辭典匯出",
+            "row": 4728,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hè",
+            "definition": "[動]\n1.聲音相應。如：「附和」、「唱和」。《資治通鑑．卷二三六．唐紀五十二．順宗永貞元年》：「絪等從而和之，議始定。」宋．蘇軾〈赤壁賦〉：「客有吹洞簫者，倚歌而和之。」\n2.依原詩格律或內容作詩以酬答他人。唐．白居易〈和微之詩．序〉：「微之又以近作四十三首寄來，命僕繼和。」",
+            "entry_id": "04754",
+            "sheet": "1150929辭典匯出",
+            "row": 4761,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hàn",
+            "definition": "(一)[連]之語音。",
+            "entry_id": "04883",
+            "sheet": "1150929辭典匯出",
+            "row": 4889,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hú",
+            "definition": "[動]\n牌戲中牌張已湊齊成副而獲勝稱為「和」。如：「和牌」。《文明小史》第五五回：「秦鳳梧自己買這樣，買那樣，應酬朋友，吃酒碰和，毛毛的也有一萬了。」",
+            "entry_id": "04952",
+            "sheet": "1150929辭典匯出",
+            "row": 4959,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "huò",
+            "definition": "[動]_x000D_\n1.攪拌、混合。《文獻通考．卷一八．征榷考五．榷茶》：「凡在京茶戶擅磨末茶者有禁，並赴官請買，而茶鋪入米豆雜物拌和者有罰，募人告者有賞。」《三國演義》第九一回：「喚行廚宰殺牛馬，和麵為劑，塑成人頭，內以牛羊等肉代之，名曰『饅頭』。」_x000D_\n2.湊熱鬧、加入添亂。《文明小史》第三回：「柳知府詫異道：『與他們甚麼相干？怎麼也和在裡頭。』」",
+            "entry_id": "05041",
+            "sheet": "1150929辭典匯出",
+            "row": 5048,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "huo",
+            "definition": "[形]\n溫暖的。如：「暖和」。",
+            "entry_id": "05069",
+            "sheet": "1150929辭典匯出",
+            "row": 5076,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "同",
+            "pinyin": "tóng",
+            "definition": "[動]\n1.會合、聚集。《說文解字．𠔼部》：「同，合會也。」如：「會同」。唐．錢起〈送鍾評事應宏詞下第東歸〉詩：「勸君稍盡離筵酒，千里佳期難再同。」\n2.統一、齊一。《書經．舜典》：「協時月正日，同律度量衡。」宋．陸游〈示兒〉詩：「死去元知萬事空，但悲不見九州同。」\n3.一齊分享、從事等。如：「同甘苦，共患難。」《孫子．謀攻》：「不知三軍之事，而同三軍之政者，則軍士惑矣。」\n4.贊成。如：「贊同」、「同意」。\n[形]\n一樣的。如：「同類」、「相同」、「同工同酬」。\n[副]\n一起、共同。如：「有福同享，有難同當。」唐．李白〈長干行〉二首之一：「同居長干里，兩小無嫌猜。」\n[連]\n和、與、跟。如：「有事同你商量。」、「我同他一起去看電影。」\n[名]\n1.和諧、和平。如：「促進世界大同」。《禮記．禮運》：「是故謀閉而不興，盜竊亂賊而不作，故外戶而不閉，是謂大同。」\n2.契約。如：「合同」。\n3.姓。如唐代有同谷。",
+            "entry_id": "02883",
+            "sheet": "1150929辭典匯出",
+            "row": 2889,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "同",
+            "pinyin": "tòng",
+            "definition": "[名]\n巷弄、小街道。如：「胡同」。",
+            "entry_id": "02912",
+            "sheet": "1150929辭典匯出",
+            "row": 2918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "通": {
+        "definition": "pass through; common; communicate",
+        "mandarin": "tōng",
+        "official_dictionary": [
+          {
+            "title": "通",
+            "pinyin": "tōng",
+            "definition": "[形]_x000D_\n1.沒有堵塞，可以穿過的。如：「水管不通了。」_x000D_\n2.流暢、暢達。如：「暢通」、「四通八達」、「你的作文寫得不夠通順。」《老殘遊記》第一回：「當年也曾讀過幾句詩書，因八股文章做得不通，所以學也未曾進得一個。」_x000D_\n3.順利。如：「星運亨通」。宋．范仲淹〈岳陽樓記〉：「政通人和，百廢具興。」_x000D_\n4.靈活、不閉塞。如：「圓通」、「開通」。_x000D_\n5.淵博。如：「通人」、「博學通儒」。_x000D_\n6.共同的。如：「好逸惡勞是一般人的通病。」《孟子．滕文公上》：「天下之通義也。」_x000D_\n7.整個、全部。如：「通宵」、「通盤考量」。《孟子．離婁下》：「匡章通國皆稱不孝焉，夫子與之遊，又從而禮貌之，敢問何也？」_x000D_\n[副]_x000D_\n全、都。如：「通通上去」。《紅樓夢》第二八回：「他說的我通不懂，怎麼不該罰！」_x000D_\n[動]_x000D_\n1.到達。如：「通到」、「通往」。《國語．晉語二》：「道遠難通，望大難走。」_x000D_\n2.往來、交往。如：「通商」、「通航」、「互通有無」。《漢書．卷三七．季布欒布田叔傳．季布》：「吾聞曹丘生非長者，勿與通。」_x000D_\n3.報告、使知曉。如：「通知」、「通報」。《史記．卷四八．陳涉世家》：「自辯數，乃置，不肯為通。」_x000D_\n4.明白、了解。如：「通曉」、「精通」。《漢書．卷七二．王貢兩龔鮑傳．王吉》：「今使俗吏得任子弟，率多驕驁，不通古今。」_x000D_\n5.發生不正常的性關係。如：「通姦」、「私通」。《左傳．桓公十八年》：「公會齊侯于濼，遂及文姜如齊，齊侯通焉。」《漢書．卷五五．衛青霍去病傳．衛青》：「季與主家僮衛媼通，生青。」_x000D_\n[名]_x000D_\n1.熟悉某種事物的人。如：「中國通」、「萬事通」、「數學通」。_x000D_\n2.量詞：(1)計算文書、電訊的單位。如：「一通電話」、「三通電報」。(2)計算敲擊鐘鼓次數的單位。如：「擂鼓三通」。",
+            "entry_id": "02882",
+            "sheet": "1150929辭典匯出",
+            "row": 2888,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "志",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.意向、抱負、決心。如：「意志」、「志同道合」。《論語．公冶長》：「盍各言爾志。」\n2.記錄事物的書。如：「府志」、「三國志」。《周禮．春官．小史》：「小史掌邦國之志。」\n3.姓。如元代有志能。\n[動]\n1.記載、記錄。通「誌」。《周禮．春官．保章氏》：「掌天星，以志日月星辰之變動。」\n2.牢記。如：「永志不忘」。《荀子．子道》：「孔子曰：『由志之，吾語汝。』」",
+            "entry_id": "07554",
+            "sheet": "1150929辭典匯出",
+            "row": 7565,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "雪肌",
+      "decision": "keep",
+      "reason": "“雪肌”是自然凝练的肌肤意象，雪喻洁白细腻，古典语境中也有“冰雪肌肤”用法；有品牌识别度，不依赖生僻或借义。"
+    },
+    {
+      "name": "健肌",
+      "decision": "reject",
+      "reason": "直接表达强健肌肉，组合近于健身或肌肉护理的功能描述，品牌辨识度不足。"
+    },
+    {
+      "name": "肌研",
+      "decision": "reject",
+      "reason": "容易理解为肌肤研究或肌肉研究的缩略式描述，语序和构词偏功能标签，缺少独立品牌感。"
+    },
+    {
+      "name": "强肌",
+      "decision": "reject",
+      "reason": "直白表示增强肌肉，像产品功效或服务类别描述，缺乏凝练的品牌意象。"
+    },
+    {
+      "name": "柔肌",
+      "decision": "keep",
+      "reason": "“柔肌”组合自然，可理解为柔嫩肌肤，意象清楚简洁；不是完整判断句或类别名称，具有一定品牌感。"
+    },
+    {
+      "name": "舾艺",
+      "decision": "uncertain",
+      "reason": "“舾”指船舶设备，且所给释义注明为粤语用字；与“艺”组合的语义关系不清，难确认作为完整品牌名是否自然。"
+    },
+    {
+      "name": "峿岚",
+      "decision": "keep",
+      "reason": "“峿”有山义，“岚”指山间雾气，组合形成清楚的山岚意象；并非仅借部件或音近解释，简短且有辨识度。"
+    },
+    {
+      "name": "峿山和",
+      "decision": "uncertain",
+      "reason": "“峿山”可作为山名理解，但名称整体“峿山和”的语义关系不明；若非有依据的专名表达，结尾“和”显得生硬。"
+    },
+    {
+      "name": "峿山知",
+      "decision": "uncertain",
+      "reason": "可确认“峿山”为山名，但“峿山知”缺少自然的语法或语义连接；未提供足以支撑其作为专名关系的依据。"
+    },
+    {
+      "name": "峿山同",
+      "decision": "uncertain",
+      "reason": "“峿山”与“同”之间的关系不清，整体读作短语时不自然；无法据现有信息确认是有意的专名表达。"
+    },
+    {
+      "name": "峿山通",
+      "decision": "uncertain",
+      "reason": "“通”可表通达，但与“峿山”组合的语义关系欠明确，整体更像未完成的短语，品牌自然度存疑。"
+    },
+    {
+      "name": "峿山远志",
+      "decision": "uncertain",
+      "reason": "“远志”本身可指志向或一种植物，但与“峿山”连用后关系不明，容易形成专名或植物名的暗示，现有依据不足以确认其自然含义。"
+    }
+  ]
+}

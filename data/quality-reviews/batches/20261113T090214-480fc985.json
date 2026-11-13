@@ -1,0 +1,943 @@
+{
+  "review_id": "20261113T090214-480fc985",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "小妹",
+      "姊妹篇",
+      "姐妹花开",
+      "朦昽",
+      "昽光",
+      "文簃",
+      "簃舍",
+      "观澜簃",
+      "山间书簃",
+      "云外书簃"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光"
+      ],
+      "间": [
+        "山间邨",
+        "云间书斋",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "山间铃",
+        "山间蛱"
+      ],
+      "山": [
+        "山间邨",
+        "山间麇影",
+        "人间山海",
+        "山间漻月",
+        "山间鳅",
+        "山间埙",
+        "山间蝾影",
+        "山岳间",
+        "纸间山海",
+        "见书山",
+        "书与山",
+        "山间铃"
+      ],
+      "云": [
+        "云间书斋",
+        "螭栖云外",
+        "云外青嶂",
+        "门外云",
+        "云外留踪",
+        "云外天",
+        "獭游云外",
+        "鸺栖云外",
+        "云外峦",
+        "云外堧",
+        "云外迳",
+        "云外黍田"
+      ],
+      "小": [
+        "山间小路",
+        "小憩",
+        "小禾",
+        "小獭",
+        "小鼹",
+        "山海小鼹",
+        "自在小鼹",
+        "花间小迳",
+        "小哚",
+        "小咩",
+        "小寐",
+        "小貘友"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文",
+        "羲文",
+        "文椠",
+        "奇文",
+        "文牍",
+        "珂文",
+        "文奎"
+      ],
+      "花": [
+        "石径花开",
+        "荇花开",
+        "蓼花开",
+        "荻花开",
+        "桕花开",
+        "花开满盦",
+        "碣畔花开",
+        "砑花笺",
+        "玉石錾花",
+        "枣花香",
+        "花萼",
+        "花萼联芳"
+      ],
+      "观": [
+        "观澜斋",
+        "观澜榭",
+        "陶然观澜",
+        "观澜号",
+        "墨观澜",
+        "羿观澜",
+        "观澜圃",
+        "棠下观澜",
+        "观澜舍",
+        "詹观澜",
+        "桧下观澜",
+        "禤观澜"
+      ],
+      "开": [
+        "石径花开",
+        "荇花开",
+        "蓼花开",
+        "荻花开",
+        "桕花开",
+        "花开满盦",
+        "碣畔花开",
+        "云开山峙",
+        "崧云开",
+        "开口",
+        "云开见硔",
+        "五云开"
+      ],
+      "外": [
+        "螭栖云外",
+        "云外青嶂",
+        "门外云",
+        "云外留踪",
+        "云外天",
+        "獭游云外",
+        "鸺栖云外",
+        "云外峦",
+        "云外堧",
+        "云外迳",
+        "云外黍田",
+        "獾栖云外"
+      ],
+      "澜": [
+        "观澜斋",
+        "观澜榭",
+        "陶然观澜",
+        "观澜号",
+        "墨观澜",
+        "羿观澜",
+        "观澜圃",
+        "棠下观澜",
+        "观澜舍",
+        "詹观澜",
+        "桧下观澜",
+        "禤观澜"
+      ],
+      "书": [
+        "云间书斋",
+        "见书山",
+        "书与山",
+        "书页之间",
+        "苇间书",
+        "楹间书",
+        "书簃",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "女书",
+        "书椠"
+      ],
+      "舍": [
+        "观澜舍",
+        "茅舍",
+        "塆舍",
+        "清溪酒舍",
+        "瓦舍",
+        "篱舍",
+        "葺舍",
+        "邨舍",
+        "薇舍",
+        "菇舍",
+        "梧舍",
+        "云山砚舍"
+      ],
+      "篇": [
+        "篇章",
+        "名篇",
+        "山海篇",
+        "星河篇",
+        "清风篇",
+        "云水篇",
+        "山河入篇",
+        "星月成篇",
+        "四时篇章",
+        "伊甸新篇",
+        "诗篇",
+        "酿新篇"
+      ],
+      "昽": [
+        "曈昽",
+        "暮昽",
+        "昽月",
+        "昽夜"
+      ],
+      "朦": [
+        "朦月",
+        "朦光",
+        "朦胧月",
+        "朦胧光"
+      ],
+      "簃": [
+        "书簃",
+        "簃居",
+        "松风簃",
+        "清风入簃"
+      ]
+    },
+    "literature_phrase_examples": {
+      "小妹": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 47132,
+          "context": "小妹日成长，兄弟未有娶。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 300358,
+          "context": "【后魏时相州人作李波小妹歌疑其未备因补之】"
+        }
+      ],
+      "姊妹篇": [],
+      "姐妹花开": [],
+      "朦昽": [],
+      "昽光": [],
+      "文簃": [],
+      "簃舍": [],
+      "观澜簃": [],
+      "山间书簃": [],
+      "云外书簃": []
+    },
+    "dictionary_phrase_entries": {
+      "小妹": [
+        {
+          "title": "小妹",
+          "pinyin": "xiǎo mèi",
+          "definition": "1.稱謂。稱最小的妹妹或泛稱妹妹。如：「昨天我打電話到你家，你的小妹說你已經睡了。」\n2.女服務生。如：「小妹，麻煩妳拿一份菜單給我。」",
+          "entry_id": "070220072",
+          "sheet": "1150929辭典匯出",
+          "row": 105185,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "姊妹篇": [],
+      "姐妹花开": [],
+      "朦昽": [],
+      "昽光": [],
+      "文簃": [],
+      "簃舍": [],
+      "观澜簃": [],
+      "山间书簃": [],
+      "云外书簃": []
+    },
+    "direct_dictionary": {
+      "小": {
+        "definition": "small, tiny, insignificant",
+        "mandarin": "xiǎo",
+        "official_dictionary": [
+          {
+            "title": "小",
+            "pinyin": "xiǎo",
+            "definition": "[形]\n與「大」相對：(1)體積、數量、力量等方面不大的。如：「小城」、「小人物」。《荀子．勸學》：「不積小流，無以成江海。」唐．韓愈〈原道〉：「坐井而觀天，曰：『天小者，非天小也。』」(2)年輕、幼稚的。如：「年紀小」、「小伙子」。《晉書．九二．文苑傳．趙至傳》：「我小，未能榮養。」(3)排行最後或地位較低的。如：「小官」、「這兩位是我二弟和小妹。」、「小妹！請你把帳單拿過來。」(4)對自己或與自己有關的人事物的謙稱。如：「恕小民直言。」、「小的不敢！」、「小店」、「小兒」。\n[名]\n1.邪惡的人、壞人。《漢書．卷八九．循吏傳．龔遂傳》：「今大王親近群小，漸漬邪惡所習。」\n2.小孩、年幼者。如：「一家老小」。《詩經．小雅．楚茨》：「既醉既飽，小大稽首」。\n3.妾。如：「嫁給人家當小的。」明．湯顯祖《牡丹亭》第二五齣：「你可知老相公年來因少男兒，常有娶小之意。」\n4.二一四部首之一。\n[動]\n輕視。《左傳．桓公十三年》：「將自用也，必小羅。」唐．李白〈送長沙陳太守〉詩二首之二：「莫小二千石，當安遠俗人。」\n[副]\n稍微。表示程度不深。如：「牛刀小試」、「不無小補」。\n[助]\n詞頭，表對年紀輕者的暱稱。如：「小王」、「小老弟」。",
+            "entry_id": "07022",
+            "sheet": "1150929辭典匯出",
+            "row": 7031,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "妹": {
+        "definition": "younger sister",
+        "mandarin": "mèi",
+        "official_dictionary": [
+          {
+            "title": "妹",
+            "pinyin": "mèi",
+            "definition": "[名]\n1.稱謂：(1)對同父母所生而比自己年幼的女子的稱呼。如：「么妹」、「姊妹」、「兄妹」。南朝梁．無名氏〈木蘭詩〉二首之一：「阿姊聞妹來，當戶理紅妝。」(2)對同輩中較年幼的女子的稱呼。如：「表妹」、「堂妹」。\n2.女子對同輩的自謙之詞。如：「小妹我年幼無知，請多多指教。」\n3.泛指少女。《西遊記》第九五回：「這寶幢下乃月宮太陰星君，兩邊的仙妹是月裡嫦娥。」",
+            "entry_id": "01144",
+            "sheet": "1150929辭典匯出",
+            "row": 1146,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "姊": {
+        "definition": "elder sister",
+        "mandarin": "zǐ",
+        "official_dictionary": [
+          {
+            "title": "姊",
+            "pinyin": "jiě",
+            "definition": "[名]\n稱謂：(1)用以稱比自己先出生的同胞女子。如：「大姊」、「二姊」。南朝梁．無名氏〈木蘭詩〉二首之一：「小弟聞姊來，磨刀霍霍向豬羊。」俗稱為「姊姊」。(2)用以稱同輩而比自己年長的女子。如：「表姊」、「堂姊」、「學姊」、「師姊」。",
+            "entry_id": "05594",
+            "sheet": "1150929辭典匯出",
+            "row": 5601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "姊",
+            "pinyin": "zǐ",
+            "definition": "[名]\n稱謂：(1)用以稱比自己先出生的同胞女子。如：「大姊」、「二姊」。南朝梁．無名氏〈木蘭詩〉二首之一：「小弟聞姊來，磨刀霍霍向豬羊。」俗稱為「姊姊」。(2)用以稱同輩親戚中比自己年長的女子。如：「表姊」、「堂姊」。(3)用以稱同輩女性。如：「學姊」、「師姊」。",
+            "entry_id": "09408",
+            "sheet": "1150929辭典匯出",
+            "row": 9422,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "篇": {
+        "definition": "chapter, section, essay, article",
+        "mandarin": "piān",
+        "official_dictionary": [
+          {
+            "title": "篇",
+            "pinyin": "piān",
+            "definition": "[名]\n1.書籍、簡冊。《說文解字．竹部》：「篇，書也。」清．段玉裁．注：「書，箸也，箸於簡牘者也，亦謂之篇。古曰篇，漢人亦曰卷。」南朝齊．謝朓〈酬德賦〉：「登金華以問道，得石室之名篇。」\n2.首尾完整的文章。如：「通篇及義」。唐．韓愈〈送靈師〉詩：「少小涉書史，早能綴文篇。」\n3.量詞。計算文章或詩作的單位。如：「一篇論文」、「詩三百篇」。《三國志．卷二一．魏書．王粲傳》：「著詩、賦、論、議、垂六十篇。」唐．杜甫〈飲中八僊歌〉：「李白一斗詩百篇，長安市上酒家眠。」",
+            "entry_id": "00916",
+            "sheet": "1150929辭典匯出",
+            "row": 918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "姐": {
+        "definition": "elder sister, young lady",
+        "mandarin": "jiě",
+        "official_dictionary": [
+          {
+            "title": "姐",
+            "pinyin": "jiě",
+            "definition": "[名]\n稱謂：(1)用以稱比自己先出生的同胞女子。通「姊」。如：「大姐」。(2)用以稱同輩而比自己年長的女子。通「姊」。如：「表姐」、「楊姐」。(3)對女性的通稱。如：「小姐」。",
+            "entry_id": "05593",
+            "sheet": "1150929辭典匯出",
+            "row": 5600,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "花": {
+        "definition": "flower; blossoms",
+        "mandarin": "huā",
+        "official_dictionary": [
+          {
+            "title": "花",
+            "pinyin": "huā",
+            "definition": "[名]_x000D_\n1.被子植物的生殖器官，由許多變形的葉集生而成。包括花托、花萼、花冠、雄蕊群與雌蕊或心皮群。可供人觀賞。如：「菊花」、「梅花」、「玫瑰花」。唐．崔護〈題都城南莊〉詩：「去年今日此門中，人面桃花相映紅。」_x000D_\n2.形狀像花的物體。如：「雪花」、「水花」、「浪花」、「爆米花」。_x000D_\n3.比喻美女。如：「姊妹花」、「解語花」。唐．白居易〈霓裳羽衣歌〉：「嬌花巧笑久寂寥，娃館苧蘿空處所。」_x000D_\n4.姓。如唐代有花敬定。_x000D_\n[形]_x000D_\n1.有花的。如：「花季」。_x000D_\n2.有花紋的、雜色的。如：「花布」、「花貓」、「花邊」。_x000D_\n3.式樣、種類繁多的。如：「花式游泳」。_x000D_\n4.虛假的、巧妙的。如：「耍花招」、「花言巧語」。_x000D_\n5.模糊不清。如：「眼睛都花了。」_x000D_\n6.人心性不定、好玩樂稱為「花」。如：「花心大少」、「這個人很花，你最好不要和他交往。」_x000D_\n[動]_x000D_\n1.開花。唐．杜甫〈偪仄行〉：「辛夷始花亦已落，況我與子非壯年。」_x000D_\n2.耗費。如：「花錢」、「花時間」、「這些錢夠他花的了。」",
+            "entry_id": "05005",
+            "sheet": "1150929辭典匯出",
+            "row": 5012,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "开",
+            "pinyin": null,
+            "definition": "「幵」的異體字。",
+            "entry_id": "05728-1",
+            "sheet": "1150929辭典匯出",
+            "row": 91419,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朦": {
+        "definition": "condition or appearance of moon",
+        "mandarin": "méng",
+        "official_dictionary": [
+          {
+            "title": "朦",
+            "pinyin": "méng",
+            "definition": "參見「朦朧」條。",
+            "entry_id": "01309",
+            "sheet": "1150929辭典匯出",
+            "row": 1313,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "朦朧",
+                "pinyin": "méng lóng",
+                "definition": "1.月色昏暗的樣子。唐．來鵠〈寒食山館書情〉詩：「蜀魄啼來春寂寞，楚魂吟後月朦朧。」《西遊記》第八一回：「睜著一雙不白不黑的金睛眼，天慘淡，月朦朧；拿著一條不短不長的金箍棒，來無影，去無蹤。」\n2.不清楚、模糊。唐．李嶠〈早發苦竹館〉詩：「合沓巖嶂深，朦朧煙霧曉。」《紅樓夢》第四一回：「只說歇歇，不承望身不由己，前仰後合的、朦朧兩眼，一歪身就睡熟在床上。」\n3.糊塗。《西遊記》第三回：「我老孫超出三界之外，不在五行之中，已不伏他管轄，怎麼朦朧，又敢來勾我？」",
+                "entry_id": "013090002",
+                "sheet": "1150929辭典匯出",
+                "row": 30259
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "昽": {
+        "definition": "vague, dim; twilight",
+        "mandarin": "lóng",
+        "related_characters": [
+          {
+            "character": "曨",
+            "relation": "kTraditionalVariant",
+            "definition": "vague, dim; twilight",
+            "mandarin": "lóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "official_dictionary": [
+          {
+            "title": "文",
+            "pinyin": "wén",
+            "definition": "[名]\n1.線條交錯的圖案、花紋。《禮記．樂記》：「五色成文而不亂，八風從律而不姦。」漢．王充《論衡．言毒》：「蝮蛇多文。」\n2.文字。如：「中文」、「英文」、「甲骨文」。《孟子．萬章上》：「故說詩者不以文害辭，不以辭害志。」\n3.文章。如：「撰文」、「散文」。《後漢書．卷八〇．文苑傳下．禰衡傳》：「衡攬筆而作，文無加點，辭采甚麗。」\n4.有關文學方面的才能。如：「文武雙全」。《國語．周語中》：「武不可覿，文不可匿。」\n5.華麗有文采的外表。與「質」相對。參見「文質彬彬」條。\n6.禮節、儀式。如：「繁文縟節」。《論語．子罕》：「文王既沒，文不在茲乎！」\n7.法令、典章。《國語．周語上》：「有不祀則修言，有不享則修文。」三國吳．韋昭．注：「文，典法也。」《史記．卷一二九．貨殖傳》：「吏士舞文弄法，刻章偽書。」\n8.現象。如：「天文」、「人文地理」。《莊子．應帝王》：「壺子曰：『鄉吾示之以地文。』」\n9.量詞。古代計算銅幣的單位。如：「三文錢」、「分文不取」。《儒林外史》第一三回：「這箱子能值幾文？」\n10. 姓。如宋代有文彥博。\n11. 二一四部首之一。\n[形]\n1.溫和、優雅、不猛烈。如：「文雅」、「斯文」、「文火」。《禮記．文王世子》：「是故其成也懌，恭敬而溫文。」\n2.有文彩的。《史記．卷四七．孔子世家》：「衣文衣而舞康樂。」\n[動]\n刺染花紋圖案。如：「文身」。《水滸傳》第一一回：「誰想今日被高俅這賊坑陷了我這一場，文了面，直斷送到這里。」",
+            "entry_id": "11500",
+            "sheet": "1150929辭典匯出",
+            "row": 11514,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "中文",
+                "pinyin": "zhōng wén",
+                "definition": "漢族的語言及文字。",
+                "entry_id": "081300578",
+                "sheet": "1150929辭典匯出",
+                "row": 118471
+              },
+              {
+                "title": "英文",
+                "pinyin": "yīng wén",
+                "definition": "英國語文。《文明小史》第一回：「從前在省城裡甚麼學堂裡讀過三個月英文的，現在請他教卑職的兩個兒子讀洋書。」",
+                "entry_id": "111670097",
+                "sheet": "1150929辭典匯出",
+                "row": 155685
+              },
+              {
+                "title": "甲骨文",
+                "pinyin": "jiǎ gǔ wén",
+                "definition": "商代人占卜時刻於龜甲、獸骨上的文字，清光緒二十五年在河南省安陽縣小屯村陸續發現，為中國有實物可證的最早文字。也稱為「卜辭」、「龜甲文字」、「契文」、「貞卜文字」、「殷契」、「殷墟卜辭」、「殷墟書契」、「殷墟文字」。",
+                "entry_id": "0551200161",
+                "sheet": "1150929辭典匯出",
+                "row": 88510
+              },
+              {
+                "title": "撰文",
+                "pinyin": "zhuàn wén",
+                "definition": "撰寫文章。如：「他撰文紀念已故世的恩師，內容深切感人。」",
+                "entry_id": "081010011",
+                "sheet": "1150929辭典匯出",
+                "row": 117832
+              },
+              {
+                "title": "散文",
+                "pinyin": "sǎn wén",
+                "definition": "不用韻、不對偶，句法參差的文章。相對於韻文及駢文而言。",
+                "entry_id": "100600063",
+                "sheet": "1150929辭典匯出",
+                "row": 142945
+              },
+              {
+                "title": "文武雙全",
+                "pinyin": "wén wǔ shuāng quán",
+                "definition": "文才和武功俱備，才能特出。《三國演義》第九三回：「此人姓姜，……，事母至孝，文武雙全，智勇足備，真當世之英傑也。」《老殘遊記二編》第二回：「世間那裡有這樣好的一個文武雙全的女人？若把他弄來做個幫手，白日料理家務，晚上燈下談禪。」",
+                "entry_id": "115000263",
+                "sheet": "1150929辭典匯出",
+                "row": 160018
+              },
+              {
+                "title": "質",
+                "pinyin": "zhí",
+                "definition": "[名]\n1.事物的根本、特性。如：「特質」、「流質」。《論語．衛靈公》：「君子義以為質，禮以行之。」《史記．卷二四．樂書》：「中正無邪，禮之質也。」\n2.人的天性稟賦。如：「資質」。\n3.樸實的本性。如：「文質彬彬」。《論語．雍也》：「質勝文則野，文勝質則史。」《韓非子．解老》：「夫君子取情而去貌，好質而惡飾。」\n4.形軀、形體。三國魏．曹植〈愍志賦〉：「豈良時之難俟，痛余質之日虧。」\n5.箭靶、標的。《荀子．勸學》：「是故質的張而弓矢至焉。」《後漢書．卷六十上．馬融》：「流矢雨墜，各指所質。」\n6.古代的一種刑具。《史記．卷九六．張丞相傳》：「蒼坐法當斬，解衣伏質。」\n[動]\n詰問。《禮記．中庸》：「質諸鬼神而無疑。」",
+                "entry_id": "07506",
+                "sheet": "1150929辭典匯出",
+                "row": 7517
+              },
+              {
+                "title": "質",
+                "pinyin": "zhì",
+                "definition": "[動]\n用財物或人作保證以為抵押。如：「質押」。《戰國策．趙策四》：「於是為長安君約車百乘，質於齊，齊兵乃出。」\n[名]\n拜見長輩時奉上的見面禮。通「贄」。《孟子．滕文公下》：「出疆必載質。」漢．趙岐．注：「質，臣所執以見君者也。」《史記．卷八四．屈原賈生傳》：「乃令張儀詳去秦，厚幣委質事楚。」",
+                "entry_id": "07594",
+                "sheet": "1150929辭典匯出",
+                "row": 7605
+              },
+              {
+                "title": "文質彬彬",
+                "pinyin": "wén zhí bīn bīn",
+                "definition": "文采和實質均備，配合諧調。語出《論語．雍也》：「質勝文則野，文勝質則史。文質彬彬，然後君子。」後用以形容人舉止文雅有禮。唐．王勃〈三國論〉：「文帝富於春秋，光膺禪讓，臨朝恭儉，博覽墳籍，文質彬彬，庶幾君子者矣。」《鏡花緣》第一五回：「唐敖看那尹玉生得文質彬彬，極其清秀。」也作「彬彬文質」。",
+                "entry_id": "115000162",
+                "sheet": "1150929辭典匯出",
+                "row": 159921
+              },
+              {
+                "title": "繁文縟節",
+                "pinyin": "fán wén rù jié",
+                "definition": "繁縟的儀式禮節。也作「繁文末節」、「繁文縟禮」。",
+                "entry_id": "016340049",
+                "sheet": "1150929辭典匯出",
+                "row": 34675
+              },
+              {
+                "title": "天文",
+                "pinyin": "tiān wén",
+                "definition": "天空中，日月星辰及風、雲、雨、雪等一切自然現象。《易經．繫辭上》：「仰以觀於天文，俯以察於地理。」南朝梁．劉勰《文心雕龍．諸子》：「野老治國於地利，騶子養制於天文。」《三國演義》第八回：「允自幼頗習天文，夜觀乾象，漢家氣數已盡。」",
+                "entry_id": "027010684",
+                "sheet": "1150929辭典匯出",
+                "row": 52849
+              },
+              {
+                "title": "分文不取",
+                "pinyin": "fēn wén bù qǔ",
+                "definition": "一個錢也不拿。如：「他分文不取就這樣走了。」",
+                "entry_id": "016520273",
+                "sheet": "1150929辭典匯出",
+                "row": 35375
+              },
+              {
+                "title": "文雅",
+                "pinyin": "wén yǎ",
+                "definition": "優美、不粗俗。《漢書．卷七六．張敞傳》：「敞孫竦，王莽時至郡守，封侯，博學文雅過於敞，然政事不及也。」《文明小史》第三四回：「只是字句做得太文雅了，各書鋪裡收稿的總校看不懂。」",
+                "entry_id": "115000248",
+                "sheet": "1150929辭典匯出",
+                "row": 160002
+              },
+              {
+                "title": "斯文",
+                "pinyin": "sī wén",
+                "definition": "1.禮樂制度教化。《論語．子罕》：「天之將喪斯文也，後死者不得與於斯文也。」《漢書．卷一〇〇．敘傳下》：「武功既抗，亦迪斯文，憲章六學，統壹聖真。」\n2.儒士。《初刻拍案驚奇》卷一六：「平日敬重斯文，喜歡才士。」《儒林外史》第三六回：「先聖祠內，共觀大禮之光；國子監中，同仰斯文之主。」",
+                "entry_id": "099420039",
+                "sheet": "1150929辭典匯出",
+                "row": 141252
+              },
+              {
+                "title": "斯文",
+                "pinyin": "sī wen",
+                "definition": "人的舉止文雅有禮。《紅樓夢》第六三回：「斯文些的纔好，別大呼小叫，惹人聽見。」《文明小史》第三回：「如果打死了外國人，我拚著腦袋去陪他，金委員不該拿讀書人如此蹧蹋，到底不是斯文一脈！」",
+                "entry_id": "099420045",
+                "sheet": "1150929辭典匯出",
+                "row": 141257
+              },
+              {
+                "title": "文火",
+                "pinyin": "wén huǒ",
+                "definition": "火力較小且緩的火。唐．皎然〈對陸迅飲天目山茶因寄元居士晟〉詩：「文火香偏勝，寒泉味轉佳。」",
+                "entry_id": "115000101",
+                "sheet": "1150929辭典匯出",
+                "row": 159868
+              },
+              {
+                "title": "文身",
+                "pinyin": "wén shēn",
+                "definition": "在身體皮膚上刺染各種圖案。《五代史平話．漢史．卷上》：「劉知遠出去將錢雇倩針筆匠文身，左手刺個仙女，右手刺一條搶寶青龍。」也作「刺青」、「紋身」。",
+                "entry_id": "115000196",
+                "sheet": "1150929辭典匯出",
+                "row": 159953
+              }
+            ]
+          },
+          {
+            "title": "文",
+            "pinyin": "wèn",
+            "definition": "[動]\n1.掩飾。如：「文過飾非」。《論語．子張》：「小人之過也，必文。」\n2.修飾。如：「文飾」。《荀子．儒效》：「小雅之所以為小雅者，取是而文之也。」",
+            "entry_id": "11510",
+            "sheet": "1150929辭典匯出",
+            "row": 11524,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "簃": {
+        "definition": "side room",
+        "mandarin": "yí",
+        "official_dictionary": [
+          {
+            "title": "簃",
+            "pinyin": "yí",
+            "definition": "[名]\n與樓閣相連的小屋。《爾雅．釋宮》：「連謂之簃。」晉．郭璞．注：「堂樓閣邊小屋，今呼之簃廚連觀也。」",
+            "entry_id": "10545",
+            "sheet": "1150929辭典匯出",
+            "row": 10558,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舍": {
+        "definition": "house, dwelling; dwell, reside",
+        "mandarin": "shě shè",
+        "related_characters": [
+          {
+            "character": "捨",
+            "relation": "kTraditionalVariant",
+            "definition": "discard, give up willingly; give alms",
+            "mandarin": "shě"
+          },
+          {
+            "character": "舍",
+            "relation": "kTraditionalVariant",
+            "definition": "house, dwelling; dwell, reside",
+            "mandarin": "shě shè"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "舍",
+            "pinyin": "shě",
+            "definition": "[動]\n1.放棄、放下。通「捨」。《論語．雍也》：「犁牛之子騂且角，雖欲勿用，山川其舍諸？」《荀子．勸學》：「鍥而不舍，金石可鏤。」\n2.除去、除開。《孟子．公孫丑下》：「當今之世，舍我其誰也？」\n3.止息、停止。《論語．子罕》：「逝者如斯夫，不舍晝夜。」",
+            "entry_id": "08829",
+            "sheet": "1150929辭典匯出",
+            "row": 8843,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "舍",
+            "pinyin": "shè",
+            "definition": "[名]\n1.房屋、住宅。如：「宿舍」、「田舍」、「房舍」、「茅舍」。\n2.謙稱自己的住所。如：「寒舍」、「敝舍」。\n3.飼養牲畜的地方。如：「豬舍」、「牛舍」。\n4.宋元時代稱顯貴人家的子弟。多見於元人小說、戲曲中。元．關漢卿《救風塵》第一折：「自家鄭州人氏，周同知的孩兒周舍是也。」元．武漢臣《玉壺春》第二折：「近日有個客人，姓甚喚做甚舍。」\n5.量詞。古代計算行軍里數的單位。三十里為一舍。如：「退避三舍」。《左傳．僖公二十三年》：「若以君之靈得反晉國，晉、楚治兵，遇於中原，其辟君三舍。」\n6.一宿、一夜。《左傳．莊公三年》：「凡師一宿為舍，再宿為信，過信為次。」\n[動]\n1.住宿、居住。《左傳．宣公二年》：「宣子田於首山，舍于翳桑。」\n2.止息、停止。《左傳．哀公十五年》：「舍於孔氏之外圃。」\n3.安置。《戰國策．魏策二》：「王不如舍需於側，以稽二人者之所為。」\n[形]\n對人謙稱自己卑幼的親屬或親戚。如：「舍弟」、「舍妹」、「舍親」。",
+            "entry_id": "08833",
+            "sheet": "1150929辭典匯出",
+            "row": 8847,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "观": {
+        "definition": "see, observe, view; appearance",
+        "mandarin": "guān",
+        "related_characters": [
+          {
+            "character": "觀",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, view; appearance; hexagram ䷓",
+            "mandarin": "guān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "澜": {
+        "definition": "overflowing; waves, ripples",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "瀾",
+            "relation": "kTraditionalVariant",
+            "definition": "overflowing; waves, ripples",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "外": {
+        "definition": "out, outside, external; foreign",
+        "mandarin": "wài",
+        "official_dictionary": [
+          {
+            "title": "外",
+            "pinyin": "wài",
+            "definition": "[名]_x000D_\n1.不屬於某一定的範圍內均稱為「外」。相對於「內」而言。如：「內外」、「門外」、「屋外」。_x000D_\n2.特指外國。如：「古今中外」、「對外貿易」。_x000D_\n3.戲曲中的角色名稱，多扮演老年男子。清．孔尚任《桃花扇》第二五齣：「外扮沈公憲，淨扮張燕筑，小旦扮寇白門，丑扮鄭妥娘同上。」也稱為「老外」。_x000D_\n[形]_x000D_\n1.非自己所在或所屬的。如：「外幣」、「外地」、「外族」。_x000D_\n2.稱母親、妻子、姊妹及女兒方面的親戚。如：「外家」、「外戚」、「外甥」。_x000D_\n3.別的、其他的。如：「外一章」、「外一首」。《孟子．滕文公下》：「外人皆稱夫子好辯，敢問何也？」漢．王充《論衡．案書》：「國語，左氏之外傳也。」_x000D_\n4.不是正式的。如：「外號」、「外史」。_x000D_\n[動]_x000D_\n1.疏遠。《易經．否卦》：「《彖》曰：內小人而外君子，小人道長，君子道消也。」《荀子．王霸》：「人主則外賢而偏舉，人臣則爭職而妒賢。」_x000D_\n2.處於……之外。《國語．晉語六》：「今吾刑外乎大人，而忍於小民，將誰行武？」_x000D_\n3.背叛。《管子．版法》：「驟令不行，民心乃外。」",
+            "entry_id": "11353",
+            "sheet": "1150929辭典匯出",
+            "row": 11367,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "小妹",
+      "decision": "reject",
+      "reason": "是常见亲属称谓，也可指女服务生，名称本身缺乏品牌辨识度。"
+    },
+    {
+      "name": "姊妹篇",
+      "decision": "reject",
+      "reason": "“姊妹篇”是作品之间的关系称谓，通常用于描述关联作品，不像独立公司品牌名。"
+    },
+    {
+      "name": "姐妹花开",
+      "decision": "reject",
+      "reason": "“姐妹花”指女性组合或姐妹关系，“花开”叠加成完整的吉祥表达，整体口号化且近于句子。"
+    },
+    {
+      "name": "朦昽",
+      "decision": "uncertain",
+      "reason": "“朦昽”可理解为昏暗不清的样子，但本批无整词词条或用例佐证，作为名称的自然度与具体语义仍不够明确。"
+    },
+    {
+      "name": "昽光",
+      "decision": "keep",
+      "reason": "可理解为昏昽微光，形成清楚的光影意象，字义可核，组合凝练，有一定辨识度。"
+    },
+    {
+      "name": "文簃",
+      "decision": "keep",
+      "reason": "“文”与“簃”（楼阁相连的小屋）结合，可自然理解为藏书或作文的小室，简洁且有书斋意象；虽属新组合，语义不牵强。"
+    },
+    {
+      "name": "簃舍",
+      "decision": "uncertain",
+      "reason": "“簃”与“舍”都可指屋舍，组合语义重复；虽可理解为小屋居所，但整体构词自然度和品牌辨识度不足以确认。"
+    },
+    {
+      "name": "观澜簃",
+      "decision": "reject",
+      "reason": "与已暂留名称“观澜斋”“观澜榭”“观澜舍”共享“观澜”核心意象和结构，仅将末字替换为近似的建筑空间称谓，属于近似变体。"
+    },
+    {
+      "name": "山间书簃",
+      "decision": "reject",
+      "reason": "与已暂留名称“山间书斋”仅将“斋”替换为同属书斋、屋舍概念的“簃”，核心意象和关系相同，属于近似变体。"
+    },
+    {
+      "name": "云外书簃",
+      "decision": "keep",
+      "reason": "“云外”营造远逸的空间意象，“书簃”指藏书或读书的小屋，组合自然且具体；与已暂留“云外”名称虽共享前缀，但意象关系并非仅靠近义换字重复。"
+    }
+  ]
+}

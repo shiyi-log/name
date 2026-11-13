@@ -1,0 +1,933 @@
+{
+  "review_id": "20261112T211912-1cc5c70d",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "苗峒",
+      "瑶峒",
+      "峒寨",
+      "峒里",
+      "隐逸",
+      "隐璞",
+      "隐于林",
+      "隐竹",
+      "隐于野",
+      "隐居",
+      "隐云间",
+      "隐约其辞",
+      "隐中见真"
+    ],
+    "related_kept_candidates": {
+      "居": [
+        "卜居",
+        "葳山居",
+        "葺居",
+        "斋居",
+        "螭居松月",
+        "憩居",
+        "蔓山居",
+        "塆居",
+        "栎居",
+        "九嶷山居",
+        "乡居",
+        "云可居"
+      ],
+      "辞": [
+        "卜辞",
+        "彖辞"
+      ],
+      "间": [
+        "云间鹮",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "云间书斋",
+        "云间桫椤",
+        "翱云间",
+        "凉云间",
+        "云间棣影",
+        "云间猊影",
+        "卧云间",
+        "绀云间"
+      ],
+      "见": [
+        "矿中见海",
+        "埙中见山",
+        "潭中见山",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "云开见硔",
+        "山麇见月",
+        "藏酒见山",
+        "罅见晴"
+      ],
+      "林": [
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林",
+        "林间䴕鸣"
+      ],
+      "云": [
+        "云间鹮",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "云间书斋",
+        "云间桫椤",
+        "翱云间",
+        "凉云间",
+        "云间棣影",
+        "云间猊影",
+        "卧云间",
+        "绀云间"
+      ],
+      "逸": [
+        "逸骏",
+        "逸墅",
+        "逸翮",
+        "隽逸",
+        "潇逸",
+        "逸翎"
+      ],
+      "野": [
+        "凰归于野",
+        "山野鳟",
+        "岍野",
+        "骉野",
+        "葑野",
+        "葑野集",
+        "垄野",
+        "顷野",
+        "榴野",
+        "野墅",
+        "芹野初晴",
+        "晙野"
+      ],
+      "里": [
+        "千里骃",
+        "壳里乾坤",
+        "葶花里",
+        "墅里",
+        "芙光里",
+        "熏风里",
+        "芭蕉里",
+        "墟里",
+        "墟里烟",
+        "秋枫里",
+        "清葭里",
+        "憩光里"
+      ],
+      "中": [
+        "矿中见海",
+        "埙中见山",
+        "潭中见山",
+        "壸中天",
+        "中庸",
+        "中庸致和",
+        "盅中月",
+        "云中酿",
+        "酸中趣",
+        "碟中月",
+        "云中帜",
+        "山中桫椤"
+      ],
+      "竹": [
+        "竹影山墅",
+        "清溪竹墅",
+        "竹斋",
+        "蔓绕竹篱",
+        "竹篦",
+        "广竹韵",
+        "广陵竹影",
+        "麇栖竹影",
+        "鹩栖竹影",
+        "竹蹊",
+        "鹒栖竹影",
+        "竹簖"
+      ],
+      "峒": [
+        "峒岚",
+        "古峒",
+        "云峒",
+        "峒谷",
+        "岩峒",
+        "松风峒"
+      ],
+      "真": [
+        "臻本真",
+        "义守真",
+        "真诠",
+        "真切",
+        "诠本真",
+        "履真",
+        "真𫍯"
+      ],
+      "璞": [
+        "琎璞",
+        "璞里藏珂",
+        "剖璞",
+        "珺璞",
+        "琨璞",
+        "璞玉",
+        "抱璞",
+        "守璞"
+      ],
+      "隐": [
+        "消隐",
+        "茶隐",
+        "菊隐",
+        "隐山听风",
+        "隐舟"
+      ],
+      "于": [
+        "凰归于野",
+        "于今",
+        "于山海",
+        "于行间",
+        "于铄",
+        "耔于田"
+      ],
+      "瑶": [
+        "瑶光",
+        "瑶林",
+        "瑶音",
+        "瑶珈",
+        "瑶琨",
+        "瑶娥",
+        "瑶玱",
+        "瑶芝"
+      ],
+      "苗": [
+        "菉苗",
+        "蒿苗"
+      ],
+      "约": [
+        "赴约",
+        "桉下有约"
+      ]
+    },
+    "literature_phrase_examples": {
+      "苗峒": [],
+      "瑶峒": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1438354,
+          "context": "坐开苍玉壁，平揖青瑶峒。"
+        }
+      ],
+      "峒寨": [],
+      "峒里": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1258785,
+          "context": "峒里光阴经几春，峒前苍木垂千寻。"
+        }
+      ],
+      "隐逸": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 18526,
+          "context": "眷言怀隐逸，辍驾践幽丛。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 48742,
+          "context": "南山俱隐逸，东洛类神仙。"
+        }
+      ],
+      "隐璞": [],
+      "隐于林": [],
+      "隐竹": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 388032,
+          "context": "隐竹才分翠，秾华欲堕香。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 121973,
+          "context": "便拟纫兰佩，相招隐竹谿。"
+        }
+      ],
+      "隐于野": [],
+      "隐居": [
+        {
+          "book": "论语",
+          "line": 479,
+          "context": "隐居以求其志，行义以达其道；"
+        },
+        {
+          "book": "论语",
+          "line": 520,
+          "context": "”谓：“虞仲、夷逸隐居放言，身中清，废中权。"
+        }
+      ],
+      "隐云间": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 59647,
+          "context": "【天下乐・隐隐云间见汉阳，荆襄，几战场，下江陵顺流金鼓响。"
+        }
+      ],
+      "隐约其辞": [],
+      "隐中见真": []
+    },
+    "dictionary_phrase_entries": {
+      "苗峒": [],
+      "瑶峒": [],
+      "峒寨": [],
+      "峒里": [],
+      "隐逸": [],
+      "隐璞": [],
+      "隐于林": [],
+      "隐竹": [],
+      "隐于野": [],
+      "隐居": [],
+      "隐云间": [],
+      "隐约其辞": [],
+      "隐中见真": []
+    },
+    "direct_dictionary": {
+      "苗": {
+        "definition": "sprouts; Miao nationality",
+        "mandarin": "miáo",
+        "official_dictionary": [
+          {
+            "title": "苗",
+            "pinyin": "miáo",
+            "definition": "[名]\n1.初生未開花的穀類植株。如：「禾苗」、「麥苗」、「秧苗」、「稻苗」。\n2.初生的植物或指植物的嫩莖、嫩葉。如：「樹苗」、「花苗」、「豆苗」、「蒜苗」。\n3.初生的動物。如：「魚苗」、「豬苗」。\n4.事情的端緒。如：「愛苗」、「禍苗」。\n5.露出地面的礦產。如：「玉苗」、「礦苗」。\n6.中國少數民族之一。分布在大陸地區貴州、湖南、雲南等地。\n7.疫苗，能使動物體產生免疫力的微生物劑。如：「卡介苗」。\n8.姓。如漢代有苗蒲。",
+            "entry_id": "01402",
+            "sheet": "1150929辭典匯出",
+            "row": 1407,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "峒": {
+        "definition": "mountain in Gansu province",
+        "mandarin": "dòng",
+        "official_dictionary": [
+          {
+            "title": "峒",
+            "pinyin": "dòng",
+            "definition": "[名]\n1.早期大陸地區海南島黎族政治組織的名稱。各峒以山嶺、河流為界，有固定的地域。如：「峒長」。\n2.地名用字：(1)苗、傜、僮、侗等民族的聚居區域。分布在大陸地區廣西、貴州等部分山區。如「苗峒」、「黃峒」。(2)山洞。如：「峒中」、「吉峒坪」。",
+            "entry_id": "02403",
+            "sheet": "1150929辭典匯出",
+            "row": 2411,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "峒",
+            "pinyin": "tóng",
+            "definition": "參見「崆峒山」條。",
+            "entry_id": "02888",
+            "sheet": "1150929辭典匯出",
+            "row": 2894,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "崆峒山",
+                "pinyin": "kōng tóng shān",
+                "definition": "山名：(1)位於河南省平頂山市轄汝州市西南。(2)位於江西省贛州市贛縣南。(3)位於甘肅省平涼市崆峒區西，涇水發源地。(4)位於甘肅省張掖市高臺縣西。(5)位於四川省綿陽市平武縣西。",
+                "entry_id": "047020002",
+                "sheet": "1150929辭典匯出",
+                "row": 77992
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "瑶": {
+        "definition": "precious jade",
+        "mandarin": "yáo",
+        "related_characters": [
+          {
+            "character": "瑤",
+            "relation": "kTraditionalVariant",
+            "definition": "precious jade",
+            "mandarin": "yáo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "寨": {
+        "definition": "stockade, stronghold, outpost; brothel",
+        "mandarin": "zhài",
+        "official_dictionary": [
+          {
+            "title": "寨",
+            "pinyin": "zhài",
+            "definition": "[名]_x000D_\n1.防禦盜匪的柵欄。《遼史．卷三四．兵衛志上》：「填道路御寨及諸營壘，唯用桑柘梨栗。」_x000D_\n2.盜寇聚集的地方。如：「盜寨」。《水滸傳》第一九回：「先付與小嘍囉齎了，教去寨裡報知。」《初刻拍案驚奇》卷八：「只因山寨中多事不便，日前曾分付孩兒們，凡遇蘇州客商，不可輕殺。」_x000D_\n3.村莊。常作為地名用字。如：「孫家寨」、「趙寨」。",
+            "entry_id": "07703",
+            "sheet": "1150929辭典匯出",
+            "row": 7714,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "里",
+            "pinyin": "lǐ",
+            "definition": "[名]\n1.居所、居處。《詩經．鄭風．將仲子》：「將仲子兮，無踰我里。」《孟子．離婁下》：「去三年不反，然後收其田里。」\n2.街坊、巷弄。《後漢書．卷五四．楊震列傳》：「連里竟街，雕修繕飾，窮極巧技。」唐．韓愈〈柳子厚墓誌銘〉：「今夫平居里巷相慕悅，酒食游戲相徵逐。」\n3.故鄉。如：「故里」。南朝梁．江淹〈別賦〉：「割慈忍愛，離邦去里。」\n4.今地方政府行政區域之一。在鎮之下，鄰之上，與村平行。\n5.量詞。古代用於表示長度的單位。不同年代有不同的定義方式，例如在漢代，以三百六十步為一里。\n6.內部。通「裡」。元．馬致遠〈四塊玉．佐國心〉曲：「命里無時莫剛求，隨時過遣休生受。」\n7.二一四部首之一。",
+            "entry_id": "03419",
+            "sheet": "1150929辭典匯出",
+            "row": 3426,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "隐": {
+        "definition": "hide, conceal; hidden, secret",
+        "mandarin": "yǐn",
+        "related_characters": [
+          {
+            "character": "隐",
+            "relation": "kTraditionalVariant",
+            "definition": "hide, conceal; hidden, secret",
+            "mandarin": "yǐn"
+          },
+          {
+            "character": "隱",
+            "relation": "kTraditionalVariant",
+            "definition": "hide, conceal; hidden, secret",
+            "mandarin": "yǐn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "隐",
+            "pinyin": null,
+            "definition": "「隱」的異體字。",
+            "entry_id": "11110-1",
+            "sheet": "1150929辭典匯出",
+            "row": 154757,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "逸": {
+        "definition": "flee, escape, break loose",
+        "mandarin": "yì",
+        "official_dictionary": [
+          {
+            "title": "逸",
+            "pinyin": "yì",
+            "definition": "[動]\n1.逃亡、逃跑。《說文解字．兔部》：「逸，失也，兔謾訑善逃也。」《左傳．桓公八年》：「隨師敗績，隨侯逸。」《北史．卷六．齊高祖神武帝本紀》：「見一赤兔，每搏輒逸。」\n2.奔跑。《國語．晉語五》：「馬逸不能止，三軍從之。」三國吳．韋昭．注：「逸，奔也。」\n3.散失。《書經．胤征》：「天吏逸德，烈于猛火。」\n4.釋放。《左傳．成公十六年》：「明日復戰，乃逸楚囚。」\n[形]\n1.放蕩的。《戰國策．楚策四》：「專淫逸侈靡，不顧國政，郢都必危矣。」\n2.隱逸的。如：「逸老」。《漢書．卷一〇．成帝紀》：「故官無廢事，下無逸民。」\n3.超群的、超絕的。如：「逸才」。《老殘遊記》第一〇回：「六七八段，間以曼衍，愈轉愈清，其調愈逸。」\n4.快速的。《後漢書．卷五二．崔駰傳》：「故英人乘斯時也，猶逸禽之赴深林。」\n5.舒適、安樂。《詩經．小雅．十月之交》：「民莫不逸，我獨不敢休。」\n[名]\n1.隱士。《北史．卷三一．高允傳》：「帝乃虛求，搜賢採逸，巖隱投竿，異人並出。」唐．李白〈夜泊黃山聞殷十四吳吟〉：「朝來果是滄洲逸，酤酒提盤飯霜栗。」\n2.過失。《書經．盤庚上》：「予亦拙謀，作乃逸。」漢．孔安國．傳：「逸，過也。」",
+            "entry_id": "10648",
+            "sheet": "1150929辭典匯出",
+            "row": 10662,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "璞": {
+        "definition": "unpolished gem, uncarved gem",
+        "mandarin": "pú",
+        "official_dictionary": [
+          {
+            "title": "璞",
+            "pinyin": "pú",
+            "definition": "[名]\n1.未經琢磨加工的玉石。《孟子．梁惠王下》：「今有璞玉於此，雖萬鎰，必使玉人彫琢之。」晉．傅玄〈馬鈞傳〉：「美玉所以見誣為石，荊和所以抱璞而哭之也。」\n2.比喻人純樸的本質。如：「反璞歸真」。",
+            "entry_id": "00998",
+            "sheet": "1150929辭典匯出",
+            "row": 1000,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "于": {
+        "definition": "in, on, at; go to; surname",
+        "mandarin": "yú",
+        "related_characters": [
+          {
+            "character": "于",
+            "relation": "kTraditionalVariant",
+            "definition": "in, on, at; go to; surname",
+            "mandarin": "yú"
+          },
+          {
+            "character": "於",
+            "relation": "kTraditionalVariant",
+            "definition": "in, at, on; interjection alas!",
+            "mandarin": "yú"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "于",
+            "pinyin": "xū",
+            "definition": "[歎]\n表示感嘆的意思。通「吁」。《詩經．周南．麟之趾》：「于嗟麟兮。」",
+            "entry_id": "07260",
+            "sheet": "1150929辭典匯出",
+            "row": 7269,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "于",
+            "pinyin": "yú",
+            "definition": "[動]\n1.去、往。《文選．曹植．責躬詩》：「煢煢僕夫，于彼冀方。」\n2.取。《詩經．豳風．七月》：「晝爾于茅，宵爾索綯。」《孟子．萬章下》：「殺越人于貨，閔不畏死，凡民罔不譈。」\n[介]\n1.在。同「於」。《儀禮．士昏禮》：「婿立于門外。」\n2.以、用。《左傳．宣公十二年》：「楚自克庸以來，其君無日不以討國人而訓之，于民生之不易，禍至之無日，戒懼之不可以怠。」\n3.對、對於。《詩經．邶風．泉水》：「有懷于衛，靡日不思。」\n4.至、到。《淮南子．原道》：「以恬養性，以漠處神，則入于天門。」\n5.依照。《書經．盤庚下》：「歷告爾百姓于朕志。」\n6.為了。《孟子．萬章上》：「唯茲臣庶，女其于予治。」\n[連]\n和、與。《書經．康誥》：「告汝德之說，于罰之行。」\n[助]\n1.用於句首或句中，無義。如：「鳳凰于飛」。《詩經．周南．葛覃》：「黃鳥于飛。」\n2.用於句尾，表示疑問的語氣。同「乎」。《呂氏春秋．審應覽．審應》：「然則先王聖于？」\n[名]\n姓。如明代有于謙。",
+            "entry_id": "11557",
+            "sheet": "1150929辭典匯出",
+            "row": 11571,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "竹": {
+        "definition": "bamboo; flute; Kangxi radical 118",
+        "mandarin": "zhú",
+        "official_dictionary": [
+          {
+            "title": "竹",
+            "pinyin": "zhú",
+            "definition": "[名]\n1.植物名。多年生常綠植物。莖木質，有隆起之節，節間部中空，細長作管狀，色綠。竹莖堅韌，可供建築製器之用。\n2.樂器名。笛、簫之屬。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」晉．王羲之〈三月三日蘭亭詩序〉：「雖無絲竹管絃之盛，一觴一詠，亦足以暢敘幽情。」\n3.簡冊。如：「竹帛」、「竹簡」。漢．桓寬《鹽鐵論．利議》：「明枯竹，守空言，不知趨舍之宜，時世之變。」\n4.姓。如漢代有竹多同。\n5.二一四部首之一。",
+            "entry_id": "07958",
+            "sheet": "1150929辭典匯出",
+            "row": 7970,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "official_dictionary": [
+          {
+            "title": "野",
+            "pinyin": "yě",
+            "definition": "[名]\n1.郊外。《書經．武成》：「歸馬于華山之陽，放牛于桃林之野。」唐．柳宗元〈捕蛇者說〉：「永州之野產異蛇，黑質而白章。」\n2.廣平的地方。《呂氏春秋．季秋紀．審己》：「稼生於野而藏於倉，稼非有欲也。」《三國志．卷三五．蜀書．諸葛亮傳》：「益州險塞，沃野千里。」\n3.界限、地域。如：「分野」、「視野」。《淮南子．原道》：「上游於霄雿之野，下出於無垠之門。」\n4.民間。《書經．大禹謨》：「君子在野，小人在位。」《三國志．卷四二．蜀書．郤正傳》：「故君臣協美於朝，黎庶欣戴於野。」\n[形]\n1.質樸。《論語．雍也》：「質勝文則野，文勝質則史。」唐．柳宗元〈柳宗直西漢文類序〉：「首紀殷周之前，其文簡而野。」\n2.粗鄙無禮、放縱不馴。如：「粗野」、「撒野」。《左傳．宣公四年》：「諺曰：『狼子野心。』是乃狼也，其可畜乎？」《禮記．仲尼燕居》：「敬而不中禮謂之野，恭而不中禮謂之給。」\n3.野生而未經人工栽培或馴養的。如：「野菜」、「野菊」、「野牛」、「野馬」。\n4.非正式的。如：「野錄」、「野乘」、「野史」。\n[副]\n非常、很。如：「朔風野大」。",
+            "entry_id": "10755",
+            "sheet": "1150929辭典匯出",
+            "row": 10769,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "居": {
+        "definition": "live, dwell, reside, sit",
+        "mandarin": "jū",
+        "official_dictionary": [
+          {
+            "title": "居",
+            "pinyin": "jī",
+            "definition": "[助]\n用於句末，表示疑問的語氣。《左傳．襄公二十三年》：「誰居？其孟椒乎！」《禮記．檀弓上》：「何居？我未之前聞也。」",
+            "entry_id": "05312",
+            "sheet": "1150929辭典匯出",
+            "row": 5319,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "居",
+            "pinyin": "jū",
+            "definition": "[動]\n1.住。《論語．學而》：「居無求安」。《孟子．離婁下》：「顏子當亂世，居於陋巷。」\n2.坐下。《論語．陽貨》：「居，吾語汝。」\n3.存積、儲存。如：「奇貨可居」。《漢書．卷五九．張湯傳》：「信輒先知之，居物致富，與湯分之。」\n4.處、位於。《孟子．離婁上》：「居下位而不獲於上。」唐．劉禹錫〈詠史〉詩二首之二：「同遇漢文時，何人居貴位？」\n5.占有。《晉書．卷三四．羊祜傳》：「天下不如意，恆十居七八。」\n6.存有、懷著。如：「居心叵測」。\n[名]\n1.住所。如：「故居」、「新居」、「遷居」。\n2.住宅、茶樓、飯館等場所的稱號用字。如：「為善長樂居」、「明湖居」、「德林居」。\n3.姓。如明代有居節。",
+            "entry_id": "05982",
+            "sheet": "1150929辭典匯出",
+            "row": 5990,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "约": {
+        "definition": "treaty, agreement, covenant",
+        "mandarin": "yuē",
+        "related_characters": [
+          {
+            "character": "約",
+            "relation": "kTraditionalVariant",
+            "definition": "treaty, agreement, covenant",
+            "mandarin": "yuē"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "其": {
+        "definition": "his, her, its, their; that",
+        "mandarin": "qí",
+        "official_dictionary": [
+          {
+            "title": "其",
+            "pinyin": "jī",
+            "definition": "[助]\n置於語尾，表疑問的語氣。《詩經．小雅．庭燎》：「夜如何其？夜未央。」《文選．蘇武．詩四首之三》：「征夫懷往路，起視夜何其？」\n[名]\n人名用字。如漢代有酈食其（音ㄌㄧˋ ㄧˋ ㄐㄧ）。",
+            "entry_id": "05299",
+            "sheet": "1150929辭典匯出",
+            "row": 5306,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "其",
+            "pinyin": "jì",
+            "definition": "[助]\n置於句中或句末。用於彼、何之後。《詩經．曹風．候人》：「彼其之子，不遂其媾。」《史記．卷四七．孔子世家》：「賜！汝來何其晚也？」",
+            "entry_id": "05433",
+            "sheet": "1150929辭典匯出",
+            "row": 5440,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "其",
+            "pinyin": "qí",
+            "definition": "[代]\n1.他、他們。用於第三人稱。如：「聽其自然」、「任其自生自滅」。《孟子．萬章上》：「親之，欲其貴也。」唐．韓愈〈師說〉：「余嘉其能行古道，作〈師說〉以貽之。」\n2.他的、他們的。如：「人盡其才」、「各得其所」。晉．陶淵明〈五柳先生傳〉：「亦不詳其姓氏。」\n[形]\n這個、那樣，表示指示。如：「查無其事」、「不厭其煩」。《文選．司馬遷．報任少卿書》：「藏諸名山，傳之其人。」\n[副]\n1.殆、大概，表示揣測。《禮記．檀弓上》：「吾今日其庶幾乎？」唐．柳宗元〈封建論〉：「勢之來，其生人之初乎！」\n2.將，表示時間。《左傳．莊公二十二年》：「五世其昌，並于正卿。」《管子．小匡》：「教訓不善，政事其不治。」\n3.豈、難道，表示反詰。《左傳．僖公十年》：「欲加之罪，其無辭乎？」唐．韓愈〈祭十二郎文〉：「如吾之衰者，其能久存乎？」\n4.可、應該，表示期望。《左傳．隱公三年》：「吾子其無廢先君之功！」《戰國策．魏策四》：「寡人欲以五百里之地易安陵，安陵君其許寡人。」\n[連]\n1.若、如果，表示假設。《荀子．勸學》：「蘭槐之根是為芷，其漸之滫，君之不近，庶人不服。」宋．蘇軾〈留侯論〉：「彼其能有所忍也，然後可以就大事。」\n2.還是、或是，表示選擇。《莊子．養生主》：「是何人也？惡乎介也？天與？其人與？」《史記．卷四三．趙世家》：「秦誠愛趙乎？其實憎齊乎？物之甚者，賢主察之，秦非愛趙而憎齊也。」\n[助]\n1.發語詞，無義。《史記．卷八．高祖本紀》：「其以沛為朕湯沐邑。」\n2.然，語中助詞。《詩經．秦風．小戎》：「言念君子，溫其如玉。」\n3.表示語氣的加強。如：「尤其」、「極其」。\n[名]\n姓。如漢代有其石。",
+            "entry_id": "06245",
+            "sheet": "1150929辭典匯出",
+            "row": 6254,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辞": {
+        "definition": "words, speech, expression, phrase",
+        "mandarin": "cí",
+        "related_characters": [
+          {
+            "character": "辞",
+            "relation": "kTraditionalVariant",
+            "definition": "words, speech, expression, phrase",
+            "mandarin": "cí"
+          },
+          {
+            "character": "辭",
+            "relation": "kTraditionalVariant",
+            "definition": "words, speech, expression, phrase",
+            "mandarin": "cí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "辞",
+            "pinyin": null,
+            "definition": "「辭」的異體字。",
+            "entry_id": "09705-2",
+            "sheet": "1150929辭典匯出",
+            "row": 138717,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "official_dictionary": [
+          {
+            "title": "中",
+            "pinyin": "zhōng",
+            "definition": "[名]\n1.距離四方或兩端相等的部位。如：「居中」、「中央」、「日正當中」。\n2.內、裡面。如：「水中」、「夢中」、「心中」。\n3.泛指某一時期以內。如：「一年之中」、「晉太元中」。\n4.中國的簡稱。如：「古今中外」。\n5.姓。如漢代有中京。\n[形]\n1.居間介紹、連絡的。如：「中人」。\n2.居於高低、大小、好壞之間的。如：「中級」、「中型」、「中等」。\n3.半。如：「中夜」、「中途」。\n[副]\n1.正好。如：「適中」。\n2.表示動作正在進行。如：「事情正在交涉中。」",
+            "entry_id": "08130",
+            "sheet": "1150929辭典匯出",
+            "row": 8144,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "中",
+            "pinyin": "zhòng",
+            "definition": "[動]\n1.達到要點。《論語．子路》：「刑罰不中，則民無所錯手足。」《漢書．卷一〇．成帝紀》：「朕涉道日寡，舉錯不中。」\n2.合、正對上。如：「中規中矩」。《左傳．定公元年》：「未嘗不中吾志也。」《戰國策．西周策》：「去柳葉者百步而射之，百發百中。」\n3.遭受、感染。如：「中風」、「中毒」。\n4.得。如：「中獎」、「中籤」、「中選」。\n5.考取。如：「范進中舉」、「考中大學」。《儒林外史》第二回：「這王大老爺，就是前科新中的。」",
+            "entry_id": "08150",
+            "sheet": "1150929辭典匯出",
+            "row": 8164,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "真": {
+        "definition": "real, actual, true, genuine",
+        "mandarin": "zhēn",
+        "official_dictionary": [
+          {
+            "title": "真",
+            "pinyin": "zhēn",
+            "definition": "[形]\n純正的、不虛假的。如：「真面目」、「真心誠意」。《莊子．田子方》：「其為人也真。」\n[副]\n的確、實在。如：「真好」、「真棒」。《漢書．卷九四．匈奴傳下》：「唯北狄為不然，真中國之堅敵也。」\n[名]\n1.道家稱得道成仙的人。如：「太乙真人」、「真人不露相」。《紅樓夢．第二五回》：「魘魔法叔嫂逢五鬼，紅樓夢通靈遇雙真。」\n2.自然、本性。如：「天真」。《莊子．秋水》：「謹守而勿失，是謂反其真。」\n3.肖像、畫像。如：「寫真」、「留真」。\n4.實授的官職。《漢書．卷一二．平帝紀》：「吏在位二百石以上，一切滿秩如真。」\n5.姓。如漢代有真玄菟。",
+            "entry_id": "07824",
+            "sheet": "1150929辭典匯出",
+            "row": 7835,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "苗峒",
+      "decision": "uncertain",
+      "reason": "“峒”可指苗、瑶等民族聚居区域，但“苗峒”作为完整组合偏地域称谓；无地域背景时品牌语义和辨识度不够明确。"
+    },
+    {
+      "name": "瑶峒",
+      "decision": "uncertain",
+      "reason": "“瑶”可指美玉，也可关联瑶族；“瑶峒”诗句中有用例，但其语境可能是山峒意象，作为品牌组合的语义关系仍不够清晰。"
+    },
+    {
+      "name": "峒寨",
+      "decision": "reject",
+      "reason": "两字均指地域聚落或防御性据点，组合近于“山峒村寨”的通用地理类别，缺少凝练的品牌指向。"
+    },
+    {
+      "name": "峒里",
+      "decision": "uncertain",
+      "reason": "可理解为山峒之中或峒中村落，但整体更像地点描述，品牌语义与辨识度不足。"
+    },
+    {
+      "name": "隐逸",
+      "decision": "reject",
+      "reason": "完整词语自然，指隐居避世或隐逸之人，但属于常见人格与生活方式概念，名称本身品牌辨识度较弱。"
+    },
+    {
+      "name": "隐璞",
+      "decision": "keep",
+      "reason": "“隐”与未经雕琢的玉石“璞”组合自然，形成含蓄珍藏、质朴未显的意象，简洁且有品牌辨识度。"
+    },
+    {
+      "name": "隐于林",
+      "decision": "reject",
+      "reason": "完整组合是“隐于林中”的陈述性短语，景物和动作关系明确但偏句子化，不够凝练为品牌名。"
+    },
+    {
+      "name": "隐竹",
+      "decision": "keep",
+      "reason": "可自然理解为隐于竹间或幽隐之竹，意象简洁克制；与已保留的“隐璞”意象不同，不构成近似重复。"
+    },
+    {
+      "name": "隐于野",
+      "decision": "reject",
+      "reason": "完整组合表达隐居于旷野的陈述，语法通顺但口号或句子感明显，不够凝练。"
+    },
+    {
+      "name": "隐居",
+      "decision": "reject",
+      "reason": "这是常用动宾词，直接表示离群居住或不仕，完整名称等同于生活方式概念，品牌辨识度不足。"
+    },
+    {
+      "name": "隐云间",
+      "decision": "uncertain",
+      "reason": "可构成隐于云间的景象，但语序略显压缩，容易读成“隐云”与“云间”的拼接；完整意象关系不够确定。"
+    },
+    {
+      "name": "隐约其辞",
+      "decision": "reject",
+      "reason": "这是完整的常用成语，表示说话含糊、不把意思明白说出，语义与品牌表达存在明显负面冲突。"
+    },
+    {
+      "name": "隐中见真",
+      "decision": "reject",
+      "reason": "表达“在隐秘中看见真实”的判断式理念，完整名称呈句子或价值宣言形态，不够凝练。"
+    }
+  ]
+}

@@ -1,0 +1,974 @@
+{
+  "review_id": "20261112T150119-608941ff",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "弓弦和鸣",
+      "弓照山",
+      "弓劲",
+      "弓藏锦",
+      "弓影入松",
+      "弓帆",
+      "弓光",
+      "弓林",
+      "弓见山",
+      "弓与木",
+      "文椠",
+      "铅椠",
+      "古椠",
+      "椠墨",
+      "一椠一书",
+      "椠典",
+      "玉椠",
+      "晢然",
+      "明晢",
+      "辚辚声",
+      "车声辚辚",
+      "端正",
+      "柘木",
+      "柘林间"
+    ],
+    "related_kept_candidates": {
+      "一": [
+        "一川明月",
+        "水天一色",
+        "一念之间",
+        "一见青山",
+        "一川风月",
+        "一树春风",
+        "一庭清欢",
+        "一苇渡江",
+        "百川归一",
+        "一衣带水",
+        "一同",
+        "自成一格"
+      ],
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "间": [
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "山间邨",
+        "松间䴓",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "畈间风",
+        "垄间风",
+        "林间䴕鸣"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "铘见山海",
+        "鹂见山",
+        "云开见硔",
+        "榕庭见月",
+        "榕光初见"
+      ],
+      "林": [
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林",
+        "林间䴕鸣"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然",
+        "浡然"
+      ],
+      "和": [
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和",
+        "珺和",
+        "中庸致和",
+        "均和",
+        "淑和",
+        "和斋",
+        "臻和"
+      ],
+      "玉": [
+        "玉屑",
+        "砆玉",
+        "玉肌",
+        "攻玉",
+        "玉石錾花",
+        "玉盅",
+        "玉萼",
+        "玉葩",
+        "玉芙蓉",
+        "玉椟",
+        "玉钤",
+        "玉圜"
+      ],
+      "锦": [
+        "锦绣",
+        "锦椟"
+      ],
+      "鸣": [
+        "鸣镝",
+        "螽鸣",
+        "鹳鸣",
+        "䴓鸣",
+        "争鸣",
+        "蛩鸣",
+        "鸣桹",
+        "蛰鸣",
+        "兽鸣",
+        "䴕鸣",
+        "林间䴕鸣",
+        "诤鸣"
+      ],
+      "柘": [
+        "柘林",
+        "柘园",
+        "柘枝新绿",
+        "柘实",
+        "柘荫",
+        "柘叶",
+        "柘原",
+        "柘溪",
+        "柘雨",
+        "柘露",
+        "柘月",
+        "柘星"
+      ],
+      "影": [
+        "篾影",
+        "伞影",
+        "墙影",
+        "枣影清风",
+        "月照桹影",
+        "剪影",
+        "榴花照影",
+        "远山葶影",
+        "竹影山墅",
+        "清溪芹影",
+        "芭影映山",
+        "棹影入江"
+      ],
+      "松": [
+        "蟠松",
+        "松间鼯",
+        "松间䴓",
+        "坝畔松",
+        "松峙",
+        "松风峒",
+        "松峤",
+        "峤听松",
+        "峥松",
+        "松斋",
+        "月照松斋",
+        "听松问斋"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "枫声入野",
+        "葭声",
+        "婳声",
+        "鹂声",
+        "鹂声入林",
+        "云外鹂声",
+        "铴声",
+        "镛声",
+        "涡声"
+      ],
+      "木": [
+        "柃木",
+        "梾木",
+        "乔木",
+        "梣木",
+        "梣木成荫",
+        "梣木生辉",
+        "梌木",
+        "草木葳蕤",
+        "国有嘉木",
+        "楮木",
+        "析木",
+        "椐木"
+      ],
+      "正": [
+        "板正"
+      ],
+      "照": [
+        "月照桹影",
+        "榴花照影",
+        "芙蓉照水",
+        "月照芭叶",
+        "芭花照水",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "崧云照野",
+        "枫照川",
+        "玉螭照夜",
+        "螭照长夜"
+      ],
+      "藏": [
+        "藏弆",
+        "藏镞"
+      ],
+      "古": [
+        "古峒",
+        "摹古"
+      ],
+      "书": [
+        "云间书斋",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "枕书观世",
+        "女书",
+        "涧畔书"
+      ],
+      "墨": [
+        "楮墨",
+        "楮墨春秋",
+        "羲墨"
+      ],
+      "入": [
+        "棹影入江",
+        "凉风入松",
+        "崧影入川",
+        "山川入瓷",
+        "枫声入野",
+        "星河入暮",
+        "鹁影入云",
+        "鹂声入林",
+        "鹂入画",
+        "鹂影入松",
+        "蔓入春山",
+        "蒹色入画"
+      ],
+      "帆": [
+        "鲲帆",
+        "暮云归帆",
+        "竞帆",
+        "唐远帆",
+        "远帆归埼"
+      ],
+      "与": [
+        "螭与山海"
+      ],
+      "劲": [
+        "酷劲",
+        "劲镞"
+      ],
+      "弦": [
+        "口弦"
+      ],
+      "弓": [
+        "弓影",
+        "长弓望月",
+        "弓引长风",
+        "松月弓声",
+        "天弓",
+        "虹弓",
+        "良弓",
+        "挽弓",
+        "弓伴月",
+        "弓声"
+      ],
+      "椠": [
+        "椠本",
+        "椠印",
+        "椠牍"
+      ],
+      "晢": [
+        "晨晢",
+        "星晢"
+      ],
+      "端": [
+        "端倪"
+      ]
+    },
+    "literature_phrase_examples": {
+      "弓弦和鸣": [],
+      "弓照山": [],
+      "弓劲": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 136805,
+          "context": "草枯马蹄轻，角弓劲如石。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 187851,
+          "context": "欢娱未足燕寇至，弓劲马肥胡语喧。"
+        }
+      ],
+      "弓藏锦": [],
+      "弓影入松": [],
+      "弓帆": [],
+      "弓光": [],
+      "弓林": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 5693,
+          "context": "叔季兄弟)(之次长兄伯升次/仲故字文叔焉)建武元年(是年六月/即位改元)春正月方望与安陵人弓林(姓谱/弓鲁)"
+        }
+      ],
+      "弓见山": [],
+      "弓与木": [],
+      "文椠": [],
+      "铅椠": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 143246,
+          "context": "芸香能护字，铅椠善呈书。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 145841,
+          "context": "以余经摧挫，固请发铅椠。"
+        }
+      ],
+      "古椠": [],
+      "椠墨": [],
+      "一椠一书": [],
+      "椠典": [],
+      "玉椠": [],
+      "晢然": [],
+      "明晢": [],
+      "辚辚声": [],
+      "车声辚辚": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 706543,
+          "context": "车声辚辚马萧萧，壮士懦夫俱感泣。"
+        }
+      ],
+      "端正": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 56009,
+          "context": "君不见红闺少女端正时，夭夭桃李仙容姿。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 74937,
+          "context": "端正良难久，芜秽易为功。"
+        }
+      ],
+      "柘木": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1057689,
+          "context": "醉写泉声入柘木，何处更寻响泉曲。"
+        },
+        {
+          "book": "太平广记",
+          "line": 3299,
+          "context": "是缉木皮所作一是续鼠毛所作以诘商人具如杰公所说因问木鼠之异公曰木坚毛柔是何别也以阳燧火山隂柘木𦶟之木皮改常试之果验明年冬扶南大舶从西天竺国来卖碧玻璃镜面广一尺五寸重四十斤内外皎洁置五色物于其上向明视之不见其质问其价约钱百万贯"
+        }
+      ],
+      "柘林间": []
+    },
+    "dictionary_phrase_entries": {
+      "弓弦和鸣": [],
+      "弓照山": [],
+      "弓劲": [],
+      "弓藏锦": [],
+      "弓影入松": [],
+      "弓帆": [],
+      "弓光": [],
+      "弓林": [],
+      "弓见山": [],
+      "弓与木": [],
+      "文椠": [],
+      "铅椠": [],
+      "古椠": [],
+      "椠墨": [],
+      "一椠一书": [],
+      "椠典": [],
+      "玉椠": [],
+      "晢然": [],
+      "明晢": [],
+      "辚辚声": [],
+      "车声辚辚": [],
+      "端正": [
+        {
+          "title": "端正",
+          "pinyin": "duān zhèng",
+          "definition": "1.不歪斜、不邪曲。《莊子．天地》：「端正而不知以為義，相愛而不知以為仁。」\n2.停當。《喻世明言．卷一九．楊謙之客舫遇俠僧》：「船上人打點端正，纔要發號開船，只見李氏慌對楊公說：『不可開船！……』」\n3.準備。《二刻拍案驚奇》卷一六：「過了幾時，陳祈端正起贖田的價銀，徑到毛烈處取贖。」",
+          "entry_id": "023620028",
+          "sheet": "1150929辭典匯出",
+          "row": 47774,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "柘木": [],
+      "柘林间": []
+    },
+    "direct_dictionary": {
+      "弓": {
+        "definition": "bow; curved, arched; Kangxi radical 57",
+        "mandarin": "gōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "弦": {
+        "definition": "string; hypotenuse, crescent",
+        "mandarin": "xián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鸣": {
+        "definition": "cry of bird or animal; make sound",
+        "mandarin": "míng",
+        "related_characters": [
+          {
+            "character": "鳴",
+            "relation": "kTraditionalVariant",
+            "definition": "cry of bird or animal; make sound",
+            "mandarin": "míng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "劲": {
+        "definition": "strong, unyielding, tough, power",
+        "mandarin": "jìn",
+        "related_characters": [
+          {
+            "character": "勁",
+            "relation": "kTraditionalVariant",
+            "definition": "strong, unyielding, tough, powerful",
+            "mandarin": "jìn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "藏": {
+        "definition": "hide, conceal; hoard, store up",
+        "mandarin": "cáng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "锦": {
+        "definition": "brocade, tapestry; embroidered",
+        "mandarin": "jǐn",
+        "related_characters": [
+          {
+            "character": "錦",
+            "relation": "kTraditionalVariant",
+            "definition": "brocade, tapestry; embroidered",
+            "mandarin": "jǐn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "入": {
+        "definition": "enter, come in(to), join",
+        "mandarin": "rù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "帆": {
+        "definition": "sail; boat",
+        "mandarin": "fān fán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "木": {
+        "definition": "tree; wood, lumber; wooden",
+        "mandarin": "mù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "椠": {
+        "definition": "wooden tablet; edition",
+        "mandarin": "qiàn",
+        "related_characters": [
+          {
+            "character": "槧",
+            "relation": "kTraditionalVariant",
+            "definition": "wooden tablet; edition",
+            "mandarin": "qiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "铅": {
+        "definition": "lead (element 82, Pb)",
+        "mandarin": "qiān",
+        "related_characters": [
+          {
+            "character": "鉛",
+            "relation": "kTraditionalVariant",
+            "definition": "lead (element 82, Pb)",
+            "mandarin": "qiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "古": {
+        "definition": "old, classic, ancient",
+        "mandarin": "gǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "墨": {
+        "definition": "ink; writing",
+        "mandarin": "mò",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "典": {
+        "definition": "law, canon; documentation; classic, scripture",
+        "mandarin": "diǎn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "玉": {
+        "definition": "jade, precious stone, gem",
+        "mandarin": "yù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晢": {
+        "definition": "light of stars; shine",
+        "mandarin": "zhé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辚": {
+        "definition": "rumbling of vehicles; threshold",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "轔",
+            "relation": "kTraditionalVariant",
+            "definition": "rumbling of vehicles; threshold",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "车": {
+        "definition": "cart, vehicle; carry in cart",
+        "mandarin": "chē",
+        "related_characters": [
+          {
+            "character": "車",
+            "relation": "kTraditionalVariant",
+            "definition": "cart, vehicle; carry in a cart; Kangxi radical 159",
+            "mandarin": "chē"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "端": {
+        "definition": "end, extreme; head; beginning",
+        "mandarin": "duān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "正": {
+        "definition": "right, proper, correct",
+        "mandarin": "zhèng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "柘": {
+        "definition": "a thorny tree; sugarcane",
+        "mandarin": "zhè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "弓弦和鸣",
+      "decision": "keep",
+      "reason": "弓弦发声、彼此和鸣，画面与关系清楚，组合凝练，有辨识度。"
+    },
+    {
+      "name": "弓照山",
+      "decision": "uncertain",
+      "reason": "可理解为弓形或弓光映照山景，但“弓照山”的语义关系不够明确，组合自然度存疑。"
+    },
+    {
+      "name": "弓劲",
+      "decision": "uncertain",
+      "reason": "“劲”可指强劲，但与“弓”组合后既可能指弓的劲力，也可能读作口语化的“弓劲”，语义指向不够稳定。"
+    },
+    {
+      "name": "弓藏锦",
+      "decision": "reject",
+      "reason": "“弓藏”与“锦”缺乏自然语义关系，整体像将不同意象机械拼接。"
+    },
+    {
+      "name": "弓影入松",
+      "decision": "keep",
+      "reason": "弓的影子进入松林，意象完整而凝练，语序自然，具有画面感。"
+    },
+    {
+      "name": "弓帆",
+      "decision": "uncertain",
+      "reason": "弓与帆各自可成意象，但两者之间缺少清楚的语义联系，组合略显生硬。"
+    },
+    {
+      "name": "弓光",
+      "decision": "uncertain",
+      "reason": "可理解为弓形之光或弓上的光，但词义关系不明确，组合辨识度有限。"
+    },
+    {
+      "name": "弓林",
+      "decision": "uncertain",
+      "reason": "可理解为弓与林的并置，但没有足够明确的关系；现有语料中的用例是人名，不能据此支持普通词义。"
+    },
+    {
+      "name": "弓见山",
+      "decision": "reject",
+      "reason": "完整组合像省略主语的句子“弓见山”，表达关系不自然，句式感强于品牌名。"
+    },
+    {
+      "name": "弓与木",
+      "decision": "reject",
+      "reason": "“与”把名称组织成并列短语或句子，弓和木之间又没有清楚关系，整体像临时列举。"
+    },
+    {
+      "name": "文椠",
+      "decision": "keep",
+      "reason": "以文字、文献与木刻书版相联，语义可辨，古雅简洁，具有文化品牌的凝练感。"
+    },
+    {
+      "name": "铅椠",
+      "decision": "keep",
+      "reason": "“铅椠”是书写、校雠与刊刻相关的传统文事意象，组合有明确文化语义，不是机械拼字。"
+    },
+    {
+      "name": "古椠",
+      "decision": "keep",
+      "reason": "可理解为古版、旧刻本，语义自然凝练，有明确的文献与出版意象。"
+    },
+    {
+      "name": "椠墨",
+      "decision": "keep",
+      "reason": "木版与墨相联，指向刊刻、书写的文事场景，组合紧凑且语义连贯。"
+    },
+    {
+      "name": "一椠一书",
+      "decision": "reject",
+      "reason": "“一椠一书”是对物件逐一计数的句式，表达完整但偏描述性短句，缺乏品牌名的凝练感。"
+    },
+    {
+      "name": "椠典",
+      "decision": "keep",
+      "reason": "“椠”与典籍相联，形成刊本、典籍的清楚语义，古雅简洁。"
+    },
+    {
+      "name": "玉椠",
+      "decision": "keep",
+      "reason": "以玉喻珍贵、以椠指书版，构成典雅而可理解的文献意象，组合凝练。"
+    },
+    {
+      "name": "晢然",
+      "decision": "keep",
+      "reason": "“晢”有光明、星光之义，“然”作状态后缀自然，可理解为明亮清朗，组合简洁。"
+    },
+    {
+      "name": "明晢",
+      "decision": "keep",
+      "reason": "两个字都指向明亮清晰，构词自然且语义明确；虽不常见，但并非借字或机械拼接。"
+    },
+    {
+      "name": "辚辚声",
+      "decision": "reject",
+      "reason": "“辚辚”本身即是车声的拟声表达，再加“声”显得重复累赘，整体偏声音说明词。"
+    },
+    {
+      "name": "车声辚辚",
+      "decision": "reject",
+      "reason": "完整名称是描写车声的句子，已有明确叙述结构，不够凝练为品牌名。"
+    },
+    {
+      "name": "端正",
+      "decision": "reject",
+      "reason": "这是常用性状词，完整名称直接表达端正、规矩的评价，品牌辨识度不足；不因其字面正面含义而适合作为品牌名。"
+    },
+    {
+      "name": "柘木",
+      "decision": "keep",
+      "reason": "柘为真实树木名，与木组合后形成自然物名，简洁明确，可作为品牌名称。"
+    },
+    {
+      "name": "柘林间",
+      "decision": "uncertain",
+      "reason": "可理解为柘树林中的空间，但“林间”作为方位结构使整名更像未完的地点短语，名称完整度与自然度存疑。"
+    }
+  ]
+}

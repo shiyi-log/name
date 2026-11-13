@@ -1,0 +1,853 @@
+{
+  "review_id": "20261113T023013-1641a558",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "露光",
+      "露川",
+      "露山",
+      "松露",
+      "竹露",
+      "木兰露",
+      "露未晞",
+      "凝露",
+      "星露",
+      "开闸",
+      "闸门"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "冰露晨光",
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光"
+      ],
+      "木": [
+        "一木",
+        "柃木",
+        "梾木",
+        "乔木",
+        "梣木",
+        "梣木成荫",
+        "梣木生辉",
+        "梌木",
+        "草木葳蕤",
+        "国有嘉木",
+        "楮木",
+        "析木"
+      ],
+      "星": [
+        "七星",
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "摘星",
+        "摘星辰",
+        "箕星",
+        "棹星河"
+      ],
+      "川": [
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "兰": [
+        "芝兰",
+        "兰荪",
+        "茝兰",
+        "芙兰雅",
+        "兰熏",
+        "兰斋",
+        "兰棹",
+        "兰陔",
+        "兰婷",
+        "馨兰",
+        "浴兰",
+        "兰薰"
+      ],
+      "松": [
+        "露滴松梢",
+        "蟠松",
+        "松间鼯",
+        "松间䴓",
+        "坝畔松",
+        "松峙",
+        "松风峒",
+        "松峤",
+        "峤听松",
+        "峥松",
+        "松斋",
+        "月照松斋"
+      ],
+      "开": [
+        "云开山峙",
+        "崧云开",
+        "开口",
+        "云开见硔",
+        "五云开",
+        "涂云开",
+        "云开三径",
+        "蓓云开",
+        "开悟",
+        "云开",
+        "岳云开",
+        "云开见岩"
+      ],
+      "竹": [
+        "竹影山墅",
+        "清溪竹墅",
+        "竹斋",
+        "蔓绕竹篱",
+        "竹篦",
+        "广竹韵",
+        "广陵竹影",
+        "麇栖竹影",
+        "鹩栖竹影",
+        "竹蹊",
+        "鹒栖竹影",
+        "竹簖"
+      ],
+      "露": [
+        "露晞",
+        "露滴松梢",
+        "冰露晨光",
+        "芹露",
+        "芹露映晨",
+        "芭露",
+        "葭露",
+        "蔓生朝露",
+        "蕖露",
+        "蕖叶承露",
+        "柘露",
+        "珂露"
+      ],
+      "未": [
+        "未晞",
+        "未了",
+        "未已",
+        "久未央",
+        "菊光未央",
+        "未艾",
+        "探未知",
+        "缐引未来"
+      ],
+      "门": [
+        "门风",
+        "万象之门",
+        "云门",
+        "门扉",
+        "门前柳",
+        "门外春",
+        "门外山",
+        "门外云",
+        "月过门楼",
+        "花影过门",
+        "溪声到门",
+        "门道儿"
+      ],
+      "晞": [
+        "露晞",
+        "未晞",
+        "晞晴",
+        "晞羽",
+        "晞川",
+        "晞云",
+        "晞月",
+        "晞禾",
+        "晞舟",
+        "晞帆",
+        "雨晞",
+        "雪晞"
+      ],
+      "凝": [
+        "凝睇",
+        "晓山凝霭",
+        "柯叶凝霜",
+        "月下凝霜",
+        "玉树凝霜"
+      ]
+    },
+    "literature_phrase_examples": {
+      "露光": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 55878,
+          "context": "风乱池上萍，露光竹间月。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 63819,
+          "context": "炎炎暑退茅斋静，堦下丛莎有露光。"
+        }
+      ],
+      "露川": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 31151,
+          "context": "(兵五千人伊吾军在伊州西北三/百里甘露川兵三千人骑奇寄翻)河西节度断隔吐蕃突厥(断丁管翻吐从暾/入声厥九勿翻)统赤水大斗建康寜寇玉门墨离豆卢新泉八军张掖交城白亭三守捉屯凉"
+        }
+      ],
+      "露山": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 12616,
+          "context": "石露山木焦，鳞穷水泉涸。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 174780,
+          "context": "险心露山岳，流语翻波涛。"
+        }
+      ],
+      "松露": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 24763,
+          "context": "松露洗心眷，象筵敷念诚。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 26991,
+          "context": "兰阶霜候早，松露穸台深。"
+        }
+      ],
+      "竹露": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 61888,
+          "context": "荷风送香气，竹露滴清响。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 63625,
+          "context": "竹露闲夜滴，松风清昼吹。"
+        }
+      ],
+      "木兰露": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 93205,
+          "context": "言盛木兰露，酿作瓮间清。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1464772,
+          "context": "遥忆荒阶碧藓生，木兰露重滴归情。"
+        }
+      ],
+      "露未晞": [
+        {
+          "book": "诗经",
+          "line": 660,
+          "context": "蒹葭萋萋，白露未晞。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 7610,
+          "context": "艳唱潮初落，江花露未晞。"
+        }
+      ],
+      "凝露": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 655,
+          "context": "映庭含浅色，凝露泫浮光。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 77610,
+          "context": "高阁渐凝露，凉叶稍飘闱。"
+        }
+      ],
+      "星露": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 169393,
+          "context": "夜漏适中，星露云靡。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 402474,
+          "context": "雪霜归汉塞，星露近苏天。"
+        }
+      ],
+      "开闸": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1064355,
+          "context": "才闻开闸总驩欣，第一牵夫有喜声。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1064361,
+          "context": "要知开闸真消息，记取金钲第二声。"
+        }
+      ],
+      "闸门": [
+        {
+          "book": "三国演义",
+          "line": 1997,
+          "context": "」急唤精兵运石击突闸门，门闭，冯礼及三百壮士，皆死于土内。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "露光": [],
+      "露川": [],
+      "露山": [],
+      "松露": [
+        {
+          "title": "松露",
+          "pinyin": "sōng lù",
+          "definition": "植物名。松露科松露屬。子囊菌類，產松林下砂中，其囊子果形如球，大罕逾寸，深褐色，肉質，肥厚密緻，香味濃郁，為珍貴佳餚。",
+          "entry_id": "101980031",
+          "sheet": "1150929辭典匯出",
+          "row": 144167,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "竹露": [],
+      "木兰露": [],
+      "露未晞": [],
+      "凝露": [],
+      "星露": [],
+      "开闸": [],
+      "闸门": []
+    },
+    "direct_dictionary": {
+      "露": {
+        "definition": "dew; bare, open, exposed",
+        "mandarin": "lù",
+        "official_dictionary": [
+          {
+            "title": "露",
+            "pinyin": "lòu",
+            "definition": "[動]\n1.顯現。如：「露出馬腳」、「衣角外露」。\n2.洩漏。如：「露了口風」。《後漢書．卷七一．皇甫嵩傳》：「角等知事已露，晨夜馳敕諸方，一時俱起。」",
+            "entry_id": "03313",
+            "sheet": "1150929辭典匯出",
+            "row": 3320,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "露",
+            "pinyin": "lù",
+            "definition": "[名]\n1.靠近地面的水蒸氣，夜間遇冷而凝結成的小水珠。《楚辭．屈原．離騷》：「朝飲木蘭之墜露兮，夕餐秋菊之落英。」唐．杜甫〈月夜憶舍弟〉詩：「露從今夜白，月是故鄉明。」\n2.芳香可飲的酒或液體。如：「玫瑰露」、「果子露」。\n3.姓。如漢代有露平。\n[動]\n表現、顯現。如：「顯露」、「表露」、「暴露」、「原形畢露」。",
+            "entry_id": "03780",
+            "sheet": "1150929辭典匯出",
+            "row": 3786,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "竹": {
+        "definition": "bamboo; flute; Kangxi radical 118",
+        "mandarin": "zhú",
+        "official_dictionary": [
+          {
+            "title": "竹",
+            "pinyin": "zhú",
+            "definition": "[名]\n1.植物名。多年生常綠植物。莖木質，有隆起之節，節間部中空，細長作管狀，色綠。竹莖堅韌，可供建築製器之用。\n2.樂器名。笛、簫之屬。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」晉．王羲之〈三月三日蘭亭詩序〉：「雖無絲竹管絃之盛，一觴一詠，亦足以暢敘幽情。」\n3.簡冊。如：「竹帛」、「竹簡」。漢．桓寬《鹽鐵論．利議》：「明枯竹，守空言，不知趨舍之宜，時世之變。」\n4.姓。如漢代有竹多同。\n5.二一四部首之一。",
+            "entry_id": "07958",
+            "sheet": "1150929辭典匯出",
+            "row": 7970,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "木": {
+        "definition": "tree; wood, lumber; wooden",
+        "mandarin": "mù",
+        "official_dictionary": [
+          {
+            "title": "木",
+            "pinyin": "mù",
+            "definition": "[名]\n1.樹、木本植物的通稱。如：「草木」、「樹木」、「花木扶疏」。\n2.木材。如：「朽木不可雕」、「棺木」、「壽木」。《書經．說命上》：「說復于王曰：『惟木從繩則正，從諫則聖。』」\n3.棺材。如：「行將就木」。\n4.五行之一。參見「五行」條。\n5.木星的簡稱。\n6.姓。如晉朝有木華。\n7.二一四部首之一。\n[形]\n1.用木材製成的。如：「木椅」、「木屋」。\n2.性情樸實。如：「剛毅木訥」。《新五代史．卷二二．梁臣傳．牛存節傳》：「存節為人木彊忠謹，太祖愛之。」\n3.沒有知覺的。如：「麻木」。\n4.呆笨的。如：「鈍頭木腦」。\n[動]\n失去知覺、感覺。《紅樓夢》第一〇回：「賈瑞聽了，身上已木了半邊。」",
+            "entry_id": "01505",
+            "sheet": "1150929辭典匯出",
+            "row": 1511,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "草木",
+                "pinyin": "cǎo mù",
+                "definition": "草與樹木。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」宋．歐陽修〈秋聲賦〉：「嗟乎！草木無情，有時飄零。」",
+                "entry_id": "097600028",
+                "sheet": "1150929辭典匯出",
+                "row": 139589
+              },
+              {
+                "title": "樹木",
+                "pinyin": "shù mù",
+                "definition": "1.直立木本植物的通稱，包括喬木與灌木。如：「請勿濫伐樹木。」\n2.種植樹木。《管子．權修》：「十年之計，莫如樹木；終身之計，莫如樹人。」《儒林外史》第四九回：「樹木譬如名節，非素修弗能成。」",
+                "entry_id": "091020009",
+                "sheet": "1150929辭典匯出",
+                "row": 131820
+              },
+              {
+                "title": "花木扶疏",
+                "pinyin": "huā mù fú shū",
+                "definition": "花草樹木枝葉繁茂。如：「這座森林公園花木扶疏，景致優美，難怪遊客絡繹不絕。」",
+                "entry_id": "0500500531",
+                "sheet": "1150929辭典匯出",
+                "row": 82271
+              },
+              {
+                "title": "棺木",
+                "pinyin": "guān mù",
+                "definition": "棺材。《儒林外史》第三五回：「莊徵君拿幾十兩銀子來買了棺木，市上僱了些人抬到這裡，把兩人殮了。」",
+                "entry_id": "043080001",
+                "sheet": "1150929辭典匯出",
+                "row": 72818
+              },
+              {
+                "title": "壽木",
+                "pinyin": "shòu mù",
+                "definition": "1.高齡的樹木。《呂氏春秋．孝行覽．本味》：「菜之美者，崑崙之蘋，壽木之華。」唐．元結〈退谷銘．序〉：「滿谷生壽木，又多壽藤縈之。」\n2.棺木。《紅樓夢》第六三回：「壽木已係早年備下，寄在此廟的，甚是便宜。」",
+                "entry_id": "089020009",
+                "sheet": "1150929辭典匯出",
+                "row": 128713
+              },
+              {
+                "title": "行將就木",
+                "pinyin": "xíng jiāng jiù mù",
+                "definition": "比喻年紀已大，壽命將盡。語本《左傳．僖公二十三年》：「將適齊，謂季隗曰：『待我二十五年，不來而後嫁。』對曰：『我二十五年矣，又如是而嫁，則就木焉。請待子！』」",
+                "entry_id": "072400138",
+                "sheet": "1150929辭典匯出",
+                "row": 109317
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "木屋",
+                "pinyin": "mù wū",
+                "definition": "用木質材料建成的屋子。如：「這場火災，燒掉了整排的木屋。」「半山腰的那間木屋是伐木工人的臨時住所。」",
+                "entry_id": "015050171",
+                "sheet": "1150929辭典匯出",
+                "row": 32623
+              },
+              {
+                "title": "剛毅木訥",
+                "pinyin": "gāng yì mù nè",
+                "definition": "個性剛強堅毅、質樸且不善於言辭。《論語．子路》：「剛毅木訥，近仁。」",
+                "entry_id": "040950049",
+                "sheet": "1150929辭典匯出",
+                "row": 69577
+              },
+              {
+                "title": "麻木",
+                "pinyin": "má mù",
+                "definition": "1.醫學上稱知覺完全喪失，分為全身麻木、局部麻木及部位麻木三種。《西遊記》第四〇回：「沙僧聞言，打了一個失驚，渾身麻木道：『師兄，你都說的是那裡話，我等因生前有罪，感蒙觀世音菩薩勸化，與我們摩頂受戒，改換法名，皈依佛果。』」《儒林外史》第一一回：「昨晚跌了一交，半身麻木，口眼有些歪斜。」\n2.譏人感覺頑鈍，不能振作。如：「麻木不仁」。",
+                "entry_id": "010230016",
+                "sheet": "1150929辭典匯出",
+                "row": 26505
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "兰": {
+        "definition": "orchid; elegant, graceful",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "蘭",
+            "relation": "kTraditionalVariant",
+            "definition": "orchid; elegant, graceful",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "未": {
+        "definition": "not yet; eighth earthly branch",
+        "mandarin": "wèi",
+        "official_dictionary": [
+          {
+            "title": "未",
+            "pinyin": "wèi",
+            "definition": "[名]\n1.地支的第八位。\n2.時辰名。約當下午一點到三點。\n3.姓。如漢代有未央。\n[副]\n1.不。表示否定的意思。如：「火車誤點了，所以未能準時到達。」唐．溫庭筠〈楊柳〉詩八首之八：「塞門三月猶蕭索，縱有垂楊未覺春。」\n2.沒有。如：「革命尚未成功，同志仍須努力。」《文選．諸葛亮．出師表》：「先帝創業未半，而中道崩殂。」《聊齋志異．卷六．蕭七》：「有幼女未字，欲充下陳，幸垂援拾。」\n3.放於句末，表示疑問的意思。相當於「否」。唐．王維〈雜詩〉三首之二：「來日綺窗前，寒梅著花未？」宋．陸游〈劍門道中遇微雨〉詩：「此身合是詩人未？細雨騎驢入劍門！」",
+            "entry_id": "11419",
+            "sheet": "1150929辭典匯出",
+            "row": 11433,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晞": {
+        "definition": "dry, expose sun; dawn",
+        "mandarin": "xī",
+        "official_dictionary": [
+          {
+            "title": "晞",
+            "pinyin": "xī",
+            "definition": "[動]\n1.蒸發、乾燥。《詩經．秦風．蒹葭》：「蒹葭萋萋，白露未晞。」宋．賀鑄〈鷓鴣天．重過閶門萬事非〉詞：「原上草，露初晞，舊棲新壟兩依依。」\n2.晒、弄乾。《楚辭．屈原．九歌．少司命》：「與女沐兮咸池，晞女髮兮陽之阿。」晉．嵇含〈悅晴詩〉：「翔鳳晞輕翮，應龍曝纖鬐。」\n3.消散。《楚辭．王逸．九思．疾世》：「時昢昢兮旦旦，塵莫莫兮未晞。」漢．曹操〈祀故太尉橋玄文〉：「靈幽體翳，邈哉晞矣。」\n4.破曉、露出曙光。《詩經．齊風．東方未明》：「東方未晞，顛倒衣裳。」唐．孔穎達．正義：「晞，謂將旦之時，日之光氣始升。」",
+            "entry_id": "06748",
+            "sheet": "1150929辭典匯出",
+            "row": 6757,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凝": {
+        "definition": "coagulate; congeal; freeze",
+        "mandarin": "níng",
+        "official_dictionary": [
+          {
+            "title": "凝",
+            "pinyin": "níng",
+            "definition": "[動]\n1.液體結成固體或氣體變成液體。如：「凝結」。《易經．坤卦．象曰》：「履霜堅冰，陰始凝也。」唐．岑參〈走馬川行奉送出師西征〉詩：「幕中草檄硯水凝。」\n2.聚集、凝集。如：「凝聚」。唐．王勃〈滕王閣序〉：「潦水盡而寒潭清，煙光凝而暮山紫。」宋．歐陽修〈漁家傲．九月霜秋秋已盡〉詞：「雲欲凝，雁來應有吾鄉信。」\n3.成、形成。《書經．皋陶謨》：「撫于五辰，庶幾其凝。」漢．孔安國．傳：「凝，成也。」南朝梁．劉勰《文心雕龍．原道》：「龍鳳以藻繪呈瑞，虎豹以炳蔚凝姿。」\n4.鞏固。《荀子．議兵》：「兼并易能也，唯堅凝之難焉。」\n5.止、停。唐．孫處玄〈句〉詩：「日側南澗幽，風凝北林暮。」宋．盧祖皋〈望江南．疏雨過〉詞：「因看胡蝶著雙飛，凝扇立多時。」\n[副]\n1.注意力專注或集中。如：「凝思」、「凝望」。唐．白居易〈霓裳羽衣歌〉：「當時乍見驚心目，凝視諦聽殊未足。」\n2.徐緩。《文選．謝朓．鼓吹曲》：「凝笳翼高蓋，疊鼓送華輈。」唐．白居易〈長恨歌〉：「緩歌謾舞凝絲竹，盡日君王看不足。」\n[形]\n1.盛美、華麗。唐．韓愈〈幽懷〉詩：「凝妝耀洲渚，繁吹蕩人心。」\n2.肅重、莊嚴。《淮南子．兵略》：「湫漻如秋，典凝如冬。」《新唐書．卷一二四．宋璟傳》：「璟風度凝遠，人莫涯其量。」",
+            "entry_id": "03114",
+            "sheet": "1150929辭典匯出",
+            "row": 3121,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "开",
+            "pinyin": null,
+            "definition": "「幵」的異體字。",
+            "entry_id": "05728-1",
+            "sheet": "1150929辭典匯出",
+            "row": 91419,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "闸": {
+        "definition": "sluice; flood gate, canal lock",
+        "mandarin": "zhá",
+        "related_characters": [
+          {
+            "character": "閘",
+            "relation": "kTraditionalVariant",
+            "definition": "sluice; flood gate, canal lock",
+            "mandarin": "zhá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "门": {
+        "definition": "gate, door, entrance, opening",
+        "mandarin": "mén",
+        "related_characters": [
+          {
+            "character": "門",
+            "relation": "kTraditionalVariant",
+            "definition": "gate, door, entrance, opening; Kangxi radical 169",
+            "mandarin": "mén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "露光",
+      "decision": "keep",
+      "reason": "可自然理解为露珠映光或露水间的光色，意象清晰凝练；与暂留名“冰露晨光”虽共享露与光的字面意象，但此名突出露光本身，并非仅换序或近义替换。"
+    },
+    {
+      "name": "露川",
+      "decision": "keep",
+      "reason": "可理解为晨露与河川构成的自然意象，字义清楚、组合简洁；没有仅凭文献中地名用例作专名解释。"
+    },
+    {
+      "name": "露山",
+      "decision": "keep",
+      "reason": "可理解为山间晨露或露润山景，语义自然，具有简洁的自然意象辨识度。"
+    },
+    {
+      "name": "松露",
+      "decision": "keep",
+      "reason": "是有明确本义的植物名称，指珍贵食用菌；作为品牌名凝练易识别，不因其属于具体物名而否决。"
+    },
+    {
+      "name": "竹露",
+      "decision": "keep",
+      "reason": "竹间露水的自然意象明确，组合自然简洁；与其他露字候选不是仅换近义字形成的重复组合。"
+    },
+    {
+      "name": "木兰露",
+      "decision": "keep",
+      "reason": "可自然理解为木兰上的露水或木兰花露，语义连贯，有具体植物意象；与暂留名中的兰字候选并不构成同一意象关系的近义换字。"
+    },
+    {
+      "name": "露未晞",
+      "decision": "reject",
+      "reason": "完整名称直接截取“白露未晞”中的连续语句，保留了句子式表达而非凝练的品牌名；与暂留名“未晞”也高度近似，只是在前面添加“露”。"
+    },
+    {
+      "name": "凝露",
+      "decision": "keep",
+      "reason": "可自然表示露水凝结，也可指凝聚的露珠，语义明确凝练，具有清晰的自然意象。"
+    },
+    {
+      "name": "星露",
+      "decision": "keep",
+      "reason": "可自然理解为星光映照露珠或星夜露水，两个意象衔接顺畅，简洁且可辨识；未与其他暂留星字名形成同一组合意象的近义变体。"
+    },
+    {
+      "name": "开闸",
+      "decision": "reject",
+      "reason": "是直接表示打开闸门的常用动作词，作为完整名称偏通用操作指令，缺少品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "闸门",
+      "decision": "reject",
+      "reason": "完整名称就是通用设施类别名，直接指控制水流的闸门，不具备独立品牌名的凝练辨识度。"
+    }
+  ]
+}

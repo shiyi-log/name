@@ -137,9 +137,10 @@ def load_character_names() -> list[str]:
     with sqlite3.connect(api_server.DB_PATH) as connection:
         rows = connection.execute(
             "SELECT name, source_type, registry_note, notes_json FROM name_candidates "
-            "WHERE name_length BETWEEN 2 AND 4 AND status != '质量复核未通过'"
+            "WHERE name_length BETWEEN 2 AND 4 AND status NOT IN ('质量复核未通过', '质量复核待定')"
         )
         names = []
+        seen_letter_sets = set()
         for name, source_type, registry_note, notes_json in rows:
             if source_type != "ai":
                 continue
@@ -147,6 +148,10 @@ def load_character_names() -> list[str]:
             rating_match = re.search(r"；自然度自评=([0-9]+(?:[.][0-9]+)?)/5", notes_json)
             rating = float(rating_match.group(1)) if rating_match else None
             if api_server.has_quality_evidence({'character_roles': roles, 'naturalness': rating}, name):
+                letter_set = tuple(sorted(name))
+                if letter_set in seen_letter_sets:
+                    continue
+                seen_letter_sets.add(letter_set)
                 names.append((name, source_type, roles))
         return names
 
@@ -219,6 +224,13 @@ def run(*, target: int, provider_id: str | None, limit: int, state_path: Path, p
                 time.sleep(30.0)
                 continue
             break
+        pending_by_character = dict(pending)
+        queue = [character for character in state.get('cycle_remaining', [])
+                 if character in pending_by_character]
+        if not queue:
+            queue = [character for character, _ in pending]
+        state['cycle_remaining'] = queue
+        pending = [(character, pending_by_character[character]) for character in queue]
         retry_after = state.setdefault('retry_after', {})
         pending = targets_for_cycle(pending, retry_after, now=time.time())
         if not pending:
@@ -276,6 +288,7 @@ def run(*, target: int, provider_id: str | None, limit: int, state_path: Path, p
                 state["last_error"] = ""
                 state["consecutive_zero_additions"] = 0 if actual_added else state.get("consecutive_zero_additions", 0) + 1
                 state["last_updated"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+                state['cycle_remaining'].remove(character)
                 save_state(state_path, state)
                 print(json.dumps({
                     "character": character,
@@ -289,6 +302,8 @@ def run(*, target: int, provider_id: str | None, limit: int, state_path: Path, p
                 state.setdefault("errors", []).append(state["last_error"])
                 retry_after[character] = time.time() + 300
                 state["last_updated"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+                if character in state['cycle_remaining']:
+                    state['cycle_remaining'].remove(character)
                 save_state(state_path, state)
                 continue
             cycle_progress = cycle_progress or actual_added > 0
@@ -311,8 +326,9 @@ def run(*, target: int, provider_id: str | None, limit: int, state_path: Path, p
     final_phase, remaining = phase_targets(characters, final_counts, target, all_characters)
     state["remaining_characters"] = sum(value < target for value in final_counts.values())
     state["remaining_deficit"] = sum(max(0, target - value) for value in final_counts.values())
-    state["completed"] = generation_complete(final_counts, all_characters, target)
-    state["phase"] = final_phase
+    state["generation_target_reached"] = generation_complete(final_counts, all_characters, target)
+    state["completed"] = False  # Generated/self-rated evidence cannot establish final quality acceptance.
+    state["phase"] = "awaiting_quality_acceptance" if state["generation_target_reached"] else final_phase
     state["last_updated"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
     save_state(state_path, state)
     print(json.dumps({

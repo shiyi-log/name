@@ -1,0 +1,993 @@
+{
+  "review_id": "20261112T155104-97219985",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "初愿",
+      "愿行远",
+      "心愿相连",
+      "愿与山海",
+      "同心共愿",
+      "愿见新章",
+      "愿田",
+      "愿树",
+      "愿成",
+      "愿远",
+      "愿明德远",
+      "愿望",
+      "志愿",
+      "松柯",
+      "柯衡",
+      "柯然",
+      "星柯",
+      "一柯青",
+      "一柯承远",
+      "连柯",
+      "柯影",
+      "柯荫",
+      "柯成林",
+      "柯亭"
+    ],
+    "related_kept_candidates": {
+      "一": [
+        "一见青山",
+        "一隅",
+        "抱一",
+        "一川明月",
+        "水天一色",
+        "一念之间",
+        "一川风月",
+        "一树春风",
+        "一庭清欢",
+        "一苇渡江",
+        "百川归一",
+        "一衣带水"
+      ],
+      "星": [
+        "七星",
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "星野斋",
+        "摘星",
+        "摘星辰",
+        "箕星"
+      ],
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "山": [
+        "螭与山海",
+        "一见青山",
+        "山海貘",
+        "山海酵香",
+        "瞰山海",
+        "琥珀山海",
+        "邂逅山海",
+        "麇行远山",
+        "缱绻山海",
+        "山海藏刃",
+        "锹与山",
+        "雯与远山"
+      ],
+      "见": [
+        "一见青山",
+        "横山见海",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "云开见硔",
+        "山麇见月",
+        "藏酒见山",
+        "矿中见海",
+        "罅见晴",
+        "菉见山"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "树": [
+        "一树春风",
+        "一树榴花",
+        "树丫",
+        "树丫间",
+        "广陵烟树",
+        "桲树园",
+        "梌树"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉",
+        "酒同频",
+        "菉野同春",
+        "同欣"
+      ],
+      "成": [
+        "碳成林",
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "林": [
+        "碳成林",
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林"
+      ],
+      "行": [
+        "寸心远行",
+        "麇行远山",
+        "涂行远",
+        "资远行",
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "行义",
+        "鲜行"
+      ],
+      "心": [
+        "寸心远行",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心",
+        "心所及",
+        "心念所及"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "蘧然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然"
+      ],
+      "衡": [
+        "权衡",
+        "碳衡",
+        "王衡"
+      ],
+      "远": [
+        "寸心远行",
+        "麇行远山",
+        "雯与远山",
+        "涂行远",
+        "资远行",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影"
+      ],
+      "影": [
+        "篾影",
+        "伞影",
+        "墙影",
+        "枣影清风",
+        "月照桹影",
+        "剪影",
+        "榴花照影",
+        "远山葶影",
+        "竹影山墅",
+        "清溪芹影",
+        "芭影映山",
+        "棹影入江"
+      ],
+      "海": [
+        "螭与山海",
+        "山海貘",
+        "山海酵香",
+        "瞰山海",
+        "琥珀山海",
+        "邂逅山海",
+        "缱绻山海",
+        "山海藏刃",
+        "横山见海",
+        "资山海",
+        "人间山海",
+        "于山海"
+      ],
+      "松": [
+        "蟠松",
+        "松间鼯",
+        "松间䴓",
+        "坝畔松",
+        "松峙",
+        "松风峒",
+        "松峤",
+        "峤听松",
+        "峥松",
+        "松斋",
+        "月照松斋",
+        "听松问斋"
+      ],
+      "德": [
+        "耇德堂",
+        "淑德",
+        "德斋",
+        "畜德",
+        "德义",
+        "德赟",
+        "懋德",
+        "德馨",
+        "浴德"
+      ],
+      "望": [
+        "硕望",
+        "芹田望月",
+        "望海斋",
+        "凉秋望远",
+        "灵猊望月",
+        "望海埼",
+        "望埼",
+        "长弓望月",
+        "奇峰望远",
+        "赫望",
+        "望山厅"
+      ],
+      "相": [
+        "相辅",
+        "扮相",
+        "菉水相依"
+      ],
+      "柯": [
+        "伐柯"
+      ],
+      "愿": [
+        "偿愿"
+      ],
+      "新": [
+        "仓颉新章",
+        "太和新章",
+        "人间新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "新荚"
+      ],
+      "章": [
+        "仓颉新章",
+        "太和新章",
+        "人间新章",
+        "酷乐章",
+        "奎章",
+        "斐章"
+      ],
+      "荫": [
+        "梣木成荫",
+        "梌荫",
+        "榕荫",
+        "柘荫",
+        "柞荫",
+        "梾荫",
+        "梾木成荫",
+        "栎荫",
+        "菉荫"
+      ],
+      "初": [
+        "霪雨初霁",
+        "初酵",
+        "万象初酿",
+        "芹野初晴",
+        "晙初",
+        "初凉",
+        "厥初",
+        "唐雨初晴",
+        "茗之初",
+        "菉之初",
+        "涂如初",
+        "黛岚初起"
+      ],
+      "田": [
+        "蔗田",
+        "垄田",
+        "田墅",
+        "芹田望月",
+        "十亩田",
+        "憩心田",
+        "荚田",
+        "井田",
+        "田间飧"
+      ],
+      "与": [
+        "螭与山海",
+        "锹与山",
+        "雯与远山",
+        "锹与星辰"
+      ],
+      "承": [
+        "蕖叶承露"
+      ]
+    },
+    "literature_phrase_examples": {
+      "初愿": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 112915,
+          "context": "民何竞相传，讹言初愿戮。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 226730,
+          "context": "丘壑违初愿，簪裾徇外荣。"
+        }
+      ],
+      "愿行远": [],
+      "心愿相连": [],
+      "愿与山海": [],
+      "同心共愿": [],
+      "愿见新章": [],
+      "愿田": [],
+      "愿树": [],
+      "愿成": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2729,
+          "context": "愿成修偃化，社稷保延洪。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 66593,
+          "context": "桃李君不言，攀花愿成蹊。"
+        }
+      ],
+      "愿远": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 40773,
+          "context": "复此单栖鹤，衔雏愿远翔。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 79347,
+          "context": "更愿远孙逢九世。"
+        }
+      ],
+      "愿明德远": [],
+      "愿望": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 393021,
+          "context": "又《山川典·庐山部》作句融诗）殷璠《河岳共同愿望尽快集》卷上收此为（刘眘虚诗。"
+        },
+        {
+          "book": "古文观止",
+          "line": 510,
+          "context": "窃自恕，而恐太后玉体之有所郄也，故愿望见太后。"
+        }
+      ],
+      "志愿": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 63880,
+          "context": "尚恐丹液迟，志愿不及申。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 91788,
+          "context": "古者三皇前，满腹志愿毕。"
+        }
+      ],
+      "松柯": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 80551,
+          "context": "君不见拂云百丈青松柯，纵使秋风无奈何。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 18955,
+          "context": "归去感知泪，永洒青松柯。"
+        }
+      ],
+      "柯衡": [],
+      "柯然": [],
+      "星柯": [],
+      "一柯青": [],
+      "一柯承远": [],
+      "连柯": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 141515,
+          "context": "奇花并蔕宜新种，芳树连柯得旧栽。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 667088,
+          "context": "连柯并干扶疏叶，带月萦风兴味长。"
+        }
+      ],
+      "柯影": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 45730,
+          "context": "秋意浓，闲伫立、庭柯影里。"
+        }
+      ],
+      "柯荫": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 194009,
+          "context": "双楠高耸绿氤氲，密叶长柯荫四邻。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1296203,
+          "context": "层柯荫修径，疏密散金绿。"
+        }
+      ],
+      "柯成林": [],
+      "柯亭": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 207383,
+          "context": "柯亭丁相遇，惊听奏钧天。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 231587,
+          "context": "调高银字声还侧，物比柯亭韵校奇。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "初愿": [],
+      "愿行远": [],
+      "心愿相连": [],
+      "愿与山海": [],
+      "同心共愿": [],
+      "愿见新章": [],
+      "愿田": [],
+      "愿树": [],
+      "愿成": [],
+      "愿远": [],
+      "愿明德远": [],
+      "愿望": [],
+      "志愿": [],
+      "松柯": [],
+      "柯衡": [],
+      "柯然": [],
+      "星柯": [],
+      "一柯青": [],
+      "一柯承远": [],
+      "连柯": [],
+      "柯影": [],
+      "柯荫": [],
+      "柯成林": [],
+      "柯亭": []
+    },
+    "direct_dictionary": {
+      "初": {
+        "definition": "beginning, initial, primary",
+        "mandarin": "chū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "愿": {
+        "definition": "sincere, honest, virtuous",
+        "mandarin": "yuàn",
+        "related_characters": [
+          {
+            "character": "愿",
+            "relation": "kTraditionalVariant",
+            "definition": "sincere, honest, virtuous",
+            "mandarin": "yuàn"
+          },
+          {
+            "character": "願",
+            "relation": "kTraditionalVariant",
+            "definition": "desire, want; wish; ambition",
+            "mandarin": "yuàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "相": {
+        "definition": "mutual, reciprocal, each other",
+        "mandarin": "xiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "连": {
+        "definition": "join, connect; continuous; even",
+        "mandarin": "lián",
+        "related_characters": [
+          {
+            "character": "連",
+            "relation": "kTraditionalVariant",
+            "definition": "join, connect; continuous; even",
+            "mandarin": "lián"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "共": {
+        "definition": "together with, all, total; to share",
+        "mandarin": "gòng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "章": {
+        "definition": "composition; chapter, section",
+        "mandarin": "zhāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "田": {
+        "definition": "field, arable land, cultivated",
+        "mandarin": "tián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "树": {
+        "definition": "tree; plant; set up, establish",
+        "mandarin": "shù",
+        "related_characters": [
+          {
+            "character": "樹",
+            "relation": "kTraditionalVariant",
+            "definition": "tree; plant; set up, establish",
+            "mandarin": "shù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "德": {
+        "definition": "ethics, morality, virtue",
+        "mandarin": "dé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "志": {
+        "definition": "purpose, will, determination; annals",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "志",
+            "relation": "kTraditionalVariant",
+            "definition": "purpose, will, determination; annals",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "誌",
+            "relation": "kTraditionalVariant",
+            "definition": "write down; record; magazine",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "柯": {
+        "definition": "axe-handle; stalk, bough; surname",
+        "mandarin": "kē",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "衡": {
+        "definition": "measure, weigh, judge, consider",
+        "mandarin": "héng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "承": {
+        "definition": "inherit, receive; succeed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "影": {
+        "definition": "shadow; image, reflection; photograph",
+        "mandarin": "yǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "荫": {
+        "definition": "shade, shelter; protect",
+        "mandarin": "yīn",
+        "related_characters": [
+          {
+            "character": "蔭",
+            "relation": "kTraditionalVariant",
+            "definition": "shade, shelter; protect",
+            "mandarin": "yīn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "亭": {
+        "definition": "pavilion; erect",
+        "mandarin": "tíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "初愿",
+      "decision": "keep",
+      "reason": "意为最初的愿念，组合简洁自然，有初心与愿景的含义，具备品牌名的凝练感。"
+    },
+    {
+      "name": "愿行远",
+      "decision": "reject",
+      "reason": "容易读作“愿行得远”或“愿意远行”的句式，语法关系不够明确，整体偏愿景口号。"
+    },
+    {
+      "name": "心愿相连",
+      "decision": "reject",
+      "reason": "完整表达心愿彼此连接的判断，句意直白且口号化，不够凝练。"
+    },
+    {
+      "name": "愿与山海",
+      "decision": "reject",
+      "reason": "以“愿与”引出山海但缺少谓语，像未完成的诗句或口号，语义关系悬而未决。"
+    },
+    {
+      "name": "同心共愿",
+      "decision": "reject",
+      "reason": "表达众人同心、共享愿望的价值宣言，属于完整口号式组合。"
+    },
+    {
+      "name": "愿见新章",
+      "decision": "reject",
+      "reason": "意为希望看到新的篇章，完整呈现祝愿或展望句式，口号感较强。"
+    },
+    {
+      "name": "愿田",
+      "decision": "uncertain",
+      "reason": "可理解为愿望之田或承载愿念的田地，但“愿”与“田”的修饰关系缺少自然依据，组合略显生造。"
+    },
+    {
+      "name": "愿树",
+      "decision": "uncertain",
+      "reason": "可联想到愿望之树，但这是需要额外补足的比喻关系，名称本身语义不够清楚。"
+    },
+    {
+      "name": "愿成",
+      "decision": "uncertain",
+      "reason": "可读作愿望得以实现，也可能理解为“愿意成就”，语法关系和语义指向不稳定。"
+    },
+    {
+      "name": "愿远",
+      "decision": "uncertain",
+      "reason": "可作愿望长远或愿意远行解，但两字间的关系不明确，语义略显生硬。"
+    },
+    {
+      "name": "愿明德远",
+      "decision": "reject",
+      "reason": "词素排列关系不清，既不像自然短语，也难以形成明确、凝练的品牌意象。"
+    },
+    {
+      "name": "愿望",
+      "decision": "reject",
+      "reason": "是常用抽象名词，直接表示希望或欲求，完整名称缺乏品牌辨识度。"
+    },
+    {
+      "name": "志愿",
+      "decision": "reject",
+      "reason": "是常用词，通常指志向、愿望或志愿服务，名称本身通用且类别指向明显。"
+    },
+    {
+      "name": "松柯",
+      "decision": "keep",
+      "reason": "松树枝干之意有明确自然物象，构词顺畅简洁；不是仅靠拆字拼义，具备可识别的意象。"
+    },
+    {
+      "name": "柯衡",
+      "decision": "uncertain",
+      "reason": "“柯”可指枝干或斧柄，“衡”有衡量、权衡之义，但两字组合的关系不自然，难以形成清晰意象。"
+    },
+    {
+      "name": "柯然",
+      "decision": "uncertain",
+      "reason": "“然”可作状态后缀，但与“柯”结合后缺少可确认的自然词义或清楚语境，整体显得生造。"
+    },
+    {
+      "name": "星柯",
+      "decision": "uncertain",
+      "reason": "可想象为星光映照枝柯，但名称没有表达这种关系的字词依据，意象连接较牵强。"
+    },
+    {
+      "name": "一柯青",
+      "decision": "reject",
+      "reason": "“一柯”与“青”的修饰关系不清，像删略了必要成分的诗句，整体不够自然。"
+    },
+    {
+      "name": "一柯承远",
+      "decision": "reject",
+      "reason": "“一柯”与“承远”之间缺乏明确句法和语义联系，呈现机械堆字感。"
+    },
+    {
+      "name": "连柯",
+      "decision": "keep",
+      "reason": "可指相连的枝柯，语义直接且自然物象明确，简洁利落，有品牌辨识度。"
+    },
+    {
+      "name": "柯影",
+      "decision": "keep",
+      "reason": "枝柯之影的关系清楚，形成具体、简洁的自然画面，作为品牌名自然凝练。"
+    },
+    {
+      "name": "柯荫",
+      "decision": "keep",
+      "reason": "可理解为枝柯投下的荫蔽，构词自然，意象清楚，并有庇护、清荫的联想。"
+    },
+    {
+      "name": "柯成林",
+      "decision": "uncertain",
+      "reason": "可理解为枝柯渐成树林，但表达的是过程或完整句意，作为名称略显叙述化，凝练度不足。"
+    },
+    {
+      "name": "柯亭",
+      "decision": "uncertain",
+      "reason": "可理解为树柯旁的亭子，但组合关系并不固定；虽有古籍连续用例，语境不足以证明该组合本身自然适合作品牌。"
+    }
+  ]
+}

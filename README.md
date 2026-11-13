@@ -15,6 +15,8 @@ python -m pip install -r requirements.txt
 python api_server.py
 ```
 
+仓库将发布数据以 gzip 形式保存；从源码克隆后，首次启动前运行 `python scripts/restore_compressed_sources.py` 还原数据库、候选快照和字义资料。
+
 然后打开：[http://127.0.0.1:4173/](http://127.0.0.1:4173/)。服务默认只监听本机；可用 `--port 4174` 调整端口。关闭服务时按 `Ctrl+C`。
 
 页面依赖 `/api/` 接口，必须通过 `api_server.py` 启动。首次启动会自动迁移旧版数据库结构并保留已有候选与核验状态。
@@ -120,6 +122,22 @@ python build_database.py
 ```
 
 脚本会更新 `data/names.db`；刷新页面后，前端通过 API 读取最新数据。JSON 文件为发布快照，不会在每次生成时自动更新。升级前请备份自己的 SQLite 数据库；如服务仍在运行，应使用 SQLite 备份功能以包含 WAL 中的数据。
+
+全字候选的目标为字库中每字 500 个。文献仅作为字义、语感和灵感参考，不要求每个名称提供出处。生成初筛和独立模型暂留都不代表最终质量验收；机械拼接、近义改字、换序和待定名称不应计入达标数量。运行以下命令可从同一份 SQLite 快照刷新全部字的数量和缺口，原数据库保持只读：
+
+```bash
+python scripts/audit_character_candidates.py
+```
+
+结果写入 `data/character_generation_audit.json`。其中 `provisional_count` 包含尚无逐名语义证据的历史候选，仅供库量参考；`ai_evidence_count` 为生成初筛进度；`independent_screen_count` 为独立复核暂留进度。各层均排除已否决和待定记录，最终质量验收状态单独列出。
+
+旧库中尚无各字语义说明、且从未复核的 AI 名称，可单独准备语义核查与独立复核材料：
+
+```bash
+python scripts/review_legacy_candidates.py --batch-size 24 --max-batches 3
+```
+
+材料保存在 `data/quality-reviews/legacy-batches`，再次运行会跳过已经保存完整材料的名称。该流程仅写审核材料，不自动把模型暂留或高自评分写回名称库；需核对两组判断、字义和已有近似名称后再裁决。文献仍仅作参考，不要求每名有出处。
 
 ## 本地 API
 

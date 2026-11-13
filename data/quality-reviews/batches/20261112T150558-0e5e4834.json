@@ -1,0 +1,969 @@
+{
+  "review_id": "20261112T150558-0e5e4834",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "文牍",
+      "时光留牍",
+      "效然",
+      "效远",
+      "效天成",
+      "卓效",
+      "豳信",
+      "豳成",
+      "豳文",
+      "古豳",
+      "豳州",
+      "豳川",
+      "豳山远望",
+      "豳典",
+      "豳雅",
+      "豳都",
+      "豳里人",
+      "𬱖海",
+      "云𬱖",
+      "刃光",
+      "刃照山河",
+      "刃入青云",
+      "刃与星河",
+      "刃藏于心"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川",
+        "晙川"
+      ],
+      "天": [
+        "水天一色",
+        "掀天",
+        "壸中天",
+        "天圜",
+        "天翱",
+        "天资",
+        "江天又阔",
+        "天垓",
+        "天垠",
+        "绀天",
+        "瓶中天地",
+        "天女花"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "久成",
+        "梾木成荫",
+        "珐成新境"
+      ],
+      "时": [
+        "巳时",
+        "戌时",
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "鹂知时",
+        "唐时雨",
+        "四时清鲜",
+        "四时常鲜"
+      ],
+      "星": [
+        "卫星",
+        "远星团",
+        "星轺",
+        "奎星",
+        "阎星野",
+        "塄畔星",
+        "芭叶映星",
+        "观星斋",
+        "星野斋",
+        "摘星",
+        "摘星辰",
+        "箕星"
+      ],
+      "心": [
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心",
+        "心所及",
+        "心念所及"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "云": [
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间",
+        "烝云",
+        "翀云间"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然",
+        "浡然"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "卓": [
+        "卓荦",
+        "卓屹",
+        "崧卓"
+      ],
+      "豳": [
+        "豳风"
+      ],
+      "海": [
+        "山海貘",
+        "海鳐",
+        "山海酵香",
+        "海峤",
+        "峥海",
+        "云海峥嵘",
+        "观海云斋",
+        "望海斋",
+        "瞰海",
+        "瞰山海",
+        "海徼",
+        "鲲海"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文",
+        "文椠",
+        "奇文"
+      ],
+      "雅": [
+        "姱雅",
+        "淑雅",
+        "雅墅",
+        "芙兰雅",
+        "臻雅",
+        "珀雅",
+        "酷雅",
+        "婳雅",
+        "绉雅",
+        "赟雅",
+        "雅镛",
+        "镠雅"
+      ],
+      "里": [
+        "千里骃",
+        "壳里乾坤",
+        "葶花里",
+        "墅里",
+        "芙光里",
+        "熏风里",
+        "芭蕉里",
+        "墟里",
+        "墟里烟",
+        "秋枫里",
+        "清葭里",
+        "憩光里"
+      ],
+      "望": [
+        "硕望",
+        "阎望舒",
+        "芹田望月",
+        "望海斋",
+        "凉秋望远",
+        "灵猊望月",
+        "望海埼",
+        "望埼",
+        "榕山远望",
+        "长弓望月",
+        "奇峰望远"
+      ],
+      "照": [
+        "月照桹影",
+        "榴花照影",
+        "芙蓉照水",
+        "月照芭叶",
+        "芭花照水",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "崧云照野",
+        "枫照川",
+        "玉螭照夜",
+        "螭照长夜"
+      ],
+      "信": [
+        "榴花信",
+        "口信",
+        "鹂衔春信",
+        "瓶中信",
+        "义信",
+        "榕庭春信"
+      ],
+      "藏": [
+        "藏弆",
+        "藏镞",
+        "藏刃",
+        "山海藏刃"
+      ],
+      "古": [
+        "古峒",
+        "摹古",
+        "古椠"
+      ],
+      "𬱖": [
+        "𬱖和",
+        "𬱖光",
+        "𬱖川"
+      ],
+      "河": [
+        "瞰山河",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "河垠",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼"
+      ],
+      "入": [
+        "棹影入江",
+        "凉风入松",
+        "崧影入川",
+        "山川入瓷",
+        "枫声入野",
+        "星河入暮",
+        "鹁影入云",
+        "鹂声入林",
+        "鹂入画",
+        "鹂影入松",
+        "蔓影入林",
+        "蔓入春山"
+      ],
+      "与": [
+        "螭与山海"
+      ],
+      "人": [
+        "个中人"
+      ],
+      "典": [
+        "椠典"
+      ],
+      "牍": [
+        "椠牍",
+        "尺牍",
+        "简牍",
+        "笺牍"
+      ],
+      "刃": [
+        "游刃",
+        "藏刃",
+        "霜刃",
+        "玉刃",
+        "月刃",
+        "山海藏刃",
+        "风过刃鸣"
+      ]
+    },
+    "literature_phrase_examples": {
+      "文牍": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 74067,
+          "context": "官班唐内使，文牍汉诸曹。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 291642,
+          "context": "文牍甚稀如吏隐，江山有助作诗豪。"
+        }
+      ],
+      "时光留牍": [],
+      "效然": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 790329,
+          "context": "欲效然明略陈语，那知叔向罢登堂。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 10493,
+          "context": "其欲使州郡考士必由四科(四科即/汉左雄)(所上黄琼所増者也见五/十二卷顺帝汉安二年)皆有事效然后察举试辟公府为亲民长吏(长知/两翻)转以功次补郡守者或就増秩赐"
+        }
+      ],
+      "效远": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 4373,
+          "context": "闻子东征效远官，行行春色黯离魂。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 162546,
+          "context": "莫嫌效远因而止，更勉其来更有功。"
+        }
+      ],
+      "效天成": [],
+      "卓效": [],
+      "豳信": [],
+      "豳成": [],
+      "豳文": [
+        {
+          "book": "史记",
+          "line": 8979,
+          "context": "「生貔豹，搏豺狼，手熊罴，足野羊，蒙鹖苏，?白虎，被豳文，跨野马。"
+        },
+        {
+          "book": "文选",
+          "line": 391,
+          "context": "珉玉旁唐，玢豳文鳞。"
+        }
+      ],
+      "古豳": [
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 27265,
+          "context": "决在今岁又使郎将尔朱焕校尉桥公山以甲遗文干二人至豳州上变(豳州汉漆县地汉末置新平郡东/北有古豳亭后魏置豳州尔朱焕)(等至豳州言有急变豳州以闻遂得至/仁智宫遗于季翻将即亮翻校户数翻)告太子使文干举兵使表里相应(焕考异曰统纪云建"
+        }
+      ],
+      "豳州": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 191992,
+          "context": "【豳州】"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 192055,
+          "context": "须知此北下，地底见豳州。"
+        }
+      ],
+      "豳川": [],
+      "豳山远望": [],
+      "豳典": [],
+      "豳雅": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 19516,
+          "context": "远近闻清商，依稀奏豳雅。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 919752,
+          "context": "应律随豳雅，旋杓建戌方。"
+        }
+      ],
+      "豳都": [],
+      "豳里人": [],
+      "𬱖海": [],
+      "云𬱖": [],
+      "刃光": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 173305,
+          "context": "㸌㸌刀刃光，弯弯弓面张。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 194807,
+          "context": "愿信赤心语，速即白刃光。"
+        }
+      ],
+      "刃照山河": [],
+      "刃入青云": [],
+      "刃与星河": [],
+      "刃藏于心": []
+    },
+    "dictionary_phrase_entries": {
+      "文牍": [],
+      "时光留牍": [],
+      "效然": [],
+      "效远": [],
+      "效天成": [],
+      "卓效": [],
+      "豳信": [],
+      "豳成": [],
+      "豳文": [],
+      "古豳": [],
+      "豳州": [],
+      "豳川": [],
+      "豳山远望": [],
+      "豳典": [],
+      "豳雅": [],
+      "豳都": [],
+      "豳里人": [],
+      "𬱖海": [],
+      "云𬱖": [],
+      "刃光": [],
+      "刃照山河": [],
+      "刃入青云": [],
+      "刃与星河": [],
+      "刃藏于心": []
+    },
+    "direct_dictionary": {
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "牍": {
+        "definition": "writing tablet; documents, books",
+        "mandarin": "dú",
+        "related_characters": [
+          {
+            "character": "牘",
+            "relation": "kTraditionalVariant",
+            "definition": "writing tablet; documents, books",
+            "mandarin": "dú"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "留": {
+        "definition": "stop, halt; stay, detain, keep",
+        "mandarin": "liú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "效": {
+        "definition": "result, effect; effectiveness",
+        "mandarin": "xiào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "卓": {
+        "definition": "profound, brilliant, lofty",
+        "mandarin": "zhuó",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "豳": {
+        "definition": "a Zhou-dynasty state",
+        "mandarin": "bīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "古": {
+        "definition": "old, classic, ancient",
+        "mandarin": "gǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "州": {
+        "definition": "administrative division, state",
+        "mandarin": "zhōu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "典": {
+        "definition": "law, canon; documentation; classic, scripture",
+        "mandarin": "diǎn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雅": {
+        "definition": "elegant, graceful, refined",
+        "mandarin": "yǎ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "都": {
+        "definition": "metropolis, capital; all, the whole; elegant, refined",
+        "mandarin": "dōu dū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "里": {
+        "definition": "unit of distance; village; lane; Kangxi radical 166",
+        "mandarin": "lǐ",
+        "related_characters": [
+          {
+            "character": "裏",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "裡",
+            "relation": "kTraditionalVariant",
+            "definition": "inside, interior, within",
+            "mandarin": "lǐ"
+          },
+          {
+            "character": "里",
+            "relation": "kTraditionalVariant",
+            "definition": "unit of distance; village; lane; Kangxi radical 166",
+            "mandarin": "lǐ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "人": {
+        "definition": "man; people; mankind; someone else",
+        "mandarin": "rén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "𬱖": {
+        "definition": "good and beautiful",
+        "mandarin": "dí",
+        "related_characters": [
+          {
+            "character": "頔",
+            "relation": "kTraditionalVariant",
+            "definition": "good and beautiful",
+            "mandarin": "dí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "海": {
+        "definition": "sea, ocean; maritime",
+        "mandarin": "hǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "刃": {
+        "definition": "edged tool, cutlery, knife edge",
+        "mandarin": "rèn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "入": {
+        "definition": "enter, come in(to), join",
+        "mandarin": "rù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "藏": {
+        "definition": "hide, conceal; hoard, store up",
+        "mandarin": "cáng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "于": {
+        "definition": "in, on, at; go to; surname",
+        "mandarin": "yú",
+        "related_characters": [
+          {
+            "character": "于",
+            "relation": "kTraditionalVariant",
+            "definition": "in, on, at; go to; surname",
+            "mandarin": "yú"
+          },
+          {
+            "character": "於",
+            "relation": "kTraditionalVariant",
+            "definition": "in, at, on; interjection alas!",
+            "mandarin": "yú"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "文牍",
+      "decision": "keep",
+      "reason": "“文牍”是自然词，指文书、公文，组合简洁且有书写与文献意象，具备品牌名凝练感。"
+    },
+    {
+      "name": "时光留牍",
+      "decision": "reject",
+      "reason": "“留牍”搭配生硬，整体像为拼合“时光”与文书意象而造的句式，语义关系不清。"
+    },
+    {
+      "name": "效然",
+      "decision": "uncertain",
+      "reason": "“效”与“然”组合缺少清楚自然的语义关系；古籍命中处分别为专名和不同语境，不能据此确认该完整名称的含义。"
+    },
+    {
+      "name": "效远",
+      "decision": "uncertain",
+      "reason": "虽可勉强理解为效法远方或追求长远，但词义关系不明确；古籍中的用例语境也不足以确认这是自然的完整词组。"
+    },
+    {
+      "name": "效天成",
+      "decision": "reject",
+      "reason": "整体像“效法天成”的省略句，语法关系不完整，作为名称显得生硬。"
+    },
+    {
+      "name": "卓效",
+      "decision": "reject",
+      "reason": "组合容易直接理解为“卓越的效果”或“卓越效能”，属于通用效果描述，品牌辨识度不足。"
+    },
+    {
+      "name": "豳信",
+      "decision": "uncertain",
+      "reason": "“豳”可指周代古国，“信”可指信任或书信，但两字之间的语义关系不明，缺乏自然的完整词义。"
+    },
+    {
+      "name": "豳成",
+      "decision": "uncertain",
+      "reason": "“豳”指古国名，“成”表完成或成就，组合关系不清；没有依据将其解释为特定地域或专名。"
+    },
+    {
+      "name": "豳文",
+      "decision": "uncertain",
+      "reason": "“豳文”在所给古籍用例中指纹饰或文彩，不能直接当作现代品牌语义；作为名称的含义仍不够明确。"
+    },
+    {
+      "name": "古豳",
+      "decision": "keep",
+      "reason": "可自然理解为古代豳地或周代古国豳，构词简洁，有明确的历史文化意象；不依赖虚构的地域背景。"
+    },
+    {
+      "name": "豳州",
+      "decision": "uncertain",
+      "reason": "豳州是有历史依据的地名，名称本身自然，但作为品牌是否具有明确辨识度取决于专名关联；在地域背景未知时不宜替其补充解释。"
+    },
+    {
+      "name": "豳川",
+      "decision": "uncertain",
+      "reason": "“豳”与“川”可分别指古国名和河流，但组合后的关系及整体所指无法确认，可能被理解为未经依据的地名。"
+    },
+    {
+      "name": "豳山远望",
+      "decision": "reject",
+      "reason": "整体构成景物描写句，像“从豳山远望”的省略表达，不够凝练为品牌名。"
+    },
+    {
+      "name": "豳典",
+      "decision": "uncertain",
+      "reason": "可联想到豳地典籍或经典，但这种关系没有从名称本身得到确认，组合语义存疑。"
+    },
+    {
+      "name": "豳雅",
+      "decision": "uncertain",
+      "reason": "“豳雅”有古籍用例，指与豳地音乐相关的乐章或乐调；虽有文献依据，名称含义偏专门且不易独立辨认，品牌自然度存疑。"
+    },
+    {
+      "name": "豳都",
+      "decision": "uncertain",
+      "reason": "“豳”与“都”组合容易被理解为称豳为都城，但缺少语境依据，且历史指称关系不明确。"
+    },
+    {
+      "name": "豳里人",
+      "decision": "reject",
+      "reason": "整体像“豳地里的人”的口语短语，构词拖沓且语义不完整，品牌凝练度不足。"
+    },
+    {
+      "name": "𬱖海",
+      "decision": "keep",
+      "reason": "“𬱖”有“美好”之义，“海”指海洋，组合可自然形成美好辽阔的意象；生僻字不构成否决理由。"
+    },
+    {
+      "name": "云𬱖",
+      "decision": "uncertain",
+      "reason": "“𬱖”义为美好，“云”可指云，但两字的修饰关系不够明确；名称的自然读解和整体意象存疑。"
+    },
+    {
+      "name": "刃光",
+      "decision": "keep",
+      "reason": "可直接理解为刀刃之光，词义明确、简洁，有鲜明的锋锐与光亮意象，作为品牌名具备辨识度。"
+    },
+    {
+      "name": "刃照山河",
+      "decision": "reject",
+      "reason": "整体是带有夸张意味的动作或宣言式句子，不是凝练的品牌名称。"
+    },
+    {
+      "name": "刃入青云",
+      "decision": "reject",
+      "reason": "整体呈现动作句和高远成就的口号式意象，句子感明显。"
+    },
+    {
+      "name": "刃与星河",
+      "decision": "reject",
+      "reason": "“与”连接两个意象后形成标题或句式，语义关系松散，缺少品牌名所需的凝练感。"
+    },
+    {
+      "name": "刃藏于心",
+      "decision": "reject",
+      "reason": "完整名称是“锋刃藏在心中”的陈述句，句子化且带有宣言意味，不符合品牌名的凝练要求。"
+    }
+  ]
+}

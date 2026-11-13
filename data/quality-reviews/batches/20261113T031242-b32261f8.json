@@ -1,0 +1,574 @@
+{
+  "review_id": "20261113T031242-b32261f8",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "炊烟",
+      "炊禾",
+      "炊雨",
+      "蔓桥",
+      "枝繁蔓茂",
+      "蔓华",
+      "蔓萝"
+    ],
+    "related_kept_candidates": {
+      "烟": [
+        "一川烟雨",
+        "墟里烟",
+        "广陵烟树",
+        "烟菼",
+        "烟黛",
+        "烟霞侣",
+        "烟霏",
+        "一川烟霏",
+        "烟波带霭",
+        "松烟砚",
+        "甑烟入云",
+        "柳烟"
+      ],
+      "雨": [
+        "一川烟雨",
+        "霪雨初霁",
+        "峤听雨",
+        "芹畦雨",
+        "听雨斋",
+        "雨润荒墟",
+        "楮林新雨",
+        "雨凉",
+        "暮雨",
+        "螭听松雨",
+        "刀雨",
+        "窗旁雨"
+      ],
+      "枝": [
+        "蔓枝",
+        "枝繁",
+        "一枝春",
+        "枝丫",
+        "枝桠",
+        "缠枝",
+        "缠枝纹",
+        "缠枝莲",
+        "茱枝映月",
+        "柘枝歌",
+        "梾枝映月",
+        "梾枝向远"
+      ],
+      "萝": [
+        "青萝",
+        "菠萝",
+        "女萝"
+      ],
+      "华": [
+        "馥华",
+        "岁华",
+        "华胄",
+        "华萼",
+        "岁华新酿",
+        "华葩",
+        "芙华",
+        "华珑",
+        "棣华",
+        "葭华",
+        "华裳",
+        "昌华"
+      ],
+      "禾": [
+        "苠禾",
+        "欧禾",
+        "芙禾",
+        "晙禾",
+        "青禾斋",
+        "暮禾",
+        "夕禾",
+        "碳禾",
+        "唐青禾",
+        "唐禾",
+        "蔓禾",
+        "茗禾"
+      ],
+      "桥": [
+        "板桥",
+        "枫桥月",
+        "碳之桥",
+        "碳桥",
+        "涧桥",
+        "麋过桥",
+        "鹊桥",
+        "桥与岸",
+        "桥上春",
+        "山海桥",
+        "春山有桥",
+        "纸桥"
+      ],
+      "繁": [
+        "繁茂",
+        "枝繁",
+        "摒繁",
+        "繁柯",
+        "剟繁存简",
+        "繁葩映日",
+        "繁星",
+        "繁花",
+        "繁音"
+      ],
+      "蔓": [
+        "蔓枝",
+        "蔓生",
+        "蔓山居",
+        "蔓影入林",
+        "蔓引清风",
+        "蔓生朝露",
+        "蔓野",
+        "蔓禾",
+        "蔓春",
+        "蔓芳",
+        "蔓生集",
+        "蔓间光"
+      ],
+      "茂": [
+        "繁茂",
+        "椿茂",
+        "葰茂",
+        "柘茂",
+        "柯茂",
+        "茂业",
+        "胤茂",
+        "鬯茂"
+      ],
+      "炊": [
+        "晨炊",
+        "炊玉"
+      ]
+    },
+    "literature_phrase_examples": {
+      "炊烟": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 46331,
+          "context": "疏林外、一点炊烟，渡口参差正寥廓。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 66012,
+          "context": "柳影人家起炊烟，彷佛似、江南岸。"
+        }
+      ],
+      "炊禾": [],
+      "炊雨": [],
+      "蔓桥": [],
+      "枝繁蔓茂": [],
+      "蔓华": [
+        {
+          "book": "尔雅",
+          "line": 69,
+          "context": "厘，蔓华。"
+        }
+      ],
+      "蔓萝": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 197952,
+          "context": "向西园，竹扫颓垣，蔓萝荒甃。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 116999,
+          "context": "况彼儿女怀，牵缠如蔓萝。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "炊烟": [],
+      "炊禾": [],
+      "炊雨": [],
+      "蔓桥": [],
+      "枝繁蔓茂": [],
+      "蔓华": [],
+      "蔓萝": []
+    },
+    "direct_dictionary": {
+      "炊": {
+        "definition": "cook; meal",
+        "mandarin": "chuī",
+        "official_dictionary": [
+          {
+            "title": "炊",
+            "pinyin": "chuī",
+            "definition": "[動]\n燃火煮食物。如：「炊飯」、「野炊」。漢．王充《論衡．知實》：「顏淵炊飯，塵落甑中。」宋．蘇軾〈和子由送將官梁左藏仲通〉詩：「城西忽報故人來，急掃風軒炊麥飯。」\n[形]\n烹煮食物的。如：「炊具」、「炊煙裊裊」。",
+            "entry_id": "08599",
+            "sheet": "1150929辭典匯出",
+            "row": 8613,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "炊",
+            "pinyin": "chuì",
+            "definition": "參見「炊累」條。",
+            "entry_id": "08615",
+            "sheet": "1150929辭典匯出",
+            "row": 8629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "炊累",
+                "pinyin": "chuì lèi",
+                "definition": "形容游塵浮動的狀態。《莊子．在宥》：「神動而天隨，從容無為而萬物炊累焉。」",
+                "entry_id": "086150001",
+                "sheet": "1150929辭典匯出",
+                "row": 124034
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "烟": {
+        "definition": "smoke, soot; opium; tobacco, cigarettes",
+        "mandarin": "yān",
+        "related_characters": [
+          {
+            "character": "烟",
+            "relation": "kTraditionalVariant",
+            "definition": "smoke, soot; opium; tobacco, cigarettes",
+            "mandarin": "yān"
+          },
+          {
+            "character": "煙",
+            "relation": "kTraditionalVariant",
+            "definition": "smoke, soot; opium; tobacco, cigarettes",
+            "mandarin": "yān"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "烟",
+            "pinyin": null,
+            "definition": "「煙」的異體字。",
+            "entry_id": "10948-1",
+            "sheet": "1150929辭典匯出",
+            "row": 152664,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "禾",
+            "pinyin": "hé",
+            "definition": "[名]\n1.穀類植物的總稱。《詩經．豳風．七月》：「十月納禾稼。」唐．李紳〈古風〉詩二首之二：「鋤禾日當午，汗滴禾下土。」\n2.姓。如宋代有禾實。\n3.二一四部首之一。",
+            "entry_id": "04720",
+            "sheet": "1150929辭典匯出",
+            "row": 4727,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "official_dictionary": [
+          {
+            "title": "雨",
+            "pinyin": "yǔ",
+            "definition": "[名]\n1.空氣中的水蒸氣遇冷凝結而降落的小水滴。如：「春雨」、「梅雨」、「風雨交加」、「秋風秋雨愁煞人」。\n2.朋友。如：「舊雨新知」。唐．杜甫〈秋述〉：「秋，杜子臥病長安旅次，……，青苔及榻，常時車馬之客，舊雨來，今雨不來。」\n3.二一四部首之一。",
+            "entry_id": "11624",
+            "sheet": "1150929辭典匯出",
+            "row": 11638,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "雨",
+            "pinyin": "yù",
+            "definition": "[動]\n1.下雨。《詩經．小雅．大田》：「雨我公田，遂及我私。」《史記．卷六七．仲尼弟子傳．有若傳》：「他日，月宿畢，竟不雨。」\n2.降落、落下。如：「雨雪」、「雨雹」。《淮南子．本經》：「昔者蒼頡作書，而天雨粟，鬼夜哭。」宋．蘇軾〈喜雨亭記〉：「使天而雨珠，寒者不得以為襦；使天而雨玉，飢者不得以為粟。」\n3.滋潤、灌溉。唐．孟郊〈終南山下作〉詩：「山村不假陰，流水自雨田。」唐．鮑溶〈答客〉詩：「勞問圃人終歲事，桔槔聲裡雨春畦。」",
+            "entry_id": "11661",
+            "sheet": "1150929辭典匯出",
+            "row": 11675,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蔓": {
+        "definition": "creeping plants, tendrils, vines",
+        "mandarin": "màn",
+        "official_dictionary": [
+          {
+            "title": "蔓",
+            "pinyin": "mán",
+            "definition": "參見「蔓菁」條。",
+            "entry_id": "01221",
+            "sheet": "1150929辭典匯出",
+            "row": 1224,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "蔓菁",
+                "pinyin": "mán jing",
+                "definition": "植物名。十字花科蕓薹屬，一年或二年生草本。葉寬卵形，緣略有缺刻。春日開黃花，總狀花序頂生，長角果線形。塊根長圓多肉，與葉俱可供食用。也作「大頭芥」、「大頭菜」、「蕪菁」。",
+                "entry_id": "012210001",
+                "sheet": "1150929辭典匯出",
+                "row": 29397
+              }
+            ]
+          },
+          {
+            "title": "蔓",
+            "pinyin": "màn",
+            "definition": "[名]\n藤本或蔓性植物細長而能攀繞他物的莖。如：「藤蔓」。唐．孟郊〈亂離〉詩：「直松摧高柯，弱蔓將何依？」唐．柳宗元〈至小邱西小石潭記〉：「青樹翠蔓，蒙絡搖綴。」\n[動]\n延伸、滋長。如：「蔓延」。《左傳．隱公元年》：「無使滋蔓，蔓，難圖也。」",
+            "entry_id": "01244",
+            "sheet": "1150929辭典匯出",
+            "row": 1247,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "桥": {
+        "definition": "bridge; beam, crosspiece",
+        "mandarin": "qiáo",
+        "related_characters": [
+          {
+            "character": "橋",
+            "relation": "kTraditionalVariant",
+            "definition": "bridge; beam, crosspiece",
+            "mandarin": "qiáo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "枝": {
+        "definition": "branches, limbs; branch off",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "枝",
+            "pinyin": "qí",
+            "definition": "[名]\n多出的腳趾。同「跂」。如：「駢拇枝指」。《集韻．平聲．支韻》：「跂，《說文》：『足多指也。』或作枝。」",
+            "entry_id": "06241",
+            "sheet": "1150929辭典匯出",
+            "row": 6250,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "枝",
+            "pinyin": "zhī",
+            "definition": "[名]_x000D_\n1.樹幹從旁生出的枝條。《說文解字．木部》：「枝，木別生條也。」如：「枝幹」、「枯枝」、「嫩枝」。《莊子．逍遙遊》：「鷦鷯巢於深林，不過一枝；偃鼠飲河，不過滿腹。」_x000D_\n2.凡自同一本源而分出者。《左傳．莊公六年》：「《詩》云：『本枝百世。』」《荀子．儒效》：「故以枝代主而非越也。」_x000D_\n3.四肢。通「肢」。《莊子．大宗師》：「墮枝體，黜聰明，離形去知。」_x000D_\n4.量詞：（1）計算植物的單位。如：「一枝花」。唐．白居易〈長恨歌〉：「玉容寂寞淚闌干，梨花一枝春帶雨。」宋．葉紹翁〈遊園不值〉詩：「春色滿園關不住，一枝紅杏出牆來。」（2）計算細長物體的單位。如：「三枝毛筆」。元．鄭光祖《智勇定齊》第二折：「潑毛團帶著我一枝金鈚箭走了也。……眾人跟著某，務要趕上。」《水滸傳》第三回：「鬅鬆雲髻，插一枝青玉簪兒。」《蕩寇志》第一回：「左首將台上，豎著一枝沖霄拔地的黃漆旗竿，上有一面杏黃旗。」（3）計算隊伍的單位。《三寶太監西洋記通俗演義》第三七回：「元帥老爺吩咐旗牌官撥出一枝軍馬，跟隨鄭護衛出陣成功。」_x000D_\n5.姓。如漢代有枝百英。_x000D_\n[形]_x000D_\n不中肯的、不一致的。《易經．繫辭下》：「中心疑者，其辭枝。」",
+            "entry_id": "07467",
+            "sheet": "1150929辭典匯出",
+            "row": 7478,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "繁": {
+        "definition": "complicated, complex, difficult",
+        "mandarin": "fán",
+        "official_dictionary": [
+          {
+            "title": "繁",
+            "pinyin": "pó",
+            "definition": "[名]\n姓。如東漢有繁欽。",
+            "entry_id": "00609",
+            "sheet": "1150929辭典匯出",
+            "row": 611,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "繁",
+            "pinyin": "fán",
+            "definition": "[形]\n1.多、眾多。如：「繁星點點」、「繁文縟節」。《荀子．議兵》：「高城深池，不足以為固；嚴令繁刑，不足以為威。」唐．李商隱〈石榴〉詩：「榴枝婀娜榴實繁，榴膜輕明榴子鮮。」\n2.複雜。如：「繁雜」、「繁重」。南朝梁．劉勰《文心雕龍．鎔裁》：「游心竄句，極繁之體。」\n3.茂盛、興盛。如：「枝葉繁盛」、「地方繁榮」。宋．王安石〈即事〉詩：「徑暖草如積，山晴花更繁。」",
+            "entry_id": "01634",
+            "sheet": "1150929辭典匯出",
+            "row": 1638,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "茂": {
+        "definition": "thick, lush, dense; talented",
+        "mandarin": "mào",
+        "official_dictionary": [
+          {
+            "title": "茂",
+            "pinyin": "mào",
+            "definition": "[形]\n1.繁盛、旺盛。如：「茂盛」、「茂密」、「根深葉茂」。晉．王羲之〈三月三日蘭亭詩序〉：「此地有崇山峻嶺，茂林修竹，又有清流激湍，映帶左右。」\n2.豐盛優美。如：「圖文並茂」。《楚辭．屈原．離騷》：「夫維聖哲以茂行兮，苟得用此下士。」《漢書．卷三六．楚元王劉交傳》：「資質淑茂，道術通明。」\n[動]\n勸勉。通「懋」。《詩經．小雅．節南山》：「方茂爾惡，相爾矛矣。」\n[名]\n姓。如漢代有茂員。",
+            "entry_id": "01181",
+            "sheet": "1150929辭典匯出",
+            "row": 1184,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "茂",
+            "pinyin": "mòu",
+            "definition": "(一)之又音。",
+            "entry_id": "01208",
+            "sheet": "1150929辭典匯出",
+            "row": 1211,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "华": {
+        "definition": "flowery; illustrious; Chinese",
+        "mandarin": "huá",
+        "related_characters": [
+          {
+            "character": "華",
+            "relation": "kTraditionalVariant",
+            "definition": "flowery; illustrious; Chinese",
+            "mandarin": "huá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "萝": {
+        "definition": "type of creeping plant; turnip",
+        "mandarin": "luó",
+        "related_characters": [
+          {
+            "character": "萝",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          },
+          {
+            "character": "蘿",
+            "relation": "kTraditionalVariant",
+            "definition": "type of creeping plant; turnip",
+            "mandarin": "luó"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "萝",
+            "pinyin": null,
+            "definition": "「蘿」的異體字。",
+            "entry_id": "03797-1",
+            "sheet": "1150929辭典匯出",
+            "row": 65743,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "炊烟",
+      "decision": "keep",
+      "reason": "常见自然意象，指人家炊煮升起的烟，画面清楚、语义自然，作为品牌名凝练且有辨识度。"
+    },
+    {
+      "name": "炊禾",
+      "decision": "reject",
+      "reason": "“炊”指烧火煮食，“禾”指谷类植物，组合关系不自然，像把烹饪动作与原料机械并置。"
+    },
+    {
+      "name": "炊雨",
+      "decision": "reject",
+      "reason": "“炊”与“雨”直接并置缺乏清晰语义关系，作为完整名称显得生硬，需牵强补充意象才能解释。"
+    },
+    {
+      "name": "蔓桥",
+      "decision": "uncertain",
+      "reason": "字义可理解为藤蔓与桥，但两者组合的关系和整体意象不够明确，名称自然度存疑。"
+    },
+    {
+      "name": "枝繁蔓茂",
+      "decision": "reject",
+      "reason": "由“枝繁”“蔓茂”组成的固定式繁盛描写，完整表达近似成句，且与常见成语“枝繁叶茂”高度相似，不具备凝练的品牌名感。"
+    },
+    {
+      "name": "蔓华",
+      "decision": "uncertain",
+      "reason": "可理解为藤蔓繁盛或藤蔓之花，但组合义不稳定；文献中的“蔓华”亦有特定词义，难以据此确认此处的自然语义和品牌辨识度。"
+    },
+    {
+      "name": "蔓萝",
+      "decision": "reject",
+      "reason": "“蔓”与“萝”都指蔓生植物，语义重复叠加，作为名称缺少明确的组合关系与辨识度。"
+    }
+  ]
+}

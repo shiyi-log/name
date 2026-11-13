@@ -1,0 +1,664 @@
+{
+  "review_id": "20261112T180511-9a0b1b57",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "诠古知今",
+      "临溪",
+      "溪云",
+      "溪见月",
+      "涧映川",
+      "涧抱石",
+      "远山涧月"
+    ],
+    "related_kept_candidates": {
+      "抱": [
+        "蟠山抱月",
+        "抱一",
+        "珂云抱月",
+        "青松抱嶂"
+      ],
+      "月": [
+        "远山漻月",
+        "郁川映月",
+        "溪月书斋",
+        "崞山见月",
+        "一杯山月",
+        "凉云见月",
+        "崧川映月",
+        "山麇见月",
+        "蕖山月",
+        "涧月",
+        "山月酿酒",
+        "月照山罅"
+      ],
+      "川": [
+        "郁川映月",
+        "崧川映月",
+        "瓷映长川",
+        "葭映川",
+        "螭映川",
+        "赫山映川",
+        "烛映川",
+        "菼映川",
+        "柯映川",
+        "璆光映川",
+        "芦映川",
+        "蕊映川"
+      ],
+      "山": [
+        "远山漻月",
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "崞山见月",
+        "一杯山月",
+        "麇行远山",
+        "山麇见月",
+        "蕖山月",
+        "涧上春山",
+        "赫山映川",
+        "山月酿酒"
+      ],
+      "见": [
+        "崞山见月",
+        "凉云见月",
+        "山麇见月",
+        "黛山见月",
+        "春溪见獭",
+        "萱林见月",
+        "一见青山",
+        "见山斋",
+        "见崧",
+        "云开见硔",
+        "藏酒见山",
+        "矿中见海"
+      ],
+      "云": [
+        "凉云见月",
+        "霏云映川",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间",
+        "云涘间"
+      ],
+      "涧": [
+        "涧月",
+        "石涧",
+        "涧上春山",
+        "涧明",
+        "松涧",
+        "云涧",
+        "涧声",
+        "听涧风",
+        "涧泉",
+        "涧瀑",
+        "涧桥",
+        "涧行"
+      ],
+      "远": [
+        "远山漻月",
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山图",
+        "踏远山",
+        "远山连冈",
+        "迈远"
+      ],
+      "溪": [
+        "溪月书斋",
+        "樟溪映月",
+        "皎月清溪",
+        "春溪见獭",
+        "鳜溪春",
+        "清溪竹墅",
+        "芹溪",
+        "清溪芹影",
+        "苔溪",
+        "暮溪",
+        "刀溪",
+        "溪畔鹂"
+      ],
+      "映": [
+        "郁川映月",
+        "崧川映月",
+        "瓷映长川",
+        "葭映川",
+        "螭映川",
+        "赫山映川",
+        "烛映川",
+        "菼映川",
+        "诸山映月",
+        "柯映川",
+        "璆光映川",
+        "山月映筠"
+      ],
+      "石": [
+        "石涧",
+        "砭石堂",
+        "金石錾刻",
+        "玉石錾花",
+        "峋石听泉",
+        "峋石",
+        "石斋",
+        "苔石",
+        "叠石",
+        "叠石成景",
+        "石猊",
+        "枕石"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远",
+        "涂知微"
+      ],
+      "古": [
+        "古峒",
+        "摹古",
+        "古榕",
+        "古椠",
+        "古柞",
+        "古豳",
+        "太古",
+        "疑古",
+        "崡关怀古",
+        "古楸新枝"
+      ],
+      "诠": [
+        "诠文",
+        "真诠"
+      ],
+      "今": [
+        "迨今",
+        "于今"
+      ],
+      "临": [
+        "清风临埼",
+        "旭日临埼",
+        "竹影临簖",
+        "月色临榻",
+        "临洺",
+        "麋临碧水",
+        "皎月临川",
+        "皎月临风",
+        "骏临风",
+        "鎏月临川"
+      ]
+    },
+    "literature_phrase_examples": {
+      "诠古知今": [],
+      "临溪": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 55345,
+          "context": "【送李十一尉临溪】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 78646,
+          "context": "旌节临溪口，寒郊斗觉暄。"
+        }
+      ],
+      "溪云": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 113822,
+          "context": "啸终万籁起，吹去当溪云。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 116772,
+          "context": "溪云随暮淡，野水带寒清。"
+        }
+      ],
+      "溪见月": [],
+      "涧映川": [],
+      "涧抱石": [],
+      "远山涧月": []
+    },
+    "dictionary_phrase_entries": {
+      "诠古知今": [],
+      "临溪": [],
+      "溪云": [],
+      "溪见月": [],
+      "涧映川": [],
+      "涧抱石": [],
+      "远山涧月": []
+    },
+    "direct_dictionary": {
+      "诠": {
+        "definition": "explain, expound, comment on",
+        "mandarin": "quán",
+        "related_characters": [
+          {
+            "character": "詮",
+            "relation": "kTraditionalVariant",
+            "definition": "explain, expound, comment on",
+            "mandarin": "quán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "古": {
+        "definition": "old, classic, ancient",
+        "mandarin": "gǔ",
+        "official_dictionary": [
+          {
+            "title": "古",
+            "pinyin": "gǔ",
+            "definition": "[名]\n1.過去久遠的時代。與「今」相對。如：「古今中外」、「自古以來」。《呂氏春秋．仲冬季．長見》：「故審知今則可知古，知古則可知後。」唐．李賀〈古悠悠行〉：「今古何處盡，千歲隨風飄。」\n2.過去的事物。如：「貴古賤今」、「信而好古」。《宋史．卷二六二．劉溫叟傳》：「儒者泥古，致詳於形名度數間，而不知清濁輕重之用。」\n3.古體詩。如：「五古」、「七古」。\n4.姓。如漢代有古霸。\n[形]\n1.過去的、舊的。如：「古人」、「古事」。元．馬致遠〈天淨沙．枯藤老樹昏鴉〉曲：「古道西風瘦馬，夕陽西下，斷腸人在天涯。」\n2.質樸。如：「古樸」、「人心不古」。宋．蘇軾〈書黃子思詩集後〉：「獨韋應物、柳宗元發纖穠於簡古，寄至味於澹泊，非餘子所及也。」",
+            "entry_id": "04155",
+            "sheet": "1150929辭典匯出",
+            "row": 4161,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "official_dictionary": [
+          {
+            "title": "知",
+            "pinyin": "zhī",
+            "definition": "[動]\n1.明白、了解、察覺。如：「相知相許」。唐．李紳〈古風〉詩二首之二：「誰知盤中餐，粒粒皆辛苦。」\n2.識別、區別。《禮記．樂記》：「知樂則幾於禮矣。」《淮南子．脩務》：「孿子之相似者，唯其母能知之。」\n3.相交、交往。《左傳．昭公四年》：「公孫明知叔孫於齊。」《荀子．不苟》：「君子易知而難狎。」\n4.招待、禮遇、賞識。《南史．卷一九．謝靈運傳》：「自謂才能宜參權要，既不見知，常懷慎惋。」唐．岑參〈北庭西郊候封大夫受降回軍獻上〉詩：「何幸一書生，忽蒙國士知。」\n5.掌管、主持。《國語．越語》：「有能助寡人謀而退吳者，吾與之共知越國之政。」《新唐書．卷八五．王世充傳》：「帝愛昵之，拜江都通守，兼知宮監事。」\n[名]\n1.識見、學問。如：「求知」、「真知灼見」。《論語．子罕》：「吾有知乎哉？無知也。」\n2.意識、感覺。《荀子．王制》：「草木有生而無知。」漢．范縝〈神滅論〉：「手等亦應能有痛癢之知。」\n3.知己、朋友。如：「故知」、「舊雨新知」。",
+            "entry_id": "07481",
+            "sheet": "1150929辭典匯出",
+            "row": 7492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "知",
+            "pinyin": "zhì",
+            "definition": "[名]\n1.智慧。同「智」。《論語．里仁》：「里仁為美，擇不處仁焉得知？」《禮記．中庸》：「知仁勇三者，天下之達德也。」\n2.姓。如春秋時晉國有知罃。",
+            "entry_id": "07567",
+            "sheet": "1150929辭典匯出",
+            "row": 7578,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "今": {
+        "definition": "now, today, modern era",
+        "mandarin": "jīn",
+        "official_dictionary": [
+          {
+            "title": "今",
+            "pinyin": "jīn",
+            "definition": "[名]\n1.現代。與「古」相對。如：「古今」、「今非昔比」。\n2.姓。如明代有今穎伯。\n[形]\n現在的、當前的。如：「今天」、「今年」。",
+            "entry_id": "05833",
+            "sheet": "1150929辭典匯出",
+            "row": 5840,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "临": {
+        "definition": "draw near, approach; descend",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "臨",
+            "relation": "kTraditionalVariant",
+            "definition": "draw near, approach; descend; hexagram ䷒",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "溪": {
+        "definition": "mountain stream, creek",
+        "mandarin": "xī",
+        "official_dictionary": [
+          {
+            "title": "溪",
+            "pinyin": "qī",
+            "definition": "(一)之又音。",
+            "entry_id": "06225",
+            "sheet": "1150929辭典匯出",
+            "row": 6234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "溪",
+            "pinyin": "xī",
+            "definition": "[名]\n山間的小河流。後泛指小河。晉．陶淵明〈桃花源記〉：「緣溪行，忘路之遠近。」唐．杜甫〈玉華宮〉詩：「溪回松風長，蒼鼠竄古瓦。」",
+            "entry_id": "06762",
+            "sheet": "1150929辭典匯出",
+            "row": 6771,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "涧": {
+        "definition": "brook, mountain stream",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "澗",
+            "relation": "kTraditionalVariant",
+            "definition": "brook, mountain stream",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "抱": {
+        "definition": "embrace, hold in arms, enfold",
+        "mandarin": "bào",
+        "official_dictionary": [
+          {
+            "title": "抱",
+            "pinyin": "bào",
+            "definition": "[名]\n1.胸懷、志趣。《宋書．卷六九．列傳．范曄》：「然區區丹抱，不負夙心。」\n2.量詞。計算兩臂可圍持的單位。如：「一抱草」、「一抱書」。\n3.姓。如北魏有抱嶷、抱老壽。\n[動]\n1.用手臂摟起。如：「抱孩子」、「抱薪救火」。清．紀昀《閱微草堂筆記．卷四．灤陽消夏錄四》：「剨然有聲後壁半圯，乃左挈妻，右抱子。」\n2.養育。《兒女英雄傳》第三三回：「往後來倆姑奶奶再都抱了娃子，那個不用幾尺粗布呢？」\n3.孵化。如：「抱蛋」、「抱窩」。\n4.懷藏在內。如：「抱怨」、「抱病」。\n5.守護。《孟子．萬章下》：「抱關擊柝者，皆有常職以食於上。」\n6.環繞。如：「環山抱水」。宋．陸游〈書事〉詩：「聞道輿圖次第還，黃河依舊抱潼關。」\n7.拋擲、丟棄。《史記．卷一三．三代世表》：「褚先生曰：『抱之山中，山者養之。』」",
+            "entry_id": "00224",
+            "sheet": "1150929辭典匯出",
+            "row": 225,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "石": {
+        "definition": "stone, rock, mineral; Kangxi radical 112",
+        "mandarin": "shí",
+        "official_dictionary": [
+          {
+            "title": "石",
+            "pinyin": "dàn",
+            "definition": "[名]_x000D_\n量詞：(1)計算容量的單位。公制一石等於十斗。也稱為「公石」。(2)古代計算重量的單位。漢．鼂錯〈論貴粟疏〉：「數石之重，中人弗勝，不為奸邪所利，一日弗得而飢寒至，是故明君貴五穀而賤金玉。」《戰國策．齊策四》：「大王據千乘之地，而建千石鍾，萬石虡。」",
+            "entry_id": "02020",
+            "sheet": "1150929辭典匯出",
+            "row": 2025,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "石",
+            "pinyin": "shí",
+            "definition": "[名]\n1.由礦物集結而成的堅硬塊狀物，是構成地殼的物質。如：「岩石」、「礦石」、「花岡石」。\n2.碑、碣。《呂氏春秋．慎行論．求人》：「故功績銘乎金石，著於盤盂。」《史記．卷六．秦始皇本紀》：「乃遂上泰山，立石。」\n3.藥石。《左傳．襄公二十三年》：「季孫之愛我，疾疢也；孟孫之惡我，藥石也，美疢不如惡石。」唐．孔穎達．正義：「治病藥分用石。《本草》云：『鍾乳、礬、磁石之類多矣。』」\n4.姓。如宋代有石延年。\n5.二一四部首之一。\n6.中國古代樂器「八音」分類法之一，通常以製作材質來分，此處泛指石類樂器，如磬之屬一類的敲擊樂器。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」",
+            "entry_id": "08708",
+            "sheet": "1150929辭典匯出",
+            "row": 8722,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "诠古知今",
+      "decision": "reject",
+      "reason": "由“阐释古事、了解当今”构成完整的价值宣言，语义清楚但句式感强、口号化，缺少凝练的品牌名特征。"
+    },
+    {
+      "name": "临溪",
+      "decision": "keep",
+      "reason": "“临溪”意为临近溪流，组合自然简洁，形成明确的临水意象，具备品牌辨识度；唐诗中亦有该连续字形用例。"
+    },
+    {
+      "name": "溪云",
+      "decision": "keep",
+      "reason": "溪流与云气构成自然、凝练的物象组合，意象清楚且不依赖牵强释义；有唐诗连续字形用例。"
+    },
+    {
+      "name": "溪见月",
+      "decision": "keep",
+      "reason": "可自然理解为溪畔见月或溪水映见月色，画面明确而简洁，具有诗性品牌辨识度；与既有“见月”候选的构词关系不同，并非仅替换近义字。"
+    },
+    {
+      "name": "涧映川",
+      "decision": "uncertain",
+      "reason": "字义可分别理解为山涧映照河川，但“涧映川”的主谓或修饰关系不够清楚，读来略显生硬，整体自然度存疑。"
+    },
+    {
+      "name": "涧抱石",
+      "decision": "keep",
+      "reason": "“抱”可表示环绕，名称可理解为山涧环绕岩石，物象关系明确、凝练；与既有含“抱”的候选意象和关系不同，不构成近似重复。"
+    },
+    {
+      "name": "远山涧月",
+      "decision": "keep",
+      "reason": "由远山、山涧与月色构成完整而自然的山水意象，语义清楚，适合作为凝练的意象型品牌名；与既有远山或山月候选没有相同的完整意象关系。"
+    }
+  ]
+}

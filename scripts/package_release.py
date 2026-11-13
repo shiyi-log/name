@@ -7,6 +7,7 @@ import argparse
 from contextlib import closing
 import gzip
 import hashlib
+import io
 import json
 from pathlib import Path, PurePosixPath
 import re
@@ -56,10 +57,15 @@ def package_release(tag: str, revision: str, output_dir: Path) -> Path:
                     raise ValueError("发布包不支持符号链接")
 
             def read_file(relative_path: str) -> bytes:
-                member = archive.extractfile(prefix + relative_path)
-                if member is None:
+                member = archive.extractfile(prefix + relative_path) if prefix + relative_path in archive.getnames() else None
+                if member is not None:
+                    return member.read()
+                compressed_name = prefix + relative_path + ".gz"
+                compressed = archive.extractfile(compressed_name) if compressed_name in archive.getnames() else None
+                if compressed is None:
                     raise ValueError(f"发布包缺少文件：{relative_path}")
-                return member.read()
+                with gzip.GzipFile(fileobj=compressed) as source:
+                    return source.read()
 
             for required in (
                 "api_server.py", "app.js", "index.html", "styles.css", "build_database.py",
@@ -89,6 +95,25 @@ def package_release(tag: str, revision: str, output_dir: Path) -> Path:
                 if character_count != 8105:
                     raise ValueError(f"完整字库数量异常：{character_count}")
             notes = release_notes(read_file("CHANGELOG.md").decode(), version)
+            normalized_path = scratch / "normalized.tar"
+            member_names = set(archive.getnames())
+            with tarfile.open(normalized_path, "w") as normalized:
+                for member in archive.getmembers():
+                    if member.name.endswith(".gz"):
+                        continue
+                    source = archive.extractfile(member) if member.isfile() else None
+                    if source is None:
+                        normalized.addfile(member)
+                    else:
+                        normalized.addfile(member, source)
+                for compressed_name in sorted(name for name in member_names if name.endswith(".gz")):
+                    relative_path = compressed_name[len(prefix):-3]
+                    body = read_file(relative_path)
+                    info = tarfile.TarInfo(prefix + relative_path)
+                    info.size = len(body)
+                    info.mode = 0o644
+                    normalized.addfile(info, io.BytesIO(body))
+            archive_path = normalized_path
         output_dir.mkdir(parents=True, exist_ok=True)
         artifact = output_dir / f"name-{tag}.tar.gz"
         with archive_path.open("rb") as source, artifact.open("wb") as destination:

@@ -1,0 +1,878 @@
+{
+  "review_id": "20261112T192815-1fac729f",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "山崖",
+      "石崖",
+      "云过崖",
+      "崖畔风",
+      "崖边听风",
+      "崖畔春风",
+      "崖间晨雾",
+      "崖映流光",
+      "孵化",
+      "孵育"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "绀色流光",
+        "清光映刃",
+        "赫月流光",
+        "螳影流光",
+        "浮光映水",
+        "流光浮影",
+        "漻光映月",
+        "漻光映林",
+        "璆光映川",
+        "鹪影流光",
+        "扇影流光",
+        "蝠影流光"
+      ],
+      "风": [
+        "一树春风",
+        "峋岭听风",
+        "听风斋",
+        "春风拂楮",
+        "卧听风",
+        "卧听松风",
+        "莿林听风",
+        "春风软",
+        "听涧风",
+        "奇石听风",
+        "枸听风",
+        "柯上春风"
+      ],
+      "春": [
+        "一树春风",
+        "垄畔春",
+        "春风拂楮",
+        "春风软",
+        "柯上春风",
+        "春风到",
+        "递春风",
+        "春风过砚",
+        "林畔春",
+        "柳舞春风",
+        "一枝春",
+        "一篼春"
+      ],
+      "间": [
+        "林间雾",
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "山间邨",
+        "松间䴓",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "畈间风",
+        "垄间风"
+      ],
+      "山": [
+        "麈过云山",
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆"
+      ],
+      "云": [
+        "云过硔谷",
+        "柯云过岭",
+        "云过松梢",
+        "麈过云山",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃"
+      ],
+      "边": [
+        "潭边听雨",
+        "砚边风",
+        "簖边月",
+        "边徼",
+        "涧边春",
+        "簖边春",
+        "冈边云",
+        "篱边月",
+        "篱边云",
+        "溪边鸼",
+        "溪边柳"
+      ],
+      "映": [
+        "清光映刃",
+        "映珂流彩",
+        "浮光映水",
+        "漻光映月",
+        "漻光映林",
+        "璆光映川",
+        "琨映晨光",
+        "晴光映霭",
+        "菊映清流",
+        "巉崖映月",
+        "祥光映远",
+        "晨光映荇"
+      ],
+      "石": [
+        "奇石听风",
+        "砭石堂",
+        "金石錾刻",
+        "玉石錾花",
+        "峋石听泉",
+        "峋石",
+        "石斋",
+        "苔石",
+        "叠石",
+        "叠石成景",
+        "石猊",
+        "枕石"
+      ],
+      "畔": [
+        "垄畔春",
+        "林畔春",
+        "溪畔风",
+        "砚畔清风",
+        "垧畔清风",
+        "坝畔松",
+        "塄畔星",
+        "溪畔鹂",
+        "溪畔柯影",
+        "篱畔新晴",
+        "篱畔云开",
+        "篱畔水"
+      ],
+      "听": [
+        "峋岭听风",
+        "听风斋",
+        "卧听风",
+        "卧听松风",
+        "莿林听风",
+        "听涧风",
+        "奇石听风",
+        "枸听风",
+        "听榆风",
+        "听荻风",
+        "听芦风",
+        "棕林听风"
+      ],
+      "晨": [
+        "琨映晨光",
+        "晨光映荇",
+        "谊映晨光",
+        "芹露映晨",
+        "晨晢",
+        "梾枝向晨",
+        "晨熙",
+        "晨扉",
+        "踏晨光",
+        "踏晨曦",
+        "码映晨曦",
+        "晨光越冈"
+      ],
+      "过": [
+        "云过硔谷",
+        "柯云过岭",
+        "春风过砚",
+        "云过松梢",
+        "麈过云山",
+        "风过芭林",
+        "棹过春山",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过刃鸣",
+        "风过酒旗"
+      ],
+      "雾": [
+        "林间雾",
+        "雾缠峰",
+        "雾淞",
+        "雾光",
+        "山雾",
+        "雾野",
+        "雾起",
+        "松雾",
+        "雾色",
+        "雾中月",
+        "雾归林",
+        "雾映川"
+      ],
+      "化": [
+        "鲲化",
+        "化简",
+        "化开",
+        "化境",
+        "化光",
+        "山海化境",
+        "化雨",
+        "化生",
+        "化育",
+        "化成"
+      ],
+      "崖": [
+        "巉崖映月",
+        "百丈崖"
+      ],
+      "流": [
+        "绀色流光",
+        "赫月流光",
+        "螳影流光",
+        "映珂流彩",
+        "流光浮影",
+        "鹪影流光",
+        "扇影流光",
+        "蝠影流光",
+        "杉影流光",
+        "樟影流光",
+        "桧影流光",
+        "菼色流光"
+      ],
+      "育": [
+        "化育",
+        "鞠育",
+        "鞠育社"
+      ]
+    },
+    "literature_phrase_examples": {
+      "山崖": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 85082,
+          "context": "罢人纷争讼，赋税如山崖。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 387510,
+          "context": "时贤近丧若山崖，却赖青云望素乖。"
+        }
+      ],
+      "石崖": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 50486,
+          "context": "石崖向西豁，引领望黄河。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 151516,
+          "context": "歘刺苗人地，仍逾赣石崖。"
+        }
+      ],
+      "云过崖": [],
+      "崖畔风": [],
+      "崖边听风": [],
+      "崖畔春风": [],
+      "崖间晨雾": [],
+      "崖映流光": [],
+      "孵化": [],
+      "孵育": []
+    },
+    "dictionary_phrase_entries": {
+      "山崖": [
+        {
+          "title": "山崖",
+          "pinyin": "shān yái",
+          "definition": "陡立的山壁。三國蜀．諸葛亮〈與兄謹書〉：「有綏陽小谷，雖山崖絕險，谿水縱橫，難用行軍。」北周．庾信〈枯樹賦〉：「根柢盤魄，山崖表裡。」",
+          "entry_id": "089050185",
+          "sheet": "1150929辭典匯出",
+          "row": 128975,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "石崖": [],
+      "云过崖": [],
+      "崖畔风": [],
+      "崖边听风": [],
+      "崖畔春风": [],
+      "崖间晨雾": [],
+      "崖映流光": [],
+      "孵化": [
+        {
+          "title": "孵化",
+          "pinyin": "fū huà",
+          "definition": "昆蟲、魚類、鳥類或爬行動物的卵，在一定的溫度和其他條件下變成幼蟲或小動物的過程。",
+          "entry_id": "017620002",
+          "sheet": "1150929辭典匯出",
+          "row": 37442,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "孵育": [
+        {
+          "title": "孵育",
+          "pinyin": "fū yù",
+          "definition": "蟲、魚、鳥等類動物的卵，以自然或人工方式使胚胎發育成為幼體。如：「國人以人工方式成功的孵育了櫻花鉤吻鮭，使保育工作向前邁進了一大步。」",
+          "entry_id": "0176200031",
+          "sheet": "1150929辭典匯出",
+          "row": 37444,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "崖": {
+        "definition": "cliff, precipice; precipitous",
+        "mandarin": "yá",
+        "official_dictionary": [
+          {
+            "title": "崖",
+            "pinyin": "yái",
+            "definition": "[名]\n1.山邊或高地陡峭的邊沿。唐．韋應物〈至西峰蘭若受田婦饋〉詩：「攀崖復緣澗，遂造幽人居。」明．徐弘祖《徐霞客遊記．卷四上．粵西遊日記三》：「四眺重崖，皆懸絕無徑，而西崖尤為峻峭。」\n2.邊際。《莊子．山木》：「君其涉於江而又浮於海，望之而不見其崖。」",
+            "entry_id": "10786",
+            "sheet": "1150929辭典匯出",
+            "row": 10800,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "石": {
+        "definition": "stone, rock, mineral; Kangxi radical 112",
+        "mandarin": "shí",
+        "official_dictionary": [
+          {
+            "title": "石",
+            "pinyin": "dàn",
+            "definition": "[名]_x000D_\n量詞：(1)計算容量的單位。公制一石等於十斗。也稱為「公石」。(2)古代計算重量的單位。漢．鼂錯〈論貴粟疏〉：「數石之重，中人弗勝，不為奸邪所利，一日弗得而飢寒至，是故明君貴五穀而賤金玉。」《戰國策．齊策四》：「大王據千乘之地，而建千石鍾，萬石虡。」",
+            "entry_id": "02020",
+            "sheet": "1150929辭典匯出",
+            "row": 2025,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "石",
+            "pinyin": "shí",
+            "definition": "[名]\n1.由礦物集結而成的堅硬塊狀物，是構成地殼的物質。如：「岩石」、「礦石」、「花岡石」。\n2.碑、碣。《呂氏春秋．慎行論．求人》：「故功績銘乎金石，著於盤盂。」《史記．卷六．秦始皇本紀》：「乃遂上泰山，立石。」\n3.藥石。《左傳．襄公二十三年》：「季孫之愛我，疾疢也；孟孫之惡我，藥石也，美疢不如惡石。」唐．孔穎達．正義：「治病藥分用石。《本草》云：『鍾乳、礬、磁石之類多矣。』」\n4.姓。如宋代有石延年。\n5.二一四部首之一。\n6.中國古代樂器「八音」分類法之一，通常以製作材質來分，此處泛指石類樂器，如磬之屬一類的敲擊樂器。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」",
+            "entry_id": "08708",
+            "sheet": "1150929辭典匯出",
+            "row": 8722,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "过",
+            "pinyin": null,
+            "definition": "「過」的異體字。",
+            "entry_id": "04226-1",
+            "sheet": "1150929辭典匯出",
+            "row": 71117,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "畔": {
+        "definition": "boundary path dividing fields",
+        "mandarin": "pàn",
+        "official_dictionary": [
+          {
+            "title": "畔",
+            "pinyin": "pàn",
+            "definition": "[名]\n1.田界。《左傳．襄公二十五年》：「行無越思，如農之有畔。」\n2.邊側、旁側。如：「湖畔」、「枕畔」、「橋畔」。《文選．古詩十九首．青青河畔草》：「青青河畔草，鬱鬱園中柳。」\n[動]\n違背、背叛。同「叛」。《論語．雍也》：「君子博學於文，約之以禮，亦可以弗畔矣夫。」《漢書．卷一．高帝紀上》：「及聞漢王并關中，而齊、梁畔之，羽大怒。」",
+            "entry_id": "00730",
+            "sheet": "1150929辭典匯出",
+            "row": 732,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "边": {
+        "definition": "edge, margin, side, border",
+        "mandarin": "biān",
+        "related_characters": [
+          {
+            "character": "边",
+            "relation": "kTraditionalVariant",
+            "definition": "edge, margin, side, border",
+            "mandarin": "biān"
+          },
+          {
+            "character": "邊",
+            "relation": "kTraditionalVariant",
+            "definition": "edge, margin, side, border",
+            "mandarin": "biān"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "边",
+            "pinyin": null,
+            "definition": "「邊」的異體字。",
+            "entry_id": "00472-1",
+            "sheet": "1150929辭典匯出",
+            "row": 18601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "听",
+            "pinyin": "yǐn",
+            "definition": "[副]\n笑的樣子。《文選．司馬相如．上林賦》：「亡是公听然而笑。」唐．劉禹錫〈說驥〉：「睹之周體，眙然視，听然笑，既而抃隨之。」",
+            "entry_id": "11104",
+            "sheet": "1150929辭典匯出",
+            "row": 11119,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "听",
+            "pinyin": null,
+            "definition": "「聽」的異體字。",
+            "entry_id": "02734-1",
+            "sheet": "1150929辭典匯出",
+            "row": 53128,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晨": {
+        "definition": "early morning, daybreak",
+        "mandarin": "chén",
+        "official_dictionary": [
+          {
+            "title": "晨",
+            "pinyin": "chén",
+            "definition": "[名]\n早上太陽剛出來的時候。如：「清晨」、「一日之計在於晨」。\n[動]\n雞鳴報曉。《書經．牧誓》：「古人有言曰：『牝雞無晨。』」唐．孔穎達．正義：「言無晨鳴之道。」",
+            "entry_id": "08418",
+            "sheet": "1150929辭典匯出",
+            "row": 8432,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雾": {
+        "definition": "fog, mist, vapor, fine spray",
+        "mandarin": "wù",
+        "related_characters": [
+          {
+            "character": "霧",
+            "relation": "kTraditionalVariant",
+            "definition": "fog, mist, vapor, fine spray",
+            "mandarin": "wù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "流": {
+        "definition": "flow, circulate, drift; class",
+        "mandarin": "liú",
+        "official_dictionary": [
+          {
+            "title": "流",
+            "pinyin": "liú",
+            "definition": "[名]\n1.水的通稱。《史記．卷四．周本紀》：「武王渡河，中流，白魚躍入王舟中，武王俯取以祭。」唐．李白〈望廬山瀑布水〉詩二首之二：「飛流直下三千尺，疑是銀河落九天。」\n2.像水流的東西。如：「氣流」、「暖流」、「電流」、「車流」。\n3.派別。如：「九流十家」。《漢書．卷一〇〇．敘傳下》：「群言紛亂，諸子相騰。秦人是滅，漢修其缺，劉向司籍，九流以別。」\n4.品類、等級。如：「上流」、「名流」、「第一流」。\n[動]\n1.移動。如：「人口外流」。《易經．乾卦．九五》：「水流溼，火就燥。」唐．李白〈黃鶴樓送孟浩然之廣陵〉詩：「孤帆遠影碧山盡，唯見長江天際流。」\n2.留傳、散布。如：「流芳萬世」。《孟子．公孫丑上》：「德之流行，速於置郵而傳命。」\n3.趨向。如：「流於形式」。《文選．曹丕．典論論文》：「貧賤則懾於飢寒，富貴則流於逸樂。」\n4.放逐。《國語．周語上》：「王不聽，於是國莫敢出言，三年，乃流王於彘。」南朝宋．劉義慶《世說新語．任誕》：「宜流之海外，以正風教。」\n5.放縱。《國語．晉語一》：「肆侈不違，流志而行，無所不疚，是以及亡而不獲追鑒。」\n[形]\n1.往來不定的。如：「流雲」、「流民」。\n2.快速通過的、運轉不停的。如：「流星」、「流年」。宋．蔣捷〈一翦梅．一片春愁待酒澆〉詞：「流光容易把人拋，紅了櫻桃，綠了芭蕉。」\n3.意外的、不明來處的。如：「流矢」、「流彈」。\n4.沒有根據的。如：「流言」、「流譽」。",
+            "entry_id": "03553",
+            "sheet": "1150929辭典匯出",
+            "row": 3560,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "孵": {
+        "definition": "sit on eggs, hatch",
+        "mandarin": "fū",
+        "official_dictionary": [
+          {
+            "title": "孵",
+            "pinyin": "fū",
+            "definition": "[動]\n鳥類伏卵生雛，蟲魚由產卵到出生幼兒，或指以人工方法使卵內胚胎發育成雛的過程，統稱為「孵」。如：「孵化」、「孵育」、「孵卵」。",
+            "entry_id": "01762",
+            "sheet": "1150929辭典匯出",
+            "row": 1766,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "化": {
+        "definition": "change, convert, reform; -ize",
+        "mandarin": "huà",
+        "official_dictionary": [
+          {
+            "title": "化",
+            "pinyin": "huā",
+            "definition": "參見「化子」條。",
+            "entry_id": "05004",
+            "sheet": "1150929辭典匯出",
+            "row": 5011,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "化子",
+                "pinyin": "huā zi",
+                "definition": "以乞討為生的人。《醒世恆言．卷二七．李玉英獄中訟寃》：「這個小化子，一日倒討得許多錢。」《平妖傳》第一一回：「剩下的飯，大籮裝著憑這起黃胖道人、癩皮化子隨意大碗價吃飽，到明日又是如此。」也稱為「叫花子」。",
+                "entry_id": "050040002",
+                "sheet": "1150929辭典匯出",
+                "row": 82219
+              }
+            ]
+          },
+          {
+            "title": "化",
+            "pinyin": "huà",
+            "definition": "[動]\n1.改變。如：「千變萬化」、「潛移默化」。《易經．恆卦．彖曰》：「日月得天而能久照；四時變化而能久成。」《淮南子．氾論》：「故聖人法與時變，禮與俗化。」\n2.天地生成萬物。如：「造化」、「化育」。\n3.轉移民俗使歸淳厚。《孟子．盡心上》：「夫君子所過者化，所存者神。」《文選．鄒陽．獄中上書自明》：「是以聖王制世御俗，獨化於陶鈞之上。」\n4.死。如：「物化」、「羽化」。《孟子．公孫丑下》：「且比化者，無使土親膚，於人心獨無恔乎？」唐．劉禹錫〈祭柳員外文〉：「惟君平昔，聰明絕人，今雖化去，夫豈無物！」\n5.物體消融、改變形性。如：「溶化」、「消化」。《韓非子．五蠹》：「有聖人作，鑽燧取火，以化腥臊，而民說之。」\n6.燒毀。如：「火化」、「焚化」。《西遊記》第一三回：「獻過了種種香火，化了眾神紙馬，燒了薦亡文疏，佛事已畢，又各安寢。」\n7.求乞、乞討。如：「化緣」、「募化」。《儒林外史》第一回：「也有坐在地上就化錢的。」\n8.置於名詞或形容詞之後，表示轉變成某種狀態或性質。如：「美化」、「綠化」、「惡化」、「電氣化」、「科學化」、「現代化」。\n[名]\n1.教化。《文選．李密．陳情表》：「逮奉聖朝，沐浴清化。」唐．柳宗元〈封建論〉：「孟舒、魏尚之術，莫得而施；黃霸、汲黯之化，莫得而行。」\n2.化學的簡稱。如：「理化」、「化工」。",
+            "entry_id": "05019",
+            "sheet": "1150929辭典匯出",
+            "row": 5026,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "育": {
+        "definition": "produce, give birth to; educate",
+        "mandarin": "yù",
+        "official_dictionary": [
+          {
+            "title": "育",
+            "pinyin": "yù",
+            "definition": "[動]\n1.生育。如：「生兒育女」。《易經．漸卦．九三》：「夫征不復，婦孕不育。」《後漢書．卷四四．張禹傳》：「鄧太后以殤帝初育，欲令重臣居禁內。」\n2.成長。《呂氏春秋．開春論．察賢》：「雪霜雨露時，則萬物育矣，人民修矣，疾病妖厲去矣。」《文選．潘岳．秋興賦》：「覽花蒔之時育兮，察盛衰之所託。」\n3.撫養、培養。如：「養育」、「教育」、「育幼院」。《易經．蒙卦．彖曰》：「山下出泉蒙，君子以果行育德。」《詩經．小雅．蓼莪》：「拊我畜我，長我育我。」\n[名]\n姓。如上古時代有育唐。",
+            "entry_id": "11649",
+            "sheet": "1150929辭典匯出",
+            "row": 11663,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "山崖",
+      "decision": "uncertain",
+      "reason": "词义明确，指陡立的山壁，但完整名称是常见地貌通称，品牌辨识度较弱；作为公司品牌名是否有足够区分性存疑。"
+    },
+    {
+      "name": "石崖",
+      "decision": "uncertain",
+      "reason": "可自然理解为石质崖壁，语义成立，但整体仍像地貌描述，品牌凝练度和辨识度不足以明确支持保留。"
+    },
+    {
+      "name": "云过崖",
+      "decision": "keep",
+      "reason": "可自然理解为云雾掠过山崖，画面简洁，有动态和空间感；与“崖”相关候选意象不同，具有独立辨识度。"
+    },
+    {
+      "name": "崖畔风",
+      "decision": "keep",
+      "reason": "“崖畔”指山崖旁侧，“风”构成自然物象，组合简洁流畅，有明确画面感；虽与其他风景类名称共享常见元素，但并非已有候选的近义换字变体。"
+    },
+    {
+      "name": "崖边听风",
+      "decision": "reject",
+      "reason": "完整组合是“在崖边听风”的场景句式，表达偏叙述、近于诗句或口号，作为品牌名不够凝练。"
+    },
+    {
+      "name": "崖畔春风",
+      "decision": "keep",
+      "reason": "“崖畔”与“春风”搭配自然，形成清晰而有生机的景象；不同于已保留的“垄畔春”“林畔春”等，主体意象及关系并非仅换同义字。"
+    },
+    {
+      "name": "崖间晨雾",
+      "decision": "keep",
+      "reason": "“崖间”与“晨雾”组合自然，指向具体清晰的山景，简洁且有辨识度；不同于“林间雾”，地貌主体和整体意象均有实质区别。"
+    },
+    {
+      "name": "崖映流光",
+      "decision": "keep",
+      "reason": "可理解为流动的光映照山崖，动静关系自然，画面明确；虽含常见“映流光”构词成分，但与相关候选的主体意象和关系不同，不构成近似变体。"
+    },
+    {
+      "name": "孵化",
+      "decision": "reject",
+      "reason": "完整名称直接等同于常用过程或服务类别词“孵化”，也常泛指孵化培育服务，缺少品牌名所需的独特性。"
+    },
+    {
+      "name": "孵育",
+      "decision": "reject",
+      "reason": "词义明确，指使卵中胚胎发育成幼体；完整名称直接表达通用的孵育过程或类别，品牌辨识度不足。"
+    }
+  ]
+}

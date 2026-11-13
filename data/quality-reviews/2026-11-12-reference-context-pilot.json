@@ -1,0 +1,172 @@
+{
+  "method": "Separate review with actual literature phrase contexts; no automatic DB override",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "uncertain：直接字义缺失、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "壅培",
+      "蔽芾",
+      "佁然",
+      "支流",
+      "一瞥"
+    ],
+    "literature_phrase_examples": {
+      "壅培": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 43039,
+          "context": "幽葩细萼，小园低槛，壅培未就。"
+        },
+        {
+          "book": "宋词三百首_选集",
+          "line": 2640,
+          "context": "幽葩细萼，小园低槛，壅培未就。"
+        }
+      ],
+      "蔽芾": [
+        {
+          "book": "诗经",
+          "line": 84,
+          "context": "蔽芾甘棠，勿翦勿伐，召伯所茇。"
+        },
+        {
+          "book": "诗经",
+          "line": 85,
+          "context": "蔽芾甘棠，勿翦勿败，召伯所憩。"
+        }
+      ],
+      "佁然": [],
+      "支流": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 26603,
+          "context": "分疆锡社，派别支流。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 154287,
+          "context": "支流日飞洒，深处自疑莹。"
+        }
+      ],
+      "一瞥": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 198917,
+          "context": "佯拈花枝微笑，溜晴波一瞥。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 356159,
+          "context": "模糊桧顶独多时，历乱瓦沟裁一瞥。"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "壅": {
+        "definition": "to obstruct",
+        "mandarin": "yōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "培": {
+        "definition": "bank up with dirt; cultivate",
+        "mandarin": "péi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蔽": {
+        "definition": "cover, hide, conceal; shelter",
+        "mandarin": "bì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "芾": {
+        "definition": "flower; small; little; lush",
+        "mandarin": "fèi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "佁": {
+        "mandarin": "yǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "支": {
+        "definition": "disperse, pay; support; branch",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "流": {
+        "definition": "flow, circulate, drift; class",
+        "mandarin": "liú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "瞥": {
+        "definition": "take fleeting glance at",
+        "mandarin": "piē",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "壅培",
+      "decision": "reject",
+      "reason": "“壅培”有培土、壅土培植之义，但“壅”也直接含堵塞、阻碍义，组合整体偏向具体栽培动作，作为公司品牌名语义不够清晰且辨识度有限。"
+    },
+    {
+      "name": "蔽芾",
+      "decision": "keep",
+      "reason": "出自《诗经》“蔽芾甘棠”，语境中形容甘棠树枝叶繁盛；组合有古典出处，完整词义可理解，具有一定辨识度。"
+    },
+    {
+      "name": "佁然",
+      "decision": "uncertain",
+      "reason": "“佁然”可作安静、静止的样子解，但给定直接字义不足以确认该词义，且现代品牌语境中的含义不够直观，需进一步核实用法与品牌意图。"
+    },
+    {
+      "name": "支流",
+      "decision": "uncertain",
+      "reason": "是自然、明确的常用词，指主流之外的分流，也可泛指派生脉络；但作为公司名称较像通用类别或地理描述，缺少自身品牌指向。"
+    },
+    {
+      "name": "一瞥",
+      "decision": "reject",
+      "reason": "是表示匆匆看一眼的普通动作词，语义完整但更像短语或文案表达，作为公司品牌名辨识度和稳定的品牌指向不足。"
+    }
+  ]
+}

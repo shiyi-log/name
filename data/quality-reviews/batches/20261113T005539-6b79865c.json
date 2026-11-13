@@ -1,0 +1,656 @@
+{
+  "review_id": "20261113T005539-6b79865c",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "硿然",
+      "空山硿响",
+      "主理",
+      "主见",
+      "主心骨",
+      "主客相宜"
+    ],
+    "related_kept_candidates": {
+      "心": [
+        "一心",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心",
+        "心所及"
+      ],
+      "山": [
+        "冬山清响",
+        "山河回响",
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "云开见硔",
+        "山麇见月",
+        "藏酒见山",
+        "矿中见海",
+        "罅见晴",
+        "涂见远",
+        "黛山见月"
+      ],
+      "然": [
+        "悄然",
+        "萧然",
+        "璨然",
+        "嶷然",
+        "颢然",
+        "蘧然",
+        "冏然",
+        "砉然",
+        "衎然",
+        "晔然",
+        "倓然",
+        "虓然"
+      ],
+      "相": [
+        "菊相宜",
+        "相辅",
+        "扮相",
+        "冈川相望",
+        "相揖",
+        "相偲",
+        "云柳相依",
+        "喁喁相应",
+        "岑川相望",
+        "𫍯心相应",
+        "峦海相连",
+        "相为犄角"
+      ],
+      "理": [
+        "葺理",
+        "析理",
+        "义理",
+        "理性",
+        "燮理",
+        "究理",
+        "绎理",
+        "条理",
+        "梳理",
+        "𬤊理",
+        "打理",
+        "致理"
+      ],
+      "空": [
+        "翱空",
+        "横空",
+        "枝叶蔽空",
+        "码映长空",
+        "长空匹练",
+        "𬟽映晴空",
+        "茶映长空",
+        "麈映晴空",
+        "麈映长空",
+        "菊照长空",
+        "雯映长空",
+        "凰映长空"
+      ],
+      "客": [
+        "镖客",
+        "蒿间客",
+        "槎客",
+        "仙山客",
+        "钓客",
+        "遨客"
+      ],
+      "响": [
+        "冬山清响",
+        "山河回响",
+        "硿响",
+        "轰响",
+        "窣响",
+        "巨响",
+        "畦间清响",
+        "楮间清响",
+        "眉间清响",
+        "桠间清响",
+        "叮响",
+        "窗前叮响"
+      ],
+      "骨": [
+        "骏骨千金"
+      ],
+      "宜": [
+        "菊相宜",
+        "偲宜",
+        "静宜",
+        "机宜",
+        "要眇宜修",
+        "尽得其宜",
+        "宜尔家"
+      ],
+      "硿": [
+        "硿响"
+      ]
+    },
+    "literature_phrase_examples": {
+      "硿然": [],
+      "空山硿响": [],
+      "主理": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 92125,
+          "context": "安为动主理信然，我独觉子神充实。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 4439,
+          "context": "肯壹言臣窃伤心不敢不尽死书奏上使侍御史收缚辅系掖庭秘狱(师古曰汉旧仪掖庭诏狱令丞/宦者为之主理妇人女宫也)群臣莫知其故于是左将军辛庆忌右将军亷褒光禄勲琅邪师丹太中大夫谷永(四人皆/中朝官)俱上书曰窃见刘辅前以县令求见擢"
+        }
+      ],
+      "主见": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 199863,
+          "context": "池胜主见觉，景新人未知。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 384014,
+          "context": "懿宗亲礼处，军（君）主见同时。"
+        }
+      ],
+      "主心骨": [],
+      "主客相宜": []
+    },
+    "dictionary_phrase_entries": {
+      "硿然": [],
+      "空山硿响": [],
+      "主理": [],
+      "主见": [],
+      "主心骨": [],
+      "主客相宜": []
+    },
+    "direct_dictionary": {
+      "硿": {
+        "mandarin": "kōng",
+        "supplemental_dictionary": {
+          "explanation": "硿kōng 1.见\"硿礲\"。 2.象声词。参见\"硿然\"﹑\"硿硿\"。",
+          "source_url": "https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/word.json",
+          "source_sha256": "8ae3453eacc5b0f3fdfba47eac8bb686cd73914d278e8b851ae6ef81082f80e7",
+          "authority": "third_party_compilation_requires_cross_check"
+        },
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "official_dictionary": [
+          {
+            "title": "然",
+            "pinyin": "rán",
+            "definition": "[動]\n1.燒。燃的本字。《孟子．公孫丑上》：「若火之始然，泉之始達。」\n2.贊同。《史記．卷八．高祖本紀》：「沛公然其計，從之。」《三國演義》第一回：「劉焉然其說，隨即出榜招募義兵。」\n[形]\n對、正確。如：「不以為然」。《論語．雍也》：「雍之言然。」\n[代]\n如此。《論語．憲問》：「子曰：『何必高宗，古之人皆然。』」唐．柳宗元〈桐葉封弟辯〉：「周公曰：『天子不可戲。』乃封小弱弟於唐。吾意不然。」\n[連]\n1.但是、可是。《左傳．僖公三十年》：「吾不能早用子，今急而求子，是寡人之過也。然鄭亡，子亦有不利焉。」\n2.雖。《董西廂》卷八：「師言然善，奈處凡浮，遭此屈辱，不能無恨。」\n3.然後。《隋書．卷七〇．李密傳》：「待士馬肥充，然可與人爭利。」\n[助]\n1.形容詞或副詞詞尾。如：「斐然」、「赫然」、「恍然」。《詩經．邶風．終風》：「終風且霾，惠然肯來。」\n2.用於句末，表肯定、斷定的語氣。《論語．憲問》：「羿善射，奡盪舟，俱不得其死然。」《禮記．檀弓下》：「穆公召縣子而問然。」\n3.表示比擬的語助詞。《呂氏春秋．孟秋紀．蕩兵》：「夫兵不可偃也，譬之若水火然，善用之則為福，不能用之則為禍。」\n[歎]\n唯，表應答。《論語．陽貨》：「子曰：『然！有是言也。』」《晏子春秋．內篇．雜下》：「公見其妻曰：『此子之內子邪？』晏子對曰：『然！是也。』」\n[名]\n姓。如漢代有然溫。",
+            "entry_id": "09207",
+            "sheet": "1150929辭典匯出",
+            "row": 9221,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "空": {
+        "definition": "empty, hollow, bare, deserted",
+        "mandarin": "kōng",
+        "official_dictionary": [
+          {
+            "title": "空",
+            "pinyin": "kōng",
+            "definition": "[形]\n1.沒有東西的。如：「空屋」、「空手而回」、「赤手空拳」。\n2.不切實際的。如：「空言」、「空論」。《史記．卷六三．老子韓非傳》：「畏累虛、亢桑子之屬，皆空語無事實。」\n3.廣闊、高曠。如：「海闊天空」。《詩經．小雅．白駒》：「皎皎白駒，在彼空谷。」漢．毛亨．傳：「空，大也。」\n[副]\n1.徒然、白白的。如：「空想」、「空歡喜一場」。唐．王勃〈滕王閣序〉：「孟嘗高潔，空懷報國之情。」宋．岳飛〈滿江紅．怒髮衝冠〉詞：「莫等閒，白了少年頭，空悲切。」\n2.只、僅僅。唐．李頎〈古從軍行〉：「年年戰骨埋荒外，空見蒲桃入漢家。」\n[名]\n1.天、天際。如：「高空」、「晴空」、「星空」、「領空」、「皓月當空」。宋．蘇軾〈赤壁賦〉：「舳艫千里，旌旗蔽空。」\n2.虛無所有。如：「撲空」、「買空」、「賣空」。唐．白居易〈廬山草堂記〉：「堂西倚北崖右趾，以剖竹架空，引崖上泉。」\n3.佛教認為一切事物的現象都有各自的因緣，並無實體的概念。如：「空門」、「色即是空，空即是色。」",
+            "entry_id": "04698",
+            "sheet": "1150929辭典匯出",
+            "row": 4705,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "空",
+            "pinyin": "kòng",
+            "definition": "[名]_x000D_\n1.閒暇的時間或閒置的空間。如：「撥空」、「沒空」、「填空」。宋．孟元老《東京夢華錄．卷三．諸色雜賣》：「或軍營放停，樂人動鼓樂於空閑，就坊巷引小兒婦女觀看，散糖果子之類，謂之『賣梅子』，又謂之『把街』。」《醒世恆言．卷三．賣油郎獨占花魁》：「因你不得工夫，擔閣他一月有餘了。你今日幸而得空，做娘的留他在此伴你。」_x000D_\n2.間隙、可乘之機。元．馬致遠《漢宮秋》第二折：「不想皇帝親幸，問出端的，要將我加刑，我得空逃走了。」《喻世明言．卷一．蔣興哥重會珍珠衫》：「這里婆子捉個空，招著陳大郎一溜溜進門來。」_x000D_\n[動]_x000D_\n1.騰出、讓出時間或空間。如：「空出一點時間。」「文章開頭須空兩格。」三國魏．王粲〈從軍〉詩五首之一：「軍人多飫饒，人馬皆溢肥，徒行兼乘還，空出有餘資，拓地三千里，往返速若飛。」《醒世恆言．卷三〇．李汧公窮邸遇俠客》：「不瞞客官說，小店房頭，沒有個不潔淨的。如今也止空得一間在此。」_x000D_\n2.缺乏、短少。如：「虧空」。晉．陶淵明〈五柳先生傳〉：「環堵蕭然，不蔽風日，短褐穿結，簞瓢屢空，晏如也。」唐．白居易〈春憶二林寺舊遊因寄朗滿晦三上人〉詩：「最慚僧社題橋處，十八人名空一人。」_x000D_\n[形]_x000D_\n尚未利用的，或缺少東西的。如：「空位」。《儒林外史》第二〇回：「請幾眾師父替我念一卷經，超度我生天。棺柩便尋那裡一塊空地把我寄放著。」",
+            "entry_id": "04708",
+            "sheet": "1150929辭典匯出",
+            "row": 4715,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "响": {
+        "definition": "make sound, make noise; sound",
+        "mandarin": "xiǎng",
+        "related_characters": [
+          {
+            "character": "响",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          },
+          {
+            "character": "響",
+            "relation": "kTraditionalVariant",
+            "definition": "make sound, make noise; sound",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "响",
+            "pinyin": null,
+            "definition": "「響」的異體字。",
+            "entry_id": "07207-1",
+            "sheet": "1150929辭典匯出",
+            "row": 108596,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "主": {
+        "definition": "master, chief owner; host; lord",
+        "mandarin": "zhǔ",
+        "official_dictionary": [
+          {
+            "title": "主",
+            "pinyin": "zhǔ",
+            "definition": "[名]\n1.賓客或奴僕的相對詞。如：「賓主」、「主僕」。\n2.帝王。如：「君主」。《禮記．曲禮下》：「主佩倚，則臣佩垂。主佩垂，則臣佩委。」唐．杜甫〈入衡州〉詩：「報主身已老，入朝病見妨。」\n3.領導者。如：「教主」、「一家之主」。《詩經．周頌．載殳》：「侯主侯伯，侯亞侯旅。」漢．毛亨．傳：「主，家長也。」\n4.當事人。如：「苦主」、「失主」。\n5.有物權或事權的人。如：「債主」、「地主」、「物歸原主」。\n6.牌位。如：「木主」、「神主」。《周禮．春官．司巫》：「祭祀則共匰主。」\n7.教徒稱呼其所信仰的神為「主」。\n8.事物的根本。《易經．繫辭上》：「言行，君子之樞機；樞機之發，榮辱之主也。」《文選．曹丕．典論論文》：「文以氣為主。」\n9.公主的簡稱。《後漢書．卷二六．宋弘傳》：「後弘被引見，帝令主坐屏風後。」《聊齋志異．卷九．雲蘿公主》：「駙馬當是俗間高手，主僅能讓六子。」\n[動]\n1.負責、主持。如：「主講」、「主辦」。\n2.掌管、統治。《孟子．萬章上》：「使之主事而事治，百姓安之。」唐．韓愈〈原道〉：「入者主之，出者奴之。」\n3.贊同。如：「主戰」、「主和」。《國語．周語中》：「是以不主寬惠，亦不主猛毅，主德義而已。」\n4.持守。《論語．學而》：「主忠信，無友不如己者。」《文選．宋玉．招魂》：「主此盛德兮，牽於俗而蕪穢。」\n5.預示。《三國演義》第六三回：「又觀乾象，太白臨于雒城之分：主將帥身上多凶少吉。」\n[形]\n1.主要的。如：「主將」、「主帥」。\n2.自己的。如：「主觀」、「主見」。",
+            "entry_id": "07974",
+            "sheet": "1150929辭典匯出",
+            "row": 7986,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "理": {
+        "definition": "reason, logic; manage",
+        "mandarin": "lǐ",
+        "official_dictionary": [
+          {
+            "title": "理",
+            "pinyin": "lǐ",
+            "definition": "[動]\n1.雕琢玉石。《韓非子．和氏》：「王乃使玉人理其璞而得寶焉。」《戰國策．秦策三》：「鄭人謂玉，未理者璞。」\n2.修整、整治、使整齊。如：「整理」、「治理」、「理家」、「管理」。\n3.辦事、處置。如：「辦理」、「處理」、「代理」。\n4.對別人的言行有所反應。如：「答理」、「理會」、「不理不睬」。\n5.溫習、熟習。如：「書不理不熟。」明．無名氏《鬧銅臺．楔子》：「英雄貫滿東京府，曾理兵書習六韜。」\n[名]\n1.條紋、紋路。如：「肌理」、「紋理」。唐．段成式《酉陽雜俎．卷一〇．物異》：「建城縣出燃石，色黃理疏，以水灌之則熱，安鼎其上，可以炊也。」\n2.事物的規律、意旨。如：「天理」、「公理」、「真理」、「義理」、「定理」。\n3.順序、層次。如：「有條有理」。《荀子．儒效》：「井井兮有理也。」\n4.物理學科或自然學科。如：「理化」、「理工」。\n5.姓。如殷商時代有理徵。",
+            "entry_id": "03424",
+            "sheet": "1150929辭典匯出",
+            "row": 3431,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "心",
+            "pinyin": "xīn",
+            "definition": "[名]\n1.內臟之一。參見「心臟」條。\n2.我國古代認為心主管思維，故相沿以為腦的代稱。如：「用心」、「勞心勞力」。《孟子．告子上》：「心之官則思。」\n3.思想、意念、感情。如：「傷心」、「心中不安」、「心情煩悶」。三國魏．曹丕〈與吳質書〉：「東望於邑，裁書敘心。」唐．柳宗元〈始得西山宴游記〉：「心凝形釋。」\n4.思慮、謀畫。如：「有心人」、「有口無心」。《呂氏春秋．審應覽．精諭》：「紂雖多心，弗能知矣。」\n5.性情。如：「心性」。《韓非子．觀行》：「西門豹之性急，故佩韋以自緩，董安于之心緩，故佩弦以自急。」\n6.平面或物體的中央或內部。如：「江心」、「掌心」、「圓心」。唐．劉禹錫〈洞庭秋月行〉：「洞庭秋月生湖心，層波萬頃如鎔金。」\n7.植物的花蕊或苗尖。如：「花心」。南朝梁．簡文帝〈上巳侍宴林光殿曲水詩〉：「林花初墮蔕，池荷欲吐心。」\n8.星宿名。二十八星宿之一，東方蒼龍七宿的第五宿。\n9.星官名，心宿之首，共有三顆星，在西方屬天蠍座。《詩經．唐風．綢繆》：「三星在天。」漢．鄭玄．箋：「三星，謂心星也。」《晉書．卷一一．天文志上》：「心三星，天王正位也。」\n10.二一四部首之一。",
+            "entry_id": "07153",
+            "sheet": "1150929辭典匯出",
+            "row": 7162,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "心臟",
+                "pinyin": "xīn zàng",
+                "definition": "1.心肌構成的中空、紅色器官，其大如拳，居胸腔中央偏左，正常時內有四個腔室，行規律性的自發收縮，以保持血液的循環作用。與上下腔靜脈、肺動脈、肺靜脈、主動脈相通。\n2.形容最重要的部分。如：「此區是本市的心臟地帶。」",
+                "entry_id": "071530378",
+                "sheet": "1150929辭典匯出",
+                "row": 107466
+              },
+              {
+                "title": "用心",
+                "pinyin": "yòng xīn",
+                "definition": "1.盡心。《孟子．梁惠王上》：「察鄰國之政，無如寡人之用心者。」《儒林外史》第三四回：「宰相若肯如此用心，天下可立致太平。」\n2.存心、居心。《五代史平話．周史．卷上》：「郭威奏曰：『……全宥其家，免行族滅。』聞者皆謂郭威用心忠厚。」",
+                "entry_id": "119050044",
+                "sheet": "1150929辭典匯出",
+                "row": 163754
+              },
+              {
+                "title": "傷心",
+                "pinyin": "shāng xīn",
+                "definition": "心懷悲痛。唐．劉長卿〈重送裴郎中貶吉州〉詩：「猿啼客散暮江頭，人自傷心水自流。」《初刻拍案驚奇》卷二七：「足下見此芙蓉，何故傷心？」",
+                "entry_id": "090100035",
+                "sheet": "1150929辭典匯出",
+                "row": 130019
+              },
+              {
+                "title": "有心人",
+                "pinyin": "yǒu xīn rén",
+                "definition": "1.懷有某種意念或想法的人。《紅樓夢》第三四回：「俗語說：『沒事常思有事』，世上多少無頭腦的事，多半因為無心中做出，有心人看見，當作有心事，反說壞了。」清．孔尚任《桃花扇》第四齣：「傳將隨口話，報與有心人。」\n2.有志向、有理想的人。《初刻拍案驚奇》卷一九：「李公佐向齊公嘆道：『壯哉！壯哉！然此事卻非容易。』齊公道：『天下無難事，只怕有心人。』」《蟫史》卷八：「披肝而談意氣，真有心人；交臂而失英雄，為無目者。」\n3.別有目的或企圖的人。《兒女英雄傳》卷一七回：「從來俗語說的再不錯，道是：『無心人說話，只怕有心人來聽。』何況是兩個有心的裝作個無心的彼此一答一合說話，旁邊聽話的又本是個有心人，從無心中聽得心裡的一句話，憑他怎的聰明，有個不落圈套的麼？」\n4.心思細密的人。《初刻拍案驚奇》卷二七：「中含冤仇意思在裡面，遇著有心人玩著詞句，究問根由，未必不查出蹤跡來。」\n5.有情意的人。唐．任氏〈書桐葉〉詩：「天下有心人，盡解相思死。天下負心人，不識相思字。」",
+                "entry_id": "109050356",
+                "sheet": "1150929辭典匯出",
+                "row": 152273
+              },
+              {
+                "title": "有口無心",
+                "pinyin": "yǒu kǒu wú xīn",
+                "definition": "1.心直口快。《兒女英雄傳》第一五回：「老爺此時早看透了鄧九公，是個重交尚義，有口無心，年高好勝的人。」《瞎騙奇聞》第一回：「我曉得這個人向來是有口無心的，但也不可不拘什麼話便脫口而出。」也作「有嘴無心」。\n2.隨口說說，毫不放在心上。《金瓶梅》第三九回：「你便有口無心許下，神明都記著。」也作「有嘴無心」。",
+                "entry_id": "109050202",
+                "sheet": "1150929辭典匯出",
+                "row": 152161
+              },
+              {
+                "title": "心性",
+                "pinyin": "xīn xìng",
+                "definition": "本心、性情。《西遊記》第二三回：「那獃子雖是心性愚頑，卻只是一味懞直，倒也有些膂力，挑得行李，還看當日菩薩之念，救他隨我們去罷。」《紅樓夢》第四九回：「鳳姐冷眼敁敠岫烟的心性為人，竟不像邢夫人及他的父母一樣，卻是個溫厚可疼的人。」",
+                "entry_id": "071530285",
+                "sheet": "1150929辭典匯出",
+                "row": 107374
+              },
+              {
+                "title": "江心",
+                "pinyin": "jiāng xīn",
+                "definition": "江水中央。唐．白居易〈琵琶行〉：「東船西舫悄無言，唯見江心秋月白。」《三國演義》第四九回：「聘立在船頭，大叫：『承相鈞旨：南船且休近寨，就江心拋住。』」",
+                "entry_id": "058870085",
+                "sheet": "1150929辭典匯出",
+                "row": 93850
+              },
+              {
+                "title": "掌心",
+                "pinyin": "zhǎng xīn",
+                "definition": "1.手心。\n2.比喻能力控制的範圍。如：「孫悟空終究是逃不出如來佛的掌心。」",
+                "entry_id": "078930030",
+                "sheet": "1150929辭典匯出",
+                "row": 115502
+              },
+              {
+                "title": "圓心",
+                "pinyin": "yuán xīn",
+                "definition": "圓形的中心點，稱為「圓心」。",
+                "entry_id": "117950068",
+                "sheet": "1150929辭典匯出",
+                "row": 162916
+              },
+              {
+                "title": "花心",
+                "pinyin": "huā xīn",
+                "definition": "風流、形容對愛情不專一。如：「他是個不折不扣的花心大少。」",
+                "entry_id": "050050231",
+                "sheet": "1150929辭典匯出",
+                "row": 82430
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "骨": {
+        "definition": "bone; skeleton; frame, framework; Kangxi radical 188",
+        "mandarin": "gǔ",
+        "official_dictionary": [
+          {
+            "title": "骨",
+            "pinyin": "gū",
+            "definition": "參見「骨朵兒」條。",
+            "entry_id": "04150",
+            "sheet": "1150929辭典匯出",
+            "row": 4156,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "骨朵兒",
+                "pinyin": "gū duor ",
+                "definition": "北平、河北方言。指未開放的花朵。也作「骨都兒」。",
+                "entry_id": "041500006",
+                "sheet": "1150929辭典匯出",
+                "row": 70089
+              }
+            ]
+          },
+          {
+            "title": "骨",
+            "pinyin": "gú",
+            "definition": "參見「骨頭」、「骨碌」等條。",
+            "entry_id": "04154",
+            "sheet": "1150929辭典匯出",
+            "row": 4160,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "骨頭",
+                "pinyin": "gú tou",
+                "definition": "1.骨。動物身體內部的支架。《儒林外史》第二回：「撒了一地的雞骨頭、鴨翅膀、魚刺、瓜子殼。」\n2.比喻人的個性。如：「這人是個硬骨頭，折辱不得。」\n3.罵人品性、儀容不佳的話。如：「你這塊骨頭，又打什麼主意？」\n4.吳語。話裡暗喻有不滿、譏刺的意思。如：「他這話裡有骨頭，分明是暗說你笨嘛！」",
+                "entry_id": "041540002",
+                "sheet": "1150929辭典匯出",
+                "row": 70100
+              },
+              {
+                "title": "骨碌",
+                "pinyin": "gú lu",
+                "definition": "滾轉的樣子。如：「只見那人眼珠子骨碌骨碌地轉，不知在打什麼主意。」《儒林外史》第四五回：「你看！這是三尖峰。那邊來路遠哩！從浦口山上發脈，一個墩，一個砲；一個墩，一個砲；一個墩，一個砲；彎彎曲曲，骨裡骨碌，一路接著滾了來。」",
+                "entry_id": "041540014",
+                "sheet": "1150929辭典匯出",
+                "row": 70108
+              }
+            ]
+          },
+          {
+            "title": "骨",
+            "pinyin": "gǔ",
+            "definition": "[名]\n1.動物體內支持身體的支架組織。如：「筋骨」、「接骨」、「脊椎骨」、「脫胎換骨」。\n2.支撐物體的架子。如：「龍骨」、「鋼骨」、「傘骨」。\n3.氣概、風格。如：「傲骨」、「風骨」。唐．王維〈少年行〉四首之二：「孰知不向邊庭苦，縱死猶聞俠骨香。」\n4.姓。如隋代有骨儀。\n5.二一四部首之一。",
+            "entry_id": "04170",
+            "sheet": "1150929辭典匯出",
+            "row": 4176,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "客": {
+        "definition": "guest, traveller; customer",
+        "mandarin": "kè",
+        "official_dictionary": [
+          {
+            "title": "客",
+            "pinyin": "kè",
+            "definition": "[名]\n1.賓，相對於主人而言。如：「賓客」、「請客」、「寒夜客來茶當酒」。《禮記．曲禮下》：「主人敬客，則先拜客；客敬主人，則先拜主人。」《文選．古樂府．飲馬長城窟行》：「客從遠方來，遺我雙鯉魚。」\n2.做生意、買賣等的人對顧主的稱呼。如：「顧客」、「乘客」、「客滿」。《韓非子．外儲說右上》：「宋人有酤酒者，升概既平，愈客甚謹。」《老殘遊記》第五回：「漸漸的打尖的客陸續都到店裡。」\n3.泛稱從事某種活動或具有某類特長的人。如：「鏢客」、「掮客」、「說客」、「政客」、「珠寶客」。\n4.寄食貴族豪門的人。如：「食客」、「門客」。《戰國策．齊策四》：「後孟嘗君出記，問門下諸客誰習計會。」《晉書．卷六九．刁協傳》：「刁氏素殷富，奴客縱橫。」\n5.寄旅於外的人。唐．王維〈九月九日憶山東兄弟〉詩：「獨在異鄉為異客，每逢佳節倍思親。」唐．杜甫〈中夜〉詩：「長為萬里客，有愧百年身。」\n6.泛稱人。如：「旅人過客」。《史記．卷七七．魏公子傳》：「然嬴欲就公子之名，故久立公子車騎市中，過客以觀公子，公子愈恭。」《儒林外史》第三四回：「一個人占了幾個婦人，天下必有幾個無妻之客。」\n7.量詞。計算定量出售食品的單位。如：「他點了一客八分熟的牛排。」\n8.姓。如漢代有客孫。\n[動]\n1.寄居、旅居。《三國志．卷一六．魏書．杜畿傳》：「會天下之亂，遂棄官客荊州，建安中乃還。」\n2.以客禮相待。《史記．卷三一．吳太伯世家》：「五年，楚之亡臣伍子胥來奔，公子光客之。」唐．司馬貞．索隱：「是謂客禮以接待也。」\n[形]\n1.次要的。清．顧炎武《日知錄．卷一．朱子周易本義》：「傳為主，經為客。」\n2.在人類意識外獨立存在的。如：「客觀」。",
+            "entry_id": "04446",
+            "sheet": "1150929辭典匯出",
+            "row": 4452,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "相": {
+        "definition": "mutual, reciprocal, each other",
+        "mandarin": "xiāng",
+        "official_dictionary": [
+          {
+            "title": "相",
+            "pinyin": "xiāng",
+            "definition": "[副]\n1.交互，指兩方面都進行的。如：「互相」、「守望相助」、「兩地相思」、「相得益彰」。《莊子．大宗師》：「四人相視而笑，莫逆於心，遂相與為友。」唐．崔護〈題都城南莊〉詩：「去年今日此門中，人面桃花相映紅。」\n2.彼此，強調雙方比較後的差異。如：「相異」、「相像」、「旗鼓相當」。《三國演義》第五七回：「某之所學，與公瑾大不相同。」\n[助]\n由交互的意義演變為單方面的意義，表示動作是由一方對另一方進行。如：「有事相煩」、「實不相瞞」。《三國志．卷五四．吳書．魯肅傳》：「孤持鞍下馬相迎，足以顯卿未？」\n[名]\n姓。如明代有相世芳。",
+            "entry_id": "07180",
+            "sheet": "1150929辭典匯出",
+            "row": 7189,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "相",
+            "pinyin": "xiàng",
+            "definition": "[動]\n1.審視、察看。《說文解字．目部》：「相，省視也。」《左傳．隱公十一年》：「量力而行之，相時而動，無累後人。」《喻世明言．卷四〇．沈小霞相會出師表》：「又見沈鍊一表非俗，立住了腳，相了一回。」\n2.占視、辨察，以斷吉凶禍福。如：「相字」。《周禮．地官．大司徒》：「以相民宅，而知其利害。」《史記．卷九二．淮陰侯傳》：「相君之面，不過封侯，又危不安。」\n3.輔佐、幫助。如：「相夫教子」。《易經．泰卦．象曰》：「輔相天地之宜。」《書經．大誥》：「周公相成王。」\n4.掌管、治理。《左傳．昭公九年》：「陳水屬也，火水妃也，而楚所相也。」唐．柳宗元〈梓人傳〉：「是足為佐天子、相天下法矣，物莫近乎此也。」\n5.挑選、選擇。《三國演義》第六五回：「良禽相木而棲，賢臣擇主而事。」\n[名]\n1.容貌、外形、模樣。如：「長相」、「福相」、「吃相」、「窘相」、「窮酸相」。《西遊記》第三五回：「（孫行者）現了本相。」\n2.職官名：(1)百官之長，輔佐國君治理國政的人。如：「宰相」、「丞相」、「相國」。(2)古代典禮中，輔導行禮的人。如：「儐相」。《論語．先進》：「宗廟之事，如會同，端章甫，願為小相焉。」\n3.攙扶瞎子的人。《荀子．成相》：「人主無賢，如瞽無相。」\n4.樂器名。似鼓，敲擊以控制音樂節拍。《禮記．樂記》：「始奏以文，復亂以武，治亂以相。」漢．鄭玄．注：「相，即拊也，亦以節樂。拊者以韋為表，裝之以糠。糠，一名相，因以名焉。」",
+            "entry_id": "07212",
+            "sheet": "1150929辭典匯出",
+            "row": 7221,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宜": {
+        "definition": "suitable, right, fitting, proper",
+        "mandarin": "yí",
+        "official_dictionary": [
+          {
+            "title": "宜",
+            "pinyin": "yí",
+            "definition": "[動]\n1.相安、和順。《禮記．大學》：「宜兄宜弟，而后可以教國人。」\n2.適當。《呂氏春秋．不苟論．當賞》：「主之賞罰爵祿之所加者宜，則親疏遠近賢不肖，皆盡其力而以為用矣。」\n3.共享。《詩經．鄭風．女曰雞鳴》：「弋言加之，與子宜之。」\n[形]\n合適、相稱。如：「動靜皆宜」。宋．蘇軾〈飲湖上初晴後雨〉詩二首之二：「若把西湖比西子，淡妝濃抹總相宜。」\n[副]\n1.應該、應當。如：「不宜喧鬧」、「不宜妄自菲薄」。\n2.大概、似乎。《漢書．卷二一．律曆志上》：「今陰陽不調，宜更曆之過也。」\n[名]\n1.事宜。《禮記．月令》：「天子乃與公卿大夫共飭國典，論時令，以待來歲之宜。」\n2.姓。如元代有宜桂可。",
+            "entry_id": "10535",
+            "sheet": "1150929辭典匯出",
+            "row": 10548,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "硿然",
+      "decision": "keep",
+      "reason": "“硿”有象声词义，“硿然”可自然理解为发出硿硿声，组合简洁且有声音意象；不因用字生僻否决。"
+    },
+    {
+      "name": "空山硿响",
+      "decision": "uncertain",
+      "reason": "可理解为空山中的硿然声响，意象明确，但“空山”与“硿响”的搭配略显生硬；且与暂留候选“冬山清响”“山河回响”同属山景与声响组合，辨识差异尚不足以排除近似。"
+    },
+    {
+      "name": "主理",
+      "decision": "reject",
+      "reason": "作为“主持、管理”的简称或职务称谓使用较常见，完整名称偏通用功能词，品牌辨识度不足。"
+    },
+    {
+      "name": "主见",
+      "decision": "keep",
+      "reason": "是自然凝练的抽象名词，指自主判断与见解，语义清楚，具备作为品牌名的简洁辨识度。"
+    },
+    {
+      "name": "主心骨",
+      "decision": "keep",
+      "reason": "完整常用词，指核心支撑或主心人物，含义明确且有凝练的比喻性；不是完整判断句或通用产品类别。"
+    },
+    {
+      "name": "主客相宜",
+      "decision": "reject",
+      "reason": "表达主客彼此合宜的完整判断，结构偏描述性句子，口号感较强，不够像凝练品牌名。"
+    }
+  ]
+}

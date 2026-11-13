@@ -1,0 +1,610 @@
+{
+  "review_id": "20261113T150616-70e2cf36",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "导演",
+      "导览",
+      "倡导者",
+      "精镗",
+      "伽马",
+      "伽利略",
+      "枯山水",
+      "枯石"
+    ],
+    "related_kept_candidates": {
+      "略": [
+        "七略",
+        "奇略",
+        "将略",
+        "方略",
+        "韬略",
+        "王略",
+        "军略"
+      ],
+      "精": [
+        "精一",
+        "精义",
+        "精干",
+        "精诣",
+        "精密",
+        "精锐",
+        "精悍",
+        "精要",
+        "业精",
+        "精粹",
+        "精妙",
+        "精研社"
+      ],
+      "水": [
+        "山水清斋",
+        "山水茗心",
+        "渟水见山",
+        "山水舫",
+        "山水含霭",
+        "山水成籁",
+        "山水成帖",
+        "山澹水明",
+        "山水笺",
+        "山水入屏",
+        "远山泚水",
+        "山光接水"
+      ],
+      "山": [
+        "山水清斋",
+        "山水茗心",
+        "渟水见山",
+        "山水舫",
+        "山水含霭",
+        "山水成籁",
+        "山水成帖",
+        "山澹水明",
+        "山水笺",
+        "山水入屏",
+        "远山泚水",
+        "山光接水"
+      ],
+      "石": [
+        "砭石堂",
+        "金石錾刻",
+        "玉石錾花",
+        "峋石听泉",
+        "峋石",
+        "石斋",
+        "苔石",
+        "叠石",
+        "叠石成景",
+        "石猊",
+        "枕石",
+        "磁石"
+      ],
+      "者": [
+        "疾行者",
+        "观潮者",
+        "东行者",
+        "狨行者",
+        "弈者",
+        "神行者",
+        "蝎行者",
+        "侠者观山",
+        "旅者集",
+        "蜥行者",
+        "耜耕者",
+        "篆行者"
+      ],
+      "马": [
+        "奔马",
+        "骍马",
+        "车马",
+        "驷马",
+        "策马",
+        "策马春风",
+        "白鬃马",
+        "走马",
+        "马嘶",
+        "遛马",
+        "马蹄莲",
+        "马蔺"
+      ],
+      "演": [
+        "演绎",
+        "演艺",
+        "演变"
+      ],
+      "镗": [
+        "镗鞳",
+        "镗然"
+      ],
+      "览": [
+        "博览",
+        "远览",
+        "览月",
+        "览山河",
+        "览星河",
+        "览春山",
+        "览风物",
+        "览云海",
+        "览月听风",
+        "尽览",
+        "山河尽览",
+        "遐览"
+      ],
+      "枯": [
+        "枯槎听雨"
+      ],
+      "利": [
+        "利济",
+        "爽利",
+        "利耜"
+      ],
+      "导": [
+        "先导"
+      ]
+    },
+    "literature_phrase_examples": {
+      "导演": [],
+      "导览": [],
+      "倡导者": [],
+      "精镗": [],
+      "伽马": [],
+      "伽利略": [],
+      "枯山水": [],
+      "枯石": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 366312,
+          "context": "松枯石老水萦回，个里难教俗客来。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 149796,
+          "context": "但只恐、松枯石烂。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "导演": [],
+      "导览": [],
+      "倡导者": [],
+      "精镗": [],
+      "伽马": [],
+      "伽利略": [
+        {
+          "title": "伽利略",
+          "pinyin": "jiā lì lüè",
+          "definition": "人名。（西元1564～1642）義大利天文、數學及物理學家，近代實驗科學的先驅。他在天文、力學實驗及理論上，都有重要貢獻。他發現擺的等時性、自由落體的加速度不因質量而異、自製望遠鏡、發現木星的衛星、土星環、太陽黑子及自轉，並支持哥白尼天文學說等，被稱為「科學之父」。",
+          "entry_id": "054750002",
+          "sheet": "1150929辭典匯出",
+          "row": 88036,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "枯山水": [],
+      "枯石": []
+    },
+    "direct_dictionary": {
+      "导": {
+        "definition": "direct, guide, lead, conduct",
+        "mandarin": "dǎo",
+        "related_characters": [
+          {
+            "character": "導",
+            "relation": "kTraditionalVariant",
+            "definition": "direct, guide, lead, conduct",
+            "mandarin": "dǎo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "演": {
+        "definition": "perform, put on; exercise",
+        "mandarin": "yǎn",
+        "official_dictionary": [
+          {
+            "title": "演",
+            "pinyin": "yǎn",
+            "definition": "[動]\n1.當眾公開表現技藝。如：「表演」、「扮演」。《紅樓夢》第五四回：「當下天未二鼓，戲演的是八義中『觀燈』八齣。」\n2.練習。如：「演練」。元．孟漢卿《魔合羅》第四折：「不強似你教幼女演裁縫，勸佳人學繡刺。」《水滸傳》第七回：「每日將酒肉來請智深，看他演武使拳。」\n3.擴展、闡揚。《漢書．卷九七．外戚傳下．孝成趙皇后傳》：「愚臣既不能深援安危，定金匱之計，又不知推演聖德，述先帝之志。」《後漢書．卷六二．荀淑傳》：「先王光演大業，肆于時夏。」\n4.運算、推算。如：「演算」。《宋史．卷八二．律曆志十五》：「必使氣之與朔無毫髮之差，始可演造新曆。」",
+            "entry_id": "11006",
+            "sheet": "1150929辭典匯出",
+            "row": 11021,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "览": {
+        "definition": "look at, inspect; perceive",
+        "mandarin": "lǎn",
+        "related_characters": [
+          {
+            "character": "覽",
+            "relation": "kTraditionalVariant",
+            "definition": "look at, inspect; perceive",
+            "mandarin": "lǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "倡": {
+        "definition": "guide, leader; lead, introduce",
+        "mandarin": "chàng",
+        "official_dictionary": [
+          {
+            "title": "倡",
+            "pinyin": "chāng",
+            "definition": "[名]\n1.古以歌舞演戲為業的人。如：「倡優」。\n2.娼妓。通「娼」。唐．白行簡《李娃傳》：「汧國夫人李娃，長安之倡女也。」\n[形]\n狂妄。通「猖」。《莊子．山木》：「倡狂妄行。」",
+            "entry_id": "08442",
+            "sheet": "1150929辭典匯出",
+            "row": 8456,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "倡",
+            "pinyin": "chàng",
+            "definition": "[動]_x000D_\n發起、領導。如：「倡導」、「提倡」。",
+            "entry_id": "08471",
+            "sheet": "1150929辭典匯出",
+            "row": 8485,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "者": {
+        "definition": "that which; he who; those who",
+        "mandarin": "zhě",
+        "official_dictionary": [
+          {
+            "title": "者",
+            "pinyin": "zhě",
+            "definition": "[代]_x000D_\n人或事物的代稱。如：「記者」、「作者」。《論語．雍也》：「知者樂水，仁者樂山。」《楚辭．屈原．漁父》：「新沐者必彈冠，新浴者必振衣。」_x000D_\n[形]_x000D_\n指示形容詞。同「這」。多用於古詩詞中。宋．晏幾道〈少年游．離多最是〉詞：「細想從來，斷腸多處，不與者番同。」_x000D_\n[助]_x000D_\n1.用於句中，表示停頓。《論語．學而》：「孝弟也者，其為仁之本與。」_x000D_\n2.用於句末，表示語氣結束。《孟子．離婁下》：「大人者，不失其赤子之心者也。」_x000D_\n3.表比擬。相當於「的樣子」。《史記．卷八六．刺客列傳．荊軻》：「已而相泣，旁若無人者。」",
+            "entry_id": "07675",
+            "sheet": "1150929辭典匯出",
+            "row": 7686,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "精": {
+        "definition": "essence; semen; spirit",
+        "mandarin": "jīng",
+        "official_dictionary": [
+          {
+            "title": "精",
+            "pinyin": "jīng",
+            "definition": "[名]\n1.良質純淨的米。《論語．鄉黨》：「食不厭精，膾不厭細。」《莊子．人間世》：「鼓筴播精，足以食十人。」\n2.物質經過提煉後，純淨無雜質的部分。如：「酒精」、「香精」、「糖精」。\n3.心神。如：「聚精會神」。《莊子．刻意》：「形勞而不休則弊，精用而不已則勞。」《文選．司馬相如．上林賦》：「抏士卒之精，費府庫之財。」\n4.神怪稱為「精」。如：「精怪」、「妖精」、「狐狸精」。\n5.男性的精液。如：「遺精」、「射精」。\n[動]\n嫻熟、擅長。如：「精通」。唐．韓愈〈進學解〉：「業精於勤荒於嬉。」《金史．卷一一〇．李獻甫傳》：「尤精左氏及地理學。」\n[形]\n1.細緻、細密。與「粗」相對。如：「精細」、「精密」。《呂氏春秋．不苟論．博志》：「用志如此其精也，何事而不達？」\n2.品質優良。如：「精鹽」、「精兵」。《後漢書．卷五九．張衡傳》：「陽嘉元年，復造候風地動儀，以精銅鑄成。」宋．蘇軾〈答謝民師書〉：「文章如精金美玉，市有定價，非人所能以口舌定貴賤也。」\n3.佳、最好。如：「精品」。《史記．卷一二八．褚少孫補．龜策傳》：「婦女不彊，布帛不精。」\n4.光、空。《水滸傳》第二八回：「我精拳頭有一雙相送！」\n[副]\n1.極、甚、非常。如：「精溼」、「精瘦」。\n2.全部、全數。《儒林外史》第五回：「將些衣服、金珠、首飾，一擄精空。」《老殘遊記》第一九回：「不消半個更頭，四百多銀子又輸得精光。」",
+            "entry_id": "05923",
+            "sheet": "1150929辭典匯出",
+            "row": 5931,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "镗": {
+        "definition": "boring tool",
+        "mandarin": "tāng",
+        "related_characters": [
+          {
+            "character": "鏜",
+            "relation": "kTraditionalVariant",
+            "definition": "boring tool",
+            "mandarin": "tāng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "伽": {
+        "definition": "transcription of Sanskrit 'gha' in Buddhist texts ('samgha', etc.); nursing; attending; entertainer (Japanese); temple; in Chinese this character is not used alone",
+        "mandarin": "jiā",
+        "official_dictionary": [
+          {
+            "title": "伽",
+            "pinyin": "jiā",
+            "definition": "[名]\n譯音用字。為外語譯音所常用。如：「伽馬」、「伽利略」。",
+            "entry_id": "05475",
+            "sheet": "1150929辭典匯出",
+            "row": 5482,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "伽",
+            "pinyin": "qié",
+            "definition": "[名]\n譯音用字。常用於梵語譯音。如：「伽藍」、「伽陀」。",
+            "entry_id": "06328",
+            "sheet": "1150929辭典匯出",
+            "row": 6337,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "马": {
+        "definition": "horse; surname; Kangxi radical 187",
+        "mandarin": "mǎ",
+        "related_characters": [
+          {
+            "character": "馬",
+            "relation": "kTraditionalVariant",
+            "definition": "horse; surname; Kangxi radical 187",
+            "mandarin": "mǎ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "利": {
+        "definition": "gains, advantage, profit, merit",
+        "mandarin": "lì",
+        "official_dictionary": [
+          {
+            "title": "利",
+            "pinyin": "lì",
+            "definition": "[名]\n1.好處、益處。如：「利益」、「福利」、「漁翁得利」。《論語．里仁》：「君子喻於義，小人喻於利。」\n2.從本金生出的子錢。如：「利息」、「利潤」、「紅利」、「高利貸」。\n3.姓。如漢代有利乾。\n[動]\n有益於。如：「利人利己」。\n[形]\n1.鋒銳。如：「銳利」、「鋒利」。《孟子．公孫丑下》：「兵革非不堅利也，米粟非不多也。」\n2.祥瑞、順利。如：「大吉大利」。《史記．卷八．高祖本紀》：「東陽𡩋君、沛公引兵西，與戰蕭西，不利。」",
+            "entry_id": "03446",
+            "sheet": "1150929辭典匯出",
+            "row": 3453,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "略": {
+        "definition": "approximately, roughly; outline",
+        "mandarin": "lüè",
+        "official_dictionary": [
+          {
+            "title": "略",
+            "pinyin": "lüè",
+            "definition": "[名]\n1.計謀、計劃。如：「謀略」、「方略」、「戰略」、「策略」。\n2.概要、重點。如：「要略」、「史略」。《孟子．滕文公上》：「此其大略也。」\n3.姓。如三國時吳國有略統。\n[動]\n1.經營、治理。《左傳．昭公七年》：「天子經略，諸侯正封，古之制也。」\n2.奪取、攻占。《淮南子．兵略》：「攻城略地，莫不降下。」\n3.省去、簡化。如：「省略」、「忽略」。南朝梁．蕭統〈文選序〉：「老莊之作，管孟之流，蓋以立意為宗，不以能文為本，今之所撰，又以略諸。」\n[形]\n簡要的。如：「略表」、「略圖」。《荀子．非相》：「傳者久則論略，近則論詳。」\n[副]\n大致、稍微。如：「約略估計」、「略有所聞」、「略知一二」。《文選．司馬遷．報任少卿書》：「書不能悉意，略陳固陋。」",
+            "entry_id": "03905",
+            "sheet": "1150929辭典匯出",
+            "row": 3911,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "枯": {
+        "definition": "dried out, withered, decayed",
+        "mandarin": "kū",
+        "official_dictionary": [
+          {
+            "title": "枯",
+            "pinyin": "kū",
+            "definition": "[形]\n1.草木失去生機。如：「枯木逢春」。唐．李白〈蜀道難〉：「連峰去天不盈尺，枯松倒挂倚絕壁。」元．馬致遠〈天淨沙．枯藤老樹昏鴉〉曲：「枯藤老樹昏鴉，小橋流水人家。」\n2.乾、乾涸。如：「枯井」、「海枯石爛」、「枯魚之肆」。唐．李白〈古風〉詩五九首之五九：「眾鳥集榮柯，窮魚守枯池。」\n3.憔悴、瘦瘠。《荀子．修身》：「安燕而血氣不惰，勞倦而容貌不枯。」《後漢書．卷四五．袁安傳》：「魂魄飛揚，形容已枯。」\n[名]\n1.油料作物經榨油後剩餘的渣滓，多製成餅狀，供飼料、肥料之用。如：「茶枯」、「油枯」。\n2.中醫上稱半身不遂的病為「枯」。",
+            "entry_id": "04559",
+            "sheet": "1150929辭典匯出",
+            "row": 4567,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "official_dictionary": [
+          {
+            "title": "水",
+            "pinyin": "shuǐ",
+            "definition": "[名]\n1.無色無臭的液體。由氫氣與氧氣化合而成。\n2.汁、液。如：「墨水」、「藥水」、「橘子水」、「檸檬水」。\n3.海、河、江、湖的總稱。如：「漢水」。《書經．微子》：「今殷其淪喪，若涉大水，其無津涯。」\n4.五行之一。參見「五行」條。\n5.水星的簡稱。參見「水星」條。\n6.額外的收入、費用。如：「撈油水」。《鄰女語》第二回：「你一路上發的水還不彀麼？還要到這地方來想方麼？」\n7.量詞。計算衣物刷洗次數的單位。如：「這件衣服洗兩水就走樣了。」\n8.姓。如明代有水甦民。\n9.二一四部首之一。\n[形]\n瓜果等多汁而不脆甜。如：「這梨吃起來水水的，不脆。」",
+            "entry_id": "09141",
+            "sheet": "1150929辭典匯出",
+            "row": 9156,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "墨水",
+                "pinyin": "mò shuǐ",
+                "definition": "1.寫字用的各種顏色的水汁。如：「紅墨水」、「藍墨水」。唐．杜佑《通典．卷一四．選舉二．歷代制中》：「北齊選舉多沿後魏之制，……書有濫劣者，飲墨水一升」《孽海花》第二五回：「家人送上一枝蘸滿墨水的筆，珏齋提筆，在紙上揮灑自如的寫了一百多字。」\n2.比喻學問、才識。如：「看不出他肚子裡還真有點兒墨水。」《鏡花緣》第二二回：「可惜你枉自生得白淨。腹中也少墨水，就是出來貿易，也該略認幾字。」",
+                "entry_id": "010970053",
+                "sheet": "1150929辭典匯出",
+                "row": 27647
+              },
+              {
+                "title": "藥水",
+                "pinyin": "yào shuǐ",
+                "definition": "泛指藥物的溶液，一般為含藥水溶液。",
+                "entry_id": "108550077",
+                "sheet": "1150929辭典匯出",
+                "row": 151285
+              },
+              {
+                "title": "漢水",
+                "pinyin": "hàn shuǐ",
+                "definition": "河川名。發源於陝西省寧羌縣北嶓冢山，至湖北省漢口與漢陽之間流入長江。是長江最長的支流，亦是漢中盆地的命脈。也稱為「漢江」。",
+                "entry_id": "048890049",
+                "sheet": "1150929辭典匯出",
+                "row": 81095
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "水星",
+                "pinyin": "shuǐ xīng",
+                "definition": "行星名。距離太陽最近的行星，也是太陽系中體積最小的行星，只比月球略大。屬於類地行星，地表多隕石坑。幾乎沒有大氣，晝夜溫差極大。也稱為「辰勾」、「辰星」。",
+                "entry_id": "091410306",
+                "sheet": "1150929辭典匯出",
+                "row": 132590
+              },
+              {
+                "title": "撈油水",
+                "pinyin": "lāo yóu shui",
+                "definition": "吳語。指用不當的手段取得錢財。",
+                "entry_id": "032580021",
+                "sheet": "1150929辭典匯出",
+                "row": 59264
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "石": {
+        "definition": "stone, rock, mineral; Kangxi radical 112",
+        "mandarin": "shí",
+        "official_dictionary": [
+          {
+            "title": "石",
+            "pinyin": "dàn",
+            "definition": "[名]_x000D_\n量詞：(1)計算容量的單位。公制一石等於十斗。也稱為「公石」。(2)古代計算重量的單位。漢．鼂錯〈論貴粟疏〉：「數石之重，中人弗勝，不為奸邪所利，一日弗得而飢寒至，是故明君貴五穀而賤金玉。」《戰國策．齊策四》：「大王據千乘之地，而建千石鍾，萬石虡。」",
+            "entry_id": "02020",
+            "sheet": "1150929辭典匯出",
+            "row": 2025,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "石",
+            "pinyin": "shí",
+            "definition": "[名]\n1.由礦物集結而成的堅硬塊狀物，是構成地殼的物質。如：「岩石」、「礦石」、「花岡石」。\n2.碑、碣。《呂氏春秋．慎行論．求人》：「故功績銘乎金石，著於盤盂。」《史記．卷六．秦始皇本紀》：「乃遂上泰山，立石。」\n3.藥石。《左傳．襄公二十三年》：「季孫之愛我，疾疢也；孟孫之惡我，藥石也，美疢不如惡石。」唐．孔穎達．正義：「治病藥分用石。《本草》云：『鍾乳、礬、磁石之類多矣。』」\n4.姓。如宋代有石延年。\n5.二一四部首之一。\n6.中國古代樂器「八音」分類法之一，通常以製作材質來分，此處泛指石類樂器，如磬之屬一類的敲擊樂器。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」",
+            "entry_id": "08708",
+            "sheet": "1150929辭典匯出",
+            "row": 8722,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "导演",
+      "decision": "reject",
+      "reason": "完整词语是明确的职业与通用功能称谓，直接指执导影视、戏剧等创作的人，缺乏品牌名所需的辨识度。"
+    },
+    {
+      "name": "导览",
+      "decision": "reject",
+      "reason": "完整词语直接指引导游览或相关导览服务，属于通用功能类别词，不是凝练的品牌名。"
+    },
+    {
+      "name": "倡导者",
+      "decision": "reject",
+      "reason": "表示发起、提倡某种主张的人，是泛指身份的完整称谓，表达功能性而非品牌辨识。"
+    },
+    {
+      "name": "精镗",
+      "decision": "uncertain",
+      "reason": "“镗”可指镗孔工具或相关加工，但“精镗”作为完整名称的语义关系和读法均不够明确；若取“精密镗削”之意，名称更像加工工艺简称，品牌自然度存疑。"
+    },
+    {
+      "name": "伽马",
+      "decision": "uncertain",
+      "reason": "这是稳定的外语音译组合，可指希腊字母γ或伽马射线等，但脱离行业语境无法确认其指向；名称本身有辨识度，却存在明显的既有科学术语联想。"
+    },
+    {
+      "name": "伽利略",
+      "decision": "reject",
+      "reason": "完整名称就是著名科学家伽利略的姓名，属于明确专名；在没有授权或关联依据时，不宜直接作为公司品牌名。"
+    },
+    {
+      "name": "枯山水",
+      "decision": "keep",
+      "reason": "完整词语是自然成立的园林艺术名称，指以石、砂等表现山水意境的庭园形式，意象凝练且具有辨识度；它并非单纯通用产品类别词。"
+    },
+    {
+      "name": "枯石",
+      "decision": "keep",
+      "reason": "可自然理解为枯槁、苍老之石，与诗文中“松枯石老”一类物象相通；组合简洁，有鲜明的自然意象，虽非固定词语但语义不牵强。"
+    }
+  ]
+}

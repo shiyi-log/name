@@ -1,0 +1,804 @@
+{
+  "review_id": "20261113T004848-9a1931f0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "飘香",
+      "飘洋",
+      "飘远",
+      "飘云间",
+      "飘逸间",
+      "轻云飘远",
+      "长风飘远",
+      "星河飘梦",
+      "芜野",
+      "芜境",
+      "春芜",
+      "芜茂"
+    ],
+    "related_kept_candidates": {
+      "香": [
+        "丁香",
+        "香薷",
+        "藠香",
+        "藿香",
+        "馕香",
+        "枣花香",
+        "榴香",
+        "山海酵香",
+        "酸香",
+        "芹香",
+        "香茅",
+        "荃香"
+      ],
+      "星": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "枕星河",
+        "碳映星河",
+        "星河映埼",
+        "邂逅星河",
+        "广星河",
+        "广厦星河",
+        "星河照蕖",
+        "弓映星河",
+        "涉星河"
+      ],
+      "风": [
+        "螭起长风",
+        "长风越埼",
+        "弓引长风",
+        "长风漻月",
+        "蜜野长风",
+        "璟长风",
+        "长风带月",
+        "黄野长风",
+        "茶伴长风",
+        "长风舲",
+        "六月长风",
+        "长风过汭"
+      ],
+      "春": [
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春"
+      ],
+      "间": [
+        "云间鹮",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "云间书斋",
+        "云间桫椤",
+        "翱云间",
+        "凉云间",
+        "云间棣影",
+        "云间猊影",
+        "卧云间",
+        "绀云间"
+      ],
+      "云": [
+        "云间鹮",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "云缠远岫",
+        "云间书斋",
+        "云间桫椤",
+        "翱云间",
+        "凉云间",
+        "云间棣影",
+        "云间猊影",
+        "卧云间"
+      ],
+      "逸": [
+        "逸骏",
+        "逸墅",
+        "逸翮",
+        "隽逸",
+        "潇逸",
+        "逸翎",
+        "超逸",
+        "遒逸",
+        "骜逸"
+      ],
+      "远": [
+        "云缠远岫",
+        "辽远星河",
+        "轻轺远行",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟"
+      ],
+      "梦": [
+        "梦貘",
+        "人间梦",
+        "浮云入梦",
+        "梦乡",
+        "绮梦",
+        "栩梦",
+        "梦寐",
+        "蜻蜓入梦",
+        "清宵梦",
+        "宵梦",
+        "蛱蝶梦",
+        "仙梦"
+      ],
+      "芜": [
+        "蘅芜",
+        "芜生"
+      ],
+      "野": [
+        "蜜野长风",
+        "星河覆野",
+        "黄野长风",
+        "邃野长风",
+        "麦野星河",
+        "山野鳟",
+        "岍野",
+        "骉野",
+        "葑野",
+        "葑野集",
+        "垄野",
+        "顷野"
+      ],
+      "境": [
+        "祕境",
+        "臻境",
+        "螭游清境",
+        "婳境",
+        "摹境",
+        "非凡境",
+        "涡之境",
+        "酒境",
+        "砗磲之境",
+        "人境",
+        "漻境",
+        "画境"
+      ],
+      "长": [
+        "螭起长风",
+        "长风越埼",
+        "弓引长风",
+        "长风漻月",
+        "蜜野长风",
+        "璟长风",
+        "长风带月",
+        "黄野长风",
+        "茶伴长风",
+        "长风舲",
+        "六月长风",
+        "长风过汭"
+      ],
+      "河": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "枕星河",
+        "碳映星河",
+        "星河映埼",
+        "邂逅星河",
+        "广星河",
+        "广厦星河",
+        "星河照蕖",
+        "弓映星河",
+        "涉星河"
+      ],
+      "轻": [
+        "轻云遮峰",
+        "轻轺远行",
+        "轻篙",
+        "轻跹",
+        "轻悄",
+        "轻舲",
+        "水阔船轻",
+        "轻棹",
+        "轻毳",
+        "轻轺",
+        "轻捻",
+        "竹影轻飐"
+      ],
+      "茂": [
+        "椿茂",
+        "葰茂",
+        "柘茂",
+        "柯茂",
+        "茂业",
+        "繁茂",
+        "胤茂"
+      ],
+      "飘": [
+        "飘云",
+        "飘然",
+        "飘扬",
+        "飘帆",
+        "飘絮",
+        "飘然居"
+      ]
+    },
+    "literature_phrase_examples": {
+      "飘香": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 10881,
+          "context": "日照新妆水底明，风飘香袖空中举。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 16825,
+          "context": "摇摇锦旗夹城暖，曲水飘香去不归。"
+        }
+      ],
+      "飘洋": [
+        {
+          "book": "西游记",
+          "line": 83,
+          "context": "飘洋过海寻仙道，立志潜心建大功。"
+        },
+        {
+          "book": "西游记",
+          "line": 129,
+          "context": "」猴王叩头道：「弟子飘洋过海，登界游方，有十数个年头，方才访到此处。"
+        }
+      ],
+      "飘远": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 446,
+          "context": "罩云飘远岫，喷雨泛长河。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 87490,
+          "context": "功成惠养随所致，飘飘远自流沙至。"
+        }
+      ],
+      "飘云间": [],
+      "飘逸间": [],
+      "轻云飘远": [],
+      "长风飘远": [],
+      "星河飘梦": [],
+      "芜野": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 216061,
+          "context": "瘴雨蛮烟朝暮景，平芜野草古今愁。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1540177,
+          "context": "荒芜野寺孤城外，赤叶黄芦日相对。"
+        }
+      ],
+      "芜境": [
+        {
+          "book": "太平广记",
+          "line": 15705,
+          "context": "诗葢是自䜟仆生前忝有科名粗亦为人所知死未数日便有一无名小鬼赠一篇殊为著钝虽然细思之已是落他芜境乃咏曰涧水溅溅流不绝芳草绵绵野花发自去自来人不知黄昏惟有青山月萧亦叹羡之曰韦四公死"
+        }
+      ],
+      "春芜": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 58096,
+          "context": "春芜生楚国，古树过隋朝。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 99972,
+          "context": "乾坤霾涨海，雨露洗春芜。"
+        }
+      ],
+      "芜茂": []
+    },
+    "dictionary_phrase_entries": {
+      "飘香": [],
+      "飘洋": [],
+      "飘远": [],
+      "飘云间": [],
+      "飘逸间": [],
+      "轻云飘远": [],
+      "长风飘远": [],
+      "星河飘梦": [],
+      "芜野": [],
+      "芜境": [],
+      "春芜": [],
+      "芜茂": []
+    },
+    "direct_dictionary": {
+      "飘": {
+        "definition": "whirlwind, cyclone; floating",
+        "mandarin": "piāo",
+        "related_characters": [
+          {
+            "character": "飄",
+            "relation": "kTraditionalVariant",
+            "definition": "whirlwind, cyclone; floating",
+            "mandarin": "piāo"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "香": {
+        "definition": "fragrant, sweet-smelling; incense; Kangxi radical 186",
+        "mandarin": "xiāng",
+        "official_dictionary": [
+          {
+            "title": "香",
+            "pinyin": "xiāng",
+            "definition": "[名]\n1.芬芳美好的氣味。如：「花香」、「書香」、「粉香」。\n2.用香料製成棒、線、球、餅的東西，可供拜祭鬼神或驅除蚊蟲。如：「線香」、「檀香」、「燒香」、「蚊香」、「焚香操琴」。\n3.比喻女子。如：「憐香惜玉」、「香消玉殞」。\n4.姓。如戰國時齊國有香居。\n5.二一四部首之一。\n[動]\n親吻。如：「香一香臉」、「香一下好嗎？」\n[形]\n1.氣味美好。如：「香茗」、「香泉」、「這飯很香。」唐．杜甫〈古柏行〉：「香葉曾經宿鸞鳳。」\n2.與女性有關的。如：「香閨」、「香魂」、「香汗淋漓」。元．王德信〈十二月過堯民歌．自別後遙山隱隱〉曲：「今春，香肌瘦幾分，摟帶寬三寸。」\n[副]\n酣暢。如：「吃得很香」、「睡得很香」。",
+            "entry_id": "07185",
+            "sheet": "1150929辭典匯出",
+            "row": 7194,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "洋": {
+        "definition": "ocean, sea; foreign; western",
+        "mandarin": "yáng",
+        "official_dictionary": [
+          {
+            "title": "洋",
+            "pinyin": "yáng",
+            "definition": "[名]\n1.廣大的海域。如：「太平洋」、「大西洋」、「印度洋」。\n2.舊指比較現代的事物。如：「土洋並用」。\n3.俗稱銀元為「洋」。如：「龍洋」、「五百塊現大洋」。\n[形]\n1.廣大的。如：「汪洋大海」。\n2.外國的。如：「洋人」、「洋貨」、「洋酒」。",
+            "entry_id": "11136",
+            "sheet": "1150929辭典匯出",
+            "row": 11151,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "云",
+            "pinyin": "yún",
+            "definition": "[名]\n1.雲的古字。明．張自烈《正字通．二部》：「云，雲本字。」\n2.姓。如漢代有云敞。\n[動]\n1.說。如：「人云亦云」。《文選．諸葛亮．出師表》：「臨表涕泣，不知所云。」\n2.有。《荀子．法行》：「事已敗矣，乃重大息，其云益乎！」《文選．陸機．答賈謐》：「公之云感，貽此音翰。」\n[助]\n1.發語詞，無義。《詩經．邶風．簡兮》：「云誰之思，西方美人。」\n2.用於句中，無義。《詩經．邶風．雄雉》：「道之云遠，曷云能來。」《左傳．成公十二年》：「日云莫矣，寡君須矣，吾子其入也。」\n3.用於句尾，無義。《史記．卷六一．伯夷傳》：「余登箕山，其上蓋有許由冢云。」\n[代]\n如此。《左傳．襄公二十八年》：「子之言云，又焉用盟？」",
+            "entry_id": "11821",
+            "sheet": "1150929辭典匯出",
+            "row": 11834,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "逸": {
+        "definition": "flee, escape, break loose",
+        "mandarin": "yì",
+        "official_dictionary": [
+          {
+            "title": "逸",
+            "pinyin": "yì",
+            "definition": "[動]\n1.逃亡、逃跑。《說文解字．兔部》：「逸，失也，兔謾訑善逃也。」《左傳．桓公八年》：「隨師敗績，隨侯逸。」《北史．卷六．齊高祖神武帝本紀》：「見一赤兔，每搏輒逸。」\n2.奔跑。《國語．晉語五》：「馬逸不能止，三軍從之。」三國吳．韋昭．注：「逸，奔也。」\n3.散失。《書經．胤征》：「天吏逸德，烈于猛火。」\n4.釋放。《左傳．成公十六年》：「明日復戰，乃逸楚囚。」\n[形]\n1.放蕩的。《戰國策．楚策四》：「專淫逸侈靡，不顧國政，郢都必危矣。」\n2.隱逸的。如：「逸老」。《漢書．卷一〇．成帝紀》：「故官無廢事，下無逸民。」\n3.超群的、超絕的。如：「逸才」。《老殘遊記》第一〇回：「六七八段，間以曼衍，愈轉愈清，其調愈逸。」\n4.快速的。《後漢書．卷五二．崔駰傳》：「故英人乘斯時也，猶逸禽之赴深林。」\n5.舒適、安樂。《詩經．小雅．十月之交》：「民莫不逸，我獨不敢休。」\n[名]\n1.隱士。《北史．卷三一．高允傳》：「帝乃虛求，搜賢採逸，巖隱投竿，異人並出。」唐．李白〈夜泊黃山聞殷十四吳吟〉：「朝來果是滄洲逸，酤酒提盤飯霜栗。」\n2.過失。《書經．盤庚上》：「予亦拙謀，作乃逸。」漢．孔安國．傳：「逸，過也。」",
+            "entry_id": "10648",
+            "sheet": "1150929辭典匯出",
+            "row": 10662,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "轻": {
+        "definition": "light; easy, simple; gentle",
+        "mandarin": "qīng",
+        "related_characters": [
+          {
+            "character": "輕",
+            "relation": "kTraditionalVariant",
+            "definition": "light; easy, simple; gentle",
+            "mandarin": "qīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "河",
+            "pinyin": "hé",
+            "definition": "[名]\n1.水道的通稱。如：「河流」、「運河」。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n2.黃河的簡稱。如：「河套」。\n3.成河川狀的群體。如：「星河」、「銀河」。\n4.姓。如南北朝時有河禎。",
+            "entry_id": "04729",
+            "sheet": "1150929辭典匯出",
+            "row": 4736,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "梦": {
+        "definition": "dream; visionary; wishful",
+        "mandarin": "mèng",
+        "related_characters": [
+          {
+            "character": "夢",
+            "relation": "kTraditionalVariant",
+            "definition": "dream; visionary; wishful",
+            "mandarin": "mèng"
+          },
+          {
+            "character": "梦",
+            "relation": "kTraditionalVariant",
+            "definition": "dream; visionary; wishful",
+            "mandarin": "mèng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "梦",
+            "pinyin": null,
+            "definition": "「夢」的異體字。",
+            "entry_id": "01334-1",
+            "sheet": "1150929辭典匯出",
+            "row": 30378,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "芜": {
+        "definition": "luxurious growth of weeds",
+        "mandarin": "wú",
+        "related_characters": [
+          {
+            "character": "蕪",
+            "relation": "kTraditionalVariant",
+            "definition": "luxurious growth of weeds",
+            "mandarin": "wú"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "official_dictionary": [
+          {
+            "title": "野",
+            "pinyin": "yě",
+            "definition": "[名]\n1.郊外。《書經．武成》：「歸馬于華山之陽，放牛于桃林之野。」唐．柳宗元〈捕蛇者說〉：「永州之野產異蛇，黑質而白章。」\n2.廣平的地方。《呂氏春秋．季秋紀．審己》：「稼生於野而藏於倉，稼非有欲也。」《三國志．卷三五．蜀書．諸葛亮傳》：「益州險塞，沃野千里。」\n3.界限、地域。如：「分野」、「視野」。《淮南子．原道》：「上游於霄雿之野，下出於無垠之門。」\n4.民間。《書經．大禹謨》：「君子在野，小人在位。」《三國志．卷四二．蜀書．郤正傳》：「故君臣協美於朝，黎庶欣戴於野。」\n[形]\n1.質樸。《論語．雍也》：「質勝文則野，文勝質則史。」唐．柳宗元〈柳宗直西漢文類序〉：「首紀殷周之前，其文簡而野。」\n2.粗鄙無禮、放縱不馴。如：「粗野」、「撒野」。《左傳．宣公四年》：「諺曰：『狼子野心。』是乃狼也，其可畜乎？」《禮記．仲尼燕居》：「敬而不中禮謂之野，恭而不中禮謂之給。」\n3.野生而未經人工栽培或馴養的。如：「野菜」、「野菊」、「野牛」、「野馬」。\n4.非正式的。如：「野錄」、「野乘」、「野史」。\n[副]\n非常、很。如：「朔風野大」。",
+            "entry_id": "10755",
+            "sheet": "1150929辭典匯出",
+            "row": 10769,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "境": {
+        "definition": "boundary, frontier; area, region",
+        "mandarin": "jìng",
+        "official_dictionary": [
+          {
+            "title": "境",
+            "pinyin": "jìng",
+            "definition": "[名]\n1.疆界。如：「邊境」、「國境」。《孟子．梁惠王下》：「臣始至於境，問國之大禁，然後敢入。」唐．韓愈〈朝散大夫越州刺史薛公墓誌銘〉：「四境之內，竟歲無一事。」\n2.地方、區域。如：「仙境」、「勝境」。晉．陶淵明〈飲酒詩〉二〇首之五：「結廬在人境，而無車馬喧。」\n3.情況、光景。如：「順境」、「逆境」、「家境」。南朝宋．劉義慶《世說新語．排調》：「顧長康啖甘蔗，先食尾。問所以，云：『漸至佳境。』」宋．陸游〈懷昔〉詩：「豈知墮老境，槁木蒙霜菅。」\n4.程度、地步。如：「學無止境」、「已臻化境」。",
+            "entry_id": "05961",
+            "sheet": "1150929辭典匯出",
+            "row": 5969,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "茂": {
+        "definition": "thick, lush, dense; talented",
+        "mandarin": "mào",
+        "official_dictionary": [
+          {
+            "title": "茂",
+            "pinyin": "mào",
+            "definition": "[形]\n1.繁盛、旺盛。如：「茂盛」、「茂密」、「根深葉茂」。晉．王羲之〈三月三日蘭亭詩序〉：「此地有崇山峻嶺，茂林修竹，又有清流激湍，映帶左右。」\n2.豐盛優美。如：「圖文並茂」。《楚辭．屈原．離騷》：「夫維聖哲以茂行兮，苟得用此下士。」《漢書．卷三六．楚元王劉交傳》：「資質淑茂，道術通明。」\n[動]\n勸勉。通「懋」。《詩經．小雅．節南山》：「方茂爾惡，相爾矛矣。」\n[名]\n姓。如漢代有茂員。",
+            "entry_id": "01181",
+            "sheet": "1150929辭典匯出",
+            "row": 1184,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "茂",
+            "pinyin": "mòu",
+            "definition": "(一)之又音。",
+            "entry_id": "01208",
+            "sheet": "1150929辭典匯出",
+            "row": 1211,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "飘香",
+      "decision": "keep",
+      "reason": "“飘香”意为香气飘散，组合自然凝练，语义清楚，有感官辨识度，可作为品牌名继续复核。"
+    },
+    {
+      "name": "飘洋",
+      "decision": "reject",
+      "reason": "常见用法是“飘洋过海”，单独“飘洋”语义不完整，作为名称显得像截取的动作片段，凝练度和独立辨识度不足。"
+    },
+    {
+      "name": "飘远",
+      "decision": "keep",
+      "reason": "可自然理解为飘向远处，画面明确、简洁，有延展感，未见明显语义冲突。"
+    },
+    {
+      "name": "飘云间",
+      "decision": "uncertain",
+      "reason": "可理解为飘在云间，但“飘云间”的语序关系不够明确，既可读作“飘于云间”，也像压缩的句子，名称自然度存疑。"
+    },
+    {
+      "name": "飘逸间",
+      "decision": "uncertain",
+      "reason": "“飘逸”指洒脱不拘，“间”作空间后缀时与其搭配关系不清，整体语义难以稳定确认。"
+    },
+    {
+      "name": "轻云飘远",
+      "decision": "reject",
+      "reason": "可理解为轻云飘向远处，但完整组合是景物描写句而非凝练名称，整体口号化、句子感较强。"
+    },
+    {
+      "name": "长风飘远",
+      "decision": "reject",
+      "reason": "“长风”与“飘远”组合成完整景物陈述，句子感明显，缺少品牌名所需的凝练感。"
+    },
+    {
+      "name": "星河飘梦",
+      "decision": "reject",
+      "reason": "“星河”与“飘梦”意象关系牵强，“飘梦”搭配生硬，整体像拼接的诗性词组，语义不够自然。"
+    },
+    {
+      "name": "芜野",
+      "decision": "uncertain",
+      "reason": "“芜”指草木繁盛或杂草丛生，“芜野”可理解为荒芜野地，但整体容易落在荒败、杂乱的负面意象，作为品牌名的语义取向不明。"
+    },
+    {
+      "name": "芜境",
+      "decision": "uncertain",
+      "reason": "“芜”与“境”可构成荒芜之境的理解，但完整词组语义偏荒败，且搭配较少见，品牌指向和表达自然度存疑。"
+    },
+    {
+      "name": "春芜",
+      "decision": "keep",
+      "reason": "可理解为春日繁生的草木，组合自然，有季节与生机意象，简洁且具辨识度。"
+    },
+    {
+      "name": "芜茂",
+      "decision": "reject",
+      "reason": "“芜”与“茂”都指草木繁盛一类含义，近义堆叠且语序生硬，缺少清楚的整体语义。"
+    }
+  ]
+}

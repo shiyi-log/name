@@ -1,0 +1,560 @@
+{
+  "review_id": "20261112T154530-c094b26c",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "站风",
+      "光站",
+      "林站",
+      "野站",
+      "松风站",
+      "知行站",
+      "春山站",
+      "栖云站",
+      "拾光站",
+      "向阳站",
+      "映山站",
+      "明川站"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "一川明月",
+        "赫山映川",
+        "涂明川",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月"
+      ],
+      "明": [
+        "一川明月",
+        "春山鲜明",
+        "涂明川",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明"
+      ],
+      "山": [
+        "芭影映山",
+        "墟山映日",
+        "棹过春山",
+        "蔓入春山",
+        "春山茗",
+        "春山鲜明",
+        "涡映山河",
+        "涧上春山",
+        "鹩鸣春山",
+        "珐映山河",
+        "赫山映川",
+        "春山有蹊"
+      ],
+      "风": [
+        "松风峒",
+        "凉风入松",
+        "暮岭松风",
+        "螭吟松风",
+        "卧听松风",
+        "松风入涧",
+        "松风入蹊",
+        "横岭松风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风"
+      ],
+      "春": [
+        "棹过春山",
+        "蔓入春山",
+        "春山茗",
+        "春山鲜明",
+        "涧上春山",
+        "鹩鸣春山",
+        "春山有蹊",
+        "鹒鸣春山",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春"
+      ],
+      "林": [
+        "云栖林墅",
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林"
+      ],
+      "行": [
+        "知行馆",
+        "厉行",
+        "迳行",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义",
+        "麇行远山",
+        "鲜行",
+        "肯行"
+      ],
+      "光": [
+        "拾光斋",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光"
+      ],
+      "云": [
+        "云栖林墅",
+        "崧云栖月",
+        "螭栖云外",
+        "烧云",
+        "云斓集",
+        "风褰云",
+        "云翳",
+        "蹑云",
+        "云罅光",
+        "云间鹮",
+        "云骃",
+        "翃云间"
+      ],
+      "松": [
+        "松风峒",
+        "凉风入松",
+        "暮岭松风",
+        "螭吟松风",
+        "卧听松风",
+        "松风入涧",
+        "松风入蹊",
+        "站如松",
+        "横岭松风",
+        "蟠松",
+        "松间鼯",
+        "松间䴓"
+      ],
+      "野": [
+        "山野鳟",
+        "岍野",
+        "骉野",
+        "阎星野",
+        "葑野",
+        "葑野集",
+        "垄野",
+        "顷野",
+        "榴野",
+        "野墅",
+        "芹野初晴",
+        "晙野"
+      ],
+      "映": [
+        "芭影映山",
+        "墟山映日",
+        "涡映山河",
+        "珐映山河",
+        "赫山映川",
+        "烛映山",
+        "黛山映水",
+        "诸山映月",
+        "晖映",
+        "郁川映月",
+        "榴映秋",
+        "映芙"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "赫知远",
+        "珂知远",
+        "菉知春"
+      ],
+      "向": [
+        "梣向阳",
+        "蔓向阳",
+        "梾木向阳",
+        "螭向远",
+        "梾枝向远",
+        "梾枝向晨"
+      ],
+      "阳": [
+        "梣向阳",
+        "蔓向阳",
+        "梾木向阳",
+        "太阳雨",
+        "浴朝阳",
+        "崌阳"
+      ],
+      "栖": [
+        "云栖林墅",
+        "崧云栖月",
+        "螭栖云外",
+        "麇栖林",
+        "麇栖松月",
+        "麇栖竹影",
+        "鹩栖竹影",
+        "鹒栖竹影",
+        "鹡栖枝",
+        "鹡栖松枝",
+        "鲵栖"
+      ],
+      "拾": [
+        "拾光斋"
+      ],
+      "站": [
+        "站如松"
+      ]
+    },
+    "literature_phrase_examples": {
+      "站风": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 44124,
+          "context": "站风波苦。"
+        }
+      ],
+      "光站": [],
+      "林站": [],
+      "野站": [],
+      "松风站": [],
+      "知行站": [],
+      "春山站": [],
+      "栖云站": [],
+      "拾光站": [],
+      "向阳站": [],
+      "映山站": [],
+      "明川站": []
+    },
+    "dictionary_phrase_entries": {
+      "站风": [],
+      "光站": [],
+      "林站": [],
+      "野站": [],
+      "松风站": [],
+      "知行站": [],
+      "春山站": [],
+      "栖云站": [],
+      "拾光站": [],
+      "向阳站": [],
+      "映山站": [],
+      "明川站": []
+    },
+    "direct_dictionary": {
+      "站": {
+        "definition": "stand up; a stand, station",
+        "mandarin": "zhàn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "栖": {
+        "definition": "perch; roost; stay",
+        "mandarin": "qī",
+        "related_characters": [
+          {
+            "character": "栖",
+            "relation": "kTraditionalVariant",
+            "definition": "perch; roost; stay",
+            "mandarin": "qī"
+          },
+          {
+            "character": "棲",
+            "relation": "kTraditionalVariant",
+            "definition": "perch; roost; stay",
+            "mandarin": "qī"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "拾": {
+        "definition": "pick up, collect, tidy up; accounting form of the numeral ten",
+        "mandarin": "shí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "向": {
+        "definition": "toward, direction, trend",
+        "mandarin": "xiàng",
+        "related_characters": [
+          {
+            "character": "向",
+            "relation": "kTraditionalVariant",
+            "definition": "toward, direction, trend",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "嚮",
+            "relation": "kTraditionalVariant",
+            "definition": "guide, direct; incline to, favor",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "曏",
+            "relation": "kTraditionalVariant",
+            "definition": "once upon time; period of time",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "阳": {
+        "definition": "'male' principle; light; sun",
+        "mandarin": "yáng",
+        "related_characters": [
+          {
+            "character": "陽",
+            "relation": "kTraditionalVariant",
+            "definition": "the active, male principle in Chinese philosophy (yang); light; sun",
+            "mandarin": "yáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "站风",
+      "decision": "reject",
+      "reason": "“站”与“风”直接并置，关系不明、语义不自然；书库中的“站风波苦”也不能支持其作为完整词语的品牌含义。"
+    },
+    {
+      "name": "光站",
+      "decision": "reject",
+      "reason": "容易理解为提供交通或设施服务的“光之站点”，整体偏通用场所称谓，品牌辨识度不足。"
+    },
+    {
+      "name": "林站",
+      "decision": "reject",
+      "reason": "自然读作林区站点或林业相关站点，完整名称更像通用场所称谓，而非凝练品牌名。"
+    },
+    {
+      "name": "野站",
+      "decision": "uncertain",
+      "reason": "可理解为野外站点，但“野站”关系和使用语境不明确，语义自然度存疑。"
+    },
+    {
+      "name": "松风站",
+      "decision": "reject",
+      "reason": "“松风”意象自然，但加“站”后整体成为通用场所或设施称谓，品牌名辨识度不足。"
+    },
+    {
+      "name": "知行站",
+      "decision": "reject",
+      "reason": "“知行”可表达认知与实践，但“站”使完整名称更像知识、教育或交通服务站点的类别称谓。"
+    },
+    {
+      "name": "春山站",
+      "decision": "reject",
+      "reason": "“春山”是自然景物意象，但加“站”后整体偏地点或设施称谓，缺少品牌名的凝练感。"
+    },
+    {
+      "name": "栖云站",
+      "decision": "reject",
+      "reason": "“栖云”有停驻云间的诗性意象，但“站”将其组合成不够自然的场所称谓，语义关系生硬。"
+    },
+    {
+      "name": "拾光站",
+      "decision": "reject",
+      "reason": "“拾光”是常见的诗性表达，但“拾光站”整体像体验或服务场所的类别名称，品牌辨识度有限。"
+    },
+    {
+      "name": "向阳站",
+      "decision": "reject",
+      "reason": "“向阳”意象清楚，但“向阳站”通常会被理解为朝阳方向的站点或设施，偏通用场所称谓。"
+    },
+    {
+      "name": "映山站",
+      "decision": "reject",
+      "reason": "“映山”可理解为映照山景，但加“站”后成为关系不清的地点称谓，组合不够自然。"
+    },
+    {
+      "name": "明川站",
+      "decision": "reject",
+      "reason": "“明川”可作山水意象，但加“站”后更像地名或站点称谓，完整名称偏地点标识而非凝练品牌名。"
+    }
+  ]
+}

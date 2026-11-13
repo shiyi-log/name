@@ -1,0 +1,986 @@
+{
+  "review_id": "20261112T232539-c797f68b",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "澜音",
+      "澜序",
+      "映澜",
+      "松澜",
+      "山泉起澜",
+      "风来水澜",
+      "远山澜起",
+      "临水观澜",
+      "月照江澜",
+      "以诚相许",
+      "许未来",
+      "准许"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "柳月照江",
+        "江月照船",
+        "月照桹影",
+        "月照芭叶",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "月照绀海",
+        "广陵江月",
+        "茗川照月",
+        "月照幽硔",
+        "月照酒盏"
+      ],
+      "风": [
+        "桧风来",
+        "顾风来",
+        "风过水湄",
+        "一枕清风",
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风"
+      ],
+      "水": [
+        "麋临碧水",
+        "鹳临水",
+        "远山泚水",
+        "风过水湄",
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水"
+      ],
+      "山": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "月照山罅",
+        "雯与远山",
+        "三山远",
+        "山柯听泉",
+        "远山漻月",
+        "远山图",
+        "踏远山"
+      ],
+      "江": [
+        "柳月照江",
+        "江月照船",
+        "广陵江月",
+        "月横江",
+        "江天浮月",
+        "江月港",
+        "江心月",
+        "鳜江月",
+        "江月棹歌",
+        "右江明月",
+        "江月号",
+        "江月渔叟"
+      ],
+      "远": [
+        "远山葶影",
+        "远山芙蓉",
+        "远山近墟",
+        "麇行远山",
+        "远山矿语",
+        "雯与远山",
+        "三山远",
+        "远山漻月",
+        "远山图",
+        "踏远山",
+        "远山连冈",
+        "远山带霭"
+      ],
+      "松": [
+        "月照松斋",
+        "松间澜",
+        "松月照筠",
+        "月照松隅",
+        "蟠松",
+        "松间鼯",
+        "松间䴓",
+        "坝畔松",
+        "松峙",
+        "松风峒",
+        "松峤",
+        "峤听松"
+      ],
+      "音": [
+        "籁音",
+        "铴音",
+        "软音",
+        "镛音",
+        "珂音",
+        "五音",
+        "瑶音",
+        "璆音",
+        "锵音",
+        "铿音",
+        "乡音",
+        "宽音"
+      ],
+      "泉": [
+        "山柯听泉",
+        "山泉酢",
+        "北山听泉",
+        "山间湜泉",
+        "氿泉",
+        "峋石听泉",
+        "崟泉",
+        "渟泉",
+        "硔间清泉",
+        "涡泉",
+        "井泉",
+        "涧泉"
+      ],
+      "映": [
+        "远山映畦",
+        "池映远山",
+        "晖映",
+        "郁川映月",
+        "榴映秋",
+        "映芙",
+        "芹露映晨",
+        "芭蕉映月",
+        "芭影映山",
+        "芭叶映星",
+        "墟山映日",
+        "崧川映月"
+      ],
+      "诚": [
+        "悃诚",
+        "焊诚",
+        "诚斋",
+        "臻诚",
+        "义诚",
+        "赟诚",
+        "珺诚",
+        "依诚",
+        "蓓诚",
+        "奕诚",
+        "朋诚",
+        "瑾诚"
+      ],
+      "相": [
+        "相辅",
+        "扮相",
+        "冈川相望",
+        "相揖",
+        "相偲",
+        "菊相宜",
+        "云柳相依",
+        "喁喁相应",
+        "岑川相望",
+        "𫍯心相应",
+        "峦海相连",
+        "相为犄角"
+      ],
+      "观": [
+        "观澜斋",
+        "观澜榭",
+        "陶然观澜",
+        "观澜号",
+        "观云馆",
+        "观海云斋",
+        "观星斋",
+        "观徼",
+        "观瓷",
+        "卧观云",
+        "借酒观云",
+        "山海大观"
+      ],
+      "照": [
+        "柳月照江",
+        "江月照船",
+        "月照桹影",
+        "月照芭叶",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "月照绀海",
+        "茗川照月",
+        "月照幽硔",
+        "月照酒盏",
+        "月照山罅"
+      ],
+      "序": [
+        "晙序",
+        "瓷序",
+        "碳序",
+        "唐序",
+        "茗序",
+        "赫序",
+        "王序",
+        "人间序",
+        "蓓序",
+        "月序",
+        "四时递序",
+        "码序"
+      ],
+      "澜": [
+        "观澜斋",
+        "浴月听澜",
+        "观澜榭",
+        "松间澜",
+        "陶然观澜",
+        "观澜号",
+        "宽澜",
+        "薇澜",
+        "璟澜",
+        "澄澜",
+        "澜舟",
+        "云澜"
+      ],
+      "未": [
+        "未了",
+        "未已",
+        "久未央",
+        "未晞",
+        "菊光未央",
+        "未艾",
+        "探未知"
+      ],
+      "许": [
+        "几许"
+      ],
+      "起": [
+        "霭起见山",
+        "云起北山",
+        "螭起长风",
+        "珂云起",
+        "蔡云起",
+        "崒起",
+        "云起时",
+        "淞风起",
+        "杉风起",
+        "云起林霏",
+        "篱风起",
+        "雾起"
+      ],
+      "临": [
+        "麋临碧水",
+        "鹳临水",
+        "清风临埼",
+        "旭日临埼",
+        "竹影临簖",
+        "月色临榻",
+        "临洺",
+        "皎月临川",
+        "皎月临风",
+        "骏临风",
+        "鎏月临川",
+        "临池"
+      ],
+      "来": [
+        "桧风来",
+        "顾风来",
+        "朋来",
+        "由来",
+        "远岸来船",
+        "日往月来",
+        "繇来",
+        "来电"
+      ],
+      "以": [
+        "以宁",
+        "可以",
+        "山海以东"
+      ],
+      "准": [
+        "掂得准"
+      ]
+    },
+    "literature_phrase_examples": {
+      "澜音": [],
+      "澜序": [],
+      "映澜": [],
+      "松澜": [],
+      "山泉起澜": [],
+      "风来水澜": [],
+      "远山澜起": [],
+      "临水观澜": [],
+      "月照江澜": [],
+      "以诚相许": [],
+      "许未来": [],
+      "准许": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 28453,
+          "context": "准许他夺人妻逼做妻？"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "澜音": [],
+      "澜序": [],
+      "映澜": [],
+      "松澜": [],
+      "山泉起澜": [],
+      "风来水澜": [],
+      "远山澜起": [],
+      "临水观澜": [],
+      "月照江澜": [],
+      "以诚相许": [],
+      "许未来": [],
+      "准许": []
+    },
+    "direct_dictionary": {
+      "澜": {
+        "definition": "overflowing; waves, ripples",
+        "mandarin": "lán",
+        "related_characters": [
+          {
+            "character": "瀾",
+            "relation": "kTraditionalVariant",
+            "definition": "overflowing; waves, ripples",
+            "mandarin": "lán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "音": {
+        "definition": "sound, tone, pitch, pronunciation; Kangxi radical 180",
+        "mandarin": "yīn",
+        "official_dictionary": [
+          {
+            "title": "音",
+            "pinyin": "yīn",
+            "definition": "[名]\n1.聲響、聲音。如：「噪音」、「雜音」、「錄音」、「餘音繞梁」。\n2.腔調。如：「口音」、「鄉音」。宋．蘇軾〈祭石幼安文〉：「竄流江湖，隻影自憐，聞人蜀音，回首粲然。」\n3.字的音讀。如：「字音」、「注音」、「音切」。《晉書．卷九一．儒林傳．徐邈傳》：「撰正五經音訓，學者宗之。」\n4.書信、消息。如：「回音」、「靜候佳音」、「音信全無」。\n5.敬稱他人的言語。如：「玉音」、「德音」。\n6.姓。如清代有音泰。\n7.二一四部首之一。",
+            "entry_id": "11065",
+            "sheet": "1150929辭典匯出",
+            "row": 11080,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "音",
+            "pinyin": "yìn",
+            "definition": "[名]\n樹蔭。通「蔭」。《左傳．文公十七年》：「鹿死不擇音，小國之事大國也，德則其人也，不德則其鹿也。」",
+            "entry_id": "11115",
+            "sheet": "1150929辭典匯出",
+            "row": 11130,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "序": {
+        "definition": "series, serial order, sequence",
+        "mandarin": "xù",
+        "official_dictionary": [
+          {
+            "title": "序",
+            "pinyin": "xù",
+            "definition": "[名]\n1.廳堂的東西牆。《說文解字．广部》：「序，東西牆也。」《儀禮．士冠禮》：「主人玄端爵韠，立于阼階下，直東序西面。」\n2.古代的學校名稱。如：「鄉序」。《孟子．梁惠王上》：「謹庠序之教，申之以孝悌之義。」\n3.排列的次第。如：「順序」、「次序」。《儀禮．鄉飲酒禮》：「眾賓序升，即席。」《隋書．卷十三．音樂志上．序》：「樂失其序，則親疏亂。」\n4.文體名：(1)通常放在正文前，概說、評述作品內容。南朝梁．劉勰《文心雕龍．詮賦》：「序以建言，首引情本。」(2)通常臨別贈言的文章稱為「序」，創始於唐。如韓愈有〈送孟東野序〉、〈送李愿歸盤谷序〉等。唐．韓愈〈送水陸運使韓侍御歸所治序〉：「聞其歸，皆相勉為詩以推大之，而屬余為序。」\n5.季節。《文選．江淹．雜體詩．謝僕射》：「淒淒節序高，寥寥心悟永。」《紅樓夢》第八十七回：「（永）回憶海棠結社，序屬清秋。」\n[形]\n開頭的。如：「序曲」、「序幕」。",
+            "entry_id": "07303",
+            "sheet": "1150929辭典匯出",
+            "row": 7312,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "松",
+            "pinyin": "sōng",
+            "definition": "[名]\n1.松科松屬樹木之泛稱。也稱為「木公」或「松樹」，參見「木公」、「松樹」條。\n2.姓。如隋代有松贇。",
+            "entry_id": "10198",
+            "sheet": "1150929辭典匯出",
+            "row": 10212,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "木公",
+                "pinyin": "mù gōng",
+                "definition": "1.松科「松樹」的別名。參見「松樹」條。\n2.神話傳說中的仙人東華帝君。參見「東王公」條。",
+                "entry_id": "015050081",
+                "sheet": "1150929辭典匯出",
+                "row": 32536
+              },
+              {
+                "title": "松樹",
+                "pinyin": "sōng shù",
+                "definition": "泛指裸子植物松科松屬之樹種。常綠喬木。枝條輪生、對生或互生。針葉常成束著生。毬花雌雄同株。毬果木質，各果鱗具種子二枚。木材用途甚廣，種子可食用、榨油，松脂可提煉松香、松節油。也稱為「木公」、「貞木」。",
+                "entry_id": "101980083",
+                "sheet": "1150929辭典匯出",
+                "row": 144196
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "official_dictionary": [
+          {
+            "title": "泉",
+            "pinyin": "quán",
+            "definition": "[名]\n1.水的源頭。《文選．曹冏．六代論》：「夫泉竭則流涸。」宋．歐陽修〈醉翁亭記〉：「峰回路轉，有亭翼然，臨於泉上者，醉翁亭也。」\n2.地下水。宋．蘇軾〈潮州韓文公廟碑〉：「譬如鑿井得泉，而曰水專在是，豈理也哉？」\n3.人死後所在的地方。如：「黃泉」、「九泉」。《文選．王粲．七哀詩二首之一》：「悟彼下泉人，喟然傷心肝。」唐．白居易〈夜遇微之於峽中〉詩：「往事渺茫都似夢，舊遊流落半歸泉。」\n4.古代的錢幣。錢的流行像泉水一樣，故稱為「泉」。如：「泉布」、「刀泉」、「貨泉」。《管子．輕重丁》：「凡稱貸之家，出泉參千萬，出粟參數千萬鍾。」\n5.姓。如唐代有泉男生。",
+            "entry_id": "06699",
+            "sheet": "1150929辭典匯出",
+            "row": 6708,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "起": {
+        "definition": "rise, stand up; go up; begin",
+        "mandarin": "qǐ",
+        "official_dictionary": [
+          {
+            "title": "起",
+            "pinyin": "qǐ",
+            "definition": "[動]_x000D_\n1.站立、坐起。如：「起立」、「起來」。《禮記．曲禮上》：「請業則起，請益則起。」唐．白居易〈與元微之書〉：「垂死病中驚坐起，闇風吹雨入寒窗。」_x000D_\n2.起床、離開床鋪。如：「早睡早起」。《孟子．盡心上》：「雞鳴而起，孳孳為善者，舜之徒也。」《禮記．內則》：「孺子蚤寢晏起，唯所欲食無時。」_x000D_\n3.始、開始。如：「起迄點」、「起筆」、「從今起」、「萬事起頭難」。《漢書．卷一〇〇．敘傳下》：「以述《漢書》，起元高祖。」_x000D_\n4.發動、產生。如：「起疑」、「起風」、「肅然起敬」。《呂氏春秋．貴直論．直諫》：「百邪悉起。」漢．高祖〈大風歌〉：「大風起兮雲飛揚，威加海內兮歸故鄉。」_x000D_\n5.復甦、痊癒、好轉。如：「起死回生」、「一病不起」。《國語．吳語》：「君王之於越也，繄起死人而肉白骨也。」_x000D_\n6.取出。如：「起貨」、「起贓」、「起出凶刀一把。」_x000D_\n7.出仕、舉用。如：「起用」、「東山再起」。《戰國策．秦策二》：「召公孫顯於韓，起樗里子於國。」宋．辛棄疾〈水龍吟．老來曾識淵明〉詞：「甚東山何事，當時也道，為蒼生起。」_x000D_\n8.擬訂。如：「起草章程」、「起個大綱」。_x000D_\n9.出身。《漢書．卷三九．蕭何曹參傳．曹參》：「蕭何、曹參皆起秦刀筆吏，當時錄錄未有奇節。」_x000D_\n10.建築、建立。如：「白手起家」、「平地起高樓」。《三國志．卷四七．吳書．吳主權傳》：「治城郭，起譙樓。」_x000D_\n[名]_x000D_\n1.詩文首句、首聯或首段。《通俗編．文學》引范德機〈詩法〉：「作詩有四法，起要平直，承宜舂容，轉要變化，合要淵永。」_x000D_\n2.量詞：(1)計算分批的人的單位。相當於「群」。如：「店裡來了兩起客人。」《紅樓夢》第四四回：「且平兒又是個極聰明極清俊的上等女孩兒，比不得那起俗蠢拙物。」(2)計算事件發生的單位。如：「高速公路上發生了數起連環車禍。」「警方最近偵破了一起擄人勒索案。」_x000D_\n[助]_x000D_\n1.置於動詞之後，表示及、到的意思。如：「想起往事，真是不勝感慨！」「只要談起女友，他便眉開眼笑。」_x000D_\n2.置於動詞之後，表示足夠或不夠的意思。如：「經得起現實的考驗。」「承受不起輿論壓力。」",
+            "entry_id": "06284",
+            "sheet": "1150929辭典匯出",
+            "row": 6293,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "来": {
+        "definition": "come, coming; return, returning",
+        "mandarin": "lái",
+        "related_characters": [
+          {
+            "character": "來",
+            "relation": "kTraditionalVariant",
+            "definition": "come, coming; return, returning",
+            "mandarin": "lái"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "official_dictionary": [
+          {
+            "title": "水",
+            "pinyin": "shuǐ",
+            "definition": "[名]\n1.無色無臭的液體。由氫氣與氧氣化合而成。\n2.汁、液。如：「墨水」、「藥水」、「橘子水」、「檸檬水」。\n3.海、河、江、湖的總稱。如：「漢水」。《書經．微子》：「今殷其淪喪，若涉大水，其無津涯。」\n4.五行之一。參見「五行」條。\n5.水星的簡稱。參見「水星」條。\n6.額外的收入、費用。如：「撈油水」。《鄰女語》第二回：「你一路上發的水還不彀麼？還要到這地方來想方麼？」\n7.量詞。計算衣物刷洗次數的單位。如：「這件衣服洗兩水就走樣了。」\n8.姓。如明代有水甦民。\n9.二一四部首之一。\n[形]\n瓜果等多汁而不脆甜。如：「這梨吃起來水水的，不脆。」",
+            "entry_id": "09141",
+            "sheet": "1150929辭典匯出",
+            "row": 9156,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "墨水",
+                "pinyin": "mò shuǐ",
+                "definition": "1.寫字用的各種顏色的水汁。如：「紅墨水」、「藍墨水」。唐．杜佑《通典．卷一四．選舉二．歷代制中》：「北齊選舉多沿後魏之制，……書有濫劣者，飲墨水一升」《孽海花》第二五回：「家人送上一枝蘸滿墨水的筆，珏齋提筆，在紙上揮灑自如的寫了一百多字。」\n2.比喻學問、才識。如：「看不出他肚子裡還真有點兒墨水。」《鏡花緣》第二二回：「可惜你枉自生得白淨。腹中也少墨水，就是出來貿易，也該略認幾字。」",
+                "entry_id": "010970053",
+                "sheet": "1150929辭典匯出",
+                "row": 27647
+              },
+              {
+                "title": "藥水",
+                "pinyin": "yào shuǐ",
+                "definition": "泛指藥物的溶液，一般為含藥水溶液。",
+                "entry_id": "108550077",
+                "sheet": "1150929辭典匯出",
+                "row": 151285
+              },
+              {
+                "title": "漢水",
+                "pinyin": "hàn shuǐ",
+                "definition": "河川名。發源於陝西省寧羌縣北嶓冢山，至湖北省漢口與漢陽之間流入長江。是長江最長的支流，亦是漢中盆地的命脈。也稱為「漢江」。",
+                "entry_id": "048890049",
+                "sheet": "1150929辭典匯出",
+                "row": 81095
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "水星",
+                "pinyin": "shuǐ xīng",
+                "definition": "行星名。距離太陽最近的行星，也是太陽系中體積最小的行星，只比月球略大。屬於類地行星，地表多隕石坑。幾乎沒有大氣，晝夜溫差極大。也稱為「辰勾」、「辰星」。",
+                "entry_id": "091410306",
+                "sheet": "1150929辭典匯出",
+                "row": 132590
+              },
+              {
+                "title": "撈油水",
+                "pinyin": "lāo yóu shui",
+                "definition": "吳語。指用不當的手段取得錢財。",
+                "entry_id": "032580021",
+                "sheet": "1150929辭典匯出",
+                "row": 59264
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "临": {
+        "definition": "draw near, approach; descend",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "臨",
+            "relation": "kTraditionalVariant",
+            "definition": "draw near, approach; descend; hexagram ䷒",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "观": {
+        "definition": "see, observe, view; appearance",
+        "mandarin": "guān",
+        "related_characters": [
+          {
+            "character": "觀",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, view; appearance; hexagram ䷓",
+            "mandarin": "guān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "official_dictionary": [
+          {
+            "title": "照",
+            "pinyin": "zhào",
+            "definition": "[動]\n1.映射。如：「照耀」、「陽光照在窗戶上。」\n2.投映。如：「照鏡子」。\n3.比擬、依據。如：「仿照」、「照貓畫虎」、「比照辦理」、「照本宣科」。\n4.比對、核對。如：「對照」。\n5.通知。如：「照會」、「關照」。\n6.向著、對著。如：「照頭一棍」、「照著敵人開槍」。\n7.看、顧。如：「照顧」、「照應」、「照料」。\n8.知曉。如：「心照不宣」。《三國志．卷一九．魏書．陳思王植傳》：「臣聞騏驥長鳴，則伯樂照其能；盧狗悲號，則韓國知其才。」\n9.攝取影像。如：「照相」、「這張像片是新照的。」\n[名]\n1.日光。如：「夕照」、「殘照」。\n2.像片。如：「近照」、「玉照」。\n3.憑證。如：「執照」、「護照」。《喻世明言．卷三三．張古老種瓜娶文女》：「申公道：『錢卻有，何以為照？』」",
+            "entry_id": "07719",
+            "sheet": "1150929辭典匯出",
+            "row": 7730,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "江": {
+        "definition": "large river; the Yangzi; surname",
+        "mandarin": "jiāng",
+        "official_dictionary": [
+          {
+            "title": "江",
+            "pinyin": "jiāng",
+            "definition": "[名]\n1.大河的通稱。如：「珠江」、「松花江」、「三江五嶽」。《水滸傳》第三八回：「前面靠江有那琵琶亭酒館，是唐朝白樂天古跡。」\n2.大陸地區長江的簡稱。如：「江南」、「偏安江左」。\n3.國名。嬴姓。春秋時為楚所滅，故址約在今大陸地區河南省息縣西南。\n4.姓。如南朝梁有江淹。",
+            "entry_id": "05887",
+            "sheet": "1150929辭典匯出",
+            "row": 5895,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "以": {
+        "definition": "by means of; thereby, therefore; consider as; in order to",
+        "mandarin": "yǐ",
+        "official_dictionary": [
+          {
+            "title": "以",
+            "pinyin": "yǐ",
+            "definition": "[動]_x000D_\n1.用。《左傳．襄公十年》：「我辭禮矣，彼則以之。」漢．王充《論衡．程材》：「洗洿泥者以水，燔腥者用火。」_x000D_\n2.仰賴、憑藉。《韓非子．五蠹》：「富國以農，距敵恃卒。」漢．王充《論衡．卜筮》：「欲知天，以人事。」_x000D_\n3.認為、以為。《左傳．昭公二十五年》：「告臧孫，臧孫以難；告郈孫，郈孫以可勸。」唐．柳宗元〈為裴中丞上裴相賀破東平狀〉：「竊以自古中興之主，必有命代之臣。」_x000D_\n4.可、能夠。《詩經．齊風．猗嗟》：「四矢反兮，以禦亂兮。」《孟子．滕文公下》：「大則以王，小則以霸。」_x000D_\n5.令、使。《孟子．公孫丑上》：「管仲以其君霸，晏子以其君顯。管仲、晏子猶不足為與？」《戰國策．秦策一》：「向欲以齊事王，使攻宋也。」_x000D_\n6.帶領、率領。《左傳．成公十六年》：「欒、范以其族夾公行，陷于淖。」《史記．卷一〇七．魏其武安侯列傳》：「吳楚反時，潁陰侯灌何為將軍，屬太尉，請灌孟為校尉。夫以千人與父俱。」_x000D_\n7.延及。《易經．小畜．九五》：「有孚攣如，富以其鄰。」《論語．堯曰》：「朕躬有罪，無以萬方。」_x000D_\n[介]_x000D_\n1.表示行為的憑藉。相當於「用」。如：「以身作則」、「徐噴以煙」。《論語．為政》：「生，事之以禮；死，葬之以禮、祭之以禮。」《左傳．文公二年》：「晉襄公縛秦囚，使萊駒以戈斬之。」《史記．卷一一七．司馬相如列傳》：「是時卓王孫有女文君新寡，好音，故相如繆與令相重，而以琴心挑之。」_x000D_\n2.因為、由於。《論語．衛靈公》：「君子不以言舉人，不以人廢言。」《韓非子．喻老》：「千丈之隄，以蟻螻之穴潰。」_x000D_\n3.按、依。《孟子．梁惠王上》：「斧斤以時入山林，材木不可勝用也。」《商君書．更法》：「禮法以時而定，制令各順其宜。」_x000D_\n4.在、於。《左傳．桓公二年》：「其弟以千畝之戰生，命之曰成師。」唐．柳宗元〈斷刑論〉：「賞以春夏而刑以秋冬。」_x000D_\n5.表時空、方位、程度等的界限，通常加在前、後、左、右、上、下、往、來、東、西、南、北等字之前。如：「亙古以來」、「中人以上」、「長安東路以西」、「價格在一千元以下」。_x000D_\n[連]_x000D_\n1.而、且。《詩經．邶風．燕燕》：「瞻望弗及，佇立以泣。」《禮記．樂記》：「亡國之音哀以思，其民困。」_x000D_\n2.因而。《漢書．卷二九．溝洫志》：「於是關中為沃野，無凶年，秦以富彊。」三國蜀．諸葛亮〈出師表〉：「不宜妄自菲薄，引喻失義，以塞忠諫之路也。」_x000D_\n3.目的在於。如：「以免」、「以致於」。《書經．泰誓下》：「郊社不修，宗廟不享。作奇技淫巧以悅婦人。」_x000D_\n4.與、和。《儀禮．鄉射禮》：「各以其耦進，反于射位。」_x000D_\n[助]_x000D_\n置動詞後，無義。如：「得以」、「能以」。《論語．泰伯》：「可以託六尺之孤，可以寄百里之命。」_x000D_\n[副]_x000D_\n1.太、甚。《孟子．滕文公下》：「三月無君則弔，不以急乎？」《史記．卷六六．伍子胥列傳》：「子之報仇，其以甚乎？」_x000D_\n2.既、已經。通「已」。《三國志．卷二三．魏書．和常楊杜趙裴傳．杜襲》：「吾計以定，卿勿復言。」_x000D_\n3.更加。《呂氏春秋．恃君覽．觀表》：「魏日以削，秦日益大。」《史記．卷五．秦本紀》：「及其後世，日以驕淫。」_x000D_\n[名]_x000D_\n1.緣故、理由。《詩經．邶風．旄丘》：「何其久也，必有以也。」《列子．周穆王》：「宋人執而問其以，華子曰：『曩吾忘也。』」唐．李白〈春夜宴從弟桃花園序〉：「古人秉燭夜遊，良有以也。」_x000D_\n2.以色列的簡稱。如：「以阿戰爭」。_x000D_\n3.姓。如漢代有以彤。",
+            "entry_id": "10557",
+            "sheet": "1150929辭典匯出",
+            "row": 10570,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "诚": {
+        "definition": "sincere, honest; true, real",
+        "mandarin": "chéng",
+        "related_characters": [
+          {
+            "character": "誠",
+            "relation": "kTraditionalVariant",
+            "definition": "sincere, honest; true, real",
+            "mandarin": "chéng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "相": {
+        "definition": "mutual, reciprocal, each other",
+        "mandarin": "xiāng",
+        "official_dictionary": [
+          {
+            "title": "相",
+            "pinyin": "xiāng",
+            "definition": "[副]\n1.交互，指兩方面都進行的。如：「互相」、「守望相助」、「兩地相思」、「相得益彰」。《莊子．大宗師》：「四人相視而笑，莫逆於心，遂相與為友。」唐．崔護〈題都城南莊〉詩：「去年今日此門中，人面桃花相映紅。」\n2.彼此，強調雙方比較後的差異。如：「相異」、「相像」、「旗鼓相當」。《三國演義》第五七回：「某之所學，與公瑾大不相同。」\n[助]\n由交互的意義演變為單方面的意義，表示動作是由一方對另一方進行。如：「有事相煩」、「實不相瞞」。《三國志．卷五四．吳書．魯肅傳》：「孤持鞍下馬相迎，足以顯卿未？」\n[名]\n姓。如明代有相世芳。",
+            "entry_id": "07180",
+            "sheet": "1150929辭典匯出",
+            "row": 7189,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "相",
+            "pinyin": "xiàng",
+            "definition": "[動]\n1.審視、察看。《說文解字．目部》：「相，省視也。」《左傳．隱公十一年》：「量力而行之，相時而動，無累後人。」《喻世明言．卷四〇．沈小霞相會出師表》：「又見沈鍊一表非俗，立住了腳，相了一回。」\n2.占視、辨察，以斷吉凶禍福。如：「相字」。《周禮．地官．大司徒》：「以相民宅，而知其利害。」《史記．卷九二．淮陰侯傳》：「相君之面，不過封侯，又危不安。」\n3.輔佐、幫助。如：「相夫教子」。《易經．泰卦．象曰》：「輔相天地之宜。」《書經．大誥》：「周公相成王。」\n4.掌管、治理。《左傳．昭公九年》：「陳水屬也，火水妃也，而楚所相也。」唐．柳宗元〈梓人傳〉：「是足為佐天子、相天下法矣，物莫近乎此也。」\n5.挑選、選擇。《三國演義》第六五回：「良禽相木而棲，賢臣擇主而事。」\n[名]\n1.容貌、外形、模樣。如：「長相」、「福相」、「吃相」、「窘相」、「窮酸相」。《西遊記》第三五回：「（孫行者）現了本相。」\n2.職官名：(1)百官之長，輔佐國君治理國政的人。如：「宰相」、「丞相」、「相國」。(2)古代典禮中，輔導行禮的人。如：「儐相」。《論語．先進》：「宗廟之事，如會同，端章甫，願為小相焉。」\n3.攙扶瞎子的人。《荀子．成相》：「人主無賢，如瞽無相。」\n4.樂器名。似鼓，敲擊以控制音樂節拍。《禮記．樂記》：「始奏以文，復亂以武，治亂以相。」漢．鄭玄．注：「相，即拊也，亦以節樂。拊者以韋為表，裝之以糠。糠，一名相，因以名焉。」",
+            "entry_id": "07212",
+            "sheet": "1150929辭典匯出",
+            "row": 7221,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "许": {
+        "definition": "allow, permit; promise; betroth",
+        "mandarin": "xǔ",
+        "related_characters": [
+          {
+            "character": "許",
+            "relation": "kTraditionalVariant",
+            "definition": "allow, permit; promise; betroth",
+            "mandarin": "xǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "未": {
+        "definition": "not yet; eighth earthly branch",
+        "mandarin": "wèi",
+        "official_dictionary": [
+          {
+            "title": "未",
+            "pinyin": "wèi",
+            "definition": "[名]\n1.地支的第八位。\n2.時辰名。約當下午一點到三點。\n3.姓。如漢代有未央。\n[副]\n1.不。表示否定的意思。如：「火車誤點了，所以未能準時到達。」唐．溫庭筠〈楊柳〉詩八首之八：「塞門三月猶蕭索，縱有垂楊未覺春。」\n2.沒有。如：「革命尚未成功，同志仍須努力。」《文選．諸葛亮．出師表》：「先帝創業未半，而中道崩殂。」《聊齋志異．卷六．蕭七》：「有幼女未字，欲充下陳，幸垂援拾。」\n3.放於句末，表示疑問的意思。相當於「否」。唐．王維〈雜詩〉三首之二：「來日綺窗前，寒梅著花未？」宋．陸游〈劍門道中遇微雨〉詩：「此身合是詩人未？細雨騎驢入劍門！」",
+            "entry_id": "11419",
+            "sheet": "1150929辭典匯出",
+            "row": 11433,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "准": {
+        "definition": "approve, allow, permit; in accord",
+        "mandarin": "zhǔn",
+        "related_characters": [
+          {
+            "character": "准",
+            "relation": "kTraditionalVariant",
+            "definition": "approve, allow, permit; in accord",
+            "mandarin": "zhǔn"
+          },
+          {
+            "character": "準",
+            "relation": "kTraditionalVariant",
+            "definition": "rule, guideline, standard",
+            "mandarin": "zhǔn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "准",
+            "pinyin": "zhǔn",
+            "definition": "[動]\n1.允許。如：「准許」、「上課不准遲到。」\n2.確定。如：「准於某日上任。」\n3.依據。如：「准某部公函。」\n4.比照。如：「准前例科罪。」\n5.折算、相抵。元．關漢卿《竇娥冤．楔子》：「我有心看上他與我家做個媳婦，就准了這四十兩銀子，豈不兩得其便。」\n[形]\n類比的、將來的。通「準」。如：「准尉」。",
+            "entry_id": "08112",
+            "sheet": "1150929辭典匯出",
+            "row": 8126,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "澜音",
+      "decision": "keep",
+      "reason": "“澜”指波澜，“音”指声音，组合可自然理解为水波之声，意象清晰简洁，具品牌辨识度。"
+    },
+    {
+      "name": "澜序",
+      "decision": "keep",
+      "reason": "可理解为波澜的次第或水势的秩序，组合凝练，语义可通，有一定品牌感。"
+    },
+    {
+      "name": "映澜",
+      "decision": "keep",
+      "reason": "“映”有照映、映现义，“映澜”可指光影映照波澜，构词自然且意象明确。"
+    },
+    {
+      "name": "松澜",
+      "decision": "keep",
+      "reason": "松与波澜构成自然物象并置，可形成山水意境；虽非固定词，组合简洁且可识别。"
+    },
+    {
+      "name": "山泉起澜",
+      "decision": "reject",
+      "reason": "更像对山泉涌动的完整景象描写，四字组合叙述性强，缺少凝练的品牌名感。"
+    },
+    {
+      "name": "风来水澜",
+      "decision": "reject",
+      "reason": "语序和语义关系生硬，像未完成的景象句，难形成自然、明确的品牌名称。"
+    },
+    {
+      "name": "远山澜起",
+      "decision": "reject",
+      "reason": "“澜起”通常描述水面波澜兴起，与“远山”衔接牵强，整体更像拼接的诗句片段。"
+    },
+    {
+      "name": "临水观澜",
+      "decision": "reject",
+      "reason": "是完整的观景动作描述，接近句子或题辞，缺乏品牌名称所需的凝练感。"
+    },
+    {
+      "name": "月照江澜",
+      "decision": "reject",
+      "reason": "与已暂留的“柳月照江”意象和关系高度相近，只将场景扩展为江上波澜，属于近似变体，不宜重复保留。"
+    },
+    {
+      "name": "以诚相许",
+      "decision": "reject",
+      "reason": "完整表达以诚信相许的行为或承诺，具有宣言、口号性质，不是凝练的品牌名。"
+    },
+    {
+      "name": "许未来",
+      "decision": "reject",
+      "reason": "可读作“许诺未来”，但组合像未完整表达的口号或句子，语义偏承诺宣示，品牌名凝练度不足。"
+    },
+    {
+      "name": "准许",
+      "decision": "reject",
+      "reason": "完整词语直接表示允许、许可，是常用动词，通用性强，缺少品牌辨识度。"
+    }
+  ]
+}

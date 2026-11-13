@@ -1,0 +1,977 @@
+{
+  "review_id": "20261112T153725-6c940923",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "桯间",
+      "晴嶂",
+      "翠嶂",
+      "月嶂",
+      "峰嶂",
+      "林嶂",
+      "松风嶂",
+      "云开见嶂",
+      "清风过嶂",
+      "星河映嶂",
+      "群嶂",
+      "云绕嶂",
+      "雨过青嶂",
+      "列嶂",
+      "嶂间月",
+      "嶂外路",
+      "青溪绕嶂",
+      "长风过嶂",
+      "云程越嶂",
+      "临嶂听松",
+      "光照层嶂"
+    ],
+    "related_kept_candidates": {
+      "程": [
+        "专程"
+      ],
+      "月": [
+        "椤间月",
+        "凉云见月",
+        "茅间月",
+        "榕间月",
+        "栎间月",
+        "蒿间月",
+        "菼间月",
+        "七月",
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月"
+      ],
+      "星": [
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "弓映星河",
+        "烛映星河",
+        "芭叶映星",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮江映星",
+        "暮野星河",
+        "星河入暮"
+      ],
+      "间": [
+        "椤间月",
+        "茅间月",
+        "榕间月",
+        "萚间清风",
+        "栎间月",
+        "蒿间月",
+        "菼间月",
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "山间邨"
+      ],
+      "见": [
+        "云开见硔",
+        "云开见黛",
+        "凉云见月",
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "见崧",
+        "铘见山海",
+        "鹂见山",
+        "山麇见月",
+        "柘见山",
+        "涧里见晴"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "风": [
+        "枣影清风",
+        "松风峒",
+        "风过芭林",
+        "凉风入松",
+        "崧风过岭",
+        "茅风过岭",
+        "暮岭松风",
+        "螭吟松风",
+        "螭起长风",
+        "卧听松风",
+        "松风鹂语",
+        "蔓引清风"
+      ],
+      "清": [
+        "枣影清风",
+        "蔓引清风",
+        "清风临埼",
+        "梾下清风",
+        "萚间清风",
+        "清风入酒",
+        "太和清风",
+        "鹡伴清风",
+        "清风厅",
+        "清风拂菉",
+        "菉竹清风",
+        "一庭清欢"
+      ],
+      "林": [
+        "风过芭林",
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "云": [
+        "云开见硔",
+        "云开见黛",
+        "云开山峙",
+        "云绕崟峰",
+        "凉云见月",
+        "崧云开",
+        "云绕埼",
+        "五云开",
+        "涂云开",
+        "烧云",
+        "云斓集",
+        "风褰云"
+      ],
+      "峰": [
+        "云绕崟峰",
+        "鹫峰",
+        "崄峰",
+        "峣峰",
+        "雾缠峰",
+        "崞峰",
+        "崧峰",
+        "崒峰",
+        "螭越千峰",
+        "千丈峰",
+        "蔓越千峰",
+        "玉女峰"
+      ],
+      "松": [
+        "松风峒",
+        "峤听松",
+        "听松问斋",
+        "崞岭听松",
+        "凉风入松",
+        "崒岭听松",
+        "暮岭松风",
+        "螭吟松风",
+        "螭听松雨",
+        "卧听松风",
+        "枕山听松",
+        "松风鹂语"
+      ],
+      "溪": [
+        "鳜溪春",
+        "清溪竹墅",
+        "芹溪",
+        "清溪芹影",
+        "溪月书斋",
+        "苔溪",
+        "暮溪",
+        "刀溪",
+        "枕溪",
+        "溪畔鹂",
+        "云溪鹂影",
+        "鹂栖溪山"
+      ],
+      "映": [
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "弓映星河",
+        "烛映星河",
+        "芭叶映星",
+        "暮江映星",
+        "绉波映星",
+        "涡映山河",
+        "珐映山河",
+        "晖映",
+        "郁川映月"
+      ],
+      "群": [
+        "轶群"
+      ],
+      "长": [
+        "螭起长风",
+        "长风越埼",
+        "弓引长风",
+        "长揖",
+        "瓷映长川",
+        "螭照长夜",
+        "长弓望月",
+        "酒映长天",
+        "菉色长新",
+        "消长",
+        "长川远黛"
+      ],
+      "听": [
+        "峤听松",
+        "听松问斋",
+        "崞岭听松",
+        "崒岭听松",
+        "螭听松雨",
+        "卧听松风",
+        "枕山听松",
+        "听松厅",
+        "阎听雨",
+        "峤听雨",
+        "峋岭听风",
+        "峋石听泉"
+      ],
+      "雨": [
+        "螭听松雨",
+        "阎听雨",
+        "霪雨初霁",
+        "峤听雨",
+        "芹畦雨",
+        "听雨斋",
+        "雨润荒墟",
+        "楮林新雨",
+        "雨凉",
+        "暮雨",
+        "暮雨晴",
+        "铘听雨"
+      ],
+      "照": [
+        "星河照蕖",
+        "月照桹影",
+        "榴花照影",
+        "芙蓉照水",
+        "月照芭叶",
+        "芭花照水",
+        "月照松斋",
+        "月照墟",
+        "凉月照川",
+        "崧云照野",
+        "玉螭照夜",
+        "螭照长夜"
+      ],
+      "晴": [
+        "万顷晴光",
+        "芹野初晴",
+        "晴窗斋",
+        "晴枫",
+        "暮晴",
+        "暮雨晴",
+        "鹁过晴川",
+        "唐雨初晴",
+        "蒹岸新晴",
+        "涝转晴",
+        "涧雨初晴",
+        "涧里见晴"
+      ],
+      "开": [
+        "云开见硔",
+        "云开见黛",
+        "云开山峙",
+        "崧云开",
+        "五云开",
+        "涂云开",
+        "开口"
+      ],
+      "外": [
+        "芙蓉之外",
+        "螭栖云外",
+        "云外鹂声",
+        "槛外"
+      ],
+      "层": [
+        "层峤",
+        "层叠",
+        "黛染层林"
+      ],
+      "越": [
+        "长风越埼",
+        "峥越",
+        "崧越",
+        "螭越千峰",
+        "猊越山",
+        "鹁越岭",
+        "唐越",
+        "奔越",
+        "蔓越千峰",
+        "珂越千峰"
+      ],
+      "过": [
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过蒹汀",
+        "风过埼",
+        "风过绉波",
+        "柘风过野",
+        "风过刃鸣",
+        "风过酒旗",
+        "风过菼",
+        "菉风过岸",
+        "棹过春山"
+      ],
+      "河": [
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼",
+        "弓映星河",
+        "烛映星河",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "枕星河"
+      ],
+      "翠": [
+        "翠崟",
+        "翠鹂",
+        "奇峰叠翠"
+      ],
+      "绕": [
+        "云绕崟峰",
+        "云绕埼",
+        "蔓绕竹篱",
+        "松涛绕埼",
+        "春水绕簖"
+      ],
+      "嶂": [
+        "叠嶂"
+      ],
+      "临": [
+        "清风临埼",
+        "星临暮野",
+        "暮色临川",
+        "蒹月临川",
+        "旭日临埼",
+        "镆临风",
+        "竹影临簖"
+      ],
+      "路": [
+        "叉路"
+      ]
+    },
+    "literature_phrase_examples": {
+      "桯间": [],
+      "晴嶂": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 52051,
+          "context": "上国故人谁念我，晴嶂远，暮云重。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 414560,
+          "context": "阴云带雨归，晴嶂排空出。"
+        }
+      ],
+      "翠嶂": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 316149,
+          "context": "静景凭高望，光分翠嶂开。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 424157,
+          "context": "重重翠嶂耸云端，玉殿金楼缥缈间。"
+        }
+      ],
+      "月嶂": [],
+      "峰嶂": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 71190,
+          "context": "岩峦行穹跨，峰嶂亦冥密。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 123354,
+          "context": "峰嶂徘徊霞景新，一潭寒水绝纤鳞。"
+        }
+      ],
+      "林嶂": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 104147,
+          "context": "歌钟芳月曙，林嶂碧云生。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 382319,
+          "context": "波涛去东别[一]，林嶂隐西倾[二]。"
+        }
+      ],
+      "松风嶂": [],
+      "云开见嶂": [],
+      "清风过嶂": [],
+      "星河映嶂": [],
+      "群嶂": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 678036,
+          "context": "密雪埋群嶂，凝阴翳上旻。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1265698,
+          "context": "群嶂倚天傍四环，中峰受拱低伏蹲。"
+        }
+      ],
+      "云绕嶂": [],
+      "雨过青嶂": [],
+      "列嶂": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 45177,
+          "context": "山从列嶂转，江自绕林回。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 72667,
+          "context": "列嶂图云山，攒峰入霄汉。"
+        }
+      ],
+      "嶂间月": [],
+      "嶂外路": [],
+      "青溪绕嶂": [],
+      "长风过嶂": [],
+      "云程越嶂": [],
+      "临嶂听松": [],
+      "光照层嶂": []
+    },
+    "dictionary_phrase_entries": {
+      "桯间": [],
+      "晴嶂": [],
+      "翠嶂": [],
+      "月嶂": [],
+      "峰嶂": [],
+      "林嶂": [],
+      "松风嶂": [],
+      "云开见嶂": [],
+      "清风过嶂": [],
+      "星河映嶂": [],
+      "群嶂": [],
+      "云绕嶂": [],
+      "雨过青嶂": [],
+      "列嶂": [],
+      "嶂间月": [],
+      "嶂外路": [],
+      "青溪绕嶂": [],
+      "长风过嶂": [],
+      "云程越嶂": [],
+      "临嶂听松": [],
+      "光照层嶂": []
+    },
+    "direct_dictionary": {
+      "桯": {
+        "definition": "table",
+        "mandarin": "tīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晴": {
+        "definition": "clear weather, fine weather",
+        "mandarin": "qíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嶂": {
+        "definition": "cliff; mountain barrier",
+        "mandarin": "zhàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "翠": {
+        "definition": "color green; kingfisher",
+        "mandarin": "cuì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "峰": {
+        "definition": "peak, summit; hump of camel",
+        "mandarin": "fēng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "松": {
+        "definition": "pine tree; fir tree",
+        "mandarin": "sōng",
+        "related_characters": [
+          {
+            "character": "松",
+            "relation": "kTraditionalVariant",
+            "definition": "pine tree; fir tree",
+            "mandarin": "sōng"
+          },
+          {
+            "character": "鬆",
+            "relation": "kTraditionalVariant",
+            "definition": "lax, loose; loosen, relax",
+            "mandarin": "sōng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "云": {
+        "definition": "say, speak; clouds",
+        "mandarin": "yún",
+        "related_characters": [
+          {
+            "character": "云",
+            "relation": "kTraditionalVariant",
+            "definition": "say, speak; clouds",
+            "mandarin": "yún"
+          },
+          {
+            "character": "雲",
+            "relation": "kTraditionalVariant",
+            "definition": "clouds; Yunnan province",
+            "mandarin": "yún"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "开": {
+        "definition": "open; initiate, begin, start",
+        "mandarin": "kāi",
+        "related_characters": [
+          {
+            "character": "开",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          },
+          {
+            "character": "開",
+            "relation": "kTraditionalVariant",
+            "definition": "open; initiate, begin, start",
+            "mandarin": "kāi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "群": {
+        "definition": "group, crowd, multitude, mob",
+        "mandarin": "qún",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "绕": {
+        "definition": "entwine; wind around; surround",
+        "mandarin": "rào",
+        "related_characters": [
+          {
+            "character": "繞",
+            "relation": "kTraditionalVariant",
+            "definition": "entwine; wind around; surround",
+            "mandarin": "rào"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "列": {
+        "definition": "a line; to arrange in order, classify",
+        "mandarin": "liè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "外": {
+        "definition": "out, outside, external; foreign",
+        "mandarin": "wài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "路": {
+        "definition": "road, path, street; journey",
+        "mandarin": "lù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "溪": {
+        "definition": "mountain stream, creek",
+        "mandarin": "xī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "程": {
+        "definition": "journey, trip; schedule, agenda",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "越": {
+        "definition": "exceed, go beyond; the more ...",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "临": {
+        "definition": "draw near, approach; descend",
+        "mandarin": "lín",
+        "related_characters": [
+          {
+            "character": "臨",
+            "relation": "kTraditionalVariant",
+            "definition": "draw near, approach; descend; hexagram ䷒",
+            "mandarin": "lín"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "照": {
+        "definition": "shine, illumine, reflect",
+        "mandarin": "zhào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "层": {
+        "definition": "story, layer, floor, stratum",
+        "mandarin": "céng",
+        "related_characters": [
+          {
+            "character": "層",
+            "relation": "kTraditionalVariant",
+            "definition": "story, layer, floor, stratum",
+            "mandarin": "céng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "桯间",
+      "decision": "uncertain",
+      "reason": "“桯”可指桌案，字义可核，但“桯间”作为完整组合不够自然，语义关系难以确认。"
+    },
+    {
+      "name": "晴嶂",
+      "decision": "keep",
+      "reason": "“晴日山嶂”意象清楚凝练，搭配自然；有诗词用例，但判断基于名称本身。"
+    },
+    {
+      "name": "翠嶂",
+      "decision": "keep",
+      "reason": "指青翠山嶂，语义明确简洁，具有自然意象与辨识度。"
+    },
+    {
+      "name": "月嶂",
+      "decision": "keep",
+      "reason": "可理解为月下山嶂或月映山嶂，意象简洁，组合自然。"
+    },
+    {
+      "name": "峰嶂",
+      "decision": "reject",
+      "reason": "“峰”与“嶂”都指山体高峻部分，近义并列显得堆叠，缺少清楚的组合关系。"
+    },
+    {
+      "name": "林嶂",
+      "decision": "keep",
+      "reason": "可理解为林木与山嶂构成的自然景象，简洁而有画面感。"
+    },
+    {
+      "name": "松风嶂",
+      "decision": "uncertain",
+      "reason": "“松风”与“嶂”虽可构成山林意象，但三字间关系不明，整体搭配略显生硬。"
+    },
+    {
+      "name": "云开见嶂",
+      "decision": "reject",
+      "reason": "完整表达“云开后看见山嶂”，是叙述性句子而非凝练品牌名。"
+    },
+    {
+      "name": "清风过嶂",
+      "decision": "reject",
+      "reason": "完整表达清风越过山嶂，句意完整且偏景物描写，不具品牌名所需的凝练感。"
+    },
+    {
+      "name": "星河映嶂",
+      "decision": "keep",
+      "reason": "星河映照山嶂的关系明确，画面鲜明，整体凝练自然。"
+    },
+    {
+      "name": "群嶂",
+      "decision": "keep",
+      "reason": "指群山连绵形成的山嶂，词义清楚简洁，可作为自然意象型品牌名。"
+    },
+    {
+      "name": "云绕嶂",
+      "decision": "keep",
+      "reason": "云气环绕山嶂，语义关系自然，意象鲜明且简洁。"
+    },
+    {
+      "name": "雨过青嶂",
+      "decision": "reject",
+      "reason": "构成雨后青山的完整景物短语，描写性较强，整体不像凝练品牌名。"
+    },
+    {
+      "name": "列嶂",
+      "decision": "keep",
+      "reason": "可指排列成列的山嶂，语义明确，有简洁的山峦意象。"
+    },
+    {
+      "name": "嶂间月",
+      "decision": "keep",
+      "reason": "可理解为山嶂之间的月亮，结构清楚，意象自然凝练。"
+    },
+    {
+      "name": "嶂外路",
+      "decision": "keep",
+      "reason": "指山嶂之外的道路或行路方向，关系明确，具有简短的空间意象。"
+    },
+    {
+      "name": "青溪绕嶂",
+      "decision": "reject",
+      "reason": "完整描写青溪环绕山嶂，属于景物陈述，作为品牌名不够凝练。"
+    },
+    {
+      "name": "长风过嶂",
+      "decision": "reject",
+      "reason": "完整表达长风越过山嶂，句意完整，偏诗句式描写而非品牌名。"
+    },
+    {
+      "name": "云程越嶂",
+      "decision": "uncertain",
+      "reason": "“云程”可表示远行或高远前程，“越嶂”可表示越过山嶂，但两者组合的语义关系牵强，近似拼接。"
+    },
+    {
+      "name": "临嶂听松",
+      "decision": "reject",
+      "reason": "表达临近山嶂聆听松声，形成完整的行为描写，整体偏句子而不够凝练。"
+    },
+    {
+      "name": "光照层嶂",
+      "decision": "reject",
+      "reason": "“光照”与“层嶂”构成完整景物陈述，表达直白且偏描述句，品牌凝练度不足。"
+    }
+  ]
+}

@@ -1,0 +1,991 @@
+{
+  "review_id": "20261112T150033-477341fc",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "世代相嬗",
+      "世嬗",
+      "崡门",
+      "崡原",
+      "崡行",
+      "崡明",
+      "崡途",
+      "崡中见远",
+      "崡关听雨",
+      "榕林",
+      "榕庭",
+      "春榕",
+      "清榕",
+      "榕山行",
+      "榕声远",
+      "榕叶青",
+      "榕间清风",
+      "榕荫长青",
+      "榕根深处",
+      "榕荫四时",
+      "榕悦",
+      "榕泰",
+      "榕新",
+      "榕茂"
+    ],
+    "related_kept_candidates": {
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "间": [
+        "一念之间",
+        "云间鹮",
+        "林间鼬",
+        "松间鼯",
+        "山间邨",
+        "松间䴓",
+        "翃云间",
+        "云涘间",
+        "翀云间",
+        "畈间风",
+        "垄间风",
+        "林间䴕鸣"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "铘见山海",
+        "鹂见山",
+        "云开见硔",
+        "榕庭见月",
+        "榕光初见"
+      ],
+      "青": [
+        "一见青山",
+        "青涩",
+        "绀青",
+        "青萝",
+        "青麇谷",
+        "青杄林",
+        "青蔗",
+        "青垄",
+        "青葶",
+        "青峋",
+        "芭青",
+        "青禾斋"
+      ],
+      "风": [
+        "一川风月",
+        "一树春风",
+        "风褰云",
+        "豳风",
+        "风飐",
+        "畈间风",
+        "枣影清风",
+        "垄间风",
+        "淑风",
+        "松风峒",
+        "峋岭听风",
+        "熏风"
+      ],
+      "春": [
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春",
+        "春酿"
+      ],
+      "庭": [
+        "一庭清欢",
+        "榴庭",
+        "庭墅",
+        "庭前芹绿",
+        "萱庭",
+        "苔庭",
+        "一庭秋凉",
+        "庭陔",
+        "庭燎",
+        "茱庭",
+        "豪庭",
+        "榕庭见月"
+      ],
+      "清": [
+        "一庭清欢",
+        "清茗",
+        "清懿堂",
+        "清泚",
+        "清酎",
+        "枣影清风",
+        "淑清",
+        "酿清欢",
+        "清葩",
+        "清溪竹墅",
+        "清水芙蓉",
+        "清溪芹影"
+      ],
+      "时": [
+        "巳时",
+        "戌时",
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "鹂知时",
+        "唐时雨",
+        "四时清鲜",
+        "四时常鲜"
+      ],
+      "林": [
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林",
+        "林间䴕鸣"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义",
+        "麇行远山",
+        "鲜行"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "嬗": [
+        "嬗变"
+      ],
+      "声": [
+        "鼙声远",
+        "诤声",
+        "珀声",
+        "枫声入野",
+        "葭声",
+        "婳声",
+        "鹂声",
+        "鹂声入林",
+        "云外鹂声",
+        "铴声",
+        "镛声",
+        "涡声"
+      ],
+      "中": [
+        "壸中天",
+        "中庸",
+        "中庸致和",
+        "盅中月",
+        "云中酿",
+        "酸中趣",
+        "碟中月",
+        "云中帜",
+        "山中桫椤",
+        "箩中春",
+        "箩中月",
+        "杯中月"
+      ],
+      "根": [
+        "根柢",
+        "根茎"
+      ],
+      "相": [
+        "相辅",
+        "扮相"
+      ],
+      "世": [
+        "世胄堂",
+        "枕书观世"
+      ],
+      "叶": [
+        "茎叶",
+        "蒌叶",
+        "月照芭叶",
+        "芭叶映星",
+        "蔓叶",
+        "柘叶"
+      ],
+      "长": [
+        "长揖",
+        "瓷映长川",
+        "螭照长夜",
+        "螭起长风",
+        "长风越埼"
+      ],
+      "听": [
+        "阎听雨",
+        "峤听松",
+        "峤听雨",
+        "峋岭听风",
+        "峋石听泉",
+        "听雨斋",
+        "听松问斋",
+        "听风斋",
+        "崞岭听松",
+        "崒岭听松",
+        "鲲听潮",
+        "听枫"
+      ],
+      "雨": [
+        "阎听雨",
+        "霪雨初霁",
+        "峤听雨",
+        "芹畦雨",
+        "听雨斋",
+        "雨润荒墟",
+        "楮林新雨",
+        "雨凉",
+        "暮雨",
+        "暮雨晴",
+        "螭听松雨",
+        "铘听雨"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "荫": [
+        "梣木成荫",
+        "梌荫",
+        "榕荫",
+        "榕荫里"
+      ],
+      "悦": [
+        "淑悦",
+        "芙悦",
+        "臻悦",
+        "唐悦",
+        "悦婷"
+      ],
+      "原": [
+        "崧原",
+        "葭原",
+        "暮原",
+        "燎原",
+        "原貌",
+        "雱原",
+        "柘原"
+      ],
+      "深": [
+        "林深鹂鸣",
+        "莿野春深"
+      ],
+      "途": [
+        "碳途"
+      ],
+      "关": [
+        "斩关",
+        "崡关",
+        "崡关月"
+      ],
+      "四": [
+        "四时清鲜",
+        "四时常鲜"
+      ],
+      "崡": [
+        "崡关",
+        "崡关月"
+      ],
+      "榕": [
+        "榕荫",
+        "榕溪",
+        "榕下风",
+        "榕荫里",
+        "榕山听雨",
+        "榕庭见月",
+        "榕风入怀",
+        "榕溪入海",
+        "榕庭春信",
+        "榕和",
+        "榕安",
+        "朗榕"
+      ]
+    },
+    "literature_phrase_examples": {
+      "世代相嬗": [],
+      "世嬗": [],
+      "崡门": [],
+      "崡原": [],
+      "崡行": [],
+      "崡明": [],
+      "崡途": [],
+      "崡中见远": [],
+      "崡关听雨": [],
+      "榕林": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 55312,
+          "context": "榕林叶暗，见一枝独放，霜华争白。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 361014,
+          "context": "忽行榕林中，跨空飞栱枅。"
+        }
+      ],
+      "榕庭": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 623999,
+          "context": "宦游梅岭外，讼诉榕庭空。"
+        }
+      ],
+      "春榕": [],
+      "清榕": [],
+      "榕山行": [],
+      "榕声远": [],
+      "榕叶青": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 946406,
+          "context": "榕叶青青荔子红，三山十寺粤王宫。"
+        }
+      ],
+      "榕间清风": [],
+      "榕荫长青": [],
+      "榕根深处": [],
+      "榕荫四时": [],
+      "榕悦": [],
+      "榕泰": [],
+      "榕新": [],
+      "榕茂": []
+    },
+    "dictionary_phrase_entries": {
+      "世代相嬗": [],
+      "世嬗": [],
+      "崡门": [],
+      "崡原": [],
+      "崡行": [],
+      "崡明": [],
+      "崡途": [],
+      "崡中见远": [],
+      "崡关听雨": [],
+      "榕林": [],
+      "榕庭": [],
+      "春榕": [],
+      "清榕": [],
+      "榕山行": [],
+      "榕声远": [],
+      "榕叶青": [],
+      "榕间清风": [],
+      "榕荫长青": [],
+      "榕根深处": [],
+      "榕荫四时": [],
+      "榕悦": [],
+      "榕泰": [],
+      "榕新": [],
+      "榕茂": []
+    },
+    "direct_dictionary": {
+      "世": {
+        "definition": "generation; world; era",
+        "mandarin": "shì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "代": {
+        "definition": "replace, replacement (of person or generation); era, generation",
+        "mandarin": "dài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "相": {
+        "definition": "mutual, reciprocal, each other",
+        "mandarin": "xiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嬗": {
+        "definition": "succession to the throne",
+        "mandarin": "shàn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "崡": {
+        "mandarin": "hán",
+        "supplemental_dictionary": {
+          "explanation": "崡hán 1.即函谷。",
+          "source_url": "https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/word.json",
+          "source_sha256": "8ae3453eacc5b0f3fdfba47eac8bb686cd73914d278e8b851ae6ef81082f80e7",
+          "authority": "third_party_compilation_requires_cross_check"
+        },
+        "official_dictionary": [
+          {
+            "title": "崡",
+            "pinyin": "hán",
+            "definition": "[名]\n山名。即函谷，在今大陸地區河南省靈寶縣西南。函俗從山作「崡」。以其峭壁險峻如山，又以「崤」為其山名。《集韻．平聲．咸韻》：「崡，山名，在肴陵。」",
+            "entry_id": "04856",
+            "sheet": "1150929辭典匯出",
+            "row": 4862,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "门": {
+        "definition": "gate, door, entrance, opening",
+        "mandarin": "mén",
+        "related_characters": [
+          {
+            "character": "門",
+            "relation": "kTraditionalVariant",
+            "definition": "gate, door, entrance, opening; Kangxi radical 169",
+            "mandarin": "mén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "原": {
+        "definition": "source, origin, beginning",
+        "mandarin": "yuán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "途": {
+        "definition": "way, road, path, journey; course",
+        "mandarin": "tú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "中": {
+        "definition": "central; center, middle; in the midst of; hit (target); attain",
+        "mandarin": "zhōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "关": {
+        "definition": "frontier pass; close; relation",
+        "mandarin": "guān",
+        "related_characters": [
+          {
+            "character": "關",
+            "relation": "kTraditionalVariant",
+            "definition": "frontier pass; close; relation",
+            "mandarin": "guān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "听": {
+        "definition": "hear; understand; obey, comply",
+        "mandarin": "tīng",
+        "related_characters": [
+          {
+            "character": "听",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; understand; obey, comply",
+            "mandarin": "tīng"
+          },
+          {
+            "character": "聽",
+            "relation": "kTraditionalVariant",
+            "definition": "hear, listen; understand; obey",
+            "mandarin": "tīng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "雨": {
+        "definition": "rain; rainy; Kangxi radical 173",
+        "mandarin": "yǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "榕": {
+        "definition": "banyan tree",
+        "mandarin": "róng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庭": {
+        "definition": "courtyard; spacious hall or yard",
+        "mandarin": "tíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "声": {
+        "definition": "sound, voice, noise; tone; music",
+        "mandarin": "shēng",
+        "related_characters": [
+          {
+            "character": "声",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          },
+          {
+            "character": "聲",
+            "relation": "kTraditionalVariant",
+            "definition": "sound, voice, noise; tone; music",
+            "mandarin": "shēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "叶": {
+        "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+        "mandarin": "yè",
+        "related_characters": [
+          {
+            "character": "叶",
+            "relation": "kTraditionalVariant",
+            "definition": "to harmonize, to rhyme; to unite; (borrowed for) leaf",
+            "mandarin": "yè"
+          },
+          {
+            "character": "葉",
+            "relation": "kTraditionalVariant",
+            "definition": "leaf, petal; page of book; period",
+            "mandarin": "yè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "青": {
+        "definition": "blue, green; young; Kangxi radical 174",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "间": {
+        "definition": "midpoint, space; place, locality",
+        "mandarin": "jiān",
+        "related_characters": [
+          {
+            "character": "間",
+            "relation": "kTraditionalVariant",
+            "definition": "interval, space; place, between",
+            "mandarin": "jiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "荫": {
+        "definition": "shade, shelter; protect",
+        "mandarin": "yīn",
+        "related_characters": [
+          {
+            "character": "蔭",
+            "relation": "kTraditionalVariant",
+            "definition": "shade, shelter; protect",
+            "mandarin": "yīn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "根": {
+        "definition": "root, base(d on); foundation",
+        "mandarin": "gēn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "深": {
+        "definition": "deep; depth; far; very, extreme",
+        "mandarin": "shēn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "处": {
+        "definition": "place, locale; department",
+        "mandarin": "chù",
+        "related_characters": [
+          {
+            "character": "處",
+            "relation": "kTraditionalVariant",
+            "definition": "place, locale; department",
+            "mandarin": "chù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "四": {
+        "definition": "four",
+        "mandarin": "sì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "悦": {
+        "definition": "pleased, contented, gratified",
+        "mandarin": "yuè",
+        "related_characters": [
+          {
+            "character": "悅",
+            "relation": "kTraditionalVariant",
+            "definition": "pleased",
+            "mandarin": "yuè"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泰": {
+        "definition": "great, exalted, superior; big; hexagram ䷊",
+        "mandarin": "tài",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "茂": {
+        "definition": "thick, lush, dense; talented",
+        "mandarin": "mào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "世代相嬗",
+      "decision": "reject",
+      "reason": "完整词语表示世代更替，语义清楚但更像抽象历史判断或术语，缺少凝练的品牌名感。"
+    },
+    {
+      "name": "世嬗",
+      "decision": "uncertain",
+      "reason": "可理解为时代更替，但压缩组合较生硬，作为品牌名的自然度和辨识度存疑。"
+    },
+    {
+      "name": "崡门",
+      "decision": "uncertain",
+      "reason": "“崡”有据可指函谷一带的山名，“崡门”可联想到关门或关隘，但该专名关系缺乏直接依据，组合含义不够明确。"
+    },
+    {
+      "name": "崡原",
+      "decision": "uncertain",
+      "reason": "“崡”指山名，“原”指源头或原野；两字并置的关系不清，语义牵合。"
+    },
+    {
+      "name": "崡行",
+      "decision": "uncertain",
+      "reason": "可勉强理解为在崡山一带行走，但专名关系缺乏依据，整体语义不够自然。"
+    },
+    {
+      "name": "崡明",
+      "decision": "uncertain",
+      "reason": "“崡”与“明”之间没有清楚的语义关系，组合像生硬拼接。"
+    },
+    {
+      "name": "崡途",
+      "decision": "uncertain",
+      "reason": "可联想为崡山之路，但该地名关系缺乏依据，名称所指不明。"
+    },
+    {
+      "name": "崡中见远",
+      "decision": "reject",
+      "reason": "整体像“身处其中而见识长远”的判断句或口号；“崡中”所指又不明，组合牵强。"
+    },
+    {
+      "name": "崡关听雨",
+      "decision": "uncertain",
+      "reason": "有山关听雨的景象感，但“崡关”作为专名缺乏依据，整体偏景句，品牌凝练度不足。"
+    },
+    {
+      "name": "榕林",
+      "decision": "keep",
+      "reason": "榕树成林，意象具体自然，组合简洁，有清楚的自然物象和品牌辨识度。"
+    },
+    {
+      "name": "榕庭",
+      "decision": "keep",
+      "reason": "榕树与庭院组合自然，形成安静而具体的空间意象，适合作为凝练品牌名。"
+    },
+    {
+      "name": "春榕",
+      "decision": "keep",
+      "reason": "以春日榕树构成简洁自然的物象，语义通顺，具有鲜明意象。"
+    },
+    {
+      "name": "清榕",
+      "decision": "keep",
+      "reason": "“清”修饰榕树或榕景，组合自然简洁，意象清爽明确。"
+    },
+    {
+      "name": "榕山行",
+      "decision": "uncertain",
+      "reason": "可理解为榕山之行或山中行榕林，但结构关系不够明确，读来略像行程描述。"
+    },
+    {
+      "name": "榕声远",
+      "decision": "uncertain",
+      "reason": "可联想到榕林中的声音传远，但省略关系较多，组合略显诗句化，语义不够凝练。"
+    },
+    {
+      "name": "榕叶青",
+      "decision": "uncertain",
+      "reason": "“榕叶青”是自然景象描述，意思清楚，但整体更像句中短语，品牌名凝练度有限。"
+    },
+    {
+      "name": "榕间清风",
+      "decision": "reject",
+      "reason": "是完整的景象短句，语义虽自然，但组合偏常见描景表达，缺少品牌名的凝练感。"
+    },
+    {
+      "name": "榕荫长青",
+      "decision": "reject",
+      "reason": "“长青”与荫蔽并置成祝愿式表达，整体偏口号或吉祥语，不像凝练名称。"
+    },
+    {
+      "name": "榕根深处",
+      "decision": "reject",
+      "reason": "完整表达榕树根部深处，属于描写性短语，作为品牌名不够凝练。"
+    },
+    {
+      "name": "榕荫四时",
+      "decision": "uncertain",
+      "reason": "可理解为榕荫覆盖四季，但语序和关系略显生硬，整体有景句感。"
+    },
+    {
+      "name": "榕悦",
+      "decision": "uncertain",
+      "reason": "“榕”与“悦”之间的语义联系较弱，组合略像直接拼接。"
+    },
+    {
+      "name": "榕泰",
+      "decision": "uncertain",
+      "reason": "两字含义各自清楚，但搭配关系不明，整体像吉祥字拼合。"
+    },
+    {
+      "name": "榕新",
+      "decision": "uncertain",
+      "reason": "可理解为新榕或榕树更新，但语序关系不清，品牌语义显得生硬。"
+    },
+    {
+      "name": "榕茂",
+      "decision": "uncertain",
+      "reason": "可联想到榕树繁茂，但常用语序通常为“榕茂”以外的描述结构，此组合略显生硬，品牌感不足。"
+    }
+  ]
+}

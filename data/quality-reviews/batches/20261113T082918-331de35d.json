@@ -1,0 +1,652 @@
+{
+  "review_id": "20261113T082918-331de35d",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "林深闻蜩",
+      "风过鸣蜩",
+      "鸣蜩",
+      "蜩鸣山色",
+      "山静蜩鸣",
+      "大烹",
+      "荙草"
+    ],
+    "related_kept_candidates": {
+      "色": [
+        "黝色山河",
+        "山色闻鹒",
+        "皎色山河",
+        "山色含霏",
+        "暮色山河",
+        "茶藏山色",
+        "山间菊色",
+        "菊色山河",
+        "杄间山色",
+        "山含筠色",
+        "眉间山色",
+        "山色映瀑"
+      ],
+      "风": [
+        "风过刃鸣",
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过酒旗",
+        "风过菼",
+        "风过埙声",
+        "清风过淞",
+        "松风过樟",
+        "风过冈",
+        "春风过砚"
+      ],
+      "山": [
+        "鹩鸣春山",
+        "鹒鸣春山",
+        "黝色山河",
+        "山色闻鹒",
+        "皎色山河",
+        "山色含霏",
+        "暮色山河",
+        "茶藏山色",
+        "山间菊色",
+        "菊色山河",
+        "鸼鸣山谷",
+        "鸠鸣山月"
+      ],
+      "林": [
+        "风过芭林",
+        "林深藏嶂",
+        "林深见浔",
+        "林下闻螽",
+        "林深见冈",
+        "风过岑林",
+        "冬风过林",
+        "风过潇林",
+        "林深有迳",
+        "林深鹀鸣",
+        "林深鸧鸣",
+        "林深翠"
+      ],
+      "鸣": [
+        "风过刃鸣",
+        "鹩鸣春山",
+        "鹒鸣春山",
+        "鸼鸣山谷",
+        "鸠鸣山月",
+        "羚鸣山谷",
+        "林深鹀鸣",
+        "林深鸧鸣",
+        "鸧鸣山月",
+        "鹇鸣晓色",
+        "山溪㴔鸣",
+        "雎鸣远山"
+      ],
+      "草": [
+        "莶草",
+        "草木葳蕤",
+        "萱草集",
+        "寸草",
+        "蔓草",
+        "广陵芳草",
+        "草木鲜",
+        "菥草集",
+        "草木窸窣",
+        "蔺草",
+        "萱草",
+        "萱草堂"
+      ],
+      "过": [
+        "风过刃鸣",
+        "风过芭林",
+        "崧风过岭",
+        "茅风过岭",
+        "风过埼",
+        "风过酒旗",
+        "风过菼",
+        "风过埙声",
+        "清风过淞",
+        "松风过樟",
+        "风过冈",
+        "春风过砚"
+      ],
+      "静": [
+        "林静燕鸣",
+        "静斋",
+        "悄静",
+        "静思堂",
+        "澄静",
+        "静婳",
+        "静观",
+        "静远",
+        "静宜",
+        "静嘉",
+        "静明",
+        "静川"
+      ],
+      "大": [
+        "大唐春",
+        "大川",
+        "大方",
+        "大任",
+        "大有",
+        "大河",
+        "大江流",
+        "山海大观",
+        "大壑",
+        "大隧融融",
+        "大荒",
+        "大蓟"
+      ],
+      "深": [
+        "林深藏嶂",
+        "林深见浔",
+        "林深见冈",
+        "林深有迳",
+        "林深鹀鸣",
+        "林深鸧鸣",
+        "林深翠",
+        "林深有岚",
+        "寂林深",
+        "林深见獾",
+        "林深见鸫",
+        "林深见鸮"
+      ],
+      "闻": [
+        "林下闻螽",
+        "山色闻鹒",
+        "轶闻",
+        "山月闻埙",
+        "闻埙",
+        "博闻",
+        "闻达",
+        "闻山雨",
+        "松间闻泉",
+        "月下闻笛",
+        "见闻",
+        "闻鹒"
+      ],
+      "蜩": [
+        "蜩知夏",
+        "蜩歌",
+        "蜩知秋"
+      ]
+    },
+    "literature_phrase_examples": {
+      "林深闻蜩": [],
+      "风过鸣蜩": [],
+      "鸣蜩": [
+        {
+          "book": "诗经",
+          "line": 789,
+          "context": "四月秀葽，五月鸣蜩。"
+        },
+        {
+          "book": "诗经",
+          "line": 1100,
+          "context": "菀彼柳斯，鸣蜩嘒嘒，有漼者渊，萑苇淠淠。"
+        }
+      ],
+      "蜩鸣山色": [],
+      "山静蜩鸣": [],
+      "大烹": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 169070,
+          "context": "若养圣贤真，大烹龙髓敢惜乎。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 125767,
+          "context": "大烹养贤有列鼎，岂久师门共藜藿。"
+        }
+      ],
+      "荙草": []
+    },
+    "dictionary_phrase_entries": {
+      "林深闻蜩": [],
+      "风过鸣蜩": [],
+      "鸣蜩": [],
+      "蜩鸣山色": [],
+      "山静蜩鸣": [],
+      "大烹": [
+        {
+          "title": "大烹",
+          "pinyin": "dà pēng",
+          "definition": "豐盛的菜餚。宋．鄒浩〈戲督潛亨作春羹〉詩：「懽然放箸即過我，自嘆珍庖逾大烹。」",
+          "entry_id": "019130101",
+          "sheet": "1150929辭典匯出",
+          "row": 40154,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "荙草": []
+    },
+    "direct_dictionary": {
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "深": {
+        "definition": "deep; depth; far; very, extreme",
+        "mandarin": "shēn",
+        "official_dictionary": [
+          {
+            "title": "深",
+            "pinyin": "shēn",
+            "definition": "[形]\n1.從高到下，從表面到底部的距離很大。與「淺」相反。如：「深海」、「深淵」。\n2.高奧、精微。如：「他這句話的用意很深。」\n3.濃厚。如：「一往情深」、「深藍色」。\n4.形容時間的久、晚。如：「年深日久」。\n5.茂盛。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n[副]\n很、非常。如：「深得人緣」、「深加讚美」。",
+            "entry_id": "08977",
+            "sheet": "1150929辭典匯出",
+            "row": 8992,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "闻": {
+        "definition": "hear; smell; make known; news",
+        "mandarin": "wén",
+        "related_characters": [
+          {
+            "character": "聞",
+            "relation": "kTraditionalVariant",
+            "definition": "hear; smell; make known; news",
+            "mandarin": "wén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蜩": {
+        "definition": "cicada, broad locust",
+        "mandarin": "tiáo",
+        "official_dictionary": [
+          {
+            "title": "蜩",
+            "pinyin": "tiáo",
+            "definition": "[名]\n蟬。《詩經．豳風．七月》：「四月秀葽，五月鳴蜩。」《莊子．逍遙遊》：「蜩與學鳩笑之曰：『我決起而飛，搶榆枋時則不至，而控於地而已矣。』」",
+            "entry_id": "02688",
+            "sheet": "1150929辭典匯出",
+            "row": 2694,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "过": {
+        "definition": "pass, pass through, go across",
+        "mandarin": "guò",
+        "related_characters": [
+          {
+            "character": "过",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          },
+          {
+            "character": "過",
+            "relation": "kTraditionalVariant",
+            "definition": "pass, pass through, go across",
+            "mandarin": "guò"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "过",
+            "pinyin": null,
+            "definition": "「過」的異體字。",
+            "entry_id": "04226-1",
+            "sheet": "1150929辭典匯出",
+            "row": 71117,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鸣": {
+        "definition": "cry of bird or animal; make sound",
+        "mandarin": "míng",
+        "related_characters": [
+          {
+            "character": "鳴",
+            "relation": "kTraditionalVariant",
+            "definition": "cry of bird or animal; make sound",
+            "mandarin": "míng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "official_dictionary": [
+          {
+            "title": "山",
+            "pinyin": "shān",
+            "definition": "[名]\n1.陸地上高起的部分。如：「崇山峻嶺」。《左傳．襄公二十五年》：「吳師奔，登山以望，見楚師不繼復逐之。」\n2.墳墓。唐．李華〈含元殿賦〉：「靡迤秦山，陂陀漢陵。」\n3.姓。如晉代有山濤。\n4.二一四部首之一。\n[形]\n山中的。如：「山村」、「山寨」。",
+            "entry_id": "08905",
+            "sheet": "1150929辭典匯出",
+            "row": 8919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "色": {
+        "definition": "color, tint, hue, shade; form, body; beauty, desire for beauty; Kangxi radical 139",
+        "mandarin": "sè",
+        "official_dictionary": [
+          {
+            "title": "色",
+            "pinyin": "shè",
+            "definition": "[名]_x000D_\n俗稱性慾衝動。",
+            "entry_id": "08831",
+            "sheet": "1150929辭典匯出",
+            "row": 8845,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "shǎi",
+            "definition": "(一)[名]1.之語音。",
+            "entry_id": "08852",
+            "sheet": "1150929辭典匯出",
+            "row": 8866,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "色",
+            "pinyin": "sè",
+            "definition": "[名]\n1.物體表面的色彩。如：「五顏六色」、「五光十色」、「花色鮮豔」。\n2.面容、神情。如：「不動聲色」、「和顏悅色」、「面不改色」、「察言觀色」。\n3.女色，容貌美麗的婦女。《論語．季氏》：「少之時，血氣未定，戒之在色。」唐．白居易〈長恨歌〉：「漢皇重色思傾國，御宇多年求不得。」\n4.景象。如：「暮色深沉」、「景色宜人」。\n5.種類、式樣。如：「貨色齊全」、「形形色色」、「花色繁多」。\n6.品質、成分。多指金銀而言。如：「成色」、「足色」。\n7.性慾、情慾。如：「色情」、「桃色糾紛」。《孟子．告子上》：「告子曰：『食、色，性也。』」\n8.二一四部首之一。\n[動]\n1.生氣發怒，改變臉色。《戰國策．韓策二》：「怒於室者色於市，今公叔怨齊，無奈何也。」\n2.訪求。如：「物色」。",
+            "entry_id": "09995",
+            "sheet": "1150929辭典匯出",
+            "row": 10008,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "静": {
+        "definition": "quiet, still, motionless; gentle",
+        "mandarin": "jìng",
+        "related_characters": [
+          {
+            "character": "静",
+            "relation": "kTraditionalVariant",
+            "definition": "quiet, still, motionless; gentle",
+            "mandarin": "jìng"
+          },
+          {
+            "character": "靜",
+            "relation": "kTraditionalVariant",
+            "definition": "quiet, still, motionless; gentle",
+            "mandarin": "jìng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "静",
+            "pinyin": null,
+            "definition": "「靜」的異體字。",
+            "entry_id": "05959-1",
+            "sheet": "1150929辭典匯出",
+            "row": 95034,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "大": {
+        "definition": "big, great, vast, large, high",
+        "mandarin": "dà",
+        "official_dictionary": [
+          {
+            "title": "大",
+            "pinyin": "dà",
+            "definition": "[形]\n1.在體積、面積、容量、數量、強度、深度、力量等方面超過一般，或超過比較的對象。與「小」相對而言。如：「大山」、「大河」、「大雨」、「眼睛大」、「力氣大」、「雷聲大，雨點小。」\n2.最年長的、排行第一的。如：「大哥」、「大伯」、「大媽」。\n3.表示尊敬之詞。如：「拜讀大作」、「尊姓大名」。\n4.不平常、重要的、偉大的。《文選．石崇．思歸引序》：「余少有大志，夸邁流俗。」《文選．袁宏．三國名臣序贊》：「雖大旨同歸，所託或乖。」\n5.時間上更前或更後，有強調的意味。如：「大前天」、「大後天」、「大年初一」。\n[副]\n1.表程度深。如：「大吃一驚」、「大快人心」、「大搞活動」、「天已大亮」、「大有出息」。\n2.與「不」字連用，表次數少或程度淺。如：「她不大出門見人的。」、「他不大愛抽菸。」、「小侄兒還不大會講話。」\n3.很、非常。《漢書．卷六八．霍光傳》：「長公主大以是怨光。」\n4.差不多、不很精確。如：「大約」、「大概」、「大略」。\n[名]\n1.與「小」相對之詞。《孟子．梁惠王上》：「小國不可以敵大。」\n2.年紀較大的人。如：「你們一家大小都要來吃喜酒喔！」\n3.姓。如唐代有大明，金代有大興國。\n4.二一四部首之一。\n[動]\n誇耀、自以為是。如：「誇大」。《禮記．表記》：「是故君子不自大其事，不自尚其功。」",
+            "entry_id": "01913",
+            "sheet": "1150929辭典匯出",
+            "row": 1918,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "大",
+            "pinyin": "dài",
+            "definition": "參見「大夫」條。",
+            "entry_id": "01930",
+            "sheet": "1150929辭典匯出",
+            "row": 1935,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "大夫",
+                "pinyin": "dà fū",
+                "definition": "1.職官名。歷代沿用，多係中央要職和顧問。如御史大夫、光祿大夫、大中大夫等。\n2.宋朝對有特殊技藝者的尊稱。《警世通言．卷八．崔待詔生死冤家》：「啟請婆婆，過對門裱褙鋪裡請璩大夫來說話。」\n3.複姓。如漢代有大夫但。",
+                "entry_id": "019130205",
+                "sheet": "1150929辭典匯出",
+                "row": 40255
+              },
+              {
+                "title": "大夫",
+                "pinyin": "dài fu",
+                "definition": "醫生。《紅樓夢》第五一回：「我叫人請了大夫，悄悄的從後門進來瞧瞧就是了。」",
+                "entry_id": "019300001",
+                "sheet": "1150929辭典匯出",
+                "row": 41831
+              }
+            ]
+          },
+          {
+            "title": "大",
+            "pinyin": "tài",
+            "definition": "[形]\n至高無上的。通「太」、「泰」。清．江沅《說文釋例．卷上．釋字例．大》：「古兄作『大』，不作『太』、『泰』。《易》之『大極』，《春秋》之『大子』、『大上』，《尚書》之『大誓』、『大王王季』，《史》、《漢》之『大上皇』、『大后』，後人皆讀為太。或徑改本書，作『太』及『泰』。」",
+            "entry_id": "02476",
+            "sheet": "1150929辭典匯出",
+            "row": 2484,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "烹": {
+        "definition": "boil, cook; quick fry, stir fry",
+        "mandarin": "pēng",
+        "official_dictionary": [
+          {
+            "title": "烹",
+            "pinyin": "pēng",
+            "definition": "[動]\n1.一種烹飪方法。將食物入沸油半煎炸至熟，加佐料後略一沸滾即成。《左傳．昭公二十年》：「水火醯醢鹽梅以烹魚肉，燀之以薪。」\n2.古代一種以鼎煮人的酷刑。《戰國策．趙策三》：「然吾將使秦王烹醢梁王。」《新唐書．卷八五．竇建德傳》：「河間久拒守，多殺士，今力窮而下，請烹之。」\n3.殺、滅。《淮南子．說林》：「狡兔得而獵犬烹，高鳥盡而強弩藏。」《史記．卷六．秦始皇本紀》：「烹滅彊暴，振救黔首，周定四極。」\n[名]\n餚饌。宋．陸游〈故里〉詩：「芋魁菰首君無笑，老子看來是大烹。」",
+            "entry_id": "00762",
+            "sheet": "1150929辭典匯出",
+            "row": 764,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "荙": {
+        "definition": "Plantago major",
+        "mandarin": "dá",
+        "related_characters": [
+          {
+            "character": "薘",
+            "relation": "kTraditionalVariant",
+            "definition": "Plantago major, broadleaf plantain",
+            "mandarin": "dá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "草": {
+        "definition": "grass, straw, thatch, herbs",
+        "mandarin": "cǎo",
+        "official_dictionary": [
+          {
+            "title": "草",
+            "pinyin": "cǎo",
+            "definition": "[名]\n1.草本植物的總稱。如：「草木」、「花草」、「碧草如茵」。唐．柳宗元〈段太尉逸事狀〉：「是歲大旱，野無草。」\n2.田野、荒野。如：「草澤」。《商君書．墾令》：「農不敗而有餘日，則草必墾矣。」\n3.一種書法字體。如：「狂草」、「行草」。\n4.底稿、文稿。如：「起草」、「擬草」。\n5.姓。如漢代有草中。\n[形]\n1.馬虎、粗率、不細膩。如：「潦草」。\n2.初步的、尚未決定的。如：「草案」、「草圖」、「草約」。\n3.用草編成的。如：「草蓆」、「草繩」、「草履」。\n4.用草搭蓋的。如：「草棚」、「草房」、「草菴」。\n[動]\n1.起稿、擬訂。《漢書．卷三〇．藝文志》：「蕭何草律，亦著其法。」《晉書．卷八三．江逌傳》：「冀以免咎，使太常博士草其制。」\n2.草寫。清．鄭板橋〈清季野聞〉：「板橋卻之不得，亦草『難得糊塗』，付之。」\n[副]\n草率。如：「草草了事」。清．孔尚任《桃花扇》第六齣：「草辦妝奩，粗陳筵席。」",
+            "entry_id": "09760",
+            "sheet": "1150929辭典匯出",
+            "row": 9774,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "林深闻蜩",
+      "decision": "keep",
+      "reason": "可理解为林木幽深处听见蝉鸣，语义连贯，形成清晰自然意象；虽非固定词语，但组合凝练，有品牌辨识度。"
+    },
+    {
+      "name": "风过鸣蜩",
+      "decision": "keep",
+      "reason": "可理解为风吹过时蝉声响起，画面与听觉关系自然，组合简洁，有独立意象；与“林深闻蜩”虽同涉蝉鸣，但构景关系不同，不属近似变体。"
+    },
+    {
+      "name": "鸣蜩",
+      "decision": "keep",
+      "reason": "即蝉鸣，见于《诗经》用例，词义明确、简洁凝练，具有古典自然意象和品牌辨识度。"
+    },
+    {
+      "name": "蜩鸣山色",
+      "decision": "reject",
+      "reason": "“蜩鸣”与“山色”并置，听觉与景色之间缺少自然的语法或意象关系，整体像生硬拼接。"
+    },
+    {
+      "name": "山静蜩鸣",
+      "decision": "keep",
+      "reason": "可理解为山中寂静而蝉声鸣起，动静对照明确，语义自然，具有凝练的景象感。"
+    },
+    {
+      "name": "大烹",
+      "decision": "keep",
+      "reason": "完整词语有辞典依据，指丰盛菜肴；语义明确且简洁，虽偏餐饮联想，但名称本身并非通用产品类别词。"
+    },
+    {
+      "name": "荙草",
+      "decision": "uncertain",
+      "reason": "“荙”有车前草之义，字义并非不可确认；但“荙草”作为组合缺少明确、自然的词义关系，读来像将植物名义重复拼合，名称自然度存疑。"
+    }
+  ]
+}

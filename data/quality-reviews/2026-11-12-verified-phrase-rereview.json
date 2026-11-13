@@ -1,0 +1,939 @@
+{
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "一同",
+      "卜度",
+      "香薷",
+      "氿泉",
+      "匼匝",
+      "狻猊",
+      "窸窣",
+      "崔巍",
+      "潮汛",
+      "禺谷",
+      "庶物",
+      "拔擢",
+      "掀天",
+      "萎蕤",
+      "蹇修",
+      "弓鞬",
+      "蟪蛄",
+      "玉瀣"
+    ],
+    "related_kept_candidates": {
+      "一": [
+        "一川明月",
+        "水天一色",
+        "一念之间",
+        "一见青山",
+        "一川风月",
+        "一树春风",
+        "一庭清欢",
+        "一苇渡江",
+        "百川归一",
+        "一衣带水",
+        "自成一格",
+        "九九归一"
+      ],
+      "天": [
+        "水天一色",
+        "壸中天",
+        "天圜",
+        "天翱",
+        "天资",
+        "江天又阔",
+        "天垓",
+        "天垠",
+        "绀天"
+      ],
+      "潮": [
+        "涨潮",
+        "鲲听潮",
+        "暮潮",
+        "螭听潮",
+        "潮酷"
+      ],
+      "玉": [
+        "玉屑",
+        "砆玉",
+        "玉肌",
+        "攻玉",
+        "玉石錾花",
+        "玉盅",
+        "玉萼",
+        "玉葩",
+        "玉芙蓉",
+        "玉椟",
+        "玉钤",
+        "玉圜"
+      ],
+      "谷": [
+        "青麇谷",
+        "峒谷",
+        "峋谷",
+        "桫椤谷",
+        "谷口"
+      ],
+      "香": [
+        "藠香",
+        "藿香",
+        "馕香",
+        "枣花香",
+        "榴香",
+        "山海酵香",
+        "酸香",
+        "芹香",
+        "香茅",
+        "荃香"
+      ],
+      "庶": [
+        "富庶"
+      ],
+      "蕤": [
+        "葳蕤",
+        "草木葳蕤",
+        "春日葳蕤",
+        "葳蕤山房"
+      ],
+      "泉": [
+        "峋石听泉",
+        "崟泉",
+        "渟泉",
+        "蒹林听泉"
+      ],
+      "巍": [
+        "巍崒"
+      ],
+      "物": [
+        "风物成瓷",
+        "酷物"
+      ],
+      "度": [
+        "瓷间有度",
+        "蔓有度",
+        "态度",
+        "义度"
+      ],
+      "猊": [
+        "石猊",
+        "猊座",
+        "灵猊",
+        "云猊",
+        "伏猊",
+        "云中猊",
+        "山猊",
+        "风猊",
+        "猊越山"
+      ]
+    },
+    "literature_phrase_examples": {
+      "一同": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1408,
+          "context": "所希覃率土，孝弟一同规。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2363,
+          "context": "万寿称觞举，千年信一同。"
+        }
+      ],
+      "卜度": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 438368,
+          "context": "有无我自能为，不劳妄心卜度。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 438520,
+          "context": "反身见万古，道不在卜度。"
+        }
+      ],
+      "香薷": [
+        {
+          "book": "红楼梦",
+          "line": 1825,
+          "context": "听了这话说到自己心坎儿上来， 可见宝玉连袭人不如，越发伤心大哭起来．心里一烦恼， 方才吃的香薷饮解暑汤便承受不住，\"哇\"的一声都吐了出来．紫鹃忙上来用手帕子接住，登时一口一口的把一块手帕子吐湿．雪雁忙上来捶．紫鹃道：“虽然生"
+        }
+      ],
+      "氿泉": [
+        {
+          "book": "诗经",
+          "line": 1148,
+          "context": "有冽氿泉，无浸获薪。"
+        },
+        {
+          "book": "尔雅",
+          "line": 63,
+          "context": "氿泉穴出，穴出，仄出也。"
+        }
+      ],
+      "匼匝": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 113304,
+          "context": "积翠扈游花匼匝，披香寓直月团栾。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 186883,
+          "context": "参差树若插，匼匝云如抱。"
+        }
+      ],
+      "狻猊": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 92069,
+          "context": "白羽曾肉三狻猊，敢决岂不与之齐。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 171619,
+          "context": "毒虬相视振金环，狻猊猰貐吐嚵涎。"
+        }
+      ],
+      "窸窣": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 7802,
+          "context": "莽秽榛没，牛羊窸窣。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 87923,
+          "context": "河梁幸未坼，枝撑声窸窣。"
+        }
+      ],
+      "崔巍": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1473,
+          "context": "澄潭皎镜石崔巍，万壑千岩暗绿苔。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 60462,
+          "context": "登高望天山，白云正崔巍。"
+        }
+      ],
+      "潮汛": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1145449,
+          "context": "诗情与客来天际，潮汛邀人上斗槎。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1399864,
+          "context": "江上送行潮汛小，舡头回首夕阳多。"
+        }
+      ],
+      "禺谷": [
+        {
+          "book": "山海经",
+          "line": 1987,
+          "context": "夸父不量力，欲追日景，逮之于禺谷。"
+        }
+      ],
+      "庶物": [
+        {
+          "book": "孟子",
+          "line": 366,
+          "context": "舜明于庶物，察于人伦，由仁义行，非行仁义也。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 86840,
+          "context": "庶物随交泰，苍生解倒悬。"
+        }
+      ],
+      "拔擢": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 96327,
+          "context": "国待贤良急，君当拔擢新。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 146389,
+          "context": "当今圣人求侍从，拔擢杞梓收楛箘。"
+        }
+      ],
+      "掀天": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 191491,
+          "context": "青苔扑地连春雨，白浪掀天尽日风。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 281650,
+          "context": "霓旌著地云初驻，金奏掀天月欲斜。"
+        }
+      ],
+      "萎蕤": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 36527,
+          "context": "可怜河树叶萎蕤，关关河鸟声相思。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 41098,
+          "context": "屈曲屏风绕象床，萎蕤翠帐缀香囊。"
+        }
+      ],
+      "蹇修": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 22616,
+          "context": "永日徒离忧，临风怀蹇修。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 181010,
+          "context": "蹇修何处，秋深湘水，隐约数峰青浅。"
+        }
+      ],
+      "弓鞬": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 671107,
+          "context": "仓皇趋帐殿，奔北弃弓鞬。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 3857,
+          "context": "假司马千人持幢旁毂歌者先居射室/望见延夀车噭咷楚歌延夀坐射室骑吏持㦸夹陛列)(立骑士从者带弓鞬罗后令骑士兵车四面营陈被甲/鞮鍪居马上抱弩负兰又使骑士戯车弄马盗骖所谓)(奢僣逾制者也噭/音呌咷音它钓翻)又取官铜物候月食铸刀劒效"
+        }
+      ],
+      "蟪蛄": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 9237,
+          "context": "蟪蛄蒙恩，深媿短促。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 14664,
+          "context": "蟪蛄切切风骚骚，芙蓉喷香蟾蜍高。"
+        }
+      ],
+      "玉瀣": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 101070,
+          "context": "斟残玉瀣行穿竹，卷罢《黄庭》卧看山。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 981420,
+          "context": "冰壶玉瀣侵骨冷，醉看孤鸾舞清影。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "一同": [
+        {
+          "title": "一同",
+          "pinyin": "yī tóng",
+          "definition": "1.統一。《墨子．尚同中》：「察天子之所以治天下者，何故之以也？曰：唯以其能一同天下之義，是以天下治。」\n2.一樣。《荀子．榮辱》：「凡人有所一同，飢而欲食，寒而欲暖。」\n3.一起、相偕。《三國演義》第五回：「賢弟可棄此卑官，一同討賊。」《紅樓夢》第六四回：「老太太跟前，別提我和你一同來的。」",
+          "entry_id": "104820424",
+          "sheet": "1150929辭典匯出",
+          "row": 147040,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "卜度": [
+        {
+          "title": "卜度",
+          "pinyin": "bǔ duò",
+          "definition": "揣度、猜想。《景德傳燈錄．卷二二．福州報國院照禪師》：「若見便見，若聞便聞，莫向意識裡卜度，卻成妄想。」",
+          "entry_id": "005590003",
+          "sheet": "1150929辭典匯出",
+          "row": 19753,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "香薷": [
+        {
+          "title": "香薷",
+          "pinyin": "xiāng rú",
+          "definition": "植物名：(1)脣形科荊芥屬，「荊芥」之別稱，參見「荊芥」條。(2)脣形科藿香屬，「藿香」之別稱，參見「藿香」條。(3)脣形科香薷屬，多年生草本。莖方，葉卵形或橢圓狀卵形至披針形，密布腺點。輪繖花序排成密集穗狀；萼齒近等長，花冠淡紫色，二脣形。莖葉香氣強烈，可入藥。",
+          "entry_id": "071850170",
+          "sheet": "1150929辭典匯出",
+          "row": 108363,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "氿泉": [
+        {
+          "title": "氿泉",
+          "pinyin": "guǐ quán",
+          "definition": "從旁湧出的泉水。《爾雅．釋水》：「氿泉穴出，穴出仄出也。」",
+          "entry_id": "042720001",
+          "sheet": "1150929辭典匯出",
+          "row": 72269,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "匼匝": [
+        {
+          "title": "匼匝",
+          "pinyin": "ǎn zā",
+          "definition": "周匝。南朝宋．鮑照〈代白紵舞歌詞〉四首之二：「象床瑤席鎮犀渠，雕屏匼匝組帷舒。」唐．羅虬〈比紅兒〉詩：「匼匝千山與萬山，碧桃花下景常閒。」",
+          "entry_id": "104260002",
+          "sheet": "1150929辭典匯出",
+          "row": 145904,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "狻猊": [
+        {
+          "title": "狻猊",
+          "pinyin": "suān ní",
+          "definition": "1.獅子。唐．杜甫〈天狗賦〉：「夫何天狗嶙峋兮氣獨神秀，色似狻猊，小如猿狖。」《聊齋志異．卷八．象》：「少時，有狻猊來，眾象皆伏。」\n2.稱健壯如獅的貓。",
+          "entry_id": "101740001",
+          "sheet": "1150929辭典匯出",
+          "row": 143948,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "窸窣": [
+        {
+          "title": "窸窣",
+          "pinyin": "xī sù",
+          "definition": "形容細碎而斷續的聲音。唐．杜甫〈自京赴奉先縣詠懷五百字〉詩：「河梁幸未坼，枝撐聲窸窣。」",
+          "entry_id": "067750002",
+          "sheet": "1150929辭典匯出",
+          "row": 103133,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "崔巍": [
+        {
+          "title": "崔巍",
+          "pinyin": "cuī wéi",
+          "definition": "高峻的樣子。《楚辭．東方朔．七諫．初放》：「高山崔巍兮，水流湯湯。」《文選．揚雄．甘泉賦》：「前殿崔巍兮，和氏玲瓏。」",
+          "entry_id": "098650022",
+          "sheet": "1150929辭典匯出",
+          "row": 140493,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "潮汛": [
+        {
+          "title": "潮汛",
+          "pinyin": "cháo xùn",
+          "definition": "每年定期的大潮。《浮生六記．卷四．浪遊記快》：「余亦從之馳逐，倦則臥，引至園田成熟處，每一字號圈築高隄，以防潮汛。」",
+          "entry_id": "083040019",
+          "sheet": "1150929辭典匯出",
+          "row": 120734,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "禺谷": [
+        {
+          "title": "禺谷",
+          "pinyin": "yú gǔ",
+          "definition": "神話傳說中日落的地方。《山海經．大荒北經》：「夸父不量力，欲追日景，逮之于禺谷。」",
+          "entry_id": "115900001",
+          "sheet": "1150929辭典匯出",
+          "row": 160947,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "庶物": [
+        {
+          "title": "庶物",
+          "pinyin": "shù wù",
+          "definition": "萬物。《孟子．離婁下》：「舜明於庶物，察於人倫。」",
+          "entry_id": "090950018",
+          "sheet": "1150929辭典匯出",
+          "row": 131798,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "拔擢": [
+        {
+          "title": "拔擢",
+          "pinyin": "bá zhuó",
+          "definition": "提拔、升用。漢．揚雄〈劇秦美新〉：「數蒙渥恩，拔擢倫比，與群賢並愧，無以稱職。」三國蜀．李密〈陳情表〉：「過蒙拔擢，寵命優渥。」",
+          "entry_id": "000140055",
+          "sheet": "1150929辭典匯出",
+          "row": 12460,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "掀天": [
+        {
+          "title": "掀天",
+          "pinyin": "xiān tiān",
+          "definition": "1.高聳得如與天相接。比喻高度極高。唐．白居易〈風雨晚泊〉詩：「青苔撲地連春雨，白浪掀天盡日風。」\n2.比喻聲勢盛大驚人。唐．齊己〈贈琴客〉詩：「此境此身誰更愛，掀天羯鼓滿長安。」《兒女英雄傳》第一二回：「此番為我出來，這是天理人情，無所為錯；況又受了這場掀天風浪，難道我還責備你的舉動？」",
+          "entry_id": "070700005",
+          "sheet": "1150929辭典匯出",
+          "row": 106365,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "萎蕤": [
+        {
+          "title": "萎蕤",
+          "pinyin": "wěi ruí",
+          "definition": "植物名。百合科黃精屬，多年生草本。莖高一、二尺，生於山野中。葉互生，橢圓形或卵形，有平行脈。初夏開小筒狀花，色白帶綠。根莖可製澱粉，或供食用，又可為外用藥。",
+          "entry_id": "113960001",
+          "sheet": "1150929辭典匯出",
+          "row": 158849,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "蹇修": [
+        {
+          "title": "蹇修",
+          "pinyin": "jiǎn xiū",
+          "definition": "相傳為伏羲氏的臣子，專理婚姻、媒妁。後用為媒人的代稱。《幼學瓊林．卷二．婚姻類》：「蹇修與柯人，皆是媒妁之號。」",
+          "entry_id": "057900009",
+          "sheet": "1150929辭典匯出",
+          "row": 91980,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "弓鞬": [
+        {
+          "title": "弓鞬",
+          "pinyin": "gōng jiān",
+          "definition": "裝弓的袋子。《漢書．卷七六．韓延壽傳》：「騎吏持戟，夾陛列立，騎士從者，帶弓鞬羅後。」也作「弓衣」。",
+          "entry_id": "043710013",
+          "sheet": "1150929辭典匯出",
+          "row": 74165,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "蟪蛄": [
+        {
+          "title": "蟪蛄",
+          "pinyin": "huì gū",
+          "definition": "動物名。蟬類。吻長，體短。色黃綠，有黑白條紋，翅膀有黑斑。雄體腹部有鳴器，聲音響亮。",
+          "entry_id": "051300001",
+          "sheet": "1150929辭典匯出",
+          "row": 84286,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "玉瀣": [
+        {
+          "title": "玉瀣",
+          "pinyin": "yù xiè",
+          "definition": "一種酒。宋．陸游〈鷓鴣天．家住蒼煙落照間〉詞：「斟殘玉瀣行穿竹，卷罷黃庭臥看山。」",
+          "entry_id": "116450213",
+          "sheet": "1150929辭典匯出",
+          "row": 161667,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "卜": {
+        "definition": "fortune telling; prophesy",
+        "mandarin": "bo bǔ",
+        "related_characters": [
+          {
+            "character": "卜",
+            "relation": "kTraditionalVariant",
+            "definition": "fortune telling; prophesy",
+            "mandarin": "bo bǔ"
+          },
+          {
+            "character": "蔔",
+            "relation": "kTraditionalVariant",
+            "definition": "radish; other root vegetables",
+            "mandarin": "bó"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "度": {
+        "definition": "degree, system; manner; to consider",
+        "mandarin": "dù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "香": {
+        "definition": "fragrant, sweet-smelling; incense; Kangxi radical 186",
+        "mandarin": "xiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "薷": {
+        "definition": "Elshotria paltrini",
+        "mandarin": "rú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "氿": {
+        "definition": "spring",
+        "mandarin": "jiǔ guǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泉": {
+        "definition": "spring, fountain; wealth, money",
+        "mandarin": "quán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "匼": {
+        "definition": "place in Ruìchéng county, Shānxī; ancient term for a scholar's cap",
+        "mandarin": "kē",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "匝": {
+        "definition": "full circle; encircle",
+        "mandarin": "zā",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "狻": {
+        "definition": "a fabulous beast",
+        "mandarin": "suān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "猊": {
+        "definition": "lion; wild beast; wild horse",
+        "mandarin": "ní",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窸": {
+        "definition": "faint sound, whisper",
+        "mandarin": "xī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "窣": {
+        "definition": "to rush out of a den; rustling, whispering",
+        "mandarin": "sū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "崔": {
+        "definition": "high, lofty, towering; surname",
+        "mandarin": "cuī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "巍": {
+        "definition": "high, lofty, majestic, eminent",
+        "mandarin": "wēi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "潮": {
+        "definition": "tide; moist, wet, damp; flow",
+        "mandarin": "cháo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "汛": {
+        "definition": "high water, flood tides",
+        "mandarin": "xùn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禺": {
+        "definition": "district; mountain in Zhejiang",
+        "mandarin": "yú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "谷": {
+        "definition": "valley, gorge, ravine; Kangxi radical 150",
+        "mandarin": "gǔ",
+        "related_characters": [
+          {
+            "character": "穀",
+            "relation": "kTraditionalVariant",
+            "definition": "corn, grain, cereal; lucky",
+            "mandarin": "gǔ"
+          },
+          {
+            "character": "谷",
+            "relation": "kTraditionalVariant",
+            "definition": "valley, gorge, ravine; Kangxi radical 150",
+            "mandarin": "gǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "庶": {
+        "definition": "numerous, various; multitude",
+        "mandarin": "shù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "物": {
+        "definition": "thing, substance, creature",
+        "mandarin": "wù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "拔": {
+        "definition": "uproot, pull out",
+        "mandarin": "bá",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "擢": {
+        "definition": "pull up, draw up; select",
+        "mandarin": "zhuó",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "掀": {
+        "definition": "lift, raise; stir",
+        "mandarin": "xiān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "天": {
+        "definition": "sky, heaven; god, celestial",
+        "mandarin": "tiān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "萎": {
+        "definition": "wither, wilt",
+        "mandarin": "wěi wēi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蕤": {
+        "definition": "drooping leaves; fringe soft, delicate",
+        "mandarin": "ruí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蹇": {
+        "definition": "lame, crippled; unlucky; hexagram ䷦",
+        "mandarin": "jiǎn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "修": {
+        "definition": "study; repair; cultivate",
+        "mandarin": "xiū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "弓": {
+        "definition": "bow; curved, arched; Kangxi radical 57",
+        "mandarin": "gōng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鞬": {
+        "definition": "a quiver on a horse; a store",
+        "mandarin": "jiān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蟪": {
+        "definition": "a kind of cicada",
+        "mandarin": "huì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蛄": {
+        "definition": "mole cricket",
+        "mandarin": "gū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "玉": {
+        "definition": "jade, precious stone, gem",
+        "mandarin": "yù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "瀣": {
+        "definition": "sea mist; vapor",
+        "mandarin": "xiè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "一同",
+      "decision": "uncertain",
+      "reason": "词义可指一起、相偕或统一，组合自然，但作为品牌名辨识度偏弱，近于常用副词，品牌凝练感存疑。"
+    },
+    {
+      "name": "卜度",
+      "decision": "uncertain",
+      "reason": "完整词义为揣度、猜想，字义成立；但读音与语感较生硬，作为品牌名称的自然度和识别效果存疑。"
+    },
+    {
+      "name": "香薷",
+      "decision": "uncertain",
+      "reason": "确为植物名，字义可靠且组合自然；但完整名称直接指向一种草本植物，作为品牌是否适配取决于未提供的行业，当前难以确认其品牌辨识度。"
+    },
+    {
+      "name": "氿泉",
+      "decision": "keep",
+      "reason": "指从旁涌出的泉水，语义明确，具有清晰自然意象；虽字形少见，但整词有古典依据且凝练，可继续复核。"
+    },
+    {
+      "name": "匼匝",
+      "decision": "uncertain",
+      "reason": "词义为周匝、环绕，字义有据；但读音不直观、现代语感较弱，品牌使用的自然度存疑。"
+    },
+    {
+      "name": "狻猊",
+      "decision": "keep",
+      "reason": "完整词语指狮子或传说中的狻猊，形象具体、气势鲜明，具品牌辨识度；虽生僻且意象强烈，仍可继续复核。"
+    },
+    {
+      "name": "窸窣",
+      "decision": "uncertain",
+      "reason": "指细碎而断续的声音，词义明确且有听觉画面；但该拟声词通常描写细微声响，品牌联想偏弱，适用自然度存疑。"
+    },
+    {
+      "name": "崔巍",
+      "decision": "keep",
+      "reason": "意为高峻，完整词语语义明确、气象挺拔；虽“崔”亦常作姓氏，但此处构词有据，具备简洁的品牌感。"
+    },
+    {
+      "name": "潮汛",
+      "decision": "uncertain",
+      "reason": "指定期大潮，语义明确且有自然力量感；但属于较具体的潮汐术语，作为品牌名称的适用性和辨识度尚不确定。"
+    },
+    {
+      "name": "禺谷",
+      "decision": "keep",
+      "reason": "有明确神话地名本义，指日落之处，意象凝练且富有空间感；用典关系成立，可继续复核。"
+    },
+    {
+      "name": "庶物",
+      "decision": "uncertain",
+      "reason": "词义为万物，构词成立，但整体偏古典概念词，品牌辨识度和现代语感较弱，是否适合作名称存疑。"
+    },
+    {
+      "name": "拔擢",
+      "decision": "reject",
+      "reason": "词义为提拔、升用，是直接表达任用或晋升的动作词，作为公司品牌名更像一般动作或人事用语，品牌凝练感不足。"
+    },
+    {
+      "name": "掀天",
+      "decision": "uncertain",
+      "reason": "可指高耸接天或声势盛大，语义有据、气势鲜明；但表达夸张，容易形成口号式联想，作为独立品牌名的自然度存疑。"
+    },
+    {
+      "name": "萎蕤",
+      "decision": "reject",
+      "reason": "虽有植物名本义，但“萎”在现代汉语中强烈表示枯萎、衰败，与期望的品牌正向联想冲突；不能仅凭“蕤”的繁茂义改释整名。"
+    },
+    {
+      "name": "蹇修",
+      "decision": "uncertain",
+      "reason": "作为专名有据，后世指媒人；但这一关系依赖较生僻的典故，且“蹇”有困厄义，现代受众较难自然识别，品牌使用存疑。"
+    },
+    {
+      "name": "弓鞬",
+      "decision": "uncertain",
+      "reason": "完整词语指装弓的袋子，字义明确且有历史依据；但所指具体、偏古代器物，品牌联想和自然度较弱。"
+    },
+    {
+      "name": "蟪蛄",
+      "decision": "uncertain",
+      "reason": "确指一种蝉类，古典语境中也常关联短促生命；词义成立，但意象受众面窄且有短促、微小的联想，品牌适用性存疑。"
+    },
+    {
+      "name": "玉瀣",
+      "decision": "keep",
+      "reason": "完整词语指一种酒，词义有明确辞书与文学依据；“玉”与酒的组合雅致凝练，具品牌辨识度，可继续复核。"
+    }
+  ],
+  "model": "gpt-6.1-sol",
+  "created_at": "2026-11-12T14:55:19+0800",
+  "applied": false
+}

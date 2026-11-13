@@ -1,0 +1,903 @@
+{
+  "review_id": "20261112T155055-b89ac873",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "夙愿",
+      "心愿",
+      "愿成真",
+      "愿自成",
+      "愿景如初",
+      "愿行致远",
+      "愿有所成",
+      "愿同",
+      "愿禾",
+      "愿嘉",
+      "愿真",
+      "愿丰",
+      "愿宁",
+      "愿明",
+      "愿清源",
+      "愿知远",
+      "愿如初",
+      "愿清和",
+      "愿从容行",
+      "愿望家",
+      "愿向新程"
+    ],
+    "related_kept_candidates": {
+      "程": [
+        "专程",
+        "资云程"
+      ],
+      "明": [
+        "一川明月",
+        "涧明",
+        "明璨堂",
+        "朏明",
+        "晦明",
+        "决明",
+        "淑明",
+        "晙明",
+        "明帜",
+        "凉月明",
+        "崧明",
+        "明月瓷"
+      ],
+      "清": [
+        "臻清和",
+        "赫清源",
+        "太和清风",
+        "涂清和",
+        "一庭清欢",
+        "清茗",
+        "清懿堂",
+        "清泚",
+        "清酎",
+        "枣影清风",
+        "淑清",
+        "酿清欢"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉",
+        "酒同频",
+        "菉野同春",
+        "同欣"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "自": [
+        "自成一格",
+        "自豪",
+        "自忞",
+        "自牧",
+        "涂自明"
+      ],
+      "丰": [
+        "丰年",
+        "丰穰",
+        "丰垄",
+        "臻丰",
+        "穑丰",
+        "资丰"
+      ],
+      "从": [
+        "从容"
+      ],
+      "容": [
+        "从容"
+      ],
+      "行": [
+        "寸心远行",
+        "麇行远山",
+        "涂行远",
+        "资远行",
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "行义",
+        "鲜行"
+      ],
+      "心": [
+        "寸心远行",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "婳心",
+        "憩心田",
+        "心态",
+        "阅心",
+        "心所及",
+        "心念所及"
+      ],
+      "和": [
+        "臻清和",
+        "太和清风",
+        "涂清和",
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和",
+        "珺和",
+        "中庸致和",
+        "均和"
+      ],
+      "远": [
+        "寸心远行",
+        "麇行远山",
+        "赫知远",
+        "珂知远",
+        "涂行远",
+        "资远行",
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远"
+      ],
+      "嘉": [
+        "嘉赟",
+        "嘉禧堂",
+        "嘉懿",
+        "嘉淑",
+        "国有嘉木",
+        "嘉穑",
+        "赫嘉禾",
+        "嘉菉",
+        "资嘉"
+      ],
+      "禾": [
+        "苠禾",
+        "欧禾",
+        "芙禾",
+        "晙禾",
+        "青禾斋",
+        "暮禾",
+        "夕禾",
+        "碳禾",
+        "唐青禾",
+        "唐禾",
+        "蔓禾",
+        "茗禾"
+      ],
+      "源": [
+        "赫清源",
+        "泂源",
+        "淑源",
+        "酵源",
+        "楮源",
+        "凯源",
+        "瓷源",
+        "珀源",
+        "覃思源",
+        "义之源",
+        "茗源",
+        "硔源"
+      ],
+      "宁": [
+        "敉宁",
+        "欧宁",
+        "淑宁",
+        "晙宁",
+        "凯宁",
+        "珀宁",
+        "酷宁",
+        "婳宁",
+        "广宁",
+        "赟宁",
+        "赫宁",
+        "太宁"
+      ],
+      "望": [
+        "硕望",
+        "芹田望月",
+        "望海斋",
+        "凉秋望远",
+        "灵猊望月",
+        "望海埼",
+        "望埼",
+        "长弓望月",
+        "奇峰望远",
+        "赫望",
+        "望山厅"
+      ],
+      "愿": [
+        "偿愿"
+      ],
+      "知": [
+        "赫知远",
+        "珂知远",
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "知婳",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "菉知春"
+      ],
+      "致": [
+        "中庸致和"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "新荚",
+        "茗新",
+        "新貌"
+      ],
+      "向": [
+        "梣向阳",
+        "螭向远",
+        "蔓向阳",
+        "梾木向阳",
+        "梾枝向远",
+        "梾枝向晨"
+      ],
+      "初": [
+        "涂如初",
+        "霪雨初霁",
+        "初酵",
+        "万象初酿",
+        "芹野初晴",
+        "晙初",
+        "初凉",
+        "厥初",
+        "唐雨初晴",
+        "茗之初",
+        "菉之初",
+        "黛岚初起"
+      ],
+      "景": [
+        "淑景",
+        "叠石成景",
+        "景慕",
+        "怡景"
+      ],
+      "有": [
+        "国有嘉木",
+        "瓷间有度",
+        "蔓有度",
+        "松间有茗",
+        "鲜明有度",
+        "梾间有光",
+        "溪山有蹊",
+        "春山有蹊",
+        "菉有节",
+        "有斐"
+      ],
+      "真": [
+        "臻本真",
+        "义守真",
+        "真诠"
+      ],
+      "如": [
+        "涂如初",
+        "如瓷",
+        "瓷如玉",
+        "酒如歌",
+        "站如松",
+        "专注如常",
+        "雯如锦"
+      ],
+      "所": [
+        "憩所",
+        "心所及",
+        "目所及",
+        "心念所及"
+      ]
+    },
+    "literature_phrase_examples": {
+      "夙愿": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 88855,
+          "context": "良觌违夙愿，含凄向寥廓。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 363922,
+          "context": "自非挺金骨，焉得谐夙愿。"
+        }
+      ],
+      "心愿": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 36494,
+          "context": "心愿阳乌恒保日，志嫌阴鹤欲凌天。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 80412,
+          "context": "守节偏凌御史霜，虚心愿比郎官笔。"
+        }
+      ],
+      "愿成真": [],
+      "愿自成": [],
+      "愿景如初": [],
+      "愿行致远": [],
+      "愿有所成": [],
+      "愿同": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 14314,
+          "context": "十五始展眉，愿同尘与灰。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 16407,
+          "context": "愿同尧舜意，所乐在人和。"
+        }
+      ],
+      "愿禾": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 933851,
+          "context": "但愿禾黍肥，富贵从此辞。"
+        }
+      ],
+      "愿嘉": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 109980,
+          "context": "眸子终何似，形躯且愿嘉。"
+        }
+      ],
+      "愿真": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 541449,
+          "context": "只愿真贤起山国，异时端委赞垂裳。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 596594,
+          "context": "魔外如惊涛，大愿真砥柱。"
+        }
+      ],
+      "愿丰": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 111889,
+          "context": "愿丰天下衣，不叹贫服卉。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 894420,
+          "context": "但愿丰年有高廪，千夫获稻看秋晴。"
+        }
+      ],
+      "愿宁": [],
+      "愿明": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 42512,
+          "context": "愿明德，吐正词。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 415891,
+          "context": "谨具尺书辞眷爱，愿明大法报慈亲。"
+        }
+      ],
+      "愿清源": [],
+      "愿知远": [],
+      "愿如初": [],
+      "愿清和": [],
+      "愿从容行": [],
+      "愿望家": [],
+      "愿向新程": []
+    },
+    "dictionary_phrase_entries": {
+      "夙愿": [],
+      "心愿": [],
+      "愿成真": [],
+      "愿自成": [],
+      "愿景如初": [],
+      "愿行致远": [],
+      "愿有所成": [],
+      "愿同": [],
+      "愿禾": [],
+      "愿嘉": [],
+      "愿真": [],
+      "愿丰": [],
+      "愿宁": [],
+      "愿明": [],
+      "愿清源": [],
+      "愿知远": [],
+      "愿如初": [],
+      "愿清和": [],
+      "愿从容行": [],
+      "愿望家": [],
+      "愿向新程": []
+    },
+    "direct_dictionary": {
+      "夙": {
+        "definition": "early in morning, dawn; previous",
+        "mandarin": "sù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "愿": {
+        "definition": "sincere, honest, virtuous",
+        "mandarin": "yuàn",
+        "related_characters": [
+          {
+            "character": "愿",
+            "relation": "kTraditionalVariant",
+            "definition": "sincere, honest, virtuous",
+            "mandarin": "yuàn"
+          },
+          {
+            "character": "願",
+            "relation": "kTraditionalVariant",
+            "definition": "desire, want; wish; ambition",
+            "mandarin": "yuàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "真": {
+        "definition": "real, actual, true, genuine",
+        "mandarin": "zhēn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "景": {
+        "definition": "scenery, view; conditions",
+        "mandarin": "jǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "如": {
+        "definition": "if, supposing; as if; like, as",
+        "mandarin": "rú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "初": {
+        "definition": "beginning, initial, primary",
+        "mandarin": "chū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "致": {
+        "definition": "send, deliver, present; cause",
+        "mandarin": "zhì",
+        "related_characters": [
+          {
+            "character": "緻",
+            "relation": "kTraditionalVariant",
+            "definition": "delicate, fine; dense",
+            "mandarin": "zhì"
+          },
+          {
+            "character": "致",
+            "relation": "kTraditionalVariant",
+            "definition": "send, deliver, present; cause",
+            "mandarin": "zhì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "所": {
+        "definition": "place, location; numerary adjunct",
+        "mandarin": "suǒ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "禾": {
+        "definition": "grain still on stalk; rice plant",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嘉": {
+        "definition": "excellent; joyful; auspicious",
+        "mandarin": "jiā",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "丰": {
+        "definition": "abundant, lush, bountiful, plenty",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "丰",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "豐",
+            "relation": "kTraditionalVariant",
+            "definition": "abundant, lush, bountiful, plenty; hexagram ䷶",
+            "mandarin": "fēng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宁": {
+        "definition": "calm, peaceful, serene; healthy",
+        "mandarin": "níng",
+        "related_characters": [
+          {
+            "character": "宁",
+            "relation": "kTraditionalVariant",
+            "definition": "calm, peaceful, serene; healthy",
+            "mandarin": "níng"
+          },
+          {
+            "character": "寧",
+            "relation": "kTraditionalVariant",
+            "definition": "repose, serenity, peace; peaceful",
+            "mandarin": "níng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "明": {
+        "definition": "bright, light, brilliant; clear",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "清": {
+        "definition": "clear, pure, clean; peaceful",
+        "mandarin": "qīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "源": {
+        "definition": "spring; source, head; surname",
+        "mandarin": "yuán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "从": {
+        "definition": "from, by, since, whence, through",
+        "mandarin": "cóng",
+        "related_characters": [
+          {
+            "character": "从",
+            "relation": "kTraditionalVariant",
+            "definition": "from, by, since, whence, through",
+            "mandarin": "cóng"
+          },
+          {
+            "character": "從",
+            "relation": "kTraditionalVariant",
+            "definition": "from, by, since, whence, through",
+            "mandarin": "cóng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "容": {
+        "definition": "looks, appearance; figure, form",
+        "mandarin": "róng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "家": {
+        "definition": "house, home, residence; family",
+        "mandarin": "jiā",
+        "related_characters": [
+          {
+            "character": "傢",
+            "relation": "kTraditionalVariant",
+            "definition": "stubborn, obstinate, intransigent",
+            "mandarin": "jiā"
+          },
+          {
+            "character": "家",
+            "relation": "kTraditionalVariant",
+            "definition": "house, home, residence; family",
+            "mandarin": "jiā"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "向": {
+        "definition": "toward, direction, trend",
+        "mandarin": "xiàng",
+        "related_characters": [
+          {
+            "character": "向",
+            "relation": "kTraditionalVariant",
+            "definition": "toward, direction, trend",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "嚮",
+            "relation": "kTraditionalVariant",
+            "definition": "guide, direct; incline to, favor",
+            "mandarin": "xiàng"
+          },
+          {
+            "character": "曏",
+            "relation": "kTraditionalVariant",
+            "definition": "once upon time; period of time",
+            "mandarin": "xiǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "程": {
+        "definition": "journey, trip; schedule, agenda",
+        "mandarin": "chéng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "夙愿",
+      "decision": "keep",
+      "reason": "常用词，意为平素的愿望或长久以来的心愿，组合凝练自然，有情感辨识度。"
+    },
+    {
+      "name": "心愿",
+      "decision": "keep",
+      "reason": "自然完整的常用词，表达心中的愿望，语义清楚简洁，具备品牌名的凝练感。"
+    },
+    {
+      "name": "愿成真",
+      "decision": "reject",
+      "reason": "完整组合是“愿望成真”的祈愿句式，表达直白且口号化，品牌凝练感不足。"
+    },
+    {
+      "name": "愿自成",
+      "decision": "uncertain",
+      "reason": "可理解为愿其自行形成或成就，但语序和主语关系不清，完整语义不够自然。"
+    },
+    {
+      "name": "愿景如初",
+      "decision": "reject",
+      "reason": "由“愿景”与“如初”拼成祝愿式表达，语义关系牵强，整体近似口号。"
+    },
+    {
+      "name": "愿行致远",
+      "decision": "reject",
+      "reason": "“愿行”与“致远”拼接后形成劝勉式句子，完整组合口号化，且“愿行”的关系不够明晰。"
+    },
+    {
+      "name": "愿有所成",
+      "decision": "reject",
+      "reason": "是完整的祝愿或期许句式，陈述性强、口号感明显，不够像凝练品牌名。"
+    },
+    {
+      "name": "愿同",
+      "decision": "uncertain",
+      "reason": "可解作愿意共同或希望相同，但缺少明确宾语，组合语义不完整，品牌指向存疑。"
+    },
+    {
+      "name": "愿禾",
+      "decision": "keep",
+      "reason": "可自然理解为对禾谷生长的期愿，也可形成简洁的自然意象；组合短而有辨识度。"
+    },
+    {
+      "name": "愿嘉",
+      "decision": "uncertain",
+      "reason": "“愿”与“嘉”可分别表达愿望和美好，但组合后关系不明确，作为完整名称略显生硬。"
+    },
+    {
+      "name": "愿真",
+      "decision": "uncertain",
+      "reason": "可解作愿求真实或愿其为真，但两字关系不够固定，具体语义需依赖额外背景。"
+    },
+    {
+      "name": "愿丰",
+      "decision": "keep",
+      "reason": "可理解为期愿丰足、丰收，语义连贯简洁，具有积极而清楚的品牌意象。"
+    },
+    {
+      "name": "愿宁",
+      "decision": "uncertain",
+      "reason": "可理解为祈愿安宁，但“愿宁”的搭配不够自然，作为完整品牌名语义略显含混。"
+    },
+    {
+      "name": "愿明",
+      "decision": "uncertain",
+      "reason": "可解作愿求明朗或愿其明白，但缺少明确语境，词组关系不够自然。"
+    },
+    {
+      "name": "愿清源",
+      "decision": "uncertain",
+      "reason": "可理解为愿求清澈之源或愿使源头清明，但“愿”与“清源”的关系存在多种解读，组合不够确定。"
+    },
+    {
+      "name": "愿知远",
+      "decision": "reject",
+      "reason": "将“愿”与“知远”拼合成期许式表达，语义关系不顺，且与已有候选“赫知远”“珂知远”构成仅换前缀的近似组合。"
+    },
+    {
+      "name": "愿如初",
+      "decision": "uncertain",
+      "reason": "可读作愿一切如初，但作为完整名称是省略主语和对象的祈愿句式，语义依赖上下文。"
+    },
+    {
+      "name": "愿清和",
+      "decision": "uncertain",
+      "reason": "可解作愿求清明平和，但“愿”与“清和”的关系偏祝愿表达，完整组合略显生硬。"
+    },
+    {
+      "name": "愿从容行",
+      "decision": "reject",
+      "reason": "完整名称是“愿从容地行动”的句子式表达，口号感明显，且与已有候选“从容”意象接近。"
+    },
+    {
+      "name": "愿望家",
+      "decision": "reject",
+      "reason": "“愿望家”易被理解为愿望相关的通用类别或机构称谓，构词不自然，缺少清楚的品牌语义。"
+    },
+    {
+      "name": "愿向新程",
+      "decision": "reject",
+      "reason": "表达“愿意走向新征程”的句子式祝愿，口号化且组合冗长，不够凝练。"
+    }
+  ]
+}

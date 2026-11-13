@@ -1,0 +1,886 @@
+{
+  "review_id": "20261113T081028-2ccd2201",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "蹦跳",
+      "蹦豆",
+      "蹦极",
+      "蹦现",
+      "蹦出彩",
+      "舒远",
+      "舒和",
+      "舒信",
+      "舒源",
+      "舒竹",
+      "舒川",
+      "自舒",
+      "舒而有度"
+    ],
+    "related_kept_candidates": {
+      "川": [
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川"
+      ],
+      "自": [
+        "自成一格",
+        "自豪",
+        "自忞",
+        "自牧",
+        "涂自明",
+        "自律",
+        "自在獭",
+        "自厉",
+        "自在小鼹",
+        "自在舞",
+        "自许",
+        "境自宽"
+      ],
+      "和": [
+        "宽和",
+        "调和",
+        "礼和",
+        "贞和",
+        "燮和",
+        "鑫和",
+        "珺和",
+        "中庸致和",
+        "均和",
+        "淑和",
+        "和斋",
+        "臻和"
+      ],
+      "豆": [
+        "豆荚",
+        "豌豆花",
+        "豌豆星球",
+        "豆青",
+        "豆绿",
+        "豆伴",
+        "豆有光",
+        "豆与光",
+        "山海豆",
+        "豆源",
+        "豆野",
+        "豆集"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "源": [
+        "泂源",
+        "淑源",
+        "酵源",
+        "楮源",
+        "凯源",
+        "瓷源",
+        "珀源",
+        "覃思源",
+        "义之源",
+        "茗源",
+        "硔源",
+        "镠源"
+      ],
+      "信": [
+        "榴花信",
+        "口信",
+        "瓶中信",
+        "义信",
+        "信牍",
+        "赫信",
+        "珂信",
+        "昭信",
+        "三枝春信",
+        "山海递信",
+        "瑾信",
+        "鸾信"
+      ],
+      "有": [
+        "卷舒有度",
+        "瓷间有度",
+        "蔓有度",
+        "鲜明有度",
+        "犟有度",
+        "矩有度",
+        "掂量有度",
+        "滁风有度",
+        "健有度",
+        "锾有度",
+        "拳有度",
+        "薪有度"
+      ],
+      "竹": [
+        "竹影山墅",
+        "清溪竹墅",
+        "竹斋",
+        "蔓绕竹篱",
+        "竹篦",
+        "广竹韵",
+        "广陵竹影",
+        "麇栖竹影",
+        "鹩栖竹影",
+        "竹蹊",
+        "鹒栖竹影",
+        "竹簖"
+      ],
+      "彩": [
+        "彩珑",
+        "玳彩",
+        "口彩",
+        "缤彩",
+        "珐彩",
+        "映珂流彩",
+        "鎏彩成章",
+        "彩带",
+        "珩璜流彩",
+        "璪彩",
+        "彩笺",
+        "幻彩"
+      ],
+      "极": [
+        "八极",
+        "造极"
+      ],
+      "舒": [
+        "卷舒有度",
+        "凉云舒",
+        "夕云舒",
+        "蓓舒",
+        "宽舒",
+        "舒畅",
+        "晚云舒",
+        "冬云舒",
+        "邓望舒",
+        "舒媛",
+        "斓云舒",
+        "姮舒"
+      ],
+      "度": [
+        "卷舒有度",
+        "瓷间有度",
+        "蔓有度",
+        "鲜明有度",
+        "犟有度",
+        "矩有度",
+        "掂量有度",
+        "滁风有度",
+        "健有度",
+        "锾有度",
+        "拳有度",
+        "薪有度"
+      ],
+      "跳": [
+        "跳丸",
+        "心跳",
+        "跳石",
+        "跳脱",
+        "弹跳",
+        "跳珠",
+        "跳波",
+        "跳珠泉",
+        "山泉跳珠",
+        "跳珠映月",
+        "跳浪"
+      ],
+      "出": [
+        "出奇",
+        "奇云出岫",
+        "飞鸟出嶂",
+        "迥出",
+        "云霭出岫",
+        "六出飞花",
+        "迭出",
+        "云出壑",
+        "出郊"
+      ],
+      "现": [
+        "涌现",
+        "𬟽初现",
+        "乍现",
+        "闪现",
+        "现炒本味",
+        "岙光初现"
+      ],
+      "而": [
+        "噪而有序",
+        "窄而深",
+        "萎而复荣",
+        "忽而",
+        "变化而嬗",
+        "因时而嬗",
+        "奢而雅",
+        "信而达",
+        "佩星而行"
+      ],
+      "蹦": [
+        "蹦跶"
+      ]
+    },
+    "literature_phrase_examples": {
+      "蹦跳": [],
+      "蹦豆": [],
+      "蹦极": [],
+      "蹦现": [],
+      "蹦出彩": [],
+      "舒远": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 73746,
+          "context": "聊舒远世踪，坐望还山云。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 408818,
+          "context": "柳外披烟舒远目，花边植杖坐芳茵。"
+        }
+      ],
+      "舒和": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2817,
+          "context": "【郊庙歌辞 祀圜丘乐章 舒和】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 2971,
+          "context": "【郊庙歌辞 中宗祀昊天乐章 舒和】"
+        }
+      ],
+      "舒信": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 286976,
+          "context": "【呈舒信道】"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 322151,
+          "context": "【和舒信道中丞】"
+        }
+      ],
+      "舒源": [],
+      "舒竹": [],
+      "舒川": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 209108,
+          "context": "【同梅圣俞送尹郎中监舒川灵仙观】"
+        }
+      ],
+      "自舒": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 68207,
+          "context": "有时白云起，天际自舒卷。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 142255,
+          "context": "掉尾方穷乐，游鳞每自舒。"
+        }
+      ],
+      "舒而有度": []
+    },
+    "dictionary_phrase_entries": {
+      "蹦跳": [
+        {
+          "title": "蹦跳",
+          "pinyin": "bèng tiào",
+          "definition": "跳躍。如：「幼稚園裡的小朋友每天蹦跳歡唱，非常快樂。」",
+          "entry_id": "0031100051",
+          "sheet": "1150929辭典匯出",
+          "row": 17252,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "蹦豆": [],
+      "蹦极": [],
+      "蹦现": [],
+      "蹦出彩": [],
+      "舒远": [],
+      "舒和": [],
+      "舒信": [],
+      "舒源": [],
+      "舒竹": [],
+      "舒川": [],
+      "自舒": [],
+      "舒而有度": []
+    },
+    "direct_dictionary": {
+      "蹦": {
+        "definition": "hop, leap, jump; bright",
+        "mandarin": "bèng",
+        "official_dictionary": [
+          {
+            "title": "蹦",
+            "pinyin": "bèng",
+            "definition": "[動]\n跳躍。如：「胡蹦亂跳」、「連蹦帶跳」、「這一蹦，蹦了四五尺高。」",
+            "entry_id": "00311",
+            "sheet": "1150929辭典匯出",
+            "row": 312,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "跳": {
+        "definition": "jump, leap, vault, bounce; dance",
+        "mandarin": "tiào",
+        "official_dictionary": [
+          {
+            "title": "跳",
+            "pinyin": "tiào",
+            "definition": "[動]\n1.以腳蹬地，使身體往上或向前的動作。如：「跳躍」、「跳遠」、「雞飛狗跳」。《水滸傳》第二三回：「那一陣風過處，只聽得亂樹背後，撲地一聲響，跳出一隻弔睛白額大虫來。」\n2.振動。如：「心跳」、「心驚肉跳」、「眼跳」。《浮生六記．卷一．閨房記樂》：「握其腕，暖尖滑膩，胸中不覺怦怦作跳。」\n3.越過。如：「跳行」、「跳級」、「這一頁跳過去不看。」\n4.脫離、逃出。如：「跳出火坑」。《紅樓夢》第五回：「萬望先以情欲聲色等事警其痴頑，或能使彼跳出迷人圈子，然後入於正路。」",
+            "entry_id": "02698",
+            "sheet": "1150929辭典匯出",
+            "row": 2704,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "豆": {
+        "definition": "beans, peas; bean-shaped; Kangxi radical 151",
+        "mandarin": "dòu",
+        "official_dictionary": [
+          {
+            "title": "豆",
+            "pinyin": "dòu",
+            "definition": "[名]\n1.古代盛食品的器皿。器淺似盤，圈足，多數有蓋。盛行於商周時期，後亦作為禮器。《說文解字．豆部》：「豆，古食肉器也。」《詩經．大雅．生民》：「卬盛于豆，于豆于登。」漢．鄭玄．箋：「祀天用瓦豆，陶器質也。」\n2.雙子葉植物豆科的泛稱。草本、木本均有。葉多複葉，間或為單葉，互生，通常具托葉。花為蝶形，或兩側對稱，有些為輻射對稱。果為莢果，種子無胚乳，間或含少量胚乳。約一萬六千種，產世界各地。用途極廣，供食用、藥用或觀賞等。\n3.姓。如漢代有豆如意，清代有豆文武。\n4.二一四部首之一。",
+            "entry_id": "01987",
+            "sheet": "1150929辭典匯出",
+            "row": 1992,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "极": {
+        "definition": "extreme, utmost, furthest, final",
+        "mandarin": "jí",
+        "related_characters": [
+          {
+            "character": "极",
+            "relation": "kTraditionalVariant",
+            "definition": "extreme, utmost, furthest, final",
+            "mandarin": "jí"
+          },
+          {
+            "character": "極",
+            "relation": "kTraditionalVariant",
+            "definition": "extreme, utmost, furthest, final",
+            "mandarin": "jí"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "现": {
+        "definition": "appear, manifest, become visible",
+        "mandarin": "xiàn",
+        "related_characters": [
+          {
+            "character": "現",
+            "relation": "kTraditionalVariant",
+            "definition": "appear, manifest, become visible",
+            "mandarin": "xiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "出": {
+        "definition": "go out, send out; stand; produce",
+        "mandarin": "chū",
+        "related_characters": [
+          {
+            "character": "出",
+            "relation": "kTraditionalVariant",
+            "definition": "go out, send out; stand; produce",
+            "mandarin": "chū"
+          },
+          {
+            "character": "齣",
+            "relation": "kTraditionalVariant",
+            "definition": "act; stanza; time, occasion",
+            "mandarin": "chū"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "出",
+            "pinyin": "chū",
+            "definition": "[動]\n1.自內至外。與「入」相對。如：「足不出戶」。《詩經．鄭風．出其東門》：「出其東門，有女如雲。」\n2.產生、發生。如：「出汗」、「出水痘」、「出紕漏」。《易經．說卦》：「萬物出乎震，震東方也。」\n3.脫離、離開。如：「出家」、「出軌」。《詩經．小雅．賓之初筵》：「既醉而出，並受其福；醉而不出，是謂伐德。」\n4.給予、支付。如：「出錢」、「出納」、「支出」。\n5.做官、出任其事。《易經．繫辭上》：「君子之道，或出或處。」《宋書．卷六七．謝靈運傳》：「出為永嘉太守。」\n6.表現、顯露。如：「水落石出」。《莊子．天地》：「至言不出，俗言勝也。」\n7.發洩。如：「出怨氣」、「出悶氣」。\n8.超越。如：「出眾」、「出人頭地」。唐．韓愈〈師說〉：「古之聖人，其出人也遠矣。」\n9.到。如：「出席」、「出場」。\n10. 策劃。如：「出奇謀」、「出題目」。\n[名]\n1.外部、外面。《孟子．告子下》：「入則無法家拂士，出則無敵國外患者，國恆亡。」\n2.量詞。古代計算表演段落的單位。《景德傳燈錄．卷十四．潭州雲巖曇晟禪師》：「藥山乃又問：『聞汝解弄師子，是否？』師曰：『是。』曰：『弄得幾出。』師曰：『弄得六出。』」\n[副]\n放在動詞之後，表示動作趨向或效果完成。如：「拿出」、「看出」、「做出好成績」、「練出一副好身材」。",
+            "entry_id": "08526",
+            "sheet": "1150929辭典匯出",
+            "row": 8540,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "彩": {
+        "definition": "hue, color; variegated colors",
+        "mandarin": "cǎi",
+        "official_dictionary": [
+          {
+            "title": "彩",
+            "pinyin": "cǎi",
+            "definition": "[名]\n1.文章。《宋書．卷七三．顏延之傳》：「延之與陳郡謝靈運俱以詞彩齊名。」\n2.顏色、顏料。如：「五彩奪目」、「色彩」、「水彩」、「油彩」。\n3.光華、光澤。唐．許渾〈鶴林寺中秋夜玩月〉詩：「輪彩漸移金殿外，鏡光猶挂玉樓前。」\n4.讚美、誇獎的歡呼聲。如：「喝倒彩」。《兒女英雄傳》第一五回：「那四面看的人，就海潮一般，喝了個連環大彩。」\n5.獎。如：「頭彩」、「摸彩」、「中彩」。\n6.傷。如：「掛彩」。《兒女英雄傳》第六回：「那時三兒在旁邊正獃獃的望著公子的胸脯子，要看著這回刀尖出彩。」\n[形]\n多種顏色的。如：「彩霞」、「彩衣」、「彩蝶」。",
+            "entry_id": "09742",
+            "sheet": "1150929辭典匯出",
+            "row": 9756,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舒": {
+        "definition": "open up, unfold, stretch out; comfortable, easy",
+        "mandarin": "shū",
+        "official_dictionary": [
+          {
+            "title": "舒",
+            "pinyin": "shū",
+            "definition": "[動]\n1.伸展。如：「舒手舒腳」、「舒眉弄眼」。\n2.宣洩、抒發。如：「舒懷」。《楚辭．屈原．九章．思美人》：「申旦以舒中情兮，志忱菀而莫達。」《文選．司馬遷．報任少卿書》：「退而論書策，以舒其憤。」\n[形]\n1.遲緩、從容不迫。《詩經．召南．野有死麕》：「舒而脫脫兮，無感我帨兮，無使尨也吠。」唐．柳宗元〈游黃溪記〉：「又南一里，至大冥之川，山舒水緩，有土田。」\n2.安適、舒暢。如：「舒泰」、「舒服」。《文選．張衡．西京賦》：「夫人在陽時則舒，在陰時則慘。」\n[名]\n姓。如唐代有舒元輿。",
+            "entry_id": "09049",
+            "sheet": "1150929辭典匯出",
+            "row": 9064,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "和": {
+        "definition": "harmony, peace; peaceful, calm",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "和",
+            "pinyin": "hé",
+            "definition": "[名]\n1.各數相加的總數。如：「總和」、「二加三的和是五。」\n2.適中、恰到好處、剛柔並濟的常道。《論語．學而》：「禮之用，和為貴。」《禮記．中庸》：「和也者，天下之達道也。」\n3.和平、停戰。如：「講和」、「議和」。《孫子．行軍》：「無約而請和者，謀也。」《戰國策．趙策三》：「故不若亟割地求和，以疑天下慰秦心。」\n4.日本的別名。如：「大和民族」。\n5.姓。如漢代有和武、晉代有和嶠。\n[動]\n1.敦睦、調諧。如：「和好如初」。《左傳．隱公四年》：「臣聞以德和民，不聞以亂。」\n2.連同。如：「和衣而眠」。\n[形]\n1.溫順的、安詳的。如：「和藹」、「心平氣和」、「和顏悅色」。南朝陳．徐陵〈晉陵太守王勵德政碑〉：「風神雅淡，識量寬和。」唐．張說〈岳陽早霽南樓〉詩：「心阻意徒馳，神和生自足。」\n2.溫暖的。如：「和煦」、「風和日麗」。唐．白居易〈首夏病間〉詩：「清和好時節，微風吹裌衣。」\n[介]\n對、向。如：「你和尊長講話的態度要恭敬。」《紅樓夢》第八回：「好幾處都有，都稱贊得了不得，還和我們尋呢！」\n[連]\n與、跟。如：「我和他是好朋友。」宋．岳飛〈滿江紅．怒髮衝冠〉詞：「三十功名塵與土，八千里路雲和月。」",
+            "entry_id": "04721",
+            "sheet": "1150929辭典匯出",
+            "row": 4728,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hè",
+            "definition": "[動]\n1.聲音相應。如：「附和」、「唱和」。《資治通鑑．卷二三六．唐紀五十二．順宗永貞元年》：「絪等從而和之，議始定。」宋．蘇軾〈赤壁賦〉：「客有吹洞簫者，倚歌而和之。」\n2.依原詩格律或內容作詩以酬答他人。唐．白居易〈和微之詩．序〉：「微之又以近作四十三首寄來，命僕繼和。」",
+            "entry_id": "04754",
+            "sheet": "1150929辭典匯出",
+            "row": 4761,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hàn",
+            "definition": "(一)[連]之語音。",
+            "entry_id": "04883",
+            "sheet": "1150929辭典匯出",
+            "row": 4889,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "hú",
+            "definition": "[動]\n牌戲中牌張已湊齊成副而獲勝稱為「和」。如：「和牌」。《文明小史》第五五回：「秦鳳梧自己買這樣，買那樣，應酬朋友，吃酒碰和，毛毛的也有一萬了。」",
+            "entry_id": "04952",
+            "sheet": "1150929辭典匯出",
+            "row": 4959,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "huò",
+            "definition": "[動]_x000D_\n1.攪拌、混合。《文獻通考．卷一八．征榷考五．榷茶》：「凡在京茶戶擅磨末茶者有禁，並赴官請買，而茶鋪入米豆雜物拌和者有罰，募人告者有賞。」《三國演義》第九一回：「喚行廚宰殺牛馬，和麵為劑，塑成人頭，內以牛羊等肉代之，名曰『饅頭』。」_x000D_\n2.湊熱鬧、加入添亂。《文明小史》第三回：「柳知府詫異道：『與他們甚麼相干？怎麼也和在裡頭。』」",
+            "entry_id": "05041",
+            "sheet": "1150929辭典匯出",
+            "row": 5048,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "和",
+            "pinyin": "huo",
+            "definition": "[形]\n溫暖的。如：「暖和」。",
+            "entry_id": "05069",
+            "sheet": "1150929辭典匯出",
+            "row": 5076,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "official_dictionary": [
+          {
+            "title": "信",
+            "pinyin": "xìn",
+            "definition": "[名]\n1.誠實不欺。如：「講信修睦」。《論語．為政》：「人而無信，不知其可也。」\n2.書札、書簡。如：「書信」、「平信」、「掛號信」。\n3.消息、音訊。如：「音信」、「凶信」、「口信」。\n4.使者、送信件的人。南朝宋．劉義慶《世說新語．文學》：「司空鄭沖馳遣信就阮籍求文。」\n5.符契、憑證。如：「印信」。《後漢書．卷九〇．烏桓鮮卑傳》：「大人有所召呼，則刻木為信，雖無文字，而部眾不敢違犯。」\n6.姓。如宋代有信世昌。\n[動]\n1.聽從、不懷疑。如：「相信」、「深信不疑」、「不可置信」。\n2.敬仰、崇奉。如：「信奉」、「信教」。南朝梁．劉勰《文心雕龍．正緯》：「至於光武之世，篤信斯術。」\n3.知曉、知道。宋．晏殊〈漁家傲．畫鼓聲中昏又曉〉詞：「須信道，人間萬事何時了？」《聊齋志異．卷七．青蛾》：「我父母皆仙人，何可以貌信其年歲乎？」\n4.連宿兩晚。如：「信宿」。《左傳．襄公十八年》：「信于城下而還。」晉．杜預．注：「信，再宿也。」\n[副]\n1.確實、的確、果真。《孟子．公孫丑上》：「信能行此五者，則鄰國之民，仰之若父母矣。」唐．柳宗元〈遊石角過小嶺至長烏村〉詩：「為農信可樂，居寵真虛榮。」\n2.隨意、任憑。如：「信口開河」、「信手拈來」。唐．白居易〈琵琶行〉：「低眉信手續續彈，說盡心中無限事。」",
+            "entry_id": "07174",
+            "sheet": "1150929辭典匯出",
+            "row": 7183,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "信",
+            "pinyin": "shēn",
+            "definition": "[動]\n1.伸直、舒展。通「伸」。《易經．繫辭下》：「往者屈也，來者信也。」《漢書．卷六二．司馬遷傳》：「乃欲卬首信眉，論列是非。」\n2.陳述表白。通「申」。《穀梁傳．隱公元年》：「春秋貴義而不貴惠，信道而不信邪。」",
+            "entry_id": "08974",
+            "sheet": "1150929辭典匯出",
+            "row": 8989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "源": {
+        "definition": "spring; source, head; surname",
+        "mandarin": "yuán",
+        "official_dictionary": [
+          {
+            "title": "源",
+            "pinyin": "yuán",
+            "definition": "[名]\n1.水流的出處。如：「水源」、「泉源」、「飲水思源」。《國語．晉語一》：「伐木不自其本，必復生；塞水不自其源，必復流。」唐．李嶠〈河〉詩：「源出崑崙中，長波接漢空。」\n2.根本、由來。《韓非子．主道》：「是以明君守始以知萬物之源，治紀以知善敗之端。」《文選．班固．東都賦》：「嗜欲之源滅，廉恥之心生。」\n3.姓。如唐代有源乾曜。",
+            "entry_id": "11789",
+            "sheet": "1150929辭典匯出",
+            "row": 11802,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "竹": {
+        "definition": "bamboo; flute; Kangxi radical 118",
+        "mandarin": "zhú",
+        "official_dictionary": [
+          {
+            "title": "竹",
+            "pinyin": "zhú",
+            "definition": "[名]\n1.植物名。多年生常綠植物。莖木質，有隆起之節，節間部中空，細長作管狀，色綠。竹莖堅韌，可供建築製器之用。\n2.樂器名。笛、簫之屬。《周禮．春官．大師》：「皆播之以八音：金、石、土、革、絲、木、匏、竹。」晉．王羲之〈三月三日蘭亭詩序〉：「雖無絲竹管絃之盛，一觴一詠，亦足以暢敘幽情。」\n3.簡冊。如：「竹帛」、「竹簡」。漢．桓寬《鹽鐵論．利議》：「明枯竹，守空言，不知趨舍之宜，時世之變。」\n4.姓。如漢代有竹多同。\n5.二一四部首之一。",
+            "entry_id": "07958",
+            "sheet": "1150929辭典匯出",
+            "row": 7970,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "自": {
+        "definition": "self, private, personal; from; Kangxi radical 132",
+        "mandarin": "zì",
+        "official_dictionary": [
+          {
+            "title": "自",
+            "pinyin": "zì",
+            "definition": "[名]\n1.起源的地方。清．朱駿聲《說文通訓定聲．履部》：「自，自之通訓當為始。」如：「其來有自」。《禮記．中庸》：「知風之自，知微之顯，可以入德也。」\n2.姓。如明代有自勖。\n3.二一四部首之一。\n[代]\n己身。如：「自言自語」、「自給自足」、「自以為是」、「各人自掃門前雪，休管他人瓦上霜。」\n[副]\n1.主動。如：「自覺」、「自願」。\n2.本來。唐．白居易〈嵩陽觀夜奏霓裳〉詩：「開元遺曲自淒涼，況近秋天調是商。」\n3.自然、當然。如：「自不待言」、「公道自在人心」。《老子》第五七章：「我無為而民自化，我好靜而民自正。」《紅樓夢》第四回：「姊姊們暮年相見，自不必說悲喜交集，泣笑敘闊一番。」\n4.依然。唐．王勃〈滕王閣〉詩：「閣中帝子今何在？檻外長江空自流。」\n[介]\n從、由。如：「自古以來」、「自遠而近」。《論語．學而》：「有朋自遠方來，不亦樂乎？」唐．柳宗元〈石渠記〉：「自渴西南行不能百步，得石渠，民橋其上。」\n[連]\n1.如果，表示假設的語氣。《左傳．成公十六年》：「自非聖人，外寧必有內憂。」\n2.雖然。《禮記．檀弓下》：「自吾母而不得吾情，吾惡乎用吾情？」《史記．卷三〇．平準書》：「自天子不能具鈞駟，而將相或乘牛車。」",
+            "entry_id": "09421",
+            "sheet": "1150929辭典匯出",
+            "row": 9435,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "而": {
+        "definition": "and; and then; and yet; but; Kangxi radical 126",
+        "mandarin": "ér",
+        "official_dictionary": [
+          {
+            "title": "而",
+            "pinyin": "ér",
+            "definition": "[名]_x000D_\n1.兩頰上的毛。《說文解字．而部》：「而，須也。」《周禮．冬官考工記．梓人》：「必深其爪，出其目，作其鱗之而。」_x000D_\n2.二一四部首之一。_x000D_\n[代]_x000D_\n1.你。《詩經．大雅．桑柔》：「嗟爾朋友，予豈不知而作！」《左傳．定公十四年》：「夫差！而忘越王之殺而父乎？」_x000D_\n2.我。《戰國策．趙策一》：「豫讓拔劍三躍，呼天擊之曰：『而可以報知伯矣。』」《史記．卷八六．刺客列傳．聶政》：「前日所以不許仲子者，徒以親在，今不幸而母以天終，仲子所欲報仇者為誰？請得從事焉！」_x000D_\n[動]_x000D_\n1.至、到。如：「自南而北」、「自壯而老」。_x000D_\n2.能、可以。《戰國策．齊策六》：「齊多知而解此環不？」《淮南子．原道》：「行柔而剛，用弱而強。」_x000D_\n[介]_x000D_\n1.之、的。《論語．憲問》：「君子恥其言而過其行。」《淮南子．人間》：「虞之與虢，相恃而勢也。」_x000D_\n2.以。如：「從今而後」、「自此而下」。《易經．繫辭上》：「是故形而上者謂之道，形而下者謂之器。」《孟子．盡心下》：「由孔子而來，至於今百有餘歲。」_x000D_\n[副]_x000D_\n1.才、始。表時間。《公羊傳．宣公十五年》：「嘻！甚矣憊！雖然，吾今取此然後而歸爾。」_x000D_\n2.猶。《論語．陽貨》：「年四十而見惡焉，其終也已。」《孟子．告子下》：「舜其至孝矣，五十而慕。」_x000D_\n[連]_x000D_\n1.和、與。《論語．雍也》：「不有祝鮀之佞，而有宋朝之美，難乎免於今之世矣。」《左傳．昭公二十五年》：「哀樂而樂哀，皆喪心也。」_x000D_\n2.並且。《書經．皋陶謨》：「知人則哲，能官人，安民則惠，黎民懷之。能哲而惠，何憂乎驩兜？」《論語．學而》：「學而時習之，不亦說乎？」_x000D_\n3.則、就。《易經．繫辭下》：「君子見幾而作，不俟終日。」《左傳．襄公十八年》：「諸侯方睦於晉，臣請嘗之。若可，君而繼之。」_x000D_\n4.如、若。《論語．為政》：「人而無信，不知其可也。」_x000D_\n5.因而、所以。《左傳．成公八年》：「謂汶陽之田，敝邑之舊也，而用師於齊，使歸諸敝邑。」漢．劉向《說苑．卷一九．脩文》：「情動於中，而形於聲。」_x000D_\n6.然而、但是、卻。表轉折之意。《論語．學而》：「其為人也孝弟，而好犯上者鮮矣。」《孟子．離婁下》：「問其與飲食者，盡富貴也，而未嘗有顯者來。」_x000D_\n7.尚且。《莊子．天道》：「夫天地至神，而有尊卑先後之序，而況之道乎？」《淮南子．人間》：「夫一麑而不忍，又何況於人乎？」_x000D_\n[助]_x000D_\n1.用於句末，相當於「兮」、「罷了」。《詩經．齊風．著》：「俟我於著乎而，充耳以素乎而，尚之以瓊華乎而！」《論語．微子》：「已而已而！今之從政者殆而！」_x000D_\n2.用於句首，相當於「豈」、「難道」。《論語．顏淵》：「為仁由己，而由人乎哉？」《左傳．昭公十三年》：「諸侯事晉，未敢攜貳，況衛在君之宇下，而敢有異志？」_x000D_\n3.用於形容詞或副詞的語尾，無義。《左傳．文公十七年》：「鋌而走險，何能擇？」",
+            "entry_id": "10455",
+            "sheet": "1150929辭典匯出",
+            "row": 10468,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "有": {
+        "definition": "have, own, possess; exist",
+        "mandarin": "yǒu",
+        "official_dictionary": [
+          {
+            "title": "有",
+            "pinyin": "yǒu",
+            "definition": "[動]\n表事實、狀況的正面存在，與「無」相對。如：「有困難」、「有利有弊」、「有學問」、「有錢」、「擁有」、「面有飢色」。\n[形]\n1.豐足、富裕。如：「他是個非常富有的人。」《詩經．大雅．公劉》：「止基迺理，爰眾爰有。」\n2.多，表示時間久或年齡大。如：「本店開設有年。」、「母親已有了年紀。」\n3.故意。如：「有心犯錯應嚴懲，無心疏忽可原諒。」\n[綴]\n置於名詞前，作音節的襯字。如：「有夏」、「有清」。《韓非子．五蠹》：「當舜之時，有苗不服，禹將伐之。」\n[代]\n某，表示不確定。如：「有一天晚上」、「有人說你做人很講義氣。」\n[名]\n姓。如漢代有有祿。",
+            "entry_id": "10905",
+            "sheet": "1150929辭典匯出",
+            "row": 10919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "有",
+            "pinyin": "yòu",
+            "definition": "[副]\n表示重複、反覆、連續。通「又」。唐．裴守真〈請重耕織表〉：「奸偽由此而生，黎庶緣斯而苦，此有國之大患也。」\n[連]\n用於整數與餘數之間，表示數目的附加。如：「七十有七人」。《論語．為政》：「吾十有五而志於學，三十而立。」",
+            "entry_id": "10922",
+            "sheet": "1150929辭典匯出",
+            "row": 10936,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "度": {
+        "definition": "degree, system; manner; to consider",
+        "mandarin": "dù",
+        "official_dictionary": [
+          {
+            "title": "度",
+            "pinyin": "dù",
+            "definition": "[名]\n1.表示物質的相關性質所達到的狀況。如：「長度」、「硬度」、「溼度」、「密度」、「酸度」。\n2.法制、規範。如：「制度」、「法度」。漢．揚雄〈長楊賦〉：「亦所以奉太尊之烈，遵文武之度。」\n3.標準。如：「尺度」、「限度」。《國語．周語下》：「用物過度妨於財，正害財匱妨於樂。」唐．韓愈〈重雲李觀疾贈之〉詩：「天行失其度，陰氣來干陽。」\n4.人的器量、胸懷。如：「器度」。《史記．卷八．高祖本紀》：「常有大度，不事家人生產作業。」\n5.外表、儀態。如：「風度」、「態度」。《聊齋志異．卷一一．陳雲棲》：「生因竊往。扣其關，果有女道士三四人，謙喜承迎，儀度皆潔。」\n6.量詞：(1)計算依一定標準劃分的單位。如：「耗電三百度」、「今天氣溫高達攝氏三十六度。」(2)計算次數的單位。如：「再度光臨」。《北史．卷四〇．列傳．李彪》：「彪前後六度銜命。」\n7.數學上指：(1)計算圓弧及角的單位。圓周的三百六十分之一為弧的一度；一度的弧所對的中心角，為角度的一度。(2)物體的長、寬、高。如：「三度空間」。\n8.姓。如漢代有度尚。\n[動]\n1.過、經歷。如：「度日如年」、「光陰虛度」。\n2.由此岸到彼岸。同「渡」。《漢書．卷四八．賈誼傳》：「若夫經制不定，是猶度江河亡維楫。」\n3.通過、跨越。同「渡」。《史記．卷九四．田儋列傳》：「用蒯通計，度平原，襲破齊歷下軍。」唐．王之渙〈涼州詞〉：「羌笛何須怨楊柳，春光不度玉門關。」",
+            "entry_id": "02302",
+            "sheet": "1150929辭典匯出",
+            "row": 2309,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "度",
+            "pinyin": "duò",
+            "definition": "[動]\n1.考慮、推測。如：「審度」、「揣度」。《詩經．大雅．抑》：「神之格思，不可度思矧可射思。」\n2.測量。如：「量度」。漢．文帝〈議佐百姓詔〉：「夫度田非益寡，而計民未加益。」",
+            "entry_id": "02338",
+            "sheet": "1150929辭典匯出",
+            "row": 2345,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "蹦跳",
+      "decision": "reject",
+      "reason": "词义明确为跳跃，完整名称是动作的通用描述，品牌凝练感和辨识度不足。"
+    },
+    {
+      "name": "蹦豆",
+      "decision": "uncertain",
+      "reason": "“蹦”与“豆”字义可分别确认，但组合不是常见自然词语，语义关系不够明确，较像可爱化拼接，品牌自然度存疑。"
+    },
+    {
+      "name": "蹦极",
+      "decision": "reject",
+      "reason": "是通用运动项目名称，完整名称直接指向产品或服务类别，不具独立品牌辨识度。"
+    },
+    {
+      "name": "蹦现",
+      "decision": "reject",
+      "reason": "“蹦”与“现”难以形成自然、明确的语义关系，组合生硬。"
+    },
+    {
+      "name": "蹦出彩",
+      "decision": "reject",
+      "reason": "近似“蹦出彩”的动作表达，整体像口号或临时造句，不够凝练自然。"
+    },
+    {
+      "name": "舒远",
+      "decision": "keep",
+      "reason": "可自然理解为舒展、安适而悠远，语义清楚，简洁且有一定品牌辨识度；诗句中的“舒远”用法也与舒展、远望相关。"
+    },
+    {
+      "name": "舒和",
+      "decision": "keep",
+      "reason": "组合自然，可表达舒畅平和、和悦安适；语义清楚，简洁，不是完整判断句。"
+    },
+    {
+      "name": "舒信",
+      "decision": "uncertain",
+      "reason": "“舒”与“信”虽各有明确字义，但组合缺少自然的词义关系；书库命中为人名“舒信道”，不足以证明此处构词自然。"
+    },
+    {
+      "name": "舒源",
+      "decision": "uncertain",
+      "reason": "可勉强理解为舒展或安适之源，但两字关系不够自然，语义指向较弱。"
+    },
+    {
+      "name": "舒竹",
+      "decision": "uncertain",
+      "reason": "可理解为舒展的竹或与竹相关的意象，但两字组合关系不明，品牌语义自然度不足。"
+    },
+    {
+      "name": "舒川",
+      "decision": "uncertain",
+      "reason": "可形成舒展的河川这一意象，但关系不够明确；诗句命中是地名“舒川”，不能作为此名自然构词的依据。"
+    },
+    {
+      "name": "自舒",
+      "decision": "keep",
+      "reason": "可自然理解为自我舒展、自然舒畅，简短且有清楚的动作与状态意象；未见与暂留候选构成同意象近义替换的重复。"
+    },
+    {
+      "name": "舒而有度",
+      "decision": "reject",
+      "reason": "整体是描述状态的判断式表达，近似“从容舒适且有分寸”的价值宣言，句式感强，不够凝练；与已暂留的“卷舒有度”表达关系也过近。"
+    }
+  ]
+}

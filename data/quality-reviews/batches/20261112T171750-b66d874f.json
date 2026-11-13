@@ -1,0 +1,805 @@
+{
+  "review_id": "20261112T171750-b66d874f",
+  "model": "gpt-6.1-sol",
+  "shard_index": 1,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "浩川",
+      "浩景",
+      "浩德",
+      "浩艺",
+      "浩信",
+      "浩安",
+      "浩正",
+      "浩扬",
+      "凝视",
+      "远视",
+      "星河视",
+      "鼓镗"
+    ],
+    "related_kept_candidates": {
+      "星": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "枕星河",
+        "碳映星河",
+        "星河映埼",
+        "邂逅星河",
+        "广星河",
+        "广厦星河",
+        "星河照蕖",
+        "弓映星河",
+        "涉星河"
+      ],
+      "川": [
+        "一川烟雨",
+        "一川明月",
+        "一川风月",
+        "百川归一",
+        "黝川",
+        "黛川",
+        "沄川",
+        "汭川",
+        "钜川",
+        "峿川",
+        "郁川映月",
+        "垄川"
+      ],
+      "艺": [
+        "艺林",
+        "艺囿",
+        "焊艺",
+        "酵艺",
+        "镘艺",
+        "烤艺",
+        "俍艺",
+        "篾艺",
+        "演艺",
+        "模艺",
+        "码艺"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "鼓": [
+        "鼙鼓",
+        "鼓铴和鸣"
+      ],
+      "德": [
+        "耇德堂",
+        "淑德",
+        "德斋",
+        "畜德",
+        "德义",
+        "德赟",
+        "懋德",
+        "德馨",
+        "浴德",
+        "𬱖德"
+      ],
+      "正": [
+        "板正",
+        "揆正",
+        "匡正"
+      ],
+      "扬": [
+        "抑扬"
+      ],
+      "景": [
+        "淑景",
+        "叠石成景",
+        "景慕",
+        "怡景",
+        "愿景",
+        "景奕",
+        "景铄",
+        "𬱖景"
+      ],
+      "信": [
+        "榴花信",
+        "口信",
+        "瓶中信",
+        "义信",
+        "信牍",
+        "赫信",
+        "珂信",
+        "昭信",
+        "三枝春信",
+        "山海递信",
+        "瑾信"
+      ],
+      "安": [
+        "晙安",
+        "臻安",
+        "乃安",
+        "珀安",
+        "安枕",
+        "安婳",
+        "安憩",
+        "义安",
+        "茗安",
+        "赟安",
+        "久安",
+        "赫安"
+      ],
+      "河": [
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "枕星河",
+        "碳映星河",
+        "星河映埼",
+        "邂逅星河",
+        "广星河",
+        "广厦星河",
+        "星河照蕖",
+        "弓映星河",
+        "涉星河"
+      ],
+      "视": [
+        "酷视界"
+      ],
+      "浩": [
+        "浩然",
+        "浩清",
+        "浩瀚",
+        "浩博",
+        "浩润"
+      ]
+    },
+    "literature_phrase_examples": {
+      "浩川": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 94488,
+          "context": "登城望密雪，浩浩川野昏。"
+        }
+      ],
+      "浩景": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 76931,
+          "context": "心期与浩景，苍苍殊未收。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 261089,
+          "context": "远入虚明思白帝，寒生浩景想沧洲。"
+        }
+      ],
+      "浩德": [
+        {
+          "book": "元曲_开源整理本",
+          "line": 37056,
+          "context": "章浩德能吟翰】"
+        }
+      ],
+      "浩艺": [],
+      "浩信": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 685548,
+          "context": "邮置未传殷浩信，筠筒先寄乐天诗。"
+        }
+      ],
+      "浩安": [],
+      "浩正": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 818694,
+          "context": "南方浩浩正谈禅，谁问君家博饭田。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1075329,
+          "context": "屋角风号天欲雪，胸中浩浩正春生。"
+        }
+      ],
+      "浩扬": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 65918,
+          "context": "豳谷稍稍振庭柯，泾水浩浩扬湍波。"
+        }
+      ],
+      "凝视": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 46007,
+          "context": "窅冥仙会兮枕烟庭，竦魂形兮凝视听。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 194021,
+          "context": "当时乍见惊心目，凝视谛听殊未足。"
+        }
+      ],
+      "远视": [
+        {
+          "book": "古文观止",
+          "line": 1005,
+          "context": "一肌一容，尽态极妍，缦立远视，而望幸焉。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 37511,
+          "context": "远视慙刚鬣，深藏惜素牙。"
+        }
+      ],
+      "星河视": [],
+      "鼓镗": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 692684,
+          "context": "黠虏称兵急，王师击鼓镗。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1369635,
+          "context": "终席岌飞动，漏下楼鼓镗。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "浩川": [],
+      "浩景": [],
+      "浩德": [],
+      "浩艺": [],
+      "浩信": [],
+      "浩安": [],
+      "浩正": [],
+      "浩扬": [],
+      "凝视": [],
+      "远视": [],
+      "星河视": [],
+      "鼓镗": []
+    },
+    "direct_dictionary": {
+      "浩": {
+        "definition": "great, numerous, vast, abundant",
+        "mandarin": "hào",
+        "official_dictionary": [
+          {
+            "title": "浩",
+            "pinyin": "hào",
+            "definition": "[形]\n1.水勢盛大。明．張自烈《正字通．水部》：「浩，大水盛貌。」如：「浩瀚江河」、「水勢浩淼」。《書經．堯典》：「湯湯洪水方割，蕩蕩懷山襄陵，浩浩滔天。」\n2.大、廣大。如：「浩劫」、「浩氣長存」。唐．韋應物〈夕次盱眙縣〉詩：「浩浩風起波，冥冥日沉夕。」明．宋濂〈謝翱傳〉：「然其志汗漫超越，浩不可禦。」\n3.繁多、眾多。如：「費用浩繁」、「浩如煙海」。\n4.參見「浩浩」條。\n[名]\n姓。如漢代有浩賞。",
+            "entry_id": "04806",
+            "sheet": "1150929辭典匯出",
+            "row": 4812,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "浩劫",
+                "pinyin": "hào jié",
+                "definition": "1.極長的時間。佛經指大地經成、住、壞、空四階段為一大劫，歷時極長，故稱為「浩劫」。唐．曹唐〈小遊仙〉詩九八首之六：「玄洲草木不知黃，甲子初開浩劫長。」\n2.大災難。如：「赤禍橫流，是二十世紀人類的浩劫。」《鄰女語》第六回：「若是朝廷尚不知順時利導，改變舊章，立意圖新，將來激成水火一場浩劫，只怕比此次還大呢！」\n3.大臺階。唐．杜甫〈玉臺觀〉詩二首之二：「浩劫因王造，平臺訪古遊。」",
+                "entry_id": "048060018",
+                "sheet": "1150929辭典匯出",
+                "row": 80130
+              },
+              {
+                "title": "浩氣長存",
+                "pinyin": "hào qì cháng cún",
+                "definition": "為正義而獻身的大無畏精神，久留人間。如：「民族英雄文天祥忠勇愛國，寧死不屈，浩氣長存。」",
+                "entry_id": "048060020",
+                "sheet": "1150929辭典匯出",
+                "row": 80132
+              },
+              {
+                "title": "浩如煙海",
+                "pinyin": "hào rú yān hǎi",
+                "definition": "廣大繁多。形容書籍、文獻資料等非常豐富。《清史稿．卷三七四．戴敦元傳》：「書籍浩如煙海，人生豈能盡閱？」",
+                "entry_id": "048060026",
+                "sheet": "1150929辭典匯出",
+                "row": 80139
+              },
+              {
+                "title": "浩浩",
+                "pinyin": "hào hào",
+                "definition": "1.水流盛大的樣子。《楚辭．屈原．九章．懷沙》：「浩浩沅湘分流汩兮，脩路幽蔽道遠忽兮。」南朝宋．鮑照〈夢歸鄉〉詩：「白水漫浩浩，高山壯巍巍。」\n2.廣大的樣子。《禮記．中庸》：「夫焉有所倚，肫肫其仁，淵淵其淵，浩浩其天。」《文選．古詩十九首．涉江采芙蓉》：「還顧望舊鄉，長路漫浩浩。」\n3.風勢強勁的樣子。漢．蔡琰〈胡笳十八拍〉詩：「鞞鼓喧兮從夜達，胡風浩浩兮暗塞營。」元．曹伯啟〈九日省舅氏郭西獨行因書所見〉詩五首之三：「浩浩陰風釀宿霾，道邊佛剎記曾來。」\n4.聲音洪大或喧雜。宋．張世南《游宦紀聞》卷六：「仰望瀑布，作三級傾瀉於兩山之間，飛瓊濺雪，洶湧澎湃，浩浩然聲若奔雷。」",
+                "entry_id": "048060012",
+                "sheet": "1150929辭典匯出",
+                "row": 80125
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "景": {
+        "definition": "scenery, view; conditions",
+        "mandarin": "jǐng",
+        "official_dictionary": [
+          {
+            "title": "景",
+            "pinyin": "jǐng",
+            "definition": "[名]\n1.日光。晉．張載〈七哀〉詩二首之二：「朱光馳北陸，浮景忽西沉。」晉．陶淵明〈歸去來辭〉：「景翳翳以將入，撫孤松而盤桓。」\n2.時光。南朝宋．謝靈運〈登江中孤嶼〉詩：「懷雜道轉迥，尋異景不延。」\n3.可供玩賞的形色。如：「風景」、「山景」、「景物依舊，人事全非。」\n4.情況、境遇。如：「晚景淒涼」。宋．蘇軾〈西山戲題武昌王居士〉詩：「解襟顧景各箕踞，擊劍賡歌幾舉觥。」《紅樓夢》第四六回：「率性把方才鳳姐過去回來所有的形景言詞、始末原由，告訴與他。」\n5.戲劇、電影中因布景不同而畫分的段落。如：「第一幕第三景」。\n6.姓。如戰國時楚國有景差。\n[動]\n仰慕。《後漢書．卷三九．劉趙淳于江劉周趙列傳．劉般》：「今愷景仰前脩，有伯夷之節。」唐．李白〈與韓荊州書〉：「何令人之景慕一至於此耶！」\n[形]\n大。《詩經．小雅．小明》：「神之聽之，介爾景福。」《隋書．卷三．煬帝紀上》：「朕嗣膺景業，傍求雅訓，有一弘益，欽若令典。」",
+            "entry_id": "05941",
+            "sheet": "1150929辭典匯出",
+            "row": 5949,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "景",
+            "pinyin": "yǐng",
+            "definition": "[名]\n物體的形影、陰影。同「影」。《周禮．地官．大司徒》：「以土圭之法測土深，正日景以求地中。」",
+            "entry_id": "11207",
+            "sheet": "1150929辭典匯出",
+            "row": 11222,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "德": {
+        "definition": "ethics, morality, virtue",
+        "mandarin": "dé",
+        "official_dictionary": [
+          {
+            "title": "德",
+            "pinyin": "dé",
+            "definition": "[名]\n1.人類共同遵循的規範。《論語．述而》：「德之不脩，學之不講。」\n2.品行、作風。《論語．顏淵》：「君子之德風，小人之德草。草上之風必偃。」\n3.恩澤、恩惠。《論語．憲問》：「子曰：『何以報德？以直報怨，以德報德。』」《孟子．公孫丑上》：「且以文王之德，百年而後崩，猶未洽於天下。」\n4.心意、信念。如：「一心一德」、「離心離德」。\n5.德意志聯邦共和國的簡稱。\n6.姓。如漢代西域有德若國，後人以國為姓，簡姓德。\n[動]\n感激、感恩。《左傳．成公三年》：「王曰：『然則德我乎？』」《聊齋志異．卷一．王成》：「主人聞而德之，贈金五兩，慰之使歸。」\n[形]\n好的、善的。如：「德政」、「德譽」。《文選．袁宏．三國名臣序贊》：「恂恂德心，汪汪軌度。」",
+            "entry_id": "01918",
+            "sheet": "1150929辭典匯出",
+            "row": 1923,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "艺": {
+        "definition": "art; talent, ability; craft",
+        "mandarin": "yì",
+        "related_characters": [
+          {
+            "character": "藝",
+            "relation": "kTraditionalVariant",
+            "definition": "art; talent, ability; craft",
+            "mandarin": "yì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "信": {
+        "definition": "trust, believe; letter",
+        "mandarin": "xìn",
+        "official_dictionary": [
+          {
+            "title": "信",
+            "pinyin": "xìn",
+            "definition": "[名]\n1.誠實不欺。如：「講信修睦」。《論語．為政》：「人而無信，不知其可也。」\n2.書札、書簡。如：「書信」、「平信」、「掛號信」。\n3.消息、音訊。如：「音信」、「凶信」、「口信」。\n4.使者、送信件的人。南朝宋．劉義慶《世說新語．文學》：「司空鄭沖馳遣信就阮籍求文。」\n5.符契、憑證。如：「印信」。《後漢書．卷九〇．烏桓鮮卑傳》：「大人有所召呼，則刻木為信，雖無文字，而部眾不敢違犯。」\n6.姓。如宋代有信世昌。\n[動]\n1.聽從、不懷疑。如：「相信」、「深信不疑」、「不可置信」。\n2.敬仰、崇奉。如：「信奉」、「信教」。南朝梁．劉勰《文心雕龍．正緯》：「至於光武之世，篤信斯術。」\n3.知曉、知道。宋．晏殊〈漁家傲．畫鼓聲中昏又曉〉詞：「須信道，人間萬事何時了？」《聊齋志異．卷七．青蛾》：「我父母皆仙人，何可以貌信其年歲乎？」\n4.連宿兩晚。如：「信宿」。《左傳．襄公十八年》：「信于城下而還。」晉．杜預．注：「信，再宿也。」\n[副]\n1.確實、的確、果真。《孟子．公孫丑上》：「信能行此五者，則鄰國之民，仰之若父母矣。」唐．柳宗元〈遊石角過小嶺至長烏村〉詩：「為農信可樂，居寵真虛榮。」\n2.隨意、任憑。如：「信口開河」、「信手拈來」。唐．白居易〈琵琶行〉：「低眉信手續續彈，說盡心中無限事。」",
+            "entry_id": "07174",
+            "sheet": "1150929辭典匯出",
+            "row": 7183,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "信",
+            "pinyin": "shēn",
+            "definition": "[動]\n1.伸直、舒展。通「伸」。《易經．繫辭下》：「往者屈也，來者信也。」《漢書．卷六二．司馬遷傳》：「乃欲卬首信眉，論列是非。」\n2.陳述表白。通「申」。《穀梁傳．隱公元年》：「春秋貴義而不貴惠，信道而不信邪。」",
+            "entry_id": "08974",
+            "sheet": "1150929辭典匯出",
+            "row": 8989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "安": {
+        "definition": "peaceful, tranquil, quiet",
+        "mandarin": "ān",
+        "official_dictionary": [
+          {
+            "title": "安",
+            "pinyin": "ān",
+            "definition": "[名]\n1.平穩、安全、舒適的狀況或環境。如：「居安思危」、「轉危為安」、「苟且偷安」。《論語．學而》：「君子食無求飽，居無求安。」\n2.安非他命的簡稱。如：「吸安」、「安毒」。\n3.量詞。安培的簡稱。參見「安培」條。\n4.姓。如漢代有安成。\n[形]\n1.平靜、恬適。如：「安寧」、「坐立不安」。《漢書．卷六四下．嚴安傳》：「心既和平，其性恬安。」\n2.穩定的、靜止的。如：「生活安穩」。唐．楊烱〈渾天賦〉：「故知天常安而不動，地極深而不測。」\n[動]\n1.使穩定。如：「除暴安良」、「安民」。\n2.裝置、設置。如：「安電燈」、「安門窗」。\n3.加上。如：「安罪名」。\n4.存、懷、居。如：「你安的是什麼心？」\n5.習慣、熟悉。《呂氏春秋．先識覽．樂成》：「舟車之始見也，三世然後安之。」\n[副]\n豈、怎麼。用於文言文。如：「安能如此？」《左傳．宣公十二年》：「暴而不戢，安能保大？」\n[代]\n1.何處、那裡。用於文言文。如：「而今安在？」《史記．卷七．項羽本紀》：「項王曰：『沛公安在？』良曰：『聞大王有意督過之，脫身獨去，已至軍矣。』」\n2.如何。《禮記．檀弓上》：「泰山其頹，則吾將安仰？」\n[連]\n乃、於是。《荀子．仲尼》：「委然成文，以示之天下，而暴國安自化矣。」",
+            "entry_id": "10411",
+            "sheet": "1150929辭典匯出",
+            "row": 10424,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "居安思危",
+                "pinyin": "jū ān sī wéi",
+                "definition": "處於安樂之境，要想到可能出現的危險、困難。《左傳．襄公十一年》：「居安思危，思則有備，有備無患。」《明史．卷一九二．鄭本公傳》：「陛下居安思危，當遠群小，節燕遊，以防一朝之患。」也作「居安慮危」、「處安思危」。",
+                "entry_id": "059820074",
+                "sheet": "1150929辭典匯出",
+                "row": 95366
+              },
+              {
+                "title": "轉危為安",
+                "pinyin": "zhuǎn wéi wéi ān",
+                "definition": "將危急的情況轉化為安全。漢．劉向〈戰國策書錄〉：「出奇筴異智，轉危為安，運亡為存。」明．王世貞《鳴鳳記》第二三齣：「此二人夙抱經濟之才，素懷忠義之氣，若天不欲轉危為安，不使二人聯捷。」",
+                "entry_id": "080930159",
+                "sheet": "1150929辭典匯出",
+                "row": 117781
+              },
+              {
+                "title": "苟且偷安",
+                "pinyin": "gǒu qiě tōu ān",
+                "definition": "得過且過，只圖眼前安逸，不做長遠計畫。宋．汪應辰〈廷試策〉：「承晏安太平之後，苟且偷安，昧于遠圖，政令日弛，法度日隳。」《宦海》第二〇回：「做大員的這樣苟且偷安，做屬吏的又是那般逢迎得意。」",
+                "entry_id": "040250015",
+                "sheet": "1150929辭典匯出",
+                "row": 68721
+              },
+              {
+                "title": "安培",
+                "pinyin": "ān péi",
+                "definition": "1.人名。（Ampère，André-Marie，西元1775～1836）法國物理學家，生於里昂。十二歲已精研數學，當時視為天才。曾當選科學院院士。發現安培定律，並發明電流器。今電流強度的單位，稱為「安培」，即是紀念安培的功勞而命名的。\n2.量詞。計算電流強度的單位。為英語ampere的音譯。相距一公分的兩平行長直導線上，有同樣的電流在流動時，若各導線上每公分長度恰受零點二達因之斥力或引力，則該電流強度稱為「一安培」。",
+                "entry_id": "104110011",
+                "sheet": "1150929辭典匯出",
+                "row": 145621
+              },
+              {
+                "title": "安寧",
+                "pinyin": "ān níng",
+                "definition": "1.安定平靜。《漢書．卷八三．朱博傳》：「部刺史奉使典州，督察郡國吏民安寧。」《紅樓夢》第七九回：「自己身上分去責任，到底比這樣安寧些。」\n2.冬天。《爾雅．釋天》：「秋為收成，冬為安寧。」\n3.縣名。在雲南省昆明市西南，滇池西北。",
+                "entry_id": "104110128",
+                "sheet": "1150929辭典匯出",
+                "row": 145703
+              },
+              {
+                "title": "坐立不安",
+                "pinyin": "zuò lì bù ān",
+                "definition": "形容焦急、煩躁，心神不寧的樣子。《初刻拍案驚奇》卷二〇：「蕭狀元終日在此來往，吾等見了，坐立不安，可為吾等築一堵短壁兒，在堂子前遮蔽遮蔽。」《水滸傳》第四〇回：「自從哥哥吃官司，兄弟坐立不安。又無路可救。」也作「坐臥不安」。",
+                "entry_id": "096190042",
+                "sheet": "1150929辭典匯出",
+                "row": 137714
+              },
+              {
+                "title": "除暴安良",
+                "pinyin": "chú bào ān liáng",
+                "definition": "除去殘暴之徒，安撫善良百姓。《鏡花緣》第六〇回：「俺聞劍客行為莫不至公無私，倘心存偏袒，未有不遭惡報；至除暴安良，尤為切要。」",
+                "entry_id": "085320003",
+                "sheet": "1150929辭典匯出",
+                "row": 123445
+              },
+              {
+                "title": "安民",
+                "pinyin": "ān mín",
+                "definition": "1.安撫民眾。《文選．干寶．晉紀總論》：「保大定功，安民和眾。」《三國演義》第一二回：「盡取小沛軍馬入城，出榜安民；一面安排喪事。」\n2.人名。生卒年不詳。宋長安石工，熙寧間，蔡京書元祐黨人碑，頒定州縣刻於石上，安民被徵役參與其事，因乞免鐫本人姓名於碑末，時人以為義。",
+                "entry_id": "104110036",
+                "sheet": "1150929辭典匯出",
+                "row": 145638
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "正": {
+        "definition": "right, proper, correct",
+        "mandarin": "zhèng",
+        "official_dictionary": [
+          {
+            "title": "正",
+            "pinyin": "zhēng",
+            "definition": "參見「正月」條。",
+            "entry_id": "07908",
+            "sheet": "1150929辭典匯出",
+            "row": 7920,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "正月",
+                "pinyin": "zhēng yuè",
+                "definition": "1.農曆每年的第一個月。如農諺：「正月裡，夜兩好；二月裡，夜兩寶。」也稱為「夏正」。\n2.《詩經．小雅》的篇名。共一三章。根據〈詩序〉：「正月，大夫刺幽王也。」或亦指傷時之詩。首章二句為：「正月繁霜，我心憂傷。」",
+                "entry_id": "079080004",
+                "sheet": "1150929辭典匯出",
+                "row": 115625
+              }
+            ]
+          },
+          {
+            "title": "正",
+            "pinyin": "zhèng",
+            "definition": "[形]\n1.合於規範的、合於法則的。如：「正道」、「正路」。\n2.不偏斜。如：「正中」、「正午」。《論語．憲問》：「晉文公譎而不正，齊桓公正而不譎。」\n3.精純不雜的。如：「純正」、「正紅色」。《韓非子．難四》：「屈到嗜芰，文王嗜菖蒲菹，非正味也，而二賢尚之，所味不必美。」\n4.與「反」相對。如：「正面」、「正方」。\n5.與「副」相對。如：「正本」、「正刊」。\n6.與「偏」相對。如：「正門」、「正廳」。\n7.與「負」相對。如：「正數」、「正電」。\n[動]\n1.修改錯誤。如：「修正」、「訂正」、「糾正」。《論語．學而》：「就有道而正焉。」\n2.整理。《論語．堯曰》：「君子正其衣冠，尊其瞻視。」《隋書．卷五八．李文博傳》：「夫清其流者必潔其源，正其末者須端其本。」\n3.分析、明辨。《論語．子路》：「必也正名乎！」\n[副]\n1.恰巧、剛好。如：「正好」、「正是」、「正中下懷」。《北史．卷七〇．劉璠傳》：「行本怒其不能調護，每謂三人曰：『鄉等正解讀書耳。』」\n2.表示動作在進行的狀態。如：「外面正下著傾盆大雨。」《文選．曹植．七哀詩》：「明月照高樓，流光正徘徊。」\n[名]\n1.長官、主事者。如：「里正」、「村正」。《禮記．王制》：「成獄辭，史以獄成告於正，正聽之。」\n2.姓。如春秋時魯國有正常。",
+            "entry_id": "07930",
+            "sheet": "1150929辭典匯出",
+            "row": 7942,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "扬": {
+        "definition": "scatter, spread; praise",
+        "mandarin": "yáng",
+        "related_characters": [
+          {
+            "character": "揚",
+            "relation": "kTraditionalVariant",
+            "definition": "scatter, spread; praise",
+            "mandarin": "yáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凝": {
+        "definition": "coagulate; congeal; freeze",
+        "mandarin": "níng",
+        "official_dictionary": [
+          {
+            "title": "凝",
+            "pinyin": "níng",
+            "definition": "[動]\n1.液體結成固體或氣體變成液體。如：「凝結」。《易經．坤卦．象曰》：「履霜堅冰，陰始凝也。」唐．岑參〈走馬川行奉送出師西征〉詩：「幕中草檄硯水凝。」\n2.聚集、凝集。如：「凝聚」。唐．王勃〈滕王閣序〉：「潦水盡而寒潭清，煙光凝而暮山紫。」宋．歐陽修〈漁家傲．九月霜秋秋已盡〉詞：「雲欲凝，雁來應有吾鄉信。」\n3.成、形成。《書經．皋陶謨》：「撫于五辰，庶幾其凝。」漢．孔安國．傳：「凝，成也。」南朝梁．劉勰《文心雕龍．原道》：「龍鳳以藻繪呈瑞，虎豹以炳蔚凝姿。」\n4.鞏固。《荀子．議兵》：「兼并易能也，唯堅凝之難焉。」\n5.止、停。唐．孫處玄〈句〉詩：「日側南澗幽，風凝北林暮。」宋．盧祖皋〈望江南．疏雨過〉詞：「因看胡蝶著雙飛，凝扇立多時。」\n[副]\n1.注意力專注或集中。如：「凝思」、「凝望」。唐．白居易〈霓裳羽衣歌〉：「當時乍見驚心目，凝視諦聽殊未足。」\n2.徐緩。《文選．謝朓．鼓吹曲》：「凝笳翼高蓋，疊鼓送華輈。」唐．白居易〈長恨歌〉：「緩歌謾舞凝絲竹，盡日君王看不足。」\n[形]\n1.盛美、華麗。唐．韓愈〈幽懷〉詩：「凝妝耀洲渚，繁吹蕩人心。」\n2.肅重、莊嚴。《淮南子．兵略》：「湫漻如秋，典凝如冬。」《新唐書．卷一二四．宋璟傳》：「璟風度凝遠，人莫涯其量。」",
+            "entry_id": "03114",
+            "sheet": "1150929辭典匯出",
+            "row": 3121,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "视": {
+        "definition": "look at, inspect, observe, see",
+        "mandarin": "shì",
+        "related_characters": [
+          {
+            "character": "視",
+            "relation": "kTraditionalVariant",
+            "definition": "look at, inspect, observe, see",
+            "mandarin": "shì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "星": {
+        "definition": "a star, planet; any point of light; 25th lunar mansion, determinative star α Hydrae (Alphard)",
+        "mandarin": "xīng",
+        "official_dictionary": [
+          {
+            "title": "星",
+            "pinyin": "xīng",
+            "definition": "[名]\n1.宇宙中會發光或反射光的天體。如：「恆星」、「行星」、「哈雷彗星」、「月明星稀」。唐．杜甫〈旅夜書懷〉詩：「星垂平野闊，月湧大江流。」唐．李商隱〈常娥〉詩：「雲母屏風燭影深，長河漸落曉星沉。」\n2.比喻細碎或發亮的東西。如：「油星水點」、「眼冒金星」。唐．孟郊〈寒溪〉詩九首之四：「篙工磓玉星，一路隨迸螢。」\n3.比喻為人所崇拜、注目，或是某事的主要人物。如：「歌星」、「明星」、「影視紅星」、「救星」、「壽星」。\n4.鑲在秤桿上，用以標誌斤、兩、錢的小點。如：「秤星」。唐．賈島〈贈牛山人〉詩：「鑿石養蜂休買蜜，坐山秤藥不爭星。」\n5.姓。如春秋時有星子韋。\n[形]\n1.細微、細小。如：「零星」、「星火燎原」。唐．盧照鄰〈晚渡渭橋寄示京邑遊好〉詩：「長虹掩釣浦，落雁下星洲。」\n2.色白如星。南朝齊．謝朓〈詠風詩〉：「時拂孤鸞鏡，星鬢視參差。」\n[副]\n1.量多且四處散布。如：「星羅棋布」。《文選．班固．西都賦》：「列卒周匝，星羅雲布。」\n2.如流星般疾速。《三國志．卷五八．吳書．陸遜傳》：「舳艫千里，星奔電邁，俄然行至。」晉．潘岳〈世祖武帝皇帝誄〉：「羽檄星馳，鉦鼓日戒。」",
+            "entry_id": "07225",
+            "sheet": "1150929辭典匯出",
+            "row": 7234,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "official_dictionary": [
+          {
+            "title": "河",
+            "pinyin": "hé",
+            "definition": "[名]\n1.水道的通稱。如：「河流」、「運河」。唐．杜甫〈春望〉詩：「國破山河在，城春草木深。」\n2.黃河的簡稱。如：「河套」。\n3.成河川狀的群體。如：「星河」、「銀河」。\n4.姓。如南北朝時有河禎。",
+            "entry_id": "04729",
+            "sheet": "1150929辭典匯出",
+            "row": 4736,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "鼓": {
+        "definition": "drum; beat, top, strike; Kangxi radical 207",
+        "mandarin": "gǔ",
+        "official_dictionary": [
+          {
+            "title": "鼓",
+            "pinyin": "gǔ",
+            "definition": "[名]\n1.樂器名，打擊樂器。用皮革蒙在中空木桶上所製成的樂器之泛稱，常以手、木棒或鼓槌擊奏。其形狀大小不一，聲音因其大小、深淺各有不同音量與音色。\n2.二一四部首之一。\n[動]\n1.敲擊、拍擊、彈奏。如：「鼓掌」、「鼓琴」、「鼓瑟」。《詩經．小雅．白華》：「鼓鐘于宮，聲聞于外。」唐．孟郊〈上張徐州〉詩：「願鼓空桑弦，永使萬物和。」\n2.振動。如：「鼓動風潮」。《易經．繫辭上》：「鼓之以雷霆，潤之以風雨。」晉．潘尼〈後園頌〉：「翔鳥鼓翼，游魚載浮。」\n3.激勵、使振作。如：「鼓勵」、「鼓舞士氣」。",
+            "entry_id": "04176",
+            "sheet": "1150929辭典匯出",
+            "row": 4182,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "镗": {
+        "definition": "boring tool",
+        "mandarin": "tāng",
+        "related_characters": [
+          {
+            "character": "鏜",
+            "relation": "kTraditionalVariant",
+            "definition": "boring tool",
+            "mandarin": "tāng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "浩川",
+      "decision": "keep",
+      "reason": "“浩”表广大、水势盛，“川”指河流，组合可自然理解为广阔江川，凝练且有清晰自然意象；与已暂留的“黝川”“黛川”等并非近义替换。"
+    },
+    {
+      "name": "浩景",
+      "decision": "keep",
+      "reason": "可理解为浩大景象或广阔景致，语义通顺，具有开阔意象和品牌辨识度；与已暂留的“淑景”“怡景”等不是同一意象关系的近义变体。"
+    },
+    {
+      "name": "浩德",
+      "decision": "reject",
+      "reason": "“浩”表广大、“德”指品行德行，组合关系不清，读来像将宏大修饰语与抽象美德机械拼接，完整名称缺少自然凝练的品牌感。"
+    },
+    {
+      "name": "浩艺",
+      "decision": "reject",
+      "reason": "“浩”与“艺”组合语义关系不明，像将宽泛修饰语与通用艺术、技艺概念拼接，辨识度不足；不是因“艺”字缺少所给官方词条而否决。"
+    },
+    {
+      "name": "浩信",
+      "decision": "reject",
+      "reason": "“浩”与表示诚信或书信的“信”之间缺少自然明确的语义关系，整体像机械堆叠，品牌含义难以连贯理解。"
+    },
+    {
+      "name": "浩安",
+      "decision": "reject",
+      "reason": "“浩”与“安”搭配语义关系松散，整体更像宽泛褒义字的拼接，未形成清楚自然的名称意象。"
+    },
+    {
+      "name": "浩正",
+      "decision": "reject",
+      "reason": "“浩”与“正”直接组合关系生硬，容易读作宽泛的价值评价而非凝练品牌名，语义辨识度不足。"
+    },
+    {
+      "name": "浩扬",
+      "decision": "uncertain",
+      "reason": "可勉强理解为浩大铺展或声势高扬，但两字关系不够明确，整体自然度和品牌指向存疑；不以“扬”字所给字典简释缺少相关义项为否决依据。"
+    },
+    {
+      "name": "凝视",
+      "decision": "reject",
+      "reason": "“凝视”是完整的普通动作词，意为专注注视，作为名称直接等同于常见动作表达，品牌辨识度不足。"
+    },
+    {
+      "name": "远视",
+      "decision": "reject",
+      "reason": "“远视”是既有普通词语，可指向远处观看或视力状态，完整名称更像常用概念而非有辨识度的品牌名。"
+    },
+    {
+      "name": "星河视",
+      "decision": "reject",
+      "reason": "“星河”与“视”拼接后关系不自然，容易让人理解为生硬的产品或服务类别缩写；缺少连贯语义，也不是“星河”自然意象的凝练表达。"
+    },
+    {
+      "name": "鼓镗",
+      "decision": "uncertain",
+      "reason": "“镗”可指镗削工具，但与“鼓”连用既未形成清楚的常用词义，也难确认其作为品牌的自然表达；不借用“铛”等形近或同音字义解释。"
+    }
+  ]
+}

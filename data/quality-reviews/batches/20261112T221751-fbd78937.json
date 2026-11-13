@@ -1,0 +1,654 @@
+{
+  "review_id": "20261112T221751-fbd78937",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "安厦",
+      "厦门",
+      "厦光",
+      "厦门潮",
+      "厦门远行",
+      "厦门远望",
+      "厦门晴川",
+      "熊蜂"
+    ],
+    "related_kept_candidates": {
+      "光": [
+        "蓓光远行",
+        "昌光",
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光"
+      ],
+      "川": [
+        "晴川远嶂",
+        "蜜色晴川",
+        "互映晴川",
+        "鹒过晴川",
+        "晴川映霏",
+        "蜻过晴川",
+        "獭映晴川",
+        "晴川浮霭",
+        "鸥入晴川",
+        "鹳立晴川",
+        "冬日晴川",
+        "瀑映晴川"
+      ],
+      "望": [
+        "凉秋望远",
+        "奇峰望远",
+        "登峣望远",
+        "桉林远望",
+        "芋田远望",
+        "一望",
+        "硕望",
+        "芹田望月",
+        "望海斋",
+        "灵猊望月",
+        "望海埼",
+        "望埼"
+      ],
+      "行": [
+        "寸心远行",
+        "麇行远山",
+        "涂行远",
+        "资远行",
+        "蓓光远行",
+        "咏远行",
+        "琨行远",
+        "崧远行",
+        "茶伴远行",
+        "鸼行远",
+        "猄行远",
+        "六龙行远"
+      ],
+      "潮": [
+        "涨潮",
+        "潮汛",
+        "鲲听潮",
+        "暮潮",
+        "螭听潮",
+        "潮酷",
+        "广陵潮生",
+        "潮涡",
+        "鲱潮",
+        "踏潮",
+        "旺潮",
+        "听潮港"
+      ],
+      "远": [
+        "凉秋望远",
+        "寸心远行",
+        "麇行远山",
+        "奇峰望远",
+        "涂行远",
+        "晴川远嶂",
+        "资远行",
+        "蓓光远行",
+        "咏远行",
+        "琨行远",
+        "崧远行",
+        "茶伴远行"
+      ],
+      "晴": [
+        "晴川远嶂",
+        "蜜色晴川",
+        "互映晴川",
+        "鹒过晴川",
+        "晴川映霏",
+        "蜻过晴川",
+        "獭映晴川",
+        "晴川浮霭",
+        "鸥入晴川",
+        "鹳立晴川",
+        "冬日晴川",
+        "瀑映晴川"
+      ],
+      "安": [
+        "晙安",
+        "臻安",
+        "乃安",
+        "珀安",
+        "安枕",
+        "安婳",
+        "安憩",
+        "义安",
+        "茗安",
+        "赟安",
+        "久安",
+        "赫安"
+      ],
+      "厦": [
+        "广厦星河"
+      ],
+      "门": [
+        "门风",
+        "万象之门",
+        "云门",
+        "门扉",
+        "门前柳",
+        "门外春",
+        "门外山",
+        "门外云",
+        "月过门楼",
+        "花影过门",
+        "溪声到门",
+        "门道儿"
+      ]
+    },
+    "literature_phrase_examples": {
+      "安厦": [],
+      "厦门": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 404023,
+          "context": "（以上均录自厦门图书馆古籍部藏《颍川陈氏开漳族谱》，原注出《龙月公集》。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 404025,
+          "context": "陈元光诗皆承厦门大学中文系吴在庆同志录示。"
+        }
+      ],
+      "厦光": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 388163,
+          "context": "广厦光奇辈，恢材卓不群。"
+        }
+      ],
+      "厦门潮": [],
+      "厦门远行": [],
+      "厦门远望": [],
+      "厦门晴川": [],
+      "熊蜂": []
+    },
+    "dictionary_phrase_entries": {
+      "安厦": [],
+      "厦门": [],
+      "厦光": [],
+      "厦门潮": [],
+      "厦门远行": [],
+      "厦门远望": [],
+      "厦门晴川": [],
+      "熊蜂": [
+        {
+          "title": "熊蜂",
+          "pinyin": "xióng fēng",
+          "definition": "動物名。膜翅目蜜蜂科。分築巢熊蜂和寄生熊蜂兩屬。體粗壯多毛，為黑色，長約一點五至二點五公分，帶有黃或橙色寬帶。常在地下築巢，或找廢棄鳥巢、鼠洞棲身。築巢熊蜂為群居，有蜂后、雄蜂、工蜂之分，寄生熊蜂則非群居，常將卵產在築巢熊蜂處，由築巢工蜂照顧。",
+          "entry_id": "074610012",
+          "sheet": "1150929辭典匯出",
+          "row": 111423,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ]
+    },
+    "direct_dictionary": {
+      "安": {
+        "definition": "peaceful, tranquil, quiet",
+        "mandarin": "ān",
+        "official_dictionary": [
+          {
+            "title": "安",
+            "pinyin": "ān",
+            "definition": "[名]\n1.平穩、安全、舒適的狀況或環境。如：「居安思危」、「轉危為安」、「苟且偷安」。《論語．學而》：「君子食無求飽，居無求安。」\n2.安非他命的簡稱。如：「吸安」、「安毒」。\n3.量詞。安培的簡稱。參見「安培」條。\n4.姓。如漢代有安成。\n[形]\n1.平靜、恬適。如：「安寧」、「坐立不安」。《漢書．卷六四下．嚴安傳》：「心既和平，其性恬安。」\n2.穩定的、靜止的。如：「生活安穩」。唐．楊烱〈渾天賦〉：「故知天常安而不動，地極深而不測。」\n[動]\n1.使穩定。如：「除暴安良」、「安民」。\n2.裝置、設置。如：「安電燈」、「安門窗」。\n3.加上。如：「安罪名」。\n4.存、懷、居。如：「你安的是什麼心？」\n5.習慣、熟悉。《呂氏春秋．先識覽．樂成》：「舟車之始見也，三世然後安之。」\n[副]\n豈、怎麼。用於文言文。如：「安能如此？」《左傳．宣公十二年》：「暴而不戢，安能保大？」\n[代]\n1.何處、那裡。用於文言文。如：「而今安在？」《史記．卷七．項羽本紀》：「項王曰：『沛公安在？』良曰：『聞大王有意督過之，脫身獨去，已至軍矣。』」\n2.如何。《禮記．檀弓上》：「泰山其頹，則吾將安仰？」\n[連]\n乃、於是。《荀子．仲尼》：「委然成文，以示之天下，而暴國安自化矣。」",
+            "entry_id": "10411",
+            "sheet": "1150929辭典匯出",
+            "row": 10424,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "居安思危",
+                "pinyin": "jū ān sī wéi",
+                "definition": "處於安樂之境，要想到可能出現的危險、困難。《左傳．襄公十一年》：「居安思危，思則有備，有備無患。」《明史．卷一九二．鄭本公傳》：「陛下居安思危，當遠群小，節燕遊，以防一朝之患。」也作「居安慮危」、「處安思危」。",
+                "entry_id": "059820074",
+                "sheet": "1150929辭典匯出",
+                "row": 95366
+              },
+              {
+                "title": "轉危為安",
+                "pinyin": "zhuǎn wéi wéi ān",
+                "definition": "將危急的情況轉化為安全。漢．劉向〈戰國策書錄〉：「出奇筴異智，轉危為安，運亡為存。」明．王世貞《鳴鳳記》第二三齣：「此二人夙抱經濟之才，素懷忠義之氣，若天不欲轉危為安，不使二人聯捷。」",
+                "entry_id": "080930159",
+                "sheet": "1150929辭典匯出",
+                "row": 117781
+              },
+              {
+                "title": "苟且偷安",
+                "pinyin": "gǒu qiě tōu ān",
+                "definition": "得過且過，只圖眼前安逸，不做長遠計畫。宋．汪應辰〈廷試策〉：「承晏安太平之後，苟且偷安，昧于遠圖，政令日弛，法度日隳。」《宦海》第二〇回：「做大員的這樣苟且偷安，做屬吏的又是那般逢迎得意。」",
+                "entry_id": "040250015",
+                "sheet": "1150929辭典匯出",
+                "row": 68721
+              },
+              {
+                "title": "安培",
+                "pinyin": "ān péi",
+                "definition": "1.人名。（Ampère，André-Marie，西元1775～1836）法國物理學家，生於里昂。十二歲已精研數學，當時視為天才。曾當選科學院院士。發現安培定律，並發明電流器。今電流強度的單位，稱為「安培」，即是紀念安培的功勞而命名的。\n2.量詞。計算電流強度的單位。為英語ampere的音譯。相距一公分的兩平行長直導線上，有同樣的電流在流動時，若各導線上每公分長度恰受零點二達因之斥力或引力，則該電流強度稱為「一安培」。",
+                "entry_id": "104110011",
+                "sheet": "1150929辭典匯出",
+                "row": 145621
+              },
+              {
+                "title": "安寧",
+                "pinyin": "ān níng",
+                "definition": "1.安定平靜。《漢書．卷八三．朱博傳》：「部刺史奉使典州，督察郡國吏民安寧。」《紅樓夢》第七九回：「自己身上分去責任，到底比這樣安寧些。」\n2.冬天。《爾雅．釋天》：「秋為收成，冬為安寧。」\n3.縣名。在雲南省昆明市西南，滇池西北。",
+                "entry_id": "104110128",
+                "sheet": "1150929辭典匯出",
+                "row": 145703
+              },
+              {
+                "title": "坐立不安",
+                "pinyin": "zuò lì bù ān",
+                "definition": "形容焦急、煩躁，心神不寧的樣子。《初刻拍案驚奇》卷二〇：「蕭狀元終日在此來往，吾等見了，坐立不安，可為吾等築一堵短壁兒，在堂子前遮蔽遮蔽。」《水滸傳》第四〇回：「自從哥哥吃官司，兄弟坐立不安。又無路可救。」也作「坐臥不安」。",
+                "entry_id": "096190042",
+                "sheet": "1150929辭典匯出",
+                "row": 137714
+              },
+              {
+                "title": "除暴安良",
+                "pinyin": "chú bào ān liáng",
+                "definition": "除去殘暴之徒，安撫善良百姓。《鏡花緣》第六〇回：「俺聞劍客行為莫不至公無私，倘心存偏袒，未有不遭惡報；至除暴安良，尤為切要。」",
+                "entry_id": "085320003",
+                "sheet": "1150929辭典匯出",
+                "row": 123445
+              },
+              {
+                "title": "安民",
+                "pinyin": "ān mín",
+                "definition": "1.安撫民眾。《文選．干寶．晉紀總論》：「保大定功，安民和眾。」《三國演義》第一二回：「盡取小沛軍馬入城，出榜安民；一面安排喪事。」\n2.人名。生卒年不詳。宋長安石工，熙寧間，蔡京書元祐黨人碑，頒定州縣刻於石上，安民被徵役參與其事，因乞免鐫本人姓名於碑末，時人以為義。",
+                "entry_id": "104110036",
+                "sheet": "1150929辭典匯出",
+                "row": 145638
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "厦": {
+        "definition": "big building, mansion",
+        "mandarin": "shà",
+        "related_characters": [
+          {
+            "character": "厦",
+            "relation": "kTraditionalVariant",
+            "definition": "big building, mansion",
+            "mandarin": "shà"
+          },
+          {
+            "character": "廈",
+            "relation": "kTraditionalVariant",
+            "definition": "big building, mansion",
+            "mandarin": "shà"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "厦",
+            "pinyin": null,
+            "definition": "「廈」的異體字。",
+            "entry_id": "06914-1",
+            "sheet": "1150929辭典匯出",
+            "row": 104409,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "门": {
+        "definition": "gate, door, entrance, opening",
+        "mandarin": "mén",
+        "related_characters": [
+          {
+            "character": "門",
+            "relation": "kTraditionalVariant",
+            "definition": "gate, door, entrance, opening; Kangxi radical 169",
+            "mandarin": "mén"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "official_dictionary": [
+          {
+            "title": "光",
+            "pinyin": "guāng",
+            "definition": "[名]\n1.能由視覺器官接收，使人察覺物體存在的電磁輻射。如：「日光」、「燈光」。\n2.榮耀、名譽。如：「為國爭光」。《詩經．小雅．南山有臺》：「樂只君子，邦家之光。」\n3.景色。如：「風光」、「觀光」、「春光明媚」。\n4.時間。如：「光陰」、「時光」。唐．李白〈前有一樽酒行〉二首之一：「青軒桃李能幾何？流光欺人忽蹉跎。」\n5.恩惠、好處。常用在客套話。如：「沾光」、「叨光」。《紅樓夢》第二二回：「明兒就這樣行，也叫他們借咱們的光兒。」\n6.姓。如晉代有光逸。\n[動]\n1.彰顯、發揚。《文選．諸葛亮．出師表》：「誠宜開張聖聽，以光先帝遺德。」\n2.裸露。如：「光著腳丫子」、「光著身子」。\n[形]\n1.明亮。如：「光天化日」。《文選．揚雄．羽獵賦》：「若光若滅者，布乎青林之下。」\n2.平滑。如：「光滑」。唐．韓愈〈進學解〉：「爬羅剔抉，刮垢磨光。」\n[副]\n1.完、盡。如：「吃光」、「用光」、「花光」。\n2.僅、只。如：「光說不做」。《紅樓夢》第一〇一回：「也不光為我，就是太太聽見也喜歡。」\n3.對人說的客套話。如：「歡迎光臨」。",
+            "entry_id": "04354",
+            "sheet": "1150929辭典匯出",
+            "row": 4360,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "潮": {
+        "definition": "tide; moist, wet, damp; flow",
+        "mandarin": "cháo",
+        "official_dictionary": [
+          {
+            "title": "潮",
+            "pinyin": "cháo",
+            "definition": "[名]\n1.海水受日月引力的影響而定時漲落的現象。如：「潮汐」、「潮起潮落」。\n2.像潮水般洶湧起伏的形勢。如：「思潮」、「學潮」。\n[形]\n1.微溼。《紅樓夢》第三五回：「大清早起，在這個潮地方站了半日，也該回去歇息歇息了。」\n2.技藝不高或物質的成色低劣。如：「他的手藝潮。」《紅樓夢》第一〇五回：「潮銀五千二百兩。赤金五十兩。」",
+            "entry_id": "08304",
+            "sheet": "1150929辭典匯出",
+            "row": 8318,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "official_dictionary": [
+          {
+            "title": "行",
+            "pinyin": "háng",
+            "definition": "[名]\n1.行列。直列為行，橫排為列。《左傳．成公二年》：「屬當戎行，無所逃隱。」唐．杜甫〈贈衛八處士〉詩：「昔別君未婚，兒女忽成行。」\n2.兄弟姐妹長幼的次序。如：「排行老三。」\n3.量詞。計算成排東西的單位。如：「一行樹」、「一目十行」。唐．杜甫〈絕句〉四首之三：「兩個黃鸝鳴翠柳，一行白鷺上青天。」\n4.營業交易的機構。如：「銀行」、「洋行」、「分行」、「商行」、「行庫」。\n5.職業。如：「各行各業」、「行行出狀元」、「三句話不離本行」。\n6.表處所，用於人稱之後。宋．周邦彥〈風流子．新綠小池塘〉詞：「最苦夢魂，今宵不到伊行。」《水滸傳》第一四回：「你這等賊心賊肝，我行須使不得！」",
+            "entry_id": "04903",
+            "sheet": "1150929辭典匯出",
+            "row": 4909,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "hàng",
+            "definition": "參見「行行」、「樹行子」等條。",
+            "entry_id": "04913",
+            "sheet": "1150929辭典匯出",
+            "row": 4919,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "行行",
+                "pinyin": "háng háng",
+                "definition": "1.各個行業。如：「三百六十行，行行出狀元。」\n2.每一行。如：「隊伍行進時，動作必須劃一，行行都要對齊。」",
+                "entry_id": "0490300193",
+                "sheet": "1150929辭典匯出",
+                "row": 81202
+              },
+              {
+                "title": "行行",
+                "pinyin": "hàng hàng",
+                "definition": "剛強的樣子。《論語．先進》：「閔子侍側誾誾如也，子路行行如也。」",
+                "entry_id": "049130001",
+                "sheet": "1150929辭典匯出",
+                "row": 81289
+              },
+              {
+                "title": "行行",
+                "pinyin": "xíng xíng",
+                "definition": "1.慢步行走。通常形容走走停停，徘徊不進的樣子。《文選．古詩十九首．行行重行行》：「行行重行行，與君生別離。」\n2.施行、辦理。如：「行行好事」。",
+                "entry_id": "072400177",
+                "sheet": "1150929辭典匯出",
+                "row": 109350
+              },
+              {
+                "title": "樹行子",
+                "pinyin": "shù hàng zi",
+                "definition": "栽植整齊的樹林。",
+                "entry_id": "091020033",
+                "sheet": "1150929辭典匯出",
+                "row": 131842
+              }
+            ]
+          },
+          {
+            "title": "行",
+            "pinyin": "xíng",
+            "definition": "[動]_x000D_\n1.走、走路。如：「直行」、「寸步難行」、「錦衣夜行」。《論語．述而》：「三人行，必有我師焉？」唐．王維〈終南別業〉詩：「行到水窮處，坐看雲起時。」_x000D_\n2.往。《詩經．秦風．無衣》：「脩我甲兵，與子偕行。」唐．杜甫〈奉濟驛重送嚴公四韻〉：「幾時杯重把，昨夜月同行。」_x000D_\n3.移動、流動。如：「運行」。《易經．乾卦》：「《象》曰：『天行健，君子以自強不息。』」唐．杜甫〈夢李白〉詩二首之二：「浮雲終日行，遊子久不至。」_x000D_\n4.流通。如：「流行」、「風行一時」、「通行全國」、「發行報刊」。《左傳．襄公二十五年》：「言之無文，行而不遠。」_x000D_\n5.做、從事。如：「行醫」、「行善」。《左傳．隱公元年》：「多行不義必自斃。」_x000D_\n6.實施、實行。《易經．繫辭上》：「推而行之謂之通。」唐．孔穎達．正義：「因推此以可變而施行之，謂之通也。」《老子》第四一章：「上士聞道，勤而行之。」_x000D_\n7.同意、允許。多用於徵詢意見。如：「今天中午我想吃麵，行不行？」《小五義》第二一回：「蔣爺說：『咱們到底說下個時候。』柳爺說：『限你三晝夜的工夫，行不行？』」_x000D_\n8.經歷、經過。《管子．問》：「城粟軍糧，其可以行幾何年也？」唐．房玄齡．注：「行，由經也。」_x000D_\n9.出嫁。《詩經．邶風．泉水》：「女子有行，遠父母兄弟。」_x000D_\n[名]_x000D_\n1.道路。《詩經．小雅．小弁》：「行有死人，尚或墐之。」_x000D_\n2.路程。《老子》第六四章：「九層之臺，起於累土；千里之行，始於足下。」_x000D_\n3.行為。《荀子．不苟》：「庸言必信之，庸行必慎之。」《禮記．樂記》：「禮以道其志，樂以和其聲，政以一其行，刑以防其姦。」_x000D_\n4.行書的簡稱。如：「行草」、「行楷」。_x000D_\n5.一種樂府和古詩的體裁。如：〈短歌行〉、〈琵琶行〉、〈飲馬長城窟行〉。_x000D_\n6.量詞。計算酌酒奉客的單位。漢．揚雄《法言．修身》：「賓主百拜，而酒三行。」宋．司馬光〈訓儉示康〉：「客至未嘗不置酒，或三行五行，多不過七行。」_x000D_\n7.姓。如漢代有行宏。_x000D_\n8.二一四部首之一。_x000D_\n[形]_x000D_\n1.能幹、幹練。如：「你真行。」「他在這方面行得很。」_x000D_\n2.可以、恰當。如：「他這篇文章寫得還行。」「做事只要盡心盡力就行了。」《朱子語類．卷三三．論語一五．雍也篇四》：「如讀書，要理會得透徹；做事，亦要做得行。」_x000D_\n[副]_x000D_\n不久、將要。如：「行將就木」。唐．元稹〈遣悲懷〉詩三首之二：「衣裳已施行看盡，針線猶存未忍開。」_x000D_\n[連]_x000D_\n且、又。三國魏．曹丕〈與吳質書〉：「既痛逝者，行自念也。」",
+            "entry_id": "07240",
+            "sheet": "1150929辭典匯出",
+            "row": 7249,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "行",
+            "pinyin": "xìng",
+            "definition": "[名]\n行為舉止。如：「品行」、「操行」、「獸行」、「德行」。《論語．公冶長》：「聽其言而觀其行。」",
+            "entry_id": "07249",
+            "sheet": "1150929辭典匯出",
+            "row": 7258,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "official_dictionary": [
+          {
+            "title": "望",
+            "pinyin": "wàng",
+            "definition": "[動]\n1.向遠處或高處看。如：「登高望遠」、「一望無際」。唐．李白〈靜夜思〉詩：「舉頭望明月，低頭思故鄉。」宋．汪元量〈潮州歌〉：「北望燕雲不盡頭，大江東去水悠悠。」\n2.希冀、期盼。如：「盼望」、「期望」、「渴望」。《孟子．梁惠王上》：「王如知此，則無望民之多於鄰國也。」\n3.拜訪、慰問。如：「拜望」、「探望」。\n4.怨恨、責備。《史記．卷八九．張耳陳餘傳》：「不意君之望臣深也！豈以臣為重去將哉？」《文選．司馬遷．報任少卿書》：「若望僕不相師，而用流俗人之言，僕非敢如此。」\n5.將近、接近。唐．韓愈〈祭竇司業文〉：「逾七望八，年孰非翁。」《兒女英雄傳》第一回：「你那我雖然不至於老邁不堪，也是望五的人了。」\n[名]\n1.志願、心願。如：「願望」、「絕望」。\n2.名譽、名聲。如：「名望」、「聲望」、「德高望重」。《三國演義》第八三回：「陸遜年幼望輕，恐諸公不服。」\n3.農曆每月十五日，地球上所看見的滿月月相，後指農曆的每月十五日。《文選．枚乘．七發》：「將以八月之望，與諸侯遠方交游兄弟，並往觀濤乎廣陵之曲江。」宋．蘇軾〈後赤壁賦〉：「是歲十月之望，步自雪堂，將歸于臨皋。」\n[介]\n向、朝。如：「望後退」、「望前看」、「望我點點頭」。",
+            "entry_id": "11541",
+            "sheet": "1150929辭典匯出",
+            "row": 11555,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晴": {
+        "definition": "clear weather, fine weather",
+        "mandarin": "qíng",
+        "official_dictionary": [
+          {
+            "title": "晴",
+            "pinyin": "qíng",
+            "definition": "[動]\n雨雪停止。《文選．潘岳．閑居賦》：「微雨新晴，六合清朗。」元．張可久〈人月圓．梅花渾似真真面〉曲：「雪晴天氣，松腰玉瘦，泉眼冰寒。」\n[名]\n清朗無雲的天氣。如：「秋晴」、「陰晴」。唐．劉禹錫〈竹枝詞〉二首之一：「東邊日出西邊雨，道是無晴卻有晴。」\n[形]\n晴朗的。如：「晴天霹靂」、「晴空萬里」。唐．李白〈秋登宣城謝朓北樓〉詩：「江城如畫裡，山曉望晴空。」唐．賈島〈送人適越〉詩：「晴湖勝鏡碧，寒柳似金黃。」",
+            "entry_id": "06592",
+            "sheet": "1150929辭典匯出",
+            "row": 6601,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "川": {
+        "definition": "stream, river; flow; boil",
+        "mandarin": "chuān",
+        "official_dictionary": [
+          {
+            "title": "川",
+            "pinyin": "chuān",
+            "definition": "[名]\n1.河流。如：「河川」。《論語．子罕》：「子在川上曰：『逝者如斯夫，不舍晝夜。』」\n2.大陸地區四川省的簡稱。\n[動]\n一種烹飪方法。將食物置於開水中，水一開即刻撈起。如：「川肉片」。",
+            "entry_id": "08616",
+            "sheet": "1150929辭典匯出",
+            "row": 8630,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "熊": {
+        "definition": "a bear; brilliant; bright; surname",
+        "mandarin": "xióng",
+        "official_dictionary": [
+          {
+            "title": "熊",
+            "pinyin": "xióng",
+            "definition": "[名]\n1.動物名。哺乳綱食肉目。頭大，四肢粗短，力氣大。用腳掌走路，能攀登樹木。全身覆濃毛，有冬眠習慣，而以肉食為主，多產於寒帶。\n2.姓。如清代有熊成基。",
+            "entry_id": "07461",
+            "sheet": "1150929辭典匯出",
+            "row": 7471,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蜂": {
+        "definition": "bee, wasp, hornet",
+        "mandarin": "fēng",
+        "official_dictionary": [
+          {
+            "title": "蜂",
+            "pinyin": "fēng",
+            "definition": "[名]\n昆蟲綱膜翅目蜂類的泛稱。共含六科，約一萬二千多種。體長約一至三公分，會飛，多有毒刺，能蜇人，常群居一起。較常見的有蜜蜂、黃蜂等。",
+            "entry_id": "01733",
+            "sheet": "1150929辭典匯出",
+            "row": 1737,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "安厦",
+      "decision": "keep",
+      "reason": "“安”有安稳、安定之义，“厦”指大屋，组合可自然理解为安稳居所或安定的大厦，凝练且语义明确。"
+    },
+    {
+      "name": "厦门",
+      "decision": "uncertain",
+      "reason": "按所给字义可直解为“大屋之门”，但“厦门”也是固定地名专名；在行业和地域背景未知时，名称容易被理解为地名，专名关系不明。"
+    },
+    {
+      "name": "厦光",
+      "decision": "uncertain",
+      "reason": "“厦”指大屋，“光”可指光亮，但“厦光”的组合关系不够明确，语义自然度存疑；文学用例中的字形处于不同词语边界，不能据此确认其为稳定组合。"
+    },
+    {
+      "name": "厦门潮",
+      "decision": "reject",
+      "reason": "“厦门”作为常见地名专名与“潮”直接拼接，整体更像地名加现象词，缺乏自然的语义关系，且容易被读作地域或潮流相关表述。"
+    },
+    {
+      "name": "厦门远行",
+      "decision": "reject",
+      "reason": "以地名“厦门”接“远行”，整体像地点加动作的句式或行程描述，不具备凝练的品牌名结构。"
+    },
+    {
+      "name": "厦门远望",
+      "decision": "reject",
+      "reason": "以地名“厦门”接“远望”，整体像地点加动作的描述，语法关系不清，品牌辨识度不足。"
+    },
+    {
+      "name": "厦门晴川",
+      "decision": "reject",
+      "reason": "“厦门”与“晴川”直接并置，前者易被理解为地名，后者为景象意象，二者关系缺乏依据，组合显得生硬。"
+    },
+    {
+      "name": "熊蜂",
+      "decision": "keep",
+      "reason": "完整词语指一种蜂类，词义明确且不是通用产品或服务类别；动物意象鲜明，作为品牌名简洁易识别。"
+    }
+  ]
+}

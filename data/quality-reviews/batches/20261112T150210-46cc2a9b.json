@@ -1,0 +1,969 @@
+{
+  "review_id": "20261112T150210-46cc2a9b",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "珐光",
+      "珐光同行",
+      "珐光流转",
+      "奇迹",
+      "奇数",
+      "见奇峰",
+      "奇峰揽月",
+      "奇知",
+      "奇文共赏",
+      "不奇而奇",
+      "奇正",
+      "书牍",
+      "见效",
+      "效同",
+      "山水效",
+      "音效",
+      "效古",
+      "效贤",
+      "豳启",
+      "豳新",
+      "豳林",
+      "豳原",
+      "豳山河",
+      "豳歌"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月",
+        "月下伞",
+        "月笼纱",
+        "云衔月",
+        "盅中月",
+        "月照桹影"
+      ],
+      "水": [
+        "水天一色",
+        "一衣带水",
+        "水螅",
+        "洣水",
+        "水芙蓉",
+        "清水芙蓉",
+        "芙蓉照水",
+        "芭花照水",
+        "山水清斋",
+        "秋水凉",
+        "水螭",
+        "枕水"
+      ],
+      "山": [
+        "一见青山",
+        "山冈",
+        "山芋",
+        "山柰集",
+        "山海貘",
+        "山野鳟",
+        "山间邨",
+        "弇山",
+        "山鸟哢",
+        "山埼",
+        "山馆",
+        "山枣林"
+      ],
+      "见": [
+        "一见青山",
+        "见山斋",
+        "崞山见月",
+        "凉云见月",
+        "见崧",
+        "铘见山海",
+        "鹂见山",
+        "云开见硔",
+        "榕庭见月",
+        "榕光初见",
+        "柘见山",
+        "涧里见晴"
+      ],
+      "同": [
+        "一同",
+        "二曜同辉"
+      ],
+      "林": [
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林",
+        "林间䴕鸣"
+      ],
+      "启": [
+        "启示",
+        "茗启"
+      ],
+      "行": [
+        "厉行",
+        "迳行",
+        "知行馆",
+        "疾行",
+        "疾行者",
+        "蟒行",
+        "寸心远行",
+        "羲远行",
+        "行义",
+        "麇行远山",
+        "鲜行",
+        "肯行"
+      ],
+      "光": [
+        "瓷光",
+        "斓光",
+        "云罅光",
+        "鎏光",
+        "旴光",
+        "弢光",
+        "衔光",
+        "敛光",
+        "蛰光",
+        "一剪春光",
+        "焊光",
+        "万顷晴光"
+      ],
+      "不": [
+        "不烦",
+        "不朽",
+        "不羁",
+        "不忮",
+        "不已"
+      ],
+      "豳": [
+        "豳风"
+      ],
+      "峰": [
+        "鹫峰",
+        "崄峰",
+        "峣峰",
+        "雾缠峰",
+        "云绕崟峰",
+        "崞峰",
+        "崧峰",
+        "崒峰",
+        "螭越千峰",
+        "千丈峰",
+        "蔓越千峰",
+        "玉女峰"
+      ],
+      "文": [
+        "籀文",
+        "纂文社",
+        "文囿",
+        "弆文堂",
+        "文钤",
+        "诠文",
+        "文椠"
+      ],
+      "音": [
+        "籁音",
+        "铴音",
+        "软音",
+        "镛音",
+        "篪音",
+        "竹篪清音"
+      ],
+      "知": [
+        "知行馆",
+        "新知斋",
+        "乃知春",
+        "枫知秋",
+        "枫林知岁",
+        "知婳",
+        "鹂知时",
+        "碳知春",
+        "知义",
+        "知非",
+        "知己",
+        "珏知春"
+      ],
+      "新": [
+        "仓颉新章",
+        "岁华新酿",
+        "新帜",
+        "新芭",
+        "新知斋",
+        "楮林新雨",
+        "又新",
+        "暮春新绿",
+        "竞新",
+        "鹂衔新绿",
+        "新荚",
+        "蒹岸新晴"
+      ],
+      "正": [
+        "板正"
+      ],
+      "歌": [
+        "桹歌",
+        "哞歌",
+        "芭歌",
+        "棹歌",
+        "鹂歌",
+        "镛歌",
+        "涡歌",
+        "柘枝歌"
+      ],
+      "迹": [
+        "兽迹"
+      ],
+      "古": [
+        "古峒",
+        "摹古",
+        "古椠"
+      ],
+      "奇": [
+        "奇峤"
+      ],
+      "书": [
+        "云间书斋",
+        "溪月书斋",
+        "书钤",
+        "枕书",
+        "枕书观世",
+        "女书",
+        "涧畔书"
+      ],
+      "河": [
+        "瞰山河",
+        "棹星河",
+        "一箩星河",
+        "凉夜星河",
+        "暮野星河",
+        "星河入暮",
+        "铘揽星河",
+        "河垠",
+        "枕星河",
+        "碳映星河",
+        "星河映蒹",
+        "星河映埼"
+      ],
+      "转": [
+        "圜转",
+        "轮转"
+      ],
+      "原": [
+        "崧原",
+        "葭原",
+        "暮原",
+        "燎原",
+        "原貌",
+        "雱原",
+        "柘原",
+        "柞原"
+      ],
+      "揽": [
+        "铘揽星河"
+      ],
+      "贤": [
+        "慕贤"
+      ],
+      "流": [
+        "绀色流光",
+        "奔流"
+      ],
+      "牍": [
+        "椠牍"
+      ]
+    },
+    "literature_phrase_examples": {
+      "珐光": [],
+      "珐光同行": [],
+      "珐光流转": [],
+      "奇迹": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 71029,
+          "context": "观奇迹无倪，好道心不歇。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 333747,
+          "context": "元凯标奇迹，安仁擅美踪。"
+        }
+      ],
+      "奇数": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 78264,
+          "context": "我顾滥荣班，君乃叹奇数。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 881031,
+          "context": "蚕食人间我厚颜，命成奇数故偷闲。"
+        }
+      ],
+      "见奇峰": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 91758,
+          "context": "火云方见奇峰簇。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 233328,
+          "context": "偶来凭槛见奇峰，便有江湖秋思起。"
+        }
+      ],
+      "奇峰揽月": [],
+      "奇知": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 164096,
+          "context": "扣奇知浩淼，采异访穹崇。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 235597,
+          "context": "气韵最奇知鹿马，丹青一定见楼台。"
+        }
+      ],
+      "奇文共赏": [],
+      "不奇而奇": [],
+      "奇正": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 419424,
+          "context": "（经曰：「用兵者，非信义不立，非阴阳不顺，非奇正不列，非诡谲不战，谋藏于心，事见于迹，心与迹同者败，心与迹异者胜。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 285065,
+          "context": "奇正要两存，众寡不可轻。"
+        }
+      ],
+      "书牍": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 199157,
+          "context": "其余书牍背，粟密缕机织。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 235783,
+          "context": "溺灰竟欲焚安国，书牍谁将念绛侯。"
+        }
+      ],
+      "见效": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 99925,
+          "context": "霜馀日暖，东君见效，梅梢春醉。"
+        },
+        {
+          "book": "红楼梦",
+          "line": 147,
+          "context": "\"黛玉道：“我自来是如此，从会吃饮食时便吃药，到今日未断，请了多少名医修方配药，皆不见效．那一年我三岁时，听得说来了一个癞头和尚，说要化我去出家，我父母固是不从．他又说：既舍不得他，只怕他的病一生也不能好的了．若要好时"
+        }
+      ],
+      "效同": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 9828,
+          "context": "恭承采蘩祀，敢效同居贤。"
+        },
+        {
+          "book": "元曲_开源整理本",
+          "line": 70716,
+          "context": "【十二月・无福效同俦并侣，有分受枕剩衾余。"
+        }
+      ],
+      "山水效": [],
+      "音效": [
+        {
+          "book": "说文解字",
+          "line": 613,
+          "context": "属皆从氐(丁礼/切)(卧也从氐垔/声于进切/触也从氐失/声徒结切/阙臣铉等案今篇韵音/㬶又音效注云误也)文四"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 24347,
+          "context": "(子齐朝以风流冠/冕一时敩音效)甲寅以尚书右仆射陆缮为左仆射帝欲以孔奂代缮诏已出太子沮之而止更以晋陵太守王克为右仆射(更工衡翻/守音狩)顷之总与太子为长夜之饮养"
+        }
+      ],
+      "效古": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 52112,
+          "context": "【效古二首 一】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 52122,
+          "context": "【效古二首 二】"
+        }
+      ],
+      "效贤": [],
+      "豳启": [],
+      "豳新": [],
+      "豳林": [],
+      "豳原": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1727626,
+          "context": "落日竹枝歌，犹是豳原颂。"
+        },
+        {
+          "book": "资治通鉴_胡三省注",
+          "line": 22017,
+          "context": "二十州诸军事雍州刺史(魏泰和十/一年分雍)(州置华州领华山澄城白水郡二十州雍华东华岐南岐/豳原河渭泾夏东夏秦南秦梁南梁东梁巴益东益也)"
+        }
+      ],
+      "豳山河": [],
+      "豳歌": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 4069,
+          "context": "姬蜡开仪，豳歌入奏。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 39242,
+          "context": "豳歌七月王风始，凿冰藏用昭物轨，四时不忒千万祀。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "珐光": [],
+      "珐光同行": [],
+      "珐光流转": [],
+      "奇迹": [],
+      "奇数": [],
+      "见奇峰": [],
+      "奇峰揽月": [],
+      "奇知": [],
+      "奇文共赏": [],
+      "不奇而奇": [],
+      "奇正": [],
+      "书牍": [],
+      "见效": [],
+      "效同": [],
+      "山水效": [],
+      "音效": [
+        {
+          "title": "音效",
+          "pinyin": "yīn xiào",
+          "definition": "在廣播或影視節目中，配合節目內容呈現的音樂效果。可以現成的唱片或錄音帶播放，或由現場製作各種音響效果，以代替某種真實或象徵的聲音，烘托整體氣氛。也稱為「音響效果」。",
+          "entry_id": "110650043",
+          "sheet": "1150929辭典匯出",
+          "row": 154081,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "效古": [],
+      "效贤": [],
+      "豳启": [],
+      "豳新": [],
+      "豳林": [],
+      "豳原": [],
+      "豳山河": [],
+      "豳歌": []
+    },
+    "direct_dictionary": {
+      "珐": {
+        "definition": "enamel, cloisonné",
+        "mandarin": "fà",
+        "related_characters": [
+          {
+            "character": "珐",
+            "relation": "kTraditionalVariant",
+            "definition": "enamel, cloisonné",
+            "mandarin": "fà"
+          },
+          {
+            "character": "琺",
+            "relation": "kTraditionalVariant",
+            "definition": "enamel, cloisonné",
+            "mandarin": "fà"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "光": {
+        "definition": "light, brilliant, shine; only",
+        "mandarin": "guāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "同": {
+        "definition": "same, similar; together with",
+        "mandarin": "tóng",
+        "related_characters": [
+          {
+            "character": "同",
+            "relation": "kTraditionalVariant",
+            "definition": "same, similar; together with",
+            "mandarin": "tóng"
+          },
+          {
+            "character": "衕",
+            "relation": "kTraditionalVariant",
+            "definition": "alley, lane",
+            "mandarin": "tòng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "行": {
+        "definition": "go; walk; move, travel; circulate; Kangxi radical 144",
+        "mandarin": "xíng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "流": {
+        "definition": "flow, circulate, drift; class",
+        "mandarin": "liú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "转": {
+        "definition": "shift, move, turn",
+        "mandarin": "zhuǎn",
+        "related_characters": [
+          {
+            "character": "轉",
+            "relation": "kTraditionalVariant",
+            "definition": "shift, move, turn",
+            "mandarin": "zhuǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "奇": {
+        "definition": "strange, unusual, uncanny, occult",
+        "mandarin": "qí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "迹": {
+        "definition": "traces, impressions, footprints",
+        "mandarin": "jì",
+        "related_characters": [
+          {
+            "character": "跡",
+            "relation": "kTraditionalVariant",
+            "definition": "search, track, trace",
+            "mandarin": "jī"
+          },
+          {
+            "character": "迹",
+            "relation": "kTraditionalVariant",
+            "definition": "traces, impressions, footprints",
+            "mandarin": "jì"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "数": {
+        "definition": "number; several, count; fate",
+        "mandarin": "shù",
+        "related_characters": [
+          {
+            "character": "数",
+            "relation": "kTraditionalVariant",
+            "definition": "number; several, count; fate",
+            "mandarin": "shù"
+          },
+          {
+            "character": "數",
+            "relation": "kTraditionalVariant",
+            "definition": "number; several; count; fate",
+            "mandarin": "shù"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "见": {
+        "definition": "see, observe, behold; perceive",
+        "mandarin": "jiàn",
+        "related_characters": [
+          {
+            "character": "見",
+            "relation": "kTraditionalVariant",
+            "definition": "see, observe, behold; perceive; Kangxi radical 147",
+            "mandarin": "jiàn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "峰": {
+        "definition": "peak, summit; hump of camel",
+        "mandarin": "fēng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "揽": {
+        "definition": "grasp, take hold of; monopolize",
+        "mandarin": "lǎn",
+        "related_characters": [
+          {
+            "character": "攬",
+            "relation": "kTraditionalVariant",
+            "definition": "grasp, take hold of; monopolize",
+            "mandarin": "lǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "知": {
+        "definition": "know, perceive, comprehend",
+        "mandarin": "zhī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "文": {
+        "definition": "literature, culture, writing",
+        "mandarin": "wén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "共": {
+        "definition": "together with, all, total; to share",
+        "mandarin": "gòng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "赏": {
+        "definition": "reward, grant, bestow; appreciate",
+        "mandarin": "shǎng",
+        "related_characters": [
+          {
+            "character": "賞",
+            "relation": "kTraditionalVariant",
+            "definition": "reward, grant, bestow; appreciate",
+            "mandarin": "shǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "不": {
+        "definition": "no, not; un-; negative prefix",
+        "mandarin": "bù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "而": {
+        "definition": "and; and then; and yet; but; Kangxi radical 126",
+        "mandarin": "ér",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "正": {
+        "definition": "right, proper, correct",
+        "mandarin": "zhèng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "书": {
+        "definition": "book, letter, document; writings",
+        "mandarin": "shū",
+        "related_characters": [
+          {
+            "character": "書",
+            "relation": "kTraditionalVariant",
+            "definition": "book, letter, document; writings",
+            "mandarin": "shū"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "牍": {
+        "definition": "writing tablet; documents, books",
+        "mandarin": "dú",
+        "related_characters": [
+          {
+            "character": "牘",
+            "relation": "kTraditionalVariant",
+            "definition": "writing tablet; documents, books",
+            "mandarin": "dú"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "效": {
+        "definition": "result, effect; effectiveness",
+        "mandarin": "xiào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "山": {
+        "definition": "mountain, hill, peak",
+        "mandarin": "shān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "水": {
+        "definition": "water, liquid, lotion, juice",
+        "mandarin": "shuǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "音": {
+        "definition": "sound, tone, pitch, pronunciation; Kangxi radical 180",
+        "mandarin": "yīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "古": {
+        "definition": "old, classic, ancient",
+        "mandarin": "gǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "贤": {
+        "definition": "virtuous, worthy, good; able",
+        "mandarin": "xián",
+        "related_characters": [
+          {
+            "character": "賢",
+            "relation": "kTraditionalVariant",
+            "definition": "virtuous, worthy, good; able",
+            "mandarin": "xián"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "豳": {
+        "definition": "a Zhou-dynasty state",
+        "mandarin": "bīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "启": {
+        "definition": "open; begin, commence; explain",
+        "mandarin": "qǐ",
+        "related_characters": [
+          {
+            "character": "啓",
+            "relation": "kTraditionalVariant",
+            "definition": "open; begin, commence; explain",
+            "mandarin": "qǐ"
+          },
+          {
+            "character": "啟",
+            "relation": "kTraditionalVariant",
+            "definition": "open; begin",
+            "mandarin": "qǐ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "新": {
+        "definition": "new, recent, fresh, modern",
+        "mandarin": "xīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "原": {
+        "definition": "source, origin, beginning",
+        "mandarin": "yuán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "河": {
+        "definition": "river; stream; the Yellow River",
+        "mandarin": "hé",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "歌": {
+        "definition": "song, lyrics; sing, chant; praise",
+        "mandarin": "gē",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "珐光",
+      "decision": "uncertain",
+      "reason": "“珐”指珐琅、景泰蓝，与“光”组合可联想到珐琅光泽，但语义关系较依赖联想，整体自然度和品牌辨识度存疑。"
+    },
+    {
+      "name": "珐光同行",
+      "decision": "reject",
+      "reason": "“珐光”后接“同行”构成宣传式句子，像倡议或口号，不够凝练为品牌名。"
+    },
+    {
+      "name": "珐光流转",
+      "decision": "uncertain",
+      "reason": "可理解为珐琅光泽流动变幻，意象尚通，但表达较像修饰性短语，品牌组合的自然度存疑。"
+    },
+    {
+      "name": "奇迹",
+      "decision": "reject",
+      "reason": "是常见词语，且属于生成要求已排除的熟悉成语类名称，缺乏足够的品牌凝练感与辨识度。"
+    },
+    {
+      "name": "奇数",
+      "decision": "reject",
+      "reason": "完整名称直接指数学概念“奇数”，属于通用类别词，不适合作为独立品牌名。"
+    },
+    {
+      "name": "见奇峰",
+      "decision": "uncertain",
+      "reason": "可理解为看见奇特山峰，但整体像省略主语的叙述片段，语义关系和名称自然度存疑。"
+    },
+    {
+      "name": "奇峰揽月",
+      "decision": "uncertain",
+      "reason": "“奇峰”与“揽月”组成山峰揽月的夸张景象，虽可作诗性意象，但表达略显拼接，品牌自然度存疑。"
+    },
+    {
+      "name": "奇知",
+      "decision": "uncertain",
+      "reason": "“奇”与“知”各自可解，但组合缺少自然、明确的词义关系，像抽象字词并置。"
+    },
+    {
+      "name": "奇文共赏",
+      "decision": "reject",
+      "reason": "完整组合是熟悉的文言表达及号召句式，不符合要求排除的成语或口号型名称。"
+    },
+    {
+      "name": "不奇而奇",
+      "decision": "reject",
+      "reason": "是完整判断句式，表达自相转折，口号感明显，不具备凝练品牌名形态。"
+    },
+    {
+      "name": "奇正",
+      "decision": "uncertain",
+      "reason": "有兵法中“奇正”并用的真实词义，但脱离语境后关联偏专业且含义不够直观，品牌适配度存疑。"
+    },
+    {
+      "name": "书牍",
+      "decision": "uncertain",
+      "reason": "是指书信、文书的真实古典词语，语义清楚，但组合整体偏文献类别称谓，品牌辨识度有限。"
+    },
+    {
+      "name": "见效",
+      "decision": "reject",
+      "reason": "完整名称直接表示产生效果、奏效，是通用功能性表达，不具备品牌名的独立凝练感。"
+    },
+    {
+      "name": "效同",
+      "decision": "reject",
+      "reason": "两字组合缺乏自然词义关系；按“效果相同”理解也语法不完整，像机械拼字。"
+    },
+    {
+      "name": "山水效",
+      "decision": "reject",
+      "reason": "“山水”与“效”无法形成自然、明确的完整语义关系，组合生硬。"
+    },
+    {
+      "name": "音效",
+      "decision": "reject",
+      "reason": "教育部词条明确指广播或影视中的音响效果，是完整的通用功能类别词。"
+    },
+    {
+      "name": "效古",
+      "decision": "uncertain",
+      "reason": "可按古典用法理解为效法古人或古制，也有“效古”诗题用例，但作为现代品牌名的语义指向不够清楚。"
+    },
+    {
+      "name": "效贤",
+      "decision": "uncertain",
+      "reason": "可理解为效法贤者，构词可通，但整体更像省略宾语背景的训诫性表达，品牌自然度存疑。"
+    },
+    {
+      "name": "豳启",
+      "decision": "uncertain",
+      "reason": "“豳”是周代国名，和“启”组合后专名关系缺乏依据，无法确认完整名称的自然含义。"
+    },
+    {
+      "name": "豳新",
+      "decision": "uncertain",
+      "reason": "“豳”指周代国名，“新”表新近，二者关系不明，组合像生硬并置。"
+    },
+    {
+      "name": "豳林",
+      "decision": "uncertain",
+      "reason": "可勉强理解为豳地之林，但名称没有已知语境支持这一专名关系，整体含义存疑。"
+    },
+    {
+      "name": "豳原",
+      "decision": "uncertain",
+      "reason": "虽有“豳原”连续字形用例，但语境不足以确立其作为自然通用词的含义；作为名称仍依赖未给出的地域或专名背景。"
+    },
+    {
+      "name": "豳山河",
+      "decision": "uncertain",
+      "reason": "“豳”与“山河”之间的修饰关系不明，无法确认是自然词组还是专名拼接。"
+    },
+    {
+      "name": "豳歌",
+      "decision": "uncertain",
+      "reason": "可联想到《诗经》豳风及相关诗歌，但单独作为“豳地之歌”仍依赖典故语境，品牌语义不够自足。"
+    }
+  ]
+}

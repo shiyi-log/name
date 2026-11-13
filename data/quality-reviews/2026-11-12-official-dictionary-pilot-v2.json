@@ -1,0 +1,815 @@
+{
+  "created_at": "2026-11-12T14:43:52+0800",
+  "model": "gpt-6.1-sol",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "倓然",
+      "棽棽",
+      "哱息",
+      "嚆矢",
+      "玉屑",
+      "廨宇",
+      "褰裳",
+      "貔貅",
+      "螟蛉",
+      "不朽",
+      "慧黠",
+      "蘧然",
+      "丙夜",
+      "丙辰",
+      "千斤",
+      "一味",
+      "丈量",
+      "梣木"
+    ],
+    "literature_phrase_examples": {
+      "倓然": [
+        {
+          "book": "荀子集解",
+          "line": 33,
+          "context": "倓然见管仲之能足以托国也，是天下之大知也。"
+        }
+      ],
+      "棽棽": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 106005,
+          "context": "山凿落兮眇嵚岑，云溶溶兮木棽棽。"
+        }
+      ],
+      "哱息": [],
+      "嚆矢": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 441349,
+          "context": "穷山为吏如漫郎，安能为人作嚆矢。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 443015,
+          "context": "竹箭天与美，岂愿作嚆矢。"
+        }
+      ],
+      "玉屑": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 130087,
+          "context": "花片，玉屑。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 171147,
+          "context": "大妇然竹根，中妇舂玉屑。"
+        }
+      ],
+      "廨宇": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 63184,
+          "context": "廨宇邻蛟室，人烟接岛夷。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 63574,
+          "context": "廨宇宜新霁，田家贺有秋。"
+        }
+      ],
+      "褰裳": [
+        {
+          "book": "诗经",
+          "line": 448,
+          "context": "【郑风 · 褰裳 · 国风】"
+        },
+        {
+          "book": "诗经",
+          "line": 449,
+          "context": "子惠思我，褰裳涉溱。"
+        }
+      ],
+      "貔貅": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 137879,
+          "context": "闲步欲舒山野性，貔貅不许独行人。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 143636,
+          "context": "西塞无尘多玉筵，貔貅鸳鹭俨相连。"
+        }
+      ],
+      "螟蛉": [
+        {
+          "book": "诗经",
+          "line": 1091,
+          "context": "螟蛉有子，蜾蠃负之。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 145774,
+          "context": "渐阶群振鹭，入学诲螟蛉。"
+        }
+      ],
+      "不朽": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 5338,
+          "context": "惟孝虽遥，灵规不朽。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 5717,
+          "context": "雄名不朽，奕叶而光。"
+        }
+      ],
+      "慧黠": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 33915,
+          "context": "烦嚣谨畏伤淳厚，慧黠周防近巧谝。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 97656,
+          "context": "昨来稍长应慧黠，想能学母粉黛施。"
+        }
+      ],
+      "蘧然": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 498990,
+          "context": "寄形一榻日蘧然，倚杖支颐髻指天。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 633518,
+          "context": "蘧然返初枕，人境已两冥。"
+        }
+      ],
+      "丙夜": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 294024,
+          "context": "愁鬓丁年白，寒灯丙夜青。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 140085,
+          "context": "北风满地尘沙暗，宣室方劳丙夜思。"
+        }
+      ],
+      "丙辰": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 299853,
+          "context": "【干宁三年丙辰在奉天重围作】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 307745,
+          "context": "【丙辰年鄜州遇寒食城外醉吟五首 一】"
+        }
+      ],
+      "千斤": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 36512,
+          "context": "百壶渌酒千斤肉，大道连延障锦轴。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 54698,
+          "context": "家藏铁券特承优，黄金千斤不称求。"
+        }
+      ],
+      "一味": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 98239,
+          "context": "勅厨唯一味，求饱或三鳣。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 209761,
+          "context": "甘露洒空惟一味，旃檀移植自成薰。"
+        }
+      ],
+      "丈量": [
+        {
+          "book": "红楼梦",
+          "line": 927,
+          "context": "说：“我父亲打发我来回叔叔：老爷们已经议定了，从东边一带，借著东府里花园起，转至北边，一共丈量准了，三里半大，可以盖造省亲别院了．已经传人画图样去了，明日就得．叔叔才回家，未免劳乏，不用过我们那边去，有话明日一早再请过去面议"
+        },
+        {
+          "book": "淮南子",
+          "line": 171,
+          "context": "石秤丈量，径而寡失；"
+        }
+      ],
+      "梣木": [
+        {
+          "book": "淮南子",
+          "line": 99,
+          "context": "夫梣木色青翳，而蠃瘉蜗睆，此皆治目之药也。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "倓然": [],
+      "棽棽": [
+        {
+          "title": "棽棽",
+          "pinyin": "shēn shēn",
+          "definition": "繁華茂盛的樣子。唐．元結〈引極詩．思元極〉：「山鑿落兮眇嶔岑，雲溶溶兮木棽棽。」",
+          "entry_id": "089810002",
+          "sheet": "1150929辭典匯出",
+          "row": 129535,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "哱息": [
+        {
+          "title": "哱息",
+          "pinyin": "pò xí",
+          "definition": "擬聲詞。形容打噴嚏的聲音。《永樂大典戲文三種．小孫屠．第二〇出》：「哱息！自家今日眼跳，有些個不好。」",
+          "entry_id": "006260002",
+          "sheet": "1150929辭典匯出",
+          "row": 22590,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "嚆矢": [
+        {
+          "title": "嚆矢",
+          "pinyin": "hāo shǐ",
+          "definition": "響箭，有聲的箭在發射時，先聞其聲，後見箭至。比喻事物的開始。《莊子．在宥》：「吾未知聖知之不為桁楊接槢也，仁義之不為桎梏鑿枘也，焉知曾史之不為桀跖嚆矢也！」也稱為「骲箭」、「鳴鏑」、「響箭」。",
+          "entry_id": "047870001",
+          "sheet": "1150929辭典匯出",
+          "row": 79683,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "玉屑": [
+        {
+          "title": "玉屑",
+          "pinyin": "yù xiè",
+          "definition": "1.玉的碎屑，一指長生不死的仙藥。《三國志．卷二一．魏書．衛覬傳》：「昔漢武信求神仙之道，謂當得雲表之露以餐玉屑，故立仙掌以承高露。」\n2.比喻美好的文詞。清．梁章鉅《歸田瑣記．卷六．疊韻詩》：「話舊尚能霏玉屑，延齡端不藉金丹。」",
+          "entry_id": "116450211",
+          "sheet": "1150929辭典匯出",
+          "row": 161666,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "廨宇": [
+        {
+          "title": "廨宇",
+          "pinyin": "xiè yǔ",
+          "definition": "古代屬於官署的房屋。《水滸傳》第九回：「我聽得大相國寺菜園廨宇裡新來了個僧人，喚做魯智深。」",
+          "entry_id": "069670001",
+          "sheet": "1150929辭典匯出",
+          "row": 104803,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "褰裳": [
+        {
+          "title": "褰裳",
+          "pinyin": "qiān cháng",
+          "definition": "1.提起衣裳。《詩經．鄭風．褰裳》：「子惠思我，褰裳涉溱。」漢．無名氏〈穆穆清風至〉詩：「朝登津梁山，褰裳望所思。」\n2.《詩經．鄭風》的篇名。共二章。根據〈詩序〉：「褰裳，思見正也。」或亦指女子斥男子情好漸疏之詩。首章二句為：「子惠思我，褰裳涉溱。」",
+          "entry_id": "064550002",
+          "sheet": "1150929辭典匯出",
+          "row": 99413,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "貔貅": [
+        {
+          "title": "貔貅",
+          "pinyin": "pí xiū",
+          "definition": "1.動物名。哺乳綱食肉目豹屬。一種猛獸。\n2.比喻勇猛的將士。宋．徐君寶妻〈滿庭芳．漢上繁華〉詞：「一旦刀兵齊舉，旌旗擁，百萬貔貅。」明．于謙〈入塞〉詩：「將軍歸來氣如虎，十萬貔貅爭鼓舞。」",
+          "entry_id": "008280002",
+          "sheet": "1150929辭典匯出",
+          "row": 24487,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "螟蛉": [
+        {
+          "title": "螟蛉",
+          "pinyin": "míng líng",
+          "definition": "1.動物名。一種害蟲。節肢動物門昆蟲綱。其類別甚多。也稱為「青蟲」。\n2.蜾蠃常捕捉螟蛉來飼養其子，古人誤以為蜾蠃養螟蛉為己子，後因稱養子為「螟蛉」。《詩經．小雅．小宛》：「螟蛉有子，蜾蠃負之。」《三國演義》第三六回：「兄長既有子，何必用螟蛉。」",
+          "entry_id": "014850002",
+          "sheet": "1150929辭典匯出",
+          "row": 32272,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "不朽": [
+        {
+          "title": "不朽",
+          "pinyin": "bù xiǔ",
+          "definition": "永不磨滅。《文選．曹丕．典論論文》：「蓋文章經國之大業，不朽之盛事。」《儒林外史》第四〇回：「這是小弟半生事跡，專求老先生大筆，或作一篇文，或作幾首詩，以垂不朽。」",
+          "entry_id": "005650892",
+          "sheet": "1150929辭典匯出",
+          "row": 20959,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "慧黠": [
+        {
+          "title": "慧黠",
+          "pinyin": "huì xiá",
+          "definition": "聰慧靈敏。《北史．卷一四．后妃傳下．齊馮淑妃傳》：「慧黠能彈琵琶，工歌舞。」《初刻拍案驚奇》卷二八：「馮相喜小童如此慧黠，笑道：『使得，使得。』」也作「惠黠」、「黠慧」。",
+          "entry_id": "051220013",
+          "sheet": "1150929辭典匯出",
+          "row": 84204,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "蘧然": [
+        {
+          "title": "蘧然",
+          "pinyin": "qú rán",
+          "definition": "驚喜的樣子。",
+          "entry_id": "066360004",
+          "sheet": "1150929辭典匯出",
+          "row": 101756,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "丙夜": [
+        {
+          "title": "丙夜",
+          "pinyin": "bǐng yè",
+          "definition": "半夜子時。即午夜十一時、十二時。《新唐書．卷一九七．循吏傳．序》：「太宗嘗曰：『朕思天下事，丙夜不安枕。』」清．李漁〈秦淮健兒傳〉：「民家有犢，丙夜往盜之。」",
+          "entry_id": "005330016",
+          "sheet": "1150929辭典匯出",
+          "row": 19439,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "丙辰": [],
+      "千斤": [
+        {
+          "title": "千斤",
+          "pinyin": "qiān jīn",
+          "definition": "1.形容非常沉重。如：「千斤重擔」。\n2.千斤頂的簡稱。參見「千斤頂」條。\n3.胡琴類的樂器零件，通常在琴筒距軫子的三分之二處，用稍粗的軟絲線圍繞琴桿而紮成，有定音作用。因舉足輕重，故稱為「千斤」。從千斤到琴筒的一段弦長，是琴弦的有效振動發音部分。舊時也稱為「千金」。",
+          "entry_id": "064370131",
+          "sheet": "1150929辭典匯出",
+          "row": 99117,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "一味": [
+        {
+          "title": "一味",
+          "pinyin": "yī wèi",
+          "definition": "1.專一。明．王守仁《傳習錄》卷上：「一味只是希高慕大，不知自己是桀、紂心地，動輒要做堯、舜事業，如何做得？」\n2.總是、一直。《初刻拍案驚奇》卷三〇：「李參軍不肯說話，只是一味哭。」《紅樓夢》第六八回：「一味的只勸二爺保重，別在外邊眠花宿柳，恐怕叫太爺太太耽心。」也作「一昧」。\n3.只具一味的菜餚。《晉書．卷一一六．姚萇載記》：「散後宮文綺珍寶以供戎事，身食一味，妻不重綵。」《初刻拍案驚奇》卷一九：「只一味也不好下酒，況列位在此，無有我不破鈔，反吃白食的。」\n4.中醫上稱藥一種為「一味」。《西遊記》第七九回：「朕得一疾，纏綿日久不愈，幸國丈賜得一方；藥餌俱已完備，只少一味引子，特請長老，求些藥引。」",
+          "entry_id": "104821352",
+          "sheet": "1150929辭典匯出",
+          "row": 147850,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "丈量": [
+        {
+          "title": "丈量",
+          "pinyin": "zhàng liáng",
+          "definition": "以尺或其他工具測量、計算。《儒林外史》第一二回：「明日屈老父臺舍下一飯。丈量到荒山時，弟輩自然到山中奉陪。」《兒女英雄傳》第三三回：「派了晉升、梁材、華忠、戴勤四個，分頭丈量地段。」",
+          "entry_id": "078940013",
+          "sheet": "1150929辭典匯出",
+          "row": 115538,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "梣木": []
+    },
+    "direct_dictionary": {
+      "倓": {
+        "mandarin": "tán",
+        "official_dictionary": [
+          {
+            "title": "倓",
+            "pinyin": "tán",
+            "definition": "[副]\n安然不疑的樣子。《荀子．仲尼》：「倓然見管仲之能足以託國也。」",
+            "entry_id": "02536",
+            "sheet": "1150929辭典匯出",
+            "row": 2543,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "然": {
+        "definition": "yes, certainly; pledge, promise",
+        "mandarin": "rán",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "棽": {
+        "mandarin": "shēn",
+        "official_dictionary": [
+          {
+            "title": "棽",
+            "pinyin": "shēn",
+            "definition": "參見「棽棽」條。",
+            "entry_id": "08981",
+            "sheet": "1150929辭典匯出",
+            "row": 8996,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "棽棽",
+                "pinyin": "shēn shēn",
+                "definition": "繁華茂盛的樣子。唐．元結〈引極詩．思元極〉：「山鑿落兮眇嶔岑，雲溶溶兮木棽棽。」",
+                "entry_id": "089810002",
+                "sheet": "1150929辭典匯出",
+                "row": 129535
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "哱": {
+        "mandarin": "bō",
+        "official_dictionary": [
+          {
+            "title": "哱",
+            "pinyin": "pò",
+            "definition": "參見「哱羅」、「哱息」等條。",
+            "entry_id": "00626",
+            "sheet": "1150929辭典匯出",
+            "row": 628,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "哱息",
+                "pinyin": "pò xí",
+                "definition": "擬聲詞。形容打噴嚏的聲音。《永樂大典戲文三種．小孫屠．第二〇出》：「哱息！自家今日眼跳，有些個不好。」",
+                "entry_id": "006260002",
+                "sheet": "1150929辭典匯出",
+                "row": 22590
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "息": {
+        "definition": "rest, put stop to, end, cease",
+        "mandarin": "xī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嚆": {
+        "definition": "give forth sound, make noise",
+        "mandarin": "hāo",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "矢": {
+        "definition": "arrow, dart; vow, swear",
+        "mandarin": "shǐ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "玉": {
+        "definition": "jade, precious stone, gem",
+        "mandarin": "yù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "屑": {
+        "definition": "bits, scraps, crumbs, fragments",
+        "mandarin": "xiè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "廨": {
+        "definition": "government office, public office",
+        "mandarin": "xiè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宇": {
+        "definition": "house; building, structure; eaves",
+        "mandarin": "yǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "褰": {
+        "definition": "underclothing; to pick up one's skirts",
+        "mandarin": "qiān",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "裳": {
+        "definition": "clothes; skirt; beautiful",
+        "mandarin": "shang",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "貔": {
+        "definition": "a legendary bear-like animal",
+        "mandarin": "pí",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "貅": {
+        "definition": "brave, fierce, courageous",
+        "mandarin": "xiū",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "螟": {
+        "definition": "snout moth's larva",
+        "mandarin": "míng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蛉": {
+        "definition": "dragonfly, Libellulidae; lacewing",
+        "mandarin": "líng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "不": {
+        "definition": "no, not; un-; negative prefix",
+        "mandarin": "bù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朽": {
+        "definition": "decayed, rotten; rot, decay",
+        "mandarin": "xiǔ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "慧": {
+        "definition": "bright, intelligent; intelligence",
+        "mandarin": "huì",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "黠": {
+        "definition": "sly, cunning, shrewd; artful",
+        "mandarin": "xiá",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蘧": {
+        "definition": "Dianthus superbus",
+        "mandarin": "qú",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "丙": {
+        "definition": "third; 3rd heavenly stem",
+        "mandarin": "bǐng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "夜": {
+        "definition": "night, dark; in night; by night",
+        "mandarin": "yè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "辰": {
+        "definition": "early morning; fifth earthly branch; Kangxi radical 161",
+        "mandarin": "chén",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "千": {
+        "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+        "mandarin": "qiān",
+        "related_characters": [
+          {
+            "character": "千",
+            "relation": "kTraditionalVariant",
+            "definition": "thousand; many, numerous; very; (Cant.) a cheater, swindler",
+            "mandarin": "qiān"
+          },
+          {
+            "character": "韆",
+            "relation": "kTraditionalVariant",
+            "definition": "swing",
+            "mandarin": "qiān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "斤": {
+        "definition": "a catty (approximately 600 g); an axe; keen, shrewd; Kangxi radical 69",
+        "mandarin": "jīn",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "一": {
+        "definition": "one; a, an; alone",
+        "mandarin": "yī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "味": {
+        "definition": "taste, smell, odor; delicacy",
+        "mandarin": "wèi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "丈": {
+        "definition": "unit of length equal 3.3 meters; gentleman, man, husband",
+        "mandarin": "zhàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "量": {
+        "definition": "measure, quantity, capacity",
+        "mandarin": "liàng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "梣": {
+        "mandarin": "chén",
+        "official_dictionary": [
+          {
+            "title": "梣",
+            "pinyin": "chén",
+            "definition": "[名]\n植物名。木犀科白蠟樹屬，「白蠟樹」之古稱。參見「白蠟樹」條。",
+            "entry_id": "08419",
+            "sheet": "1150929辭典匯出",
+            "row": 8433,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "白蠟樹",
+                "pinyin": "bái là shù",
+                "definition": "植物名。木犀科白蠟樹屬，落葉喬木。奇數羽狀複葉，小葉五至七枚，全緣，具短柄或無柄，橢圓形或橢圓狀卵形。五月開白花，圓錐狀花序。果實倒披針形，九月成熟。木材堅硬有彈力，可製農具、家具及鐵器柄等。於中國栽培歷史悠久，主要用途為放養白蠟蟲，生產白蠟，亦因以得名。",
+                "entry_id": "0013201720",
+                "sheet": "1150929辭典匯出",
+                "row": 13624
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "木": {
+        "definition": "tree; wood, lumber; wooden",
+        "mandarin": "mù",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "倓然",
+      "decision": "uncertain",
+      "reason": "“倓”有安然不疑之义，“然”可作状态后缀，组合可解为安然笃定；但此搭配自然度和品牌辨识度有限，语义略显生造。"
+    },
+    {
+      "name": "棽棽",
+      "decision": "keep",
+      "reason": "完整词义为繁茂盛大的样子，字义明确、组合凝练，具自然意象和品牌辨识度。"
+    },
+    {
+      "name": "哱息",
+      "decision": "reject",
+      "reason": "完整词语是形容打喷嚏声音的拟声词，作为公司品牌名不雅且缺乏合适的品牌语义。"
+    },
+    {
+      "name": "嚆矢",
+      "decision": "keep",
+      "reason": "本义为响箭，引申为事物的开端；词义明确、凝练，有先行启始的意象，适合作为品牌名继续复核。"
+    },
+    {
+      "name": "玉屑",
+      "decision": "keep",
+      "reason": "可指玉的碎屑，也可比喻美好的文词；组合自然雅致，具有明确意象和品牌辨识度。"
+    },
+    {
+      "name": "廨宇",
+      "decision": "uncertain",
+      "reason": "词义是古代官署房屋，构词通顺，但语义专指旧式官署建筑，作为品牌名的自然联想和适用性存疑。"
+    },
+    {
+      "name": "褰裳",
+      "decision": "uncertain",
+      "reason": "本义为提起衣裳，语义明确且有典籍用例；但作为品牌名较像古典动作描写，品牌化自然度有限。"
+    },
+    {
+      "name": "貔貅",
+      "decision": "keep",
+      "reason": "完整词语指传说猛兽，也可比喻勇猛将士；词义稳定、形象鲜明，具品牌辨识度。"
+    },
+    {
+      "name": "螟蛉",
+      "decision": "uncertain",
+      "reason": "可指害虫，也有养子的旧称；两种语义均明确，但前者负面、后者用法古旧，品牌联想不够稳定。"
+    },
+    {
+      "name": "不朽",
+      "decision": "reject",
+      "reason": "虽是自然词语，但作为完整名称直接表达永不磨灭的价值宣言，偏口号化，缺少品牌名所需的凝练辨识度。"
+    },
+    {
+      "name": "慧黠",
+      "decision": "uncertain",
+      "reason": "词义为聪慧灵敏，组合自然；但“黠”兼有狡黠、机巧色彩，整体褒贬联想不够稳定。"
+    },
+    {
+      "name": "蘧然",
+      "decision": "keep",
+      "reason": "完整词义为惊喜的样子，词义有据、组合自然简洁，具有情绪意象和品牌辨识度。"
+    },
+    {
+      "name": "丙夜",
+      "decision": "uncertain",
+      "reason": "词义为半夜，作为时段词构词自然；但名称整体偏纪时或古典语汇，品牌语义指向较弱。"
+    },
+    {
+      "name": "丙辰",
+      "decision": "uncertain",
+      "reason": "可按天干地支理解为干支纪年，构成真实且可核；但不提供具体背景时，它主要是纪年符号，作为品牌名的语义与辨识度不足以明确判断。"
+    },
+    {
+      "name": "千斤",
+      "decision": "reject",
+      "reason": "虽有重量、千斤顶等真实词义，但完整名称主要落在重量或器具通用称谓上，作为品牌名缺少独立辨识度。"
+    },
+    {
+      "name": "一味",
+      "decision": "reject",
+      "reason": "完整词语常指一味地、总是，也可指单一菜品或药味；常用义落在副词或通用数量表达，整体品牌辨识度不足。"
+    },
+    {
+      "name": "丈量",
+      "decision": "keep",
+      "reason": "意为用工具测量、计算，是自然完整的动作词；简洁明确，可作为品牌名，不因其不是固定专名而否决。"
+    },
+    {
+      "name": "梣木",
+      "decision": "keep",
+      "reason": "“梣”指白蜡树，“梣木”即相应树木或木材，字义有据、组合自然，具明确自然物象。"
+    }
+  ],
+  "applied": false
+}

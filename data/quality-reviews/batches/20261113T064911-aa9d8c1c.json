@@ -1,0 +1,842 @@
+{
+  "review_id": "20261113T064911-aa9d8c1c",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "擦肩",
+      "摩擦力",
+      "摩拳擦掌",
+      "坽月",
+      "阔达",
+      "阔朗",
+      "格局宏阔",
+      "阔野",
+      "阔远",
+      "心境阔",
+      "阔境"
+    ],
+    "related_kept_candidates": {
+      "月": [
+        "七月",
+        "一川明月",
+        "一川风月",
+        "月牙",
+        "卯月",
+        "捧月",
+        "簖边月",
+        "玹月",
+        "月下伞",
+        "月笼纱",
+        "云衔月",
+        "盅中月"
+      ],
+      "心": [
+        "心境清澹",
+        "心有境",
+        "一心",
+        "心斋",
+        "仝心",
+        "会心",
+        "琥珀心",
+        "寸心",
+        "寸心远行",
+        "婳心",
+        "憩心田",
+        "心态"
+      ],
+      "格": [
+        "自成一格",
+        "标格",
+        "格桑花",
+        "山海成格",
+        "破格"
+      ],
+      "阔": [
+        "辽阔",
+        "江天又阔",
+        "广阔",
+        "水阔蒹洲",
+        "水阔船轻",
+        "寥阔",
+        "海阔晚帆",
+        "空阔",
+        "江阔燕轻"
+      ],
+      "远": [
+        "迈远",
+        "远星团",
+        "鼙声远",
+        "脩远",
+        "窎远",
+        "崇远",
+        "远山葶影",
+        "远山芙蓉",
+        "云缠远岫",
+        "远山近墟",
+        "臻远",
+        "远翱"
+      ],
+      "野": [
+        "山野鳟",
+        "岍野",
+        "骉野",
+        "葑野",
+        "葑野集",
+        "垄野",
+        "顷野",
+        "榴野",
+        "野墅",
+        "芹野初晴",
+        "晙野",
+        "崧野"
+      ],
+      "境": [
+        "心境清澹",
+        "心有境",
+        "祕境",
+        "臻境",
+        "螭游清境",
+        "婳境",
+        "摹境",
+        "非凡境",
+        "涡之境",
+        "酒境",
+        "砗磲之境",
+        "人境"
+      ],
+      "力": [
+        "扭力",
+        "赑力",
+        "力穑",
+        "愿力",
+        "码力",
+        "钜力",
+        "飓力",
+        "借力",
+        "肌力",
+        "力作",
+        "余力",
+        "想象力"
+      ],
+      "达": [
+        "臻达",
+        "酷达",
+        "旁达",
+        "亿达",
+        "义达",
+        "掞达",
+        "广达",
+        "赟达",
+        "珺达",
+        "资达",
+        "奕达",
+        "瑾达"
+      ],
+      "朗": [
+        "崧朗",
+        "酷朗",
+        "鲜朗",
+        "珺朗",
+        "奕朗",
+        "宽朗",
+        "岳朗",
+        "澄朗",
+        "骏朗",
+        "厚朗",
+        "岑朗",
+        "朗玥"
+      ],
+      "拳": [
+        "拳风",
+        "拳意",
+        "拳锋",
+        "拳谱",
+        "拳社",
+        "拳有度",
+        "拳友",
+        "拳手"
+      ],
+      "宏": [
+        "宏奕",
+        "宽宏",
+        "宏硕",
+        "宏廓"
+      ],
+      "掌": [
+        "鼹掌柜",
+        "掌柁",
+        "掌控",
+        "掌艄"
+      ],
+      "肩": [
+        "肩膀",
+        "仔肩",
+        "云肩"
+      ],
+      "局": [
+        "擘局",
+        "弈局",
+        "骰局"
+      ]
+    },
+    "literature_phrase_examples": {
+      "擦肩": [],
+      "摩擦力": [],
+      "摩拳擦掌": [
+        {
+          "book": "红楼梦",
+          "line": 5021,
+          "context": "”这一言不打紧，唬得贾政上下人等面面相看，喜得番役家人摩拳擦掌， 就要往各处动手．西平王道：“闻得赦老与政老同房各爨的，理应遵旨查看贾赦的家资，其余且按房封锁，我们复旨去再候定夺。"
+        },
+        {
+          "book": "水浒传_七十回本",
+          "line": 2457,
+          "context": "李逵在外面，听得堂里哭泣，自己摩拳擦掌价气；"
+        }
+      ],
+      "坽月": [],
+      "阔达": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 184505,
+          "context": "所頼众君子，阔达见表襮。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 412813,
+          "context": "歌谣尚慷慨，阔达本多匿。"
+        }
+      ],
+      "阔朗": [
+        {
+          "book": "红楼梦",
+          "line": 2365,
+          "context": "凤姐儿等来至探春房中， 只见他娘儿们正说笑．探春素喜阔朗，这三间屋子并不曾隔断．当地放著一张花梨大理石大案，案上磊著各种名人法帖，并数十方宝砚，各色笔筒， 笔海内插的笔如树林一般．那一边"
+        },
+        {
+          "book": "聊斋志异",
+          "line": 1311,
+          "context": "视之，阶道阔朗，有广殿十余间，列坐尊官，袍笏俨然。"
+        }
+      ],
+      "格局宏阔": [],
+      "阔野": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 556285,
+          "context": "天高晨气静，地阔野风凉。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 772610,
+          "context": "阁虚云乱入，江阔野横分。"
+        }
+      ],
+      "阔远": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 117924,
+          "context": "酒倾迟日暮，川阔远天低。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 147122,
+          "context": "浮云柳絮无根蔕，天地阔远随飞扬。"
+        }
+      ],
+      "心境阔": [],
+      "阔境": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 201474,
+          "context": "空阔境疑非下界，飘飖身似在寥天。"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "擦肩": [
+        {
+          "title": "擦肩",
+          "pinyin": "cā jiān",
+          "definition": "形容距離很近。《文明小史》第一五回：「正說話間，那船已擦肩而過。」",
+          "entry_id": "097210013",
+          "sheet": "1150929辭典匯出",
+          "row": 138924,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "摩擦力": [
+        {
+          "title": "摩擦力",
+          "pinyin": "mó cā lì",
+          "definition": "兩物體接觸面之間相對運動的阻力，與接觸面的大小無關，而與壓在表面的正向力成正比。可分為動摩擦力與靜摩擦力。",
+          "entry_id": "010470050",
+          "sheet": "1150929辭典匯出",
+          "row": 27073,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "摩拳擦掌": [
+        {
+          "title": "摩拳擦掌",
+          "pinyin": "mó quán cā zhǎng",
+          "definition": "揮舞拳頭，擦揉手掌，準備行動或動武。形容振奮、躍躍欲試的樣子。元．關漢卿《單刀會》第三折：「但題起廝殺呵，摩拳擦掌，排戈甲，列旗鎗，各分戰場。」《孽海花》第一九回：「這一聲號令，階下那班如狼如虎的健僕，個個摩拳擦掌，只待動手。」也作「磨拳擦掌」、「擦拳抹掌」、「擦掌摩拳」、「擦掌磨拳」。",
+          "entry_id": "010470044",
+          "sheet": "1150929辭典匯出",
+          "row": 27067,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "坽月": [],
+      "阔达": [],
+      "阔朗": [],
+      "格局宏阔": [],
+      "阔野": [],
+      "阔远": [],
+      "心境阔": [],
+      "阔境": []
+    },
+    "direct_dictionary": {
+      "擦": {
+        "definition": "wipe, scrub, rub, scour; brush",
+        "mandarin": "cā",
+        "official_dictionary": [
+          {
+            "title": "擦",
+            "pinyin": "cā",
+            "definition": "[動]\n1.摩。如：「摩拳擦掌」。《老殘遊記》第二回：「那荷葉初枯，擦的船嗤嗤價響。」\n2.揩拭。如：「擦掉」、「擦皮鞋」。《紅樓夢》第四〇回：「李紈先侵晨起來，看著老婆子丫頭們掃那些落葉，並擦抹桌椅，預備茶酒器皿。」\n3.塗抹。如：「擦藥」、「擦油」。《紅樓夢》第四四回：「姐姐還該擦上些脂粉，不然，倒像是和鳳姐姐賭氣子似的。」\n4.貼近、靠近。如：「擦身而過」、「擦肩而過」。\n[名]\n擦抹的用具。如：「黑板擦」、「橡皮擦」。",
+            "entry_id": "09721",
+            "sheet": "1150929辭典匯出",
+            "row": 9735,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "肩": {
+        "definition": "shoulders; to shoulder; bear",
+        "mandarin": "jiān",
+        "official_dictionary": [
+          {
+            "title": "肩",
+            "pinyin": "jiān",
+            "definition": "[名]\n1.頸部下兩臂與身體連接的部分。如：「兩肩」、「肩並肩」。\n2.姓。如明代有肩固。\n[動]\n擔負。如：「身肩重任」。",
+            "entry_id": "05738",
+            "sheet": "1150929辭典匯出",
+            "row": 5745,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "摩": {
+        "definition": "rub, scour, grind; friction",
+        "mandarin": "mó",
+        "official_dictionary": [
+          {
+            "title": "摩",
+            "pinyin": "mā",
+            "definition": "參見「摩挲」條。",
+            "entry_id": "01021",
+            "sheet": "1150929辭典匯出",
+            "row": 1023,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "摩挲",
+                "pinyin": "mā sa",
+                "definition": "用手掌撫摩衣物，使其平貼。",
+                "entry_id": "010210001",
+                "sheet": "1150929辭典匯出",
+                "row": 26485
+              },
+              {
+                "title": "摩挲",
+                "pinyin": "mó suō",
+                "definition": "撫摩揉搓。唐．韓愈〈石鼓歌〉：「牧童敲火牛礪角，誰復著手為摩挲。」《老殘遊記》第一四回：「虧得個老王媽在老奶奶身上儘自摩挲，忽然嚷道：『不要緊！心口裡滾熱的呢。』」",
+                "entry_id": "010470055",
+                "sheet": "1150929辭典匯出",
+                "row": 27076
+              }
+            ]
+          },
+          {
+            "title": "摩",
+            "pinyin": "mó",
+            "definition": "[動]\n1.兩物接觸後，來回擦動。如：「摩擦」。《易經．繫辭上》：「是故剛柔相摩，八卦相盪。」\n2.互相切磋。如：「觀摩」。《禮記．學記》：「相觀而善之謂摩。」\n3.撫摸。如：「摩弄」、「撫摩」。《陳書．卷二六．徐陵傳》：「家人攜以候之，寶誌手摩其頂。」\n4.消滅。通「磨」。《文選．司馬遷．報任少卿書》：「古者富貴而名摩滅，不可勝記，唯倜儻非常之人稱焉。」\n5.接近、迫近。如：「摩天大樓」。\n6.猜測。如：「揣摩」。",
+            "entry_id": "01047",
+            "sheet": "1150929辭典匯出",
+            "row": 1049,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "力": {
+        "definition": "power, capability, influence; Kangxi radical 19",
+        "mandarin": "lì",
+        "official_dictionary": [
+          {
+            "title": "力",
+            "pinyin": "lì",
+            "definition": "[名]\n1.改變物體運動狀態（靜止或運行速度）的效能稱為「力」，計算單位為「牛頓」。如：「動力」、「向心力」、「離心力」、「地心引力」。\n2.人和動物體內筋肉運動所產生的效能。如：「臂力」、「體力」。《詩經．邶風．簡兮》：「有力如虎，執轡如組。」\n3.一切事物所具有的效能或作用。如：「火力」、「風力」、「水力」。\n4.才能、能力。如：「智力」、「實力」、「理解力」、「量力而為」。\n5.權勢。如：「權力」。《孟子．公孫丑上》：「以力服人者，非心服也。」\n6.以力氣供人役使的僮僕。如：「苦力」。\n7.姓。如宋代有力起。\n8.二一四部首之一。\n[副]\n盡力、拚命。如：「力爭上游」。《漢書．卷九五．南粵傳》：「樓船力攻燒敵。」",
+            "entry_id": "03436",
+            "sheet": "1150929辭典匯出",
+            "row": 3443,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "拳": {
+        "definition": "fist; various forms of boxing",
+        "mandarin": "quán",
+        "official_dictionary": [
+          {
+            "title": "拳",
+            "pinyin": "quán",
+            "definition": "[名]\n1.手屈指捲握成的形狀。如：「雙手握拳。」、「揮拳打人。」\n2.一種徒手搏擊的武術。如：「打拳」、「太極拳」、「少林拳」。\n3.量詞。計算拳頭出擊的單位。如：「他連揮三拳，全部落空。」\n4.姓。如春秋時衛國有拳彌。\n[動]\n彎曲。如：「拳起腿來。」北齊．顏之推《顏氏家訓．勉學》：「時又患疥，手不得拳，膝不得屈。」唐．柳宗元〈種樹郭橐駝傳〉：「他植者則不然，根拳而土易。」",
+            "entry_id": "06694",
+            "sheet": "1150929辭典匯出",
+            "row": 6703,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "掌": {
+        "definition": "palm of hand, sole of foot, paw",
+        "mandarin": "zhǎng",
+        "official_dictionary": [
+          {
+            "title": "掌",
+            "pinyin": "zhǎng",
+            "definition": "[名]\n1.手心、足心。如：「鼓掌」、「腳掌」、「易如反掌」。\n2.動物的腳底。如：「熊掌」、「鴨掌」。\n3.量詞。計算武術招數的單位。如：「一掌斃命」、「降龍十八掌」。\n4.釘縫在鞋底前、後部分的皮子或橡膠。如：「釘一塊掌兒。」\n5.姓。如晉代有掌同。\n[動]\n1.用手掌打。如：「掌嘴」。\n2.管理、主持。如：「掌舵」、「掌政」、「職掌大權」。\n3.北方方言。指擱放、加上。如：「記得掌點兒鹽到湯裡。」",
+            "entry_id": "07893",
+            "sheet": "1150929辭典匯出",
+            "row": 7905,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "坽": {
+        "mandarin": "líng",
+        "supplemental_dictionary": {
+          "explanation": "坽líng 1.峻岸。",
+          "source_url": "https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/word.json",
+          "source_sha256": "8ae3453eacc5b0f3fdfba47eac8bb686cd73914d278e8b851ae6ef81082f80e7",
+          "authority": "third_party_compilation_requires_cross_check"
+        },
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "official_dictionary": [
+          {
+            "title": "月",
+            "pinyin": "yuè",
+            "definition": "[名]\n1.月亮、月球。如：「新月」、「殘月」、「日月星辰」。\n2.月光。唐．杜甫〈夢李白〉詩二首之一：「落月滿屋梁，猶疑照顏色。」\n3.計時單位，約為月球繞行地球一周所需時間。陽曆月為大月31日，小月30日（二月除外），一年有十二個月。陰曆則以月球相位變化週期而制定，大月30日，小月29日。\n4.姓。如明代有月文憲。\n5.二一四部首之一。\n[形]\n1.圓形像月亮的。如：「月餅」。《新唐書．卷一三六．列傳．李光弼》：「治塹溝，築月城以守。」\n2.每月的。如:「月會」、「月刊」、「月薪」。",
+            "entry_id": "11728",
+            "sheet": "1150929辭典匯出",
+            "row": 11741,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "阔": {
+        "definition": "broad, ample, wide; be apart",
+        "mandarin": "kuò",
+        "related_characters": [
+          {
+            "character": "闊",
+            "relation": "kTraditionalVariant",
+            "definition": "broad, ample, wide; be apart",
+            "mandarin": "kuò"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "达": {
+        "definition": "arrive at, reach; intelligent; smooth, slippery",
+        "mandarin": "dá",
+        "related_characters": [
+          {
+            "character": "達",
+            "relation": "kTraditionalVariant",
+            "definition": "arrive at, reach; intelligent",
+            "mandarin": "dá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朗": {
+        "definition": "clear, bright; distinct",
+        "mandarin": "lǎng",
+        "official_dictionary": [
+          {
+            "title": "朗",
+            "pinyin": "lǎng",
+            "definition": "[形]\n明亮。如：「明朗」、「晴朗」。晉．王羲之〈三月三日蘭亭詩序〉：「天朗氣清，惠風和暢。」\n[副]\n響亮。如：「朗誦」、「朗讀」。《文選．孫綽．遊天台山賦》：「凝思幽巖，朗詠長川。」",
+            "entry_id": "03365",
+            "sheet": "1150929辭典匯出",
+            "row": 3372,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "格": {
+        "definition": "pattern, standard, form; style",
+        "mandarin": "gé",
+        "official_dictionary": [
+          {
+            "title": "格",
+            "pinyin": "gé",
+            "definition": "[名]\n1.長枝條。北周．庾信〈小園賦〉：「草樹溷淆，枝格相交。」\n2.方形的空框或用線條組成的四方形。如：「窗格」、「方格」。\n3.架子的分層。如：「這期的雜誌，就放在書架的第三格。」\n4.量詞。計算容器刻度的單位。如：「這感冒藥水每次喝一格的量，三餐飯後服用。」\n5.標準、法式。如：「資格」、「規格」、「合格」、「破格」。\n6.人品、氣量、風度、情操的泛稱。如：「人格」、「品格」。宋．蘇軾〈答陳履常〉二首之二：「不獨以見作者之格，且足以知風政之多瑕，而高躅之難繼也。」\n7.修辭的方法稱為「格」。如：「譬喻格」、「誇張格」。\n8.姓。如漢代有格班，隋代有格處仁。\n[動]\n1.匡正、改正。《書經．冏命》：「繩愆糾謬，格其非心。」《孟子．離婁上》：「惟大人能格君心之非。」\n2.匹敵、抵抗。《史記．卷七十．張儀傳》：「無以異於驅群羊而攻猛虎，虎之與羊不格明矣。」\n3.阻礙、阻止。《史記．卷六五．孫子吳起傳》：「批亢擣虛，形格勢禁，則自為解耳。」\n4.打鬥、擊殺。如：「格鬥」、「格殺」。《三國志．卷一九．魏書．任城威王彰傳》：「膂力過人，手格猛獸，不避險阻。」\n5.窮究。《禮記．大學》：「致知在格物，物格而后知至。」\n6.至、來。《書經．堯典》：「光被四表，格於上下。」宋．蘇軾〈賀時宰啟〉：「歡聲格於九天，乖氣消於萬彙。」\n7.感通。《書經．說命下》：「佑我烈祖，格於皇天。」南朝梁．裴子野．宋略樂志敘：「先王作樂崇德，以格神人。」",
+            "entry_id": "03935",
+            "sheet": "1150929辭典匯出",
+            "row": 3941,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "局": {
+        "definition": "bureau, office; circumstance",
+        "mandarin": "jú",
+        "official_dictionary": [
+          {
+            "title": "局",
+            "pinyin": "jú",
+            "definition": "[名]\n1.政府機關或團體分工辦事的單位。如：「郵局」、「教育局」、「電信局」。\n2.商店的稱號。如：「藥局」、「書局」。\n3.部分。如：「局部麻醉」。《禮記．曲禮上》：「左右有局，各司其局。」唐．孔穎達．正義：「軍之在左右，各有部分，不相濫也。」\n4.棋盤。唐．杜甫〈江村〉詩：「老妻畫紙為棋局，稚子敲針作釣鉤。」\n5.量詞。計算棋類或球類等活動的單位。如：「對奕兩局」、「幸運第七局」。唐．白居易〈因夢有悟〉詩：「款曲數杯酒，從容一局棋。」\n6.聚會。如：「飯局」、「牌局」。\n7.形勢、情況。如：「世局」、「危局」、「顧全大局」、「打破僵局」。《兒女英雄傳》第一八回：「早看出紀家不是個善終之局。」\n8.結構、組織。如：「格局」、「布局」。\n9.心胸、器量。如：「局度」。《晉書．卷九三．褚裒傳》：「有局量，以幹用稱。」\n10. 圈套、陷阱。如：「騙局」、「美人局」。《紅樓夢》第一二回：「王熙鳳毒設相思局。」\n[動]\n1.彎曲。通「跼」。《詩經．小雅．正月》：「謂天蓋高，不敢不局。」漢．毛亨．傳：「局，曲也。」\n2.拘束、限制。通「拘」。如：「局限」、「局於一隅」。\n[形]\n1.卷曲。《詩經．小雅．采綠》：「予髮曲局。」\n2.狹小、不寬廣。《管子．白心》：「大者寬，小者局。」《周書．卷四九．異域傳．序》：「兩儀之間，中土局而庶俗曠。」",
+            "entry_id": "05992",
+            "sheet": "1150929辭典匯出",
+            "row": 6000,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宏": {
+        "definition": "wide, spacious, great, vast",
+        "mandarin": "hóng",
+        "official_dictionary": [
+          {
+            "title": "宏",
+            "pinyin": "hóng",
+            "definition": "[形]\n1.廣博、深遠、遠大。如：「宏大」、「宏偉」、「寬宏大量」。《三國志．卷二一．魏書．傅嘏傳》：「蓋聞帝制宏深，聖道奧遠。」\n2.聲音響亮。如：「哭聲宏亮」。《周禮．冬官考工記．梓人》：「其聲大而宏，有力而不能走。」\n[動]\n擴大、光大。《文選．潘岳．楊荊州誄》：「將宏王略，肅清荒遐。」\n[名]\n姓。如明代有宏承。",
+            "entry_id": "05266",
+            "sheet": "1150929辭典匯出",
+            "row": 5273,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "official_dictionary": [
+          {
+            "title": "野",
+            "pinyin": "yě",
+            "definition": "[名]\n1.郊外。《書經．武成》：「歸馬于華山之陽，放牛于桃林之野。」唐．柳宗元〈捕蛇者說〉：「永州之野產異蛇，黑質而白章。」\n2.廣平的地方。《呂氏春秋．季秋紀．審己》：「稼生於野而藏於倉，稼非有欲也。」《三國志．卷三五．蜀書．諸葛亮傳》：「益州險塞，沃野千里。」\n3.界限、地域。如：「分野」、「視野」。《淮南子．原道》：「上游於霄雿之野，下出於無垠之門。」\n4.民間。《書經．大禹謨》：「君子在野，小人在位。」《三國志．卷四二．蜀書．郤正傳》：「故君臣協美於朝，黎庶欣戴於野。」\n[形]\n1.質樸。《論語．雍也》：「質勝文則野，文勝質則史。」唐．柳宗元〈柳宗直西漢文類序〉：「首紀殷周之前，其文簡而野。」\n2.粗鄙無禮、放縱不馴。如：「粗野」、「撒野」。《左傳．宣公四年》：「諺曰：『狼子野心。』是乃狼也，其可畜乎？」《禮記．仲尼燕居》：「敬而不中禮謂之野，恭而不中禮謂之給。」\n3.野生而未經人工栽培或馴養的。如：「野菜」、「野菊」、「野牛」、「野馬」。\n4.非正式的。如：「野錄」、「野乘」、「野史」。\n[副]\n非常、很。如：「朔風野大」。",
+            "entry_id": "10755",
+            "sheet": "1150929辭典匯出",
+            "row": 10769,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "心": {
+        "definition": "heart; mind, intelligence; soul; 5th lunar mansion, determinative star α Scorpii (Antares)",
+        "mandarin": "xīn",
+        "official_dictionary": [
+          {
+            "title": "心",
+            "pinyin": "xīn",
+            "definition": "[名]\n1.內臟之一。參見「心臟」條。\n2.我國古代認為心主管思維，故相沿以為腦的代稱。如：「用心」、「勞心勞力」。《孟子．告子上》：「心之官則思。」\n3.思想、意念、感情。如：「傷心」、「心中不安」、「心情煩悶」。三國魏．曹丕〈與吳質書〉：「東望於邑，裁書敘心。」唐．柳宗元〈始得西山宴游記〉：「心凝形釋。」\n4.思慮、謀畫。如：「有心人」、「有口無心」。《呂氏春秋．審應覽．精諭》：「紂雖多心，弗能知矣。」\n5.性情。如：「心性」。《韓非子．觀行》：「西門豹之性急，故佩韋以自緩，董安于之心緩，故佩弦以自急。」\n6.平面或物體的中央或內部。如：「江心」、「掌心」、「圓心」。唐．劉禹錫〈洞庭秋月行〉：「洞庭秋月生湖心，層波萬頃如鎔金。」\n7.植物的花蕊或苗尖。如：「花心」。南朝梁．簡文帝〈上巳侍宴林光殿曲水詩〉：「林花初墮蔕，池荷欲吐心。」\n8.星宿名。二十八星宿之一，東方蒼龍七宿的第五宿。\n9.星官名，心宿之首，共有三顆星，在西方屬天蠍座。《詩經．唐風．綢繆》：「三星在天。」漢．鄭玄．箋：「三星，謂心星也。」《晉書．卷一一．天文志上》：「心三星，天王正位也。」\n10.二一四部首之一。",
+            "entry_id": "07153",
+            "sheet": "1150929辭典匯出",
+            "row": 7162,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "心臟",
+                "pinyin": "xīn zàng",
+                "definition": "1.心肌構成的中空、紅色器官，其大如拳，居胸腔中央偏左，正常時內有四個腔室，行規律性的自發收縮，以保持血液的循環作用。與上下腔靜脈、肺動脈、肺靜脈、主動脈相通。\n2.形容最重要的部分。如：「此區是本市的心臟地帶。」",
+                "entry_id": "071530378",
+                "sheet": "1150929辭典匯出",
+                "row": 107466
+              },
+              {
+                "title": "用心",
+                "pinyin": "yòng xīn",
+                "definition": "1.盡心。《孟子．梁惠王上》：「察鄰國之政，無如寡人之用心者。」《儒林外史》第三四回：「宰相若肯如此用心，天下可立致太平。」\n2.存心、居心。《五代史平話．周史．卷上》：「郭威奏曰：『……全宥其家，免行族滅。』聞者皆謂郭威用心忠厚。」",
+                "entry_id": "119050044",
+                "sheet": "1150929辭典匯出",
+                "row": 163754
+              },
+              {
+                "title": "傷心",
+                "pinyin": "shāng xīn",
+                "definition": "心懷悲痛。唐．劉長卿〈重送裴郎中貶吉州〉詩：「猿啼客散暮江頭，人自傷心水自流。」《初刻拍案驚奇》卷二七：「足下見此芙蓉，何故傷心？」",
+                "entry_id": "090100035",
+                "sheet": "1150929辭典匯出",
+                "row": 130019
+              },
+              {
+                "title": "有心人",
+                "pinyin": "yǒu xīn rén",
+                "definition": "1.懷有某種意念或想法的人。《紅樓夢》第三四回：「俗語說：『沒事常思有事』，世上多少無頭腦的事，多半因為無心中做出，有心人看見，當作有心事，反說壞了。」清．孔尚任《桃花扇》第四齣：「傳將隨口話，報與有心人。」\n2.有志向、有理想的人。《初刻拍案驚奇》卷一九：「李公佐向齊公嘆道：『壯哉！壯哉！然此事卻非容易。』齊公道：『天下無難事，只怕有心人。』」《蟫史》卷八：「披肝而談意氣，真有心人；交臂而失英雄，為無目者。」\n3.別有目的或企圖的人。《兒女英雄傳》卷一七回：「從來俗語說的再不錯，道是：『無心人說話，只怕有心人來聽。』何況是兩個有心的裝作個無心的彼此一答一合說話，旁邊聽話的又本是個有心人，從無心中聽得心裡的一句話，憑他怎的聰明，有個不落圈套的麼？」\n4.心思細密的人。《初刻拍案驚奇》卷二七：「中含冤仇意思在裡面，遇著有心人玩著詞句，究問根由，未必不查出蹤跡來。」\n5.有情意的人。唐．任氏〈書桐葉〉詩：「天下有心人，盡解相思死。天下負心人，不識相思字。」",
+                "entry_id": "109050356",
+                "sheet": "1150929辭典匯出",
+                "row": 152273
+              },
+              {
+                "title": "有口無心",
+                "pinyin": "yǒu kǒu wú xīn",
+                "definition": "1.心直口快。《兒女英雄傳》第一五回：「老爺此時早看透了鄧九公，是個重交尚義，有口無心，年高好勝的人。」《瞎騙奇聞》第一回：「我曉得這個人向來是有口無心的，但也不可不拘什麼話便脫口而出。」也作「有嘴無心」。\n2.隨口說說，毫不放在心上。《金瓶梅》第三九回：「你便有口無心許下，神明都記著。」也作「有嘴無心」。",
+                "entry_id": "109050202",
+                "sheet": "1150929辭典匯出",
+                "row": 152161
+              },
+              {
+                "title": "心性",
+                "pinyin": "xīn xìng",
+                "definition": "本心、性情。《西遊記》第二三回：「那獃子雖是心性愚頑，卻只是一味懞直，倒也有些膂力，挑得行李，還看當日菩薩之念，救他隨我們去罷。」《紅樓夢》第四九回：「鳳姐冷眼敁敠岫烟的心性為人，竟不像邢夫人及他的父母一樣，卻是個溫厚可疼的人。」",
+                "entry_id": "071530285",
+                "sheet": "1150929辭典匯出",
+                "row": 107374
+              },
+              {
+                "title": "江心",
+                "pinyin": "jiāng xīn",
+                "definition": "江水中央。唐．白居易〈琵琶行〉：「東船西舫悄無言，唯見江心秋月白。」《三國演義》第四九回：「聘立在船頭，大叫：『承相鈞旨：南船且休近寨，就江心拋住。』」",
+                "entry_id": "058870085",
+                "sheet": "1150929辭典匯出",
+                "row": 93850
+              },
+              {
+                "title": "掌心",
+                "pinyin": "zhǎng xīn",
+                "definition": "1.手心。\n2.比喻能力控制的範圍。如：「孫悟空終究是逃不出如來佛的掌心。」",
+                "entry_id": "078930030",
+                "sheet": "1150929辭典匯出",
+                "row": 115502
+              },
+              {
+                "title": "圓心",
+                "pinyin": "yuán xīn",
+                "definition": "圓形的中心點，稱為「圓心」。",
+                "entry_id": "117950068",
+                "sheet": "1150929辭典匯出",
+                "row": 162916
+              },
+              {
+                "title": "花心",
+                "pinyin": "huā xīn",
+                "definition": "風流、形容對愛情不專一。如：「他是個不折不扣的花心大少。」",
+                "entry_id": "050050231",
+                "sheet": "1150929辭典匯出",
+                "row": 82430
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "境": {
+        "definition": "boundary, frontier; area, region",
+        "mandarin": "jìng",
+        "official_dictionary": [
+          {
+            "title": "境",
+            "pinyin": "jìng",
+            "definition": "[名]\n1.疆界。如：「邊境」、「國境」。《孟子．梁惠王下》：「臣始至於境，問國之大禁，然後敢入。」唐．韓愈〈朝散大夫越州刺史薛公墓誌銘〉：「四境之內，竟歲無一事。」\n2.地方、區域。如：「仙境」、「勝境」。晉．陶淵明〈飲酒詩〉二〇首之五：「結廬在人境，而無車馬喧。」\n3.情況、光景。如：「順境」、「逆境」、「家境」。南朝宋．劉義慶《世說新語．排調》：「顧長康啖甘蔗，先食尾。問所以，云：『漸至佳境。』」宋．陸游〈懷昔〉詩：「豈知墮老境，槁木蒙霜菅。」\n4.程度、地步。如：「學無止境」、「已臻化境」。",
+            "entry_id": "05961",
+            "sheet": "1150929辭典匯出",
+            "row": 5969,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "擦肩",
+      "decision": "uncertain",
+      "reason": "完整词语指距离很近或擦身而过，字义成立且有词典依据；但作为品牌名更像描述相遇关系的普通短语，凝练辨识度不足，适用性存疑。"
+    },
+    {
+      "name": "摩擦力",
+      "decision": "reject",
+      "reason": "完整词语是物理学中的通用力学概念，直接等同于专业功能类别词，不具备品牌名应有的独立辨识度。"
+    },
+    {
+      "name": "摩拳擦掌",
+      "decision": "reject",
+      "reason": "这是固定成语，表示准备行动、跃跃欲试；虽语义完整，但属于常见成语式口号，名称凝练感不足。"
+    },
+    {
+      "name": "坽月",
+      "decision": "uncertain",
+      "reason": "“坽”有第三方资料释为峻岸，但依据有限；与“月”组合成“峻岸之月”缺少自然明确的语义关系，整体构词自然度存疑。"
+    },
+    {
+      "name": "阔达",
+      "decision": "keep",
+      "reason": "“阔”与“达”组合可自然表达胸襟开阔、通达明朗之意，简洁顺畅，有品牌化空间；与暂留候选“广达”语义相近但并非仅换近义字的同一意象组合。"
+    },
+    {
+      "name": "阔朗",
+      "decision": "keep",
+      "reason": "可自然理解为开阔明朗，语义清楚、读音舒展，具备简洁的品牌辨识度；虽与“宽朗”共享开阔明朗的意象，但并非只替换近义字的近似组合。"
+    },
+    {
+      "name": "格局宏阔",
+      "decision": "reject",
+      "reason": "完整名称是对格局规模的完整描述，带有评价和宣示意味，偏口号化，且不够凝练。"
+    },
+    {
+      "name": "阔野",
+      "decision": "keep",
+      "reason": "自然表达开阔的原野，物象具体、简洁有画面感，可作为品牌名；与暂留候选“广阔”“辽阔”等仅共享阔字或宽广意象，不能据此判重复。"
+    },
+    {
+      "name": "阔远",
+      "decision": "keep",
+      "reason": "可理解为辽阔而深远，语义连贯、简洁，具有空间感和延展性；不是对“辽阔”或“寥阔”的简单换字复现。"
+    },
+    {
+      "name": "心境阔",
+      "decision": "reject",
+      "reason": "语序不自然，像省略成分的判断或描述句，未形成凝练、稳定的品牌组合。"
+    },
+    {
+      "name": "阔境",
+      "decision": "keep",
+      "reason": "可自然理解为开阔的境界或空间，搭配简洁，语义明确且有品牌感；与暂留候选“心有境”“臻境”等并非同一完整意象关系的近似变体。"
+    }
+  ]
+}

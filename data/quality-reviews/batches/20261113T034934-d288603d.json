@@ -1,0 +1,773 @@
+{
+  "review_id": "20261113T034934-d288603d",
+  "model": "gpt-6.1-sol",
+  "shard_index": 0,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "迂回通达",
+      "迂直",
+      "以迂为直",
+      "蜾蠃",
+      "蜾衔春泥",
+      "蜾巢",
+      "春野蜾踪",
+      "锩成"
+    ],
+    "related_kept_candidates": {
+      "春": [
+        "莿野春深",
+        "巨野春深",
+        "蜻衔春信",
+        "蛱栖春野",
+        "春满垧野",
+        "北野春",
+        "鸥衔春信",
+        "霁野生春",
+        "鹂衔春色",
+        "芋生春野",
+        "苇野春",
+        "苇野春深"
+      ],
+      "成": [
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成",
+        "久成",
+        "梾木成荫"
+      ],
+      "泥": [
+        "燕啄春泥",
+        "泥鳅",
+        "泥镘",
+        "雪泥鸿爪",
+        "泥金",
+        "泥与光",
+        "泥中有光",
+        "泥与山海",
+        "泥土芬芳"
+      ],
+      "野": [
+        "莿野春深",
+        "巨野春深",
+        "蛱栖春野",
+        "春满垧野",
+        "北野春",
+        "霁野生春",
+        "原野羚踪",
+        "芋生春野",
+        "苇野春",
+        "苇野春深",
+        "山野鳟",
+        "岍野"
+      ],
+      "衔": [
+        "蜻衔春信",
+        "鸥衔春信",
+        "鹂衔春色",
+        "衔光",
+        "云衔月",
+        "螭衔玉",
+        "鹒衔新绿",
+        "鹂衔嘉禾",
+        "鸧衔露",
+        "鸧衔清露",
+        "鸧衔朝阳",
+        "鸧衔枝"
+      ],
+      "达": [
+        "臻达",
+        "酷达",
+        "旁达",
+        "亿达",
+        "义达",
+        "掞达",
+        "广达",
+        "赟达",
+        "珺达",
+        "资达",
+        "奕达",
+        "瑾达"
+      ],
+      "通": [
+        "旁通",
+        "互通",
+        "通途",
+        "迳通",
+        "衡通",
+        "汇通"
+      ],
+      "巢": [
+        "鹁巢",
+        "云巢",
+        "林巢",
+        "松巢",
+        "松间巢",
+        "巢边月",
+        "巢映月",
+        "鹩巢",
+        "鹪巢"
+      ],
+      "回": [
+        "轮回",
+        "冈谷回声",
+        "回睇",
+        "峰回",
+        "鸥回故浦",
+        "回忆",
+        "慢回声",
+        "嵁谷回声",
+        "回流",
+        "风回",
+        "云回",
+        "回音"
+      ],
+      "踪": [
+        "原野羚踪",
+        "蹑踪",
+        "云踪",
+        "鸿踪",
+        "雁踪",
+        "寻踪",
+        "觅踪",
+        "探踪",
+        "云外留踪",
+        "云水留踪",
+        "麋踪",
+        "林间蜻踪"
+      ],
+      "直": [
+        "直截",
+        "径直",
+        "迳直",
+        "直观",
+        "直行",
+        "直觉",
+        "直上",
+        "直道",
+        "正直",
+        "直方大"
+      ],
+      "以": [
+        "以宥为怀",
+        "以宁",
+        "可以",
+        "山海以东"
+      ],
+      "为": [
+        "以宥为怀",
+        "可为",
+        "心不为囚",
+        "互为犄角",
+        "相为犄角",
+        "经纬为谱",
+        "与光为俦",
+        "星月为俦",
+        "山海为俦",
+        "山海为衡",
+        "天地为歌",
+        "歌为序"
+      ]
+    },
+    "literature_phrase_examples": {
+      "迂回通达": [],
+      "迂直": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 273115,
+          "context": "风波迂直路何限，云水凄凉秋向高。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 721942,
+          "context": "相携定舍馆，石径走迂直。"
+        }
+      ],
+      "以迂为直": [
+        {
+          "book": "孙子兵法",
+          "line": 83,
+          "context": "军争之难者，以迂为直，以患为利。"
+        }
+      ],
+      "蜾蠃": [
+        {
+          "book": "诗经",
+          "line": 1091,
+          "context": "螟蛉有子，蜾蠃负之。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 82839,
+          "context": "八极神游长寿仙，蜾蠃螟蠕休更觑。"
+        }
+      ],
+      "蜾衔春泥": [],
+      "蜾巢": [],
+      "春野蜾踪": [],
+      "锩成": []
+    },
+    "dictionary_phrase_entries": {
+      "迂回通达": [],
+      "迂直": [
+        {
+          "title": "迂直",
+          "pinyin": "yū zhí",
+          "definition": "1.迂拙而率真。如：「他秉性迂直。」\n2.一種以迂為直的作戰方法。參見「迂直之計」條。",
+          "entry_id": "115530018",
+          "sheet": "1150929辭典匯出",
+          "row": 160751,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "以迂为直": [],
+      "蜾蠃": [
+        {
+          "title": "蜾蠃",
+          "pinyin": "guǒ luǒ",
+          "definition": "動物名。一種昆蟲。體形似蜂，色青黑，腰細。用泥土在樹枝上築巢。常捕食害蟲，有益於農作物的生長。",
+          "entry_id": "042410001",
+          "sheet": "1150929辭典匯出",
+          "row": 71662,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "蜾衔春泥": [],
+      "蜾巢": [],
+      "春野蜾踪": [],
+      "锩成": []
+    },
+    "direct_dictionary": {
+      "迂": {
+        "definition": "doctrinaire, abstruse, unrealistic",
+        "mandarin": "yū",
+        "official_dictionary": [
+          {
+            "title": "迂",
+            "pinyin": "yū",
+            "definition": "[形]\n1.曲折。如：「迂迴」。宋．王令〈餓者行〉：「雨雪不止泥路迂，馬倒伏地人下扶。」\n2.言行誇誕、不切實際。如：「迂腐」、「迂闊」。《國語．周語下》：「郤犫見，其語迂。」\n[動]\n繞道。明．徐弘祖《徐霞客遊記．卷一〇上．滇遊日記十二》：「騎夫以家在蕎甸，故強余迂此。」",
+            "entry_id": "11553",
+            "sheet": "1150929辭典匯出",
+            "row": 11567,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "回": {
+        "definition": "return, turn around; a time",
+        "mandarin": "huí",
+        "related_characters": [
+          {
+            "character": "回",
+            "relation": "kTraditionalVariant",
+            "definition": "return, turn around; a time",
+            "mandarin": "huí"
+          },
+          {
+            "character": "迴",
+            "relation": "kTraditionalVariant",
+            "definition": "revolve, rotate; curving, zigzag",
+            "mandarin": "huí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "回",
+            "pinyin": "huí",
+            "definition": "[動]\n1.掉轉。如：「回首」、「回過身來」。唐．白居易〈長恨歌〉：「君王掩面救不得，回看血淚相和流。」\n2.返、歸。如：「回國」、「回家」、「一去不回」。唐．王翰〈涼州詞〉二首之一：「醉臥沙場君莫笑，古來征戰幾人回？」\n3.改變。如：「回心轉意」。《漢書．卷四八．賈誼傳》：「夫移風易俗，使天下回心而鄉道，類非俗吏之所能為也。」唐．柳宗元〈與韓愈論史官書〉：「道苟直，雖死不可回也。」\n4.答覆。如：「回信」、「回電」、「回答」。《二刻拍案驚奇》卷一一：「日後他來通消息時，好言回他。」《紅樓夢》第七回：「次日，鳳姐梳洗了，先回王夫人畢，方來辭賈母。」\n5.還覆給對方相同或某種動作。如：「回敬」、「回他一槍」。\n6.謝絕、辭去。如：「一口回絕」。宋．蘇軾〈與開元明師〉二首之一：「謹留筆一束，以領雅意，餘回納，不訝不訝。」《紅樓夢》第一一九回：「咱們家遭著這樣事，那有工夫接待人，不拘怎麼回了他去罷。」\n7.避開。如：「回避」。明．徐復祚《紅梨記》第二齣：「前日兩次訪他，俱不得遇，風塵中人，知他真不在家，還是故意回你。」\n[名]\n1.中國少數民族之一。以信奉回教為主。\n2.量詞：(1)計算行為、動作的單位。相當於「次」。如：「前後我共去找了他五回。」宋．辛棄疾〈水調歌頭．帶湖吾甚愛〉詞：「先生杖屨無事，一日走千回。」(2)計算時間的單位。一陣子稱為「一回」。《喻世明言．卷三．新橋市韓五賣春情》：「八老到門前站了一回，蹔到間壁糶米張大郎門前，閒坐了一回。」(3)計算長篇小說段落的單位。一章稱為「一回」。如：「一百二十回本《紅樓夢》。」(4)計算事情的單位。相當於「件」。如：「這是兩回事，不可混為一談。」\n3.姓。如明代有回滿注。",
+            "entry_id": "05102",
+            "sheet": "1150929辭典匯出",
+            "row": 5109,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "通": {
+        "definition": "pass through; common; communicate",
+        "mandarin": "tōng",
+        "official_dictionary": [
+          {
+            "title": "通",
+            "pinyin": "tōng",
+            "definition": "[形]_x000D_\n1.沒有堵塞，可以穿過的。如：「水管不通了。」_x000D_\n2.流暢、暢達。如：「暢通」、「四通八達」、「你的作文寫得不夠通順。」《老殘遊記》第一回：「當年也曾讀過幾句詩書，因八股文章做得不通，所以學也未曾進得一個。」_x000D_\n3.順利。如：「星運亨通」。宋．范仲淹〈岳陽樓記〉：「政通人和，百廢具興。」_x000D_\n4.靈活、不閉塞。如：「圓通」、「開通」。_x000D_\n5.淵博。如：「通人」、「博學通儒」。_x000D_\n6.共同的。如：「好逸惡勞是一般人的通病。」《孟子．滕文公上》：「天下之通義也。」_x000D_\n7.整個、全部。如：「通宵」、「通盤考量」。《孟子．離婁下》：「匡章通國皆稱不孝焉，夫子與之遊，又從而禮貌之，敢問何也？」_x000D_\n[副]_x000D_\n全、都。如：「通通上去」。《紅樓夢》第二八回：「他說的我通不懂，怎麼不該罰！」_x000D_\n[動]_x000D_\n1.到達。如：「通到」、「通往」。《國語．晉語二》：「道遠難通，望大難走。」_x000D_\n2.往來、交往。如：「通商」、「通航」、「互通有無」。《漢書．卷三七．季布欒布田叔傳．季布》：「吾聞曹丘生非長者，勿與通。」_x000D_\n3.報告、使知曉。如：「通知」、「通報」。《史記．卷四八．陳涉世家》：「自辯數，乃置，不肯為通。」_x000D_\n4.明白、了解。如：「通曉」、「精通」。《漢書．卷七二．王貢兩龔鮑傳．王吉》：「今使俗吏得任子弟，率多驕驁，不通古今。」_x000D_\n5.發生不正常的性關係。如：「通姦」、「私通」。《左傳．桓公十八年》：「公會齊侯于濼，遂及文姜如齊，齊侯通焉。」《漢書．卷五五．衛青霍去病傳．衛青》：「季與主家僮衛媼通，生青。」_x000D_\n[名]_x000D_\n1.熟悉某種事物的人。如：「中國通」、「萬事通」、「數學通」。_x000D_\n2.量詞：(1)計算文書、電訊的單位。如：「一通電話」、「三通電報」。(2)計算敲擊鐘鼓次數的單位。如：「擂鼓三通」。",
+            "entry_id": "02882",
+            "sheet": "1150929辭典匯出",
+            "row": 2888,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "达": {
+        "definition": "arrive at, reach; intelligent; smooth, slippery",
+        "mandarin": "dá",
+        "related_characters": [
+          {
+            "character": "達",
+            "relation": "kTraditionalVariant",
+            "definition": "arrive at, reach; intelligent",
+            "mandarin": "dá"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "直": {
+        "definition": "straight, erect, vertical",
+        "mandarin": "zhí",
+        "official_dictionary": [
+          {
+            "title": "直",
+            "pinyin": "zhí",
+            "definition": "[形]\n1.不彎曲的。如：「筆直」、「直線」。\n2.不邪曲，沒有私心的。如：「正直」、「耿直」。\n3.縱的、豎的。如：「直行書寫」、「鉛直線」。\n4.行為或性格坦白爽快。如：「心直口快」、「直性子」。\n5.呆板、僵硬。如：「兩眼發直」、「雙腿僵直」。\n[副]\n1.但、只、不過。《孟子．梁惠王上》：「直不百步耳，是亦走也。」\n2.竟然、居然。金．元好問〈水調歌頭．恨人閒〉詞：「恨人閒、情是何物，直教生死相許？」《水滸傳》第一回：「我直如此有眼不識真師，當面錯過。」\n3.沒有間隔的。參見「直達」條。\n[動]\n1.抵得上。通「值」。《史記．卷三〇．平準書》：「乃以白鹿皮方尺，緣以藻繢，為皮幣，直四十萬。」\n2.抵擋。《漢書．卷二三．刑法志》：「魏之武卒不可以直秦之銳士。」\n3.當班、站勤。通「值」。《金史．卷一七．哀宗本紀上》：「日二人直，備顧問。」\n[名]\n1.報酬、酬金。《後漢書．卷四七．班超傳》：「為官寫書，受直以養老母。」\n2.姓。如漢代有直不疑。",
+            "entry_id": "07489",
+            "sheet": "1150929辭典匯出",
+            "row": 7500,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "筆直",
+                "pinyin": "bǐ zhí",
+                "definition": "像筆桿一樣直，形容很直的意思。如：「筆直的馬路」、「身子挺得筆直」。唐．顧況〈露青竹杖歌〉：「亭亭筆直無皴節，磨捋形相一條鐵。」《新鐫全像通俗演義隋煬帝豔史》第一九回：「洞中卻筆直的停著一個石棺材。」《老殘遊記》第一〇回：「勝姑起立，兩手筆直，亂鈴再搖，眾樂皆息。」",
+                "entry_id": "003270070",
+                "sheet": "1150929辭典匯出",
+                "row": 17545
+              },
+              {
+                "title": "直線",
+                "pinyin": "zhí xiàn",
+                "definition": "一個點在平面或空間沿著一定方向和其相反方向運動的軌跡、不彎曲的線。",
+                "entry_id": "074890151",
+                "sheet": "1150929辭典匯出",
+                "row": 111890
+              },
+              {
+                "title": "正直",
+                "pinyin": "zhèng zhí",
+                "definition": "公正剛直。《文選．孔融．薦禰衡表》：「忠果正直，志懷霜雪。」《老殘遊記》第一八回：「像老哥聰明正直，凡事先有成竹在胸，自然投無不利。」",
+                "entry_id": "079300176",
+                "sheet": "1150929辭典匯出",
+                "row": 116030
+              },
+              {
+                "title": "耿直",
+                "pinyin": "gěng zhí",
+                "definition": "正直。如：「秉性耿直」。也作「梗直」、「鯁直」。",
+                "entry_id": "041270014",
+                "sheet": "1150929辭典匯出",
+                "row": 69827
+              },
+              {
+                "title": "心直口快",
+                "pinyin": "xīn zhí kǒu kuài",
+                "definition": "個性直爽，說話不隱諱。《紅樓夢》第三四回：「薛蟠本是個心直口快的人，一生見不得這樣藏頭藏尾的事。」也作「口快心直」、「心直嘴快」。",
+                "entry_id": "071530300",
+                "sheet": "1150929辭典匯出",
+                "row": 107389
+              },
+              {
+                "title": "直性子",
+                "pinyin": "zhí xìng zi",
+                "definition": "人的性情率直。如：「我一看就知道這孩子是個直性子的人。」也稱為「直脾氣」。",
+                "entry_id": "074890162",
+                "sheet": "1150929辭典匯出",
+                "row": 111894
+              },
+              {
+                "title": "兩眼發直",
+                "pinyin": "liǎng yǎn fā zhí",
+                "definition": "人受驚嚇，兩眼直瞪著前方的樣子。如：「他嚇得兩眼發直，半晌說不出話來。」",
+                "entry_id": "0366601921",
+                "sheet": "1150929辭典匯出",
+                "row": 64512
+              },
+              {
+                "title": "直達",
+                "pinyin": "zhí dá",
+                "definition": "1.直接抵達。如：「本班車直達臺中目的地。」《清史稿．卷一二九．河渠志四》：「請自峪口起，開河溝一，直達汾水。」\n2.直接傳達。如：「民眾將意見直達於市長，可更真實的反映基層問題。」",
+                "entry_id": "074890019",
+                "sheet": "1150929辭典匯出",
+                "row": 111794
+              },
+              {
+                "title": "值",
+                "pinyin": "zhí",
+                "definition": "[名]\n1.價格。如：「價值」。\n2.數值的簡稱。如：「平均值」。\n[動]\n1.面對。《史記．卷一二二．酷吏傳．義縱傳》：「寧見乳虎，無值寧成之怒。」漢．王充《論衡．實知》：「至漢興，長樂在其東，未央宮在其西，武庫正值其墓，竟如所言。」\n2.執行勤務。如：「值班」、「值勤」。\n3.抵得上。《水滸傳》第六回：「值是值二千貫，只沒個識主。」《紅樓夢》第三一回：「幾把扇子，能值幾何？」",
+                "entry_id": "07490",
+                "sheet": "1150929辭典匯出",
+                "row": 7501
+              },
+              {
+                "title": "值",
+                "pinyin": "zhì",
+                "definition": "[動]\n持、拿著。《詩經．陳風．宛丘》：「無冬無夏，值其鷺羽。」",
+                "entry_id": "07575",
+                "sheet": "1150929辭典匯出",
+                "row": 7586
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "以": {
+        "definition": "by means of; thereby, therefore; consider as; in order to",
+        "mandarin": "yǐ",
+        "official_dictionary": [
+          {
+            "title": "以",
+            "pinyin": "yǐ",
+            "definition": "[動]_x000D_\n1.用。《左傳．襄公十年》：「我辭禮矣，彼則以之。」漢．王充《論衡．程材》：「洗洿泥者以水，燔腥者用火。」_x000D_\n2.仰賴、憑藉。《韓非子．五蠹》：「富國以農，距敵恃卒。」漢．王充《論衡．卜筮》：「欲知天，以人事。」_x000D_\n3.認為、以為。《左傳．昭公二十五年》：「告臧孫，臧孫以難；告郈孫，郈孫以可勸。」唐．柳宗元〈為裴中丞上裴相賀破東平狀〉：「竊以自古中興之主，必有命代之臣。」_x000D_\n4.可、能夠。《詩經．齊風．猗嗟》：「四矢反兮，以禦亂兮。」《孟子．滕文公下》：「大則以王，小則以霸。」_x000D_\n5.令、使。《孟子．公孫丑上》：「管仲以其君霸，晏子以其君顯。管仲、晏子猶不足為與？」《戰國策．秦策一》：「向欲以齊事王，使攻宋也。」_x000D_\n6.帶領、率領。《左傳．成公十六年》：「欒、范以其族夾公行，陷于淖。」《史記．卷一〇七．魏其武安侯列傳》：「吳楚反時，潁陰侯灌何為將軍，屬太尉，請灌孟為校尉。夫以千人與父俱。」_x000D_\n7.延及。《易經．小畜．九五》：「有孚攣如，富以其鄰。」《論語．堯曰》：「朕躬有罪，無以萬方。」_x000D_\n[介]_x000D_\n1.表示行為的憑藉。相當於「用」。如：「以身作則」、「徐噴以煙」。《論語．為政》：「生，事之以禮；死，葬之以禮、祭之以禮。」《左傳．文公二年》：「晉襄公縛秦囚，使萊駒以戈斬之。」《史記．卷一一七．司馬相如列傳》：「是時卓王孫有女文君新寡，好音，故相如繆與令相重，而以琴心挑之。」_x000D_\n2.因為、由於。《論語．衛靈公》：「君子不以言舉人，不以人廢言。」《韓非子．喻老》：「千丈之隄，以蟻螻之穴潰。」_x000D_\n3.按、依。《孟子．梁惠王上》：「斧斤以時入山林，材木不可勝用也。」《商君書．更法》：「禮法以時而定，制令各順其宜。」_x000D_\n4.在、於。《左傳．桓公二年》：「其弟以千畝之戰生，命之曰成師。」唐．柳宗元〈斷刑論〉：「賞以春夏而刑以秋冬。」_x000D_\n5.表時空、方位、程度等的界限，通常加在前、後、左、右、上、下、往、來、東、西、南、北等字之前。如：「亙古以來」、「中人以上」、「長安東路以西」、「價格在一千元以下」。_x000D_\n[連]_x000D_\n1.而、且。《詩經．邶風．燕燕》：「瞻望弗及，佇立以泣。」《禮記．樂記》：「亡國之音哀以思，其民困。」_x000D_\n2.因而。《漢書．卷二九．溝洫志》：「於是關中為沃野，無凶年，秦以富彊。」三國蜀．諸葛亮〈出師表〉：「不宜妄自菲薄，引喻失義，以塞忠諫之路也。」_x000D_\n3.目的在於。如：「以免」、「以致於」。《書經．泰誓下》：「郊社不修，宗廟不享。作奇技淫巧以悅婦人。」_x000D_\n4.與、和。《儀禮．鄉射禮》：「各以其耦進，反于射位。」_x000D_\n[助]_x000D_\n置動詞後，無義。如：「得以」、「能以」。《論語．泰伯》：「可以託六尺之孤，可以寄百里之命。」_x000D_\n[副]_x000D_\n1.太、甚。《孟子．滕文公下》：「三月無君則弔，不以急乎？」《史記．卷六六．伍子胥列傳》：「子之報仇，其以甚乎？」_x000D_\n2.既、已經。通「已」。《三國志．卷二三．魏書．和常楊杜趙裴傳．杜襲》：「吾計以定，卿勿復言。」_x000D_\n3.更加。《呂氏春秋．恃君覽．觀表》：「魏日以削，秦日益大。」《史記．卷五．秦本紀》：「及其後世，日以驕淫。」_x000D_\n[名]_x000D_\n1.緣故、理由。《詩經．邶風．旄丘》：「何其久也，必有以也。」《列子．周穆王》：「宋人執而問其以，華子曰：『曩吾忘也。』」唐．李白〈春夜宴從弟桃花園序〉：「古人秉燭夜遊，良有以也。」_x000D_\n2.以色列的簡稱。如：「以阿戰爭」。_x000D_\n3.姓。如漢代有以彤。",
+            "entry_id": "10557",
+            "sheet": "1150929辭典匯出",
+            "row": 10570,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "为": {
+        "definition": "do, handle, govern, act; be",
+        "mandarin": "wèi",
+        "related_characters": [
+          {
+            "character": "為",
+            "relation": "kTraditionalVariant",
+            "definition": "do, handle, govern, act; be",
+            "mandarin": "wèi"
+          },
+          {
+            "character": "爲",
+            "relation": "kTraditionalVariant",
+            "definition": "do, handle, govern, act; be",
+            "mandarin": "wèi"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蜾": {
+        "definition": "the solitary wasp",
+        "mandarin": "guǒ",
+        "official_dictionary": [
+          {
+            "title": "蜾",
+            "pinyin": "guǒ",
+            "definition": "參見「蜾蠃」條。",
+            "entry_id": "04241",
+            "sheet": "1150929辭典匯出",
+            "row": 4247,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "蜾蠃",
+                "pinyin": "guǒ luǒ",
+                "definition": "動物名。一種昆蟲。體形似蜂，色青黑，腰細。用泥土在樹枝上築巢。常捕食害蟲，有益於農作物的生長。",
+                "entry_id": "042410001",
+                "sheet": "1150929辭典匯出",
+                "row": 71662
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蠃": {
+        "definition": "the solitary wasp",
+        "mandarin": "luǒ",
+        "official_dictionary": [
+          {
+            "title": "蠃",
+            "pinyin": "luǒ",
+            "definition": "參見「蜾蠃」條。",
+            "entry_id": "03811",
+            "sheet": "1150929辭典匯出",
+            "row": 3817,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "蜾蠃",
+                "pinyin": "guǒ luǒ",
+                "definition": "動物名。一種昆蟲。體形似蜂，色青黑，腰細。用泥土在樹枝上築巢。常捕食害蟲，有益於農作物的生長。",
+                "entry_id": "042410001",
+                "sheet": "1150929辭典匯出",
+                "row": 71662
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "衔": {
+        "definition": "bit; hold in mouth, bite; gag",
+        "mandarin": "xián",
+        "related_characters": [
+          {
+            "character": "銜",
+            "relation": "kTraditionalVariant",
+            "definition": "bit; hold in mouth, bite; gag",
+            "mandarin": "xián"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "泥": {
+        "definition": "mud, mire; earth, clay; plaster",
+        "mandarin": "ní",
+        "official_dictionary": [
+          {
+            "title": "泥",
+            "pinyin": "ní",
+            "definition": "[名]\n1.水和土的混合物。如：「泥巴」、「汙泥」。《文選．古詩十九首．東城高且長》：「思為雙飛燕，銜泥巢君屋。」《老殘遊記》第一四回：「這裡許多人用蒲包裝泥，預備堵城門。」\n2.搗碎、壓碎調勻像泥狀的東西。如：「棗泥」、「印泥」、「芋泥」、「蒜泥」。\n[動]\n1.沾汙、弄髒。如：「衣服泥了要換掉。」明．湯顯祖《牡丹亭》第一〇齣：「踏草怕泥新繡襪，惜花疼煞小金鈴。」\n2.塗飾、塗抹。南朝宋．劉義慶《世說新語．汰侈》：「王以赤石脂泥壁。」宋．范成大〈四時田園雜興〉詩六〇首之五一：「屋上添高一把茅，密泥房壁似僧寮。」",
+            "entry_id": "02999",
+            "sheet": "1150929辭典匯出",
+            "row": 3006,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "泥",
+            "pinyin": "nì",
+            "definition": "[動]\n1.固執、拘泥。如：「泥古不化」。《荀子．君道》：「知明制度權物稱用之為不泥也。」\n2.留滯。《論語．子張》：「雖小道必有可觀者焉，致遠恐泥，是以君子不為也。」《老殘遊記》第一七回：「翠環仍泥著不肯去，眼看著人瑞，有求救的意思。」\n3.用軟言柔語相求。唐．元稹〈遣悲懷〉詩三首之一：「顧我無衣搜畫篋，泥他沽酒拔金釵。」唐．皇甫枚《飛煙傳》：「郎心應似琴心怨，脈脈春情更泥誰。」",
+            "entry_id": "03024",
+            "sheet": "1150929辭典匯出",
+            "row": 3031,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "巢": {
+        "definition": "nest, living quarter in tree",
+        "mandarin": "cháo",
+        "official_dictionary": [
+          {
+            "title": "巢",
+            "pinyin": "cháo",
+            "definition": "[名]\n1.鳥類、昆蟲或其他動物的窩。《說文解字．巢部》：「巢，鳥在木上曰巢，在穴曰窠。」如：「鳥巢」、「蜂巢」。《詩經．召南．鵲巢》：「維鵲有巢，維鳩居之。」《漢書．卷二七．五行志中之上》：「長安城南有鼠銜黃蒿、柏葉，上民冢柏及榆樹上為巢。」\n2.住處。唐．李白〈憶舊遊寄譙郡元參軍〉詩：「余既還山尋故巢，君亦歸家渡渭橋。」《新唐書．卷一六六．列傳．杜佑》：「不數月必覆賊巢。」\n3.樂器名，吹管樂器。屬於笙類的一種。《新唐書．卷二一．禮樂志十一》：「七曰匏，為笙，為竽，為巢。巢，大笙也。」\n4.姓。如東漢時有巢堪。\n[動]\n築巢。《左傳．昭公二十五年》：「有鴝鵒來巢。」",
+            "entry_id": "08300",
+            "sheet": "1150929辭典匯出",
+            "row": 8314,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "野": {
+        "definition": "open country, field; wilderness",
+        "mandarin": "yě",
+        "official_dictionary": [
+          {
+            "title": "野",
+            "pinyin": "yě",
+            "definition": "[名]\n1.郊外。《書經．武成》：「歸馬于華山之陽，放牛于桃林之野。」唐．柳宗元〈捕蛇者說〉：「永州之野產異蛇，黑質而白章。」\n2.廣平的地方。《呂氏春秋．季秋紀．審己》：「稼生於野而藏於倉，稼非有欲也。」《三國志．卷三五．蜀書．諸葛亮傳》：「益州險塞，沃野千里。」\n3.界限、地域。如：「分野」、「視野」。《淮南子．原道》：「上游於霄雿之野，下出於無垠之門。」\n4.民間。《書經．大禹謨》：「君子在野，小人在位。」《三國志．卷四二．蜀書．郤正傳》：「故君臣協美於朝，黎庶欣戴於野。」\n[形]\n1.質樸。《論語．雍也》：「質勝文則野，文勝質則史。」唐．柳宗元〈柳宗直西漢文類序〉：「首紀殷周之前，其文簡而野。」\n2.粗鄙無禮、放縱不馴。如：「粗野」、「撒野」。《左傳．宣公四年》：「諺曰：『狼子野心。』是乃狼也，其可畜乎？」《禮記．仲尼燕居》：「敬而不中禮謂之野，恭而不中禮謂之給。」\n3.野生而未經人工栽培或馴養的。如：「野菜」、「野菊」、「野牛」、「野馬」。\n4.非正式的。如：「野錄」、「野乘」、「野史」。\n[副]\n非常、很。如：「朔風野大」。",
+            "entry_id": "10755",
+            "sheet": "1150929辭典匯出",
+            "row": 10769,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "踪": {
+        "definition": "footprints, traces, tracks",
+        "mandarin": "zōng",
+        "related_characters": [
+          {
+            "character": "踪",
+            "relation": "kTraditionalVariant",
+            "definition": "footprints, traces, tracks",
+            "mandarin": "zōng"
+          },
+          {
+            "character": "蹤",
+            "relation": "kTraditionalVariant",
+            "definition": "footprints, traces, tracks",
+            "mandarin": "zōng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "踪",
+            "pinyin": null,
+            "definition": "「蹤」的異體字。",
+            "entry_id": "09669-1",
+            "sheet": "1150929辭典匯出",
+            "row": 138337,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "锩": {
+        "definition": "to bend iron",
+        "mandarin": "juǎn",
+        "related_characters": [
+          {
+            "character": "錈",
+            "relation": "kTraditionalVariant",
+            "definition": "to bend iron",
+            "mandarin": "juǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "official_dictionary": [
+          {
+            "title": "成",
+            "pinyin": "chéng",
+            "definition": "[動]\n1.做好事情。《說文解字．戊部》：「成，就也。」如：「完成」、「功成名就」、「大功告成」。\n2.變為。如：「點石成金」、「磨杵成針」。\n3.達到。如：「成千上萬」、「成雙成對」。\n4.促成。如：「成全」、「玉成其事」、「成人之美」。\n5.可以。如：「他想要耍賴是不成的。」\n[名]\n1.量詞。計算十等分概念的單位。如：「有八成希望。」\n2.古代十里平方的土地。《左傳．哀公元年》：「有田一成，有眾一旅。」\n3.現有的一切。如：「創業容易守成難。」唐．吳兢《貞觀政要．卷一．論君道》：「帝王之業，草創與守成孰難？」\n4.姓。如漢代有成瑨。\n[形]\n1.完整的。如：「成品」、「成天」。宋．陸游〈何君墓表〉：「不以字害其成句，不以句累其全篇。」\n2.現有的、舊有的。如：「成例」、「成規」、「成語」。\n3.構成整體的。如：「成分」、「成員」。",
+            "entry_id": "08492",
+            "sheet": "1150929辭典匯出",
+            "row": 8506,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "迂回通达",
+      "decision": "reject",
+      "reason": "语义上是“绕道而通达”的描述性短语，组合较松散，像对路径或结果的说明，缺少凝练的品牌名感。"
+    },
+    {
+      "name": "迂直",
+      "decision": "uncertain",
+      "reason": "有“迂拙而率真”及兵法术语等既有含义，字义可核，但作为完整品牌名称语义不够直观，且容易带出迂拙、不切实际的联想。"
+    },
+    {
+      "name": "以迂为直",
+      "decision": "reject",
+      "reason": "完整引用《孙子兵法》中的成句，表达策略判断而非凝练品牌名，属于句式化表达。"
+    },
+    {
+      "name": "蜾蠃",
+      "decision": "uncertain",
+      "reason": "是确切的昆虫名称，字义无误；但直接以生僻虫名作品牌，名称辨识依赖特定知识且联想较窄，品牌自然度存疑。"
+    },
+    {
+      "name": "蜾衔春泥",
+      "decision": "reject",
+      "reason": "将蜾蠃、衔取、春泥等意象机械拼接，语法关系含混，也没有自然形成的完整意象。"
+    },
+    {
+      "name": "蜾巢",
+      "decision": "uncertain",
+      "reason": "可理解为蜾蠃之巢，但属于生硬的名词压缩，关系表达不自然；品牌语义辨识度有限。"
+    },
+    {
+      "name": "春野蜾踪",
+      "decision": "reject",
+      "reason": "把春野、蜾蠃和踪迹拼合，修饰关系与整体意象不清，呈现堆砌感。"
+    },
+    {
+      "name": "锩成",
+      "decision": "uncertain",
+      "reason": "“锩”确有弯曲铁材之义，但“锩成”的动宾关系和完整词义难以自然确认；不能借“卷”或“眷”等字义解释。"
+    }
+  ]
+}

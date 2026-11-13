@@ -1,0 +1,363 @@
+{
+  "created_at": "2026-11-12T15:31:46+0800",
+  "status": "semantic_check_not_applied",
+  "input": {
+    "task": "核查指定中文品牌候选的整词本义、各字在完整名称中的具体语义角色和自然度；不得为了通过而编造意义。",
+    "names": [
+      "丁香",
+      "园丁",
+      "丁宁",
+      "丁当",
+      "丁点",
+      "七月",
+      "七弦",
+      "七彩",
+      "七曜",
+      "专才",
+      "丁酉",
+      "丁火"
+    ],
+    "rules": [
+      "文献只供参考，不要求出处；只说明实际词义，不把检索命中当成立依据。",
+      "名称中的每个不同汉字都需有character_roles具体说明，数字、姓氏、时间和词素也应说明真实构词作用。",
+      "整词不得简单拆字望文生义。丁香的丁不是天干寓意，七月的七是月份序数，不是丰盛或完整。",
+      "naturalness为1到5，词义或自然度不确定则给低分并说明，保持真实；不要求全部高分。",
+      "仅返回JSON names列表，每项name、meaning、character_roles和naturalness。"
+    ],
+    "dictionary": {
+      "丁": {
+        "definition": "male adult; robust, vigorous; 4th heavenly stem",
+        "mandarin": "dīng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "香": {
+        "definition": "fragrant, sweet-smelling; incense; Kangxi radical 186",
+        "mandarin": "xiāng",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "园": {
+        "definition": "garden; park, orchard",
+        "mandarin": "yuán",
+        "related_characters": [
+          {
+            "character": "园",
+            "relation": "kTraditionalVariant",
+            "definition": "garden; park, orchard",
+            "mandarin": "yuán"
+          },
+          {
+            "character": "園",
+            "relation": "kTraditionalVariant",
+            "definition": "garden; park, orchard",
+            "mandarin": "yuán"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宁": {
+        "definition": "calm, peaceful, serene; healthy",
+        "mandarin": "níng",
+        "related_characters": [
+          {
+            "character": "宁",
+            "relation": "kTraditionalVariant",
+            "definition": "calm, peaceful, serene; healthy",
+            "mandarin": "níng"
+          },
+          {
+            "character": "寧",
+            "relation": "kTraditionalVariant",
+            "definition": "repose, serenity, peace; peaceful",
+            "mandarin": "níng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "当": {
+        "definition": "bear, accept, undertake; just",
+        "mandarin": "dāng",
+        "related_characters": [
+          {
+            "character": "噹",
+            "relation": "kTraditionalVariant",
+            "definition": "sound of bells",
+            "mandarin": "dāng"
+          },
+          {
+            "character": "当",
+            "relation": "kTraditionalVariant",
+            "definition": "bear, accept, undertake; just",
+            "mandarin": "dāng"
+          },
+          {
+            "character": "當",
+            "relation": "kTraditionalVariant",
+            "definition": "bear, accept, undertake; just",
+            "mandarin": "dāng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "点": {
+        "definition": "dot, speck, spot; point, degree",
+        "mandarin": "diǎn",
+        "related_characters": [
+          {
+            "character": "点",
+            "relation": "kTraditionalVariant",
+            "definition": "dot, speck, spot; point, degree",
+            "mandarin": "diǎn"
+          },
+          {
+            "character": "點",
+            "relation": "kTraditionalVariant",
+            "definition": "dot, speck, spot; point, degree",
+            "mandarin": "diǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "七": {
+        "definition": "seven",
+        "mandarin": "qī",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "月": {
+        "definition": "moon; month; Kangxi radical 74",
+        "mandarin": "yuè",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "弦": {
+        "definition": "string; hypotenuse, crescent",
+        "mandarin": "xián",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "彩": {
+        "definition": "hue, color; variegated colors",
+        "mandarin": "cǎi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "曜": {
+        "definition": "glorious, as sun; daylight, sunlight; one of the seven planets of pre-modern astronomy (the sun, the moon, Mercury, Venus, Mars, Jupiter, and Saturn)",
+        "mandarin": "yào",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "专": {
+        "definition": "monopolize, take sole possession",
+        "mandarin": "zhuān",
+        "related_characters": [
+          {
+            "character": "專",
+            "relation": "kTraditionalVariant",
+            "definition": "monopolize, take sole possession",
+            "mandarin": "zhuān"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "才": {
+        "definition": "talent, ability; just, only",
+        "mandarin": "cái",
+        "related_characters": [
+          {
+            "character": "才",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          },
+          {
+            "character": "纔",
+            "relation": "kTraditionalVariant",
+            "definition": "talent, ability; just, only",
+            "mandarin": "cái"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "酉": {
+        "definition": "a wine vessel; tenth earthly branch; Kangxi radical 164",
+        "mandarin": "yǒu",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "火": {
+        "definition": "fire, flame; burn; anger, rage",
+        "mandarin": "huǒ",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "phrases": {
+      "丁香": [
+        {
+          "title": "丁香",
+          "pinyin": "dīng xiāng",
+          "definition": "1.植物名。常綠喬木。葉對生，卵狀長橢圓形，長五至十三公分。頂生聚繖花序，花白色或紫色，四瓣，有香味。因花形甚小，有如雞舌，故也稱為「雞舌香」。花蕾及其精油為重要香料，均可入藥，為芳香健胃劑、驅風劑及興奮劑。也稱為「素客」。_x000D_\n2.紫丁香的別名。參見「紫丁香」條。_x000D_\n3.女子的舌尖。五代十國．李煜〈一斛珠．晚妝初過〉詞：「晚妝初過，沉檀輕注些兒個，向人微露丁香顆。」_x000D_\n4.鈕扣。清．孔尚任《桃花扇》第七齣：「兩個在那裡交扣丁香，並照菱花，梳洗才完，穿戴未畢。」也稱為「丁香結」。",
+          "entry_id": "022520039",
+          "sheet": "1150929辭典匯出",
+          "row": 46362,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "园丁": [],
+      "丁宁": [],
+      "丁当": [],
+      "丁点": [],
+      "七月": [
+        {
+          "title": "七月",
+          "pinyin": "qī yuè",
+          "definition": "《詩經．豳風》的篇名。共八章。根據〈詩序〉：「七月，陳王業也。」或亦指詠豳地風土之詩。首章二句為：「七月流火，九月授衣。」",
+          "entry_id": "0620201461",
+          "sheet": "1150929辭典匯出",
+          "row": 96941,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "七弦": [],
+      "七彩": [],
+      "七曜": [
+        {
+          "title": "七曜",
+          "pinyin": "qī yào",
+          "definition": "1.中國古稱日、月及金、木、水、火、土五星為「七曜」。\n2.北斗七星。唐．王勃〈益州夫子廟碑〉：「述夫帝車南指，遁七曜於中階。」",
+          "entry_id": "062020137",
+          "sheet": "1150929辭典匯出",
+          "row": 96931,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "专才": [],
+      "丁酉": [],
+      "丁火": []
+    }
+  },
+  "output": {
+    "names": [
+      {
+        "name": "丁香",
+        "meaning": "一种芳香植物，也指其花蕾及相关香料；“丁香”作为植物名是完整词，不是“丁”取天干义再与“香”拼成的意思。",
+        "character_roles": {
+          "丁": "与“香”共同构成植物名“丁香”；在此不表示天干，也不单独表示成年男子或强健。",
+          "香": "构成植物名“丁香”，与该植物的芳香特征相应。"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "园丁",
+        "meaning": "园艺工作者、照料花木的人；也可比喻教师。",
+        "character_roles": {
+          "园": "“园”指园圃、园地，限定“丁”所指的人与园艺工作的关系。",
+          "丁": "“丁”在此是指人的词素，与“园”组成“园丁”，不是天干。"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "丁宁",
+        "meaning": "叮咛、反复嘱咐；也可作人名。作为普通词，常见写法是“叮咛”，“丁宁”是其异写或较旧写法。",
+        "character_roles": {
+          "丁": "在“丁宁”这一词形中参与记录“叮咛”一词，不取天干义。",
+          "宁": "在该词形中与“丁”共同记录“叮咛”，不表示“安宁”。"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "丁当",
+        "meaning": "常见于“丁当”或“叮当”，表示金属等碰撞的清脆声音；作品牌名时可直接借用这一拟声词。",
+        "character_roles": {
+          "丁": "拟声词的组成部分，模拟声音，不取天干义。",
+          "当": "拟声词的组成部分，模拟声音，不取“承担”或“恰当”义。"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "丁点",
+        "meaning": "“一点儿、很少”的口语说法，常见于“丁点儿”“一丁点儿”。单独作名称略显不完整。",
+        "character_roles": {
+          "丁": "在“一丁点儿”等口语词中构成表示微小数量的固定词形，不取天干义。",
+          "点": "表示少量、微小的一点，是词中表数量的部分。"
+        },
+        "naturalness": 3
+      },
+      {
+        "name": "七月",
+        "meaning": "一年中的第七个月；也可指《诗经·豳风》篇名。",
+        "character_roles": {
+          "七": "月份序数，表示第七，不表示丰盛或完整。",
+          "月": "在月份名称中表示月、月份，不是指月亮。"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "七弦",
+        "meaning": "七根弦；常用于指古琴，因传统古琴通常有七弦。作为独立普通词，其具体所指依语境而定。",
+        "character_roles": {
+          "七": "数词，限定弦的数量为七。",
+          "弦": "指乐器的弦；与“七”组成数量短语。"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "七彩",
+        "meaning": "七种颜色，通常泛指多种颜色或绚丽的色彩。",
+        "character_roles": {
+          "七": "数量词，与“彩”组合表示多种、成组的色彩；具体计数可有泛指用法。",
+          "彩": "指颜色、色彩，是词的中心语义部分。"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "七曜",
+        "meaning": "传统天文学中日、月及金木水火土五星的合称；也可指北斗七星。",
+        "character_roles": {
+          "七": "数量词，指合称中的七个天体或星体。",
+          "曜": "指日月、星曜；与“七”构成天体合称。"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "专才",
+        "meaning": "在某一专门领域具有专长的人，也可指专门人才。",
+        "character_roles": {
+          "专": "表示专门、专长于某一领域，修饰“才”。",
+          "才": "指才干、才能；在“专才”中也可转指具有专长的人。"
+        },
+        "naturalness": 5
+      },
+      {
+        "name": "丁酉",
+        "meaning": "干支之一，由天干“丁”和地支“酉”相配组成，用于纪年、纪日等；六十干支循环中排在第三十四位。",
+        "character_roles": {
+          "丁": "天干之一，在此承担干支纪序中的天干位置，不表示成年男子或强健。",
+          "酉": "地支之一，在此承担干支纪序中的地支位置；不取酒器义。"
+        },
+        "naturalness": 4
+      },
+      {
+        "name": "丁火",
+        "meaning": "传统命理、阴阳五行术语中，天干“丁”所对应的阴火；并非日常通用词。",
+        "character_roles": {
+          "丁": "天干“丁”，在该术语中标示其五行属性所依附的天干。",
+          "火": "表示五行中的火，是“丁火”术语的属性部分。"
+        },
+        "naturalness": 3
+      }
+    ]
+  }
+}
