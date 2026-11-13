@@ -70,6 +70,20 @@ class ReleasePackageTests(unittest.TestCase):
             package_release.package_release("v0.2.0", "HEAD", self.output)
         self.assertFalse(self.output.exists())
 
+    def test_split_data_is_reassembled_in_release_without_shipping_parts(self):
+        from scripts.data_parts import pack_file
+        for name in ('data/names.db', 'data/candidates.json'):
+            path = self.root / name
+            pack_file(path, part_size=79)
+            path.unlink()
+        self.commit()
+        artifact = package_release.package_release('v0.1.0', 'HEAD', self.output)
+        with tarfile.open(artifact) as archive:
+            self.assertIn('name-v0.1.0/data/names.db', archive.getnames())
+            self.assertFalse(any('.gz.parts' in name for name in archive.getnames()))
+            self.assertEqual(json.loads(archive.extractfile('name-v0.1.0/data/candidates.json').read()),
+                             [{'name': '云山', 'id': 'candidate-1', 'score': 80.5}])
+
     def test_inconsistent_database_and_snapshot_are_rejected(self):
         (self.root / "data/candidates.json").write_text(json.dumps([
             {"name": "云山", "id": "candidate-1", "score": 60.0},

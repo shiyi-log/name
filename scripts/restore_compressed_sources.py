@@ -8,6 +8,11 @@ import gzip
 from pathlib import Path
 import tempfile
 
+if __package__:
+    from .data_parts import restore_parts
+else:
+    from data_parts import restore_parts
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOTS = (ROOT / "data", ROOT / "参考文献" / "字义数据")
@@ -18,6 +23,11 @@ def restore(root: Path = ROOT) -> int:
     for data_root in (root / "data", root / "参考文献" / "字义数据"):
         if not data_root.exists():
             continue
+        for manifest in sorted(data_root.rglob('*.gz.parts/manifest.json')):
+            destination = manifest.parent.with_name(manifest.parent.name[:-9])
+            if not destination.exists():
+                restore_parts(manifest, destination)
+                restored += 1
         for source in sorted(data_root.rglob("*.gz")):
             destination = source.with_suffix("")
             if destination.exists():

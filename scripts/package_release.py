@@ -17,6 +17,11 @@ import subprocess
 import tarfile
 import tempfile
 
+if __package__:
+    from .data_parts import iter_uncompressed
+else:
+    from data_parts import iter_uncompressed
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -60,6 +65,14 @@ def package_release(tag: str, revision: str, output_dir: Path) -> Path:
                 member = archive.extractfile(prefix + relative_path) if prefix + relative_path in archive.getnames() else None
                 if member is not None:
                     return member.read()
+                parts_prefix = prefix + relative_path + '.gz.parts/'
+                if parts_prefix + 'manifest.json' in archive.getnames():
+                    manifest = json.load(archive.extractfile(parts_prefix + 'manifest.json'))
+                    def read_part(name):
+                        if parts_prefix + name not in archive.getnames():
+                            raise ValueError(f'发布包缺少分片：{name}')
+                        return archive.extractfile(parts_prefix + name).read()
+                    return b''.join(iter_uncompressed(manifest, read_part))
                 compressed_name = prefix + relative_path + ".gz"
                 compressed = archive.extractfile(compressed_name) if compressed_name in archive.getnames() else None
                 if compressed is None:
@@ -97,17 +110,21 @@ def package_release(tag: str, revision: str, output_dir: Path) -> Path:
             notes = release_notes(read_file("CHANGELOG.md").decode(), version)
             normalized_path = scratch / "normalized.tar"
             member_names = set(archive.getnames())
+            split_paths = {name[len(prefix):-len('.gz.parts/manifest.json')]
+                           for name in member_names if name.endswith('.gz.parts/manifest.json')}
             with tarfile.open(normalized_path, "w") as normalized:
                 for member in archive.getmembers():
-                    if member.name.endswith(".gz"):
+                    if member.name.endswith((".gz", '.gz.parts')) or '.gz.parts/' in member.name:
                         continue
                     source = archive.extractfile(member) if member.isfile() else None
                     if source is None:
                         normalized.addfile(member)
                     else:
                         normalized.addfile(member, source)
-                for compressed_name in sorted(name for name in member_names if name.endswith(".gz")):
-                    relative_path = compressed_name[len(prefix):-3]
+                compressed_paths = {name[len(prefix):-3] for name in member_names if name.endswith('.gz')}
+                for relative_path in sorted(compressed_paths | split_paths):
+                    if prefix + relative_path in member_names:
+                        continue
                     body = read_file(relative_path)
                     info = tarfile.TarInfo(prefix + relative_path)
                     info.size = len(body)

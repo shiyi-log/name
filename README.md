@@ -15,7 +15,15 @@ python -m pip install -r requirements.txt
 python api_server.py
 ```
 
-仓库将发布数据以 gzip 形式保存；从源码克隆后，首次启动前运行 `python scripts/restore_compressed_sources.py` 还原数据库、候选快照和字义资料。
+仓库将数据库、候选快照和字典正文以 gzip 压缩分片保存，每片最大 16 MiB，清单记录分片与还原文件的 SHA-256。从源码克隆后，首次启动前运行 `python scripts/restore_compressed_sources.py` 还原；已有本地文件不会被覆盖，缺片或校验失败不会留下半份文件。原件只供本地运行，不再直接提交 Git。
+
+更新需提交的数据快照后，运行以下命令重新生成分片（数据库通过 SQLite 备份读取，包含已提交的 WAL 数据）：
+
+```bash
+python scripts/data_parts.py data/names.db data/candidates.json 参考文献/字义数据/moe-revised-2015_20260929/entries.json
+```
+
+提交对应的 `*.gz.parts/` 目录。原有未分片 gzip 文件仍可恢复；同一文件存在分片和旧 gzip 时以分片为准。发布包会校验分片并在标准路径提供完整文件。
 
 然后打开：[http://127.0.0.1:4173/](http://127.0.0.1:4173/)。服务默认只监听本机；可用 `--port 4174` 调整端口。关闭服务时按 `Ctrl+C`。
 
@@ -167,6 +175,6 @@ Python 测试使用临时数据库和模拟的 AI 响应，不调用真实模型
 
 推送代码或创建 Pull Request 时，GitHub Actions 会在 Python 3.10、3.12 和 Node.js 22 环境运行测试、语法检查、候选数据一致性检查、本地 API 冒烟检查和密钥检查。检查使用临时数据库与模拟响应，不会读取开发者的 CC Switch 配置或调用真实模型。
 
-版本号保存在 `VERSION`。更新版本号与 `CHANGELOG.md`、使用中文提交消息推送代码后，再推送同名的 `v` 前缀标签，例如 `v0.1.0`。发布工作流会重新运行 CI，核对标签和版本号，构建带数据库的完整发布包与 SHA256 校验文件，最后自动创建中文 GitHub Release。源码归档由版本提交生成，包含发布时的 `data/names.db` 与候选 JSON 快照。
+版本号保存在 `VERSION`。更新版本号与 `CHANGELOG.md`、使用中文提交消息推送代码后，再推送同名的 `v` 前缀标签，例如 `v0.1.0`。发布工作流会重新运行 CI，核对标签和版本号，构建带数据库的完整发布包与 SHA256 校验文件，最后自动创建中文 GitHub Release。源码归档保存压缩数据或分片，使用恢复脚本还原；完整发布包则直接包含 `data/names.db` 与候选 JSON 快照。
 
 环境变量文件、API 密钥、证书私钥和 CC Switch 实际配置库不会进入版本包。生成式 AI 的密钥应保留在本机配置中；升级已有安装时，先备份自己的数据库，避免用发布包内的初始数据库覆盖个人候选。
