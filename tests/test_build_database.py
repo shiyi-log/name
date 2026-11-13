@@ -41,6 +41,23 @@ def candidate(
 
 
 class IncrementalGenerationTests(unittest.TestCase):
+    def test_build_database_skips_full_candidate_migration_when_rows_are_current(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "names.db"
+            characters = list("甲乙")
+            tokens = {"actions": [], "images": [], "abstracts": []}
+            build_database(characters, tokens, [candidate("甲乙", "id-1", 80)], db_path)
+            with closing(sqlite3.connect(db_path)) as connection:
+                connection.executescript("""
+                    CREATE TABLE candidate_updates (name TEXT);
+                    CREATE TRIGGER log_candidate_updates AFTER UPDATE ON name_candidates
+                    BEGIN INSERT INTO candidate_updates VALUES (NEW.name); END;
+                """)
+            build_database(characters, tokens, [], db_path)
+            with closing(sqlite3.connect(db_path)) as connection:
+                updates = connection.execute("SELECT count(*) FROM candidate_updates").fetchone()[0]
+        self.assertEqual(updates, 0)
+
     def test_legacy_state_read_does_not_create_tables_and_is_imported(self) -> None:
         legacy = {
             "processed_poetry_files": {"poet.song.0.json": "old-sha"},
@@ -109,6 +126,27 @@ class IncrementalGenerationTests(unittest.TestCase):
             self.assertEqual(rebuilt["aiModel"], "test-model")
             self.assertEqual(rebuilt["sourceType"], "ai")
             self.assertEqual(rebuilt["status"], "已核验")
+
+    def test_rebuild_preserves_concurrent_quality_review_fields(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "names.db"
+            characters = list("甲乙丙丁")
+            tokens = {"actions": ["甲乙"], "images": ["丙丁"], "abstracts": []}
+            original = candidate("甲乙", "stable-id", 82)
+            build_database(characters, tokens, [original], db_path)
+            with closing(sqlite3.connect(db_path)) as connection:
+                connection.execute(
+                    "UPDATE name_candidates SET status=?, registry_note=? WHERE name=?",
+                    ("质量复核通过", "模型复核通过", "甲乙"),
+                )
+                connection.commit()
+
+            rescored = candidate("甲乙", "new-id", 91, status="待核验")
+            build_database(characters, tokens, [rescored], db_path)
+            rebuilt = next(item for item in load_existing_candidates(db_path) if item["name"] == "甲乙")
+
+            self.assertEqual(rebuilt["status"], "质量复核通过")
+            self.assertEqual(rebuilt["registryNote"], "模型复核通过")
 
     def test_loader_supports_legacy_candidate_schema(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

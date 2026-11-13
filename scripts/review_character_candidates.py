@@ -193,7 +193,7 @@ def request_review(names: list[str], provider: dict, related_names: dict | None 
         body = {'model': provider['model'], 'input': [
             {'role': 'system', 'content': [{'type': 'input_text', 'text': system}]},
             {'role': 'user', 'content': [{'type': 'input_text', 'text': json.dumps(prompt, ensure_ascii=False)}]}
-        ], 'text': {'format': {'type': 'json_object'}}}
+        ], 'text': {'format': {'type': 'json_object'}}, 'stream': True}
     else:
         body = {'model': provider['model'], 'messages': [
             {'role': 'system', 'content': system},
@@ -202,8 +202,9 @@ def request_review(names: list[str], provider: dict, related_names: dict | None 
     request = urllib.request.Request(api_server._response_endpoint(provider['baseUrl'], provider['wireApi']),
         data=json.dumps(body).encode(), headers={'Authorization': 'Bearer ' + provider['_api_key'],
         'Content-Type': 'application/json'}, method='POST')
-    with urllib.request.urlopen(request, timeout=90) as response:
-        result = json.load(response)
+    with urllib.request.urlopen(request, timeout=300) as response:
+        result = (api_server._read_responses_stream(response) if provider['wireApi'] == 'responses'
+                  else json.load(response))
     payload = api_server._json_from_ai_text(api_server._response_text(result, provider['wireApi']))
     return validate_reviews(names, payload), prompt
 

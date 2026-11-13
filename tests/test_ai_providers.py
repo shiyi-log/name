@@ -154,10 +154,10 @@ class ProviderTests(unittest.TestCase):
         names = [{"name": "云山", "meaning": "云与山"}]
         for provider_id, result in (
             ("chat", {"choices": [{"message": {"content": json.dumps({"names": names})}}]}),
-            ("response", {"output": [{"content": [{"type": "output_text", "text": json.dumps({"names": names})}]}]}),
+            ("response", b'event: response.completed\ndata: ' + json.dumps({"type": "response.completed", "response": {"output_text": json.dumps({"names": names})}}).encode() + b'\n\n'),
         ):
             with self.subTest(provider=provider_id), patch.object(
-                api_server.urllib.request, "urlopen", return_value=io.BytesIO(json.dumps(result).encode())
+                api_server.urllib.request, "urlopen", return_value=io.BytesIO(result if isinstance(result, bytes) else json.dumps(result).encode())
             ) as request:
                 self.assertEqual(api_server.request_ai_names("云", 1, [2], provider_id), names)
                 outgoing = request.call_args.args[0]
@@ -167,6 +167,9 @@ class ProviderTests(unittest.TestCase):
                 self.assertEqual(outgoing.full_url, f"https://{provider_id}.example/v1{suffix}")
                 self.assertEqual(outgoing.get_header("Authorization"), "Bearer test-secret-" + provider_id)
                 self.assertIn("input" if provider_id == "response" else "messages", body)
+                self.assertEqual(request.call_args.kwargs["timeout"], 300)
+                if provider_id == "response":
+                    self.assertTrue(body["stream"])
 
     def test_character_prompt_sets_per_length_counts_quality_and_deduplication(self):
         self.create_providers()
@@ -195,7 +198,7 @@ class ProviderTests(unittest.TestCase):
         self.assertTrue(any("硬塞" in rule for rule in prompt["rules"]))
         self.assertIn("模板", prompt["diversity_guidance"])
 
-    def test_generation_transport_keeps_all_known_names_for_deduplication(self):
+    def test_generation_prompt_caps_evenly_spaced_names_for_context_size(self):
         self.create_providers()
         known = ['云' + chr(0x4e00 + index) for index in range(620)]
         result = {'choices': [{'message': {'content': json.dumps({'names': []})}}]}
@@ -203,7 +206,10 @@ class ProviderTests(unittest.TestCase):
                           return_value=io.BytesIO(json.dumps(result).encode())) as request:
             api_server.request_ai_names('云', 1, [2], 'chat', avoid_names=known)
         prompt = json.loads(json.loads(request.call_args.args[0].data)['messages'][1]['content'])
-        self.assertEqual(prompt['avoid_existing_names'], known)
+        self.assertEqual(len(prompt['avoid_existing_names']), api_server.MAX_PROMPT_AVOID_NAMES)
+        self.assertEqual(prompt['avoid_existing_names'][0], known[0])
+        self.assertEqual(prompt['avoid_existing_names'][-1], known[-1])
+        self.assertEqual(len(set(prompt['avoid_existing_names'])), len(prompt['avoid_existing_names']))
 
     def test_selected_provider_model_is_saved_with_generated_candidates(self):
         self.create_providers()

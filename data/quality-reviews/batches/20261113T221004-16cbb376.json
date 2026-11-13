@@ -1,0 +1,781 @@
+{
+  "review_id": "20261113T221004-16cbb376",
+  "model": "gpt-6.1-sol",
+  "shard_index": 2,
+  "shard_count": 3,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "阳春",
+      "阳林",
+      "阳原",
+      "晨阳",
+      "阳朔",
+      "阳与时",
+      "阳成蹊",
+      "阳衡",
+      "阳璞",
+      "阳轸",
+      "阳圭",
+      "景阳",
+      "重阳"
+    ],
+    "related_kept_candidates": {
+      "时": [
+        "衣与四时",
+        "儿时",
+        "巳时",
+        "戌时",
+        "酿时光",
+        "嬷嬷时光",
+        "时光琥珀",
+        "酷时光",
+        "唐时雨",
+        "四时清鲜",
+        "四时常鲜",
+        "需时"
+      ],
+      "春": [
+        "一枝春",
+        "一树春风",
+        "一篼春",
+        "鳜溪春",
+        "鳝游春",
+        "畈上春",
+        "塄上春",
+        "粗笔生春",
+        "一剪春光",
+        "垄畔春",
+        "春日葳蕤",
+        "报春"
+      ],
+      "成": [
+        "伊成蹊",
+        "郯成蹊",
+        "自成一格",
+        "梣木成荫",
+        "晙成",
+        "叠石成景",
+        "风物成瓷",
+        "碳成林",
+        "义成",
+        "一镘成形",
+        "广成",
+        "已成"
+      ],
+      "林": [
+        "艺林",
+        "柘林",
+        "懋林",
+        "林曛",
+        "林间鼬",
+        "青杄林",
+        "柞林",
+        "栎林",
+        "梌林",
+        "山枣林",
+        "榴林",
+        "林间䴕鸣"
+      ],
+      "衡": [
+        "权衡",
+        "碳衡",
+        "王衡",
+        "奕衡",
+        "璟衡",
+        "书衡",
+        "玉衡",
+        "衡宇",
+        "衡门",
+        "钧衡",
+        "诠衡",
+        "允衡"
+      ],
+      "轸": [
+        "轸怀",
+        "轸念",
+        "玉轸",
+        "星轸"
+      ],
+      "阳": [
+        "麑与初阳",
+        "梣向阳",
+        "蔓向阳",
+        "梾木向阳",
+        "太阳雨",
+        "浴朝阳",
+        "崌阳",
+        "少阳",
+        "雪后初阳",
+        "鎏朝阳",
+        "麈伴朝阳",
+        "柑向阳"
+      ],
+      "景": [
+        "淑景",
+        "叠石成景",
+        "景慕",
+        "怡景",
+        "愿景",
+        "景奕",
+        "景铄",
+        "𬱖景",
+        "浩景",
+        "颢景",
+        "粲景",
+        "祥景新章"
+      ],
+      "晨": [
+        "芹露映晨",
+        "晨晢",
+        "梾枝向晨",
+        "晨熙",
+        "晨扉",
+        "踏晨光",
+        "踏晨曦",
+        "码映晨曦",
+        "晨光越冈",
+        "晨熹",
+        "皎若晨星",
+        "晨霏"
+      ],
+      "原": [
+        "崧原",
+        "葭原",
+        "燎原",
+        "原貌",
+        "雱原",
+        "柞原",
+        "蒿原",
+        "菼原",
+        "月照乡原",
+        "蓼原",
+        "荻原",
+        "冈原"
+      ],
+      "与": [
+        "麑与初阳",
+        "衣与四时",
+        "螭与山海",
+        "锹与山",
+        "锹与星辰",
+        "雯与远山",
+        "厂与城",
+        "鳅与石",
+        "鳅与春山",
+        "薇与风",
+        "蕊与山川",
+        "屿与山"
+      ],
+      "璞": [
+        "琎璞",
+        "璞里藏珂",
+        "剖璞",
+        "珺璞",
+        "琨璞",
+        "璞玉",
+        "抱璞",
+        "守璞",
+        "隐璞",
+        "瑆璞",
+        "瑷璞",
+        "㻬璞"
+      ],
+      "蹊": [
+        "伊成蹊",
+        "郯成蹊",
+        "蹊径",
+        "新蹊",
+        "寻蹊",
+        "林蹊",
+        "松蹊",
+        "野蹊",
+        "桃蹊",
+        "幽蹊",
+        "云蹊",
+        "竹蹊"
+      ],
+      "重": [
+        "重器",
+        "千重崿",
+        "矜重",
+        "重镇",
+        "千重墚"
+      ],
+      "圭": [
+        "琬圭",
+        "圭瓒",
+        "圭璧",
+        "日圭",
+        "圭表",
+        "圭尺",
+        "怀圭",
+        "玉圭堂",
+        "山川有圭",
+        "圭影流光"
+      ],
+      "朔": [
+        "朔北",
+        "晦朔",
+        "王朔"
+      ]
+    },
+    "literature_phrase_examples": {
+      "阳春": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 490,
+          "context": "华林满芳景，洛阳徧阳春。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 8407,
+          "context": "那堪秋风里，更舞阳春曲。"
+        }
+      ],
+      "阳林": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 39088,
+          "context": "阳林花已红，寒涧苔未绿。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 238699,
+          "context": "通谷阳林不见人，我来遗恨古时春。"
+        }
+      ],
+      "阳原": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 43176,
+          "context": "阳原淑气早，阴谷沍寒多。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 165870,
+          "context": "当朝受诏不辞家，夜向咸阳原上宿。"
+        }
+      ],
+      "晨阳": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 266558,
+          "context": "晨阳照空幸澄澈，蜚廉暴怒犹喧豗。"
+        }
+      ],
+      "阳朔": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 264366,
+          "context": "【寄阳朔友人】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 296279,
+          "context": "阳朔花迎櫂，崇贤叶满沟。"
+        }
+      ],
+      "阳与时": [],
+      "阳成蹊": [],
+      "阳衡": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 538024,
+          "context": "斜阳衡山云半红，远水无风天一碧。"
+        }
+      ],
+      "阳璞": [],
+      "阳轸": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 396445,
+          "context": "大伯东阳轸旧思，士民襦袴喜回时。"
+        }
+      ],
+      "阳圭": [],
+      "景阳": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 16056,
+          "context": "景阳楼伴千条露，一面新妆待晓钟。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 16100,
+          "context": "凝碧池边敛翠眉，景阳台下绾青丝。"
+        }
+      ],
+      "重阳": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1552,
+          "context": "【重阳日赐宴曲江亭赋六韵诗用清字】"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 1620,
+          "context": "【重阳日中外同欢以诗言志因示群官】"
+        }
+      ]
+    },
+    "dictionary_phrase_entries": {
+      "阳春": [],
+      "阳林": [],
+      "阳原": [],
+      "晨阳": [],
+      "阳朔": [],
+      "阳与时": [],
+      "阳成蹊": [],
+      "阳衡": [],
+      "阳璞": [],
+      "阳轸": [],
+      "阳圭": [],
+      "景阳": [],
+      "重阳": []
+    },
+    "direct_dictionary": {
+      "阳": {
+        "definition": "'male' principle; light; sun",
+        "mandarin": "yáng",
+        "related_characters": [
+          {
+            "character": "陽",
+            "relation": "kTraditionalVariant",
+            "definition": "the active, male principle in Chinese philosophy (yang); light; sun",
+            "mandarin": "yáng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "春": {
+        "definition": "spring; wanton",
+        "mandarin": "chūn",
+        "official_dictionary": [
+          {
+            "title": "春",
+            "pinyin": "chūn",
+            "definition": "[名]_x000D_\n1.四季之首。自立春至立夏間。_x000D_\n2.年、歲。三國魏．曹植〈雜詩〉六首之三：「自期三年歸，今已歷九春。」_x000D_\n3.生機。如：「妙手回春」。_x000D_\n4.男女間相慕悅的情感。如：「思春」。《詩經．召南．野有死麕》：「有女懷春，吉士誘之。」_x000D_\n5.春色、喜色。南朝宋．陸凱〈贈范曄〉詩：「江南無所有，聊贈一枝春。」_x000D_\n6.東方。南朝宋．顏延之〈車駕幸京口三月三日侍遊曲阿後湖作〉詩：「春方動辰駕，望幸傾五州。」_x000D_\n7.春，酒名。是春釀冬熟的酒。唐．李肇《唐國史補》卷下：「酒則有郢州之『富水』，烏程之『若下』，滎陽之『土窟春』，富平之『石凍春』，劍南之『燒春』。」_x000D_\n[形]_x000D_\n春日的。如：「春風」、「春雷」。",
+            "entry_id": "08634",
+            "sheet": "1150929辭典匯出",
+            "row": 8648,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "林": {
+        "definition": "forest, grove; surname",
+        "mandarin": "lín",
+        "official_dictionary": [
+          {
+            "title": "林",
+            "pinyin": "lín",
+            "definition": "[名]\n1.樹木或竹子叢生之處。如：「竹林」、「山林」、「松林」、「防風林」。唐．柳宗元〈三戒．黔之驢〉：「虎見之，尨然大物也，以為神，蔽林間窺之。」\n2.泛指同類的人或事物薈聚之所。如：「儒林」、「碑林」、「藝林」。漢．司馬遷〈報任少卿書〉：「士有此五者，然後可以託於世而列於君子之林矣。」\n3.林業的簡稱。如：「農、林、漁、牧」。\n4.姓。如清代有林則徐。\n[副]\n眾多。如：「工廠林立」。",
+            "entry_id": "03623",
+            "sheet": "1150929辭典匯出",
+            "row": 3629,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "原": {
+        "definition": "source, origin, beginning",
+        "mandarin": "yuán",
+        "official_dictionary": [
+          {
+            "title": "原",
+            "pinyin": "yuán",
+            "definition": "[動]\n1.本於、發生於。《莊子．天下》：「聖有所生，王有所成，皆原於一。」《禮記．王制》：「凡聽五刑之訟，必原父子之親，立君臣之義。」\n2.推究根源。《易經．繫辭下》：「易之為書也，原始要終，以為質也。」宋．沈括《夢溪筆談．卷二四．雜誌一》：「磁石之指南，猶柏之指西，莫可原其理。」\n3.寬恕、諒解。如：「原諒」、「情有可原」。《後漢書．卷八一．獨行傳．范冉傳》：「冉首自劾退，詔書特原不理罪。」\n[名]\n1.根本。《呂氏春秋．孟冬紀．異用》：「萬物不同，而用之於人異也，此治亂存亡死生之原。」漢．王符《潛夫論．務本》：「游業末事以收民利，此貧邦之原也。」\n2.廣大而平坦的地方。如：「平原」、「高原」。《書經．盤庚上》：「若火之燎于原，不可嚮邇，其猶可撲滅。」唐．白居易〈賦得古原草送別〉詩：「離離原上草，一歲一枯榮。」\n3.姓。如春秋時魯國有原壤。\n[形]\n1.最初的、本來的。如：「原文」、「原著」、「原油」、「物歸原主」。\n2.再。《淮南子．泰族》：「原蠶一歲再收，非不利也，然而王法禁之者，為其殘桑也。」《資治通鑑．卷二七一．後梁紀六．均王貞明六年》：「閏月、庚申朔，蜀主作高祖原廟于萬里橋。」\n[副]\n本來。唐．薛能〈贈隱者〉詩：「甘貧原是道，苦學不為名。」《紅樓夢》第四二回：「賈母原沒有大病，不過是勞乏了，兼著了些涼。」",
+            "entry_id": "11788",
+            "sheet": "1150929辭典匯出",
+            "row": 11801,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "原",
+            "pinyin": "yuàn",
+            "definition": "[形]\n忠厚、拘謹。通「愿」。《論語．陽貨》：「鄉原，德之賊也。」",
+            "entry_id": "11804",
+            "sheet": "1150929辭典匯出",
+            "row": 11817,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "晨": {
+        "definition": "early morning, daybreak",
+        "mandarin": "chén",
+        "official_dictionary": [
+          {
+            "title": "晨",
+            "pinyin": "chén",
+            "definition": "[名]\n早上太陽剛出來的時候。如：「清晨」、「一日之計在於晨」。\n[動]\n雞鳴報曉。《書經．牧誓》：「古人有言曰：『牝雞無晨。』」唐．孔穎達．正義：「言無晨鳴之道。」",
+            "entry_id": "08418",
+            "sheet": "1150929辭典匯出",
+            "row": 8432,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "朔": {
+        "definition": "first day of lunar month; the north",
+        "mandarin": "shuò",
+        "official_dictionary": [
+          {
+            "title": "朔",
+            "pinyin": "shuò",
+            "definition": "[名]\n1.農曆每月初一日。元．劉因〈桃源行〉：「天家正朔不得知，手種桃枝辨四時。」《初刻拍案驚奇》卷二〇：「每逢月朔，便獻一番利市。」\n2.開始、最初。《禮記．禮運》：「治其麻絲，以為布帛，以養生送死，以事鬼神上帝，皆從其朔。」\n3.北方。《書經．堯典》：「申命和叔，宅朔方，曰幽都。」\n[形]\n北方的。《文選．曹植．朔風詩》：「仰彼朔風，用懷魏都。」唐．杜甫〈詠懷古跡〉詩五首之三：「一去紫臺連朔漠，獨留青冢向黃昏。」",
+            "entry_id": "09119",
+            "sheet": "1150929辭典匯出",
+            "row": 9134,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "与": {
+        "definition": "and; with; to; for; give, grant",
+        "mandarin": "yǔ",
+        "related_characters": [
+          {
+            "character": "與",
+            "relation": "kTraditionalVariant",
+            "definition": "and; with; to; for; give, grant",
+            "mandarin": "yǔ"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "时": {
+        "definition": "time, season; era, age, period",
+        "mandarin": "shí",
+        "related_characters": [
+          {
+            "character": "时",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          },
+          {
+            "character": "時",
+            "relation": "kTraditionalVariant",
+            "definition": "time, season; era, age, period",
+            "mandarin": "shí"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "时",
+            "pinyin": null,
+            "definition": "「時」的異體字。",
+            "entry_id": "08715-1",
+            "sheet": "1150929辭典匯出",
+            "row": 126095,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "成": {
+        "definition": "completed, finished, fixed",
+        "mandarin": "chéng",
+        "official_dictionary": [
+          {
+            "title": "成",
+            "pinyin": "chéng",
+            "definition": "[動]\n1.做好事情。《說文解字．戊部》：「成，就也。」如：「完成」、「功成名就」、「大功告成」。\n2.變為。如：「點石成金」、「磨杵成針」。\n3.達到。如：「成千上萬」、「成雙成對」。\n4.促成。如：「成全」、「玉成其事」、「成人之美」。\n5.可以。如：「他想要耍賴是不成的。」\n[名]\n1.量詞。計算十等分概念的單位。如：「有八成希望。」\n2.古代十里平方的土地。《左傳．哀公元年》：「有田一成，有眾一旅。」\n3.現有的一切。如：「創業容易守成難。」唐．吳兢《貞觀政要．卷一．論君道》：「帝王之業，草創與守成孰難？」\n4.姓。如漢代有成瑨。\n[形]\n1.完整的。如：「成品」、「成天」。宋．陸游〈何君墓表〉：「不以字害其成句，不以句累其全篇。」\n2.現有的、舊有的。如：「成例」、「成規」、「成語」。\n3.構成整體的。如：「成分」、「成員」。",
+            "entry_id": "08492",
+            "sheet": "1150929辭典匯出",
+            "row": 8506,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "蹊": {
+        "definition": "footpath, trail; track",
+        "mandarin": "qī",
+        "official_dictionary": [
+          {
+            "title": "蹊",
+            "pinyin": "xī",
+            "definition": "[名]\n小路。如：「幽蹊」、「荒蹊」。《史記．卷一〇九．李將軍傳．太史公曰》：「桃李不言，下自成蹊。」《文選．曹植．贈白馬王彪詩》：「欲還絕無蹊，攬轡止踟躕。」",
+            "entry_id": "06766",
+            "sheet": "1150929辭典匯出",
+            "row": 6775,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "衡": {
+        "definition": "measure, weigh, judge, consider",
+        "mandarin": "héng",
+        "official_dictionary": [
+          {
+            "title": "衡",
+            "pinyin": "héng",
+            "definition": "[名]\n1.置於車轅前端的橫木。《論語．衛靈公》：「在輿，則見其倚於衡也。」唐．陸德明《經典釋文．卷二七．莊子音義中》：「衡，轅前橫木，縛軛者也。」\n2.秤，量輕重的器具。《荀子．禮論》：「衡誠縣矣，則不可欺以輕重。」《文選．張衡．東京賦》：「同衡律而壹軌量，齊急舒於寒燠。」三國吳．薛綜．注：「衡，稱也。軌，法。」\n3.眉目之間。《後漢書．卷六〇下．蔡邕列傳》：「胡老乃揚衡含笑，援琴而歌。」南朝梁．劉孝標〈廣絕交論〉：「見一善則盱衡扼腕，遇一才則揚眉抵掌。」\n4.玉衡的簡稱，參見「玉衡」條。\n5.大陸地區衡山的簡稱。為五嶽之一。唐．王勃〈滕王閣序〉：「星分翼、軫，地接衡、廬。」\n6.姓。如漢代有衡咸。\n[動]\n1.量輕重。《墨子．經說下》：「衡，加重於其一旁，必捶。」晉．陸機〈演連珠〉五〇首之二：「物勝權而衡殆，形過鏡則照窮。」\n2.斟酌、考量。如：「衡情度理」、「權衡得失」。\n3.違抗、拂逆。《史記．卷六二．管晏傳》：「國有道，即順命；無道，即衡命。」《警世通言．卷九．李謫仙醉草嚇蠻書》：「豈非逆天之咎徵，衡大之明鑒與！」",
+            "entry_id": "04925",
+            "sheet": "1150929辭典匯出",
+            "row": 4932,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "玉衡",
+                "pinyin": "yù héng",
+                "definition": "1.古時飾有玉石用來觀測天文的器具。《書經．舜典》：「在璿璣玉衡，以齊七政。」\n2.汲取井水的用具。\n3.星官名。北斗七星的第五顆，在西方為大熊座ε星。《晉書．卷一一．天文志上》：「北斗七星在太微北，……又魁第一星曰天樞，二曰琁，三曰璣，四曰權，五曰玉衡，六曰開陽，七曰搖光；一至四為魁，五至七為杓。」",
+                "entry_id": "116450141",
+                "sheet": "1150929辭典匯出",
+                "row": 161625
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "璞": {
+        "definition": "unpolished gem, uncarved gem",
+        "mandarin": "pú",
+        "official_dictionary": [
+          {
+            "title": "璞",
+            "pinyin": "pú",
+            "definition": "[名]\n1.未經琢磨加工的玉石。《孟子．梁惠王下》：「今有璞玉於此，雖萬鎰，必使玉人彫琢之。」晉．傅玄〈馬鈞傳〉：「美玉所以見誣為石，荊和所以抱璞而哭之也。」\n2.比喻人純樸的本質。如：「反璞歸真」。",
+            "entry_id": "00998",
+            "sheet": "1150929辭典匯出",
+            "row": 1000,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "轸": {
+        "definition": "cross board at rear of carriage",
+        "mandarin": "zhěn",
+        "related_characters": [
+          {
+            "character": "軫",
+            "relation": "kTraditionalVariant",
+            "definition": "cross-board at rear of a carriage; 28th lunar mansion, determinative star γ Corvi (Gienah)",
+            "mandarin": "zhěn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "圭": {
+        "definition": "jade pointed at top",
+        "mandarin": "guī",
+        "official_dictionary": [
+          {
+            "title": "圭",
+            "pinyin": "guī",
+            "definition": "[名]\n1.古代諸侯在大典時所持的一種玉器。《說文解字．土部》：「圭，瑞玉也，上圜下方。」清．段玉裁．注：「圭之制，上不正圜。以對下方言之，故曰上圜。」《史記．卷三三．魯周公世家》：「周公北面立，戴璧秉圭，告于太王、王季、文王。」\n2.古代測日影的器具。如：「日圭」、「圭表」、「圭臬」。\n3.姓。如春秋時鄭國有圭媯。",
+            "entry_id": "04255",
+            "sheet": "1150929辭典匯出",
+            "row": 4261,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "景": {
+        "definition": "scenery, view; conditions",
+        "mandarin": "jǐng",
+        "official_dictionary": [
+          {
+            "title": "景",
+            "pinyin": "jǐng",
+            "definition": "[名]\n1.日光。晉．張載〈七哀〉詩二首之二：「朱光馳北陸，浮景忽西沉。」晉．陶淵明〈歸去來辭〉：「景翳翳以將入，撫孤松而盤桓。」\n2.時光。南朝宋．謝靈運〈登江中孤嶼〉詩：「懷雜道轉迥，尋異景不延。」\n3.可供玩賞的形色。如：「風景」、「山景」、「景物依舊，人事全非。」\n4.情況、境遇。如：「晚景淒涼」。宋．蘇軾〈西山戲題武昌王居士〉詩：「解襟顧景各箕踞，擊劍賡歌幾舉觥。」《紅樓夢》第四六回：「率性把方才鳳姐過去回來所有的形景言詞、始末原由，告訴與他。」\n5.戲劇、電影中因布景不同而畫分的段落。如：「第一幕第三景」。\n6.姓。如戰國時楚國有景差。\n[動]\n仰慕。《後漢書．卷三九．劉趙淳于江劉周趙列傳．劉般》：「今愷景仰前脩，有伯夷之節。」唐．李白〈與韓荊州書〉：「何令人之景慕一至於此耶！」\n[形]\n大。《詩經．小雅．小明》：「神之聽之，介爾景福。」《隋書．卷三．煬帝紀上》：「朕嗣膺景業，傍求雅訓，有一弘益，欽若令典。」",
+            "entry_id": "05941",
+            "sheet": "1150929辭典匯出",
+            "row": 5949,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "景",
+            "pinyin": "yǐng",
+            "definition": "[名]\n物體的形影、陰影。同「影」。《周禮．地官．大司徒》：「以土圭之法測土深，正日景以求地中。」",
+            "entry_id": "11207",
+            "sheet": "1150929辭典匯出",
+            "row": 11222,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "重": {
+        "definition": "heavy, weighty; double",
+        "mandarin": "zhòng",
+        "official_dictionary": [
+          {
+            "title": "重",
+            "pinyin": "zhòng",
+            "definition": "[名]\n物體或人體的分量。如：「物重」、「體重」。\n[形]\n1.物體的分量大。與「輕」相對。如：「這塊石頭比那塊木頭重。」\n2.濃、厚。如：「口味重」、「顏色重」。《呂氏春秋．季春紀．盡數》：「凡食無彊厚味，無以烈味，重酒，是以謂之疾首。」\n3.嚴峻的。如：「重刑」、「重罰」。\n4.要緊的。如：「庫房重地」。\n5.劇烈的。如：「重病」。\n6.價值高的。如：「重酬」、「重器」。\n[動]\n1.比……為重。《文選．司馬遷．報任少卿書》：「人固有一死，或重於泰山，或輕於鴻毛。」\n2.尊敬。如：「尊重」、「敬重」。\n3.偏好。如：「重色輕友」。\n4.增加。《呂氏春秋．季夏紀．制樂》：「今故興事動眾以增國城，是重吾罪也。」《漢書．卷四．文帝紀》：「今縱不能博求天下賢聖有德之人而嬗天下焉，而曰豫建太子，是重吾不德也。」\n[副]\n1.謹慎。如：「安土重遷」。《荀子．議兵》：「重用兵者強，輕用兵者弱。」《文選．司馬遷．報任少卿書》：「古人所以重施刑於大夫者，殆為此也。」\n2.每每、屢次。《文選．司馬遷．報任少卿書》：「僕又佴之蠶室，重為天下觀笑。」唐．白居易〈渭村雨歸〉詩：「復茲夕陰起，野色重蕭條。」",
+            "entry_id": "08152",
+            "sheet": "1150929辭典匯出",
+            "row": 8166,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "重",
+            "pinyin": "chóng",
+            "definition": "[名]\n量詞。計算相疊、累積物的單位。如：「九重天」、「千重山」、「萬重山」。\n[動]\n添加、複疊。《荀子．富國》：「重色而衣之，重味而食之。」《文選．張衡．東京賦》：「于時蒸民，罔敢或貳。其取威也重矣。我世祖念之。」\n[副]\n再、另。如：「重來」、「重遊故地」、「重修舊好」。",
+            "entry_id": "08680",
+            "sheet": "1150929辭典匯出",
+            "row": 8694,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "阳春",
+      "decision": "uncertain",
+      "reason": "词语自然，可指春日阳和，也有“阳春白雪”等既有联想；作为品牌名辨识度较弱，且易与季节、菜品等常用表达混淆。"
+    },
+    {
+      "name": "阳林",
+      "decision": "keep",
+      "reason": "可自然理解为向阳之林，意象清楚、简洁，有画面感；不是通用类别词，与已暂留的“林”字候选没有相同意象关系。"
+    },
+    {
+      "name": "阳原",
+      "decision": "keep",
+      "reason": "可理解为日照原野，组合自然，开阔明朗，具有具体自然意象和品牌凝练感。"
+    },
+    {
+      "name": "晨阳",
+      "decision": "uncertain",
+      "reason": "可自然理解为清晨的阳光，但属于常见的景物组合和人名式表达，品牌辨识度偏弱。"
+    },
+    {
+      "name": "阳朔",
+      "decision": "uncertain",
+      "reason": "字面可联想到向阳的新月或北方，但“阳朔”是强势既有地名，缺乏行业与地域背景时容易被理解为地名指代，专名关系不明。"
+    },
+    {
+      "name": "阳与时",
+      "decision": "reject",
+      "reason": "“阳”与“时”之间用“与”连接后语义关系不清，整体更像截断的并列短语，构词生硬。"
+    },
+    {
+      "name": "阳成蹊",
+      "decision": "reject",
+      "reason": "“成蹊”来自“桃李不言，下自成蹊”，前置“阳”与典故及句法关系不明，整体像在熟语前机械添字；也近似已暂留的“伊成蹊”“郯成蹊”结构。"
+    },
+    {
+      "name": "阳衡",
+      "decision": "uncertain",
+      "reason": "可勉强理解为日光与权衡、衡量的组合，但两字关系不明确，未形成自然、清楚的完整意象。"
+    },
+    {
+      "name": "阳璞",
+      "decision": "uncertain",
+      "reason": "“璞”指未琢之玉或纯朴本质，“阳”与之并置缺少明确构词关系，语义连接略显生硬。"
+    },
+    {
+      "name": "阳轸",
+      "decision": "uncertain",
+      "reason": "“轸”可指车后横木，也可用于星宿名；不能据繁体关联字义替原字扩充含义。与“阳”组合的具体语义不清，难以确认自然读法。"
+    },
+    {
+      "name": "阳圭",
+      "decision": "uncertain",
+      "reason": "“圭”指古代玉器或测日影器具，与“阳”虽可联想到日光测影，但名称本身没有清楚表达这种关系，组合略显牵强。"
+    },
+    {
+      "name": "景阳",
+      "decision": "uncertain",
+      "reason": "可按“景”的日光义理解为阳光、日光，组合自然；但“景阳”已有明显的历史文化与专名联想，作为品牌的独立辨识度及专名关系存疑。"
+    },
+    {
+      "name": "重阳",
+      "decision": "reject",
+      "reason": "完整名称就是固定节日名“重阳”，属于既有节令名称，品牌独立辨识度不足；不能仅因传统文化联想而作为新品牌名保留。"
+    }
+  ]
+}

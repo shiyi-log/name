@@ -18,6 +18,7 @@ import api_server  # noqa: E402
 
 STATE_PATH = ROOT / "data" / "character_generation_state.json"
 TARGET_PER_CHARACTER = 500
+MAX_GENERATION_BATCH = 90
 LENGTHS = [2, 3, 4]
 TRANSIENT_ERRORS = (TimeoutError, ConnectionError, urllib.error.URLError, OSError)
 TRANSIENT_MESSAGES = (
@@ -109,8 +110,8 @@ def phase_targets(
 
 def request_batch_size(phase: str, deficit: int) -> int:
     if phase == "coverage":
-        return 90
-    return min(90, max(0, deficit))
+        return MAX_GENERATION_BATCH
+    return min(MAX_GENERATION_BATCH, max(0, deficit))
 
 
 def generation_complete(counts: dict[str, int], characters: list[str], target: int) -> bool:
@@ -140,7 +141,7 @@ def load_character_names() -> list[str]:
             "WHERE name_length BETWEEN 2 AND 4 AND status NOT IN ('质量复核未通过', '质量复核待定')"
         )
         names = []
-        seen_letter_sets = set()
+        seen_names = set()
         for name, source_type, registry_note, notes_json in rows:
             if source_type != "ai":
                 continue
@@ -148,10 +149,9 @@ def load_character_names() -> list[str]:
             rating_match = re.search(r"；自然度自评=([0-9]+(?:[.][0-9]+)?)/5", notes_json)
             rating = float(rating_match.group(1)) if rating_match else None
             if api_server.has_quality_evidence({'character_roles': roles, 'naturalness': rating}, name):
-                letter_set = tuple(sorted(name))
-                if letter_set in seen_letter_sets:
+                if name in seen_names:
                     continue
-                seen_letter_sets.add(letter_set)
+                seen_names.add(name)
                 names.append((name, source_type, roles))
         return names
 

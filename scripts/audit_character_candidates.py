@@ -49,7 +49,7 @@ def build_audit(database: Path, characters: list[str], target: int) -> dict:
             'provisional_count includes legacy candidates without individual semantic review',
             'provisional_count excludes rejected and uncertain rows',
             'ai_evidence_count excludes rejected and uncertain rows, requires roles for every name character and naturalness >=4',
-            'ai_evidence_count collapses names with the same character multiset',
+            'ai_evidence_count counts distinct full names; order variants remain provisional until independent quality review',
             'ai_evidence_count is generator scheduling progress, not final quality acceptance',
             'literature is reference only, never a required provenance gate',
             'all counts use one SQLite snapshot; the source database is not modified',

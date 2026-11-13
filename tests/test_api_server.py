@@ -338,16 +338,18 @@ class CandidateCursorTests(unittest.TestCase):
             ):
                 result = api_server.generate_for_character({"character": "云", "lengths": [2], "count": 5})
 
-            self.assertEqual(result["added"], 1)
-            self.assertEqual(result["rejected"], 9)
+            self.assertEqual(result["added"], 2)
+            self.assertEqual(result["rejected"], 8)
             self.assertEqual(result["items"][0]["name"], "云山")
             with closing(sqlite3.connect(database_path)) as connection:
-                row = connection.execute(
+                rows = connection.execute(
                     "SELECT name, name_length, source_type, ai_model, total_score FROM name_candidates"
-                ).fetchone()
-            self.assertEqual(row[:4], ("云山", 2, "ai", "mock-model"))
-            self.assertGreaterEqual(row[4], 0)
-            self.assertLessEqual(row[4], 100)
+                ).fetchall()
+            self.assertEqual({row[0] for row in rows}, {"云山", "山云"})
+            for row in rows:
+                self.assertEqual(row[1:4], (2, "ai", "mock-model"))
+                self.assertGreaterEqual(row[4], 0)
+                self.assertLessEqual(row[4], 100)
 
     def test_total_generation_count_is_filled_in_bounded_unique_batches(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -46,7 +46,7 @@ class CharacterAuditTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             audit = json.loads(output.read_text())
             counts = {row['character']: row for row in audit['characters']}
-            self.assertEqual([counts[ch]['ai_evidence_count'] for ch in '云山水月海'], [1, 1, 0, 0, 0])
+            self.assertEqual([counts[ch]['ai_evidence_count'] for ch in '云山水月海'], [2, 2, 0, 0, 0])
             self.assertEqual([counts[ch]['provisional_count'] for ch in '云山水月海'], [2, 3, 1, 0, 0])
             self.assertEqual([counts[ch]['independent_screen_count'] for ch in '云山水月海'], [1, 1, 0, 0, 0])
             self.assertEqual(audit['summary']['independent_review']['remaining_deficit'], 3)

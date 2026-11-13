@@ -632,14 +632,20 @@ def build_database(
         poetry_columns = {row[1] for row in conn.execute("PRAGMA table_info(poetry_sources)")}
         if "processed_at" not in poetry_columns:
             conn.execute("ALTER TABLE poetry_sources ADD COLUMN processed_at TEXT NOT NULL DEFAULT ''")
-        conn.execute("UPDATE name_candidates SET name_length=length(name)")
+        conn.execute("UPDATE name_candidates SET name_length=length(name) WHERE name_length != length(name)")
         conn.execute(
             """UPDATE name_candidates SET source_type=CASE
                WHEN template='literature-curated' THEN 'literature'
                WHEN template='poetry-seed' THEN 'poetry'
                WHEN template='historical-seed' THEN 'historical'
                WHEN template LIKE 'ai-%' THEN 'ai'
-               ELSE 'rule' END"""
+               ELSE 'rule' END
+               WHERE source_type != CASE
+                 WHEN template='literature-curated' THEN 'literature'
+                 WHEN template='poetry-seed' THEN 'poetry'
+                 WHEN template='historical-seed' THEN 'historical'
+                 WHEN template LIKE 'ai-%' THEN 'ai'
+                 ELSE 'rule' END"""
         )
 
         conn.executemany(
@@ -694,10 +700,11 @@ def build_database(
                 total_score=excluded.total_score,
                 reasons_json=excluded.reasons_json,
                 notes_json=excluded.notes_json,
-                registry_note=excluded.registry_note,
                 source_type=excluded.source_type,
                 ai_model=excluded.ai_model,
                 updated_at=CURRENT_TIMESTAMP
+            WHERE name_candidates.status = excluded.status
+              AND name_candidates.registry_note = excluded.registry_note
             """,
             [
                 (

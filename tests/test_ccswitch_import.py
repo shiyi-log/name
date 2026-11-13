@@ -1,4 +1,5 @@
 import json
+import io
 import sqlite3
 import tempfile
 import unittest
@@ -88,15 +89,13 @@ class CCSwitchImportTests(unittest.TestCase):
             "model": "test-model",
             "_api_key": "test-secret",
         }
-        response_body = json.dumps({
-            "output_text": json.dumps({"names": [{"name": "云山", "meaning": "云与山"}]})
-        }).encode("utf-8")
+        response_body = b"data: " + json.dumps({
+            "type": "response.completed",
+            "response": {"output_text": json.dumps({"names": [{"name": "云山", "meaning": "云与山"}]})},
+        }).encode("utf-8") + b"\n\n"
         with patch.object(api_server, "selected_ai_provider", return_value=provider), patch.object(
-            api_server.urllib.request, "urlopen"
+            api_server.urllib.request, "urlopen", return_value=io.BytesIO(response_body)
         ) as urlopen:
-            response = urlopen.return_value.__enter__.return_value
-            response.read.return_value = response_body
-
             names = api_server.request_ai_names("云", 3, [2])
 
         request = urlopen.call_args.args[0]
@@ -106,6 +105,7 @@ class CCSwitchImportTests(unittest.TestCase):
         self.assertEqual(request.get_header("Authorization"), "Bearer test-secret")
         self.assertEqual(payload["model"], "test-model")
         self.assertIn("input", payload)
+        self.assertTrue(payload["stream"])
         self.assertNotIn("messages", payload)
 
 

@@ -94,13 +94,20 @@ class CandidateReviewTests(unittest.TestCase):
         for wire in ['responses', 'chat_completions']:
             result = ({'output': [{'content': [{'type': 'output_text', 'text': json.dumps({'reviews': decisions})}]}]}
                       if wire == 'responses' else {'choices': [{'message': {'content': json.dumps({'reviews': decisions})}}]})
+            if wire == 'responses':
+                result = b'event: response.completed\ndata: ' + json.dumps({
+                    'type': 'response.completed',
+                    'response': {'output_text': json.dumps({'reviews': decisions})},
+                }).encode() + b'\n\n'
             provider = {'wireApi': wire, 'model': 'fixture-model', 'baseUrl': 'https://example.test/v1', '_api_key': 'fixture-key'}
-            with self.subTest(wire=wire), patch.object(review.urllib.request, 'urlopen', return_value=io.BytesIO(json.dumps(result).encode())) as request:
+            with self.subTest(wire=wire), patch.object(review.urllib.request, 'urlopen', return_value=io.BytesIO(result if isinstance(result, bytes) else json.dumps(result).encode())) as request:
                 reviews, prompt = review.request_review(['云山'], provider)
                 self.assertEqual(reviews, decisions)
                 sent = json.loads(request.call_args.args[0].data)
                 self.assertEqual(sent['model'], 'fixture-model')
                 self.assertIn('input' if wire == 'responses' else 'messages', sent)
+                if wire == 'responses':
+                    self.assertTrue(sent['stream'])
                 self.assertEqual(prompt['names'], ['云山'])
                 self.assertEqual(prompt['direct_dictionary']['云']['definition'], 'say, speak; clouds')
                 self.assertNotIn('pitch', prompt)

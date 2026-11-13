@@ -175,6 +175,20 @@ def character_frequency_guidance(character: str) -> str:
     )
 
 
+MAX_PROMPT_AVOID_NAMES = 120
+
+
+def prompt_avoid_names(names: list[str], limit: int = MAX_PROMPT_AVOID_NAMES) -> list[str]:
+    """Keep a representative bounded sample in the model prompt."""
+    unique = list(dict.fromkeys(names))
+    if limit <= 0:
+        return []
+    if len(unique) <= limit:
+        return unique
+    last_index = len(unique) - 1
+    return [unique[round(index * last_index / (limit - 1))] for index in range(limit)]
+
+
 PROVIDER_BASE = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
 PROVIDER_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
 CC_SWITCH_DB = Path(
@@ -826,6 +840,33 @@ def _response_text(result: dict, wire_api: str) -> str:
     return ""
 
 
+def _read_responses_stream(response) -> dict:
+    data_lines = []
+    completed = None
+    for raw_line in response:
+        line = raw_line.decode("utf-8").strip() if isinstance(raw_line, bytes) else raw_line.strip()
+        if not line:
+            if data_lines:
+                event = json.loads("\n".join(data_lines))
+                data_lines.clear()
+                if event.get("type") == "response.completed":
+                    completed = event.get("response")
+                elif event.get("type") == "response.failed":
+                    raise RuntimeError("AI Responses 流式请求失败")
+            continue
+        if line.startswith("data:"):
+            data_lines.append(line[5:].lstrip())
+    if data_lines:
+        event = json.loads("\n".join(data_lines))
+        if event.get("type") == "response.completed":
+            completed = event.get("response")
+        elif event.get("type") == "response.failed":
+            raise RuntimeError("AI Responses 流式请求失败")
+    if not isinstance(completed, dict):
+        raise RuntimeError("AI Responses 流未返回完成事件")
+    return completed
+
+
 def _json_from_ai_text(content: str) -> dict:
     try:
         payload = json.loads(content)
@@ -874,7 +915,7 @@ def request_ai_names(
         "requested_count_per_length": count,
         "requested_counts_per_length": {str(length): requested_counts[length] for length in lengths}
         if requested_counts is not None else {str(length): count for length in lengths},
-        "avoid_existing_names": avoid_names or [],
+        "avoid_existing_names": prompt_avoid_names(avoid_names or []),
         "quality_review_feedback": (review_feedback or [])[:20],
         "diversity_guidance": (
             "在满足锚定字、长度和质量约束的前提下，让名称在整体意象、语义方向、"
@@ -917,6 +958,7 @@ def request_ai_names(
     if wire_api == "responses":
         request_payload = {
             "model": model,
+            "stream": True,
             "input": [
                 {"role": "system", "content": [{"type": "input_text", "text": system}]},
                 {"role": "user", "content": [{"type": "input_text", "text": json.dumps(prompt, ensure_ascii=False)}]},
@@ -943,8 +985,9 @@ def request_ai_names(
         method="POST",
     )
     try:
-        with urllib.request.urlopen(request, timeout=90) as response:
-            result = json.loads(response.read().decode("utf-8"))
+        with urllib.request.urlopen(request, timeout=300) as response:
+            result = (_read_responses_stream(response) if wire_api == "responses"
+                      else json.loads(response.read().decode("utf-8")))
     except urllib.error.HTTPError as error:
         raise RuntimeError(f"AI 服务返回 HTTP {error.code}") from error
     except (urllib.error.URLError, TimeoutError) as error:
@@ -997,7 +1040,6 @@ def generate_for_character(payload: dict) -> dict:
         for item in existing if character in item["name"]
         and item.get("status") in {"质量复核未通过", "质量复核待定"}
     ][-20:]
-    seen_letter_sets = {tuple(sorted(name)) for name in existing_by_name}
     accepted: dict[str, str] = {}
     accepted_evidence: dict[str, dict] = {}
     attempted_names: dict[str, None] = {}
@@ -1049,13 +1091,9 @@ def generate_for_character(payload: dict) -> dict:
                 continue
             if name in excluded or len(set(name)) < 2 or name in existing_by_name or name in accepted:
                 continue
-            letter_set = tuple(sorted(name))
-            if letter_set in seen_letter_sets:
-                continue
             if requested_counts is not None and sum(1 for accepted_name in accepted if len(accepted_name) == len(name)) >= requested_counts[len(name)]:
                 continue
             accepted[name] = meaning or "由 AI 生成，待人工核对语义和品牌适配度。"
-            seen_letter_sets.add(letter_set)
             accepted_evidence[name] = {
                 "character_roles": item["character_roles"],
                 "naturalness": item["naturalness"],

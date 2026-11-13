@@ -1,0 +1,912 @@
+{
+  "review_id": "20261113T195947-2a63e7a0",
+  "model": "gpt-6.1-sol",
+  "shard_index": 3,
+  "shard_count": 4,
+  "quality_status": "independent_model_screen_not_final_acceptance",
+  "input": {
+    "task": "独立复核中文公司品牌名称。只依据完整名称本身判断，不看生成解释或自评分。",
+    "rules": [
+      "文献仅供参考，不要求出处；有依据的古语可以使用，不因其古典或不常见直接判错",
+      "literature_phrase_examples 是本地书库的实际连续字形用例，需结合语境核义；命中不等于适合品牌，没有命中也不是否决理由。不要把仅因单字简释缺项而不认识的真实词语断言为机械拼接",
+      "锚定字可以生僻；不得只因生僻字否决，但需核对真实字义，禁止借部件、同音字或形近字的含义",
+      "direct_dictionary 的 definition 是原字直接释义；related_characters 明列繁体关联字与其各自释义，不能视为原字所有义项。supplemental_dictionary 是有来源的第三方补充字典，须结合词义及语境交叉核对，不可因缺少顶层 definition 就无视已提供的补充资料",
+      "字典简释并非穷尽义项，也不是逐字必须命中的白名单。普通字的常识性义项、构词后缀（如“然”的状态后缀）不因简释未列出就判无法核义；核查完整词语和语境，实际无法确认或存在冲突时才uncertain",
+      "official_dictionary 保留教育部修订本中同形字的原始释义及读音，各读音分别列出；只按实际词义和语境使用，不能将多音义项混用。其字形为繁体原文，不要求名称必须在该字典命中",
+      "dictionary_phrase_entries 是教育部修订本中与完整名称同形的原始词条及读音；用于核对整词本义，词条命中不等于适合品牌，没有命中也不是否决理由",
+      "公司行业、地域和创始人背景均未知，不得擅自假设地域根基或特定行业来替名称解释",
+      "reject：明显机械堆字、语法生硬、句子/口号、通用功能类别词，或字义错误、谐音借义",
+      "构词通顺只是必要条件。生成要求已排除常见成语和空泛口号，例如“一鼓作气”“一视同仁”；不得仅因是熟悉成语或价值宣言就keep。完整名称必须具备品牌名的凝练感，不能把完整判断句当名称",
+      "uncertain：实际字义仍无法确认、专名关系缺乏依据或自然度存疑；不得为了数量放宽",
+      "keep：完整组合自然，有清楚而不牵强的语义和品牌辨识度；普通自然词语也可能适合品牌，不能一律拒绝",
+      "行业未知不是否决理由。自然物象、简洁动作词、抽象词可以成为品牌；只有名称完整地等同于通用产品或服务类别，或整名实际生硬、借义、口号化，才按这些问题否决。不要把“描述某物”“不是固定词”“没有独特寓意”本身作为reject理由，也不要只因锚字生僻就uncertain",
+      "检查批内换序或只靠同义字替换的近似组合，重复组最多保留一个",
+      "related_kept_candidates 是其他批次暂保留的同字候选，仅用于跨批比较。只有实际相同意象与关系、仅换近义配字的组合才视为重复；共享一个字或构词结构本身不代表重复。新名仅为旧名近似变体时不再keep，理由写明对照名称；不要为对照名称返回决定",
+      "返回每一个输入名称及具体理由。keep仅代表继续待复核，不代表完成验收或工商商标可用"
+    ],
+    "names": [
+      "面世",
+      "可堪",
+      "堪嘉",
+      "堪称",
+      "廆宇",
+      "舷歌",
+      "长风满舷",
+      "灯火映舷",
+      "凭舷远望"
+    ],
+    "related_kept_candidates": {
+      "风": [
+        "螭起长风",
+        "长风越埼",
+        "弓引长风",
+        "长风漻月",
+        "蜜野长风",
+        "璟长风",
+        "长风带月",
+        "黄野长风",
+        "茶伴长风",
+        "长风舲",
+        "六月长风",
+        "长风过汭"
+      ],
+      "望": [
+        "凉秋望远",
+        "奇峰望远",
+        "登峣望远",
+        "桉林远望",
+        "芋田远望",
+        "鹮望远山",
+        "苇望远",
+        "桃山远望",
+        "羿望远",
+        "黔中望远",
+        "槟林远望",
+        "村窗望远"
+      ],
+      "灯": [
+        "灯火映盦",
+        "灯映窗栊",
+        "霰映疏灯",
+        "岙港灯火",
+        "灯火间",
+        "灯火录",
+        "一灯",
+        "篝灯",
+        "一灯一几",
+        "桔灯",
+        "舫灯",
+        "宵灯"
+      ],
+      "火": [
+        "灯火映盦",
+        "炉火映月",
+        "岙港灯火",
+        "灯火间",
+        "灯火录",
+        "篝火",
+        "镫火",
+        "榴火",
+        "钨火",
+        "萤火",
+        "铄火成金",
+        "焙火"
+      ],
+      "远": [
+        "凉秋望远",
+        "奇峰望远",
+        "登峣望远",
+        "桉林远望",
+        "芋田远望",
+        "鹮望远山",
+        "苇望远",
+        "桃山远望",
+        "羿望远",
+        "黔中望远",
+        "槟林远望",
+        "村窗望远"
+      ],
+      "嘉": [
+        "嘉赟",
+        "嘉禧堂",
+        "嘉懿",
+        "嘉淑",
+        "国有嘉木",
+        "嘉穑",
+        "赫嘉禾",
+        "资嘉",
+        "蓓嘉",
+        "嘉奕",
+        "嘉菂",
+        "嘉珺"
+      ],
+      "映": [
+        "灯火映盦",
+        "灯映窗栊",
+        "炉火映月",
+        "霰映疏灯",
+        "晖映",
+        "郁川映月",
+        "榴映秋",
+        "映芙",
+        "芹露映晨",
+        "芭蕉映月",
+        "芭影映山",
+        "芭叶映星"
+      ],
+      "世": [
+        "世胄堂",
+        "涉世",
+        "世杰",
+        "世事",
+        "传世",
+        "砭世",
+        "阅世",
+        "世豪",
+        "世祚",
+        "懂世界",
+        "伢世界",
+        "世安"
+      ],
+      "长": [
+        "螭起长风",
+        "长风越埼",
+        "弓引长风",
+        "长风漻月",
+        "蜜野长风",
+        "璟长风",
+        "长风带月",
+        "黄野长风",
+        "茶伴长风",
+        "长风舲",
+        "六月长风",
+        "长风过汭"
+      ],
+      "歌": [
+        "歌长风",
+        "桹歌",
+        "哞歌",
+        "芭歌",
+        "棹歌",
+        "镛歌",
+        "涡歌",
+        "柘枝歌",
+        "酒歌",
+        "酒如歌",
+        "月下酒歌",
+        "牧歌"
+      ],
+      "宇": [
+        "葺宇",
+        "区宇",
+        "颢宇",
+        "器宇",
+        "衡宇",
+        "鑫宇",
+        "环宇",
+        "遐宇",
+        "廓宇",
+        "庙宇",
+        "震宇",
+        "圜宇"
+      ],
+      "可": [
+        "可以",
+        "可为",
+        "可安",
+        "云可居",
+        "瑕可琢",
+        "可贵",
+        "可嘉",
+        "可心",
+        "可稽",
+        "可憙",
+        "妮可",
+        "唐可为"
+      ],
+      "满": [
+        "松风满壑",
+        "风满袂",
+        "满篷风",
+        "江风满篷",
+        "和风满垞",
+        "清风满樯",
+        "春风满园",
+        "橼满枝头",
+        "月满东篱",
+        "春满垧野",
+        "月色满户",
+        "春满隰"
+      ],
+      "面": [
+        "切面",
+        "新切面",
+        "封面之外",
+        "觌面",
+        "面善"
+      ],
+      "舷": [
+        "扣舷",
+        "右舷"
+      ],
+      "凭": [
+        "凭信",
+        "凭依",
+        "凭据",
+        "有所凭",
+        "凭阑",
+        "凭轼"
+      ],
+      "堪": [
+        "堪任",
+        "堪舆"
+      ]
+    },
+    "literature_phrase_examples": {
+      "面世": [
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 556439,
+          "context": "曲肱思已乱，如面世难防。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 1313220,
+          "context": "米面世所资，敢为一身奉。"
+        }
+      ],
+      "可堪": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 236102,
+          "context": "半月离居犹怅望，可堪垂白各天涯。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 240617,
+          "context": "纵使有花兼有月，可堪无酒又无人。"
+        }
+      ],
+      "堪嘉": [
+        {
+          "book": "全宋词_开源整理本",
+          "line": 84031,
+          "context": "堪嘉，唯甬水，回环雉堞，中峙三神。"
+        },
+        {
+          "book": "全宋诗_开源整理本",
+          "line": 42817,
+          "context": "周汉经营迹未遐，山川形胜最堪嘉。"
+        }
+      ],
+      "堪称": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 344265,
+          "context": "如蒙一被服，方堪称福田。"
+        },
+        {
+          "book": "全宋词_开源整理本",
+          "line": 44130,
+          "context": "也堪称。"
+        }
+      ],
+      "廆宇": [],
+      "舷歌": [
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 148378,
+          "context": "苹藻满盘无处奠，空闻渔父扣舷歌。"
+        },
+        {
+          "book": "全唐诗_开源整理本",
+          "line": 324381,
+          "context": "渔父何疎逸，扣舷歌未阑。"
+        }
+      ],
+      "长风满舷": [],
+      "灯火映舷": [],
+      "凭舷远望": []
+    },
+    "dictionary_phrase_entries": {
+      "面世": [
+        {
+          "title": "面世",
+          "pinyin": "miàn shì",
+          "definition": "問世。如：「本公司新產品不久將面世。」",
+          "entry_id": "0144301042",
+          "sheet": "1150929辭典匯出",
+          "row": 31367,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "可堪": [
+        {
+          "title": "可堪",
+          "pinyin": "kě kān",
+          "definition": "1.那堪、怎堪。宋．秦觀〈踏莎行．霧失樓臺〉詞：「可堪孤館閉春寒，杜鵑聲裡斜陽暮。」\n2.可以承受。宋．范仲淹〈謝安定屯田〉：「意愛甚隆，非某之可堪也。」",
+          "entry_id": "044340057",
+          "sheet": "1150929辭典匯出",
+          "row": 75221,
+          "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+          "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609"
+        }
+      ],
+      "堪嘉": [],
+      "堪称": [],
+      "廆宇": [],
+      "舷歌": [],
+      "长风满舷": [],
+      "灯火映舷": [],
+      "凭舷远望": []
+    },
+    "direct_dictionary": {
+      "面": {
+        "definition": "face; surface; plane; side, dimension; Kangxi radical 176",
+        "mandarin": "miàn",
+        "related_characters": [
+          {
+            "character": "面",
+            "relation": "kTraditionalVariant",
+            "definition": "face; surface; plane; side, dimension; Kangxi radical 176",
+            "mandarin": "miàn"
+          },
+          {
+            "character": "麵",
+            "relation": "kTraditionalVariant",
+            "definition": "flour, dough, noodles",
+            "mandarin": "miàn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "面",
+            "pinyin": "miàn",
+            "definition": "[名]\n1.臉部。如：「面貌」、「顏面」、「臉面」。《左傳．襄公三十一年》：「人心之不同，如其面焉。」\n2.物體的外表或上部的一層。如：「路面」、「水面」、「地面」、「封面」。\n3.方向、部位。如：「正面」、「片面」、「全面」、「四面八方」。\n4.量詞：(1)計算平面物的單位。如：「一面國旗」、「兩面鏡子」、「三面牆」。(2)計算見面次數的單位。如：「見過一面」。\n5.景況、情況。如：「場面」、「局面」、「世面」。\n6.幾何學上稱線在空間移動而成的形跡，有長、寬度而無厚度。如：「平面」。\n7.二一四部首之一。\n[動]\n1.見、相見。如：「見面」。《禮記．曲禮上》：「夫為人子者，出必告，反必面。」宋．蘇軾〈與任德翁〉：「年月不面，思企深劇。」\n2.向著、對著。如：「背山面水」、「面壁思過」。《列子．湯問》：「北山愚公者，年且九十，面山而居。」\n[副]\n當面。如：「耳提面命」、「面授機宜」。《漢書．卷八九．循吏傳．龔遂傳》：「面刺王過，王至掩耳起走。」",
+            "entry_id": "01443",
+            "sheet": "1150929辭典匯出",
+            "row": 1449,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "世": {
+        "definition": "generation; world; era",
+        "mandarin": "shì",
+        "official_dictionary": [
+          {
+            "title": "世",
+            "pinyin": "shì",
+            "definition": "[名]_x000D_\n1.三十年稱為「一世」。《說文解字．十部》：「世，三十年為一世。」《論語．子路》：「如有王者，必世而後仁。」_x000D_\n2.父子相繼稱為「一世」，即一代。《字彙．一部》：「世，父子相代為一世。」如：「五世其昌」、「秦二世」。《詩經．大雅．文王》：「文王孫子，本支百世。」《三國演義》第五回：「袁本初四世三公，門多故吏，漢朝名相之裔，可為盟主。」_x000D_\n3.朝代。《詩經．大雅．蕩》：「殷鑒不遠，在夏后之世。」晉．陶淵明〈桃花源記〉：「問今是何世，乃不知有漢，無論魏、晉。」南朝梁．劉勰《文心雕龍．詮賦》：「秦世不文，頗有雜賦。」_x000D_\n4.時代。《易經．繫辭下》：「易之興也，其當殷之末世。」漢．王充《論衡．逢遇》：「伯夷，帝者之佐也，出於王者之世。」_x000D_\n5.年、歲。《禮記．曲禮下》：「去國三世，爵祿有列於朝，出入有詔於國。」_x000D_\n7.世界、世間、世人。如：「傳世」、「避世」、「世外桃源」。《莊子．天地》：「千歲厭世，去而上僊；乘彼白雲，至於帝鄉。」《楚辭．屈原．漁父》：「舉世皆濁我獨清，眾人皆醉我獨醒。」_x000D_\n8.姓。如戰國時秦國有世鈞。_x000D_\n[量]_x000D_\n計算一生、一輩子的單位。如：「七世夫妻」、「三生三世」。《紅樓夢》第三回：「凡有外姓親友之人，一概不見，方可平安了此一世。」_x000D_\n[形]_x000D_\n1.與先輩有交誼的。如：「世姪」。《儒林外史》第三回：「貴房師高要縣湯公，就是先祖的門生，我和你是親切的世弟兄。」_x000D_\n2.世間的、世俗的。如：「世局」、「人情世故」。宋．黃機〈木蘭花慢．問功名何處〉詞：「世事翻雲覆雨，滿懷何止離憂。」《聊齋志異．卷八．夏雪》：「世風之變也，下者益諂，上者益驕。」_x000D_\n3.累代的。如：「世交」、「世仇」。《官場現形記》第二九回：「他自從到省之後，同寅當中不多幾日，居然很結識得幾個人，不是世誼，便是鄉誼，就是一無瓜葛的人，到了此時，一經拉攏，彼此亦就要好起來。所謂『臭味相投』，正是這個道理。」",
+            "entry_id": "08743",
+            "sheet": "1150929辭典匯出",
+            "row": 8757,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "可": {
+        "definition": "may, can, -able; possibly",
+        "mandarin": "kě",
+        "official_dictionary": [
+          {
+            "title": "可",
+            "pinyin": "kě",
+            "definition": "[動]\n1.肯定、贊成、贊同。如：「許可」。《史記．卷八七．李斯傳》：「始皇可其議，收去詩書百家之語以愚百姓。」唐．柳宗元〈答韋中立論師道書〉：「吾子好道而可吾文，或者其於道不遠矣。」\n2.適宜。《莊子．天運》：「其味相反，而皆可於口。」《西遊記》第一二回：「凜凜威顏多雅秀，佛衣可體如裁就。」\n3.病癒、痊癒。《董西廂》卷五：「鍼灸沒靈驗，醫療難痊可。」《三國演義》第八〇回：「待軍師病可，行之未遲。」\n4.當、對著。唐．劉禹錫〈生公講堂〉詩：「高坐寂寥塵漠漠，一方明月可中庭。」\n5.值得、堪。如：「可貴」、「可敬」。《詩經．豳風．東山》：「町畽鹿場，熠燿宵行，不可畏也，伊可懷也。」唐．陳陶〈隴西行〉四首之二：「可憐無定河邊骨，猶是春閨夢裡人。」\n[副]\n1.能夠。如：「你可以走了。」《詩經．秦風．黃鳥》：「彼蒼者天，殲我良人。如可贖兮，人百其身。」漢．王充《論衡．率性》：「人之性，善可變為惡，惡可變為善。」\n2.卻。如：「你去，我可不去。」唐．李白〈相逢行〉：「相見情已深，未語可知心。」元．關漢卿《拜月亭》第二折：「那玉砌朱廉與畫堂，我也可覷得尋常。」\n3.約略、約計。《韓非子．外儲說左上》：「奪轡代之御，可數百步。」唐．王維〈洛陽女兒行〉：「洛陽女兒對門居，纔可容顏十五餘。」\n4.豈。唐．韋莊〈長安清明〉詩：「蚤是傷春夢雨天，可堪芳草更芊芊。」\n5.表示疑問。如：「你可知道？」、「你可想過？」\n6.真、確實。《遼史．卷三〇．天祚皇帝本紀．贊曰》：「太祖、太宗乘百戰之勢，輯新造之邦，英謀叡略，可謂遠矣。」《水滸傳》第七三回：「穀雨初晴，可是麗人天氣。」\n[連]\n但是、可是。如：「他雖然笨，可很用功。」\n[助]\n用於句中，表示加強語氣。如：「你可回來了。」、「這下可好了！」\n[形]\n美好的。如：「可人兒」。\n[名]\n姓。如唐代有可中正。",
+            "entry_id": "04434",
+            "sheet": "1150929辭典匯出",
+            "row": 4440,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          },
+          {
+            "title": "可",
+            "pinyin": "kè",
+            "definition": "參見「可汗」條。",
+            "entry_id": "04441",
+            "sheet": "1150929辭典匯出",
+            "row": 4447,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "可汗",
+                "pinyin": "kè hán",
+                "definition": "古代西域和北方各國對君王的稱呼。《樂府詩集．卷二五．橫吹曲辭五．古辭．木蘭詩二首之一》：「昨夜見軍帖，可汗大點兵。」也作「克汗」。",
+                "entry_id": "044410002",
+                "sheet": "1150929辭典匯出",
+                "row": 75345
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "堪": {
+        "definition": "adequately capable of, worthy of",
+        "mandarin": "kān",
+        "official_dictionary": [
+          {
+            "title": "堪",
+            "pinyin": "kān",
+            "definition": "[動]\n勝任、承受。如：「難堪」、「足堪重任」、「不堪一擊」、「情何以堪」。《論語．雍也》：「人不堪其憂，回也不改其樂。」宋．柳永〈雨霖鈴．寒蟬淒切〉詞：「多情自古傷離別，更那堪、冷落清秋節？」\n[副]\n可以、能夠。如：「堪稱大將」、「不堪設想」。唐．杜秋娘〈金縷衣〉詩：「花開堪折直須折，莫待無花空折枝。」五代十國南唐．李煜〈浪淘沙．往事只堪哀〉詞：「往事只堪哀，對景難排。」",
+            "entry_id": "04503",
+            "sheet": "1150929辭典匯出",
+            "row": 4509,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "嘉": {
+        "definition": "excellent; joyful; auspicious",
+        "mandarin": "jiā",
+        "official_dictionary": [
+          {
+            "title": "嘉",
+            "pinyin": "jiā",
+            "definition": "[形]\n美好的。如：「嘉名」、「嘉賓」。《詩經．豳風．東山》：「其新孔嘉，其舊如之何？」唐．柳宗元〈永州韋使君新堂記〉：「茂樹惡木，嘉葩毒卉，亂雜而爭植。」\n[動]\n讚美、誇獎。如：「嘉獎」、「嘉許」、「其志可嘉」。《論語．子張》：「嘉善而矜不能。」唐．韓愈〈師說〉：「余嘉其能行古道，作師說以貽之。」\n[名]\n姓。如元代有嘉兆。",
+            "entry_id": "05485",
+            "sheet": "1150929辭典匯出",
+            "row": 5492,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "称": {
+        "definition": "call; name, brand; address; say",
+        "mandarin": "chēng",
+        "related_characters": [
+          {
+            "character": "称",
+            "relation": "kTraditionalVariant",
+            "definition": "call; name, brand; address; say",
+            "mandarin": "chēng"
+          },
+          {
+            "character": "稱",
+            "relation": "kTraditionalVariant",
+            "definition": "call; name, brand; address; say",
+            "mandarin": "chēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "称",
+            "pinyin": null,
+            "definition": "「稱」的異體字。",
+            "entry_id": "08433-1",
+            "sheet": "1150929辭典匯出",
+            "row": 121734,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "廆": {
+        "definition": "a room; the wall of a house a man's name",
+        "mandarin": "wěi",
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "宇": {
+        "definition": "house; building, structure; eaves",
+        "mandarin": "yǔ",
+        "official_dictionary": [
+          {
+            "title": "宇",
+            "pinyin": "yǔ",
+            "definition": "[名]\n1.屋簷。《易經．繫辭下》：「上古穴居而野處，後世聖人易之以宮室，上棟下宇，以待風雨，蓋取之大壯。」\n2.房屋。如：「屋宇」。《楚辭．宋玉．招魂》：「高堂邃宇，檻層軒些。」宋．蘇軾〈水調歌頭．明月幾時有〉詞：「我欲乘風歸去，又恐瓊樓玉宇，高處不勝寒。」\n3.疆域、國境。《左傳．昭公四年》：「或無難以喪其國，失其守宇。」《文選．枚乘．七發》：「今時天下安寧，四宇和平。」\n4.上下四方，為整個空間的總稱。如：「宇宙」、「寰宇」。《荀子．富國》：「萬物同宇而異體，無宜而有用。」\n5.人的儀表、風度。如：「眉宇」、「氣宇軒昂」。《晉書．卷七九．謝安傳》：「神識沉敏，風宇條暢。」",
+            "entry_id": "11622",
+            "sheet": "1150929辭典匯出",
+            "row": 11636,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "舷": {
+        "definition": "the sides of a boat, bulwarks; a gunwale",
+        "mandarin": "xián",
+        "official_dictionary": [
+          {
+            "title": "舷",
+            "pinyin": "xián",
+            "definition": "[名]\n船、飛機的兩側邊緣。如：「左舷」、「右舷」。唐．杜甫〈破船〉詩：「船舷不重扣，埋沒已經秋。」宋．蘇軾〈赤壁賦〉：「於是飲酒樂甚，扣舷而歌之。」",
+            "entry_id": "07091",
+            "sheet": "1150929辭典匯出",
+            "row": 7100,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "歌": {
+        "definition": "song, lyrics; sing, chant; praise",
+        "mandarin": "gē",
+        "official_dictionary": [
+          {
+            "title": "歌",
+            "pinyin": "gē",
+            "definition": "[動]_x000D_\n1.唱。按樂曲或節拍來發聲。如：「高歌一曲」、「引吭高歌」。《詩經．魏風．園有桃》：「心之憂矣，我歌且謠。」_x000D_\n2.頌揚。如：「歌功頌德」。《漢書．卷六二．司馬遷傳》：「夫天下稱周公，言其能論歌文武之德，宣周召之風。」唐．李白〈天長節度使鄂州刺史韋公德政碑〉：「噫大塊之氣，歌炎漢之風。」_x000D_\n[名]_x000D_\n1.合樂的曲調。如：「民歌」、「俚歌」、「漁歌」。《書經．舜典》：「詩言志，歌永言。」《後漢書．卷八三．逸民列傳．梁鴻》：「因東出關，過京師，作五噫之歌。」_x000D_\n2.一種詩歌體裁。屬於能唱的韻文。如〈長恨歌〉、〈子夜歌〉等。",
+            "entry_id": "03929",
+            "sheet": "1150929辭典匯出",
+            "row": 3935,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "长": {
+        "definition": "long; length; excel in; leader",
+        "mandarin": "zhǎng",
+        "related_characters": [
+          {
+            "character": "長",
+            "relation": "kTraditionalVariant",
+            "definition": "long; length; excel in; leader; Kangxi radical 168",
+            "mandarin": "zhǎng"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "风": {
+        "definition": "wind; air; manners, atmosphere",
+        "mandarin": "fēng",
+        "related_characters": [
+          {
+            "character": "風",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere; Kangxi radical 182",
+            "mandarin": "fēng"
+          },
+          {
+            "character": "风",
+            "relation": "kTraditionalVariant",
+            "definition": "wind; air; manners, atmosphere",
+            "mandarin": "fēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "风",
+            "pinyin": null,
+            "definition": "「風」的異體字。",
+            "entry_id": "01727-1",
+            "sheet": "1150929辭典匯出",
+            "row": 36539,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "满": {
+        "definition": "fill; full, satisfied",
+        "mandarin": "mǎn",
+        "related_characters": [
+          {
+            "character": "滿",
+            "relation": "kTraditionalVariant",
+            "definition": "fill; full, satisfied",
+            "mandarin": "mǎn"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "灯": {
+        "definition": "lantern, lamp",
+        "mandarin": "dēng",
+        "related_characters": [
+          {
+            "character": "灯",
+            "relation": "kTraditionalVariant",
+            "definition": "lantern, lamp",
+            "mandarin": "dēng"
+          },
+          {
+            "character": "燈",
+            "relation": "kTraditionalVariant",
+            "definition": "lantern, lamp",
+            "mandarin": "dēng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "灯",
+            "pinyin": null,
+            "definition": "「燈」的異體字。",
+            "entry_id": "02072-1",
+            "sheet": "1150929辭典匯出",
+            "row": 44130,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "火": {
+        "definition": "fire, flame; burn; anger, rage",
+        "mandarin": "huǒ",
+        "official_dictionary": [
+          {
+            "title": "火",
+            "pinyin": "huǒ",
+            "definition": "[名]\n1.物體燃燒時產生的光和熱。可燃物、燃點和氧氣是火的三要件。《書經．盤庚上》：「若火之燎于原，不可嚮邇，其猶可撲滅？」《水滸傳》第四六回：「便去灶前尋了把草，灶裡點個火……那火頃刻開天也似般大。」\n2.中醫指病理變化過程中，機能亢進的現象。如：「肝火」、「上火」、「退火」。\n3.槍炮彈藥等武器稱為「火」。如：「軍火」、「火藥」。\n4.五行之一。參見「五行」條。\n5.姓。如明代有火源潔。\n6.二一四部首之一。\n[形]\n赤紅色的。如：「火紅」、「火狐狸」。唐．李白〈送程劉二侍郎兼獨孤判官赴安西幕府〉詩：「天外飛霜下蔥海，火旗雲馬生光彩。」\n[動]\n1.燃燒。《禮記．王制》：「昆蟲未蟄，不以火田。」《新唐書．卷九三．李靖傳》：「（李靖）軍次伏俟城，吐谷渾盡火其莽，退保大非川。」\n2.動怒。如：「他一火，大家都不敢說話了。」\n[副]\n急速、緊急。如：「火速赴約」、「十萬火急」。《莊子．天地》：「彼且乘人而無天，方且本身而異形，方且尊知而火馳。」",
+            "entry_id": "05035",
+            "sheet": "1150929辭典匯出",
+            "row": 5042,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary",
+            "cross_references": [
+              {
+                "title": "肝火",
+                "pinyin": "gān huǒ",
+                "definition": "1.中醫上指肝氣鬱結，化火上逆，所呈現的症狀。有頭痛暈眩、眼紅、面赤、口苦易躁等徵狀。\n2.怒火。《紅樓夢》第二九回：「若是別人跟前，斷不能動這肝火。」",
+                "entry_id": "040470018",
+                "sheet": "1150929辭典匯出",
+                "row": 68896
+              },
+              {
+                "title": "上火",
+                "pinyin": "shàng huǒ",
+                "definition": "1.點燃燈火。《官場現形記》第一三回：「等到上火之後，船家果然把他們兩隻坐船，撐到對岸停泊。」\n2.生氣、發怒。如：「面對他無中生有的指責，她上火了！」\n3.中醫指大便乾燥、口舌生瘡、鼻腔和口腔等發炎的症狀。",
+                "entry_id": "090180154",
+                "sheet": "1150929辭典匯出",
+                "row": 130218
+              },
+              {
+                "title": "退火",
+                "pinyin": "tuì huǒ",
+                "definition": "1.一種金屬熱處理方法。將金屬材料加熱至適當溫度後，緩緩冷卻，可增加金屬的韌性。\n2.中醫上指消除病理上口乾舌燥等現象，稱為「退火」。",
+                "entry_id": "028490023",
+                "sheet": "1150929辭典匯出",
+                "row": 54480
+              },
+              {
+                "title": "軍火",
+                "pinyin": "jūn huǒ",
+                "definition": "軍用槍炮、彈藥等的統稱。《老殘遊記》第四回：「那有良民敢置軍火的道理！你家一定是強盜！」",
+                "entry_id": "061600047",
+                "sheet": "1150929辭典匯出",
+                "row": 96567
+              },
+              {
+                "title": "火藥",
+                "pinyin": "huǒ yào",
+                "definition": "受衝擊或受熱，即起劇烈化學變化而產生高熱及大量氣體的化合物或混合物。最早用於辟邪、驅鬼和娛樂，宋朝時始用於軍事。是中國三大發明之一。",
+                "entry_id": "050350239",
+                "sheet": "1150929辭典匯出",
+                "row": 83340
+              },
+              {
+                "title": "五行",
+                "pinyin": "wǔ xíng",
+                "definition": "1.水、火、木、金、土五種物質。中國古代視為構成萬物的基本元素。五者相生相剋，使宇宙萬物運行變化，形成各種現象。《禮記．禮運》：「播五行於四時。」唐．孔穎達．正義：「播謂播散五行金、木、水、火、土之氣於春夏秋冬之時也。」《孔子家語．卷六．五帝》：「天有五行，水、火、金、木、土，分時化育，以成萬物。」\n2.舊時以人的八字配合五行生剋推算命運。後借指命運。明．劉兌《金童玉女嬌紅記》：「也是我五行注定，八字安排。」《初刻拍案驚奇》卷一：「誰不願黃金屋？誰不願千鍾粟？算五行不是這般題目。」\n3.仁、義、禮、智、信。《荀子．非十二子》：「案往舊造說，謂之五行。」唐．楊倞．注：「五行，五常，仁、義、禮、智、信是也。」",
+                "entry_id": "112510161",
+                "sheet": "1150929辭典匯出",
+                "row": 157335
+              },
+              {
+                "title": "火紅",
+                "pinyin": "huǒ hóng",
+                "definition": "顏色像火一樣紅。如：「她穿了一件火紅的洋裝，相當搶眼。」《老殘遊記》第二回：「紅的火紅，白的雪白。」",
+                "entry_id": "0503501131",
+                "sheet": "1150929辭典匯出",
+                "row": 83216
+              },
+              {
+                "title": "十萬火急",
+                "pinyin": "shí wàn huǒ jí",
+                "definition": "形容非常緊急。如：「看主管剛才的模樣，公司那邊的情況似乎已十萬火急！」也作「十萬火速」。",
+                "entry_id": "087060283",
+                "sheet": "1150929辭典匯出",
+                "row": 125776
+              }
+            ]
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "映": {
+        "definition": "project; reflect light",
+        "mandarin": "yìng",
+        "official_dictionary": [
+          {
+            "title": "映",
+            "pinyin": "yìng",
+            "definition": "[動]\n1.照射。南朝宋．謝靈運〈夜發石關亭〉詩：「亭亭曉月映，泠泠朝露滴。」《南史．卷一二．后妃傳下．陳後主沈皇后傳》：「每瞻視眄睞，光彩溢目，照映左右。」\n2.光線照在物體反射出來。如：「倒映」。北周．庾信〈詠畫屏風詩〉二五首之五：「狹石分花逕，長橋映水門。」宋．陸游〈東湖新竹〉詩：「插棘編籬謹護持，養成寒碧映淪漪。」\n[名]\n日光、光影。南朝梁．任昉〈落日泛舟東谿〉詩：「交柯溪易陰，反景澄餘映。」",
+            "entry_id": "11213",
+            "sheet": "1150929辭典匯出",
+            "row": 11228,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "凭": {
+        "definition": "lean on, depend on, rely on",
+        "mandarin": "píng",
+        "related_characters": [
+          {
+            "character": "凭",
+            "relation": "kTraditionalVariant",
+            "definition": "lean on, depend on, rely on",
+            "mandarin": "píng"
+          },
+          {
+            "character": "憑",
+            "relation": "kTraditionalVariant",
+            "definition": "lean on, depend on, rely on",
+            "mandarin": "píng"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "凭",
+            "pinyin": null,
+            "definition": "「憑」的異體字。",
+            "entry_id": "00976-1",
+            "sheet": "1150929辭典匯出",
+            "row": 25945,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "远": {
+        "definition": "distant, remote, far; profound",
+        "mandarin": "yuǎn",
+        "related_characters": [
+          {
+            "character": "远",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          },
+          {
+            "character": "遠",
+            "relation": "kTraditionalVariant",
+            "definition": "distant, remote, far; profound",
+            "mandarin": "yuǎn"
+          }
+        ],
+        "official_dictionary": [
+          {
+            "title": "远",
+            "pinyin": null,
+            "definition": "「遠」的異體字。",
+            "entry_id": "11800-1",
+            "sheet": "1150929辭典匯出",
+            "row": 162989,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      },
+      "望": {
+        "definition": "to look at, look forward; to hope, expect",
+        "mandarin": "wàng",
+        "official_dictionary": [
+          {
+            "title": "望",
+            "pinyin": "wàng",
+            "definition": "[動]\n1.向遠處或高處看。如：「登高望遠」、「一望無際」。唐．李白〈靜夜思〉詩：「舉頭望明月，低頭思故鄉。」宋．汪元量〈潮州歌〉：「北望燕雲不盡頭，大江東去水悠悠。」\n2.希冀、期盼。如：「盼望」、「期望」、「渴望」。《孟子．梁惠王上》：「王如知此，則無望民之多於鄰國也。」\n3.拜訪、慰問。如：「拜望」、「探望」。\n4.怨恨、責備。《史記．卷八九．張耳陳餘傳》：「不意君之望臣深也！豈以臣為重去將哉？」《文選．司馬遷．報任少卿書》：「若望僕不相師，而用流俗人之言，僕非敢如此。」\n5.將近、接近。唐．韓愈〈祭竇司業文〉：「逾七望八，年孰非翁。」《兒女英雄傳》第一回：「你那我雖然不至於老邁不堪，也是望五的人了。」\n[名]\n1.志願、心願。如：「願望」、「絕望」。\n2.名譽、名聲。如：「名望」、「聲望」、「德高望重」。《三國演義》第八三回：「陸遜年幼望輕，恐諸公不服。」\n3.農曆每月十五日，地球上所看見的滿月月相，後指農曆的每月十五日。《文選．枚乘．七發》：「將以八月之望，與諸侯遠方交游兄弟，並往觀濤乎廣陵之曲江。」宋．蘇軾〈後赤壁賦〉：「是歲十月之望，步自雪堂，將歸于臨皋。」\n[介]\n向、朝。如：「望後退」、「望前看」、「望我點點頭」。",
+            "entry_id": "11541",
+            "sheet": "1150929辭典匯出",
+            "row": 11555,
+            "source_url": "https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/respub/download/dict_revised_2015_20260929.zip",
+            "source_sha256": "65a24fff76d0fbfa078541f39761bb9f302bdf7ad6bb48be4ce1052d1b49f609",
+            "authority": "Ministry of Education Revised Mandarin Chinese Dictionary"
+          }
+        ],
+        "source_url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+        "version": "17.0.0"
+      }
+    },
+    "response_format": {
+      "reviews": [
+        {
+          "name": "输入原名",
+          "decision": "keep | reject | uncertain",
+          "reason": "具体判断理由"
+        }
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "面世",
+      "decision": "reject",
+      "reason": "常用动词，意为问世、出现于世；完整名称更像描述产品上市的通用动作，不够凝练为可辨识的品牌名。"
+    },
+    {
+      "name": "可堪",
+      "decision": "uncertain",
+      "reason": "词义为可以承受或怎堪，通常依赖后续语境构成表达；独立作名含义不够明确，语气也偏感叹。"
+    },
+    {
+      "name": "堪嘉",
+      "decision": "uncertain",
+      "reason": "可理解为“值得嘉许”，且有古典用例，但现代组合不够自然，独立作品牌名的辨识度和语义关系仍显生硬。"
+    },
+    {
+      "name": "堪称",
+      "decision": "reject",
+      "reason": "常用动词，表示可以称作、足以称为，通常引出评价或判断；完整名称不成句且偏向评价套语。"
+    },
+    {
+      "name": "廆宇",
+      "decision": "uncertain",
+      "reason": "“廆”确有房间、屋壁等义，但读音与字义均生僻；与“宇”组合的具体关系难以确认，不能据部件或近形字推衍寓意。"
+    },
+    {
+      "name": "舷歌",
+      "decision": "keep",
+      "reason": "可自然理解为船舷边的歌声或扣舷而歌，意象简洁，有文学依据，整体凝练且具一定辨识度。"
+    },
+    {
+      "name": "长风满舷",
+      "decision": "keep",
+      "reason": "可理解为长风吹满船舷，形成连贯的舟行意象；语序自然，画面完整而不落入判断句或通用类别词。"
+    },
+    {
+      "name": "灯火映舷",
+      "decision": "keep",
+      "reason": "灯火映照船舷，语义关系清楚，构成具体而凝练的夜航意象；与暂留候选“灯火映盦”共享灯火映照结构，但对象和整体意象不同，不属仅换近义字的重复组合。"
+    },
+    {
+      "name": "凭舷远望",
+      "decision": "reject",
+      "reason": "完整表达为倚着船舷向远处眺望的动作句，语法自然但呈现为场景描写或题句，缺少品牌名所需的凝练感。"
+    }
+  ]
+}

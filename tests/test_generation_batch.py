@@ -34,7 +34,7 @@ class CandidateBatchTests(unittest.TestCase):
         self.assertFalse(state['completed'])
         self.assertEqual(state['phase'], 'awaiting_quality_acceptance')
 
-    def test_reordered_names_do_not_inflate_generation_progress(self):
+    def test_distinct_reordered_names_are_counted_until_quality_review(self):
         roles = {'云': '云气形成自然意象', '山': '山岳形成自然意象'}
         notes = json.dumps(['质量初筛：各字语义角色=' + json.dumps(roles, ensure_ascii=False)
                             + '；自然度自评=5/5'], ensure_ascii=False)
@@ -45,7 +45,7 @@ class CandidateBatchTests(unittest.TestCase):
                 db.executemany("INSERT INTO name_candidates VALUES (?,2,'ai','',?,'待核验')", [('云山', notes), ('山云', notes)])
             with patch.object(generation.api_server, 'DB_PATH', path):
                 records = generation.load_character_names()
-        self.assertEqual(generation.count_names_for_character_set(records, list('云山')), {'云': 1, '山': 1})
+        self.assertEqual(generation.count_names_for_character_set(records, list('云山')), {'云': 2, '山': 2})
 
     def test_generation_counts_exclude_legacy_and_incomplete_quality_evidence(self):
         roles = {'云': '云气形成自然意象', '山': '山岳形成自然意象'}
