@@ -1,0 +1,648 @@
+{
+  "created_at": "2026-11-15T17:13:03.735472+08:00",
+  "source_artifacts": [
+    "data/quality-reviews/direct-20261115-r6/software-relations-proposals.json"
+  ],
+  "source_sha256": "0ce9f8a6f4ca90e397577418273fb9e0cd3090fc42e0798482f496be8d616871",
+  "reviewer": "separate assistant direct technical references and database check; no model API",
+  "review_method": "separate_assistant_screen_not_independent_model_or_final_acceptance",
+  "literature_policy": "reference_only",
+  "final_acceptance": false,
+  "accepted_count": 0,
+  "decision_counts": {
+    "keep": 4,
+    "uncertain": 0,
+    "reject": 0
+  },
+  "reviews": [
+    {
+      "name": "惰性求值",
+      "anchor": "惰",
+      "naturalness": 4,
+      "meaning": "把表达式的计算推迟到其结果真正被需要时，并共享该次求得的结果，使对同一共享表达式的后续需求可复用已求值结果；采用按需与结果复用相联系的求值方式，适合编程教育、函数式工具或语言实现品牌。",
+      "character_roles": {
+        "惰": "在惰性这一技术修饰语中表示未被需要时暂不执行求值",
+        "性": "与惰构成惰性以限定按需执行的求值策略",
+        "求": "在求值整词中表示计算并取得表达式结果的操作",
+        "值": "在求值整词中指表达式经计算得到的结果而非商业价值"
+      },
+      "brand_domains": [
+        "编程教育",
+        "函数式工具",
+        "语言实现"
+      ],
+      "local_reference": [
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "惰性",
+          "pinyin": "duò xìng",
+          "definition": "1.某些物質不易與其他元素或化合物化合，這種性質稱為「惰性」。如氦氣就是惰性物質。\n2.因生活和工作散漫懶惰而形成的習性。如：「他的惰性大家都知道，好吃懶做是出了名的。」",
+          "entry_id": "023440003",
+          "sheet": "1150929辭典匯出",
+          "row": 47503,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        },
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "求",
+          "pinyin": "qiú",
+          "definition": "[動]\n1.找尋、探索、設法得到。如：「尋求」、「探求」、「實事求是」、「緣木求魚」。《呂氏春秋．慎大覽．察今》：「舟已行矣，而劍不行，求劍若此，不亦惑乎！」\n2.懇託、乞助。如：「求助」、「懇求」、「乞求」、「祈求」、「請求」。《後漢書．卷八二．方術傳下．華佗傳》：「又有疾者，詣佗求療。」\n3.要求。如：「苛求」、「求全責備」。《論語．微子》：「無求備於一人。」《論語．衛靈公》：「君子求諸己，小人求諸人。」\n4.貪圖。《論語．子罕》：「不忮不求，何用不臧！」唐．徐夤〈潤屋〉詩：「潤屋豐家莫妄求，眼看多是與身讎。」\n5.招引。《易經．乾卦．文言曰》：「同聲相應，同氣相求。」《孟子．公孫丑上》：「今國家間暇，及是時般樂怠敖，是自求禍也。」\n[名]\n姓。如漢代有求仲。",
+          "entry_id": "06420",
+          "sheet": "1150929辭典匯出",
+          "row": 6428,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        },
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "值",
+          "pinyin": "zhí",
+          "definition": "[名]\n1.價格。如：「價值」。\n2.數值的簡稱。如：「平均值」。\n[動]\n1.面對。《史記．卷一二二．酷吏傳．義縱傳》：「寧見乳虎，無值寧成之怒。」漢．王充《論衡．實知》：「至漢興，長樂在其東，未央宮在其西，武庫正值其墓，竟如所言。」\n2.執行勤務。如：「值班」、「值勤」。\n3.抵得上。《水滸傳》第六回：「值是值二千貫，只沒個識主。」《紅樓夢》第三一回：「幾把扇子，能值幾何？」",
+          "entry_id": "07490",
+          "sheet": "1150929辭典匯出",
+          "row": 7501,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        }
+      ],
+      "external_reference": [
+        {
+          "url": "https://docs.racket-lang.org/reference/Delayed_Evaluation.html",
+          "title": "10.3 Delayed Evaluation",
+          "publisher": "Racket documentation",
+          "quote": "A promise encapsulates an expression to be evaluated on demand via force.",
+          "alternative_quote": "The result is then cached, so further uses of force produce the cached value immediately.",
+          "support_scope": "Read Racket delay/force as a concrete call-by-need style example; not a claim that all delay mechanisms memoize.",
+          "accessed_at": "2026-11-15T17:05:57.551243+08:00",
+          "http_status": 200,
+          "response_sha256": "b438d6f715cb5c20979d314fb451aba7045b750180adeb85f2ea3c1bd0b68c78",
+          "verified_by": "direct HTTPS read, stripped-text exact quote checked after whitespace normalization",
+          "review_verification": {
+            "name": "惰性求值",
+            "url": "https://docs.racket-lang.org/reference/Delayed_Evaluation.html",
+            "http_status": 200,
+            "response_sha256": "b438d6f715cb5c20979d314fb451aba7045b750180adeb85f2ea3c1bd0b68c78",
+            "verified_at": "2026-11-15T17:12:56.046556+08:00",
+            "quote_content_matches_after_ignoring_markup_whitespace": {
+              "quote": true,
+              "alternative_quote": true
+            },
+            "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+          }
+        }
+      ],
+      "definition_basis": {
+        "kind": "assistant_standard_computing_definition",
+        "whole_term_in_local_reference": false,
+        "adopted_scope": "采用通常称call-by-need的惰性求值：按需计算并共享结果；不把任意延迟、call-by-name或异步调度全部视为本术语。",
+        "example": "表达式绑定尚不求值，第一次真正需要该结果才计算，后续需求复用已求得结果。",
+        "caution": "不要求一次求出无限数据全部元素，也不承诺所有程序都更快或占用更少内存。"
+      },
+      "most_similar_existing": [
+        {
+          "name": "按需而为",
+          "pitch": "表达依据实际需要采取行动，强调务实、灵活的做事方式。",
+          "status": "质量复核未通过",
+          "difference": "现说明为依据需要行动的一般态度；本名采用表达式需求与计算、共享结果的语义约束，仍须复筛是否只是把按需态度技术化。"
+        },
+        {
+          "name": "递归",
+          "pitch": "在定义或求解过程中引用同类问题的较小实例，并由基本情形终止，构成层层回到同类关系的概念。",
+          "status": "待核验",
+          "difference": "递归为问题定义或求解引用同类较小实例；惰性求值关心何时计算及共享结果，并非同类问题层层回返。"
+        },
+        {
+          "name": "迭代",
+          "pitch": "指一轮轮改进与更新，传达持续演进的意象。",
+          "status": "质量复核未通过",
+          "difference": "现说明为一轮轮改进更新；本名不采用循环改进、持续升级的构思。"
+        },
+        {
+          "name": "暂存",
+          "pitch": "以“暂存”表达先妥善留存、再从容处理，适合承载可靠而灵活的品牌印象。",
+          "status": "待核验",
+          "difference": "暂存为先留存再处理的一般关系；本名不能只以存下结果作为独立依据，必要关系还包括需求触发首次计算。"
+        },
+        {
+          "name": "递归极构",
+          "pitch": "以递归之美层层深入、自相似生长，寓意用算法逻辑构建层级分明、可无限演化的极致系统架构。",
+          "status": "待核验",
+          "comparison": "现说明为自相似递归与层级系统，不包含按需首次求值并共享同一结果。"
+        },
+        {
+          "name": "递归探径",
+          "pitch": "递归是算法核心范式，探径喻不断深入问题本质、层层求解，体现递推与回归的工程哲学",
+          "status": "待核验",
+          "comparison": "现说明为层层深入求解问题，本名不以递推回返为构思。"
+        }
+      ],
+      "reason": "惰性求值为自然通行的软件术语，本次明确采用按需计算并共享结果的call-by-need方式。必要关系是需求到来才触发被共享表达式的计算，之后复用该共享结果；按需而为仅有依据需要行动的一般态度，暂存只表达先留存再处理，递归及递归探径、递归极构则涉及同类问题的层层引用或回返，均未包含需求触发与结果共享的结合。本名不泛写懒散慢生活、持续升级或效率更高，限定函数式工具、语言实现与编程教育方向可独立呈现，自然度4，暂留。四字专业术语及惰字日常懒散义的传播门槛仍保留；定义真实不是最终品牌验收。",
+      "risk_note": "惰具有懒散日常义，普通受众可能误读；限定技术方向不表示商标可注册。不能另计延迟求值、按需求值等近义称呼补数，不承诺必定提速、节能或防止全部重复计算。 本轮现场未找到续延同名数据库或历史复核记录；已知名库中有其倒序延续，不将续延虚构为已有技术词作比较。",
+      "anchor_rank": 2772,
+      "decision": "keep",
+      "final_acceptance": false,
+      "accepted_count": 0,
+      "duplicate_check": {
+        "known_name_count": 150581,
+        "full_in_known": false,
+        "reverse_in_known": false,
+        "all_characters_in_library": true,
+        "anchor_rank": 2772,
+        "historical_name_field_hits_excluding_source_and_screen": []
+      },
+      "counted": false,
+      "screening_level": "separate_assistant_screen",
+      "quality_evidence_format_pass": true,
+      "corrections": [
+        "将共享范围收紧为同一共享表达式的求值结果，不暗示文本相同的所有表达式都自动全局合并计算。"
+      ]
+    },
+    {
+      "name": "双缓冲",
+      "anchor": "缓",
+      "naturalness": 4,
+      "meaning": "采用图形绘制中的双缓冲方式：先把待呈现画面绘制到内存缓冲区，完成后再更新显示面，使画面准备与可见呈现分处两侧；适合图形工具、交互编程或可视化教学品牌。",
+      "character_roles": {
+        "双": "在双缓冲完整术语中指准备与呈现分开的两侧画面存储",
+        "缓": "与冲构成缓冲一词，指画面在呈现前的暂存环节",
+        "冲": "与缓共同构成技术词缓冲，不拆作冲刺或水流冲击"
+      },
+      "brand_domains": [
+        "图形工具",
+        "交互编程",
+        "可视化教学"
+      ],
+      "local_reference": [
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "緩衝",
+          "pinyin": "huǎn chōng",
+          "definition": "雙方發生衝突時，有人在中間調停，以緩和緊張的形勢，稱為「緩衝」。",
+          "entry_id": "051790029",
+          "sheet": "1150929辭典匯出",
+          "row": 84680,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        },
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "雙",
+          "pinyin": "shuāng",
+          "definition": "[名]\n1.量詞。計算成對物品的單位。如：「一雙鞋子」、「兩雙筷子」。\n2.姓。如宋代有雙漸。\n[形]\n1.偶數的。如：「雙數」、「雙月」、「雙號」。\n2.加倍的。如：「雙薪」、「雙份」。\n[動]\n匹敵。唐．韓愈〈病中贈張十八〉詩：「談舌久不掉，非君諒誰雙。」",
+          "entry_id": "09167",
+          "sheet": "1150929辭典匯出",
+          "row": 9182,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        }
+      ],
+      "external_reference": [
+        {
+          "url": "https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/double-buffered-graphics",
+          "title": "Double Buffered Graphics",
+          "publisher": "Microsoft Learn",
+          "quote": "When double buffering is enabled, all paint operations are first rendered to a memory buffer instead of the drawing surface on the screen.",
+          "alternative_quote": "After all paint operations are completed, the memory buffer is copied directly to the drawing surface associated with it.",
+          "support_scope": "Windows Forms graphics variant: finish off-screen memory buffer then copy to drawing surface; not every double-buffer implementation swaps pointers.",
+          "accessed_at": "2026-11-15T17:05:57.551243+08:00",
+          "http_status": 200,
+          "response_sha256": "bedf6ebd76e28801b02f92fdd2b0af1aab6dcf22af0f780366968de9b9b185b5",
+          "verified_by": "direct HTTPS read, stripped-text exact quote checked after whitespace normalization",
+          "review_verification": {
+            "name": "双缓冲",
+            "url": "https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/double-buffered-graphics",
+            "http_status": 200,
+            "response_sha256": "bedf6ebd76e28801b02f92fdd2b0af1aab6dcf22af0f780366968de9b9b185b5",
+            "verified_at": "2026-11-15T17:12:56.895888+08:00",
+            "quote_content_matches_after_ignoring_markup_whitespace": {
+              "quote": true,
+              "alternative_quote": true
+            },
+            "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+          }
+        }
+      ],
+      "definition_basis": {
+        "kind": "assistant_standard_computing_definition",
+        "whole_term_in_local_reference": false,
+        "adopted_scope": "本提案明确选用图形双缓冲，先完成内存画面再复制或提交到显示侧；不是把两个任意缓存称为双缓冲。",
+        "caution": "Microsoft参考本页采用内存缓冲复制到屏幕面；不宣称所有实现必用两个物理页面交换指针，也不保证一切场景无撕裂、无闪烁。"
+      },
+      "most_similar_existing": [
+        {
+          "name": "切换",
+          "pitch": "由切换带出灵活转变、顺势更新的意象，适合作为强调适应力的品牌名。",
+          "status": "质量复核待定",
+          "difference": "现说明为灵活转换更新；本名必须有准备画面与显示面分离、完成后提交的存储关系，不只泛写切换。"
+        },
+        {
+          "name": "暂存",
+          "pitch": "以“暂存”表达先妥善留存、再从容处理，适合承载可靠而灵活的品牌印象。",
+          "status": "待核验",
+          "difference": "现说明为先留存再处理，双缓冲还要求准备侧与正在呈现侧分开；仍须复筛其技术类别名品牌性。"
+        },
+        {
+          "name": "队列",
+          "pitch": "以整齐有序的排列，传达协作和秩序感。",
+          "status": "质量复核未通过",
+          "difference": "现说明为整齐排列秩序；本名并非按进入顺序依次服务，也不以两队列同时存在为定义。"
+        },
+        {
+          "name": "幕间",
+          "pitch": "两幕之间的间歇，形成舞台喧静交替的一段时间。",
+          "status": "待核验",
+          "difference": "幕间为两幕之间间歇，本名并不要求观众等待一段换景空白，而采用独立准备面与呈现面的关系。"
+        },
+        {
+          "name": "嗉囊",
+          "pitch": "“嗉囊”是鸟类暂存食物的囊状部位，可引申为积蓄养分、蓄力成长的意象。",
+          "status": "质量复核未通过",
+          "comparison": "现说明为鸟类储食并引申蓄力，本案不更换暂存对象，而需要准备画面与可见显示分侧。"
+        },
+        {
+          "name": "飞轮",
+          "pitch": "以旋转惯性储存动能的轮状机械部件，呈现轮体旋转与能量暂存的具体关系。",
+          "status": "待核验",
+          "comparison": "现说明为旋转惯性储动能，不含图形准备面和显示面的提交关系。"
+        },
+        {
+          "name": "双轨",
+          "pitch": "两条路径并行而互补，传达兼顾多元发展与协同前行的品牌意象。",
+          "status": "待核验",
+          "comparison": "现说明为两路径并行互补，双缓冲不必并行，其完整关系在独立准备侧完成画面再更新呈现。"
+        },
+        {
+          "name": "往复",
+          "pitch": "“往”与“复”组成往返循环之意，呈现稳定运转、持续更新的品牌联想。",
+          "status": "待核验",
+          "comparison": "现说明为往返循环与稳定更新，本案不只借两侧往复循环形成品牌。"
+        }
+      ],
+      "reason": "双缓冲为自然通行的图形术语，本次采用画面先在内存准备、完成后更新显示面的关系。暂存没有要求准备侧与可见呈现侧分离，双轨只表达两路并行互补，切换泛写灵活转变，幕间为两幕间歇；这些说明均不包含独立准备画面并提交给显示面的状态关系。嗉囊的暂存食物、飞轮的动能暂存以及往复的往返循环也非该关系。本案不是在一般缓冲前添加数量词，而是采用完整双缓冲方法名，限定图形工具、交互编程和可视化教学可暂留自然度4。没有据此承诺并行、性能翻倍或绝无撕裂。",
+      "risk_note": "本地缓冲条为调停冲突，不能拿它冒称计算机术语出处。双缓冲并不自动保证并行执行、性能翻倍、画面绝不撕裂或零闪烁；不另计乒乓缓冲等相近称谓。",
+      "anchor_rank": 2818,
+      "decision": "keep",
+      "final_acceptance": false,
+      "accepted_count": 0,
+      "duplicate_check": {
+        "known_name_count": 150581,
+        "full_in_known": false,
+        "reverse_in_known": false,
+        "all_characters_in_library": true,
+        "anchor_rank": 2818,
+        "historical_name_field_hits_excluding_source_and_screen": []
+      },
+      "counted": false,
+      "screening_level": "separate_assistant_screen",
+      "quality_evidence_format_pass": true,
+      "corrections": []
+    },
+    {
+      "name": "语法树",
+      "anchor": "树",
+      "naturalness": 4,
+      "meaning": "以树的节点及父子关系表示表达式或程序的语法成分及其嵌套，把线性字句组织为可遍历的语法结构；适合编程教育、语言工具或代码分析品牌。",
+      "character_roles": {
+        "语": "在语法一词中指由语词符号组成的表达内容",
+        "法": "在语法一词中指表达成分组成的规则而非法律或佛法",
+        "树": "在语法树完整术语中指由节点和父子连接构成的树结构"
+      },
+      "brand_domains": [
+        "编程教育",
+        "语言工具",
+        "代码分析"
+      ],
+      "local_reference": [
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "語法",
+          "pinyin": "yǔ fǎ",
+          "definition": "1.講求語言構造合宜，音調優美的方法。也稱為「話法」。\n2.語詞、語句形成的規律。有時包括口語和書面語，與「文法」一詞相近。",
+          "entry_id": "116330009",
+          "sheet": "1150929辭典匯出",
+          "row": 161424,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        },
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "法",
+          "pinyin": "fǎ",
+          "definition": "[名]_x000D_\n1.律令。如：「法令」、「法律」。《韓非子．定法》：「法者，憲令著於官府。」_x000D_\n2.制度。《禮記．曲禮下》：「祭祀之禮，居喪之服，哭泣之位，皆如其國之故，謹修其法而審行之。」_x000D_\n3.範式、原則。如：「文法」、「語法」。_x000D_\n4.途徑。如：「方法」、「辦法」。_x000D_\n5.佛、道等的道理。如：「佛法」、「法壇」。《五燈會元．卷六．谷山藏禪師》：「法尚應捨，何況非法？」_x000D_\n6.方術、技巧。如：「道士作法」、「魔法」。_x000D_\n7.法國的簡稱。舊音ㄈㄚˋ fà。如：「中法戰爭」、「英法戰爭」。_x000D_\n8.姓。如漢代有法雄。_x000D_\n[動]_x000D_\n仿效。《周易．繫辭上》：「知崇禮卑，崇效天，卑法地，天地設位，而易行乎其中矣。」_x000D_\n[形]_x000D_\n1.可為法則的。如：「法書」、「法帖」。_x000D_\n2.屬於佛家的。如：「法衣」、「法號」。",
+          "entry_id": "01536",
+          "sheet": "1150929辭典匯出",
+          "row": 1541,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        }
+      ],
+      "external_reference": [
+        {
+          "url": "https://docs.python.org/3/library/ast.html",
+          "title": "ast — Abstract syntax trees",
+          "publisher": "Python documentation",
+          "quote": "The result will be a tree of objects whose classes all inherit from ast.AST.",
+          "alternative_quote": "An abstract syntax tree can be compiled into a Python code object using the built-in compile() function.",
+          "support_scope": "Concrete AST example only, supporting syntax constituents represented by nodes; not a claim that every syntax tree is abstract or uniquely determined for ambiguous grammars.",
+          "accessed_at": "2026-11-15T17:05:57.551243+08:00",
+          "http_status": 200,
+          "response_sha256": "0876114d83beaf0d96ed0f2759979e7b3b9aa3780ccd81354adbae792ac55a7d",
+          "verified_by": "direct HTTPS read, stripped-text exact quote checked after whitespace normalization",
+          "review_verification": {
+            "name": "语法树",
+            "url": "https://docs.python.org/3/library/ast.html",
+            "http_status": 200,
+            "response_sha256": "0876114d83beaf0d96ed0f2759979e7b3b9aa3780ccd81354adbae792ac55a7d",
+            "verified_at": "2026-11-15T17:12:57.876087+08:00",
+            "quote_content_matches_after_ignoring_markup_whitespace": {
+              "quote": true,
+              "alternative_quote": true
+            },
+            "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+          }
+        }
+      ],
+      "definition_basis": {
+        "kind": "assistant_standard_computing_definition",
+        "whole_term_in_local_reference": false,
+        "adopted_scope": "泛指以树结构表达语法成分嵌套；Python AST仅为具体实例。本名不与抽象语法树、具体语法树或解析树一律视作完全同义。",
+        "finite_example": "a + b * c可用加法节点为根，左子为a，右子为乘法节点b*c，以子树表示乘法分组。",
+        "example_checked_with_python_ast": true,
+        "caution": "不因一个AST示例就推定所有语言有相同节点类型，或歧义语法总对应唯一树。"
+      },
+      "most_similar_existing": [
+        {
+          "name": "层序",
+          "pitch": "以层级分明的次序体现结构、秩序与稳健执行。",
+          "status": "待核验",
+          "difference": "现说明为层级次序和稳健执行；语法树用父子关系表示语法成分嵌套，不只把层级对象替换为代码。"
+        },
+        {
+          "name": "谱系",
+          "pitch": "“谱系”指事物之间有脉络可循，适合表达建立联系、梳理传承的品牌意象。",
+          "status": "待核验",
+          "difference": "现说明为联系脉络与传承，语法树不是家族来源关系，而把符号组成关系显式表示为节点树。"
+        },
+        {
+          "name": "家谱",
+          "pitch": "“家谱”是记录家族源流的名称，传递追本溯源与延续传承的意味。",
+          "status": "质量复核未通过",
+          "difference": "现说明为家族源流，语法树不以代际传承构思，只共享树形表示而具有不同组成语义。"
+        },
+        {
+          "name": "目录",
+          "pitch": "以“目”指向所观照的对象，以“录”表达整理记录，形成清晰、有序的品牌意象。",
+          "status": "质量复核未通过",
+          "difference": "现说明泛整理记录，语法树节点不必是标题目录项，而表达语法构成和嵌套。"
+        },
+        {
+          "name": "递归",
+          "pitch": "在定义或求解过程中引用同类问题的较小实例，并由基本情形终止，构成层层回到同类关系的概念。",
+          "status": "待核验",
+          "difference": "递归为引用同类较小问题的定义或求解过程；语法树为组成关系的结构，虽可递归遍历但不把递归工具改名另计。"
+        },
+        {
+          "name": "族谱",
+          "pitch": "以谱系记录群体的来处与传承，适合强调根源与积累的品牌。",
+          "status": "质量复核待定",
+          "comparison": "现说明为群体来处与传承，本案节点关系为语法成分组成而非代际来源。"
+        },
+        {
+          "name": "分镜",
+          "pitch": "拍摄前把叙事内容分成计划中的镜头，逐镜写明或画出画面与声音的处理，以事先安排视觉叙述的方式命名；适合影像创作、故事板或拍摄协作品牌。",
+          "status": "待核验",
+          "comparison": "现说明为未拍叙事分为计划镜头，语法树则表示表达式语法成分嵌套，不仅泛化结构整理。"
+        }
+      ],
+      "reason": "语法树为自然的三字完整术语，必要关系是用父子节点明确表示语法成分的组成与嵌套，使线性表达转为可遍历的组成结构。层序只有泛层级次序，谱系、家谱、族谱强调来源和传承，目录现说明泛整理记录，均未包含语法组成的节点语义；递归为定义或求解过程，可用于遍历树但不是这份表示结构，分镜则为未拍叙事到计划镜头的安排。本案不以树形外观或代码对象替换作准入理由，限定语言工具、代码分析和编程教育可暂留自然度4。Python AST仅作具体实例，不把一切语法树、抽象语法树和解析树都判完全同义。",
+      "risk_note": "本地语法/法词条仅供一般词义参考，完整计算机定义另列。语法树可有不同具体/抽象形式，不强行把解析树另提一名，不承诺理解全部语义或检测全部程序错误。",
+      "anchor_rank": 1439,
+      "decision": "keep",
+      "final_acceptance": false,
+      "accepted_count": 0,
+      "duplicate_check": {
+        "known_name_count": 150581,
+        "full_in_known": false,
+        "reverse_in_known": false,
+        "all_characters_in_library": true,
+        "anchor_rank": 1439,
+        "historical_name_field_hits_excluding_source_and_screen": []
+      },
+      "counted": false,
+      "screening_level": "separate_assistant_screen",
+      "quality_evidence_format_pass": true,
+      "corrections": []
+    },
+    {
+      "name": "信号量",
+      "anchor": "量",
+      "naturalness": 4,
+      "meaning": "采用并发编程中的计数信号量：以可用许可计数协调获取与释放，成功获取使计数减一、释放使计数增加；无许可时获取可以等待或按非阻塞方式失败，适合并发教学、系统工具或资源协调软件品牌。",
+      "character_roles": {
+        "信": "与号构成信号，在信号量术语中承载协调并发操作的约定",
+        "号": "与信共同构成技术词信号，不指一般号码或声光号角",
+        "量": "读liàng指可供获取的许可计数而非传输信号强度"
+      },
+      "brand_domains": [
+        "并发教学",
+        "系统工具",
+        "资源协调软件"
+      ],
+      "local_reference": [
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "信號",
+          "pinyin": "xìn hào",
+          "definition": "代替語言來傳達訊息、命令、報告的符號。如旗號、燈號等。如：「交通信號的紅燈是示意停止行進。」",
+          "entry_id": "071740057",
+          "sheet": "1150929辭典匯出",
+          "row": 107911,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        },
+        {
+          "path": "参考文献/字义数据/moe-revised-2015_20260929/entries.json",
+          "title": "量",
+          "pinyin": "liàng",
+          "definition": "[名]\n1.計算物體數量的器具。如斗、斛等。《廣韻．去聲．漾韻》：「量，合、斗、斛。」《漢書．卷二一．律歷志上》：「量者，龠、合、升、斗、斛也，所以量多少也。」\n2.能容納事物的限度。如：「容量」、「器量」。《三國志．卷三五．蜀書．諸葛亮傳》：「時左將軍劉備以亮有殊量，乃三顧亮於草廬之中。」宋．劉子翬〈夜飲〉詩：「沉沉玉巵酒，量淺難負荷。」\n3.數量、數目。如：「含量」、「流量」、「重量」、「降雨量」。\n[動]\n估計、審度。如：「不自量力」、「量入為出」。《孟子．公孫丑上》：「量敵而後進，慮勝而後會。」",
+          "entry_id": "03680",
+          "sheet": "1150929辭典匯出",
+          "row": 3686,
+          "support_scope": "单字或一般词义参考，不据此推出软件完整术语定义"
+        }
+      ],
+      "external_reference": [
+        {
+          "url": "https://docs.python.org/3/library/threading.html",
+          "title": "threading — Semaphore objects",
+          "publisher": "Python documentation",
+          "quote": "A semaphore manages an internal counter which is decremented by each acquire() call and incremented by each release() call.",
+          "alternative_quote": "The counter can never go below zero; when acquire() finds that it is zero, it blocks, waiting until some other thread calls release().",
+          "support_scope": "Python threading.Semaphore counting-semaphore behavior; nonblocking acquire may return false. No fairness, maximum-capacity or ownership guarantee inferred.",
+          "accessed_at": "2026-11-15T17:05:57.551243+08:00",
+          "http_status": 200,
+          "response_sha256": "341d345fe5964f35c9331760570d7f10398f060d43b1800a27f7d0ebb89b4546",
+          "verified_by": "direct HTTPS read, stripped-text exact quote checked after whitespace normalization",
+          "review_verification": {
+            "name": "信号量",
+            "url": "https://docs.python.org/3/library/threading.html",
+            "http_status": 200,
+            "response_sha256": "341d345fe5964f35c9331760570d7f10398f060d43b1800a27f7d0ebb89b4546",
+            "verified_at": "2026-11-15T17:12:58.777647+08:00",
+            "quote_content_matches_after_ignoring_markup_whitespace": {
+              "quote": true,
+              "alternative_quote": true
+            },
+            "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+          }
+        }
+      ],
+      "definition_basis": {
+        "kind": "assistant_standard_computing_definition",
+        "whole_term_in_local_reference": false,
+        "adopted_scope": "采用计数信号量而非普通物理信号幅值；依据Python threading.Semaphore的公开获取/释放行为说明。",
+        "example_checked_with_python_threading": {
+          "initial_count": 2,
+          "three_nonblocking_acquires": [
+            true,
+            true,
+            false
+          ],
+          "after_one_release_acquire": true
+        },
+        "caution": "只验证计数许可行为，不把信号量等同互斥锁或所有调度器。普通Semaphore不因初始值就自动具备最大容量上界；不保证FIFO、公平性、获得者与释放者相同或绝无死锁。"
+      },
+      "most_similar_existing": [
+        {
+          "name": "信号",
+          "pitch": "以可辨识、可传递的信号为意象，体现连接与表达。",
+          "status": "质量复核待定",
+          "difference": "现说明为可辨识传递信号及连接表达，本名不是测量消息强弱，采用并发许可计数与获取释放的状态关系。"
+        },
+        {
+          "name": "许可",
+          "pitch": "“许可”表达准许与开放，传递尊重选择、为新可能留出空间的品牌气质。",
+          "status": "质量复核未通过",
+          "difference": "现说明为准许开放的态度，本名许可计数只是技术机制，不以开放新可能作为泛寓意。"
+        },
+        {
+          "name": "闸口",
+          "pitch": "以水路或通道上的闸口为意象，强调连接与调度。",
+          "status": "质量复核未通过",
+          "difference": "现说明为通道连接与调度，本名不是把闸口换成数字门槛，而有可耗用和归还的计数约定。"
+        },
+        {
+          "name": "队列",
+          "pitch": "以整齐有序的排列，传达协作和秩序感。",
+          "status": "质量复核未通过",
+          "difference": "现说明为整齐排列协作秩序，信号量不要求按到达顺序排队，也不能用队列公平性描述它。"
+        },
+        {
+          "name": "中枢",
+          "pitch": "取居中调度、统合协作之意，呈现稳健而有组织力的品牌形象。",
+          "status": "待核验",
+          "difference": "现说明为居中统筹调度，本名不等同统一调度中心，着重获取/释放改变许可计数的协调约束。"
+        },
+        {
+          "name": "阈值",
+          "pitch": "本次采用刺激引起相应组织出现反应的最低刺激量这一阈值义，以刺激量与反应下限的数值关系命名；适合感知测量或科学教育品牌。",
+          "status": "待核验",
+          "comparison": "现说明为刺激引发组织反应的最低刺激量，信号量不以固定反应阈限定义，而以许可计数的成功获取和释放约束协调。"
+        },
+        {
+          "name": "抽样",
+          "pitch": "从已有的整体中抽取部分作为样本，以部分对象开展观察或研究；适合调查研究、数据教育或试验设计品牌。",
+          "status": "待核验",
+          "comparison": "现说明为从总体抽取部分观察，信号量不以抽取对象研究，而是获取释放许可的协调约定。"
+        }
+      ],
+      "reason": "信号量为自然紧凑的系统术语，本次采用计数许可经成功获取和释放而减少、增加的协调关系。信号现说明只是传意连接，许可是一般准许开放，闸口是通道连接调度，队列为整齐排列，中枢为居中统筹，均没有可耗用与归还的许可计数约束；阈值是刺激引发反应的最低量，抽样是从总体取部分，也不具获取释放更新计数的机制。本案不是把普通信号加一个量字或将物理闸口换为数字对象，限定并发教学、系统工具及资源协调软件可暂留自然度4。没有据此保证公平、有界、所有权或无死锁。",
+      "risk_note": "普通受众易误解为信号强度，需保留软件领域。无许可并非所有调用都无限等待，非阻塞和超时允许失败；不保证公平、上界、所有权或无死锁，不另以二元信号量等类别细分增加数量。",
+      "anchor_rank": 2616,
+      "decision": "keep",
+      "final_acceptance": false,
+      "accepted_count": 0,
+      "duplicate_check": {
+        "known_name_count": 150581,
+        "full_in_known": false,
+        "reverse_in_known": false,
+        "all_characters_in_library": true,
+        "anchor_rank": 2616,
+        "historical_name_field_hits_excluding_source_and_screen": []
+      },
+      "counted": false,
+      "screening_level": "separate_assistant_screen",
+      "quality_evidence_format_pass": true,
+      "corrections": [
+        "获取改为成功获取，避免把非阻塞失败或超时也说成计数减少。"
+      ]
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_at": "2026-11-15T17:13:03.735472+08:00",
+    "four_of_four_reviewed": true,
+    "known_name_count": 150581,
+    "full_and_reverse_duplicates_absent": true,
+    "historical_name_field_scan_file_count": 12838,
+    "historical_name_fields_checked_excluding_source_and_screen": true,
+    "all_characters_in_8105_library": true,
+    "anchor_ranks_checked": true,
+    "complete_character_roles_and_api_quality_format_checked": true,
+    "dictionary_records_checked": 9,
+    "external_primary_technical_pages_reopened_and_quote_content_checked": 4,
+    "external_checks": [
+      {
+        "name": "惰性求值",
+        "url": "https://docs.racket-lang.org/reference/Delayed_Evaluation.html",
+        "http_status": 200,
+        "response_sha256": "b438d6f715cb5c20979d314fb451aba7045b750180adeb85f2ea3c1bd0b68c78",
+        "verified_at": "2026-11-15T17:12:56.046556+08:00",
+        "quote_content_matches_after_ignoring_markup_whitespace": {
+          "quote": true,
+          "alternative_quote": true
+        },
+        "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+      },
+      {
+        "name": "双缓冲",
+        "url": "https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/double-buffered-graphics",
+        "http_status": 200,
+        "response_sha256": "bedf6ebd76e28801b02f92fdd2b0af1aab6dcf22af0f780366968de9b9b185b5",
+        "verified_at": "2026-11-15T17:12:56.895888+08:00",
+        "quote_content_matches_after_ignoring_markup_whitespace": {
+          "quote": true,
+          "alternative_quote": true
+        },
+        "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+      },
+      {
+        "name": "语法树",
+        "url": "https://docs.python.org/3/library/ast.html",
+        "http_status": 200,
+        "response_sha256": "0876114d83beaf0d96ed0f2759979e7b3b9aa3780ccd81354adbae792ac55a7d",
+        "verified_at": "2026-11-15T17:12:57.876087+08:00",
+        "quote_content_matches_after_ignoring_markup_whitespace": {
+          "quote": true,
+          "alternative_quote": true
+        },
+        "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+      },
+      {
+        "name": "信号量",
+        "url": "https://docs.python.org/3/library/threading.html",
+        "http_status": 200,
+        "response_sha256": "341d345fe5964f35c9331760570d7f10398f060d43b1800a27f7d0ebb89b4546",
+        "verified_at": "2026-11-15T17:12:58.777647+08:00",
+        "quote_content_matches_after_ignoring_markup_whitespace": {
+          "quote": true,
+          "alternative_quote": true
+        },
+        "note": "Inline code tags introduce spaces before punctuation in stripped HTML; content verified after removing whitespace, without changing quoted words."
+      }
+    ],
+    "actual_nearest_database_records_checked": 28,
+    "ast_example_rechecked": true,
+    "counting_semaphore_nonblocking_example_rechecked": true,
+    "source_sha256_unchanged": true,
+    "json_reparsed": true
+  },
+  "database_modified": false,
+  "snapshots_modified": false,
+  "git_modified": false,
+  "model_api_called": false,
+  "worker_started": false
+}
