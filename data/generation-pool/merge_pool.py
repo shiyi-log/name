@@ -42,7 +42,7 @@ def main():
     assert database_names == snapshot_names, 'database/snapshot name drift; rerun source audit'
     assert quick_check == 'ok'
     sources = sorted((ROOT / 'data/quality-reviews/direct-20261116-r85').glob('*proposals.json'))
-    sources += sorted((ROOT / 'data/quality-reviews').glob('direct-20261116-r8[6789]/*generated.json'))
+    sources += sorted(source for source in (ROOT / 'data/quality-reviews').glob('direct-20261116-r[0-9]*/*generated.json') if int(source.parent.name.rsplit('r', 1)[1]) >= 86)
     # Existing evidence is retained as a scheduling caution, not a new review round.
     close = {
         '纸上桥': ('纸上小桥', '已有跨批裁决指出缩写近似'),
